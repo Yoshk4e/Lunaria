@@ -1,4 +1,5 @@
 using Lunaria.Game.Dungeons;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Player.Gameplay;
 using Msg;
 
@@ -10,7 +11,10 @@ public sealed partial class Player
     {
         if (dungeonId > uint.MaxValue || Wanted.IsRunning || Battles.Current is not null
             || QueryTemporaryTeam((int)EnmTmpTeamType.Dungeon, (uint)dungeonId)?.MemberData.Count is not > 0)
+        {
+            Log.Flag("dungeon {DungeonId} entry refused, wanted or battle active or no dungeon team", dungeonId);
             return new DungeonEntryOutcome((int)EnmTextCode.EnmTextWrongParam, dungeonId, 0);
+        }
         var now = DateTimeOffset.UtcNow;
         var code = Dungeons.CheckEnter(dungeonId, now);
 
@@ -20,7 +24,10 @@ public sealed partial class Player
         var cost = assets.Dungeons.Type(assets.Dungeons.Dungeon(dungeonId)!.DungeonType)?.VitalityCost ?? 0;
 
         if (cost > 0 && SpendDungeonStamina(cost, now) != 0)
+        {
+            Log.Flag("dungeon {DungeonId} entry refused, stamina {Cost} not affordable", dungeonId, cost);
             return new DungeonEntryOutcome((int)EnmTextCode.EnmTextStaminaNotEnough, dungeonId, StaminaSpent: 0);
+        }
 
         Dungeons.Enter(dungeonId, now);
         ReconcileTemporaryTeam();
@@ -74,6 +81,8 @@ public sealed partial class Player
         var delivery = result.Settled
             ? GrantRewards(result.Rewards, result.Victory ? EnmItemReason.EnmItemChangeDungeonsEnd : default)
             : null;
+        Log.State("dungeon {DungeonId} settled, victory {Victory}, leave {Leave}, rewards {RewardLines}",
+            dungeonId, result.Victory, leave, result.Rewards.Count);
         if (result.Victory) Gameplay.Publish(new DungeonCleared(dungeonId));
         return (0, delivery, result.Horde);
     }

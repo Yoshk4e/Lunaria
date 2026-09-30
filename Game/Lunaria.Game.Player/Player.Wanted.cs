@@ -1,3 +1,4 @@
+using Lunaria.Game.Logging;
 using Lunaria.Game.Player.Gameplay;
 using Lunaria.Game.Resources;
 using Msg;
@@ -9,7 +10,10 @@ public sealed partial class Player
     public int EnterWanted(uint entryId, IReadOnlyList<uint>? characterIds = null)
     {
         if (Dungeons.Current is not null || Battles.Current is not null)
+        {
+            Log.Flag("wanted {EntryId} entry refused, a dungeon or battle is active", entryId);
             return (int)EnmTextCode.EnmTextWrongParam;
+        }
         InstallQuestGates();
         var code = Wanted.CheckEnter(entryId);
 
@@ -44,6 +48,7 @@ public sealed partial class Player
     {
         if (Battles.Current is not null) return (int)EnmTextCode.EnmTextWrongParam;
         var code = Wanted.Leave();
+        Log.Event("wanted leave returned {Result}", code);
         if (code == 0) { Tasks.ResetNamespace(TaskAssets.Wanted); ReconcileTemporaryTeam(); }
         return code;
     }
@@ -173,7 +178,11 @@ public sealed partial class Player
 
     public (int Result, SCWantedOver? Settlement, RewardDelivery? Delivery) WantedOver()
     {
-        if (Battles.Current is not null) return ((int)EnmTextCode.EnmTextWrongParam, null, null);
+        if (Battles.Current is not null)
+        {
+            Log.Flag("wanted over refused, battle still active");
+            return ((int)EnmTextCode.EnmTextWrongParam, null, null);
+        }
         var (code, settlement, grants) = Wanted.Over();
 
         if (code != 0)

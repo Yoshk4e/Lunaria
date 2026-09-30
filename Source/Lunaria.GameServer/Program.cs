@@ -1,3 +1,5 @@
+using Lunaria.Game.Logging;
+using Lunaria.GameServer.Logging;
 using Lunaria.GameServer.Services;
 using Lunaria.Game.Player.Auth;
 using Lunaria.Game.Player.Persistence;
@@ -15,8 +17,12 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 var builder = Host.CreateApplicationBuilder(args);
-builder.Logging.AddFilter(typeof(Router).FullName, LogLevel.Warning);
-builder.Configuration.AddEnvironmentVariables("LUNARIA_");
+builder.Logging.ClearProviders();
+builder.Logging.AddProvider(new StylishConsoleLoggerProvider());
+builder.Configuration
+    .SetBasePath(AppContext.BaseDirectory)
+    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: false)
+    .AddEnvironmentVariables("LUNARIA_");
 builder.Services
     .AddOptions<GameServerOptions>()
     .BindConfiguration("GameServer")
@@ -73,4 +79,6 @@ builder.Services.AddHostedService<BootstrapService>();
 builder.Services.AddHostedService<GatewayRegistrationService>();
 
 var host = builder.Build();
+GameLog.Configure(host.Services.GetRequiredService<ILoggerFactory>());
+
 await host.RunAsync().ConfigureAwait(false);

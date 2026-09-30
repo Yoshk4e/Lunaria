@@ -1,3 +1,4 @@
+using Lunaria.Game.Logging;
 using Lunaria.Game.Player.Gameplay;
 using Msg;
 
@@ -14,23 +15,35 @@ public sealed partial class Player
         var (checkedCode, lines) = Shop.CheckBasket(shopId, basket);
 
         if (checkedCode != 0 || lines is null)
+        {
+            Log.Flag("shop {ShopId} buy refused at basket check with code {Code}", shopId, checkedCode);
             return (checkedCode, null);
+        }
 
         foreach (var line in lines)
         {
             var quota = Shop.CheckQuota(line.Good, line.Count, now);
 
             if (quota != 0)
+            {
+                Log.Flag("shop {ShopId} buy refused, good {GoodId} quota exhausted with code {Code}", shopId, line.GoodId, quota);
                 return (quota, null);
+            }
         }
 
         var price = Shop.PriceOf(lines, Shop.NeedsSatiety(shopId));
 
         if (price.ExceedsBalanceLimit)
+        {
+            Log.Flag("shop {ShopId} buy refused, price {Currencies} exceeds the balance limit", shopId, price.Currencies);
             return ((int)EnmTextCode.EnmTextShopInvalidBoughtNum, null);
+        }
 
         if (price.Satiety > Progress.Satiety)
+        {
+            Log.Flag("shop {ShopId} buy refused, satiety {Satiety} below cost {Cost}", shopId, Progress.Satiety, price.Satiety);
             return ((int)EnmTextCode.EnmTextItemNotEnough, null);
+        }
 
         RewardDelivery? delivery = null;
 

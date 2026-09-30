@@ -1,3 +1,4 @@
+using Lunaria.Game.Logging;
 using Lunaria.Game.Mail;
 using Lunaria.Game.Resources;
 using Msg;
@@ -59,10 +60,13 @@ public sealed partial class Player
         var delivery = GrantWithoutOverflowMail(grants, reason);
         if (delivery.Undelivered.Count == 0) return delivery;
 
+        Log.Flag("grant reason {Reason} left {Count} undelivered items, sending overflow mail", reason, delivery.Undelivered.Count);
+
         if (!TrySendOverflowMail(delivery.Undelivered, DateTimeOffset.UtcNow))
         {
             _pendingRewardMail.Add(delivery.Undelivered.ToArray());
             _pendingRewardMailDirty = true;
+            Log.Flag("overflow mail failed too, deferring {Count} items to the next mailbox sweep", delivery.Undelivered.Count);
             return delivery with { Deferred = delivery.Undelivered, Undelivered = [] };
         }
         return delivery with { Mailed = delivery.Undelivered, Undelivered = [] };

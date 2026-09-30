@@ -1,4 +1,5 @@
 using Lunaria.Game.Characters;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Player.Gameplay;
 using Lunaria.Game.Player.Notifications;
 using Lunaria.Game.Resources;
@@ -18,7 +19,11 @@ public sealed partial class Player
         var step = Characters.NextBreak(instId)!;
         code = Purchase(step.CostItems, step.CostCurrency, () => Characters.ApplyBreak(instId, Progress.WorldLevel),
             EnmItemReason.EnmItemChangeCharacterBreak);
-        if (code == 0) Gameplay.Publish(new CharactersChanged([instId]));
+        if (code == 0)
+        {
+            Log.State("character {InstId} break succeeded, cost {CostItems}", instId, step.CostItems);
+            Gameplay.Publish(new CharactersChanged([instId]));
+        }
         return code;
     }
 
@@ -240,6 +245,12 @@ public sealed partial class Player
             TeamExpFromReason = TeamExpFor(reason),
             ChangedBattlePasses = changedPasses, Stamina = stamina
         };
+        Log.Event("grant reason {Reason} credited {CreditedCount} stored {StoredCount} undelivered {UndeliveredCount} newcomers {NewcomerCount} motives {MotiveCount}",
+            reason, credited.Count, stored.Count, undelivered.Count, newcomers.Count, newMotives.Count);
+
+        foreach (var (itemId, count) in acquired)
+            Log.Event("grant reason {Reason} item {ItemId} total {Count}", reason, itemId, count);
+
         return delivery with { Presentation = RewardPresentation.Capture(this, delivery) };
     }
 
@@ -275,7 +286,10 @@ public sealed partial class Player
             return reject with { Code = (int)EnmTextCode.EnmTextCharacterLevelUpItemInvalid };
 
         if (!Bag.CanAfford(items))
+        {
+            Log.Flag("character {InstId} level up refused, the bag lacks {ItemsCount} cost lines", instId, items.Count);
             return reject with { Code = (int)EnmTextCode.EnmTextCharacterLevelUpCostItemFailed };
+        }
 
         // Charge for banked XP even when it does not gain a level.
         var grant = Characters.GrantExp(instId, (uint)totalExp);
@@ -304,12 +318,18 @@ public sealed partial class Player
     )
     {
         if (!Bag.CanAfford(items))
+        {
+            Log.Event("purchase refused, the bag lacks {ItemsCount} cost lines", items.Count);
             return (int)EnmTextCode.EnmTextItemNotEnough;
+        }
 
         foreach (var (moneyType, amount) in prices)
         {
             if (!Wallet.CanAfford(moneyType, amount))
+            {
+                Log.Event("purchase refused, wallet {MoneyType} lacks {Amount}", moneyType, amount);
                 return (int)EnmTextCode.EnmTextItemNotEnough;
+            }
         }
 
         var paid = Bag.RemoveAll(items);

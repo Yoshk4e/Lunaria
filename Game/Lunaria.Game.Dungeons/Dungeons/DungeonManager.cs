@@ -1,6 +1,8 @@
 using System.Globalization;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
 using Lunaria.Game.Resources.Tables;
+using Microsoft.Extensions.Logging;
 using Msg;
 
 namespace Lunaria.Game.Dungeons;
@@ -11,6 +13,8 @@ public sealed record HordeState(uint HordeId, uint KillCount, uint StarAward);
 
 public sealed class DungeonManager(GameData assets)
 {
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Dungeons");
+
     private readonly SortedDictionary<ulong, uint> _finishes = [];
     private readonly SortedDictionary<uint, HordeState> _hordes = [];
     private readonly Dictionary<uint, DungeonTypeState> _types = [];
@@ -88,10 +92,16 @@ public sealed class DungeonManager(GameData assets)
     public int CheckEnter(ulong dungeonId, DateTimeOffset now)
     {
         if (assets.Dungeons.Dungeon(dungeonId) is not {} dungeon)
+        {
+            Log.Flag("dungeon enter refused, id {DungeonId} has no table row", dungeonId);
             return (int)EnmTextCode.EnmTextDungeonsFail;
+        }
 
         if (_current is not null)
+        {
+            Log.Flag("dungeon enter refused, dungeon {DungeonId} is already in progress", _current.Value.DungeonId);
             return (int)EnmTextCode.EnmTextDungeonsIn;
+        }
 
         if (assets.Dungeons.Type(dungeon.DungeonType) is { LimitType: not DungeonAssets.LimitNone } type)
         {
@@ -111,6 +121,7 @@ public sealed class DungeonManager(GameData assets)
     {
         var dungeon = assets.Dungeons.Dungeon(dungeonId)!;
         _current = (dungeonId, dungeon.BattleId.FirstOrDefault());
+        Log.State("dungeon {DungeonId} entered, battle {BattleId}", dungeonId, _current.Value.BattleId);
         Dirty();
     }
 
@@ -159,7 +170,10 @@ public sealed class DungeonManager(GameData assets)
         var settled = !leave;
 
         if (settled && !CanConsumeAttempt(dungeon, now))
+        {
+            Log.Flag("dungeon {DungeonId} settlement refused, no attempts left", dungeonId);
             return DungeonSettlement.Rejected((int)EnmTextCode.EnmTextDungeonsCountMax);
+        }
 
         _current = null;
         var rewards = new List<ItemGrant>();
@@ -204,6 +218,8 @@ public sealed class DungeonManager(GameData assets)
         }
 
         Dirty();
+        Log.State("dungeon {DungeonId} finished, victory {Victory}, leave {Leave}, horde kills {Kills}, reward lines {RewardCount}",
+            dungeonId, victory, leave, hordeKills, rewards.Count);
         return new DungeonSettlement(0, settled, settled && victory, rewards, horde);
     }
 

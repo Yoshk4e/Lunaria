@@ -18,6 +18,8 @@ using Lunaria.Game.Resources;
 using Lunaria.Game.Shop;
 using Lunaria.Game.Tasks;
 using Lunaria.Game.Wanted;
+using Lunaria.Game.Logging;
+using Microsoft.Extensions.Logging;
 using Lunaria.Game.World;
 using Msg;
 
@@ -25,6 +27,9 @@ namespace Lunaria.Game.Player;
 
 public sealed partial class Player(ulong sessionId, GameData assets)
 {
+    /// <summary>Shared logger for every Player partial. Gameplay events are trace, outcomes are info.</summary>
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Player");
+
     /// <summary>Session ID used by SCAccountLogin.connect_identify_id and SCSchemaInfoSync.login_id.</summary>
     public ulong SessionId { get; } = sessionId;
 

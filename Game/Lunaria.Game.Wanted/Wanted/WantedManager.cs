@@ -1,5 +1,7 @@
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
 using Lunaria.Game.Resources.Tables;
+using Microsoft.Extensions.Logging;
 using Msg;
 
 namespace Lunaria.Game.Wanted;
@@ -48,8 +50,13 @@ public sealed record WantedRunSnapshot(
 
 public sealed partial class WantedManager(GameData assets, Random? random = null)
 {
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Wanted");
+
     private readonly SortedDictionary<uint, uint> _finishes = [];
     private readonly Random _random = random ?? new();
+
+    /// <summary>Set by <see cref="Over"/> so the client's follow-up CS_WANTED_LEAVE still succeeds.</summary>
+    private bool _settledRun;
 
     public Func<uint, bool> IsConditionMet { get; set; } = id => id == 0;
 
@@ -81,6 +88,7 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
                 _finishes[entryId] = count;
         }
         _run = null;
+        _settledRun = false;
 
         if (run is not null)
             AdoptRun(run);
@@ -184,17 +192,27 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
     public int CheckEnter(uint entryId)
     {
         if (assets.Wanted.Entry(entryId) is not {} entry)
+        {
+            Log.Flag("wanted enter refused, entry {EntryId} does not exist", entryId);
             return (int)EnmTextCode.EnmTextWantedNotInWanted;
+        }
 
         if (_run is not null)
+        {
+            Log.Flag("wanted enter refused, a run on entry {EntryId} is already active", _run.EntryId);
             return (int)EnmTextCode.EnmTextWantedIsInWanted;
+        }
 
         if (entry.Difficulty > 1)
         {
             var previous = PreviousDifficultyEntry(entry);
 
             if (previous is null || _finishes.GetValueOrDefault(previous.Id) == 0)
+            {
+                Log.Flag("wanted enter refused, entry {EntryId} difficulty {Difficulty} needs the lower difficulty cleared first",
+                    entryId, entry.Difficulty);
                 return (int)EnmTextCode.EnmTextWantedAdventureNotExists;
+            }
         }
 
         return 0;
@@ -206,9 +224,11 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
         var route = _finishes.GetValueOrDefault(entryId) == 0 ? entry.FristRouteId : entry.NormalRouteId;
         var maxStep = assets.Wanted.MaxStep(route);
 
+        _settledRun = false;
         _run = new RunState(
             entryId, route, maxStep, step: 1, BuildStep(entry, route, step: 1), [],
             [], [], [], coinsTotal: 0, reviveCount: 0, resetPoint: null, [], []);
+        Log.State("wanted run started on entry {EntryId} route {RouteId} with {MaxStep} steps", entryId, route, maxStep);
         Dirty();
     }
 
@@ -223,6 +243,7 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
             ResetPoint = run.ResetPoint?.Id ?? 0,
             WantedId = run.EntryId,
             MaxStep = run.MaxStep,
+            RouterId = run.RouteId,
             ReviveCount = run.ReviveCount
         };
 
@@ -429,9 +450,13 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
             return (int)EnmTextCode.EnmTextWantedNotInWanted;
 
         if (assets.Wanted.ReviveCost((int)run.ReviveCount + 1) is null)
+        {
+            Log.Flag("wanted revive refused, revive {Count} exceeds the cost table", run.ReviveCount + 1);
             return (int)EnmTextCode.EnmTextWantedReviveAllFailed;
+        }
 
         run.ReviveCount++;
+        Log.State("wanted revive {Count} committed on entry {EntryId}", run.ReviveCount, run.EntryId);
         Dirty();
         return 0;
     }
@@ -553,6 +578,9 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
         settlement.AwardFirst.AddRange(first ? GrantsToCmdItems(grants) : []);
 
         _run = null;
+        _settledRun = true;
+        Log.State("wanted run on entry {EntryId} settled at step {Step} of {MaxStep}, victory {Victory}, finish count {FinishCount}",
+            run.EntryId, run.Step, run.MaxStep, victory, _finishes.GetValueOrDefault(run.EntryId));
         Dirty();
         return (0, settlement, grants);
     }
@@ -560,9 +588,16 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
     public int Leave()
     {
         if (_run is null)
-            return (int)EnmTextCode.EnmTextWantedNotInWanted;
+        {
+            // The client always sends CS_WANTED_LEAVE right after a settled CS_WANTED_OVER (the run is
+            // already gone then). Rejecting it strands the player in the wanted map because the client
+            // only travels out on result 0.
+            return _settledRun ? 0 : (int)EnmTextCode.EnmTextWantedNotInWanted;
+        }
 
+        Log.State("wanted run on entry {EntryId} abandoned at step {Step} of {MaxStep}", _run.EntryId, _run.Step, _run.MaxStep);
         _run = null;
+        _settledRun = false;
         Dirty();
         return 0;
     }
@@ -595,6 +630,7 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
 
     private (bool, SCWantedStepNtf?, IReadOnlyList<ItemGrant>) CompleteEvent(RunState run)
     {
+        Log.Event("wanted event {EventId} completed at step {Step} of {MaxStep}", run.Current.EventId, run.Step, run.MaxStep);
         var drop = StepDrop(run).ToList();
         var awards = BuildAwards(run, drop);
         var sand = assets.Items.CurrencyItemFor((int)MoneyType.ThoughtSand);

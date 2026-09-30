@@ -1,4 +1,5 @@
 using Lunaria.Game.Gacha;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Player.Gameplay;
 using Lunaria.Game.Resources;
 using Msg;
@@ -26,14 +27,20 @@ public sealed partial class Player
     )
     {
         if (!Gacha.TryGetBanner(poolId, out var banner) || banner is null)
+        {
+            Log.Flag("gacha refused, pool {PoolId} has no banner", poolId);
             return ((int)EnmTextCode.EnmTextGachaDropErr, null);
+        }
 
         var count = isMult ? 10 : 1;
 
         var dailyLimit = assets.Gacha.DailyLimit(banner.PoolId);
 
         if (dailyLimit > 0 && Gacha.DailyCountOf(poolId, now) + (ulong)count > dailyLimit)
+        {
+            Log.Flag("gacha refused, pool {PoolId} daily limit {DailyLimit} would be exceeded", poolId, dailyLimit);
             return ((int)EnmTextCode.EnmTextGachaDailyLimit, null);
+        }
 
         var moneyType = assets.Gacha.CostMoneyType(banner.PoolId);
 
@@ -44,7 +51,10 @@ public sealed partial class Player
         var charge = total > long.MaxValue ? long.MaxValue : (long)total;
 
         if (!Wallet.CanAfford(moneyType, charge))
+        {
+            Log.Flag("gacha refused, wallet lacks {Charge} of money type {MoneyType} for {Count} pulls", charge, moneyType, count);
             return ((int)EnmTextCode.EnmTextGachaCostErr, null);
+        }
 
         if (Wallet.Debit(moneyType, charge) != 0)
             return ((int)EnmTextCode.EnmTextGachaCostErr, null);
@@ -85,6 +95,8 @@ public sealed partial class Player
         Gameplay.Publish(new WalletChanged());
         if (newcomers.Count > 0) Gameplay.Publish(new CharactersAcquired(newcomers));
         var cost = new GachaCost { Type = unchecked((uint)moneyType), Amount = unchecked((ulong)charge) };
+        Log.State("gacha pool {PoolId} resolved {Count} pulls, {Newcomers} new characters and {NewMotives} new motives",
+            poolId, count, newcomers.Count, newMotives.Count);
         return (0, new GachaDelivery(cost, Gacha.PoolInfo(poolId, now), delivery, newcomers, newMotives));
     }
 

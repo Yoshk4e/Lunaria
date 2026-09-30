@@ -1,9 +1,13 @@
+using Lunaria.Game.Logging;
+using Microsoft.Extensions.Logging;
 using Msg;
 
 namespace Lunaria.Game.Progression;
 
 public sealed partial class ProgressManager
 {
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Progression");
+
     public TeamExpGrant AddTeamExp(uint exp)
     {
         if (exp == 0)
@@ -29,8 +33,14 @@ public sealed partial class ProgressManager
         TeamExp = (uint)Math.Min(pool, cap);
         Dirty();
 
+        if (gained > 0)
+            Log.State("team level advanced to {Level} with {LevelsGained} levels gained from {Exp} exp", level, gained, exp);
+
         // Report full only for discarded XP. Reaching the cap exactly still succeeds.
         var code = dropped > 0 && level >= TeamLevelCeiling ? (int)EnmTextCode.EnmTextTeamExpFull : 0;
+
+        if (dropped > 0)
+            Log.Flag("team exp overflow dropped {Dropped} exp at level {Level}", dropped, level);
 
         return new TeamExpGrant(code, TeamLevel, TeamExp, gained, WorldLevel, dropped);
     }
