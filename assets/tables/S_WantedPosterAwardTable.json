@@ -1,0 +1,243 @@
+{
+  "S_WantedPosterAwardTable": {
+    "101": {
+      "id": 101,
+      "probability": 100,
+      "behavior": 3
+    },
+    "102": {
+      "id": 102,
+      "probability": 100,
+      "behavior": 6
+    },
+    "103": {
+      "id": 103,
+      "probability": 100,
+      "behavior": 9
+    },
+    "104": {
+      "id": 104,
+      "probability": 100,
+      "behavior": 10
+    },
+    "105": {
+      "id": 105,
+      "probability": 100,
+      "behavior": 4,
+      "param1": [
+        2,
+        4
+      ]
+    },
+    "106": {
+      "id": 106,
+      "probability": 100,
+      "behavior": 7,
+      "param1": [
+        2,
+        4
+      ]
+    },
+    "111": {
+      "id": 111,
+      "probability": 100,
+      "behavior": 4,
+      "param1": [
+        1,
+        2
+      ]
+    },
+    "112": {
+      "id": 112,
+      "probability": 100,
+      "behavior": 10
+    },
+    "113": {
+      "id": 113,
+      "probability": 100,
+      "behavior": 1,
+      "param1": [
+        1
+      ],
+      "param2": [
+        300
+      ]
+    },
+    "201": {
+      "id": 201,
+      "probability": 50,
+      "behavior": 3
+    },
+    "202": {
+      "id": 202,
+      "probability": 50,
+      "behavior": 6
+    },
+    "203": {
+      "id": 203,
+      "probability": 50,
+      "behavior": 9
+    },
+    "204": {
+      "id": 204,
+      "probability": 50,
+      "behavior": 4,
+      "param1": [
+        1,
+        2
+      ]
+    },
+    "205": {
+      "id": 205,
+      "probability": 50,
+      "behavior": 7,
+      "param1": [
+        1,
+        1
+      ]
+    },
+    "206": {
+      "id": 206,
+      "probability": 10,
+      "behavior": 10
+    },
+    "207": {
+      "id": 207,
+      "probability": 10,
+      "behavior": 7,
+      "param1": [
+        1,
+        1
+      ]
+    },
+    "208": {
+      "id": 208,
+      "probability": 10,
+      "behavior": 4,
+      "param1": [
+        1,
+        2
+      ]
+    },
+    "209": {
+      "id": 209,
+      "probability": 100,
+      "behavior": 4,
+      "param1": [
+        1,
+        2
+      ]
+    },
+    "210": {
+      "id": 210,
+      "probability": 100,
+      "behavior": 7,
+      "param1": [
+        2,
+        2
+      ]
+    },
+    "211": {
+      "id": 211,
+      "probability": 100,
+      "behavior": 7,
+      "param1": [
+        1,
+        2
+      ],
+      "param2": [
+        1,
+        2
+      ]
+    },
+    "212": {
+      "id": 212,
+      "probability": 100,
+      "behavior": 7,
+      "param3": [
+        10002
+      ]
+    },
+    "213": {
+      "id": 213,
+      "probability": 100,
+      "behavior": 9,
+      "param1": [
+        1,
+        2
+      ]
+    },
+    "214": {
+      "id": 214,
+      "probability": 100,
+      "behavior": 10,
+      "param1": [
+        1,
+        2
+      ]
+    },
+    "301": {
+      "id": 301,
+      "probability": 100,
+      "behavior": 1,
+      "param1": [
+        1
+      ],
+      "param2": [
+        1000
+      ]
+    },
+    "302": {
+      "id": 302,
+      "probability": 100,
+      "behavior": 2,
+      "param1": [
+        1
+      ],
+      "param2": [
+        1000
+      ]
+    },
+    "303": {
+      "id": 303,
+      "probability": 100,
+      "behavior": 1,
+      "param1": [
+        1
+      ],
+      "param2": [
+        200
+      ]
+    },
+    "100001": {
+      "id": 100001,
+      "probability": 100,
+      "behavior": 3,
+      "param3": [
+        1000001,
+        1000002,
+        1000003
+      ]
+    },
+    "100002": {
+      "id": 100002,
+      "probability": 100,
+      "behavior": 4,
+      "param4": [
+        1000001,
+        1000002,
+        1000003
+      ]
+    },
+    "100003": {
+      "id": 100003,
+      "probability": 100,
+      "behavior": 9,
+      "param2": [
+        8100101,
+        8200201,
+        8300101
+      ]
+    }
+  }
+}

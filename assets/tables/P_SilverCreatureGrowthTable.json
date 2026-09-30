@@ -1,0 +1,109 @@
+{
+  "P_SilverCreatureGrowthTable": {
+    "81001": {
+      "id": 81001,
+      "name": 1900999018,
+      "description": 1900999018,
+      "elementType": 3,
+      "cost": 2,
+      "summonedId": 81001,
+      "level": 20,
+      "worldLevelCoef": 5,
+      "skill": [
+        81002003
+      ]
+    },
+    "81002": {
+      "id": 81002,
+      "name": 1900999019,
+      "description": 1900999019,
+      "elementType": 3,
+      "cost": 2,
+      "summonedId": 81002,
+      "level": 20,
+      "worldLevelCoef": 5,
+      "skill": [
+        81001003
+      ]
+    },
+    "81003": {
+      "id": 81003,
+      "name": 1900999020,
+      "description": 1900999020,
+      "elementType": 3,
+      "cost": 2,
+      "summonedId": 81003,
+      "level": 20,
+      "worldLevelCoef": 5,
+      "skill": [
+        80001003,
+        80001004
+      ]
+    },
+    "82002": {
+      "id": 82002,
+      "name": 1900999021,
+      "description": 1900999021,
+      "elementType": 1,
+      "cost": 2,
+      "summonedId": 82002,
+      "level": 20,
+      "worldLevelCoef": 5,
+      "skill": [
+        82002003
+      ]
+    },
+    "82003": {
+      "id": 82003,
+      "name": 1900999022,
+      "description": 1900999022,
+      "elementType": 1,
+      "cost": 2,
+      "summonedId": 82003,
+      "level": 20,
+      "worldLevelCoef": 5,
+      "skill": [
+        82003003
+      ]
+    },
+    "83001": {
+      "id": 83001,
+      "name": 1900999023,
+      "description": 1900999023,
+      "elementType": 3,
+      "cost": 2,
+      "summonedId": 83001,
+      "level": 20,
+      "worldLevelCoef": 5,
+      "skill": [
+        83001003
+      ]
+    },
+    "83002": {
+      "id": 83002,
+      "name": 1900999024,
+      "description": 1900999024,
+      "elementType": 3,
+      "cost": 2,
+      "summonedId": 83002,
+      "level": 20,
+      "worldLevelCoef": 5,
+      "skill": [
+        83002003
+      ]
+    },
+    "83003": {
+      "id": 83003,
+      "name": 1900999025,
+      "description": 1900999025,
+      "elementType": 3,
+      "cost": 2,
+      "summonedId": 83003,
+      "level": 20,
+      "worldLevelCoef": 5,
+      "skill": [
+        83003003
+      ]
+    }
+  }
+}

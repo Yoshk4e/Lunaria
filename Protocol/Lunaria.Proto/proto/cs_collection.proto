@@ -1,0 +1,87 @@
+syntax = "proto3";
+package msg;
+
+import "comm_data.proto";
+
+
+enum EnmCollectionStatus
+{
+    ECS_LOCK = 0; 
+    ECS_CAN_COLLECT = 1; 
+    ECS_COLLECTED = 2; 
+    ECS_DESTROYED = 3; 
+};
+
+
+enum EnmCollectionFromType
+{
+    ECOLLECT_FROM_GM         = 0; 
+    ECOLLECT_FROM_TABLE      = 1; 
+    ECOLLECT_FROM_COLLECTION = 2; 
+    ECOLLECT_FROM_BATTLE     = 3; 
+    ECOLLECT_FROM_TASK       = 4; 
+};
+
+
+message OneCollectionData 
+{
+    uint64 uniq_id = 1;
+    uint32 cfg_id = 2; 
+    EnmCollectionStatus status = 3;
+    uint32 status_time = 4; 
+    uint64 block_id = 5; 
+    Vector3Int location = 6; 
+    Rotator rotation = 7; 
+    EnmCollectionFromType from_type = 8; 
+    uint64 from_id = 9;
+	Vector3Int from_location = 10; 
+}
+
+
+
+message CSCollectionGetList 
+{
+    uint64 block_id = 1; 
+}
+
+
+
+message SCCollectionGetList 
+{    
+    int32 result = 1;
+    repeated OneCollectionData item_list = 2; 
+}
+
+enum EnmCollectionOp
+{
+    EN_COLLECTION_OP_MIN = 0;
+    EN_COLLECTION_OP_COLLECT = 1; 
+    EN_COLLECTION_OP_DESTROY = 2; 
+    EN_COLLECTION_OP_MAX = 3;
+}
+
+
+
+message CSCollectionOperate
+{
+   uint64 uniq_id = 1; 
+
+   EnmCollectionOp op = 3;
+   uint32  param_place_hold = 4;
+}
+
+
+
+message SCCollectionOperate
+{
+   int32 result = 1;
+   OneCollectionData collection_item  = 2;
+}
+
+
+
+message SCCollectionDataNtf
+{
+    repeated uint64 delete_uid = 1;
+    repeated OneCollectionData ntf_list = 2;
+}

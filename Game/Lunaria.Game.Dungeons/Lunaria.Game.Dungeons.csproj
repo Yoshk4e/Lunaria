@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Dungeon entry, attempts, rewards, and horde records.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lunaria.Game.Resources\Lunaria.Game.Resources.csproj" />
+    <ProjectReference Include="..\..\Protocol\Lunaria.Proto\Lunaria.Proto.csproj" />
+  </ItemGroup>
+
+</Project>

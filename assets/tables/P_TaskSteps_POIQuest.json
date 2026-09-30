@@ -1,0 +1,1017 @@
+{
+  "P_TaskSteps_POIQuest": {
+    "100101": {
+      "id": 100101,
+      "taskType": 2,
+      "originTaskId": 1001,
+      "actions": [
+        10010101
+      ]
+    },
+    "100201": {
+      "id": 100201,
+      "taskType": 2,
+      "originTaskId": 1002,
+      "actions": [
+        10020100
+      ]
+    },
+    "100202": {
+      "id": 100202,
+      "taskType": 2,
+      "originTaskId": 1002,
+      "postId": [
+        20302
+      ],
+      "actions": [
+        10020101
+      ]
+    },
+    "100203": {
+      "id": 100203,
+      "taskType": 2,
+      "originTaskId": 1002,
+      "actions": [
+        10020201
+      ],
+      "failAction": [
+        10020301
+      ]
+    },
+    "900001": {
+      "id": 900001,
+      "taskType": 2,
+      "originTaskId": 9000,
+      "actions": [
+        90000101
+      ]
+    },
+    "900101": {
+      "id": 900101,
+      "taskType": 2,
+      "originTaskId": 9001,
+      "actions": [
+        90010101
+      ]
+    },
+    "900102": {
+      "id": 900102,
+      "taskType": 2,
+      "originTaskId": 9001,
+      "actions": [
+        90010201
+      ]
+    },
+    "900201": {
+      "id": 900201,
+      "taskType": 2,
+      "originTaskId": 9002,
+      "actions": [
+        90020101
+      ]
+    },
+    "900202": {
+      "id": 900202,
+      "taskType": 2,
+      "originTaskId": 9002,
+      "actions": [
+        90020201
+      ]
+    },
+    "900203": {
+      "id": 900203,
+      "taskType": 2,
+      "originTaskId": 9002,
+      "actions": [
+        90020301
+      ]
+    },
+    "9002101": {
+      "id": 9002101,
+      "taskType": 2,
+      "originTaskId": 9002,
+      "actions": [
+        900210101
+      ]
+    },
+    "9002102": {
+      "id": 9002102,
+      "taskType": 2,
+      "originTaskId": 9002,
+      "actions": [
+        900210201
+      ],
+      "failAction": [
+        900210202
+      ],
+      "rollbackStepWhenFail": 9002101
+    },
+    "900301": {
+      "id": 900301,
+      "taskType": 2,
+      "originTaskId": 9003,
+      "actions": [
+        90030101
+      ]
+    },
+    "900401": {
+      "id": 900401,
+      "taskType": 2,
+      "originTaskId": 9004,
+      "actions": [
+        90040101
+      ]
+    },
+    "900402": {
+      "id": 900402,
+      "taskType": 2,
+      "originTaskId": 9004,
+      "actions": [
+        90040201
+      ]
+    },
+    "900501": {
+      "id": 900501,
+      "taskType": 2,
+      "originTaskId": 9005,
+      "actions": [
+        90050101
+      ]
+    },
+    "900502": {
+      "id": 900502,
+      "taskType": 2,
+      "originTaskId": 9005,
+      "actions": [
+        90050201
+      ]
+    },
+    "900503": {
+      "id": 900503,
+      "taskType": 2,
+      "originTaskId": 9005,
+      "actions": [
+        90050301
+      ]
+    },
+    "9005101": {
+      "id": 9005101,
+      "taskType": 2,
+      "originTaskId": 9005,
+      "actions": [
+        900510101
+      ]
+    },
+    "9005102": {
+      "id": 9005102,
+      "taskType": 2,
+      "originTaskId": 9005,
+      "actions": [
+        900510201
+      ],
+      "failAction": [
+        900510202
+      ],
+      "rollbackStepWhenFail": 9005101
+    },
+    "900601": {
+      "id": 900601,
+      "taskType": 2,
+      "originTaskId": 9006,
+      "actions": [
+        90060101
+      ]
+    },
+    "9006101": {
+      "id": 9006101,
+      "taskType": 2,
+      "originTaskId": 90061,
+      "actions": [
+        900610101
+      ]
+    },
+    "9006201": {
+      "id": 9006201,
+      "taskType": 2,
+      "originTaskId": 90062,
+      "actions": [
+        900620101
+      ]
+    },
+    "9006301": {
+      "id": 9006301,
+      "taskType": 2,
+      "originTaskId": 90063,
+      "actions": [
+        900630101
+      ]
+    },
+    "900700": {
+      "id": 900700,
+      "taskType": 2,
+      "originTaskId": 9007,
+      "actions": [
+        90070001
+      ]
+    },
+    "900701": {
+      "id": 900701,
+      "taskType": 2,
+      "originTaskId": 9007,
+      "actions": [
+        90070101
+      ]
+    },
+    "900702": {
+      "id": 900702,
+      "taskType": 2,
+      "originTaskId": 9007,
+      "actions": [
+        90070201
+      ],
+      "failAction": [
+        90070301
+      ]
+    },
+    "900800": {
+      "id": 900800,
+      "taskType": 2,
+      "originTaskId": 9008,
+      "actions": [
+        90080001
+      ]
+    },
+    "900801": {
+      "id": 900801,
+      "taskType": 2,
+      "originTaskId": 9008,
+      "actions": [
+        90080101
+      ]
+    },
+    "900802": {
+      "id": 900802,
+      "taskType": 2,
+      "originTaskId": 9008,
+      "actions": [
+        90080201
+      ],
+      "failAction": [
+        90080301
+      ]
+    },
+    "900900": {
+      "id": 900900,
+      "taskType": 2,
+      "originTaskId": 9009,
+      "actions": [
+        90090001
+      ]
+    },
+    "900901": {
+      "id": 900901,
+      "taskType": 2,
+      "originTaskId": 9009,
+      "actions": [
+        90090101
+      ]
+    },
+    "900902": {
+      "id": 900902,
+      "taskType": 2,
+      "originTaskId": 9009,
+      "actions": [
+        90090201
+      ],
+      "failAction": [
+        90090301
+      ]
+    },
+    "901000": {
+      "id": 901000,
+      "taskType": 2,
+      "originTaskId": 9010,
+      "actions": [
+        90100001
+      ]
+    },
+    "901001": {
+      "id": 901001,
+      "taskType": 2,
+      "originTaskId": 9010,
+      "actions": [
+        90100101
+      ]
+    },
+    "901002": {
+      "id": 901002,
+      "taskType": 2,
+      "originTaskId": 9010,
+      "actions": [
+        90100201
+      ],
+      "failAction": [
+        90100301
+      ]
+    },
+    "901100": {
+      "id": 901100,
+      "taskType": 2,
+      "originTaskId": 9011,
+      "actions": [
+        90110001
+      ]
+    },
+    "901101": {
+      "id": 901101,
+      "taskType": 2,
+      "originTaskId": 9011,
+      "actions": [
+        90110101
+      ]
+    },
+    "901102": {
+      "id": 901102,
+      "taskType": 2,
+      "originTaskId": 9011,
+      "actions": [
+        90110201
+      ],
+      "failAction": [
+        90110301
+      ]
+    },
+    "901300": {
+      "id": 901300,
+      "taskType": 2,
+      "originTaskId": 9013,
+      "actions": [
+        90130001
+      ]
+    },
+    "901301": {
+      "id": 901301,
+      "taskType": 2,
+      "originTaskId": 9013,
+      "actions": [
+        90130101
+      ]
+    },
+    "901302": {
+      "id": 901302,
+      "taskType": 2,
+      "originTaskId": 9013,
+      "actions": [
+        90130201
+      ],
+      "failAction": [
+        90130301
+      ]
+    },
+    "901400": {
+      "id": 901400,
+      "taskType": 2,
+      "originTaskId": 9014,
+      "actions": [
+        90140001
+      ]
+    },
+    "901401": {
+      "id": 901401,
+      "taskType": 2,
+      "originTaskId": 9014,
+      "actions": [
+        90140101
+      ]
+    },
+    "901402": {
+      "id": 901402,
+      "taskType": 2,
+      "originTaskId": 9014,
+      "actions": [
+        90140201
+      ],
+      "failAction": [
+        90140301
+      ]
+    },
+    "901500": {
+      "id": 901500,
+      "taskType": 2,
+      "originTaskId": 9015,
+      "actions": [
+        90150001
+      ]
+    },
+    "901501": {
+      "id": 901501,
+      "taskType": 2,
+      "originTaskId": 9015,
+      "actions": [
+        90150101
+      ]
+    },
+    "901502": {
+      "id": 901502,
+      "taskType": 2,
+      "originTaskId": 9015,
+      "actions": [
+        90150201
+      ],
+      "failAction": [
+        90150301
+      ]
+    },
+    "901600": {
+      "id": 901600,
+      "taskType": 2,
+      "originTaskId": 9016,
+      "actions": [
+        90160001
+      ]
+    },
+    "901601": {
+      "id": 901601,
+      "taskType": 2,
+      "originTaskId": 9016,
+      "actions": [
+        90160101
+      ]
+    },
+    "901602": {
+      "id": 901602,
+      "taskType": 2,
+      "originTaskId": 9016,
+      "actions": [
+        90160201
+      ],
+      "failAction": [
+        90160301
+      ]
+    },
+    "901700": {
+      "id": 901700,
+      "taskType": 2,
+      "originTaskId": 9017,
+      "actions": [
+        90170001
+      ]
+    },
+    "901701": {
+      "id": 901701,
+      "taskType": 2,
+      "originTaskId": 9017,
+      "actions": [
+        90170101
+      ]
+    },
+    "901702": {
+      "id": 901702,
+      "taskType": 2,
+      "originTaskId": 9017,
+      "actions": [
+        90170201
+      ],
+      "failAction": [
+        90170301
+      ]
+    },
+    "901800": {
+      "id": 901800,
+      "taskType": 2,
+      "originTaskId": 9018,
+      "actions": [
+        90180001
+      ]
+    },
+    "901801": {
+      "id": 901801,
+      "taskType": 2,
+      "originTaskId": 9018,
+      "actions": [
+        90180101
+      ]
+    },
+    "901802": {
+      "id": 901802,
+      "taskType": 2,
+      "originTaskId": 9018,
+      "actions": [
+        90180201
+      ]
+    },
+    "901900": {
+      "id": 901900,
+      "taskType": 2,
+      "originTaskId": 9019,
+      "actions": [
+        90190001
+      ]
+    },
+    "901901": {
+      "id": 901901,
+      "taskType": 2,
+      "originTaskId": 9019,
+      "actions": [
+        90190101
+      ]
+    },
+    "901902": {
+      "id": 901902,
+      "taskType": 2,
+      "originTaskId": 9019,
+      "actions": [
+        90190201
+      ],
+      "failAction": [
+        90190301
+      ]
+    },
+    "902000": {
+      "id": 902000,
+      "taskType": 2,
+      "originTaskId": 9020,
+      "actions": [
+        90200001
+      ]
+    },
+    "902001": {
+      "id": 902001,
+      "taskType": 2,
+      "originTaskId": 9020,
+      "actions": [
+        90200101
+      ]
+    },
+    "902002": {
+      "id": 902002,
+      "taskType": 2,
+      "originTaskId": 9020,
+      "actions": [
+        90200201
+      ],
+      "failAction": [
+        90200301
+      ]
+    },
+    "902100": {
+      "id": 902100,
+      "taskType": 2,
+      "originTaskId": 9021,
+      "actions": [
+        90210001
+      ]
+    },
+    "902101": {
+      "id": 902101,
+      "taskType": 2,
+      "originTaskId": 9021,
+      "actions": [
+        90210101
+      ]
+    },
+    "902102": {
+      "id": 902102,
+      "taskType": 2,
+      "originTaskId": 9021,
+      "actions": [
+        90210201
+      ],
+      "failAction": [
+        90210301
+      ]
+    },
+    "1111030400": {
+      "id": 1111030400,
+      "taskType": 2,
+      "originTaskId": 11110304,
+      "actions": [
+        111103040001
+      ]
+    },
+    "1111030401": {
+      "id": 1111030401,
+      "taskType": 2,
+      "originTaskId": 11110304,
+      "actions": [
+        111103040101
+      ]
+    },
+    "1111030402": {
+      "id": 1111030402,
+      "taskType": 2,
+      "originTaskId": 11110304,
+      "actions": [
+        111103040201
+      ]
+    },
+    "1111061300": {
+      "id": 1111061300,
+      "taskType": 2,
+      "originTaskId": 11110613,
+      "actions": [
+        111106130001
+      ]
+    },
+    "1111061301": {
+      "id": 1111061301,
+      "taskType": 2,
+      "originTaskId": 11110613,
+      "actions": [
+        111106130101
+      ]
+    },
+    "1111061302": {
+      "id": 1111061302,
+      "taskType": 2,
+      "originTaskId": 11110613,
+      "actions": [
+        111106130201
+      ]
+    },
+    "1111030100": {
+      "id": 1111030100,
+      "taskType": 2,
+      "originTaskId": 11110301,
+      "actions": [
+        111103010001
+      ]
+    },
+    "1111030101": {
+      "id": 1111030101,
+      "taskType": 2,
+      "originTaskId": 11110301,
+      "actions": [
+        111103010101
+      ]
+    },
+    "1111030102": {
+      "id": 1111030102,
+      "taskType": 2,
+      "originTaskId": 11110301,
+      "actions": [
+        111103010201
+      ]
+    },
+    "1112070100": {
+      "id": 1112070100,
+      "taskType": 2,
+      "originTaskId": 11120701,
+      "actions": [
+        111207010001
+      ]
+    },
+    "1112070101": {
+      "id": 1112070101,
+      "taskType": 2,
+      "originTaskId": 11120701,
+      "actions": [
+        111207010101
+      ]
+    },
+    "1112070102": {
+      "id": 1112070102,
+      "taskType": 2,
+      "originTaskId": 11120701,
+      "actions": [
+        111207010201
+      ]
+    },
+    "1112070200": {
+      "id": 1112070200,
+      "taskType": 2,
+      "originTaskId": 11120702,
+      "actions": [
+        111207020001
+      ]
+    },
+    "1112070201": {
+      "id": 1112070201,
+      "taskType": 2,
+      "originTaskId": 11120702,
+      "actions": [
+        111207020101
+      ]
+    },
+    "1112070202": {
+      "id": 1112070202,
+      "taskType": 2,
+      "originTaskId": 11120702,
+      "actions": [
+        111207020201
+      ]
+    },
+    "1112040400": {
+      "id": 1112040400,
+      "taskType": 2,
+      "originTaskId": 11120404,
+      "actions": [
+        111204040001
+      ]
+    },
+    "1112040401": {
+      "id": 1112040401,
+      "taskType": 2,
+      "originTaskId": 11120404,
+      "actions": [
+        111204040101
+      ]
+    },
+    "1112040402": {
+      "id": 1112040402,
+      "taskType": 2,
+      "originTaskId": 11120404,
+      "actions": [
+        111204040201
+      ]
+    },
+    "1112040300": {
+      "id": 1112040300,
+      "taskType": 2,
+      "originTaskId": 11120403,
+      "actions": [
+        111204030001
+      ]
+    },
+    "1112040301": {
+      "id": 1112040301,
+      "taskType": 2,
+      "originTaskId": 11120403,
+      "actions": [
+        111204030101
+      ]
+    },
+    "1112040302": {
+      "id": 1112040302,
+      "taskType": 2,
+      "originTaskId": 11120403,
+      "actions": [
+        111204030201
+      ]
+    },
+    "1112040100": {
+      "id": 1112040100,
+      "taskType": 2,
+      "originTaskId": 11120401,
+      "actions": [
+        111204010001
+      ]
+    },
+    "1112040101": {
+      "id": 1112040101,
+      "taskType": 2,
+      "originTaskId": 11120401,
+      "actions": [
+        111204010101
+      ]
+    },
+    "1112040102": {
+      "id": 1112040102,
+      "taskType": 2,
+      "originTaskId": 11120401,
+      "actions": [
+        111204010201
+      ]
+    },
+    "1112040200": {
+      "id": 1112040200,
+      "taskType": 2,
+      "originTaskId": 11120402,
+      "actions": [
+        111204020001
+      ]
+    },
+    "1112040201": {
+      "id": 1112040201,
+      "taskType": 2,
+      "originTaskId": 11120402,
+      "actions": [
+        111204020101
+      ]
+    },
+    "1112040202": {
+      "id": 1112040202,
+      "taskType": 2,
+      "originTaskId": 11120402,
+      "actions": [
+        111204020201
+      ]
+    },
+    "1121040100": {
+      "id": 1121040100,
+      "taskType": 2,
+      "originTaskId": 11210401,
+      "actions": [
+        112104010001
+      ]
+    },
+    "1121040101": {
+      "id": 1121040101,
+      "taskType": 2,
+      "originTaskId": 11210401,
+      "actions": [
+        112104010101
+      ]
+    },
+    "1121040102": {
+      "id": 1121040102,
+      "taskType": 2,
+      "originTaskId": 11210401,
+      "actions": [
+        112104010201
+      ]
+    },
+    "1121070100": {
+      "id": 1121070100,
+      "taskType": 2,
+      "originTaskId": 11210701,
+      "actions": [
+        112107010001
+      ]
+    },
+    "1121070101": {
+      "id": 1121070101,
+      "taskType": 2,
+      "originTaskId": 11210701,
+      "actions": [
+        112107010101
+      ]
+    },
+    "1121070102": {
+      "id": 1121070102,
+      "taskType": 2,
+      "originTaskId": 11210701,
+      "actions": [
+        112107010201
+      ]
+    },
+    "1121070200": {
+      "id": 1121070200,
+      "taskType": 2,
+      "originTaskId": 11210702,
+      "actions": [
+        112107020001
+      ]
+    },
+    "1121070201": {
+      "id": 1121070201,
+      "taskType": 2,
+      "originTaskId": 11210702,
+      "actions": [
+        112107020101
+      ]
+    },
+    "1121070202": {
+      "id": 1121070202,
+      "taskType": 2,
+      "originTaskId": 11210702,
+      "actions": [
+        112107020201
+      ]
+    },
+    "1142010100": {
+      "id": 1142010100,
+      "taskType": 2,
+      "originTaskId": 11420101,
+      "actions": [
+        114201010001
+      ]
+    },
+    "1142010101": {
+      "id": 1142010101,
+      "taskType": 2,
+      "originTaskId": 11420101,
+      "actions": [
+        114201010101
+      ]
+    },
+    "1142010102": {
+      "id": 1142010102,
+      "taskType": 2,
+      "originTaskId": 11420101,
+      "actions": [
+        114201010201
+      ]
+    },
+    "1142040100": {
+      "id": 1142040100,
+      "taskType": 2,
+      "originTaskId": 11420401,
+      "actions": [
+        114204010001
+      ]
+    },
+    "1142040101": {
+      "id": 1142040101,
+      "taskType": 2,
+      "originTaskId": 11420401,
+      "actions": [
+        114204010101
+      ]
+    },
+    "1142040102": {
+      "id": 1142040102,
+      "taskType": 2,
+      "originTaskId": 11420401,
+      "actions": [
+        114204010201
+      ]
+    },
+    "1142040200": {
+      "id": 1142040200,
+      "taskType": 2,
+      "originTaskId": 11420402,
+      "actions": [
+        114204020001
+      ]
+    },
+    "1142040201": {
+      "id": 1142040201,
+      "taskType": 2,
+      "originTaskId": 11420402,
+      "actions": [
+        114204020101
+      ]
+    },
+    "1142040202": {
+      "id": 1142040202,
+      "taskType": 2,
+      "originTaskId": 11420402,
+      "actions": [
+        114204020201
+      ]
+    },
+    "1142040300": {
+      "id": 1142040300,
+      "taskType": 2,
+      "originTaskId": 11420403,
+      "actions": [
+        114204030001
+      ]
+    },
+    "1142040301": {
+      "id": 1142040301,
+      "taskType": 2,
+      "originTaskId": 11420403,
+      "actions": [
+        114204030101
+      ]
+    },
+    "1142040302": {
+      "id": 1142040302,
+      "taskType": 2,
+      "originTaskId": 11420403,
+      "actions": [
+        114204030201
+      ]
+    },
+    "1142040400": {
+      "id": 1142040400,
+      "taskType": 2,
+      "originTaskId": 11420404,
+      "actions": [
+        114204040001
+      ]
+    },
+    "1142040401": {
+      "id": 1142040401,
+      "taskType": 2,
+      "originTaskId": 11420404,
+      "actions": [
+        114204040101
+      ]
+    },
+    "1142040402": {
+      "id": 1142040402,
+      "taskType": 2,
+      "originTaskId": 11420404,
+      "actions": [
+        114204040201
+      ]
+    },
+    "1142070100": {
+      "id": 1142070100,
+      "taskType": 2,
+      "originTaskId": 11420701,
+      "actions": [
+        114207010001
+      ]
+    },
+    "1142070101": {
+      "id": 1142070101,
+      "taskType": 2,
+      "originTaskId": 11420701,
+      "actions": [
+        114207010101
+      ]
+    },
+    "1142070102": {
+      "id": 1142070102,
+      "taskType": 2,
+      "originTaskId": 11420701,
+      "actions": [
+        114207010201
+      ]
+    }
+  }
+}

@@ -1,0 +1,455 @@
+syntax = "proto3";
+package msg;
+
+import "comm_data.proto";
+import "comm_macro.proto";
+
+
+
+enum EnmAwardFrom
+{
+    ENM_WANTED_SHOP_STATUS_NONE = 0; 
+    ENM_WANTED_SHOP_STATUS_OPEN = 1; 
+    ENM_WANTED_SHOP_STATUS_CLOSE = 2; 
+};
+
+
+message CmdBond
+{
+    uint32 id = 1;     
+    uint32 point = 2;    
+}
+
+message CmdBionics
+{
+    uint32 bionics_id = 1; 
+    uint64 uniq_id = 2; 
+    uint64 replaced_uniq_id = 3; 
+    uint64 leveluped_uniq_id = 4; 
+}
+
+
+message CmdWantedResource
+{
+    repeated uint32 bless_ids = 1; 
+    uint32 coins_current = 2; 
+    uint32 coins_total = 3; 
+    repeated CmdBionics bionics = 4; 
+    repeated uint32 relics_ids = 5; 
+    repeated CmdBond bonds = 6; 
+}
+
+message CmdOneWantedBrief
+{
+    uint32 id = 1;
+    uint32 finish_count = 2; 
+}
+
+message CmdWantedTypeData
+{
+    uint32 type_id = 1;
+    repeated CmdOneWantedBrief wanted_list = 2; 
+}
+
+
+message CmdWantedStepAward
+{
+    uint32 id = 1; 
+    uint32 type = 2; 
+    bool finish = 3; 
+    repeated uint64 award_id = 4;
+}
+
+
+message CmdWantedStep
+{
+    uint32 step = 1; 
+    EnmWantedStepStatus status = 2; 
+    repeated CmdWantedEventInfo event_info = 3;
+    repeated CmdWantedStepAward award_list = 4;
+}
+
+
+message CmdWantedEventInfo
+{
+    uint32 process_id = 1; 
+    uint32 event_id = 2; 
+}
+
+
+message CmdWantedInsideData
+{
+    repeated CmdWantedEventInfo event_history = 1; 
+    CmdWantedStep step_data = 2; 
+}
+
+
+
+
+
+
+message CSWantedOutsideData
+{
+}
+
+
+
+message SCWantedOutsideData
+{
+    int32 result = 1; 
+    repeated CmdWantedTypeData wanted_types = 2; 
+    uint32 current_id = 3; 
+    uint32 current_step = 4; 
+}
+
+
+message SCWantedOutsideDataNtf
+{
+    CmdWantedTypeData data = 1; 
+    uint32 current_id = 2; 
+    uint32 current_step = 3; 
+}
+
+
+
+message CSEnterWanted
+{
+    uint32 id = 1; 
+    repeated uint32 character_ids = 2; 
+}
+
+
+
+message SCEnterWanted
+{
+    int32 result = 1;
+}
+
+
+
+
+
+message CSWantedInsideData
+{
+}
+
+
+
+message SCWantedInsideData
+{
+    int32 result = 1; 
+    CmdWantedStep step_data = 2; 
+    repeated CmdWantedEventInfo event_history = 3; 
+    uint32 reset_point = 4; 
+    uint32 wanted_id = 5; 
+    uint32 max_step = 6; 
+
+    uint32 router_id = 8;
+    uint32 revive_count = 9;
+}
+
+
+
+
+message SCWantedStepNtf
+{
+    CmdWantedStep step_data = 1; 
+}
+
+
+
+message CSWantedChooseAward
+{
+    uint32 step_award_id = 1; 
+    uint32 award = 2; 
+    uint64 replaced_bionics_uniqid = 3; 
+}
+
+
+
+message SCWantedChooseAward
+{
+    int32 result = 1; 
+    uint32 step_award_id = 2; 
+    uint32 award = 3; 
+    bool finish = 4;  
+}
+
+
+message CSWantedOver
+{
+    
+}
+
+
+
+message SCWantedOver
+{
+    int32 result = 1; 
+    uint32 wanted_id = 2; 
+    repeated CmdItem award_first = 3; 
+    repeated CmdItem award_common = 4; 
+    CmdWantedResource resource = 5; 
+    uint32 finish_step = 6; 
+    bool victory = 7; 
+    uint32 finish_count = 8; 
+    uint32 battle_pass_add_score = 9; 
+    uint32 battle_pass_total_score = 10; 
+    uint32 battle_pass_id = 11; 
+    uint32 max_step = 12; 
+}
+
+
+
+message CSWantedStaminaExchange
+{
+}
+
+
+
+message SCWantedStaminaExchange
+{
+    int32 result = 1;
+    repeated CmdItem items = 2; 
+}
+
+
+
+message CSWantedResetPoint
+{
+    uint32 id = 1;
+    Vector3Int location = 2; 
+    Vector3Int rotation = 3; 
+}
+
+
+
+message SCWantedResetPoint
+{
+    uint32 id = 1;
+    int32 result = 2;
+}
+
+
+
+message CSWantedLeave
+{
+    
+}
+
+
+
+message SCWantedLeave
+{
+    int32 result = 1;
+}
+
+
+
+
+
+
+message CSWantedBlessBondReq
+{
+}
+
+
+
+message SCWantedBlessBondRes
+{
+    int32 result = 1; 
+    repeated uint32 bless_ids = 2; 
+    repeated CmdBond bonds = 3; 
+}
+
+
+message SCWantedBlessNtf
+{
+    uint32 type = 1; 
+    repeated uint32 bless_ids = 2; 
+}
+
+
+message SCWantedBondNtf
+{
+    repeated CmdBond bonds = 1; 
+}
+
+
+
+message CSWantedBionicsReq
+{
+}
+
+
+
+message SCWantedBionicsRes
+{
+    int32 result = 1; 
+    repeated CmdBionics bionics = 2; 
+}
+
+
+
+message CSWantedRelicsReq
+{
+}
+
+
+
+message SCWantedRelicsRes
+{
+    int32 result = 1; 
+    repeated uint32 relics_ids = 2; 
+}
+
+
+message SCWantedBionicsNtf
+{
+    uint32 type = 1; 
+    repeated CmdBionics bionics = 2; 
+}
+
+
+message SCWantedRelicsNtf
+{
+    uint32 type = 1; 
+    repeated uint32 relics_ids = 2; 
+}
+
+
+
+
+
+message CmdWantedOneAdventure
+{
+    uint32 adventure_id = 1;
+    uint32 content_id = 2; 
+    uint32 dialog_id = 3; 
+    int32 option_result = 4; 
+}
+
+
+
+message CSWantedAdventureReq
+{
+}
+
+
+
+message SCWantedAdventureRes
+{
+    int32 result = 1; 
+    repeated CmdWantedOneAdventure adventures = 2; 
+}
+
+
+
+message CSWantedAdventureChangeReq
+{
+    uint32 adventure_id = 1;
+    uint32 content_id = 2; 
+    uint32 dialog_id = 3; 
+}
+
+
+
+message SCWantedAdventureChangeRes
+{
+    int32 result = 1; 
+    CmdWantedOneAdventure adventure = 2;
+}
+
+
+
+
+message CmdWantedGoods
+{
+    uint32 goods_id = 1;
+    uint32 buy_count = 2; 
+    uint32 price = 3;
+}
+
+message CmdWantedOneShop
+{
+    uint32 shop_id = 1;
+    repeated CmdWantedGoods goods_list = 2; 
+}
+
+
+
+message CSWantedShopReq
+{
+    uint32 shop_id = 1;
+}
+
+
+
+message SCWantedShopRes
+{
+    int32 result = 1; 
+    CmdWantedOneShop shop = 2; 
+}
+
+
+
+message CSWantedShopBuyReq
+{
+    uint32 shop_id = 1;
+    uint32 goods_id = 2; 
+    uint32 buy_count = 3; 
+}
+
+
+
+message SCWantedShopBuyRes
+{
+    int32 result = 1; 
+    uint32 shop_id = 2;
+    CmdWantedGoods goods = 3; 
+}
+
+
+
+message CSWantedBionicGiveupReq
+{
+    uint64 bionics_uniqid = 1;
+}
+
+
+message SCWantedBionicGiveupRsp
+{
+    int32 result = 1; 
+}
+
+
+
+
+
+
+message CSWantedRecoverReq
+{
+    
+}
+
+
+
+message SCWantedRecoverRes
+{
+    int32 result = 1; 
+}
+
+
+
+message CSWantedReviveReq
+{
+    repeated uint64 character_uids = 2;
+}
+
+
+
+message SCWantedReviveRes
+{
+    int32 result = 1; 
+    uint32 revive_count = 2;
+}

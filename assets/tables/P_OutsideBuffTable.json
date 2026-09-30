@@ -1,0 +1,3245 @@
+{
+  "P_OutsideBuffTable": {
+    "1": {
+      "id": 1,
+      "mutexGroup": 1,
+      "durationTime": 300,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        317,
+        500,
+        0
+      ],
+      "buffEffectId": 200001
+    },
+    "2": {
+      "id": 2,
+      "mutexGroup": 1,
+      "durationTime": 300,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        317,
+        1000,
+        0
+      ],
+      "buffEffectId": 200002
+    },
+    "3": {
+      "id": 3,
+      "mutexGroup": 1,
+      "durationTime": 300,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        317,
+        1500,
+        0
+      ],
+      "buffEffectId": 200003
+    },
+    "4": {
+      "id": 4,
+      "mutexGroup": 2,
+      "durationTime": 300,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        313,
+        500,
+        0
+      ],
+      "buffEffectId": 200004
+    },
+    "5": {
+      "id": 5,
+      "mutexGroup": 2,
+      "durationTime": 300,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        313,
+        1000,
+        0
+      ],
+      "buffEffectId": 200005
+    },
+    "6": {
+      "id": 6,
+      "mutexGroup": 2,
+      "durationTime": 300,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        313,
+        1500,
+        0
+      ],
+      "buffEffectId": 200006
+    },
+    "7": {
+      "id": 7,
+      "mutexGroup": 3,
+      "durationTime": 300,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        315,
+        500,
+        0
+      ],
+      "buffEffectId": 200007
+    },
+    "8": {
+      "id": 8,
+      "mutexGroup": 3,
+      "durationTime": 300,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        315,
+        1000,
+        0
+      ],
+      "buffEffectId": 200008
+    },
+    "9": {
+      "id": 9,
+      "mutexGroup": 3,
+      "durationTime": 300,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        315,
+        1500,
+        3
+      ],
+      "buffEffectId": 200009
+    },
+    "10": {
+      "id": 10,
+      "mutexGroup": 4,
+      "durationTime": 300,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        102,
+        0,
+        500
+      ],
+      "buffEffectId": 200010
+    },
+    "11": {
+      "id": 11,
+      "mutexGroup": 4,
+      "durationTime": 300,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        102,
+        0,
+        1000
+      ],
+      "buffEffectId": 200011
+    },
+    "12": {
+      "id": 12,
+      "mutexGroup": 4,
+      "durationTime": 300,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        102,
+        0,
+        1500
+      ],
+      "buffEffectId": 200012
+    },
+    "13": {
+      "id": 13,
+      "mutexGroup": 5,
+      "durationTime": 300,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        104,
+        500,
+        0
+      ],
+      "buffEffectId": 200013
+    },
+    "14": {
+      "id": 14,
+      "mutexGroup": 5,
+      "durationTime": 300,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        104,
+        800,
+        0
+      ],
+      "buffEffectId": 200014
+    },
+    "15": {
+      "id": 15,
+      "mutexGroup": 5,
+      "durationTime": 300,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        104,
+        1200,
+        0
+      ],
+      "buffEffectId": 200015
+    },
+    "16": {
+      "id": 16,
+      "mutexGroup": 6,
+      "durationTime": 300,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        103,
+        0,
+        500
+      ],
+      "buffEffectId": 200016
+    },
+    "17": {
+      "id": 17,
+      "mutexGroup": 6,
+      "durationTime": 300,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        103,
+        0,
+        1000
+      ],
+      "buffEffectId": 200017
+    },
+    "18": {
+      "id": 18,
+      "mutexGroup": 6,
+      "durationTime": 300,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        103,
+        0,
+        1500
+      ],
+      "buffEffectId": 200018
+    },
+    "19": {
+      "id": 19,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 3,
+      "immediateAttribute1": [
+        1001,
+        300,
+        0
+      ]
+    },
+    "20": {
+      "id": 20,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 3,
+      "immediateAttribute1": [
+        1001,
+        0,
+        3000
+      ]
+    },
+    "21": {
+      "id": 21,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "immediateAttribute1": [
+        1001,
+        0,
+        3000
+      ]
+    },
+    "22": {
+      "id": 22,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "temporaryLiquid": [
+        1,
+        1000000
+      ]
+    },
+    "23": {
+      "id": 23,
+      "mutexGroup": 1,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        317,
+        500,
+        0
+      ],
+      "buffEffectId": 10101
+    },
+    "24": {
+      "id": 24,
+      "mutexGroup": 7,
+      "durationTime": 300,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        101,
+        0,
+        500
+      ],
+      "buffEffectId": 300001
+    },
+    "25": {
+      "id": 25,
+      "mutexGroup": 7,
+      "durationTime": 300,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        101,
+        0,
+        1000
+      ],
+      "buffEffectId": 300002
+    },
+    "26": {
+      "id": 26,
+      "mutexGroup": 7,
+      "durationTime": 300,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        101,
+        0,
+        1500
+      ],
+      "buffEffectId": 300003
+    },
+    "27": {
+      "id": 27,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 3,
+      "immediateAttribute1": [
+        1001,
+        0,
+        2000
+      ],
+      "buffEffectId": 300001
+    },
+    "28": {
+      "id": 28,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 3,
+      "immediateAttribute1": [
+        1001,
+        0,
+        4000
+      ],
+      "buffEffectId": 300002
+    },
+    "29": {
+      "id": 29,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 3,
+      "immediateAttribute1": [
+        1001,
+        0,
+        6000
+      ],
+      "buffEffectId": 300003
+    },
+    "30": {
+      "id": 30,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "immediateAttribute1": [
+        1001,
+        0,
+        1000
+      ],
+      "buffEffectId": 300004
+    },
+    "31": {
+      "id": 31,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "immediateAttribute1": [
+        1001,
+        0,
+        2000
+      ],
+      "buffEffectId": 300005
+    },
+    "32": {
+      "id": 32,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "immediateAttribute1": [
+        1001,
+        0,
+        3000
+      ],
+      "buffEffectId": 300006
+    },
+    "33": {
+      "id": 33,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 3,
+      "immediateAttribute1": [
+        1150,
+        0,
+        3000
+      ],
+      "buffEffectId": 300007
+    },
+    "34": {
+      "id": 34,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 3,
+      "immediateAttribute1": [
+        1150,
+        0,
+        6000
+      ],
+      "buffEffectId": 300008
+    },
+    "35": {
+      "id": 35,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "immediateAttribute1": [
+        1150,
+        0,
+        3000
+      ],
+      "buffEffectId": 300009
+    },
+    "36": {
+      "id": 36,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1
+      ],
+      "targetType": 3,
+      "immediateAttribute1": [
+        1001,
+        500,
+        500
+      ],
+      "buffEffectId": 300010
+    },
+    "37": {
+      "id": 37,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1
+      ],
+      "targetType": 3,
+      "immediateAttribute1": [
+        1001,
+        1000,
+        1000
+      ],
+      "buffEffectId": 300011
+    },
+    "38": {
+      "id": 38,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1
+      ],
+      "targetType": 3,
+      "immediateAttribute1": [
+        1001,
+        1500,
+        2000
+      ],
+      "buffEffectId": 300012
+    },
+    "1001": {
+      "id": 1001,
+      "mutexGroup": 8,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "immediateAttribute1": [
+        1150,
+        0,
+        3000
+      ]
+    },
+    "1002": {
+      "id": 1002,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "immediateAttribute1": [
+        1150,
+        0,
+        6000
+      ]
+    },
+    "1003": {
+      "id": 1003,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "immediateAttribute1": [
+        1150,
+        0,
+        10000
+      ]
+    },
+    "1011": {
+      "id": 1011,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "immediateAttribute1": [
+        1001,
+        0,
+        3000
+      ]
+    },
+    "1012": {
+      "id": 1012,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "immediateAttribute1": [
+        1001,
+        0,
+        6000
+      ]
+    },
+    "1013": {
+      "id": 1013,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "immediateAttribute1": [
+        1001,
+        0,
+        10000
+      ]
+    },
+    "1061": {
+      "id": 1061,
+      "mutexGroup": 4,
+      "durationTime": 1800,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        102,
+        0,
+        500
+      ],
+      "buffEffectId": 200010
+    },
+    "1062": {
+      "id": 1062,
+      "mutexGroup": 4,
+      "durationTime": 1800,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        102,
+        0,
+        1000
+      ],
+      "buffEffectId": 200011
+    },
+    "1063": {
+      "id": 1063,
+      "mutexGroup": 4,
+      "durationTime": 1800,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        102,
+        0,
+        1500
+      ],
+      "buffEffectId": 200012
+    },
+    "1071": {
+      "id": 1071,
+      "mutexGroup": 5,
+      "durationTime": 1800,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        103,
+        0,
+        500
+      ],
+      "buffEffectId": 200016
+    },
+    "1072": {
+      "id": 1072,
+      "mutexGroup": 5,
+      "durationTime": 1800,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        103,
+        0,
+        1000
+      ],
+      "buffEffectId": 200017
+    },
+    "1073": {
+      "id": 1073,
+      "mutexGroup": 5,
+      "durationTime": 1800,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        103,
+        0,
+        1500
+      ],
+      "buffEffectId": 200018
+    },
+    "1081": {
+      "id": 1081,
+      "mutexGroup": 5,
+      "durationTime": 1800,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        104,
+        500,
+        0
+      ],
+      "buffEffectId": 200013
+    },
+    "1082": {
+      "id": 1082,
+      "mutexGroup": 5,
+      "durationTime": 1800,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        104,
+        1000,
+        0
+      ],
+      "buffEffectId": 200014
+    },
+    "1083": {
+      "id": 1083,
+      "mutexGroup": 5,
+      "durationTime": 1800,
+      "durationBattle": -1,
+      "refreshOnReuse": true,
+      "effectType": 1,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        104,
+        1500,
+        0
+      ],
+      "buffEffectId": 200015
+    },
+    "1084": {
+      "id": 1084,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        2
+      ],
+      "targetType": 3,
+      "immediateAttribute1": [
+        1001,
+        0,
+        6000
+      ],
+      "buffEffectId": 100702
+    },
+    "2001": {
+      "id": 2001,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 7,
+      "tempAttribute1": [
+        311,
+        2500,
+        0
+      ]
+    },
+    "2002": {
+      "id": 2002,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 7,
+      "tempAttribute1": [
+        104,
+        1800,
+        0
+      ]
+    },
+    "2003": {
+      "id": 2003,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 7,
+      "tempAttribute1": [
+        105,
+        5400,
+        0
+      ]
+    },
+    "2004": {
+      "id": 2004,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 7,
+      "tempAttribute1": [
+        102,
+        0,
+        4000
+      ]
+    },
+    "2005": {
+      "id": 2005,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 7,
+      "tempAttribute1": [
+        315,
+        2500,
+        0
+      ]
+    },
+    "2006": {
+      "id": 2006,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 2,
+      "tempAttribute1": [
+        104,
+        1200,
+        0
+      ]
+    },
+    "2007": {
+      "id": 2007,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 2,
+      "tempAttribute1": [
+        105,
+        2400,
+        0
+      ]
+    },
+    "2008": {
+      "id": 2008,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        1149,
+        1500,
+        0
+      ]
+    },
+    "2009": {
+      "id": 2009,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 2,
+      "tempAttribute1": [
+        104,
+        1800,
+        0
+      ]
+    },
+    "2010": {
+      "id": 2010,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 2,
+      "tempAttribute1": [
+        311,
+        1500,
+        0
+      ]
+    },
+    "2011": {
+      "id": 2011,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 2,
+      "tempAttribute1": [
+        104,
+        600,
+        0
+      ],
+      "tempAttribute2": [
+        311,
+        800,
+        0
+      ]
+    },
+    "2012": {
+      "id": 2012,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 2,
+      "tempAttribute1": [
+        315,
+        1500,
+        0
+      ]
+    },
+    "2013": {
+      "id": 2013,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 2,
+      "tempAttribute1": [
+        105,
+        1200,
+        0
+      ],
+      "tempAttribute2": [
+        103,
+        0,
+        1500
+      ]
+    },
+    "2014": {
+      "id": 2014,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 7,
+      "targetParams": [
+        81001,
+        81002,
+        81003
+      ],
+      "tempAttribute1": [
+        102,
+        0,
+        2700
+      ]
+    },
+    "2015": {
+      "id": 2015,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 7,
+      "targetParams": [
+        81001,
+        81002,
+        81003
+      ],
+      "tempAttribute1": [
+        102,
+        0,
+        4000
+      ]
+    },
+    "2016": {
+      "id": 2016,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 7,
+      "targetParams": [
+        81001,
+        81002,
+        81003
+      ],
+      "tempAttribute1": [
+        104,
+        2000,
+        0
+      ]
+    },
+    "2017": {
+      "id": 2017,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 7,
+      "targetParams": [
+        81001,
+        81002,
+        81003
+      ],
+      "tempAttribute1": [
+        104,
+        3000,
+        0
+      ]
+    },
+    "2018": {
+      "id": 2018,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 7,
+      "targetParams": [
+        81001,
+        81002,
+        81003
+      ],
+      "tempAttribute1": [
+        105,
+        4000,
+        0
+      ]
+    },
+    "2019": {
+      "id": 2019,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 7,
+      "targetParams": [
+        81001,
+        81002,
+        81003
+      ],
+      "tempAttribute1": [
+        105,
+        6000,
+        0
+      ]
+    },
+    "2020": {
+      "id": 2020,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 2,
+      "tempAttribute1": [
+        315,
+        1500,
+        0
+      ]
+    },
+    "2021": {
+      "id": 2021,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 2,
+      "tempAttribute1": [
+        133,
+        1000,
+        0
+      ]
+    },
+    "2022": {
+      "id": 2022,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 2,
+      "tempAttribute1": [
+        315,
+        800,
+        0
+      ],
+      "tempAttribute2": [
+        105,
+        800,
+        0
+      ]
+    },
+    "2023": {
+      "id": 2023,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 2,
+      "tempAttribute1": [
+        315,
+        1500,
+        0
+      ],
+      "tempAttribute2": [
+        104,
+        1500,
+        0
+      ]
+    },
+    "2024": {
+      "id": 2024,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 7,
+      "targetParams": [
+        82002,
+        82003
+      ],
+      "tempAttribute1": [
+        102,
+        0,
+        2700
+      ]
+    },
+    "2025": {
+      "id": 2025,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 7,
+      "targetParams": [
+        82002,
+        82003
+      ],
+      "tempAttribute1": [
+        102,
+        0,
+        4000
+      ]
+    },
+    "2026": {
+      "id": 2026,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 7,
+      "targetParams": [
+        82002,
+        82003
+      ],
+      "tempAttribute1": [
+        104,
+        2000,
+        0
+      ]
+    },
+    "2027": {
+      "id": 2027,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 7,
+      "targetParams": [
+        82002,
+        82003
+      ],
+      "tempAttribute1": [
+        104,
+        3000,
+        0
+      ]
+    },
+    "2028": {
+      "id": 2028,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 7,
+      "targetParams": [
+        82002,
+        82003
+      ],
+      "tempAttribute1": [
+        105,
+        4000,
+        0
+      ]
+    },
+    "2029": {
+      "id": 2029,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 7,
+      "targetParams": [
+        82002,
+        82003
+      ],
+      "tempAttribute1": [
+        105,
+        6000,
+        0
+      ]
+    },
+    "2030": {
+      "id": 2030,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 2,
+      "tempAttribute1": [
+        311,
+        1500,
+        0
+      ]
+    },
+    "2031": {
+      "id": 2031,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 2,
+      "tempAttribute1": [
+        131,
+        1000,
+        0
+      ]
+    },
+    "2032": {
+      "id": 2032,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 2,
+      "tempAttribute1": [
+        311,
+        800,
+        0
+      ],
+      "tempAttribute2": [
+        105,
+        800,
+        0
+      ]
+    },
+    "2033": {
+      "id": 2033,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 2,
+      "tempAttribute1": [
+        311,
+        2500,
+        0
+      ]
+    },
+    "2034": {
+      "id": 2034,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 7,
+      "targetParams": [
+        83001,
+        83002,
+        83003
+      ],
+      "tempAttribute1": [
+        102,
+        0,
+        2700
+      ]
+    },
+    "2035": {
+      "id": 2035,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 7,
+      "targetParams": [
+        83001,
+        83002,
+        83003
+      ],
+      "tempAttribute1": [
+        102,
+        0,
+        4000
+      ]
+    },
+    "2036": {
+      "id": 2036,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 7,
+      "targetParams": [
+        83001,
+        83002,
+        83003
+      ],
+      "tempAttribute1": [
+        104,
+        2000,
+        0
+      ]
+    },
+    "2037": {
+      "id": 2037,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 7,
+      "targetParams": [
+        83001,
+        83002,
+        83003
+      ],
+      "tempAttribute1": [
+        104,
+        3000,
+        0
+      ]
+    },
+    "2038": {
+      "id": 2038,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 7,
+      "targetParams": [
+        83001,
+        83002,
+        83003
+      ],
+      "tempAttribute1": [
+        105,
+        4000,
+        0
+      ]
+    },
+    "2039": {
+      "id": 2039,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 7,
+      "targetParams": [
+        83001,
+        83002,
+        83003
+      ],
+      "tempAttribute1": [
+        105,
+        6000,
+        0
+      ]
+    },
+    "2040": {
+      "id": 2040,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 2,
+      "tempAttribute1": [
+        102,
+        0,
+        1800
+      ]
+    },
+    "2041": {
+      "id": 2041,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 2,
+      "tempAttribute1": [
+        104,
+        1200,
+        0
+      ]
+    },
+    "2042": {
+      "id": 2042,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 2,
+      "tempAttribute1": [
+        105,
+        2400,
+        0
+      ]
+    },
+    "2043": {
+      "id": 2043,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 2,
+      "tempAttribute1": [
+        315,
+        2500,
+        0
+      ]
+    },
+    "2201": {
+      "id": 2201,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 2,
+      "tempAttribute1": [
+        104,
+        2000,
+        0
+      ]
+    },
+    "2202": {
+      "id": 2202,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 7,
+      "targetParams": [
+        81001,
+        81002,
+        81003
+      ],
+      "tempAttribute1": [
+        102,
+        0,
+        4000
+      ]
+    },
+    "2203": {
+      "id": 2203,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 7,
+      "targetParams": [
+        82002,
+        82003
+      ],
+      "tempAttribute1": [
+        102,
+        0,
+        4000
+      ]
+    },
+    "2204": {
+      "id": 2204,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        3
+      ],
+      "targetType": 7,
+      "targetParams": [
+        83001,
+        83002,
+        83003
+      ],
+      "tempAttribute1": [
+        102,
+        0,
+        4000
+      ]
+    },
+    "110001": {
+      "id": 110001,
+      "mutexGroup": 1011,
+      "durationTime": -1,
+      "durationBattle": 3,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        104,
+        600,
+        0
+      ],
+      "tempAttribute2": [
+        301,
+        350,
+        0
+      ],
+      "buffEffectId": 200013
+    },
+    "110002": {
+      "id": 110002,
+      "mutexGroup": 1011,
+      "durationTime": -1,
+      "durationBattle": 5,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        104,
+        600,
+        0
+      ],
+      "tempAttribute2": [
+        301,
+        350,
+        0
+      ],
+      "buffEffectId": 200013
+    },
+    "110003": {
+      "id": 110003,
+      "mutexGroup": 1011,
+      "durationTime": -1,
+      "durationBattle": 10,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        104,
+        600,
+        0
+      ],
+      "tempAttribute2": [
+        301,
+        700,
+        0
+      ],
+      "buffEffectId": 200013
+    },
+    "110004": {
+      "id": 110004,
+      "mutexGroup": 1011,
+      "durationTime": -1,
+      "durationBattle": 3,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        102,
+        65,
+        0
+      ],
+      "tempAttribute2": [
+        105,
+        600,
+        0
+      ],
+      "buffEffectId": 200010
+    },
+    "110005": {
+      "id": 110005,
+      "mutexGroup": 1011,
+      "durationTime": -1,
+      "durationBattle": 5,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        102,
+        65,
+        0
+      ],
+      "tempAttribute2": [
+        105,
+        600,
+        0
+      ],
+      "buffEffectId": 200010
+    },
+    "110006": {
+      "id": 110006,
+      "mutexGroup": 1011,
+      "durationTime": -1,
+      "durationBattle": 10,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        102,
+        65,
+        0
+      ],
+      "tempAttribute2": [
+        105,
+        1200,
+        0
+      ],
+      "buffEffectId": 200010
+    },
+    "110007": {
+      "id": 110007,
+      "mutexGroup": 1011,
+      "durationTime": -1,
+      "durationBattle": 3,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        102,
+        65,
+        0
+      ],
+      "buffEffectId": 200010
+    },
+    "110008": {
+      "id": 110008,
+      "mutexGroup": 1011,
+      "durationTime": -1,
+      "durationBattle": 5,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        102,
+        95,
+        0
+      ],
+      "buffEffectId": 200010
+    },
+    "110009": {
+      "id": 110009,
+      "mutexGroup": 1011,
+      "durationTime": -1,
+      "durationBattle": 10,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        102,
+        127,
+        0
+      ],
+      "buffEffectId": 200010
+    },
+    "110010": {
+      "id": 110010,
+      "mutexGroup": 1011,
+      "durationTime": -1,
+      "durationBattle": 3,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        104,
+        600,
+        0
+      ],
+      "buffEffectId": 200013
+    },
+    "110011": {
+      "id": 110011,
+      "mutexGroup": 1011,
+      "durationTime": -1,
+      "durationBattle": 5,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        104,
+        900,
+        0
+      ],
+      "buffEffectId": 200013
+    },
+    "110012": {
+      "id": 110012,
+      "mutexGroup": 1011,
+      "durationTime": -1,
+      "durationBattle": 10,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        104,
+        1200,
+        0
+      ],
+      "buffEffectId": 200013
+    },
+    "110013": {
+      "id": 110013,
+      "mutexGroup": 1011,
+      "durationTime": -1,
+      "durationBattle": 3,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        339,
+        1300,
+        0
+      ],
+      "buffEffectId": 200010
+    },
+    "110014": {
+      "id": 110014,
+      "mutexGroup": 1011,
+      "durationTime": -1,
+      "durationBattle": 5,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        339,
+        1900,
+        0
+      ],
+      "buffEffectId": 200010
+    },
+    "110015": {
+      "id": 110015,
+      "mutexGroup": 1011,
+      "durationTime": -1,
+      "durationBattle": 3,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        337,
+        1600,
+        0
+      ],
+      "buffEffectId": 200010
+    },
+    "110016": {
+      "id": 110016,
+      "mutexGroup": 1011,
+      "durationTime": -1,
+      "durationBattle": 5,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        337,
+        2400,
+        0
+      ],
+      "buffEffectId": 200010
+    },
+    "120001": {
+      "id": 120001,
+      "mutexGroup": 1012,
+      "durationTime": -1,
+      "durationBattle": 3,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        101,
+        0,
+        400
+      ],
+      "tempAttribute2": [
+        103,
+        0,
+        400
+      ],
+      "buffEffectId": 300001
+    },
+    "120002": {
+      "id": 120002,
+      "mutexGroup": 1012,
+      "durationTime": -1,
+      "durationBattle": 5,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        101,
+        0,
+        400
+      ],
+      "tempAttribute2": [
+        103,
+        0,
+        400
+      ],
+      "buffEffectId": 300001
+    },
+    "120003": {
+      "id": 120003,
+      "mutexGroup": 1012,
+      "durationTime": -1,
+      "durationBattle": 10,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        101,
+        0,
+        400
+      ],
+      "tempAttribute2": [
+        103,
+        0,
+        800
+      ],
+      "buffEffectId": 300001
+    },
+    "120004": {
+      "id": 120004,
+      "mutexGroup": 1012,
+      "durationTime": -1,
+      "durationBattle": 3,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        103,
+        160,
+        0
+      ],
+      "buffEffectId": 200016
+    },
+    "120005": {
+      "id": 120005,
+      "mutexGroup": 1012,
+      "durationTime": -1,
+      "durationBattle": 5,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        103,
+        160,
+        0
+      ],
+      "tempAttribute2": [
+        109,
+        250,
+        0
+      ],
+      "buffEffectId": 200016
+    },
+    "120006": {
+      "id": 120006,
+      "mutexGroup": 1012,
+      "durationTime": -1,
+      "durationBattle": 10,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        103,
+        160,
+        0
+      ],
+      "tempAttribute2": [
+        109,
+        500,
+        0
+      ],
+      "buffEffectId": 200016
+    },
+    "120007": {
+      "id": 120007,
+      "mutexGroup": 1012,
+      "durationTime": -1,
+      "durationBattle": 3,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        302,
+        200,
+        0
+      ],
+      "buffEffectId": 200016
+    },
+    "120008": {
+      "id": 120008,
+      "mutexGroup": 1012,
+      "durationTime": -1,
+      "durationBattle": 5,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        302,
+        200,
+        0
+      ],
+      "tempAttribute2": [
+        108,
+        250,
+        0
+      ],
+      "buffEffectId": 200016
+    },
+    "120009": {
+      "id": 120009,
+      "mutexGroup": 1012,
+      "durationTime": -1,
+      "durationBattle": 10,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        302,
+        200,
+        0
+      ],
+      "tempAttribute2": [
+        108,
+        500,
+        0
+      ],
+      "buffEffectId": 200016
+    },
+    "130001": {
+      "id": 130001,
+      "mutexGroup": 1012,
+      "durationTime": -1,
+      "durationBattle": 3,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        101,
+        0,
+        400
+      ],
+      "tempAttribute2": [
+        1149,
+        250,
+        0
+      ],
+      "buffEffectId": 300001
+    },
+    "130002": {
+      "id": 130002,
+      "mutexGroup": 1012,
+      "durationTime": -1,
+      "durationBattle": 5,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        101,
+        0,
+        400
+      ],
+      "tempAttribute2": [
+        1149,
+        250,
+        0
+      ],
+      "buffEffectId": 300001
+    },
+    "130003": {
+      "id": 130003,
+      "mutexGroup": 1012,
+      "durationTime": -1,
+      "durationBattle": 10,
+      "refreshOnReuse": true,
+      "effectType": 2,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1,
+        2,
+        5,
+        6,
+        9
+      ],
+      "targetType": 1,
+      "tempAttribute1": [
+        101,
+        0,
+        400
+      ],
+      "tempAttribute2": [
+        1149,
+        500,
+        0
+      ],
+      "buffEffectId": 300001
+    },
+    "140001": {
+      "id": 140001,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1
+      ],
+      "targetType": 3,
+      "immediateAttribute1": [
+        1001,
+        1000,
+        0
+      ]
+    },
+    "140002": {
+      "id": 140002,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1
+      ],
+      "targetType": 3,
+      "immediateAttribute1": [
+        1001,
+        1500,
+        0
+      ]
+    },
+    "140003": {
+      "id": 140003,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1
+      ],
+      "targetType": 3,
+      "immediateAttribute1": [
+        1001,
+        2000,
+        0
+      ]
+    },
+    "140004": {
+      "id": 140004,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1
+      ],
+      "targetType": 3,
+      "immediateAttribute1": [
+        1001,
+        0,
+        600
+      ]
+    },
+    "140005": {
+      "id": 140005,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1
+      ],
+      "targetType": 3,
+      "immediateAttribute1": [
+        1001,
+        0,
+        900
+      ]
+    },
+    "140006": {
+      "id": 140006,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1
+      ],
+      "targetType": 3,
+      "immediateAttribute1": [
+        1001,
+        0,
+        1200
+      ]
+    },
+    "140007": {
+      "id": 140007,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1
+      ],
+      "targetType": 3,
+      "immediateAttribute1": [
+        1001,
+        250,
+        0
+      ]
+    },
+    "140008": {
+      "id": 140008,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1
+      ],
+      "targetType": 3,
+      "immediateAttribute1": [
+        1001,
+        750,
+        0
+      ]
+    },
+    "140009": {
+      "id": 140009,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1
+      ],
+      "targetType": 3,
+      "immediateAttribute1": [
+        1001,
+        1250,
+        0
+      ]
+    },
+    "140010": {
+      "id": 140010,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1
+      ],
+      "targetType": 3,
+      "immediateAttribute1": [
+        1150,
+        3,
+        0
+      ]
+    },
+    "140011": {
+      "id": 140011,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1
+      ],
+      "targetType": 3,
+      "immediateAttribute1": [
+        1150,
+        6,
+        0
+      ]
+    },
+    "140012": {
+      "id": 140012,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1
+      ],
+      "targetType": 3,
+      "immediateAttribute1": [
+        1150,
+        9,
+        0
+      ]
+    },
+    "140013": {
+      "id": 140013,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1
+      ],
+      "targetType": 1,
+      "temporaryLiquid": [
+        1,
+        40000
+      ]
+    },
+    "140014": {
+      "id": 140014,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1
+      ],
+      "targetType": 1,
+      "temporaryLiquid": [
+        1,
+        60000
+      ]
+    },
+    "140015": {
+      "id": 140015,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1
+      ],
+      "targetType": 1,
+      "immediateAttribute1": [
+        1001,
+        200,
+        0
+      ]
+    },
+    "140016": {
+      "id": 140016,
+      "mutexGroup": 0,
+      "durationTime": -1,
+      "durationBattle": 1,
+      "refreshOnReuse": true,
+      "effectType": 3,
+      "effectModuleType": [
+        1,
+        2
+      ],
+      "dungeonType": [
+        1
+      ],
+      "targetType": 3,
+      "immediateAttribute1": [
+        1001,
+        200,
+        0
+      ]
+    }
+  }
+}

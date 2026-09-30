@@ -1,0 +1,239 @@
+syntax = "proto3";
+package msg;
+
+import "comm_macro.proto";
+import "comm_data.proto";
+
+
+message RoleListBriefInfo
+{
+	uint64 role_id = 1;  
+}
+
+
+
+message CSAccountLogin
+{
+    bytes userid     = 1; 
+    bytes passwd     = 2; 
+    bool   standalone = 3; 
+    bytes version    = 4; 
+    bool   iseditor   = 5; 
+
+    bytes appid         = 6;  
+    bytes channel_name  = 7;  
+    bytes channel_token = 8;  
+    bytes hei_token     = 9;  
+    bytes channel_uid   = 10; 
+    bytes udid = 11;          
+}
+
+
+
+message SCAccountLogin
+{
+    int32             result              = 1; 
+    uint64            connect_identify_id = 2; 
+    uint32            world_id            = 3; 
+    int64             timestamp           = 5; 
+    RoleListBriefInfo brief_role          = 6; 
+    bytes            errormsg            = 7; 
+    bytes            userid              = 8; 
+}
+
+
+
+message CSSchemaInfoSync
+{
+    bytes game_version = 1;      
+    bytes game_version_code = 2; 
+    bytes user_platform = 3;     
+    bytes udid = 4;              
+}
+
+
+
+message SCSchemaInfoSync
+{
+    int32 result = 1;    
+    uint64 login_id = 2; 
+}
+
+
+enum EnmKickReason
+{
+    ENM_KICK_REASON_NONE           = 0; 
+    ENM_KICK_REASON_ACCLOING_FAILE = 1; 
+}
+
+
+
+message CSCreateRole
+{
+    bytes role_name = 1; 
+    bytes second_role_name = 2; 
+}
+
+
+
+message SCCreateRole
+{
+	int32 result = 1;  
+	RoleListBriefInfo brief_role = 2;  
+}
+
+
+
+message CSRoleLogin
+{
+    uint64 role_id = 1; 
+}
+
+
+
+message SCRoleLogin
+{
+    int32           result            = 1; 
+    bytes          game_svr_url      = 2; 
+    int32           port              = 3; 
+    uint64          map_id            = 5; 
+    bool            today_first_login = 6; 
+    uint64          current_savepoint = 7; 
+    SCUDPInfoNtf udp_info          = 8 [deprecated=true]; 
+}
+
+
+
+message CSRoleLogout
+{
+    uint64 role_id = 1; 
+}
+
+
+
+message SCRoleLogout
+{
+    int32  result  = 1; 
+    uint64 role_id = 2; 
+}
+
+
+
+message CSEnterMap
+{
+    uint64     role_id  = 1; 
+    uint64     map_id   = 2; 
+    EnmMapType map_type = 3; 
+    uint64 teleport_id = 4; 
+}
+
+
+
+message SCEnterMap
+{
+    int32  result  = 1;
+    uint64 role_id = 2; 
+    uint64 map_id  = 3; 
+    uint64 teleport_id = 4; 
+
+
+
+
+
+}
+
+
+
+message CSFinEnterMap
+{
+    uint64     role_id  = 1; 
+    uint64     map_id   = 2; 
+    EnmMapType map_type = 3; 
+}
+
+
+
+message SCFinEnterMap
+{
+    int32           result               = 1;
+    uint64          role_id              = 2;  
+    uint64          map_id               = 3;  
+    RoleInfo        role_info            = 4;  
+    repeated uint64 unlocked_savepoints  = 5;  
+    Vector3Int      last_logout_location = 6;  
+    uint64          current_savepoint    = 7;  
+    EnmBornPosType  born_pos_type        = 8;  
+    PlayerTaskData  task_data            = 9;  
+    uint64          world_map_id         = 10; 
+    repeated uint64 unlocked_teleport_id_list     = 11; 
+}
+
+
+
+message SCMapReadyNtf
+{
+    uint64          map_id = 1; 
+    bool            is_inited_name = 2; 
+    Vector3Int      last_logout_location = 3;  
+    uint64          current_savepoint    = 4;  
+    EnmBornPosType  born_pos_type        = 5;  
+    repeated uint64 unlocked_savepoints  = 6;  
+    repeated uint64 unlocked_teleport_id_list     = 7; 
+    uint64          teleport_id     = 8; 
+    Vector3Int rotation = 9; 
+
+}
+
+message SCSceneUdpInfo
+{
+    bytes ip   = 1; 
+    uint32 port = 2; 
+};
+
+
+
+message SCUDPInfoNtf
+{
+    SCSceneUdpInfo info = 1;
+}
+
+
+
+message CSAccountLoginSdk
+{
+    bytes appid         = 1; 
+    bytes channel_name  = 2; 
+    bytes channel_token = 3; 
+    bytes hei_token     = 4; 
+}
+
+
+
+message SCAccountLoginSdk
+{
+    int32  result   = 1; 
+    bytes userid   = 2; 
+    bytes errormsg = 3; 
+}
+
+
+
+message SCBanUserNtf
+{
+    uint64 role_id = 1; 
+    bytes reason = 2; 
+    int64 duration = 3; 
+}
+
+
+
+message CSRoleInfoReq
+{
+}
+
+
+
+message SCRoleInfoRes
+{
+    RoleInfo role_info = 1;  
+}

@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package msg;
+
+
+message DaySignInData
+{
+    uint32 day = 1; 
+    bool is_signed_in = 2; 
+    bool has_claimed = 3; 
+}
+
+
+message SignInActivityData
+{
+    uint32 activity_id = 1; 
+    uint64 start_time = 2;  
+    uint64 end_time = 3;    
+    repeated DaySignInData signin_datas = 4; 
+}
+
+
+message SignInRewardItem
+{
+    uint32 item_id = 1;     
+    uint32 item_count = 2;  
+}
+
+
+
+message CSSignInActivityData
+{
+    uint32 activity_id = 1; 
+}
+
+
+
+message SCSignInActivityData
+{
+    int32 result = 1; 
+    SignInActivityData activity_data = 2; 
+}
+
+
+
+message CSSignInActivityReward
+{
+    uint32 activity_id = 1; 
+    uint32 day = 2; 
+}
+
+
+
+message SCSignInActivityReward
+{
+    int32 result = 1; 
+    uint32 activity_id = 2; 
+    uint32 day = 3; 
+    repeated SignInRewardItem reward_items = 4; 
+}
+
+
+
+message SCSignInActivityPop
+{
+    SignInActivityData activity_data = 1; 
+}

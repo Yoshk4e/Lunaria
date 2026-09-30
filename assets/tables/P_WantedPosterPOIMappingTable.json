@@ -1,0 +1,28 @@
+{
+  "P_WantedPosterPOIMappingTable": {
+    "1": {
+      "id": 1,
+      "sourceWorldId": 100,
+      "systemType": 12,
+      "dstMapIds": [
+        206001001001
+      ]
+    },
+    "2": {
+      "id": 2,
+      "sourceWorldId": 100,
+      "systemType": 5,
+      "dstMapIds": [
+        206001001001
+      ]
+    },
+    "3": {
+      "id": 3,
+      "sourceWorldId": 100,
+      "systemType": 17,
+      "dstMapIds": [
+        206001001001
+      ]
+    }
+  }
+}

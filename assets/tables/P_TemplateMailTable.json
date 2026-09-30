@@ -1,0 +1,138 @@
+{
+  "P_TemplateMailTable": {
+    "1": {
+      "id": 1,
+      "title": 1010400019,
+      "from": 1010400020,
+      "important": false,
+      "expiration": 5,
+      "content": 1010400021
+    },
+    "2": {
+      "id": 2,
+      "title": 1010400022,
+      "from": 1010400023,
+      "important": true,
+      "expiration": 10,
+      "content": 1010400024,
+      "items": [
+        "21206001:2",
+        "1:2000"
+      ]
+    },
+    "3": {
+      "id": 3,
+      "title": 1010400025,
+      "from": 1010400026,
+      "important": true,
+      "expiration": 7,
+      "content": 1010400027,
+      "items": [
+        "21206002:4",
+        "1:4000"
+      ]
+    },
+    "4": {
+      "id": 4,
+      "title": 1010400028,
+      "from": 1010400029,
+      "important": false,
+      "expiration": 1,
+      "content": 1010400030
+    },
+    "31100001": {
+      "id": 31100001,
+      "title": 1920100094,
+      "from": 1920100095,
+      "important": false,
+      "expiration": 365,
+      "content": 1920100096,
+      "items": [
+        "21000000:30000000"
+      ]
+    },
+    "31100002": {
+      "id": 31100002,
+      "title": 1920100097,
+      "from": 1920100098,
+      "important": false,
+      "expiration": 365,
+      "content": 1920100099,
+      "items": [
+        "21000000:30000000"
+      ]
+    },
+    "31100011": {
+      "id": 31100011,
+      "title": 1010400040,
+      "from": 1010400046,
+      "important": true,
+      "expiration": 30,
+      "content": 1010400041,
+      "unlockId": [
+        301002101
+      ],
+      "region": "cn"
+    },
+    "31100012": {
+      "id": 31100012,
+      "title": 1010400042,
+      "from": 1010400046,
+      "important": true,
+      "expiration": 30,
+      "content": 1010400043,
+      "unlockId": [
+        402030101
+      ],
+      "region": "cn"
+    },
+    "31100013": {
+      "id": 31100013,
+      "title": 1010400044,
+      "from": 1010400046,
+      "important": true,
+      "expiration": 30,
+      "content": 1010400045,
+      "unlockId": [
+        505001101
+      ],
+      "region": "cn"
+    },
+    "31100014": {
+      "id": 31100014,
+      "title": 1010400047,
+      "from": 1010400053,
+      "important": true,
+      "expiration": 30,
+      "content": 1010400048,
+      "unlockId": [
+        301002101
+      ],
+      "region": "overseas"
+    },
+    "31100015": {
+      "id": 31100015,
+      "title": 1010400049,
+      "from": 1010400053,
+      "important": true,
+      "expiration": 30,
+      "content": 1010400050,
+      "unlockId": [
+        402030101
+      ],
+      "region": "overseas"
+    },
+    "31100016": {
+      "id": 31100016,
+      "title": 1010400051,
+      "from": 1010400053,
+      "important": true,
+      "expiration": 30,
+      "content": 1010400052,
+      "unlockId": [
+        505001101
+      ],
+      "region": "overseas"
+    }
+  }
+}

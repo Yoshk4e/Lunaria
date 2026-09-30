@@ -1,0 +1,109 @@
+syntax = "proto3";
+package msg;
+
+import "comm_macro.proto";
+import "comm_data.proto";
+import "cs_patrol_monster.proto";
+
+
+
+message CSEnterBattle
+{
+    EBattleType battle_type = 1; 
+    uint32 battle_field_id = 2; 
+    uint32 battle_inst_id = 3; 
+    EnmMonsterFromType monster_from_type = 4; 
+}
+
+
+
+message SCEnterBattle
+{
+    int32 ret = 1; 
+    EBattleType battle_type = 2; 
+    uint32 battle_field_id = 3; 
+}
+
+
+
+message CSStartBattle
+{
+    EBattleType battle_type = 1; 
+    uint32 battle_field_id = 2; 
+}
+
+
+
+message SCStartBattle
+{
+    int32 ret = 1; 
+    EBattleType battle_type = 2; 
+    uint32 battle_field_id = 3; 
+}
+
+
+message CharacterAttribInfo
+{
+    uint64 inst_id = 1; 
+    int32 current_hp = 2; 
+    int32 permanent_liquid = 3; 
+}
+
+message BattleEndInfo
+{
+    Vector3Int vector3 = 1; 
+    uint64 block_id = 2; 
+    repeated int64 monsters = 3; 
+}
+
+
+
+message CSLeaveBattle
+{
+    EBattleType battle_type = 1; 
+    uint32 battle_field_id = 2; 
+    EBattleResultType battle_result = 3; 
+    repeated CharacterAttribInfo character_data = 4; 
+    ElementParamMap temporary_liquid = 5; 
+    ElementParamMap temporary_liquid_lv2 = 6; 
+    BattleEndInfo battle_end_info = 7; 
+    uint32 battle_inst_id = 8; 
+    EnmMonsterFromType monster_from_type = 9; 
+}
+
+message BattleExtraInfo
+{
+    uint64 reborn_map_id = 1;       
+    uint64 reborn_savepoint = 2;    
+}
+
+
+
+message SCLeaveBattle
+{
+    int32 ret = 1; 
+    EBattleType battle_type = 2; 
+    uint32 battle_field_id = 3; 
+    EBattleResultType battle_result = 4; 
+    BattleExtraInfo extra_info = 5; 
+}
+
+
+
+message CSPauseBattle
+{
+    EBattleType battle_type = 1; 
+    uint32 battle_field_id = 2; 
+    bool pause = 3; 
+    uint32 time_stamp = 4; 
+}
+
+
+
+message SCPauseBattle
+{
+    int32 result = 1; 
+    EBattleType battle_type = 2; 
+    uint32 battle_field_id = 3; 
+    bool pause = 4; 
+}

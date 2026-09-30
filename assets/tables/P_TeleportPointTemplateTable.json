@@ -1,0 +1,9 @@
+{
+  "P_TeleportPointTemplateTable": {
+    "241406001": {
+      "id": 241406001,
+      "interactingEntityId": 241406001,
+      "activateRange": 400
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "P_DailyLivenessTaskTable": {
+    "1": {
+      "id": 1,
+      "type": 3,
+      "progress": 100,
+      "liveness": 10
+    },
+    "2": {
+      "id": 2,
+      "type": 3,
+      "progress": 99,
+      "liveness": 9
+    },
+    "3": {
+      "id": 3,
+      "type": 3,
+      "progress": 98,
+      "liveness": 8
+    },
+    "4": {
+      "id": 4,
+      "type": 3,
+      "progress": 97,
+      "liveness": 7
+    }
+  }
+}

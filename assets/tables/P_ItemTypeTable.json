@@ -1,0 +1,156 @@
+{
+  "P_ItemTypeTable": {
+    "1": {
+      "id": 1,
+      "itemType": 10,
+      "isPrecious": false,
+      "bagId": 1,
+      "desc": 1320000000,
+      "notShow": false
+    },
+    "2": {
+      "id": 2,
+      "itemType": 3,
+      "isPrecious": false,
+      "bagId": 1,
+      "desc": 1320000001,
+      "notShow": false
+    },
+    "3": {
+      "id": 3,
+      "itemType": 12,
+      "isPrecious": false,
+      "bagId": 1,
+      "desc": 1320000002,
+      "notShow": true
+    },
+    "4": {
+      "id": 4,
+      "itemType": 3,
+      "isPrecious": false,
+      "bagId": 1,
+      "desc": 1320000003,
+      "notShow": false
+    },
+    "5": {
+      "id": 5,
+      "itemType": 3,
+      "isPrecious": false,
+      "bagId": 1,
+      "desc": 1320000004,
+      "notShow": false
+    },
+    "6": {
+      "id": 6,
+      "itemType": 4,
+      "isPrecious": true,
+      "bagId": 1,
+      "desc": 1320000005,
+      "notShow": true
+    },
+    "7": {
+      "id": 7,
+      "itemType": 5,
+      "isPrecious": false,
+      "bagId": 2,
+      "desc": 1320000006,
+      "notShow": false
+    },
+    "8": {
+      "id": 8,
+      "itemType": 6,
+      "isPrecious": false,
+      "bagId": 1,
+      "desc": 1320000007,
+      "notShow": false
+    },
+    "9": {
+      "id": 9,
+      "itemType": 7,
+      "isPrecious": false,
+      "bagId": 1,
+      "desc": 1320000001,
+      "notShow": false
+    },
+    "10": {
+      "id": 10,
+      "itemType": 3,
+      "isPrecious": false,
+      "bagId": 1,
+      "desc": 1320000009,
+      "notShow": false
+    },
+    "11": {
+      "id": 11,
+      "itemType": 3,
+      "isPrecious": false,
+      "bagId": 1,
+      "desc": 1320000010,
+      "notShow": false
+    },
+    "12": {
+      "id": 12,
+      "itemType": 9,
+      "isPrecious": false,
+      "bagId": 1,
+      "desc": 1320000011,
+      "notShow": true
+    },
+    "13": {
+      "id": 13,
+      "itemType": 11,
+      "isPrecious": false,
+      "bagId": 4,
+      "desc": 1320000012,
+      "notShow": false
+    },
+    "14": {
+      "id": 14,
+      "itemType": 3,
+      "isPrecious": false,
+      "bagId": 3,
+      "desc": 1320000013,
+      "notShow": false
+    },
+    "15": {
+      "id": 15,
+      "itemType": 1,
+      "isPrecious": false,
+      "bagId": 1,
+      "desc": 1320000015,
+      "notShow": false
+    },
+    "16": {
+      "id": 16,
+      "itemType": 3,
+      "isPrecious": false,
+      "bagId": 1,
+      "desc": 1320000001,
+      "notShow": false
+    },
+    "17": {
+      "id": 17,
+      "itemType": 8,
+      "isPrecious": false,
+      "bagId": 1,
+      "desc": 1320000001,
+      "notShow": false
+    },
+    "18": {
+      "id": 18,
+      "itemType": 3,
+      "isPrecious": false,
+      "bagId": 1,
+      "desc": 1820300040,
+      "notShow": false
+    },
+    "19": {
+      "id": 19,
+      "itemType": 3,
+      "isPrecious": false,
+      "bagId": 1,
+      "desc": 1320000018,
+      "notShow": false
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "P_ItemCombineTable": {
+    "1": {
+      "id": 1,
+      "srcItemId": 101,
+      "srcItemNum": 2,
+      "dstItemId": 102,
+      "rate": 10000
+    },
+    "2": {
+      "id": 2,
+      "srcItemId": 102,
+      "srcItemNum": 2,
+      "dstItemId": 103,
+      "rate": 10000
+    },
+    "3": {
+      "id": 3,
+      "srcItemId": 103,
+      "srcItemNum": 2,
+      "dstItemId": 104,
+      "rate": 10000
+    },
+    "4": {
+      "id": 4,
+      "srcItemId": 104,
+      "srcItemNum": 2,
+      "dstItemId": 105,
+      "rate": 10000
+    }
+  }
+}

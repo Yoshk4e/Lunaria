@@ -1,0 +1,155 @@
+{
+  "P_TalentNodeTable": {
+    "0": {
+      "id": 0,
+      "groupType": 1,
+      "unlockLevel": 1
+    },
+    "1": {
+      "id": 1,
+      "groupType": 1,
+      "parentIdList": [
+        2
+      ],
+      "unlockLevel": 14
+    },
+    "2": {
+      "id": 2,
+      "groupType": 1,
+      "parentIdList": [
+        0
+      ],
+      "unlockLevel": 14
+    },
+    "3": {
+      "id": 3,
+      "groupType": 1,
+      "parentIdList": [
+        2
+      ],
+      "unlockLevel": 14
+    },
+    "4": {
+      "id": 4,
+      "groupType": 1,
+      "parentIdList": [
+        2
+      ],
+      "unlockLevel": 29
+    },
+    "5": {
+      "id": 5,
+      "groupType": 1,
+      "parentIdList": [
+        4
+      ],
+      "unlockLevel": 29
+    },
+    "6": {
+      "id": 6,
+      "groupType": 1,
+      "parentIdList": [
+        4
+      ],
+      "unlockLevel": 37
+    },
+    "7": {
+      "id": 7,
+      "groupType": 2,
+      "unlockLevel": 5
+    },
+    "8": {
+      "id": 8,
+      "groupType": 2,
+      "parentIdList": [
+        7
+      ],
+      "unlockLevel": 20
+    },
+    "9": {
+      "id": 9,
+      "groupType": 2,
+      "parentIdList": [
+        10
+      ],
+      "unlockLevel": 31
+    },
+    "10": {
+      "id": 10,
+      "groupType": 2,
+      "parentIdList": [
+        8
+      ],
+      "unlockLevel": 31
+    },
+    "11": {
+      "id": 11,
+      "groupType": 2,
+      "parentIdList": [
+        10
+      ],
+      "unlockLevel": 31
+    },
+    "12": {
+      "id": 12,
+      "groupType": 2,
+      "parentIdList": [
+        10
+      ],
+      "unlockLevel": 38
+    },
+    "13": {
+      "id": 13,
+      "groupType": 3,
+      "unlockLevel": 10
+    },
+    "14": {
+      "id": 14,
+      "groupType": 3,
+      "parentIdList": [
+        15
+      ],
+      "unlockLevel": 24
+    },
+    "15": {
+      "id": 15,
+      "groupType": 3,
+      "parentIdList": [
+        13
+      ],
+      "unlockLevel": 24
+    },
+    "16": {
+      "id": 16,
+      "groupType": 3,
+      "parentIdList": [
+        17
+      ],
+      "unlockLevel": 34
+    },
+    "17": {
+      "id": 17,
+      "groupType": 3,
+      "parentIdList": [
+        15
+      ],
+      "unlockLevel": 34
+    },
+    "18": {
+      "id": 18,
+      "groupType": 3,
+      "parentIdList": [
+        17
+      ],
+      "unlockLevel": 34
+    },
+    "19": {
+      "id": 19,
+      "groupType": 3,
+      "parentIdList": [
+        17
+      ],
+      "unlockLevel": 39
+    }
+  }
+}

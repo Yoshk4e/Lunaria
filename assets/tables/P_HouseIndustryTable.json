@@ -1,0 +1,12 @@
+{
+  "P_HouseIndustryTable": {
+    "1": {
+      "id": 1,
+      "dropId": 5,
+      "dropInterval": 3600,
+      "onlineDropNum": 2,
+      "offlineDropNum": 1,
+      "maxDropNum": 8
+    }
+  }
+}

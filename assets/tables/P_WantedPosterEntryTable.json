@@ -1,0 +1,153 @@
+{
+  "P_WantedPosterEntryTable": {
+    "10101": {
+      "id": 10101,
+      "wantedPosterId": 101,
+      "difficulty": 1,
+      "fristRouteId": 1011,
+      "normalRouteId": 1012,
+      "firstAward": 310101,
+      "firstAwardDisplay": [
+        "770004=100",
+        "11401002=1",
+        "11402002=1",
+        "11406002=1",
+        "11401001=1",
+        "11402001=1",
+        "11406001=1",
+        "1=1000"
+      ],
+      "optionalAward": 310111,
+      "expAwardDisplay": 100,
+      "recommendLevel": 1,
+      "characterHpRatio": 10000,
+      "characterPermanentLiquidRatio": 0,
+      "temporaryLiquidRatio": 0
+    },
+    "10102": {
+      "id": 10102,
+      "wantedPosterId": 101,
+      "difficulty": 2,
+      "fristRouteId": 1013,
+      "normalRouteId": 1013,
+      "unlockCondition": 407001001,
+      "firstAward": 310102,
+      "firstAwardDisplay": [
+        "770004=120",
+        "11401002=2",
+        "11402002=2",
+        "11406002=2",
+        "11401001=2",
+        "11402001=2",
+        "11406001=2",
+        "1=1500"
+      ],
+      "optionalAward": 310112,
+      "expAwardDisplay": 200,
+      "recommendLevel": 15,
+      "characterHpRatio": 10000,
+      "characterPermanentLiquidRatio": 0,
+      "temporaryLiquidRatio": 0
+    },
+    "10103": {
+      "id": 10103,
+      "wantedPosterId": 101,
+      "difficulty": 3,
+      "fristRouteId": 1013,
+      "normalRouteId": 1013,
+      "unlockCondition": 407001002,
+      "firstAward": 310103,
+      "firstAwardDisplay": [
+        "770004=140",
+        "11401002=3",
+        "11402002=3",
+        "11406002=3",
+        "11401001=3",
+        "11402001=3",
+        "11406001=3",
+        "1=2000"
+      ],
+      "optionalAward": 310113,
+      "expAwardDisplay": 220,
+      "recommendLevel": 25,
+      "characterHpRatio": 10000,
+      "characterPermanentLiquidRatio": 0,
+      "temporaryLiquidRatio": 0
+    },
+    "10104": {
+      "id": 10104,
+      "wantedPosterId": 101,
+      "difficulty": 4,
+      "fristRouteId": 1013,
+      "normalRouteId": 1013,
+      "unlockCondition": 407001003,
+      "firstAward": 310104,
+      "firstAwardDisplay": [
+        "770004=160",
+        "11401002=4",
+        "11402002=4",
+        "11406002=4",
+        "11401001=4",
+        "11402001=4",
+        "11406001=4",
+        "1=3000"
+      ],
+      "optionalAward": 310114,
+      "expAwardDisplay": 240,
+      "recommendLevel": 35,
+      "characterHpRatio": 10000,
+      "characterPermanentLiquidRatio": 0,
+      "temporaryLiquidRatio": 0
+    },
+    "10105": {
+      "id": 10105,
+      "wantedPosterId": 101,
+      "difficulty": 5,
+      "fristRouteId": 1013,
+      "normalRouteId": 1013,
+      "unlockCondition": 407001004,
+      "firstAward": 310105,
+      "firstAwardDisplay": [
+        "770004=180",
+        "11401002=5",
+        "11402002=5",
+        "11406002=5",
+        "11401001=5",
+        "11402001=5",
+        "11406001=5",
+        "1=4000"
+      ],
+      "optionalAward": 310114,
+      "expAwardDisplay": 300,
+      "recommendLevel": 40,
+      "characterHpRatio": 10000,
+      "characterPermanentLiquidRatio": 0,
+      "temporaryLiquidRatio": 0
+    },
+    "10106": {
+      "id": 10106,
+      "wantedPosterId": 101,
+      "difficulty": 6,
+      "fristRouteId": 1013,
+      "normalRouteId": 1013,
+      "unlockCondition": 407001005,
+      "firstAward": 310106,
+      "firstAwardDisplay": [
+        "770004=200",
+        "11401002=6",
+        "11402002=6",
+        "11406002=6",
+        "11401001=6",
+        "11402001=6",
+        "11406001=6",
+        "1=5000"
+      ],
+      "optionalAward": 310114,
+      "expAwardDisplay": 360,
+      "recommendLevel": 40,
+      "characterHpRatio": 10000,
+      "characterPermanentLiquidRatio": 0,
+      "temporaryLiquidRatio": 0
+    }
+  }
+}

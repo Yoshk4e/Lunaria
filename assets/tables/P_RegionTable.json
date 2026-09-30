@@ -1,0 +1,29 @@
+{
+  "P_RegionTable": {
+    "100001001": {
+      "id": 100001001,
+      "regionName": 1010500111,
+      "regionIcon": "Img_RegionalExploration_MogStreet",
+      "subRegionId": [
+        100001001001,
+        100001001002
+      ]
+    },
+    "100001002": {
+      "id": 100001002,
+      "regionName": 1010500112,
+      "regionIcon": "Img_RegionalExploration_SiGuanStreet",
+      "subRegionId": [
+        100001002001
+      ]
+    },
+    "100001004": {
+      "id": 100001004,
+      "regionName": 1010500113,
+      "regionIcon": "Img_RegionalExploration_WhiteDayAvenue",
+      "subRegionId": [
+        100001004002
+      ]
+    }
+  }
+}

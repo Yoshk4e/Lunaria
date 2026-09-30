@@ -1,0 +1,6404 @@
+{
+  "P_LevelUpTemplateTable": {
+    "1": {
+      "id": 1,
+      "templateId": 1001,
+      "level": 1,
+      "developAttributeId": 100101,
+      "itemCost1": 0,
+      "itemCost2": 0,
+      "itemCost3": 0,
+      "currencyCost": 0
+    },
+    "2": {
+      "id": 2,
+      "templateId": 1001,
+      "level": 2,
+      "developAttributeId": 100102,
+      "itemCost1": 1000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 200
+    },
+    "3": {
+      "id": 3,
+      "templateId": 1001,
+      "level": 3,
+      "developAttributeId": 100103,
+      "itemCost1": 1265,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 255
+    },
+    "4": {
+      "id": 4,
+      "templateId": 1001,
+      "level": 4,
+      "developAttributeId": 100104,
+      "itemCost1": 1530,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 310
+    },
+    "5": {
+      "id": 5,
+      "templateId": 1001,
+      "level": 5,
+      "developAttributeId": 100105,
+      "itemCost1": 1795,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 360
+    },
+    "6": {
+      "id": 6,
+      "templateId": 1001,
+      "level": 6,
+      "developAttributeId": 100106,
+      "itemCost1": 2060,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 415
+    },
+    "7": {
+      "id": 7,
+      "templateId": 1001,
+      "level": 7,
+      "developAttributeId": 100107,
+      "itemCost1": 2325,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 465
+    },
+    "8": {
+      "id": 8,
+      "templateId": 1001,
+      "level": 8,
+      "developAttributeId": 100108,
+      "itemCost1": 2590,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 520
+    },
+    "9": {
+      "id": 9,
+      "templateId": 1001,
+      "level": 9,
+      "developAttributeId": 100109,
+      "itemCost1": 2855,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 575
+    },
+    "10": {
+      "id": 10,
+      "templateId": 1001,
+      "level": 10,
+      "developAttributeId": 100110,
+      "itemCost1": 3120,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 625
+    },
+    "11": {
+      "id": 11,
+      "templateId": 1001,
+      "level": 11,
+      "developAttributeId": 100111,
+      "itemCost1": 3385,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 680
+    },
+    "12": {
+      "id": 12,
+      "templateId": 1001,
+      "level": 12,
+      "developAttributeId": 100112,
+      "itemCost1": 3650,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 730
+    },
+    "13": {
+      "id": 13,
+      "templateId": 1001,
+      "level": 13,
+      "developAttributeId": 100113,
+      "itemCost1": 3915,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 785
+    },
+    "14": {
+      "id": 14,
+      "templateId": 1001,
+      "level": 14,
+      "developAttributeId": 100114,
+      "itemCost1": 4180,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 840
+    },
+    "15": {
+      "id": 15,
+      "templateId": 1001,
+      "level": 15,
+      "developAttributeId": 100115,
+      "itemCost1": 4445,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 890
+    },
+    "16": {
+      "id": 16,
+      "templateId": 1001,
+      "level": 16,
+      "developAttributeId": 100116,
+      "itemCost1": 4710,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 945
+    },
+    "17": {
+      "id": 17,
+      "templateId": 1001,
+      "level": 17,
+      "developAttributeId": 100117,
+      "itemCost1": 4975,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 995
+    },
+    "18": {
+      "id": 18,
+      "templateId": 1001,
+      "level": 18,
+      "developAttributeId": 100118,
+      "itemCost1": 5240,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1050
+    },
+    "19": {
+      "id": 19,
+      "templateId": 1001,
+      "level": 19,
+      "developAttributeId": 100119,
+      "itemCost1": 5505,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1105
+    },
+    "20": {
+      "id": 20,
+      "templateId": 1001,
+      "level": 20,
+      "developAttributeId": 100120,
+      "itemCost1": 5770,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1155
+    },
+    "21": {
+      "id": 21,
+      "templateId": 1001,
+      "level": 21,
+      "developAttributeId": 100121,
+      "itemCost1": 6250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1250
+    },
+    "22": {
+      "id": 22,
+      "templateId": 1001,
+      "level": 22,
+      "developAttributeId": 100122,
+      "itemCost1": 6565,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1315
+    },
+    "23": {
+      "id": 23,
+      "templateId": 1001,
+      "level": 23,
+      "developAttributeId": 100123,
+      "itemCost1": 6880,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1380
+    },
+    "24": {
+      "id": 24,
+      "templateId": 1001,
+      "level": 24,
+      "developAttributeId": 100124,
+      "itemCost1": 7195,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1440
+    },
+    "25": {
+      "id": 25,
+      "templateId": 1001,
+      "level": 25,
+      "developAttributeId": 100125,
+      "itemCost1": 7510,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1505
+    },
+    "26": {
+      "id": 26,
+      "templateId": 1001,
+      "level": 26,
+      "developAttributeId": 100126,
+      "itemCost1": 7825,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1565
+    },
+    "27": {
+      "id": 27,
+      "templateId": 1001,
+      "level": 27,
+      "developAttributeId": 100127,
+      "itemCost1": 8140,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1630
+    },
+    "28": {
+      "id": 28,
+      "templateId": 1001,
+      "level": 28,
+      "developAttributeId": 100128,
+      "itemCost1": 8455,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1695
+    },
+    "29": {
+      "id": 29,
+      "templateId": 1001,
+      "level": 29,
+      "developAttributeId": 100129,
+      "itemCost1": 8770,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1755
+    },
+    "30": {
+      "id": 30,
+      "templateId": 1001,
+      "level": 30,
+      "developAttributeId": 100130,
+      "itemCost1": 9085,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1820
+    },
+    "31": {
+      "id": 31,
+      "templateId": 1001,
+      "level": 31,
+      "developAttributeId": 100131,
+      "itemCost1": 9400,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1880
+    },
+    "32": {
+      "id": 32,
+      "templateId": 1001,
+      "level": 32,
+      "developAttributeId": 100132,
+      "itemCost1": 9715,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1945
+    },
+    "33": {
+      "id": 33,
+      "templateId": 1001,
+      "level": 33,
+      "developAttributeId": 100133,
+      "itemCost1": 10030,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2010
+    },
+    "34": {
+      "id": 34,
+      "templateId": 1001,
+      "level": 34,
+      "developAttributeId": 100134,
+      "itemCost1": 10345,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2070
+    },
+    "35": {
+      "id": 35,
+      "templateId": 1001,
+      "level": 35,
+      "developAttributeId": 100135,
+      "itemCost1": 10660,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2135
+    },
+    "36": {
+      "id": 36,
+      "templateId": 1001,
+      "level": 36,
+      "developAttributeId": 100136,
+      "itemCost1": 10975,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2195
+    },
+    "37": {
+      "id": 37,
+      "templateId": 1001,
+      "level": 37,
+      "developAttributeId": 100137,
+      "itemCost1": 11290,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2260
+    },
+    "38": {
+      "id": 38,
+      "templateId": 1001,
+      "level": 38,
+      "developAttributeId": 100138,
+      "itemCost1": 11605,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2325
+    },
+    "39": {
+      "id": 39,
+      "templateId": 1001,
+      "level": 39,
+      "developAttributeId": 100139,
+      "itemCost1": 11920,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2385
+    },
+    "40": {
+      "id": 40,
+      "templateId": 1001,
+      "level": 40,
+      "developAttributeId": 100140,
+      "itemCost1": 12235,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2450
+    },
+    "41": {
+      "id": 41,
+      "templateId": 1001,
+      "level": 41,
+      "developAttributeId": 100141,
+      "itemCost1": 12500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2500
+    },
+    "42": {
+      "id": 42,
+      "templateId": 1001,
+      "level": 42,
+      "developAttributeId": 100142,
+      "itemCost1": 13125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2625
+    },
+    "43": {
+      "id": 43,
+      "templateId": 1001,
+      "level": 43,
+      "developAttributeId": 100143,
+      "itemCost1": 13750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2750
+    },
+    "44": {
+      "id": 44,
+      "templateId": 1001,
+      "level": 44,
+      "developAttributeId": 100144,
+      "itemCost1": 14375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2875
+    },
+    "45": {
+      "id": 45,
+      "templateId": 1001,
+      "level": 45,
+      "developAttributeId": 100145,
+      "itemCost1": 15000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3000
+    },
+    "46": {
+      "id": 46,
+      "templateId": 1001,
+      "level": 46,
+      "developAttributeId": 100146,
+      "itemCost1": 15625,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3125
+    },
+    "47": {
+      "id": 47,
+      "templateId": 1001,
+      "level": 47,
+      "developAttributeId": 100147,
+      "itemCost1": 16250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3250
+    },
+    "48": {
+      "id": 48,
+      "templateId": 1001,
+      "level": 48,
+      "developAttributeId": 100148,
+      "itemCost1": 16875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3375
+    },
+    "49": {
+      "id": 49,
+      "templateId": 1001,
+      "level": 49,
+      "developAttributeId": 100149,
+      "itemCost1": 17500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3500
+    },
+    "50": {
+      "id": 50,
+      "templateId": 1001,
+      "level": 50,
+      "developAttributeId": 100150,
+      "itemCost1": 18125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3625
+    },
+    "51": {
+      "id": 51,
+      "templateId": 1001,
+      "level": 51,
+      "developAttributeId": 100151,
+      "itemCost1": 18750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3750
+    },
+    "52": {
+      "id": 52,
+      "templateId": 1001,
+      "level": 52,
+      "developAttributeId": 100152,
+      "itemCost1": 19375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3875
+    },
+    "53": {
+      "id": 53,
+      "templateId": 1001,
+      "level": 53,
+      "developAttributeId": 100153,
+      "itemCost1": 20000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4000
+    },
+    "54": {
+      "id": 54,
+      "templateId": 1001,
+      "level": 54,
+      "developAttributeId": 100154,
+      "itemCost1": 20625,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4125
+    },
+    "55": {
+      "id": 55,
+      "templateId": 1001,
+      "level": 55,
+      "developAttributeId": 100155,
+      "itemCost1": 21250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4250
+    },
+    "56": {
+      "id": 56,
+      "templateId": 1001,
+      "level": 56,
+      "developAttributeId": 100156,
+      "itemCost1": 21875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4375
+    },
+    "57": {
+      "id": 57,
+      "templateId": 1001,
+      "level": 57,
+      "developAttributeId": 100157,
+      "itemCost1": 22500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4500
+    },
+    "58": {
+      "id": 58,
+      "templateId": 1001,
+      "level": 58,
+      "developAttributeId": 100158,
+      "itemCost1": 23125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4625
+    },
+    "59": {
+      "id": 59,
+      "templateId": 1001,
+      "level": 59,
+      "developAttributeId": 100159,
+      "itemCost1": 23750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4750
+    },
+    "60": {
+      "id": 60,
+      "templateId": 1001,
+      "level": 60,
+      "developAttributeId": 100160,
+      "itemCost1": 24375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4875
+    },
+    "61": {
+      "id": 61,
+      "templateId": 1001,
+      "level": 61,
+      "developAttributeId": 100161,
+      "itemCost1": 25000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 5000
+    },
+    "62": {
+      "id": 62,
+      "templateId": 1001,
+      "level": 62,
+      "developAttributeId": 100162,
+      "itemCost1": 28750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 5750
+    },
+    "63": {
+      "id": 63,
+      "templateId": 1001,
+      "level": 63,
+      "developAttributeId": 100163,
+      "itemCost1": 32500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 6500
+    },
+    "64": {
+      "id": 64,
+      "templateId": 1001,
+      "level": 64,
+      "developAttributeId": 100164,
+      "itemCost1": 36250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 7250
+    },
+    "65": {
+      "id": 65,
+      "templateId": 1001,
+      "level": 65,
+      "developAttributeId": 100165,
+      "itemCost1": 40000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 8000
+    },
+    "66": {
+      "id": 66,
+      "templateId": 1001,
+      "level": 66,
+      "developAttributeId": 100166,
+      "itemCost1": 43750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 8750
+    },
+    "67": {
+      "id": 67,
+      "templateId": 1001,
+      "level": 67,
+      "developAttributeId": 100167,
+      "itemCost1": 47500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 9500
+    },
+    "68": {
+      "id": 68,
+      "templateId": 1001,
+      "level": 68,
+      "developAttributeId": 100168,
+      "itemCost1": 51250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 10250
+    },
+    "69": {
+      "id": 69,
+      "templateId": 1001,
+      "level": 69,
+      "developAttributeId": 100169,
+      "itemCost1": 55000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 11000
+    },
+    "70": {
+      "id": 70,
+      "templateId": 1001,
+      "level": 70,
+      "developAttributeId": 100170,
+      "itemCost1": 58750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 11750
+    },
+    "71": {
+      "id": 71,
+      "templateId": 1001,
+      "level": 71,
+      "developAttributeId": 100171,
+      "itemCost1": 62500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 12500
+    },
+    "72": {
+      "id": 72,
+      "templateId": 1001,
+      "level": 72,
+      "developAttributeId": 100172,
+      "itemCost1": 71875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 14375
+    },
+    "73": {
+      "id": 73,
+      "templateId": 1001,
+      "level": 73,
+      "developAttributeId": 100173,
+      "itemCost1": 81250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 16250
+    },
+    "74": {
+      "id": 74,
+      "templateId": 1001,
+      "level": 74,
+      "developAttributeId": 100174,
+      "itemCost1": 90625,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 18125
+    },
+    "75": {
+      "id": 75,
+      "templateId": 1001,
+      "level": 75,
+      "developAttributeId": 100175,
+      "itemCost1": 100000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 20000
+    },
+    "76": {
+      "id": 76,
+      "templateId": 1001,
+      "level": 76,
+      "developAttributeId": 100176,
+      "itemCost1": 109375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 21875
+    },
+    "77": {
+      "id": 77,
+      "templateId": 1001,
+      "level": 77,
+      "developAttributeId": 100177,
+      "itemCost1": 118750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 23750
+    },
+    "78": {
+      "id": 78,
+      "templateId": 1001,
+      "level": 78,
+      "developAttributeId": 100178,
+      "itemCost1": 128125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 25625
+    },
+    "79": {
+      "id": 79,
+      "templateId": 1001,
+      "level": 79,
+      "developAttributeId": 100179,
+      "itemCost1": 137500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 27500
+    },
+    "80": {
+      "id": 80,
+      "templateId": 1001,
+      "level": 80,
+      "developAttributeId": 100180,
+      "itemCost1": 146875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 29375
+    },
+    "81": {
+      "id": 81,
+      "templateId": 1003,
+      "level": 1,
+      "developAttributeId": 100301,
+      "itemCost1": 0,
+      "itemCost2": 0,
+      "itemCost3": 0,
+      "currencyCost": 0
+    },
+    "82": {
+      "id": 82,
+      "templateId": 1003,
+      "level": 2,
+      "developAttributeId": 100302,
+      "itemCost1": 1000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 200
+    },
+    "83": {
+      "id": 83,
+      "templateId": 1003,
+      "level": 3,
+      "developAttributeId": 100303,
+      "itemCost1": 1265,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 255
+    },
+    "84": {
+      "id": 84,
+      "templateId": 1003,
+      "level": 4,
+      "developAttributeId": 100304,
+      "itemCost1": 1530,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 310
+    },
+    "85": {
+      "id": 85,
+      "templateId": 1003,
+      "level": 5,
+      "developAttributeId": 100305,
+      "itemCost1": 1795,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 360
+    },
+    "86": {
+      "id": 86,
+      "templateId": 1003,
+      "level": 6,
+      "developAttributeId": 100306,
+      "itemCost1": 2060,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 415
+    },
+    "87": {
+      "id": 87,
+      "templateId": 1003,
+      "level": 7,
+      "developAttributeId": 100307,
+      "itemCost1": 2325,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 465
+    },
+    "88": {
+      "id": 88,
+      "templateId": 1003,
+      "level": 8,
+      "developAttributeId": 100308,
+      "itemCost1": 2590,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 520
+    },
+    "89": {
+      "id": 89,
+      "templateId": 1003,
+      "level": 9,
+      "developAttributeId": 100309,
+      "itemCost1": 2855,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 575
+    },
+    "90": {
+      "id": 90,
+      "templateId": 1003,
+      "level": 10,
+      "developAttributeId": 100310,
+      "itemCost1": 3120,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 625
+    },
+    "91": {
+      "id": 91,
+      "templateId": 1003,
+      "level": 11,
+      "developAttributeId": 100311,
+      "itemCost1": 3385,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 680
+    },
+    "92": {
+      "id": 92,
+      "templateId": 1003,
+      "level": 12,
+      "developAttributeId": 100312,
+      "itemCost1": 3650,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 730
+    },
+    "93": {
+      "id": 93,
+      "templateId": 1003,
+      "level": 13,
+      "developAttributeId": 100313,
+      "itemCost1": 3915,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 785
+    },
+    "94": {
+      "id": 94,
+      "templateId": 1003,
+      "level": 14,
+      "developAttributeId": 100314,
+      "itemCost1": 4180,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 840
+    },
+    "95": {
+      "id": 95,
+      "templateId": 1003,
+      "level": 15,
+      "developAttributeId": 100315,
+      "itemCost1": 4445,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 890
+    },
+    "96": {
+      "id": 96,
+      "templateId": 1003,
+      "level": 16,
+      "developAttributeId": 100316,
+      "itemCost1": 4710,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 945
+    },
+    "97": {
+      "id": 97,
+      "templateId": 1003,
+      "level": 17,
+      "developAttributeId": 100317,
+      "itemCost1": 4975,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 995
+    },
+    "98": {
+      "id": 98,
+      "templateId": 1003,
+      "level": 18,
+      "developAttributeId": 100318,
+      "itemCost1": 5240,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1050
+    },
+    "99": {
+      "id": 99,
+      "templateId": 1003,
+      "level": 19,
+      "developAttributeId": 100319,
+      "itemCost1": 5505,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1105
+    },
+    "100": {
+      "id": 100,
+      "templateId": 1003,
+      "level": 20,
+      "developAttributeId": 100320,
+      "itemCost1": 5770,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1155
+    },
+    "101": {
+      "id": 101,
+      "templateId": 1003,
+      "level": 21,
+      "developAttributeId": 100321,
+      "itemCost1": 6250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1250
+    },
+    "102": {
+      "id": 102,
+      "templateId": 1003,
+      "level": 22,
+      "developAttributeId": 100322,
+      "itemCost1": 6565,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1315
+    },
+    "103": {
+      "id": 103,
+      "templateId": 1003,
+      "level": 23,
+      "developAttributeId": 100323,
+      "itemCost1": 6880,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1380
+    },
+    "104": {
+      "id": 104,
+      "templateId": 1003,
+      "level": 24,
+      "developAttributeId": 100324,
+      "itemCost1": 7195,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1440
+    },
+    "105": {
+      "id": 105,
+      "templateId": 1003,
+      "level": 25,
+      "developAttributeId": 100325,
+      "itemCost1": 7510,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1505
+    },
+    "106": {
+      "id": 106,
+      "templateId": 1003,
+      "level": 26,
+      "developAttributeId": 100326,
+      "itemCost1": 7825,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1565
+    },
+    "107": {
+      "id": 107,
+      "templateId": 1003,
+      "level": 27,
+      "developAttributeId": 100327,
+      "itemCost1": 8140,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1630
+    },
+    "108": {
+      "id": 108,
+      "templateId": 1003,
+      "level": 28,
+      "developAttributeId": 100328,
+      "itemCost1": 8455,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1695
+    },
+    "109": {
+      "id": 109,
+      "templateId": 1003,
+      "level": 29,
+      "developAttributeId": 100329,
+      "itemCost1": 8770,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1755
+    },
+    "110": {
+      "id": 110,
+      "templateId": 1003,
+      "level": 30,
+      "developAttributeId": 100330,
+      "itemCost1": 9085,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1820
+    },
+    "111": {
+      "id": 111,
+      "templateId": 1003,
+      "level": 31,
+      "developAttributeId": 100331,
+      "itemCost1": 9400,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1880
+    },
+    "112": {
+      "id": 112,
+      "templateId": 1003,
+      "level": 32,
+      "developAttributeId": 100332,
+      "itemCost1": 9715,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1945
+    },
+    "113": {
+      "id": 113,
+      "templateId": 1003,
+      "level": 33,
+      "developAttributeId": 100333,
+      "itemCost1": 10030,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2010
+    },
+    "114": {
+      "id": 114,
+      "templateId": 1003,
+      "level": 34,
+      "developAttributeId": 100334,
+      "itemCost1": 10345,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2070
+    },
+    "115": {
+      "id": 115,
+      "templateId": 1003,
+      "level": 35,
+      "developAttributeId": 100335,
+      "itemCost1": 10660,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2135
+    },
+    "116": {
+      "id": 116,
+      "templateId": 1003,
+      "level": 36,
+      "developAttributeId": 100336,
+      "itemCost1": 10975,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2195
+    },
+    "117": {
+      "id": 117,
+      "templateId": 1003,
+      "level": 37,
+      "developAttributeId": 100337,
+      "itemCost1": 11290,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2260
+    },
+    "118": {
+      "id": 118,
+      "templateId": 1003,
+      "level": 38,
+      "developAttributeId": 100338,
+      "itemCost1": 11605,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2325
+    },
+    "119": {
+      "id": 119,
+      "templateId": 1003,
+      "level": 39,
+      "developAttributeId": 100339,
+      "itemCost1": 11920,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2385
+    },
+    "120": {
+      "id": 120,
+      "templateId": 1003,
+      "level": 40,
+      "developAttributeId": 100340,
+      "itemCost1": 12235,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2450
+    },
+    "121": {
+      "id": 121,
+      "templateId": 1003,
+      "level": 41,
+      "developAttributeId": 100341,
+      "itemCost1": 12500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2500
+    },
+    "122": {
+      "id": 122,
+      "templateId": 1003,
+      "level": 42,
+      "developAttributeId": 100342,
+      "itemCost1": 13125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2625
+    },
+    "123": {
+      "id": 123,
+      "templateId": 1003,
+      "level": 43,
+      "developAttributeId": 100343,
+      "itemCost1": 13750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2750
+    },
+    "124": {
+      "id": 124,
+      "templateId": 1003,
+      "level": 44,
+      "developAttributeId": 100344,
+      "itemCost1": 14375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2875
+    },
+    "125": {
+      "id": 125,
+      "templateId": 1003,
+      "level": 45,
+      "developAttributeId": 100345,
+      "itemCost1": 15000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3000
+    },
+    "126": {
+      "id": 126,
+      "templateId": 1003,
+      "level": 46,
+      "developAttributeId": 100346,
+      "itemCost1": 15625,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3125
+    },
+    "127": {
+      "id": 127,
+      "templateId": 1003,
+      "level": 47,
+      "developAttributeId": 100347,
+      "itemCost1": 16250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3250
+    },
+    "128": {
+      "id": 128,
+      "templateId": 1003,
+      "level": 48,
+      "developAttributeId": 100348,
+      "itemCost1": 16875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3375
+    },
+    "129": {
+      "id": 129,
+      "templateId": 1003,
+      "level": 49,
+      "developAttributeId": 100349,
+      "itemCost1": 17500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3500
+    },
+    "130": {
+      "id": 130,
+      "templateId": 1003,
+      "level": 50,
+      "developAttributeId": 100350,
+      "itemCost1": 18125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3625
+    },
+    "131": {
+      "id": 131,
+      "templateId": 1003,
+      "level": 51,
+      "developAttributeId": 100351,
+      "itemCost1": 18750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3750
+    },
+    "132": {
+      "id": 132,
+      "templateId": 1003,
+      "level": 52,
+      "developAttributeId": 100352,
+      "itemCost1": 19375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3875
+    },
+    "133": {
+      "id": 133,
+      "templateId": 1003,
+      "level": 53,
+      "developAttributeId": 100353,
+      "itemCost1": 20000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4000
+    },
+    "134": {
+      "id": 134,
+      "templateId": 1003,
+      "level": 54,
+      "developAttributeId": 100354,
+      "itemCost1": 20625,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4125
+    },
+    "135": {
+      "id": 135,
+      "templateId": 1003,
+      "level": 55,
+      "developAttributeId": 100355,
+      "itemCost1": 21250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4250
+    },
+    "136": {
+      "id": 136,
+      "templateId": 1003,
+      "level": 56,
+      "developAttributeId": 100356,
+      "itemCost1": 21875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4375
+    },
+    "137": {
+      "id": 137,
+      "templateId": 1003,
+      "level": 57,
+      "developAttributeId": 100357,
+      "itemCost1": 22500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4500
+    },
+    "138": {
+      "id": 138,
+      "templateId": 1003,
+      "level": 58,
+      "developAttributeId": 100358,
+      "itemCost1": 23125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4625
+    },
+    "139": {
+      "id": 139,
+      "templateId": 1003,
+      "level": 59,
+      "developAttributeId": 100359,
+      "itemCost1": 23750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4750
+    },
+    "140": {
+      "id": 140,
+      "templateId": 1003,
+      "level": 60,
+      "developAttributeId": 100360,
+      "itemCost1": 24375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4875
+    },
+    "141": {
+      "id": 141,
+      "templateId": 1003,
+      "level": 61,
+      "developAttributeId": 100361,
+      "itemCost1": 25000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 5000
+    },
+    "142": {
+      "id": 142,
+      "templateId": 1003,
+      "level": 62,
+      "developAttributeId": 100362,
+      "itemCost1": 28750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 5750
+    },
+    "143": {
+      "id": 143,
+      "templateId": 1003,
+      "level": 63,
+      "developAttributeId": 100363,
+      "itemCost1": 32500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 6500
+    },
+    "144": {
+      "id": 144,
+      "templateId": 1003,
+      "level": 64,
+      "developAttributeId": 100364,
+      "itemCost1": 36250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 7250
+    },
+    "145": {
+      "id": 145,
+      "templateId": 1003,
+      "level": 65,
+      "developAttributeId": 100365,
+      "itemCost1": 40000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 8000
+    },
+    "146": {
+      "id": 146,
+      "templateId": 1003,
+      "level": 66,
+      "developAttributeId": 100366,
+      "itemCost1": 43750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 8750
+    },
+    "147": {
+      "id": 147,
+      "templateId": 1003,
+      "level": 67,
+      "developAttributeId": 100367,
+      "itemCost1": 47500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 9500
+    },
+    "148": {
+      "id": 148,
+      "templateId": 1003,
+      "level": 68,
+      "developAttributeId": 100368,
+      "itemCost1": 51250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 10250
+    },
+    "149": {
+      "id": 149,
+      "templateId": 1003,
+      "level": 69,
+      "developAttributeId": 100369,
+      "itemCost1": 55000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 11000
+    },
+    "150": {
+      "id": 150,
+      "templateId": 1003,
+      "level": 70,
+      "developAttributeId": 100370,
+      "itemCost1": 58750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 11750
+    },
+    "151": {
+      "id": 151,
+      "templateId": 1003,
+      "level": 71,
+      "developAttributeId": 100371,
+      "itemCost1": 62500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 12500
+    },
+    "152": {
+      "id": 152,
+      "templateId": 1003,
+      "level": 72,
+      "developAttributeId": 100372,
+      "itemCost1": 71875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 14375
+    },
+    "153": {
+      "id": 153,
+      "templateId": 1003,
+      "level": 73,
+      "developAttributeId": 100373,
+      "itemCost1": 81250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 16250
+    },
+    "154": {
+      "id": 154,
+      "templateId": 1003,
+      "level": 74,
+      "developAttributeId": 100374,
+      "itemCost1": 90625,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 18125
+    },
+    "155": {
+      "id": 155,
+      "templateId": 1003,
+      "level": 75,
+      "developAttributeId": 100375,
+      "itemCost1": 100000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 20000
+    },
+    "156": {
+      "id": 156,
+      "templateId": 1003,
+      "level": 76,
+      "developAttributeId": 100376,
+      "itemCost1": 109375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 21875
+    },
+    "157": {
+      "id": 157,
+      "templateId": 1003,
+      "level": 77,
+      "developAttributeId": 100377,
+      "itemCost1": 118750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 23750
+    },
+    "158": {
+      "id": 158,
+      "templateId": 1003,
+      "level": 78,
+      "developAttributeId": 100378,
+      "itemCost1": 128125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 25625
+    },
+    "159": {
+      "id": 159,
+      "templateId": 1003,
+      "level": 79,
+      "developAttributeId": 100379,
+      "itemCost1": 137500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 27500
+    },
+    "160": {
+      "id": 160,
+      "templateId": 1003,
+      "level": 80,
+      "developAttributeId": 100380,
+      "itemCost1": 146875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 29375
+    },
+    "161": {
+      "id": 161,
+      "templateId": 1004,
+      "level": 1,
+      "developAttributeId": 100301,
+      "itemCost1": 0,
+      "itemCost2": 0,
+      "itemCost3": 0,
+      "currencyCost": 0
+    },
+    "162": {
+      "id": 162,
+      "templateId": 1004,
+      "level": 2,
+      "developAttributeId": 100402,
+      "itemCost1": 1000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 200
+    },
+    "163": {
+      "id": 163,
+      "templateId": 1004,
+      "level": 3,
+      "developAttributeId": 100403,
+      "itemCost1": 1265,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 255
+    },
+    "164": {
+      "id": 164,
+      "templateId": 1004,
+      "level": 4,
+      "developAttributeId": 100404,
+      "itemCost1": 1530,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 310
+    },
+    "165": {
+      "id": 165,
+      "templateId": 1004,
+      "level": 5,
+      "developAttributeId": 100405,
+      "itemCost1": 1795,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 360
+    },
+    "166": {
+      "id": 166,
+      "templateId": 1004,
+      "level": 6,
+      "developAttributeId": 100406,
+      "itemCost1": 2060,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 415
+    },
+    "167": {
+      "id": 167,
+      "templateId": 1004,
+      "level": 7,
+      "developAttributeId": 100407,
+      "itemCost1": 2325,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 465
+    },
+    "168": {
+      "id": 168,
+      "templateId": 1004,
+      "level": 8,
+      "developAttributeId": 100408,
+      "itemCost1": 2590,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 520
+    },
+    "169": {
+      "id": 169,
+      "templateId": 1004,
+      "level": 9,
+      "developAttributeId": 100409,
+      "itemCost1": 2855,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 575
+    },
+    "170": {
+      "id": 170,
+      "templateId": 1004,
+      "level": 10,
+      "developAttributeId": 100410,
+      "itemCost1": 3120,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 625
+    },
+    "171": {
+      "id": 171,
+      "templateId": 1004,
+      "level": 11,
+      "developAttributeId": 100411,
+      "itemCost1": 3385,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 680
+    },
+    "172": {
+      "id": 172,
+      "templateId": 1004,
+      "level": 12,
+      "developAttributeId": 100412,
+      "itemCost1": 3650,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 730
+    },
+    "173": {
+      "id": 173,
+      "templateId": 1004,
+      "level": 13,
+      "developAttributeId": 100413,
+      "itemCost1": 3915,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 785
+    },
+    "174": {
+      "id": 174,
+      "templateId": 1004,
+      "level": 14,
+      "developAttributeId": 100414,
+      "itemCost1": 4180,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 840
+    },
+    "175": {
+      "id": 175,
+      "templateId": 1004,
+      "level": 15,
+      "developAttributeId": 100415,
+      "itemCost1": 4445,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 890
+    },
+    "176": {
+      "id": 176,
+      "templateId": 1004,
+      "level": 16,
+      "developAttributeId": 100416,
+      "itemCost1": 4710,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 945
+    },
+    "177": {
+      "id": 177,
+      "templateId": 1004,
+      "level": 17,
+      "developAttributeId": 100417,
+      "itemCost1": 4975,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 995
+    },
+    "178": {
+      "id": 178,
+      "templateId": 1004,
+      "level": 18,
+      "developAttributeId": 100418,
+      "itemCost1": 5240,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1050
+    },
+    "179": {
+      "id": 179,
+      "templateId": 1004,
+      "level": 19,
+      "developAttributeId": 100419,
+      "itemCost1": 5505,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1105
+    },
+    "180": {
+      "id": 180,
+      "templateId": 1004,
+      "level": 20,
+      "developAttributeId": 100420,
+      "itemCost1": 5770,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1155
+    },
+    "181": {
+      "id": 181,
+      "templateId": 1004,
+      "level": 21,
+      "developAttributeId": 100421,
+      "itemCost1": 6250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1250
+    },
+    "182": {
+      "id": 182,
+      "templateId": 1004,
+      "level": 22,
+      "developAttributeId": 100422,
+      "itemCost1": 6565,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1315
+    },
+    "183": {
+      "id": 183,
+      "templateId": 1004,
+      "level": 23,
+      "developAttributeId": 100423,
+      "itemCost1": 6880,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1380
+    },
+    "184": {
+      "id": 184,
+      "templateId": 1004,
+      "level": 24,
+      "developAttributeId": 100424,
+      "itemCost1": 7195,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1440
+    },
+    "185": {
+      "id": 185,
+      "templateId": 1004,
+      "level": 25,
+      "developAttributeId": 100425,
+      "itemCost1": 7510,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1505
+    },
+    "186": {
+      "id": 186,
+      "templateId": 1004,
+      "level": 26,
+      "developAttributeId": 100426,
+      "itemCost1": 7825,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1565
+    },
+    "187": {
+      "id": 187,
+      "templateId": 1004,
+      "level": 27,
+      "developAttributeId": 100427,
+      "itemCost1": 8140,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1630
+    },
+    "188": {
+      "id": 188,
+      "templateId": 1004,
+      "level": 28,
+      "developAttributeId": 100428,
+      "itemCost1": 8455,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1695
+    },
+    "189": {
+      "id": 189,
+      "templateId": 1004,
+      "level": 29,
+      "developAttributeId": 100429,
+      "itemCost1": 8770,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1755
+    },
+    "190": {
+      "id": 190,
+      "templateId": 1004,
+      "level": 30,
+      "developAttributeId": 100430,
+      "itemCost1": 9085,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1820
+    },
+    "191": {
+      "id": 191,
+      "templateId": 1004,
+      "level": 31,
+      "developAttributeId": 100431,
+      "itemCost1": 9400,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1880
+    },
+    "192": {
+      "id": 192,
+      "templateId": 1004,
+      "level": 32,
+      "developAttributeId": 100432,
+      "itemCost1": 9715,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1945
+    },
+    "193": {
+      "id": 193,
+      "templateId": 1004,
+      "level": 33,
+      "developAttributeId": 100433,
+      "itemCost1": 10030,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2010
+    },
+    "194": {
+      "id": 194,
+      "templateId": 1004,
+      "level": 34,
+      "developAttributeId": 100434,
+      "itemCost1": 10345,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2070
+    },
+    "195": {
+      "id": 195,
+      "templateId": 1004,
+      "level": 35,
+      "developAttributeId": 100435,
+      "itemCost1": 10660,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2135
+    },
+    "196": {
+      "id": 196,
+      "templateId": 1004,
+      "level": 36,
+      "developAttributeId": 100436,
+      "itemCost1": 10975,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2195
+    },
+    "197": {
+      "id": 197,
+      "templateId": 1004,
+      "level": 37,
+      "developAttributeId": 100437,
+      "itemCost1": 11290,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2260
+    },
+    "198": {
+      "id": 198,
+      "templateId": 1004,
+      "level": 38,
+      "developAttributeId": 100438,
+      "itemCost1": 11605,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2325
+    },
+    "199": {
+      "id": 199,
+      "templateId": 1004,
+      "level": 39,
+      "developAttributeId": 100439,
+      "itemCost1": 11920,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2385
+    },
+    "200": {
+      "id": 200,
+      "templateId": 1004,
+      "level": 40,
+      "developAttributeId": 100440,
+      "itemCost1": 12235,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2450
+    },
+    "201": {
+      "id": 201,
+      "templateId": 1004,
+      "level": 41,
+      "developAttributeId": 100441,
+      "itemCost1": 12500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2500
+    },
+    "202": {
+      "id": 202,
+      "templateId": 1004,
+      "level": 42,
+      "developAttributeId": 100442,
+      "itemCost1": 13125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2625
+    },
+    "203": {
+      "id": 203,
+      "templateId": 1004,
+      "level": 43,
+      "developAttributeId": 100443,
+      "itemCost1": 13750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2750
+    },
+    "204": {
+      "id": 204,
+      "templateId": 1004,
+      "level": 44,
+      "developAttributeId": 100444,
+      "itemCost1": 14375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2875
+    },
+    "205": {
+      "id": 205,
+      "templateId": 1004,
+      "level": 45,
+      "developAttributeId": 100445,
+      "itemCost1": 15000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3000
+    },
+    "206": {
+      "id": 206,
+      "templateId": 1004,
+      "level": 46,
+      "developAttributeId": 100446,
+      "itemCost1": 15625,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3125
+    },
+    "207": {
+      "id": 207,
+      "templateId": 1004,
+      "level": 47,
+      "developAttributeId": 100447,
+      "itemCost1": 16250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3250
+    },
+    "208": {
+      "id": 208,
+      "templateId": 1004,
+      "level": 48,
+      "developAttributeId": 100448,
+      "itemCost1": 16875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3375
+    },
+    "209": {
+      "id": 209,
+      "templateId": 1004,
+      "level": 49,
+      "developAttributeId": 100449,
+      "itemCost1": 17500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3500
+    },
+    "210": {
+      "id": 210,
+      "templateId": 1004,
+      "level": 50,
+      "developAttributeId": 100450,
+      "itemCost1": 18125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3625
+    },
+    "211": {
+      "id": 211,
+      "templateId": 1004,
+      "level": 51,
+      "developAttributeId": 100451,
+      "itemCost1": 18750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3750
+    },
+    "212": {
+      "id": 212,
+      "templateId": 1004,
+      "level": 52,
+      "developAttributeId": 100452,
+      "itemCost1": 19375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3875
+    },
+    "213": {
+      "id": 213,
+      "templateId": 1004,
+      "level": 53,
+      "developAttributeId": 100453,
+      "itemCost1": 20000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4000
+    },
+    "214": {
+      "id": 214,
+      "templateId": 1004,
+      "level": 54,
+      "developAttributeId": 100454,
+      "itemCost1": 20625,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4125
+    },
+    "215": {
+      "id": 215,
+      "templateId": 1004,
+      "level": 55,
+      "developAttributeId": 100455,
+      "itemCost1": 21250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4250
+    },
+    "216": {
+      "id": 216,
+      "templateId": 1004,
+      "level": 56,
+      "developAttributeId": 100456,
+      "itemCost1": 21875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4375
+    },
+    "217": {
+      "id": 217,
+      "templateId": 1004,
+      "level": 57,
+      "developAttributeId": 100457,
+      "itemCost1": 22500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4500
+    },
+    "218": {
+      "id": 218,
+      "templateId": 1004,
+      "level": 58,
+      "developAttributeId": 100458,
+      "itemCost1": 23125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4625
+    },
+    "219": {
+      "id": 219,
+      "templateId": 1004,
+      "level": 59,
+      "developAttributeId": 100459,
+      "itemCost1": 23750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4750
+    },
+    "220": {
+      "id": 220,
+      "templateId": 1004,
+      "level": 60,
+      "developAttributeId": 100460,
+      "itemCost1": 24375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4875
+    },
+    "221": {
+      "id": 221,
+      "templateId": 1004,
+      "level": 61,
+      "developAttributeId": 100461,
+      "itemCost1": 25000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 5000
+    },
+    "222": {
+      "id": 222,
+      "templateId": 1004,
+      "level": 62,
+      "developAttributeId": 100462,
+      "itemCost1": 28750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 5750
+    },
+    "223": {
+      "id": 223,
+      "templateId": 1004,
+      "level": 63,
+      "developAttributeId": 100463,
+      "itemCost1": 32500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 6500
+    },
+    "224": {
+      "id": 224,
+      "templateId": 1004,
+      "level": 64,
+      "developAttributeId": 100464,
+      "itemCost1": 36250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 7250
+    },
+    "225": {
+      "id": 225,
+      "templateId": 1004,
+      "level": 65,
+      "developAttributeId": 100465,
+      "itemCost1": 40000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 8000
+    },
+    "226": {
+      "id": 226,
+      "templateId": 1004,
+      "level": 66,
+      "developAttributeId": 100466,
+      "itemCost1": 43750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 8750
+    },
+    "227": {
+      "id": 227,
+      "templateId": 1004,
+      "level": 67,
+      "developAttributeId": 100467,
+      "itemCost1": 47500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 9500
+    },
+    "228": {
+      "id": 228,
+      "templateId": 1004,
+      "level": 68,
+      "developAttributeId": 100468,
+      "itemCost1": 51250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 10250
+    },
+    "229": {
+      "id": 229,
+      "templateId": 1004,
+      "level": 69,
+      "developAttributeId": 100469,
+      "itemCost1": 55000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 11000
+    },
+    "230": {
+      "id": 230,
+      "templateId": 1004,
+      "level": 70,
+      "developAttributeId": 100470,
+      "itemCost1": 58750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 11750
+    },
+    "231": {
+      "id": 231,
+      "templateId": 1004,
+      "level": 71,
+      "developAttributeId": 100471,
+      "itemCost1": 62500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 12500
+    },
+    "232": {
+      "id": 232,
+      "templateId": 1004,
+      "level": 72,
+      "developAttributeId": 100472,
+      "itemCost1": 71875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 14375
+    },
+    "233": {
+      "id": 233,
+      "templateId": 1004,
+      "level": 73,
+      "developAttributeId": 100473,
+      "itemCost1": 81250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 16250
+    },
+    "234": {
+      "id": 234,
+      "templateId": 1004,
+      "level": 74,
+      "developAttributeId": 100474,
+      "itemCost1": 90625,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 18125
+    },
+    "235": {
+      "id": 235,
+      "templateId": 1004,
+      "level": 75,
+      "developAttributeId": 100475,
+      "itemCost1": 100000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 20000
+    },
+    "236": {
+      "id": 236,
+      "templateId": 1004,
+      "level": 76,
+      "developAttributeId": 100476,
+      "itemCost1": 109375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 21875
+    },
+    "237": {
+      "id": 237,
+      "templateId": 1004,
+      "level": 77,
+      "developAttributeId": 100477,
+      "itemCost1": 118750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 23750
+    },
+    "238": {
+      "id": 238,
+      "templateId": 1004,
+      "level": 78,
+      "developAttributeId": 100478,
+      "itemCost1": 128125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 25625
+    },
+    "239": {
+      "id": 239,
+      "templateId": 1004,
+      "level": 79,
+      "developAttributeId": 100479,
+      "itemCost1": 137500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 27500
+    },
+    "240": {
+      "id": 240,
+      "templateId": 1004,
+      "level": 80,
+      "developAttributeId": 100480,
+      "itemCost1": 146875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 29375
+    },
+    "241": {
+      "id": 241,
+      "templateId": 1006,
+      "level": 1,
+      "developAttributeId": 100301,
+      "itemCost1": 0,
+      "itemCost2": 0,
+      "itemCost3": 0,
+      "currencyCost": 0
+    },
+    "242": {
+      "id": 242,
+      "templateId": 1006,
+      "level": 2,
+      "developAttributeId": 100602,
+      "itemCost1": 1000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 200
+    },
+    "243": {
+      "id": 243,
+      "templateId": 1006,
+      "level": 3,
+      "developAttributeId": 100603,
+      "itemCost1": 1265,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 255
+    },
+    "244": {
+      "id": 244,
+      "templateId": 1006,
+      "level": 4,
+      "developAttributeId": 100604,
+      "itemCost1": 1530,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 310
+    },
+    "245": {
+      "id": 245,
+      "templateId": 1006,
+      "level": 5,
+      "developAttributeId": 100605,
+      "itemCost1": 1795,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 360
+    },
+    "246": {
+      "id": 246,
+      "templateId": 1006,
+      "level": 6,
+      "developAttributeId": 100606,
+      "itemCost1": 2060,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 415
+    },
+    "247": {
+      "id": 247,
+      "templateId": 1006,
+      "level": 7,
+      "developAttributeId": 100607,
+      "itemCost1": 2325,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 465
+    },
+    "248": {
+      "id": 248,
+      "templateId": 1006,
+      "level": 8,
+      "developAttributeId": 100608,
+      "itemCost1": 2590,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 520
+    },
+    "249": {
+      "id": 249,
+      "templateId": 1006,
+      "level": 9,
+      "developAttributeId": 100609,
+      "itemCost1": 2855,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 575
+    },
+    "250": {
+      "id": 250,
+      "templateId": 1006,
+      "level": 10,
+      "developAttributeId": 100610,
+      "itemCost1": 3120,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 625
+    },
+    "251": {
+      "id": 251,
+      "templateId": 1006,
+      "level": 11,
+      "developAttributeId": 100611,
+      "itemCost1": 3385,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 680
+    },
+    "252": {
+      "id": 252,
+      "templateId": 1006,
+      "level": 12,
+      "developAttributeId": 100612,
+      "itemCost1": 3650,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 730
+    },
+    "253": {
+      "id": 253,
+      "templateId": 1006,
+      "level": 13,
+      "developAttributeId": 100613,
+      "itemCost1": 3915,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 785
+    },
+    "254": {
+      "id": 254,
+      "templateId": 1006,
+      "level": 14,
+      "developAttributeId": 100614,
+      "itemCost1": 4180,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 840
+    },
+    "255": {
+      "id": 255,
+      "templateId": 1006,
+      "level": 15,
+      "developAttributeId": 100615,
+      "itemCost1": 4445,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 890
+    },
+    "256": {
+      "id": 256,
+      "templateId": 1006,
+      "level": 16,
+      "developAttributeId": 100616,
+      "itemCost1": 4710,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 945
+    },
+    "257": {
+      "id": 257,
+      "templateId": 1006,
+      "level": 17,
+      "developAttributeId": 100617,
+      "itemCost1": 4975,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 995
+    },
+    "258": {
+      "id": 258,
+      "templateId": 1006,
+      "level": 18,
+      "developAttributeId": 100618,
+      "itemCost1": 5240,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1050
+    },
+    "259": {
+      "id": 259,
+      "templateId": 1006,
+      "level": 19,
+      "developAttributeId": 100619,
+      "itemCost1": 5505,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1105
+    },
+    "260": {
+      "id": 260,
+      "templateId": 1006,
+      "level": 20,
+      "developAttributeId": 100620,
+      "itemCost1": 5770,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1155
+    },
+    "261": {
+      "id": 261,
+      "templateId": 1006,
+      "level": 21,
+      "developAttributeId": 100621,
+      "itemCost1": 6250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1250
+    },
+    "262": {
+      "id": 262,
+      "templateId": 1006,
+      "level": 22,
+      "developAttributeId": 100622,
+      "itemCost1": 6565,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1315
+    },
+    "263": {
+      "id": 263,
+      "templateId": 1006,
+      "level": 23,
+      "developAttributeId": 100623,
+      "itemCost1": 6880,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1380
+    },
+    "264": {
+      "id": 264,
+      "templateId": 1006,
+      "level": 24,
+      "developAttributeId": 100624,
+      "itemCost1": 7195,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1440
+    },
+    "265": {
+      "id": 265,
+      "templateId": 1006,
+      "level": 25,
+      "developAttributeId": 100625,
+      "itemCost1": 7510,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1505
+    },
+    "266": {
+      "id": 266,
+      "templateId": 1006,
+      "level": 26,
+      "developAttributeId": 100626,
+      "itemCost1": 7825,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1565
+    },
+    "267": {
+      "id": 267,
+      "templateId": 1006,
+      "level": 27,
+      "developAttributeId": 100627,
+      "itemCost1": 8140,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1630
+    },
+    "268": {
+      "id": 268,
+      "templateId": 1006,
+      "level": 28,
+      "developAttributeId": 100628,
+      "itemCost1": 8455,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1695
+    },
+    "269": {
+      "id": 269,
+      "templateId": 1006,
+      "level": 29,
+      "developAttributeId": 100629,
+      "itemCost1": 8770,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1755
+    },
+    "270": {
+      "id": 270,
+      "templateId": 1006,
+      "level": 30,
+      "developAttributeId": 100630,
+      "itemCost1": 9085,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1820
+    },
+    "271": {
+      "id": 271,
+      "templateId": 1006,
+      "level": 31,
+      "developAttributeId": 100631,
+      "itemCost1": 9400,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1880
+    },
+    "272": {
+      "id": 272,
+      "templateId": 1006,
+      "level": 32,
+      "developAttributeId": 100632,
+      "itemCost1": 9715,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1945
+    },
+    "273": {
+      "id": 273,
+      "templateId": 1006,
+      "level": 33,
+      "developAttributeId": 100633,
+      "itemCost1": 10030,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2010
+    },
+    "274": {
+      "id": 274,
+      "templateId": 1006,
+      "level": 34,
+      "developAttributeId": 100634,
+      "itemCost1": 10345,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2070
+    },
+    "275": {
+      "id": 275,
+      "templateId": 1006,
+      "level": 35,
+      "developAttributeId": 100635,
+      "itemCost1": 10660,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2135
+    },
+    "276": {
+      "id": 276,
+      "templateId": 1006,
+      "level": 36,
+      "developAttributeId": 100636,
+      "itemCost1": 10975,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2195
+    },
+    "277": {
+      "id": 277,
+      "templateId": 1006,
+      "level": 37,
+      "developAttributeId": 100637,
+      "itemCost1": 11290,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2260
+    },
+    "278": {
+      "id": 278,
+      "templateId": 1006,
+      "level": 38,
+      "developAttributeId": 100638,
+      "itemCost1": 11605,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2325
+    },
+    "279": {
+      "id": 279,
+      "templateId": 1006,
+      "level": 39,
+      "developAttributeId": 100639,
+      "itemCost1": 11920,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2385
+    },
+    "280": {
+      "id": 280,
+      "templateId": 1006,
+      "level": 40,
+      "developAttributeId": 100640,
+      "itemCost1": 12235,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2450
+    },
+    "281": {
+      "id": 281,
+      "templateId": 1006,
+      "level": 41,
+      "developAttributeId": 100641,
+      "itemCost1": 12500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2500
+    },
+    "282": {
+      "id": 282,
+      "templateId": 1006,
+      "level": 42,
+      "developAttributeId": 100642,
+      "itemCost1": 13125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2625
+    },
+    "283": {
+      "id": 283,
+      "templateId": 1006,
+      "level": 43,
+      "developAttributeId": 100643,
+      "itemCost1": 13750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2750
+    },
+    "284": {
+      "id": 284,
+      "templateId": 1006,
+      "level": 44,
+      "developAttributeId": 100644,
+      "itemCost1": 14375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2875
+    },
+    "285": {
+      "id": 285,
+      "templateId": 1006,
+      "level": 45,
+      "developAttributeId": 100645,
+      "itemCost1": 15000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3000
+    },
+    "286": {
+      "id": 286,
+      "templateId": 1006,
+      "level": 46,
+      "developAttributeId": 100646,
+      "itemCost1": 15625,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3125
+    },
+    "287": {
+      "id": 287,
+      "templateId": 1006,
+      "level": 47,
+      "developAttributeId": 100647,
+      "itemCost1": 16250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3250
+    },
+    "288": {
+      "id": 288,
+      "templateId": 1006,
+      "level": 48,
+      "developAttributeId": 100648,
+      "itemCost1": 16875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3375
+    },
+    "289": {
+      "id": 289,
+      "templateId": 1006,
+      "level": 49,
+      "developAttributeId": 100649,
+      "itemCost1": 17500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3500
+    },
+    "290": {
+      "id": 290,
+      "templateId": 1006,
+      "level": 50,
+      "developAttributeId": 100650,
+      "itemCost1": 18125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3625
+    },
+    "291": {
+      "id": 291,
+      "templateId": 1006,
+      "level": 51,
+      "developAttributeId": 100651,
+      "itemCost1": 18750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3750
+    },
+    "292": {
+      "id": 292,
+      "templateId": 1006,
+      "level": 52,
+      "developAttributeId": 100652,
+      "itemCost1": 19375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3875
+    },
+    "293": {
+      "id": 293,
+      "templateId": 1006,
+      "level": 53,
+      "developAttributeId": 100653,
+      "itemCost1": 20000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4000
+    },
+    "294": {
+      "id": 294,
+      "templateId": 1006,
+      "level": 54,
+      "developAttributeId": 100654,
+      "itemCost1": 20625,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4125
+    },
+    "295": {
+      "id": 295,
+      "templateId": 1006,
+      "level": 55,
+      "developAttributeId": 100655,
+      "itemCost1": 21250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4250
+    },
+    "296": {
+      "id": 296,
+      "templateId": 1006,
+      "level": 56,
+      "developAttributeId": 100656,
+      "itemCost1": 21875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4375
+    },
+    "297": {
+      "id": 297,
+      "templateId": 1006,
+      "level": 57,
+      "developAttributeId": 100657,
+      "itemCost1": 22500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4500
+    },
+    "298": {
+      "id": 298,
+      "templateId": 1006,
+      "level": 58,
+      "developAttributeId": 100658,
+      "itemCost1": 23125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4625
+    },
+    "299": {
+      "id": 299,
+      "templateId": 1006,
+      "level": 59,
+      "developAttributeId": 100659,
+      "itemCost1": 23750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4750
+    },
+    "300": {
+      "id": 300,
+      "templateId": 1006,
+      "level": 60,
+      "developAttributeId": 100660,
+      "itemCost1": 24375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4875
+    },
+    "301": {
+      "id": 301,
+      "templateId": 1006,
+      "level": 61,
+      "developAttributeId": 100661,
+      "itemCost1": 25000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 5000
+    },
+    "302": {
+      "id": 302,
+      "templateId": 1006,
+      "level": 62,
+      "developAttributeId": 100662,
+      "itemCost1": 28750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 5750
+    },
+    "303": {
+      "id": 303,
+      "templateId": 1006,
+      "level": 63,
+      "developAttributeId": 100663,
+      "itemCost1": 32500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 6500
+    },
+    "304": {
+      "id": 304,
+      "templateId": 1006,
+      "level": 64,
+      "developAttributeId": 100664,
+      "itemCost1": 36250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 7250
+    },
+    "305": {
+      "id": 305,
+      "templateId": 1006,
+      "level": 65,
+      "developAttributeId": 100665,
+      "itemCost1": 40000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 8000
+    },
+    "306": {
+      "id": 306,
+      "templateId": 1006,
+      "level": 66,
+      "developAttributeId": 100666,
+      "itemCost1": 43750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 8750
+    },
+    "307": {
+      "id": 307,
+      "templateId": 1006,
+      "level": 67,
+      "developAttributeId": 100667,
+      "itemCost1": 47500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 9500
+    },
+    "308": {
+      "id": 308,
+      "templateId": 1006,
+      "level": 68,
+      "developAttributeId": 100668,
+      "itemCost1": 51250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 10250
+    },
+    "309": {
+      "id": 309,
+      "templateId": 1006,
+      "level": 69,
+      "developAttributeId": 100669,
+      "itemCost1": 55000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 11000
+    },
+    "310": {
+      "id": 310,
+      "templateId": 1006,
+      "level": 70,
+      "developAttributeId": 100670,
+      "itemCost1": 58750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 11750
+    },
+    "311": {
+      "id": 311,
+      "templateId": 1006,
+      "level": 71,
+      "developAttributeId": 100671,
+      "itemCost1": 62500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 12500
+    },
+    "312": {
+      "id": 312,
+      "templateId": 1006,
+      "level": 72,
+      "developAttributeId": 100672,
+      "itemCost1": 71875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 14375
+    },
+    "313": {
+      "id": 313,
+      "templateId": 1006,
+      "level": 73,
+      "developAttributeId": 100673,
+      "itemCost1": 81250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 16250
+    },
+    "314": {
+      "id": 314,
+      "templateId": 1006,
+      "level": 74,
+      "developAttributeId": 100674,
+      "itemCost1": 90625,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 18125
+    },
+    "315": {
+      "id": 315,
+      "templateId": 1006,
+      "level": 75,
+      "developAttributeId": 100675,
+      "itemCost1": 100000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 20000
+    },
+    "316": {
+      "id": 316,
+      "templateId": 1006,
+      "level": 76,
+      "developAttributeId": 100676,
+      "itemCost1": 109375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 21875
+    },
+    "317": {
+      "id": 317,
+      "templateId": 1006,
+      "level": 77,
+      "developAttributeId": 100677,
+      "itemCost1": 118750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 23750
+    },
+    "318": {
+      "id": 318,
+      "templateId": 1006,
+      "level": 78,
+      "developAttributeId": 100678,
+      "itemCost1": 128125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 25625
+    },
+    "319": {
+      "id": 319,
+      "templateId": 1006,
+      "level": 79,
+      "developAttributeId": 100679,
+      "itemCost1": 137500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 27500
+    },
+    "320": {
+      "id": 320,
+      "templateId": 1006,
+      "level": 80,
+      "developAttributeId": 100680,
+      "itemCost1": 146875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 29375
+    },
+    "321": {
+      "id": 321,
+      "templateId": 1007,
+      "level": 1,
+      "developAttributeId": 100301,
+      "itemCost1": 0,
+      "itemCost2": 0,
+      "itemCost3": 0,
+      "currencyCost": 0
+    },
+    "322": {
+      "id": 322,
+      "templateId": 1007,
+      "level": 2,
+      "developAttributeId": 100702,
+      "itemCost1": 1000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 200
+    },
+    "323": {
+      "id": 323,
+      "templateId": 1007,
+      "level": 3,
+      "developAttributeId": 100703,
+      "itemCost1": 1265,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 255
+    },
+    "324": {
+      "id": 324,
+      "templateId": 1007,
+      "level": 4,
+      "developAttributeId": 100704,
+      "itemCost1": 1530,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 310
+    },
+    "325": {
+      "id": 325,
+      "templateId": 1007,
+      "level": 5,
+      "developAttributeId": 100705,
+      "itemCost1": 1795,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 360
+    },
+    "326": {
+      "id": 326,
+      "templateId": 1007,
+      "level": 6,
+      "developAttributeId": 100706,
+      "itemCost1": 2060,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 415
+    },
+    "327": {
+      "id": 327,
+      "templateId": 1007,
+      "level": 7,
+      "developAttributeId": 100707,
+      "itemCost1": 2325,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 465
+    },
+    "328": {
+      "id": 328,
+      "templateId": 1007,
+      "level": 8,
+      "developAttributeId": 100708,
+      "itemCost1": 2590,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 520
+    },
+    "329": {
+      "id": 329,
+      "templateId": 1007,
+      "level": 9,
+      "developAttributeId": 100709,
+      "itemCost1": 2855,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 575
+    },
+    "330": {
+      "id": 330,
+      "templateId": 1007,
+      "level": 10,
+      "developAttributeId": 100710,
+      "itemCost1": 3120,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 625
+    },
+    "331": {
+      "id": 331,
+      "templateId": 1007,
+      "level": 11,
+      "developAttributeId": 100711,
+      "itemCost1": 3385,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 680
+    },
+    "332": {
+      "id": 332,
+      "templateId": 1007,
+      "level": 12,
+      "developAttributeId": 100712,
+      "itemCost1": 3650,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 730
+    },
+    "333": {
+      "id": 333,
+      "templateId": 1007,
+      "level": 13,
+      "developAttributeId": 100713,
+      "itemCost1": 3915,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 785
+    },
+    "334": {
+      "id": 334,
+      "templateId": 1007,
+      "level": 14,
+      "developAttributeId": 100714,
+      "itemCost1": 4180,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 840
+    },
+    "335": {
+      "id": 335,
+      "templateId": 1007,
+      "level": 15,
+      "developAttributeId": 100715,
+      "itemCost1": 4445,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 890
+    },
+    "336": {
+      "id": 336,
+      "templateId": 1007,
+      "level": 16,
+      "developAttributeId": 100716,
+      "itemCost1": 4710,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 945
+    },
+    "337": {
+      "id": 337,
+      "templateId": 1007,
+      "level": 17,
+      "developAttributeId": 100717,
+      "itemCost1": 4975,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 995
+    },
+    "338": {
+      "id": 338,
+      "templateId": 1007,
+      "level": 18,
+      "developAttributeId": 100718,
+      "itemCost1": 5240,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1050
+    },
+    "339": {
+      "id": 339,
+      "templateId": 1007,
+      "level": 19,
+      "developAttributeId": 100719,
+      "itemCost1": 5505,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1105
+    },
+    "340": {
+      "id": 340,
+      "templateId": 1007,
+      "level": 20,
+      "developAttributeId": 100720,
+      "itemCost1": 5770,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1155
+    },
+    "341": {
+      "id": 341,
+      "templateId": 1007,
+      "level": 21,
+      "developAttributeId": 100721,
+      "itemCost1": 6250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1250
+    },
+    "342": {
+      "id": 342,
+      "templateId": 1007,
+      "level": 22,
+      "developAttributeId": 100722,
+      "itemCost1": 6565,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1315
+    },
+    "343": {
+      "id": 343,
+      "templateId": 1007,
+      "level": 23,
+      "developAttributeId": 100723,
+      "itemCost1": 6880,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1380
+    },
+    "344": {
+      "id": 344,
+      "templateId": 1007,
+      "level": 24,
+      "developAttributeId": 100724,
+      "itemCost1": 7195,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1440
+    },
+    "345": {
+      "id": 345,
+      "templateId": 1007,
+      "level": 25,
+      "developAttributeId": 100725,
+      "itemCost1": 7510,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1505
+    },
+    "346": {
+      "id": 346,
+      "templateId": 1007,
+      "level": 26,
+      "developAttributeId": 100726,
+      "itemCost1": 7825,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1565
+    },
+    "347": {
+      "id": 347,
+      "templateId": 1007,
+      "level": 27,
+      "developAttributeId": 100727,
+      "itemCost1": 8140,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1630
+    },
+    "348": {
+      "id": 348,
+      "templateId": 1007,
+      "level": 28,
+      "developAttributeId": 100728,
+      "itemCost1": 8455,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1695
+    },
+    "349": {
+      "id": 349,
+      "templateId": 1007,
+      "level": 29,
+      "developAttributeId": 100729,
+      "itemCost1": 8770,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1755
+    },
+    "350": {
+      "id": 350,
+      "templateId": 1007,
+      "level": 30,
+      "developAttributeId": 100730,
+      "itemCost1": 9085,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1820
+    },
+    "351": {
+      "id": 351,
+      "templateId": 1007,
+      "level": 31,
+      "developAttributeId": 100731,
+      "itemCost1": 9400,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1880
+    },
+    "352": {
+      "id": 352,
+      "templateId": 1007,
+      "level": 32,
+      "developAttributeId": 100732,
+      "itemCost1": 9715,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1945
+    },
+    "353": {
+      "id": 353,
+      "templateId": 1007,
+      "level": 33,
+      "developAttributeId": 100733,
+      "itemCost1": 10030,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2010
+    },
+    "354": {
+      "id": 354,
+      "templateId": 1007,
+      "level": 34,
+      "developAttributeId": 100734,
+      "itemCost1": 10345,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2070
+    },
+    "355": {
+      "id": 355,
+      "templateId": 1007,
+      "level": 35,
+      "developAttributeId": 100735,
+      "itemCost1": 10660,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2135
+    },
+    "356": {
+      "id": 356,
+      "templateId": 1007,
+      "level": 36,
+      "developAttributeId": 100736,
+      "itemCost1": 10975,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2195
+    },
+    "357": {
+      "id": 357,
+      "templateId": 1007,
+      "level": 37,
+      "developAttributeId": 100737,
+      "itemCost1": 11290,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2260
+    },
+    "358": {
+      "id": 358,
+      "templateId": 1007,
+      "level": 38,
+      "developAttributeId": 100738,
+      "itemCost1": 11605,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2325
+    },
+    "359": {
+      "id": 359,
+      "templateId": 1007,
+      "level": 39,
+      "developAttributeId": 100739,
+      "itemCost1": 11920,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2385
+    },
+    "360": {
+      "id": 360,
+      "templateId": 1007,
+      "level": 40,
+      "developAttributeId": 100740,
+      "itemCost1": 12235,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2450
+    },
+    "361": {
+      "id": 361,
+      "templateId": 1007,
+      "level": 41,
+      "developAttributeId": 100741,
+      "itemCost1": 12500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2500
+    },
+    "362": {
+      "id": 362,
+      "templateId": 1007,
+      "level": 42,
+      "developAttributeId": 100742,
+      "itemCost1": 13125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2625
+    },
+    "363": {
+      "id": 363,
+      "templateId": 1007,
+      "level": 43,
+      "developAttributeId": 100743,
+      "itemCost1": 13750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2750
+    },
+    "364": {
+      "id": 364,
+      "templateId": 1007,
+      "level": 44,
+      "developAttributeId": 100744,
+      "itemCost1": 14375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2875
+    },
+    "365": {
+      "id": 365,
+      "templateId": 1007,
+      "level": 45,
+      "developAttributeId": 100745,
+      "itemCost1": 15000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3000
+    },
+    "366": {
+      "id": 366,
+      "templateId": 1007,
+      "level": 46,
+      "developAttributeId": 100746,
+      "itemCost1": 15625,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3125
+    },
+    "367": {
+      "id": 367,
+      "templateId": 1007,
+      "level": 47,
+      "developAttributeId": 100747,
+      "itemCost1": 16250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3250
+    },
+    "368": {
+      "id": 368,
+      "templateId": 1007,
+      "level": 48,
+      "developAttributeId": 100748,
+      "itemCost1": 16875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3375
+    },
+    "369": {
+      "id": 369,
+      "templateId": 1007,
+      "level": 49,
+      "developAttributeId": 100749,
+      "itemCost1": 17500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3500
+    },
+    "370": {
+      "id": 370,
+      "templateId": 1007,
+      "level": 50,
+      "developAttributeId": 100750,
+      "itemCost1": 18125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3625
+    },
+    "371": {
+      "id": 371,
+      "templateId": 1007,
+      "level": 51,
+      "developAttributeId": 100751,
+      "itemCost1": 18750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3750
+    },
+    "372": {
+      "id": 372,
+      "templateId": 1007,
+      "level": 52,
+      "developAttributeId": 100752,
+      "itemCost1": 19375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3875
+    },
+    "373": {
+      "id": 373,
+      "templateId": 1007,
+      "level": 53,
+      "developAttributeId": 100753,
+      "itemCost1": 20000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4000
+    },
+    "374": {
+      "id": 374,
+      "templateId": 1007,
+      "level": 54,
+      "developAttributeId": 100754,
+      "itemCost1": 20625,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4125
+    },
+    "375": {
+      "id": 375,
+      "templateId": 1007,
+      "level": 55,
+      "developAttributeId": 100755,
+      "itemCost1": 21250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4250
+    },
+    "376": {
+      "id": 376,
+      "templateId": 1007,
+      "level": 56,
+      "developAttributeId": 100756,
+      "itemCost1": 21875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4375
+    },
+    "377": {
+      "id": 377,
+      "templateId": 1007,
+      "level": 57,
+      "developAttributeId": 100757,
+      "itemCost1": 22500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4500
+    },
+    "378": {
+      "id": 378,
+      "templateId": 1007,
+      "level": 58,
+      "developAttributeId": 100758,
+      "itemCost1": 23125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4625
+    },
+    "379": {
+      "id": 379,
+      "templateId": 1007,
+      "level": 59,
+      "developAttributeId": 100759,
+      "itemCost1": 23750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4750
+    },
+    "380": {
+      "id": 380,
+      "templateId": 1007,
+      "level": 60,
+      "developAttributeId": 100760,
+      "itemCost1": 24375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4875
+    },
+    "381": {
+      "id": 381,
+      "templateId": 1007,
+      "level": 61,
+      "developAttributeId": 100761,
+      "itemCost1": 25000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 5000
+    },
+    "382": {
+      "id": 382,
+      "templateId": 1007,
+      "level": 62,
+      "developAttributeId": 100762,
+      "itemCost1": 28750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 5750
+    },
+    "383": {
+      "id": 383,
+      "templateId": 1007,
+      "level": 63,
+      "developAttributeId": 100763,
+      "itemCost1": 32500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 6500
+    },
+    "384": {
+      "id": 384,
+      "templateId": 1007,
+      "level": 64,
+      "developAttributeId": 100764,
+      "itemCost1": 36250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 7250
+    },
+    "385": {
+      "id": 385,
+      "templateId": 1007,
+      "level": 65,
+      "developAttributeId": 100765,
+      "itemCost1": 40000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 8000
+    },
+    "386": {
+      "id": 386,
+      "templateId": 1007,
+      "level": 66,
+      "developAttributeId": 100766,
+      "itemCost1": 43750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 8750
+    },
+    "387": {
+      "id": 387,
+      "templateId": 1007,
+      "level": 67,
+      "developAttributeId": 100767,
+      "itemCost1": 47500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 9500
+    },
+    "388": {
+      "id": 388,
+      "templateId": 1007,
+      "level": 68,
+      "developAttributeId": 100768,
+      "itemCost1": 51250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 10250
+    },
+    "389": {
+      "id": 389,
+      "templateId": 1007,
+      "level": 69,
+      "developAttributeId": 100769,
+      "itemCost1": 55000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 11000
+    },
+    "390": {
+      "id": 390,
+      "templateId": 1007,
+      "level": 70,
+      "developAttributeId": 100770,
+      "itemCost1": 58750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 11750
+    },
+    "391": {
+      "id": 391,
+      "templateId": 1007,
+      "level": 71,
+      "developAttributeId": 100771,
+      "itemCost1": 62500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 12500
+    },
+    "392": {
+      "id": 392,
+      "templateId": 1007,
+      "level": 72,
+      "developAttributeId": 100772,
+      "itemCost1": 71875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 14375
+    },
+    "393": {
+      "id": 393,
+      "templateId": 1007,
+      "level": 73,
+      "developAttributeId": 100773,
+      "itemCost1": 81250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 16250
+    },
+    "394": {
+      "id": 394,
+      "templateId": 1007,
+      "level": 74,
+      "developAttributeId": 100774,
+      "itemCost1": 90625,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 18125
+    },
+    "395": {
+      "id": 395,
+      "templateId": 1007,
+      "level": 75,
+      "developAttributeId": 100775,
+      "itemCost1": 100000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 20000
+    },
+    "396": {
+      "id": 396,
+      "templateId": 1007,
+      "level": 76,
+      "developAttributeId": 100776,
+      "itemCost1": 109375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 21875
+    },
+    "397": {
+      "id": 397,
+      "templateId": 1007,
+      "level": 77,
+      "developAttributeId": 100777,
+      "itemCost1": 118750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 23750
+    },
+    "398": {
+      "id": 398,
+      "templateId": 1007,
+      "level": 78,
+      "developAttributeId": 100778,
+      "itemCost1": 128125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 25625
+    },
+    "399": {
+      "id": 399,
+      "templateId": 1007,
+      "level": 79,
+      "developAttributeId": 100779,
+      "itemCost1": 137500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 27500
+    },
+    "400": {
+      "id": 400,
+      "templateId": 1007,
+      "level": 80,
+      "developAttributeId": 100780,
+      "itemCost1": 146875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 29375
+    },
+    "401": {
+      "id": 401,
+      "templateId": 1501,
+      "level": 1,
+      "developAttributeId": 100301,
+      "itemCost1": 0,
+      "itemCost2": 0,
+      "itemCost3": 0,
+      "currencyCost": 0
+    },
+    "402": {
+      "id": 402,
+      "templateId": 1501,
+      "level": 2,
+      "developAttributeId": 150102,
+      "itemCost1": 1000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 200
+    },
+    "403": {
+      "id": 403,
+      "templateId": 1501,
+      "level": 3,
+      "developAttributeId": 150103,
+      "itemCost1": 1265,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 255
+    },
+    "404": {
+      "id": 404,
+      "templateId": 1501,
+      "level": 4,
+      "developAttributeId": 150104,
+      "itemCost1": 1530,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 310
+    },
+    "405": {
+      "id": 405,
+      "templateId": 1501,
+      "level": 5,
+      "developAttributeId": 150105,
+      "itemCost1": 1795,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 360
+    },
+    "406": {
+      "id": 406,
+      "templateId": 1501,
+      "level": 6,
+      "developAttributeId": 150106,
+      "itemCost1": 2060,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 415
+    },
+    "407": {
+      "id": 407,
+      "templateId": 1501,
+      "level": 7,
+      "developAttributeId": 150107,
+      "itemCost1": 2325,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 465
+    },
+    "408": {
+      "id": 408,
+      "templateId": 1501,
+      "level": 8,
+      "developAttributeId": 150108,
+      "itemCost1": 2590,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 520
+    },
+    "409": {
+      "id": 409,
+      "templateId": 1501,
+      "level": 9,
+      "developAttributeId": 150109,
+      "itemCost1": 2855,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 575
+    },
+    "410": {
+      "id": 410,
+      "templateId": 1501,
+      "level": 10,
+      "developAttributeId": 150110,
+      "itemCost1": 3120,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 625
+    },
+    "411": {
+      "id": 411,
+      "templateId": 1501,
+      "level": 11,
+      "developAttributeId": 150111,
+      "itemCost1": 3385,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 680
+    },
+    "412": {
+      "id": 412,
+      "templateId": 1501,
+      "level": 12,
+      "developAttributeId": 150112,
+      "itemCost1": 3650,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 730
+    },
+    "413": {
+      "id": 413,
+      "templateId": 1501,
+      "level": 13,
+      "developAttributeId": 150113,
+      "itemCost1": 3915,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 785
+    },
+    "414": {
+      "id": 414,
+      "templateId": 1501,
+      "level": 14,
+      "developAttributeId": 150114,
+      "itemCost1": 4180,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 840
+    },
+    "415": {
+      "id": 415,
+      "templateId": 1501,
+      "level": 15,
+      "developAttributeId": 150115,
+      "itemCost1": 4445,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 890
+    },
+    "416": {
+      "id": 416,
+      "templateId": 1501,
+      "level": 16,
+      "developAttributeId": 150116,
+      "itemCost1": 4710,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 945
+    },
+    "417": {
+      "id": 417,
+      "templateId": 1501,
+      "level": 17,
+      "developAttributeId": 150117,
+      "itemCost1": 4975,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 995
+    },
+    "418": {
+      "id": 418,
+      "templateId": 1501,
+      "level": 18,
+      "developAttributeId": 150118,
+      "itemCost1": 5240,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1050
+    },
+    "419": {
+      "id": 419,
+      "templateId": 1501,
+      "level": 19,
+      "developAttributeId": 150119,
+      "itemCost1": 5505,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1105
+    },
+    "420": {
+      "id": 420,
+      "templateId": 1501,
+      "level": 20,
+      "developAttributeId": 150120,
+      "itemCost1": 5770,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1155
+    },
+    "421": {
+      "id": 421,
+      "templateId": 1501,
+      "level": 21,
+      "developAttributeId": 150121,
+      "itemCost1": 6250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1250
+    },
+    "422": {
+      "id": 422,
+      "templateId": 1501,
+      "level": 22,
+      "developAttributeId": 150122,
+      "itemCost1": 6565,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1315
+    },
+    "423": {
+      "id": 423,
+      "templateId": 1501,
+      "level": 23,
+      "developAttributeId": 150123,
+      "itemCost1": 6880,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1380
+    },
+    "424": {
+      "id": 424,
+      "templateId": 1501,
+      "level": 24,
+      "developAttributeId": 150124,
+      "itemCost1": 7195,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1440
+    },
+    "425": {
+      "id": 425,
+      "templateId": 1501,
+      "level": 25,
+      "developAttributeId": 150125,
+      "itemCost1": 7510,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1505
+    },
+    "426": {
+      "id": 426,
+      "templateId": 1501,
+      "level": 26,
+      "developAttributeId": 150126,
+      "itemCost1": 7825,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1565
+    },
+    "427": {
+      "id": 427,
+      "templateId": 1501,
+      "level": 27,
+      "developAttributeId": 150127,
+      "itemCost1": 8140,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1630
+    },
+    "428": {
+      "id": 428,
+      "templateId": 1501,
+      "level": 28,
+      "developAttributeId": 150128,
+      "itemCost1": 8455,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1695
+    },
+    "429": {
+      "id": 429,
+      "templateId": 1501,
+      "level": 29,
+      "developAttributeId": 150129,
+      "itemCost1": 8770,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1755
+    },
+    "430": {
+      "id": 430,
+      "templateId": 1501,
+      "level": 30,
+      "developAttributeId": 150130,
+      "itemCost1": 9085,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1820
+    },
+    "431": {
+      "id": 431,
+      "templateId": 1501,
+      "level": 31,
+      "developAttributeId": 150131,
+      "itemCost1": 9400,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1880
+    },
+    "432": {
+      "id": 432,
+      "templateId": 1501,
+      "level": 32,
+      "developAttributeId": 150132,
+      "itemCost1": 9715,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1945
+    },
+    "433": {
+      "id": 433,
+      "templateId": 1501,
+      "level": 33,
+      "developAttributeId": 150133,
+      "itemCost1": 10030,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2010
+    },
+    "434": {
+      "id": 434,
+      "templateId": 1501,
+      "level": 34,
+      "developAttributeId": 150134,
+      "itemCost1": 10345,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2070
+    },
+    "435": {
+      "id": 435,
+      "templateId": 1501,
+      "level": 35,
+      "developAttributeId": 150135,
+      "itemCost1": 10660,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2135
+    },
+    "436": {
+      "id": 436,
+      "templateId": 1501,
+      "level": 36,
+      "developAttributeId": 150136,
+      "itemCost1": 10975,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2195
+    },
+    "437": {
+      "id": 437,
+      "templateId": 1501,
+      "level": 37,
+      "developAttributeId": 150137,
+      "itemCost1": 11290,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2260
+    },
+    "438": {
+      "id": 438,
+      "templateId": 1501,
+      "level": 38,
+      "developAttributeId": 150138,
+      "itemCost1": 11605,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2325
+    },
+    "439": {
+      "id": 439,
+      "templateId": 1501,
+      "level": 39,
+      "developAttributeId": 150139,
+      "itemCost1": 11920,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2385
+    },
+    "440": {
+      "id": 440,
+      "templateId": 1501,
+      "level": 40,
+      "developAttributeId": 150140,
+      "itemCost1": 12235,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2450
+    },
+    "441": {
+      "id": 441,
+      "templateId": 1501,
+      "level": 41,
+      "developAttributeId": 150141,
+      "itemCost1": 12500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2500
+    },
+    "442": {
+      "id": 442,
+      "templateId": 1501,
+      "level": 42,
+      "developAttributeId": 150142,
+      "itemCost1": 13125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2625
+    },
+    "443": {
+      "id": 443,
+      "templateId": 1501,
+      "level": 43,
+      "developAttributeId": 150143,
+      "itemCost1": 13750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2750
+    },
+    "444": {
+      "id": 444,
+      "templateId": 1501,
+      "level": 44,
+      "developAttributeId": 150144,
+      "itemCost1": 14375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2875
+    },
+    "445": {
+      "id": 445,
+      "templateId": 1501,
+      "level": 45,
+      "developAttributeId": 150145,
+      "itemCost1": 15000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3000
+    },
+    "446": {
+      "id": 446,
+      "templateId": 1501,
+      "level": 46,
+      "developAttributeId": 150146,
+      "itemCost1": 15625,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3125
+    },
+    "447": {
+      "id": 447,
+      "templateId": 1501,
+      "level": 47,
+      "developAttributeId": 150147,
+      "itemCost1": 16250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3250
+    },
+    "448": {
+      "id": 448,
+      "templateId": 1501,
+      "level": 48,
+      "developAttributeId": 150148,
+      "itemCost1": 16875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3375
+    },
+    "449": {
+      "id": 449,
+      "templateId": 1501,
+      "level": 49,
+      "developAttributeId": 150149,
+      "itemCost1": 17500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3500
+    },
+    "450": {
+      "id": 450,
+      "templateId": 1501,
+      "level": 50,
+      "developAttributeId": 150150,
+      "itemCost1": 18125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3625
+    },
+    "451": {
+      "id": 451,
+      "templateId": 1501,
+      "level": 51,
+      "developAttributeId": 150151,
+      "itemCost1": 18750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3750
+    },
+    "452": {
+      "id": 452,
+      "templateId": 1501,
+      "level": 52,
+      "developAttributeId": 150152,
+      "itemCost1": 19375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3875
+    },
+    "453": {
+      "id": 453,
+      "templateId": 1501,
+      "level": 53,
+      "developAttributeId": 150153,
+      "itemCost1": 20000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4000
+    },
+    "454": {
+      "id": 454,
+      "templateId": 1501,
+      "level": 54,
+      "developAttributeId": 150154,
+      "itemCost1": 20625,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4125
+    },
+    "455": {
+      "id": 455,
+      "templateId": 1501,
+      "level": 55,
+      "developAttributeId": 150155,
+      "itemCost1": 21250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4250
+    },
+    "456": {
+      "id": 456,
+      "templateId": 1501,
+      "level": 56,
+      "developAttributeId": 150156,
+      "itemCost1": 21875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4375
+    },
+    "457": {
+      "id": 457,
+      "templateId": 1501,
+      "level": 57,
+      "developAttributeId": 150157,
+      "itemCost1": 22500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4500
+    },
+    "458": {
+      "id": 458,
+      "templateId": 1501,
+      "level": 58,
+      "developAttributeId": 150158,
+      "itemCost1": 23125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4625
+    },
+    "459": {
+      "id": 459,
+      "templateId": 1501,
+      "level": 59,
+      "developAttributeId": 150159,
+      "itemCost1": 23750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4750
+    },
+    "460": {
+      "id": 460,
+      "templateId": 1501,
+      "level": 60,
+      "developAttributeId": 150160,
+      "itemCost1": 24375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4875
+    },
+    "461": {
+      "id": 461,
+      "templateId": 1501,
+      "level": 61,
+      "developAttributeId": 150161,
+      "itemCost1": 25000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 5000
+    },
+    "462": {
+      "id": 462,
+      "templateId": 1501,
+      "level": 62,
+      "developAttributeId": 150162,
+      "itemCost1": 28750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 5750
+    },
+    "463": {
+      "id": 463,
+      "templateId": 1501,
+      "level": 63,
+      "developAttributeId": 150163,
+      "itemCost1": 32500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 6500
+    },
+    "464": {
+      "id": 464,
+      "templateId": 1501,
+      "level": 64,
+      "developAttributeId": 150164,
+      "itemCost1": 36250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 7250
+    },
+    "465": {
+      "id": 465,
+      "templateId": 1501,
+      "level": 65,
+      "developAttributeId": 150165,
+      "itemCost1": 40000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 8000
+    },
+    "466": {
+      "id": 466,
+      "templateId": 1501,
+      "level": 66,
+      "developAttributeId": 150166,
+      "itemCost1": 43750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 8750
+    },
+    "467": {
+      "id": 467,
+      "templateId": 1501,
+      "level": 67,
+      "developAttributeId": 150167,
+      "itemCost1": 47500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 9500
+    },
+    "468": {
+      "id": 468,
+      "templateId": 1501,
+      "level": 68,
+      "developAttributeId": 150168,
+      "itemCost1": 51250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 10250
+    },
+    "469": {
+      "id": 469,
+      "templateId": 1501,
+      "level": 69,
+      "developAttributeId": 150169,
+      "itemCost1": 55000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 11000
+    },
+    "470": {
+      "id": 470,
+      "templateId": 1501,
+      "level": 70,
+      "developAttributeId": 150170,
+      "itemCost1": 58750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 11750
+    },
+    "471": {
+      "id": 471,
+      "templateId": 1501,
+      "level": 71,
+      "developAttributeId": 150171,
+      "itemCost1": 62500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 12500
+    },
+    "472": {
+      "id": 472,
+      "templateId": 1501,
+      "level": 72,
+      "developAttributeId": 150172,
+      "itemCost1": 71875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 14375
+    },
+    "473": {
+      "id": 473,
+      "templateId": 1501,
+      "level": 73,
+      "developAttributeId": 150173,
+      "itemCost1": 81250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 16250
+    },
+    "474": {
+      "id": 474,
+      "templateId": 1501,
+      "level": 74,
+      "developAttributeId": 150174,
+      "itemCost1": 90625,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 18125
+    },
+    "475": {
+      "id": 475,
+      "templateId": 1501,
+      "level": 75,
+      "developAttributeId": 150175,
+      "itemCost1": 100000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 20000
+    },
+    "476": {
+      "id": 476,
+      "templateId": 1501,
+      "level": 76,
+      "developAttributeId": 150176,
+      "itemCost1": 109375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 21875
+    },
+    "477": {
+      "id": 477,
+      "templateId": 1501,
+      "level": 77,
+      "developAttributeId": 150177,
+      "itemCost1": 118750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 23750
+    },
+    "478": {
+      "id": 478,
+      "templateId": 1501,
+      "level": 78,
+      "developAttributeId": 150178,
+      "itemCost1": 128125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 25625
+    },
+    "479": {
+      "id": 479,
+      "templateId": 1501,
+      "level": 79,
+      "developAttributeId": 150179,
+      "itemCost1": 137500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 27500
+    },
+    "480": {
+      "id": 480,
+      "templateId": 1501,
+      "level": 80,
+      "developAttributeId": 150180,
+      "itemCost1": 146875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 29375
+    },
+    "481": {
+      "id": 481,
+      "templateId": 1502,
+      "level": 1,
+      "developAttributeId": 100301,
+      "itemCost1": 0,
+      "itemCost2": 0,
+      "itemCost3": 0,
+      "currencyCost": 0
+    },
+    "482": {
+      "id": 482,
+      "templateId": 1502,
+      "level": 2,
+      "developAttributeId": 150202,
+      "itemCost1": 1000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 200
+    },
+    "483": {
+      "id": 483,
+      "templateId": 1502,
+      "level": 3,
+      "developAttributeId": 150203,
+      "itemCost1": 1265,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 255
+    },
+    "484": {
+      "id": 484,
+      "templateId": 1502,
+      "level": 4,
+      "developAttributeId": 150204,
+      "itemCost1": 1530,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 310
+    },
+    "485": {
+      "id": 485,
+      "templateId": 1502,
+      "level": 5,
+      "developAttributeId": 150205,
+      "itemCost1": 1795,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 360
+    },
+    "486": {
+      "id": 486,
+      "templateId": 1502,
+      "level": 6,
+      "developAttributeId": 150206,
+      "itemCost1": 2060,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 415
+    },
+    "487": {
+      "id": 487,
+      "templateId": 1502,
+      "level": 7,
+      "developAttributeId": 150207,
+      "itemCost1": 2325,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 465
+    },
+    "488": {
+      "id": 488,
+      "templateId": 1502,
+      "level": 8,
+      "developAttributeId": 150208,
+      "itemCost1": 2590,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 520
+    },
+    "489": {
+      "id": 489,
+      "templateId": 1502,
+      "level": 9,
+      "developAttributeId": 150209,
+      "itemCost1": 2855,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 575
+    },
+    "490": {
+      "id": 490,
+      "templateId": 1502,
+      "level": 10,
+      "developAttributeId": 150210,
+      "itemCost1": 3120,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 625
+    },
+    "491": {
+      "id": 491,
+      "templateId": 1502,
+      "level": 11,
+      "developAttributeId": 150211,
+      "itemCost1": 3385,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 680
+    },
+    "492": {
+      "id": 492,
+      "templateId": 1502,
+      "level": 12,
+      "developAttributeId": 150212,
+      "itemCost1": 3650,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 730
+    },
+    "493": {
+      "id": 493,
+      "templateId": 1502,
+      "level": 13,
+      "developAttributeId": 150213,
+      "itemCost1": 3915,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 785
+    },
+    "494": {
+      "id": 494,
+      "templateId": 1502,
+      "level": 14,
+      "developAttributeId": 150214,
+      "itemCost1": 4180,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 840
+    },
+    "495": {
+      "id": 495,
+      "templateId": 1502,
+      "level": 15,
+      "developAttributeId": 150215,
+      "itemCost1": 4445,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 890
+    },
+    "496": {
+      "id": 496,
+      "templateId": 1502,
+      "level": 16,
+      "developAttributeId": 150216,
+      "itemCost1": 4710,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 945
+    },
+    "497": {
+      "id": 497,
+      "templateId": 1502,
+      "level": 17,
+      "developAttributeId": 150217,
+      "itemCost1": 4975,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 995
+    },
+    "498": {
+      "id": 498,
+      "templateId": 1502,
+      "level": 18,
+      "developAttributeId": 150218,
+      "itemCost1": 5240,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1050
+    },
+    "499": {
+      "id": 499,
+      "templateId": 1502,
+      "level": 19,
+      "developAttributeId": 150219,
+      "itemCost1": 5505,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1105
+    },
+    "500": {
+      "id": 500,
+      "templateId": 1502,
+      "level": 20,
+      "developAttributeId": 150220,
+      "itemCost1": 5770,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1155
+    },
+    "501": {
+      "id": 501,
+      "templateId": 1502,
+      "level": 21,
+      "developAttributeId": 150221,
+      "itemCost1": 6250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1250
+    },
+    "502": {
+      "id": 502,
+      "templateId": 1502,
+      "level": 22,
+      "developAttributeId": 150222,
+      "itemCost1": 6565,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1315
+    },
+    "503": {
+      "id": 503,
+      "templateId": 1502,
+      "level": 23,
+      "developAttributeId": 150223,
+      "itemCost1": 6880,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1380
+    },
+    "504": {
+      "id": 504,
+      "templateId": 1502,
+      "level": 24,
+      "developAttributeId": 150224,
+      "itemCost1": 7195,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1440
+    },
+    "505": {
+      "id": 505,
+      "templateId": 1502,
+      "level": 25,
+      "developAttributeId": 150225,
+      "itemCost1": 7510,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1505
+    },
+    "506": {
+      "id": 506,
+      "templateId": 1502,
+      "level": 26,
+      "developAttributeId": 150226,
+      "itemCost1": 7825,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1565
+    },
+    "507": {
+      "id": 507,
+      "templateId": 1502,
+      "level": 27,
+      "developAttributeId": 150227,
+      "itemCost1": 8140,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1630
+    },
+    "508": {
+      "id": 508,
+      "templateId": 1502,
+      "level": 28,
+      "developAttributeId": 150228,
+      "itemCost1": 8455,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1695
+    },
+    "509": {
+      "id": 509,
+      "templateId": 1502,
+      "level": 29,
+      "developAttributeId": 150229,
+      "itemCost1": 8770,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1755
+    },
+    "510": {
+      "id": 510,
+      "templateId": 1502,
+      "level": 30,
+      "developAttributeId": 150230,
+      "itemCost1": 9085,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1820
+    },
+    "511": {
+      "id": 511,
+      "templateId": 1502,
+      "level": 31,
+      "developAttributeId": 150231,
+      "itemCost1": 9400,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1880
+    },
+    "512": {
+      "id": 512,
+      "templateId": 1502,
+      "level": 32,
+      "developAttributeId": 150232,
+      "itemCost1": 9715,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1945
+    },
+    "513": {
+      "id": 513,
+      "templateId": 1502,
+      "level": 33,
+      "developAttributeId": 150233,
+      "itemCost1": 10030,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2010
+    },
+    "514": {
+      "id": 514,
+      "templateId": 1502,
+      "level": 34,
+      "developAttributeId": 150234,
+      "itemCost1": 10345,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2070
+    },
+    "515": {
+      "id": 515,
+      "templateId": 1502,
+      "level": 35,
+      "developAttributeId": 150235,
+      "itemCost1": 10660,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2135
+    },
+    "516": {
+      "id": 516,
+      "templateId": 1502,
+      "level": 36,
+      "developAttributeId": 150236,
+      "itemCost1": 10975,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2195
+    },
+    "517": {
+      "id": 517,
+      "templateId": 1502,
+      "level": 37,
+      "developAttributeId": 150237,
+      "itemCost1": 11290,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2260
+    },
+    "518": {
+      "id": 518,
+      "templateId": 1502,
+      "level": 38,
+      "developAttributeId": 150238,
+      "itemCost1": 11605,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2325
+    },
+    "519": {
+      "id": 519,
+      "templateId": 1502,
+      "level": 39,
+      "developAttributeId": 150239,
+      "itemCost1": 11920,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2385
+    },
+    "520": {
+      "id": 520,
+      "templateId": 1502,
+      "level": 40,
+      "developAttributeId": 150240,
+      "itemCost1": 12235,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2450
+    },
+    "521": {
+      "id": 521,
+      "templateId": 1502,
+      "level": 41,
+      "developAttributeId": 150241,
+      "itemCost1": 12500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2500
+    },
+    "522": {
+      "id": 522,
+      "templateId": 1502,
+      "level": 42,
+      "developAttributeId": 150242,
+      "itemCost1": 13125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2625
+    },
+    "523": {
+      "id": 523,
+      "templateId": 1502,
+      "level": 43,
+      "developAttributeId": 150243,
+      "itemCost1": 13750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2750
+    },
+    "524": {
+      "id": 524,
+      "templateId": 1502,
+      "level": 44,
+      "developAttributeId": 150244,
+      "itemCost1": 14375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2875
+    },
+    "525": {
+      "id": 525,
+      "templateId": 1502,
+      "level": 45,
+      "developAttributeId": 150245,
+      "itemCost1": 15000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3000
+    },
+    "526": {
+      "id": 526,
+      "templateId": 1502,
+      "level": 46,
+      "developAttributeId": 150246,
+      "itemCost1": 15625,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3125
+    },
+    "527": {
+      "id": 527,
+      "templateId": 1502,
+      "level": 47,
+      "developAttributeId": 150247,
+      "itemCost1": 16250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3250
+    },
+    "528": {
+      "id": 528,
+      "templateId": 1502,
+      "level": 48,
+      "developAttributeId": 150248,
+      "itemCost1": 16875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3375
+    },
+    "529": {
+      "id": 529,
+      "templateId": 1502,
+      "level": 49,
+      "developAttributeId": 150249,
+      "itemCost1": 17500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3500
+    },
+    "530": {
+      "id": 530,
+      "templateId": 1502,
+      "level": 50,
+      "developAttributeId": 150250,
+      "itemCost1": 18125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3625
+    },
+    "531": {
+      "id": 531,
+      "templateId": 1502,
+      "level": 51,
+      "developAttributeId": 150251,
+      "itemCost1": 18750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3750
+    },
+    "532": {
+      "id": 532,
+      "templateId": 1502,
+      "level": 52,
+      "developAttributeId": 150252,
+      "itemCost1": 19375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3875
+    },
+    "533": {
+      "id": 533,
+      "templateId": 1502,
+      "level": 53,
+      "developAttributeId": 150253,
+      "itemCost1": 20000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4000
+    },
+    "534": {
+      "id": 534,
+      "templateId": 1502,
+      "level": 54,
+      "developAttributeId": 150254,
+      "itemCost1": 20625,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4125
+    },
+    "535": {
+      "id": 535,
+      "templateId": 1502,
+      "level": 55,
+      "developAttributeId": 150255,
+      "itemCost1": 21250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4250
+    },
+    "536": {
+      "id": 536,
+      "templateId": 1502,
+      "level": 56,
+      "developAttributeId": 150256,
+      "itemCost1": 21875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4375
+    },
+    "537": {
+      "id": 537,
+      "templateId": 1502,
+      "level": 57,
+      "developAttributeId": 150257,
+      "itemCost1": 22500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4500
+    },
+    "538": {
+      "id": 538,
+      "templateId": 1502,
+      "level": 58,
+      "developAttributeId": 150258,
+      "itemCost1": 23125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4625
+    },
+    "539": {
+      "id": 539,
+      "templateId": 1502,
+      "level": 59,
+      "developAttributeId": 150259,
+      "itemCost1": 23750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4750
+    },
+    "540": {
+      "id": 540,
+      "templateId": 1502,
+      "level": 60,
+      "developAttributeId": 150260,
+      "itemCost1": 24375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4875
+    },
+    "541": {
+      "id": 541,
+      "templateId": 1502,
+      "level": 61,
+      "developAttributeId": 150261,
+      "itemCost1": 25000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 5000
+    },
+    "542": {
+      "id": 542,
+      "templateId": 1502,
+      "level": 62,
+      "developAttributeId": 150262,
+      "itemCost1": 28750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 5750
+    },
+    "543": {
+      "id": 543,
+      "templateId": 1502,
+      "level": 63,
+      "developAttributeId": 150263,
+      "itemCost1": 32500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 6500
+    },
+    "544": {
+      "id": 544,
+      "templateId": 1502,
+      "level": 64,
+      "developAttributeId": 150264,
+      "itemCost1": 36250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 7250
+    },
+    "545": {
+      "id": 545,
+      "templateId": 1502,
+      "level": 65,
+      "developAttributeId": 150265,
+      "itemCost1": 40000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 8000
+    },
+    "546": {
+      "id": 546,
+      "templateId": 1502,
+      "level": 66,
+      "developAttributeId": 150266,
+      "itemCost1": 43750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 8750
+    },
+    "547": {
+      "id": 547,
+      "templateId": 1502,
+      "level": 67,
+      "developAttributeId": 150267,
+      "itemCost1": 47500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 9500
+    },
+    "548": {
+      "id": 548,
+      "templateId": 1502,
+      "level": 68,
+      "developAttributeId": 150268,
+      "itemCost1": 51250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 10250
+    },
+    "549": {
+      "id": 549,
+      "templateId": 1502,
+      "level": 69,
+      "developAttributeId": 150269,
+      "itemCost1": 55000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 11000
+    },
+    "550": {
+      "id": 550,
+      "templateId": 1502,
+      "level": 70,
+      "developAttributeId": 150270,
+      "itemCost1": 58750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 11750
+    },
+    "551": {
+      "id": 551,
+      "templateId": 1502,
+      "level": 71,
+      "developAttributeId": 150271,
+      "itemCost1": 62500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 12500
+    },
+    "552": {
+      "id": 552,
+      "templateId": 1502,
+      "level": 72,
+      "developAttributeId": 150272,
+      "itemCost1": 71875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 14375
+    },
+    "553": {
+      "id": 553,
+      "templateId": 1502,
+      "level": 73,
+      "developAttributeId": 150273,
+      "itemCost1": 81250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 16250
+    },
+    "554": {
+      "id": 554,
+      "templateId": 1502,
+      "level": 74,
+      "developAttributeId": 150274,
+      "itemCost1": 90625,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 18125
+    },
+    "555": {
+      "id": 555,
+      "templateId": 1502,
+      "level": 75,
+      "developAttributeId": 150275,
+      "itemCost1": 100000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 20000
+    },
+    "556": {
+      "id": 556,
+      "templateId": 1502,
+      "level": 76,
+      "developAttributeId": 150276,
+      "itemCost1": 109375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 21875
+    },
+    "557": {
+      "id": 557,
+      "templateId": 1502,
+      "level": 77,
+      "developAttributeId": 150277,
+      "itemCost1": 118750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 23750
+    },
+    "558": {
+      "id": 558,
+      "templateId": 1502,
+      "level": 78,
+      "developAttributeId": 150278,
+      "itemCost1": 128125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 25625
+    },
+    "559": {
+      "id": 559,
+      "templateId": 1502,
+      "level": 79,
+      "developAttributeId": 150279,
+      "itemCost1": 137500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 27500
+    },
+    "560": {
+      "id": 560,
+      "templateId": 1502,
+      "level": 80,
+      "developAttributeId": 150280,
+      "itemCost1": 146875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 29375
+    },
+    "561": {
+      "id": 561,
+      "templateId": 1505,
+      "level": 1,
+      "developAttributeId": 100301,
+      "itemCost1": 0,
+      "itemCost2": 0,
+      "itemCost3": 0,
+      "currencyCost": 0
+    },
+    "562": {
+      "id": 562,
+      "templateId": 1505,
+      "level": 2,
+      "developAttributeId": 150502,
+      "itemCost1": 1000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 200
+    },
+    "563": {
+      "id": 563,
+      "templateId": 1505,
+      "level": 3,
+      "developAttributeId": 150503,
+      "itemCost1": 1265,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 255
+    },
+    "564": {
+      "id": 564,
+      "templateId": 1505,
+      "level": 4,
+      "developAttributeId": 150504,
+      "itemCost1": 1530,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 310
+    },
+    "565": {
+      "id": 565,
+      "templateId": 1505,
+      "level": 5,
+      "developAttributeId": 150505,
+      "itemCost1": 1795,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 360
+    },
+    "566": {
+      "id": 566,
+      "templateId": 1505,
+      "level": 6,
+      "developAttributeId": 150506,
+      "itemCost1": 2060,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 415
+    },
+    "567": {
+      "id": 567,
+      "templateId": 1505,
+      "level": 7,
+      "developAttributeId": 150507,
+      "itemCost1": 2325,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 465
+    },
+    "568": {
+      "id": 568,
+      "templateId": 1505,
+      "level": 8,
+      "developAttributeId": 150508,
+      "itemCost1": 2590,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 520
+    },
+    "569": {
+      "id": 569,
+      "templateId": 1505,
+      "level": 9,
+      "developAttributeId": 150509,
+      "itemCost1": 2855,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 575
+    },
+    "570": {
+      "id": 570,
+      "templateId": 1505,
+      "level": 10,
+      "developAttributeId": 150510,
+      "itemCost1": 3120,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 625
+    },
+    "571": {
+      "id": 571,
+      "templateId": 1505,
+      "level": 11,
+      "developAttributeId": 150511,
+      "itemCost1": 3385,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 680
+    },
+    "572": {
+      "id": 572,
+      "templateId": 1505,
+      "level": 12,
+      "developAttributeId": 150512,
+      "itemCost1": 3650,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 730
+    },
+    "573": {
+      "id": 573,
+      "templateId": 1505,
+      "level": 13,
+      "developAttributeId": 150513,
+      "itemCost1": 3915,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 785
+    },
+    "574": {
+      "id": 574,
+      "templateId": 1505,
+      "level": 14,
+      "developAttributeId": 150514,
+      "itemCost1": 4180,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 840
+    },
+    "575": {
+      "id": 575,
+      "templateId": 1505,
+      "level": 15,
+      "developAttributeId": 150515,
+      "itemCost1": 4445,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 890
+    },
+    "576": {
+      "id": 576,
+      "templateId": 1505,
+      "level": 16,
+      "developAttributeId": 150516,
+      "itemCost1": 4710,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 945
+    },
+    "577": {
+      "id": 577,
+      "templateId": 1505,
+      "level": 17,
+      "developAttributeId": 150517,
+      "itemCost1": 4975,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 995
+    },
+    "578": {
+      "id": 578,
+      "templateId": 1505,
+      "level": 18,
+      "developAttributeId": 150518,
+      "itemCost1": 5240,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1050
+    },
+    "579": {
+      "id": 579,
+      "templateId": 1505,
+      "level": 19,
+      "developAttributeId": 150519,
+      "itemCost1": 5505,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1105
+    },
+    "580": {
+      "id": 580,
+      "templateId": 1505,
+      "level": 20,
+      "developAttributeId": 150520,
+      "itemCost1": 5770,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1155
+    },
+    "581": {
+      "id": 581,
+      "templateId": 1505,
+      "level": 21,
+      "developAttributeId": 150521,
+      "itemCost1": 6250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1250
+    },
+    "582": {
+      "id": 582,
+      "templateId": 1505,
+      "level": 22,
+      "developAttributeId": 150522,
+      "itemCost1": 6565,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1315
+    },
+    "583": {
+      "id": 583,
+      "templateId": 1505,
+      "level": 23,
+      "developAttributeId": 150523,
+      "itemCost1": 6880,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1380
+    },
+    "584": {
+      "id": 584,
+      "templateId": 1505,
+      "level": 24,
+      "developAttributeId": 150524,
+      "itemCost1": 7195,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1440
+    },
+    "585": {
+      "id": 585,
+      "templateId": 1505,
+      "level": 25,
+      "developAttributeId": 150525,
+      "itemCost1": 7510,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1505
+    },
+    "586": {
+      "id": 586,
+      "templateId": 1505,
+      "level": 26,
+      "developAttributeId": 150526,
+      "itemCost1": 7825,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1565
+    },
+    "587": {
+      "id": 587,
+      "templateId": 1505,
+      "level": 27,
+      "developAttributeId": 150527,
+      "itemCost1": 8140,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1630
+    },
+    "588": {
+      "id": 588,
+      "templateId": 1505,
+      "level": 28,
+      "developAttributeId": 150528,
+      "itemCost1": 8455,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1695
+    },
+    "589": {
+      "id": 589,
+      "templateId": 1505,
+      "level": 29,
+      "developAttributeId": 150529,
+      "itemCost1": 8770,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1755
+    },
+    "590": {
+      "id": 590,
+      "templateId": 1505,
+      "level": 30,
+      "developAttributeId": 150530,
+      "itemCost1": 9085,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1820
+    },
+    "591": {
+      "id": 591,
+      "templateId": 1505,
+      "level": 31,
+      "developAttributeId": 150531,
+      "itemCost1": 9400,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1880
+    },
+    "592": {
+      "id": 592,
+      "templateId": 1505,
+      "level": 32,
+      "developAttributeId": 150532,
+      "itemCost1": 9715,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 1945
+    },
+    "593": {
+      "id": 593,
+      "templateId": 1505,
+      "level": 33,
+      "developAttributeId": 150533,
+      "itemCost1": 10030,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2010
+    },
+    "594": {
+      "id": 594,
+      "templateId": 1505,
+      "level": 34,
+      "developAttributeId": 150534,
+      "itemCost1": 10345,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2070
+    },
+    "595": {
+      "id": 595,
+      "templateId": 1505,
+      "level": 35,
+      "developAttributeId": 150535,
+      "itemCost1": 10660,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2135
+    },
+    "596": {
+      "id": 596,
+      "templateId": 1505,
+      "level": 36,
+      "developAttributeId": 150536,
+      "itemCost1": 10975,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2195
+    },
+    "597": {
+      "id": 597,
+      "templateId": 1505,
+      "level": 37,
+      "developAttributeId": 150537,
+      "itemCost1": 11290,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2260
+    },
+    "598": {
+      "id": 598,
+      "templateId": 1505,
+      "level": 38,
+      "developAttributeId": 150538,
+      "itemCost1": 11605,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2325
+    },
+    "599": {
+      "id": 599,
+      "templateId": 1505,
+      "level": 39,
+      "developAttributeId": 150539,
+      "itemCost1": 11920,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2385
+    },
+    "600": {
+      "id": 600,
+      "templateId": 1505,
+      "level": 40,
+      "developAttributeId": 150540,
+      "itemCost1": 12235,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2450
+    },
+    "601": {
+      "id": 601,
+      "templateId": 1505,
+      "level": 41,
+      "developAttributeId": 150541,
+      "itemCost1": 12500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2500
+    },
+    "602": {
+      "id": 602,
+      "templateId": 1505,
+      "level": 42,
+      "developAttributeId": 150542,
+      "itemCost1": 13125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2625
+    },
+    "603": {
+      "id": 603,
+      "templateId": 1505,
+      "level": 43,
+      "developAttributeId": 150543,
+      "itemCost1": 13750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2750
+    },
+    "604": {
+      "id": 604,
+      "templateId": 1505,
+      "level": 44,
+      "developAttributeId": 150544,
+      "itemCost1": 14375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 2875
+    },
+    "605": {
+      "id": 605,
+      "templateId": 1505,
+      "level": 45,
+      "developAttributeId": 150545,
+      "itemCost1": 15000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3000
+    },
+    "606": {
+      "id": 606,
+      "templateId": 1505,
+      "level": 46,
+      "developAttributeId": 150546,
+      "itemCost1": 15625,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3125
+    },
+    "607": {
+      "id": 607,
+      "templateId": 1505,
+      "level": 47,
+      "developAttributeId": 150547,
+      "itemCost1": 16250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3250
+    },
+    "608": {
+      "id": 608,
+      "templateId": 1505,
+      "level": 48,
+      "developAttributeId": 150548,
+      "itemCost1": 16875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3375
+    },
+    "609": {
+      "id": 609,
+      "templateId": 1505,
+      "level": 49,
+      "developAttributeId": 150549,
+      "itemCost1": 17500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3500
+    },
+    "610": {
+      "id": 610,
+      "templateId": 1505,
+      "level": 50,
+      "developAttributeId": 150550,
+      "itemCost1": 18125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3625
+    },
+    "611": {
+      "id": 611,
+      "templateId": 1505,
+      "level": 51,
+      "developAttributeId": 150551,
+      "itemCost1": 18750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3750
+    },
+    "612": {
+      "id": 612,
+      "templateId": 1505,
+      "level": 52,
+      "developAttributeId": 150552,
+      "itemCost1": 19375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 3875
+    },
+    "613": {
+      "id": 613,
+      "templateId": 1505,
+      "level": 53,
+      "developAttributeId": 150553,
+      "itemCost1": 20000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4000
+    },
+    "614": {
+      "id": 614,
+      "templateId": 1505,
+      "level": 54,
+      "developAttributeId": 150554,
+      "itemCost1": 20625,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4125
+    },
+    "615": {
+      "id": 615,
+      "templateId": 1505,
+      "level": 55,
+      "developAttributeId": 150555,
+      "itemCost1": 21250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4250
+    },
+    "616": {
+      "id": 616,
+      "templateId": 1505,
+      "level": 56,
+      "developAttributeId": 150556,
+      "itemCost1": 21875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4375
+    },
+    "617": {
+      "id": 617,
+      "templateId": 1505,
+      "level": 57,
+      "developAttributeId": 150557,
+      "itemCost1": 22500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4500
+    },
+    "618": {
+      "id": 618,
+      "templateId": 1505,
+      "level": 58,
+      "developAttributeId": 150558,
+      "itemCost1": 23125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4625
+    },
+    "619": {
+      "id": 619,
+      "templateId": 1505,
+      "level": 59,
+      "developAttributeId": 150559,
+      "itemCost1": 23750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4750
+    },
+    "620": {
+      "id": 620,
+      "templateId": 1505,
+      "level": 60,
+      "developAttributeId": 150560,
+      "itemCost1": 24375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 4875
+    },
+    "621": {
+      "id": 621,
+      "templateId": 1505,
+      "level": 61,
+      "developAttributeId": 150561,
+      "itemCost1": 25000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 5000
+    },
+    "622": {
+      "id": 622,
+      "templateId": 1505,
+      "level": 62,
+      "developAttributeId": 150562,
+      "itemCost1": 28750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 5750
+    },
+    "623": {
+      "id": 623,
+      "templateId": 1505,
+      "level": 63,
+      "developAttributeId": 150563,
+      "itemCost1": 32500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 6500
+    },
+    "624": {
+      "id": 624,
+      "templateId": 1505,
+      "level": 64,
+      "developAttributeId": 150564,
+      "itemCost1": 36250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 7250
+    },
+    "625": {
+      "id": 625,
+      "templateId": 1505,
+      "level": 65,
+      "developAttributeId": 150565,
+      "itemCost1": 40000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 8000
+    },
+    "626": {
+      "id": 626,
+      "templateId": 1505,
+      "level": 66,
+      "developAttributeId": 150566,
+      "itemCost1": 43750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 8750
+    },
+    "627": {
+      "id": 627,
+      "templateId": 1505,
+      "level": 67,
+      "developAttributeId": 150567,
+      "itemCost1": 47500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 9500
+    },
+    "628": {
+      "id": 628,
+      "templateId": 1505,
+      "level": 68,
+      "developAttributeId": 150568,
+      "itemCost1": 51250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 10250
+    },
+    "629": {
+      "id": 629,
+      "templateId": 1505,
+      "level": 69,
+      "developAttributeId": 150569,
+      "itemCost1": 55000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 11000
+    },
+    "630": {
+      "id": 630,
+      "templateId": 1505,
+      "level": 70,
+      "developAttributeId": 150570,
+      "itemCost1": 58750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 11750
+    },
+    "631": {
+      "id": 631,
+      "templateId": 1505,
+      "level": 71,
+      "developAttributeId": 150571,
+      "itemCost1": 62500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 12500
+    },
+    "632": {
+      "id": 632,
+      "templateId": 1505,
+      "level": 72,
+      "developAttributeId": 150572,
+      "itemCost1": 71875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 14375
+    },
+    "633": {
+      "id": 633,
+      "templateId": 1505,
+      "level": 73,
+      "developAttributeId": 150573,
+      "itemCost1": 81250,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 16250
+    },
+    "634": {
+      "id": 634,
+      "templateId": 1505,
+      "level": 74,
+      "developAttributeId": 150574,
+      "itemCost1": 90625,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 18125
+    },
+    "635": {
+      "id": 635,
+      "templateId": 1505,
+      "level": 75,
+      "developAttributeId": 150575,
+      "itemCost1": 100000,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 20000
+    },
+    "636": {
+      "id": 636,
+      "templateId": 1505,
+      "level": 76,
+      "developAttributeId": 150576,
+      "itemCost1": 109375,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 21875
+    },
+    "637": {
+      "id": 637,
+      "templateId": 1505,
+      "level": 77,
+      "developAttributeId": 150577,
+      "itemCost1": 118750,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 23750
+    },
+    "638": {
+      "id": 638,
+      "templateId": 1505,
+      "level": 78,
+      "developAttributeId": 150578,
+      "itemCost1": 128125,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 25625
+    },
+    "639": {
+      "id": 639,
+      "templateId": 1505,
+      "level": 79,
+      "developAttributeId": 150579,
+      "itemCost1": 137500,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 27500
+    },
+    "640": {
+      "id": 640,
+      "templateId": 1505,
+      "level": 80,
+      "developAttributeId": 150580,
+      "itemCost1": 146875,
+      "itemCost2": 1,
+      "itemCost3": 1,
+      "currencyCost": 29375
+    }
+  }
+}

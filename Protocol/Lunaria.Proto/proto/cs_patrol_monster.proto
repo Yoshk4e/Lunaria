@@ -1,0 +1,32 @@
+syntax = "proto3";
+package msg;
+
+
+enum EnmMonsterFromType
+{
+    EMONSTER_FROM_INVALID = 0; 
+    EMONSTER_FROM_TABLE = 1; 
+    EMONSTER_FROM_TASK = 2; 
+};
+
+
+
+message CSPatrolMonsterReq
+{
+}
+
+
+
+message SCPatrolMonsterRes
+{
+    int32 result = 1;
+    repeated uint32 cd_monsters = 2; 
+}
+
+
+
+message SCPatrolMonsterNtf
+{
+    uint32 monster_id = 1;
+    bool cd_is_ok = 2; 
+}

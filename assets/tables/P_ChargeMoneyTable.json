@@ -1,0 +1,52 @@
+{
+  "P_ChargeMoneyTable": {
+    "1001": {
+      "id": 1001,
+      "moneyItemId": 770001,
+      "baseNum": 60,
+      "firstPresentNum": 60,
+      "presentNum": 0,
+      "iconPath": "/Game/UI/Common/Atlas/Icon/Charge_Topup/charge_topup_icon_1.charge_topup_icon_1"
+    },
+    "1002": {
+      "id": 1002,
+      "moneyItemId": 770001,
+      "baseNum": 300,
+      "firstPresentNum": 300,
+      "presentNum": 30,
+      "iconPath": "/Game/UI/Common/Atlas/Icon/Charge_Topup/charge_topup_icon_2.charge_topup_icon_2"
+    },
+    "1003": {
+      "id": 1003,
+      "moneyItemId": 770001,
+      "baseNum": 980,
+      "firstPresentNum": 980,
+      "presentNum": 110,
+      "iconPath": "/Game/UI/Common/Atlas/Icon/Charge_Topup/charge_topup_icon_3.charge_topup_icon_3"
+    },
+    "1004": {
+      "id": 1004,
+      "moneyItemId": 770001,
+      "baseNum": 1980,
+      "firstPresentNum": 1980,
+      "presentNum": 260,
+      "iconPath": "/Game/UI/Common/Atlas/Icon/Charge_Topup/charge_topup_icon_4.charge_topup_icon_4"
+    },
+    "1005": {
+      "id": 1005,
+      "moneyItemId": 770001,
+      "baseNum": 3280,
+      "firstPresentNum": 3280,
+      "presentNum": 600,
+      "iconPath": "/Game/UI/Common/Atlas/Icon/Charge_Topup/charge_topup_icon_5.charge_topup_icon_5"
+    },
+    "1006": {
+      "id": 1006,
+      "moneyItemId": 770001,
+      "baseNum": 6480,
+      "firstPresentNum": 6480,
+      "presentNum": 1600,
+      "iconPath": "/Game/UI/Common/Atlas/Icon/Charge_Topup/charge_topup_icon_6.charge_topup_icon_6"
+    }
+  }
+}

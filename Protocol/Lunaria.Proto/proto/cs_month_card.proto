@@ -1,0 +1,47 @@
+syntax = "proto3";
+package msg;
+
+
+message CSMonthCardElem 
+{
+    uint32 id = 1;
+    uint32 overdue_ts = 2; 
+}
+
+
+message CSMonthCardData 
+{
+    uint32 reward_ts = 1; 
+    repeated CSMonthCardElem month_card_elems = 2; 
+}
+
+
+
+message CSMonthCardQuery
+{
+    int32 reserverd = 1;
+}
+
+
+
+message SCMonthCardQuery
+{
+    int32 result = 1;
+    CSMonthCardData data = 2;
+}
+
+
+
+message SCMonthCardRewardNtf
+{
+    uint32 id = 1;
+    uint32 item_id = 2;
+    int64 item_num = 3;
+}
+
+
+
+message SCMonthCardOverdueNtf
+{
+    uint32 id = 1;
+}

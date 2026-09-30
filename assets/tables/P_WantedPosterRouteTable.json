@@ -1,0 +1,29 @@
+{
+  "P_WantedPosterRouteTable": {
+    "1011": {
+      "id": 1011,
+      "birthPos": "129340,35975,32105",
+      "birthRotation": "0,110,0"
+    },
+    "1012": {
+      "id": 1012,
+      "birthPos": "129340,35975,32105",
+      "birthRotation": "0,110,0"
+    },
+    "1013": {
+      "id": 1013,
+      "birthPos": "129901,36715,32109",
+      "birthRotation": "0,145,0"
+    },
+    "1014": {
+      "id": 1014,
+      "birthPos": "129901,36715,32109",
+      "birthRotation": "0,145,0"
+    },
+    "1015": {
+      "id": 1015,
+      "birthPos": "129901,36715,32109",
+      "birthRotation": "0,145,0"
+    }
+  }
+}

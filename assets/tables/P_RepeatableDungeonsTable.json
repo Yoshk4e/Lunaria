@@ -1,0 +1,721 @@
+{
+  "P_RepeatableDungeonsTable": {
+    "201001": {
+      "id": 201001,
+      "dungeonType": 1,
+      "battleId": [
+        203002001
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 20,
+      "rewardDrop": 332101,
+      "showSpotLight": 1
+    },
+    "201002": {
+      "id": 201002,
+      "dungeonType": 1,
+      "battleId": [
+        203002002
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 25,
+      "rewardDrop": 332102,
+      "unlockCondition": 402001101,
+      "showSpotLight": 1
+    },
+    "201003": {
+      "id": 201003,
+      "dungeonType": 1,
+      "battleId": [
+        203002003
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 35,
+      "rewardDrop": 332103,
+      "unlockCondition": 402002101,
+      "showSpotLight": 1
+    },
+    "201011": {
+      "id": 201011,
+      "dungeonType": 1,
+      "battleId": [
+        203003001
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 20,
+      "rewardDrop": 332201,
+      "showSpotLight": 1
+    },
+    "201012": {
+      "id": 201012,
+      "dungeonType": 1,
+      "battleId": [
+        203003002
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 25,
+      "rewardDrop": 332202,
+      "unlockCondition": 402003101,
+      "showSpotLight": 1
+    },
+    "201013": {
+      "id": 201013,
+      "dungeonType": 1,
+      "battleId": [
+        203003003
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 35,
+      "rewardDrop": 332203,
+      "unlockCondition": 402004101,
+      "showSpotLight": 1
+    },
+    "201021": {
+      "id": 201021,
+      "dungeonType": 1,
+      "battleId": [
+        203004001
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 20,
+      "rewardDrop": 332301,
+      "showSpotLight": 1
+    },
+    "201022": {
+      "id": 201022,
+      "dungeonType": 1,
+      "battleId": [
+        203004002
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 25,
+      "rewardDrop": 332302,
+      "unlockCondition": 402005101,
+      "showSpotLight": 1
+    },
+    "201023": {
+      "id": 201023,
+      "dungeonType": 1,
+      "battleId": [
+        203004003
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 35,
+      "rewardDrop": 332303,
+      "unlockCondition": 402006101,
+      "showSpotLight": 1
+    },
+    "201111": {
+      "id": 201111,
+      "dungeonType": 1,
+      "battleId": [
+        203005001
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 20,
+      "rewardDrop": 331101,
+      "showSpotLight": 1
+    },
+    "201112": {
+      "id": 201112,
+      "dungeonType": 1,
+      "battleId": [
+        203005002
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 25,
+      "rewardDrop": 331102,
+      "unlockCondition": 402007101,
+      "showSpotLight": 1
+    },
+    "201113": {
+      "id": 201113,
+      "dungeonType": 1,
+      "battleId": [
+        203005003
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 35,
+      "rewardDrop": 331103,
+      "unlockCondition": 402008101,
+      "showSpotLight": 1
+    },
+    "201121": {
+      "id": 201121,
+      "dungeonType": 1,
+      "battleId": [
+        203006001
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 20,
+      "rewardDrop": 331201,
+      "showSpotLight": 1
+    },
+    "201122": {
+      "id": 201122,
+      "dungeonType": 1,
+      "battleId": [
+        203006002
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 25,
+      "rewardDrop": 331202,
+      "unlockCondition": 402009101,
+      "showSpotLight": 1
+    },
+    "201123": {
+      "id": 201123,
+      "dungeonType": 1,
+      "battleId": [
+        203006003
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 35,
+      "rewardDrop": 331203,
+      "unlockCondition": 402010101,
+      "showSpotLight": 1
+    },
+    "201131": {
+      "id": 201131,
+      "dungeonType": 1,
+      "battleId": [
+        203007001
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 20,
+      "rewardDrop": 331301,
+      "showSpotLight": 1
+    },
+    "201132": {
+      "id": 201132,
+      "dungeonType": 1,
+      "battleId": [
+        203007002
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 25,
+      "rewardDrop": 331302,
+      "unlockCondition": 402011101,
+      "showSpotLight": 1
+    },
+    "201133": {
+      "id": 201133,
+      "dungeonType": 1,
+      "battleId": [
+        203007003
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 35,
+      "rewardDrop": 331303,
+      "unlockCondition": 402012101,
+      "showSpotLight": 1
+    },
+    "201141": {
+      "id": 201141,
+      "dungeonType": 1,
+      "battleId": [
+        203008001
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 20,
+      "rewardDrop": 331601,
+      "showSpotLight": 1
+    },
+    "201142": {
+      "id": 201142,
+      "dungeonType": 1,
+      "battleId": [
+        203008002
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 25,
+      "rewardDrop": 331602,
+      "unlockCondition": 402013101,
+      "showSpotLight": 1
+    },
+    "201143": {
+      "id": 201143,
+      "dungeonType": 1,
+      "battleId": [
+        203008003
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 35,
+      "rewardDrop": 331603,
+      "unlockCondition": 402014101,
+      "showSpotLight": 1
+    },
+    "202001": {
+      "id": 202001,
+      "dungeonType": 2,
+      "battleId": [
+        202001001
+      ],
+      "mapId": 202001001001,
+      "dungeonTime": 1800,
+      "monsterLevel": 20,
+      "rewardDrop": 333101,
+      "showSpotLight": 0
+    },
+    "202002": {
+      "id": 202002,
+      "dungeonType": 2,
+      "battleId": [
+        202001002
+      ],
+      "mapId": 202001001001,
+      "dungeonTime": 1800,
+      "monsterLevel": 30,
+      "rewardDrop": 333102,
+      "unlockCondition": 402023101,
+      "showSpotLight": 0
+    },
+    "202003": {
+      "id": 202003,
+      "dungeonType": 2,
+      "battleId": [
+        202001003
+      ],
+      "mapId": 202001001001,
+      "dungeonTime": 1800,
+      "monsterLevel": 40,
+      "rewardDrop": 333103,
+      "unlockCondition": 402024101,
+      "showSpotLight": 0
+    },
+    "203001": {
+      "id": 203001,
+      "dungeonType": 3,
+      "battleId": [
+        203001001
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 1800,
+      "monsterLevel": 15,
+      "firstPassRewardDrop": 333201,
+      "showSpotLight": 1
+    },
+    "203002": {
+      "id": 203002,
+      "dungeonType": 3,
+      "battleId": [
+        203001002
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 1800,
+      "monsterLevel": 25,
+      "firstPassRewardDrop": 333202,
+      "unlockCondition": 402015101,
+      "showSpotLight": 1
+    },
+    "203003": {
+      "id": 203003,
+      "dungeonType": 3,
+      "battleId": [
+        203001003
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 3000,
+      "monsterLevel": 30,
+      "firstPassRewardDrop": 333203,
+      "unlockCondition": 402016101,
+      "showSpotLight": 1
+    },
+    "203004": {
+      "id": 203004,
+      "dungeonType": 3,
+      "battleId": [
+        203001004
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 1800,
+      "monsterLevel": 35,
+      "firstPassRewardDrop": 333204,
+      "unlockCondition": 402017101,
+      "showSpotLight": 1
+    },
+    "203005": {
+      "id": 203005,
+      "dungeonType": 3,
+      "battleId": [
+        203001005
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 1800,
+      "monsterLevel": 40,
+      "firstPassRewardDrop": 333205,
+      "unlockCondition": 402018101,
+      "showSpotLight": 1
+    },
+    "203006": {
+      "id": 203006,
+      "dungeonType": 3,
+      "battleId": [
+        203001006
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 3000,
+      "monsterLevel": 45,
+      "firstPassRewardDrop": 333206,
+      "unlockCondition": 402025101,
+      "showSpotLight": 1
+    },
+    "203007": {
+      "id": 203007,
+      "dungeonType": 3,
+      "battleId": [
+        203001007
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 1800,
+      "monsterLevel": 50,
+      "firstPassRewardDrop": 333207,
+      "unlockCondition": 402026101,
+      "showSpotLight": 1
+    },
+    "203008": {
+      "id": 203008,
+      "dungeonType": 3,
+      "battleId": [
+        203001008
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 1800,
+      "monsterLevel": 60,
+      "firstPassRewardDrop": 333208,
+      "unlockCondition": 402027101,
+      "showSpotLight": 1
+    },
+    "203009": {
+      "id": 203009,
+      "dungeonType": 3,
+      "battleId": [
+        203001009
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 2400,
+      "monsterLevel": 65,
+      "firstPassRewardDrop": 333209,
+      "unlockCondition": 402028101,
+      "showSpotLight": 1
+    },
+    "203010": {
+      "id": 203010,
+      "dungeonType": 3,
+      "battleId": [
+        203001010
+      ],
+      "mapId": 202001001001,
+      "dungeonTime": 2400,
+      "monsterLevel": 70,
+      "firstPassRewardDrop": 333210,
+      "unlockCondition": 402029101,
+      "showSpotLight": 0
+    },
+    "200001": {
+      "id": 200001,
+      "dungeonType": 3,
+      "battleId": [
+        200001001
+      ],
+      "mapId": 200001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 10,
+      "rewardDrop": 201012,
+      "showSpotLight": 0
+    },
+    "200002": {
+      "id": 200002,
+      "dungeonType": 3,
+      "battleId": [
+        200002001
+      ],
+      "mapId": 200001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 10,
+      "rewardDrop": 201012,
+      "showSpotLight": 0
+    },
+    "200003": {
+      "id": 200003,
+      "dungeonType": 3,
+      "battleId": [
+        200003001
+      ],
+      "mapId": 200001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 10,
+      "rewardDrop": 201012,
+      "showSpotLight": 0
+    },
+    "200004": {
+      "id": 200004,
+      "dungeonType": 3,
+      "battleId": [
+        200004001
+      ],
+      "mapId": 200001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 10,
+      "rewardDrop": 201012,
+      "showSpotLight": 0
+    },
+    "200005": {
+      "id": 200005,
+      "dungeonType": 3,
+      "battleId": [
+        200005001
+      ],
+      "mapId": 200001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 10,
+      "rewardDrop": 201012,
+      "showSpotLight": 0
+    },
+    "200006": {
+      "id": 200006,
+      "dungeonType": 3,
+      "battleId": [
+        200006001
+      ],
+      "mapId": 200001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 10,
+      "rewardDrop": 201012,
+      "showSpotLight": 0
+    },
+    "200007": {
+      "id": 200007,
+      "dungeonType": 3,
+      "battleId": [
+        200007001
+      ],
+      "mapId": 200001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 10,
+      "rewardDrop": 201012,
+      "showSpotLight": 0
+    },
+    "200008": {
+      "id": 200008,
+      "dungeonType": 3,
+      "battleId": [
+        200008001,
+        200008002
+      ],
+      "mapId": 201001001001,
+      "dungeonTime": 900,
+      "monsterLevel": 10,
+      "rewardDrop": 201012,
+      "showSpotLight": 0
+    },
+    "200009": {
+      "id": 200009,
+      "dungeonType": 3,
+      "battleId": [
+        200009001
+      ],
+      "mapId": 201001001002,
+      "dungeonTime": 900,
+      "monsterLevel": 10,
+      "rewardDrop": 201012,
+      "showSpotLight": 0
+    },
+    "204001": {
+      "id": 204001,
+      "dungeonType": 4,
+      "battleId": [
+        204001001
+      ],
+      "mapId": 100001001001,
+      "monsterLevel": 10,
+      "rewardDrop": 334001,
+      "showSpotLight": 0
+    },
+    "205001": {
+      "id": 205001,
+      "dungeonType": 6,
+      "battleId": [
+        203009001
+      ],
+      "mapId": 201001001005,
+      "dungeonTime": 3000,
+      "monsterLevel": 20,
+      "rewardDrop": 334001,
+      "showSpotLight": 1
+    },
+    "205002": {
+      "id": 205002,
+      "dungeonType": 6,
+      "battleId": [
+        203009002
+      ],
+      "mapId": 201001001005,
+      "dungeonTime": 3000,
+      "monsterLevel": 30,
+      "rewardDrop": 334002,
+      "unlockCondition": 402019101,
+      "showSpotLight": 1
+    },
+    "205003": {
+      "id": 205003,
+      "dungeonType": 6,
+      "battleId": [
+        203009003
+      ],
+      "mapId": 201001001005,
+      "dungeonTime": 3000,
+      "monsterLevel": 40,
+      "rewardDrop": 334003,
+      "unlockCondition": 402020101,
+      "showSpotLight": 1
+    },
+    "206001": {
+      "id": 206001,
+      "dungeonType": 6,
+      "battleId": [
+        203010001
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 3000,
+      "monsterLevel": 20,
+      "rewardDrop": 334011,
+      "showSpotLight": 1
+    },
+    "206002": {
+      "id": 206002,
+      "dungeonType": 6,
+      "battleId": [
+        203010002
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 3000,
+      "monsterLevel": 30,
+      "rewardDrop": 334012,
+      "unlockCondition": 402021101,
+      "showSpotLight": 1
+    },
+    "206003": {
+      "id": 206003,
+      "dungeonType": 6,
+      "battleId": [
+        203010003
+      ],
+      "mapId": 203001001001,
+      "dungeonTime": 3000,
+      "monsterLevel": 40,
+      "rewardDrop": 334013,
+      "unlockCondition": 402022101,
+      "showSpotLight": 1
+    },
+    "207001": {
+      "id": 207001,
+      "dungeonType": 9,
+      "battleId": [
+        201121002
+      ],
+      "mapId": 201001001003,
+      "dungeonTime": 900,
+      "monsterLevel": 25,
+      "showSpotLight": 0
+    },
+    "207002": {
+      "id": 207002,
+      "dungeonType": 9,
+      "battleId": [
+        201111001
+      ],
+      "mapId": 201001001004,
+      "dungeonTime": 900,
+      "monsterLevel": 25,
+      "showSpotLight": 0
+    },
+    "207003": {
+      "id": 207003,
+      "dungeonType": 9,
+      "battleId": [
+        201122002
+      ],
+      "mapId": 201001001005,
+      "dungeonTime": 900,
+      "monsterLevel": 35,
+      "showSpotLight": 0
+    },
+    "10000201": {
+      "id": 10000201,
+      "dungeonType": 5,
+      "battleId": [
+        10000201
+      ],
+      "mapId": 100001001001,
+      "dungeonTime": 90,
+      "monsterLevel": 15,
+      "showSpotLight": 0
+    },
+    "11420201": {
+      "id": 11420201,
+      "dungeonType": 5,
+      "battleId": [
+        11420201
+      ],
+      "mapId": 100001001001,
+      "dungeonTime": 90,
+      "monsterLevel": 25,
+      "showSpotLight": 0
+    },
+    "11120201": {
+      "id": 11120201,
+      "dungeonType": 5,
+      "battleId": [
+        11120201
+      ],
+      "mapId": 100001001001,
+      "dungeonTime": 90,
+      "monsterLevel": 35,
+      "showSpotLight": 0
+    },
+    "99999006": {
+      "id": 99999006,
+      "dungeonType": 5,
+      "battleId": [
+        99999006
+      ],
+      "mapId": 100001002001,
+      "dungeonTime": 180,
+      "monsterLevel": 15,
+      "showSpotLight": 0
+    },
+    "99999007": {
+      "id": 99999007,
+      "dungeonType": 5,
+      "battleId": [
+        99999007
+      ],
+      "mapId": 100001002001,
+      "dungeonTime": 180,
+      "monsterLevel": 15,
+      "showSpotLight": 0
+    }
+  }
+}

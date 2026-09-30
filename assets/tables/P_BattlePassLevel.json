@@ -1,0 +1,204 @@
+{
+  "P_BattlePassLevel": {
+    "100101": {
+      "id": 100101,
+      "bp": 1001,
+      "level": 1,
+      "expNeed": 0,
+      "award": [
+        "11201001=5"
+      ],
+      "landmarkOrNot": false
+    },
+    "100102": {
+      "id": 100102,
+      "bp": 1001,
+      "level": 2,
+      "expNeed": 100,
+      "award": [
+        "1=10000"
+      ],
+      "landmarkOrNot": false
+    },
+    "100103": {
+      "id": 100103,
+      "bp": 1001,
+      "level": 3,
+      "expNeed": 100,
+      "award": [
+        "12220001=5"
+      ],
+      "landmarkOrNot": false
+    },
+    "100104": {
+      "id": 100104,
+      "bp": 1001,
+      "level": 4,
+      "expNeed": 100,
+      "award": [
+        "21308001=1"
+      ],
+      "landmarkOrNot": false
+    },
+    "100105": {
+      "id": 100105,
+      "bp": 1001,
+      "level": 5,
+      "expNeed": 100,
+      "award": [
+        "12032001=1"
+      ],
+      "landmarkOrNot": true
+    },
+    "100106": {
+      "id": 100106,
+      "bp": 1001,
+      "level": 6,
+      "expNeed": 100,
+      "award": [
+        "11201001=6"
+      ],
+      "landmarkOrNot": false
+    },
+    "100107": {
+      "id": 100107,
+      "bp": 1001,
+      "level": 7,
+      "expNeed": 100,
+      "award": [
+        "1=15000"
+      ],
+      "landmarkOrNot": false
+    },
+    "100108": {
+      "id": 100108,
+      "bp": 1001,
+      "level": 8,
+      "expNeed": 100,
+      "award": [
+        "12220001=6"
+      ],
+      "landmarkOrNot": false
+    },
+    "100109": {
+      "id": 100109,
+      "bp": 1001,
+      "level": 9,
+      "expNeed": 100,
+      "award": [
+        "21308001=1"
+      ],
+      "landmarkOrNot": false
+    },
+    "100110": {
+      "id": 100110,
+      "bp": 1001,
+      "level": 10,
+      "expNeed": 100,
+      "award": [
+        "12046001=1"
+      ],
+      "landmarkOrNot": true
+    },
+    "100111": {
+      "id": 100111,
+      "bp": 1001,
+      "level": 11,
+      "expNeed": 100,
+      "award": [
+        "11201001=7"
+      ],
+      "landmarkOrNot": false
+    },
+    "100112": {
+      "id": 100112,
+      "bp": 1001,
+      "level": 12,
+      "expNeed": 100,
+      "award": [
+        "1=20000"
+      ],
+      "landmarkOrNot": false
+    },
+    "100113": {
+      "id": 100113,
+      "bp": 1001,
+      "level": 13,
+      "expNeed": 100,
+      "award": [
+        "12220001=7"
+      ],
+      "landmarkOrNot": false
+    },
+    "100114": {
+      "id": 100114,
+      "bp": 1001,
+      "level": 14,
+      "expNeed": 100,
+      "award": [
+        "21308001=1"
+      ],
+      "landmarkOrNot": false
+    },
+    "100115": {
+      "id": 100115,
+      "bp": 1001,
+      "level": 15,
+      "expNeed": 100,
+      "award": [
+        "12031001=1"
+      ],
+      "landmarkOrNot": true
+    },
+    "100116": {
+      "id": 100116,
+      "bp": 1001,
+      "level": 16,
+      "expNeed": 100,
+      "award": [
+        "11201001=8"
+      ],
+      "landmarkOrNot": false
+    },
+    "100117": {
+      "id": 100117,
+      "bp": 1001,
+      "level": 17,
+      "expNeed": 100,
+      "award": [
+        "1=25000"
+      ],
+      "landmarkOrNot": false
+    },
+    "100118": {
+      "id": 100118,
+      "bp": 1001,
+      "level": 18,
+      "expNeed": 100,
+      "award": [
+        "12220001=8"
+      ],
+      "landmarkOrNot": false
+    },
+    "100119": {
+      "id": 100119,
+      "bp": 1001,
+      "level": 19,
+      "expNeed": 100,
+      "award": [
+        "21308001=1"
+      ],
+      "landmarkOrNot": false
+    },
+    "100120": {
+      "id": 100120,
+      "bp": 1001,
+      "level": 20,
+      "expNeed": 100,
+      "award": [
+        "12056001=1"
+      ],
+      "landmarkOrNot": true
+    }
+  }
+}

@@ -1,0 +1,342 @@
+{
+  "P_WantedPosterNPC": {
+    "11": {
+      "id": 11,
+      "npcType": 4,
+      "params": 10000
+    },
+    "12": {
+      "id": 12,
+      "npcType": 5
+    },
+    "13": {
+      "id": 13,
+      "npcType": 2,
+      "params": 1006
+    },
+    "14": {
+      "id": 14,
+      "npcType": 2,
+      "params": 1007
+    },
+    "3": {
+      "id": 3,
+      "npcType": 3,
+      "params": 100
+    },
+    "101": {
+      "id": 101,
+      "npcType": 3,
+      "params": 101
+    },
+    "102": {
+      "id": 102,
+      "npcType": 3,
+      "params": 102
+    },
+    "103": {
+      "id": 103,
+      "npcType": 3,
+      "params": 103
+    },
+    "104": {
+      "id": 104,
+      "npcType": 3,
+      "params": 104
+    },
+    "105": {
+      "id": 105,
+      "npcType": 3,
+      "params": 105
+    },
+    "106": {
+      "id": 106,
+      "npcType": 3,
+      "params": 106
+    },
+    "107": {
+      "id": 107,
+      "npcType": 3,
+      "params": 107
+    },
+    "108": {
+      "id": 108,
+      "npcType": 3,
+      "params": 108
+    },
+    "109": {
+      "id": 109,
+      "npcType": 3,
+      "params": 109
+    },
+    "110": {
+      "id": 110,
+      "npcType": 3,
+      "params": 110
+    },
+    "111": {
+      "id": 111,
+      "npcType": 3,
+      "params": 111
+    },
+    "112": {
+      "id": 112,
+      "npcType": 3,
+      "params": 112
+    },
+    "113": {
+      "id": 113,
+      "npcType": 3,
+      "params": 113
+    },
+    "114": {
+      "id": 114,
+      "npcType": 3,
+      "params": 114
+    },
+    "115": {
+      "id": 115,
+      "npcType": 3,
+      "params": 115
+    },
+    "202": {
+      "id": 202,
+      "npcType": 1
+    },
+    "203": {
+      "id": 203,
+      "npcType": 1
+    },
+    "204": {
+      "id": 204,
+      "npcType": 4,
+      "params": 10000
+    },
+    "205": {
+      "id": 205,
+      "npcType": 5
+    },
+    "206": {
+      "id": 206,
+      "npcType": 4,
+      "params": 10000
+    },
+    "301": {
+      "id": 301,
+      "npcType": 2,
+      "params": 1001
+    },
+    "302": {
+      "id": 302,
+      "npcType": 2,
+      "params": 1002
+    },
+    "303": {
+      "id": 303,
+      "npcType": 2,
+      "params": 1003
+    },
+    "304": {
+      "id": 304,
+      "npcType": 2,
+      "params": 1004
+    },
+    "305": {
+      "id": 305,
+      "npcType": 2,
+      "params": 1005
+    },
+    "306": {
+      "id": 306,
+      "npcType": 2,
+      "params": 1002
+    },
+    "307": {
+      "id": 307,
+      "npcType": 2,
+      "params": 1002
+    },
+    "99": {
+      "id": 99,
+      "npcType": 6
+    },
+    "1": {
+      "id": 1,
+      "npcType": 7,
+      "params": 2060000001
+    },
+    "2": {
+      "id": 2,
+      "npcType": 7,
+      "params": 2060000002
+    },
+    "4": {
+      "id": 4,
+      "npcType": 7,
+      "params": 2060000003
+    },
+    "5": {
+      "id": 5,
+      "npcType": 7,
+      "params": 2060000004
+    },
+    "6": {
+      "id": 6,
+      "npcType": 7,
+      "params": 2060000005
+    },
+    "7": {
+      "id": 7,
+      "npcType": 7,
+      "params": 2060000007
+    },
+    "9": {
+      "id": 9,
+      "npcType": 7,
+      "params": 2060000006
+    },
+    "30": {
+      "id": 30,
+      "npcType": 7,
+      "params": 2060101001
+    },
+    "31": {
+      "id": 31,
+      "npcType": 7,
+      "params": 2060101003
+    },
+    "32": {
+      "id": 32,
+      "npcType": 7,
+      "params": 2060102001
+    },
+    "33": {
+      "id": 33,
+      "npcType": 7,
+      "params": 2060102003
+    },
+    "34": {
+      "id": 34,
+      "npcType": 7,
+      "params": 2060101002
+    },
+    "35": {
+      "id": 35,
+      "npcType": 7,
+      "params": 2060101004
+    },
+    "36": {
+      "id": 36,
+      "npcType": 7,
+      "params": 2060103001
+    },
+    "37": {
+      "id": 37,
+      "npcType": 7,
+      "params": 2060103002
+    },
+    "38": {
+      "id": 38,
+      "npcType": 7,
+      "params": 2060201001
+    },
+    "39": {
+      "id": 39,
+      "npcType": 7,
+      "params": 2060101002
+    },
+    "40": {
+      "id": 40,
+      "npcType": 7,
+      "params": 2060101004
+    },
+    "41": {
+      "id": 41,
+      "npcType": 7,
+      "params": 2060102002
+    },
+    "42": {
+      "id": 42,
+      "npcType": 7,
+      "params": 2060102004
+    },
+    "43": {
+      "id": 43,
+      "npcType": 7,
+      "params": 2060103001
+    },
+    "44": {
+      "id": 44,
+      "npcType": 7,
+      "params": 2060103002
+    },
+    "45": {
+      "id": 45,
+      "npcType": 7,
+      "params": 2060102001
+    },
+    "46": {
+      "id": 46,
+      "npcType": 7,
+      "params": 2060102003
+    },
+    "47": {
+      "id": 47,
+      "npcType": 7,
+      "params": 2060101001
+    },
+    "48": {
+      "id": 48,
+      "npcType": 7,
+      "params": 2060101003
+    },
+    "49": {
+      "id": 49,
+      "npcType": 7,
+      "params": 2060102001
+    },
+    "50": {
+      "id": 50,
+      "npcType": 7,
+      "params": 2060102003
+    },
+    "51": {
+      "id": 51,
+      "npcType": 7,
+      "params": 2060103001
+    },
+    "52": {
+      "id": 52,
+      "npcType": 7,
+      "params": 2060103002
+    },
+    "55": {
+      "id": 55,
+      "npcType": 7,
+      "params": 2060401003,
+      "extraParam1": 75001
+    },
+    "56": {
+      "id": 56,
+      "npcType": 7,
+      "params": 2060103001
+    },
+    "57": {
+      "id": 57,
+      "npcType": 7,
+      "params": 2060103002
+    },
+    "58": {
+      "id": 58,
+      "npcType": 8,
+      "params": 2060401001,
+      "extraParam1": 45
+    },
+    "59": {
+      "id": 59,
+      "npcType": 8,
+      "params": 2060401002,
+      "extraParam1": 45
+    }
+  }
+}

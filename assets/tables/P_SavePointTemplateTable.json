@@ -1,0 +1,256 @@
+{
+  "P_SavePointTemplateTable": {
+    "1010001": {
+      "id": 1010001,
+      "interactingEntityId": 1003,
+      "bDefault": true,
+      "activateRange": 2000,
+      "loginGameEffectId": 360003,
+      "locationOffset": "0,80,0",
+      "loginGameEffectLength": 1.5
+    },
+    "1010002": {
+      "id": 1010002,
+      "interactingEntityId": 1003,
+      "bDefault": false,
+      "activateRange": 7000,
+      "loginGameEffectId": 360003,
+      "locationOffset": "0,80,0",
+      "loginGameEffectLength": 1.5
+    },
+    "1010003": {
+      "id": 1010003,
+      "interactingEntityId": 1004,
+      "bDefault": false,
+      "activateRange": 750,
+      "loginGameEffectId": 360003,
+      "locationOffset": "0,48,75",
+      "loginGameEffectLength": 1.5
+    },
+    "1010004": {
+      "id": 1010004,
+      "interactingEntityId": 1005,
+      "bDefault": false,
+      "activateRange": 750,
+      "loginGameEffectId": 360003,
+      "locationOffset": "0,48,75",
+      "loginGameEffectLength": 1.5
+    },
+    "1010005": {
+      "id": 1010005,
+      "interactingEntityId": 1006,
+      "bDefault": false,
+      "activateRange": 750,
+      "loginGameEffectId": 360003,
+      "locationOffset": "0,48,75",
+      "loginGameEffectLength": 1.5
+    },
+    "1010006": {
+      "id": 1010006,
+      "interactingEntityId": 1007,
+      "bDefault": false,
+      "activateRange": 750,
+      "loginGameEffectId": 360003,
+      "locationOffset": "0,48,75",
+      "loginGameEffectLength": 1.5
+    },
+    "1001101": {
+      "id": 1001101,
+      "interactingEntityId": 1101,
+      "bDefault": true,
+      "activateRange": 2000,
+      "loginGameEffectId": 360003,
+      "locationOffset": "0,48,75",
+      "loginGameEffectLength": 1.5
+    },
+    "1001102": {
+      "id": 1001102,
+      "interactingEntityId": 1102,
+      "bDefault": false,
+      "activateRange": 2000,
+      "loginGameEffectId": 360003,
+      "locationOffset": "0,48,75",
+      "loginGameEffectLength": 1.5
+    },
+    "1001103": {
+      "id": 1001103,
+      "interactingEntityId": 1103,
+      "bDefault": false,
+      "activateRange": 2000,
+      "loginGameEffectId": 360003,
+      "locationOffset": "0,48,75",
+      "loginGameEffectLength": 1.5
+    },
+    "1001104": {
+      "id": 1001104,
+      "interactingEntityId": 1104,
+      "bDefault": false,
+      "activateRange": 2000,
+      "loginGameEffectId": 360003,
+      "locationOffset": "0,48,75",
+      "loginGameEffectLength": 1.5
+    },
+    "1001105": {
+      "id": 1001105,
+      "interactingEntityId": 1105,
+      "bDefault": false,
+      "activateRange": 2000,
+      "loginGameEffectId": 360003,
+      "locationOffset": "0,48,75",
+      "loginGameEffectLength": 1.5
+    },
+    "1001106": {
+      "id": 1001106,
+      "interactingEntityId": 1106,
+      "bDefault": false,
+      "activateRange": 2000,
+      "loginGameEffectId": 360003,
+      "locationOffset": "0,48,75",
+      "loginGameEffectLength": 1.5
+    },
+    "1001107": {
+      "id": 1001107,
+      "interactingEntityId": 1107,
+      "bDefault": false,
+      "activateRange": 2000,
+      "loginGameEffectId": 360003,
+      "locationOffset": "0,48,75",
+      "loginGameEffectLength": 1.5
+    },
+    "1001108": {
+      "id": 1001108,
+      "interactingEntityId": 1108,
+      "bDefault": false,
+      "activateRange": 2000,
+      "loginGameEffectId": 360003,
+      "locationOffset": "0,48,75",
+      "loginGameEffectLength": 1.5
+    },
+    "1001109": {
+      "id": 1001109,
+      "interactingEntityId": 1109,
+      "bDefault": false,
+      "activateRange": 2000,
+      "loginGameEffectId": 360003,
+      "locationOffset": "0,48,75",
+      "loginGameEffectLength": 1.5
+    },
+    "1001110": {
+      "id": 1001110,
+      "interactingEntityId": 1110,
+      "bDefault": false,
+      "activateRange": 2000,
+      "loginGameEffectId": 360003,
+      "locationOffset": "0,48,75",
+      "loginGameEffectLength": 1.5
+    },
+    "1001111": {
+      "id": 1001111,
+      "interactingEntityId": 1111,
+      "bDefault": false,
+      "activateRange": 2000,
+      "loginGameEffectId": 360003,
+      "locationOffset": "0,48,75",
+      "loginGameEffectLength": 1.5
+    },
+    "1001112": {
+      "id": 1001112,
+      "interactingEntityId": 1112,
+      "bDefault": false,
+      "activateRange": 2000,
+      "loginGameEffectId": 360003,
+      "locationOffset": "0,48,75",
+      "loginGameEffectLength": 1.5
+    },
+    "1001113": {
+      "id": 1001113,
+      "interactingEntityId": 1113,
+      "bDefault": false,
+      "activateRange": 2000,
+      "loginGameEffectId": 360003,
+      "locationOffset": "0,48,75",
+      "loginGameEffectLength": 1.5
+    },
+    "1001114": {
+      "id": 1001114,
+      "interactingEntityId": 1114,
+      "bDefault": false,
+      "activateRange": 2000,
+      "loginGameEffectId": 360003,
+      "locationOffset": "0,48,75",
+      "loginGameEffectLength": 1.5
+    },
+    "1001115": {
+      "id": 1001115,
+      "interactingEntityId": 1115,
+      "bDefault": false,
+      "activateRange": 2000,
+      "loginGameEffectId": 360003,
+      "locationOffset": "0,48,75",
+      "loginGameEffectLength": 1.5
+    },
+    "1001116": {
+      "id": 1001116,
+      "interactingEntityId": 1116,
+      "bDefault": false,
+      "activateRange": 2000,
+      "loginGameEffectId": 360003,
+      "locationOffset": "0,48,75",
+      "loginGameEffectLength": 1.5
+    },
+    "1001117": {
+      "id": 1001117,
+      "interactingEntityId": 1117,
+      "bDefault": false,
+      "activateRange": 2000,
+      "loginGameEffectId": 360003,
+      "locationOffset": "0,48,75",
+      "loginGameEffectLength": 1.5
+    },
+    "1001118": {
+      "id": 1001118,
+      "interactingEntityId": 1118,
+      "bDefault": false,
+      "activateRange": 2000,
+      "loginGameEffectId": 360003,
+      "locationOffset": "0,48,75",
+      "loginGameEffectLength": 1.5
+    },
+    "1001119": {
+      "id": 1001119,
+      "interactingEntityId": 1119,
+      "bDefault": false,
+      "activateRange": 2000,
+      "loginGameEffectId": 360003,
+      "locationOffset": "0,48,75",
+      "loginGameEffectLength": 1.5
+    },
+    "1001120": {
+      "id": 1001120,
+      "interactingEntityId": 1120,
+      "bDefault": false,
+      "activateRange": 2000,
+      "loginGameEffectId": 360003,
+      "locationOffset": "0,48,75",
+      "loginGameEffectLength": 1.5
+    },
+    "1002000": {
+      "id": 1002000,
+      "interactingEntityId": 6009,
+      "bDefault": true,
+      "activateRange": 1500,
+      "loginGameEffectId": 360003,
+      "locationOffset": "0,48,75",
+      "loginGameEffectLength": 1.5
+    },
+    "1003000": {
+      "id": 1003000,
+      "interactingEntityId": 1002,
+      "bDefault": false,
+      "activateRange": 500,
+      "loginGameEffectId": 360003,
+      "locationOffset": "0,48,75",
+      "loginGameEffectLength": 1.5
+    }
+  }
+}

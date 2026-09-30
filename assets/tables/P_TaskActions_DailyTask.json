@@ -1,0 +1,592 @@
+{
+  "P_TaskActions_DailyTask": {
+    "10101": {
+      "id": 10101,
+      "taskType": 4,
+      "originStep": 101,
+      "necessary": true,
+      "targetType": 32,
+      "clientParam1": "101.0",
+      "clientParam2": "2",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "20101": {
+      "id": 20101,
+      "taskType": 4,
+      "originStep": 201,
+      "necessary": true,
+      "targetType": 32,
+      "clientParam1": "201.0",
+      "clientParam2": "2",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "30101": {
+      "id": 30101,
+      "taskType": 4,
+      "originStep": 301,
+      "necessary": true,
+      "targetType": 32,
+      "clientParam1": "301.0",
+      "clientParam2": "2",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "40101": {
+      "id": 40101,
+      "taskType": 4,
+      "originStep": 401,
+      "necessary": true,
+      "targetType": 32,
+      "clientParam1": "401.0",
+      "clientParam2": "2",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "50101": {
+      "id": 50101,
+      "taskType": 4,
+      "originStep": 501,
+      "necessary": true,
+      "targetType": 32,
+      "clientParam1": "501.0",
+      "clientParam2": "2",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "60101": {
+      "id": 60101,
+      "taskType": 4,
+      "originStep": 601,
+      "necessary": true,
+      "targetType": 32,
+      "clientParam1": "601.0",
+      "clientParam2": "2",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "70101": {
+      "id": 70101,
+      "taskType": 4,
+      "originStep": 701,
+      "necessary": true,
+      "targetType": 32,
+      "clientParam1": "701.0",
+      "clientParam2": "2",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "80101": {
+      "id": 80101,
+      "taskType": 4,
+      "originStep": 801,
+      "necessary": true,
+      "targetType": 32,
+      "clientParam1": "801.0",
+      "clientParam2": "2",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "210101": {
+      "id": 210101,
+      "taskType": 4,
+      "originStep": 2101,
+      "necessary": true,
+      "targetType": 32,
+      "clientParam1": "2101.0",
+      "clientParam2": "2",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "220101": {
+      "id": 220101,
+      "taskType": 4,
+      "originStep": 2201,
+      "necessary": true,
+      "targetType": 32,
+      "clientParam1": "2201.0",
+      "clientParam2": "2",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "230101": {
+      "id": 230101,
+      "taskType": 4,
+      "originStep": 2301,
+      "necessary": true,
+      "targetType": 32,
+      "clientParam1": "2301.0",
+      "clientParam2": "2",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "240101": {
+      "id": 240101,
+      "taskType": 4,
+      "originStep": 2401,
+      "necessary": true,
+      "targetType": 32,
+      "clientParam1": "2401.0",
+      "clientParam2": "2",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "250101": {
+      "id": 250101,
+      "taskType": 4,
+      "originStep": 2501,
+      "necessary": true,
+      "targetType": 32,
+      "clientParam1": "2501.0",
+      "clientParam2": "2",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "260101": {
+      "id": 260101,
+      "taskType": 4,
+      "originStep": 2601,
+      "necessary": true,
+      "targetType": 32,
+      "clientParam1": "2601.0",
+      "clientParam2": "2",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "270101": {
+      "id": 270101,
+      "taskType": 4,
+      "originStep": 2701,
+      "necessary": true,
+      "targetType": 32,
+      "clientParam1": "2701.0",
+      "clientParam2": "2",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "280101": {
+      "id": 280101,
+      "taskType": 4,
+      "originStep": 2801,
+      "necessary": true,
+      "targetType": 32,
+      "clientParam1": "2801.0",
+      "clientParam2": "2",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "290101": {
+      "id": 290101,
+      "taskType": 4,
+      "originStep": 2901,
+      "necessary": true,
+      "targetType": 32,
+      "clientParam1": "2901.0",
+      "clientParam2": "2",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "300101": {
+      "id": 300101,
+      "taskType": 4,
+      "originStep": 3001,
+      "necessary": true,
+      "targetType": 32,
+      "clientParam1": "3001.0",
+      "clientParam2": "2",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "310101": {
+      "id": 310101,
+      "taskType": 4,
+      "originStep": 3101,
+      "necessary": true,
+      "targetType": 32,
+      "clientParam1": "3101.0",
+      "clientParam2": "2",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "320101": {
+      "id": 320101,
+      "taskType": 4,
+      "originStep": 3201,
+      "necessary": true,
+      "targetType": 32,
+      "clientParam1": "3201.0",
+      "clientParam2": "2",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "330101": {
+      "id": 330101,
+      "taskType": 4,
+      "originStep": 3301,
+      "necessary": true,
+      "targetType": 32,
+      "clientParam1": "3301.0",
+      "clientParam2": "2",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "340101": {
+      "id": 340101,
+      "taskType": 4,
+      "originStep": 3401,
+      "necessary": true,
+      "targetType": 32,
+      "clientParam1": "3401.0",
+      "clientParam2": "2",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "350101": {
+      "id": 350101,
+      "taskType": 4,
+      "originStep": 3501,
+      "necessary": true,
+      "targetType": 32,
+      "clientParam1": "3501.0",
+      "clientParam2": "2",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "360101": {
+      "id": 360101,
+      "taskType": 4,
+      "originStep": 3601,
+      "necessary": true,
+      "targetType": 32,
+      "clientParam1": "3601.0",
+      "clientParam2": "2",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "370101": {
+      "id": 370101,
+      "taskType": 4,
+      "originStep": 3701,
+      "necessary": true,
+      "targetType": 32,
+      "clientParam1": "3701.0",
+      "clientParam2": "2",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "380101": {
+      "id": 380101,
+      "taskType": 4,
+      "originStep": 3801,
+      "necessary": true,
+      "targetType": 32,
+      "clientParam1": "3801.0",
+      "clientParam2": "2",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "390101": {
+      "id": 390101,
+      "taskType": 4,
+      "originStep": 3901,
+      "necessary": true,
+      "targetType": 32,
+      "clientParam1": "3901.0",
+      "clientParam2": "2",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "400101": {
+      "id": 400101,
+      "taskType": 4,
+      "originStep": 4001,
+      "necessary": true,
+      "targetType": 32,
+      "clientParam1": "4001.0",
+      "clientParam2": "2",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "10201": {
+      "id": 10201,
+      "taskType": 4,
+      "originStep": 102,
+      "necessary": true,
+      "targetType": 13,
+      "clientParam1": "5",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "20201": {
+      "id": 20201,
+      "taskType": 4,
+      "originStep": 202,
+      "necessary": true,
+      "targetType": 13,
+      "clientParam1": "5",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "30201": {
+      "id": 30201,
+      "taskType": 4,
+      "originStep": 302,
+      "necessary": true,
+      "targetType": 13,
+      "clientParam1": "5",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "40201": {
+      "id": 40201,
+      "taskType": 4,
+      "originStep": 402,
+      "necessary": true,
+      "targetType": 13,
+      "clientParam1": "5",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "50201": {
+      "id": 50201,
+      "taskType": 4,
+      "originStep": 502,
+      "necessary": true,
+      "targetType": 13,
+      "clientParam1": "5",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "60201": {
+      "id": 60201,
+      "taskType": 4,
+      "originStep": 602,
+      "necessary": true,
+      "targetType": 13,
+      "clientParam1": "5",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "70201": {
+      "id": 70201,
+      "taskType": 4,
+      "originStep": 702,
+      "necessary": true,
+      "targetType": 13,
+      "clientParam1": "5",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "80201": {
+      "id": 80201,
+      "taskType": 4,
+      "originStep": 802,
+      "necessary": true,
+      "targetType": 13,
+      "clientParam1": "5",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "210201": {
+      "id": 210201,
+      "taskType": 4,
+      "originStep": 2102,
+      "necessary": true,
+      "targetType": 13,
+      "clientParam1": "5",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "220201": {
+      "id": 220201,
+      "taskType": 4,
+      "originStep": 2202,
+      "necessary": true,
+      "targetType": 13,
+      "clientParam1": "5",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "230201": {
+      "id": 230201,
+      "taskType": 4,
+      "originStep": 2302,
+      "necessary": true,
+      "targetType": 13,
+      "clientParam1": "5",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "240201": {
+      "id": 240201,
+      "taskType": 4,
+      "originStep": 2402,
+      "necessary": true,
+      "targetType": 13,
+      "clientParam1": "5",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "250201": {
+      "id": 250201,
+      "taskType": 4,
+      "originStep": 2502,
+      "necessary": true,
+      "targetType": 13,
+      "clientParam1": "5",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "260201": {
+      "id": 260201,
+      "taskType": 4,
+      "originStep": 2602,
+      "necessary": true,
+      "targetType": 13,
+      "clientParam1": "5",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "270201": {
+      "id": 270201,
+      "taskType": 4,
+      "originStep": 2702,
+      "necessary": true,
+      "targetType": 13,
+      "clientParam1": "5",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "280201": {
+      "id": 280201,
+      "taskType": 4,
+      "originStep": 2802,
+      "necessary": true,
+      "targetType": 13,
+      "clientParam1": "5",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "290201": {
+      "id": 290201,
+      "taskType": 4,
+      "originStep": 2902,
+      "necessary": true,
+      "targetType": 13,
+      "clientParam1": "5",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "300201": {
+      "id": 300201,
+      "taskType": 4,
+      "originStep": 3002,
+      "necessary": true,
+      "targetType": 13,
+      "clientParam1": "5",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "310201": {
+      "id": 310201,
+      "taskType": 4,
+      "originStep": 3102,
+      "necessary": true,
+      "targetType": 13,
+      "clientParam1": "5",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "320201": {
+      "id": 320201,
+      "taskType": 4,
+      "originStep": 3202,
+      "necessary": true,
+      "targetType": 13,
+      "clientParam1": "5",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "330201": {
+      "id": 330201,
+      "taskType": 4,
+      "originStep": 3302,
+      "necessary": true,
+      "targetType": 13,
+      "clientParam1": "5",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "340201": {
+      "id": 340201,
+      "taskType": 4,
+      "originStep": 3402,
+      "necessary": true,
+      "targetType": 13,
+      "clientParam1": "5",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "350201": {
+      "id": 350201,
+      "taskType": 4,
+      "originStep": 3502,
+      "necessary": true,
+      "targetType": 13,
+      "clientParam1": "5",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "360201": {
+      "id": 360201,
+      "taskType": 4,
+      "originStep": 3602,
+      "necessary": true,
+      "targetType": 13,
+      "clientParam1": "5",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "370201": {
+      "id": 370201,
+      "taskType": 4,
+      "originStep": 3702,
+      "necessary": true,
+      "targetType": 13,
+      "clientParam1": "5",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "380201": {
+      "id": 380201,
+      "taskType": 4,
+      "originStep": 3802,
+      "necessary": true,
+      "targetType": 13,
+      "clientParam1": "5",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "390201": {
+      "id": 390201,
+      "taskType": 4,
+      "originStep": 3902,
+      "necessary": true,
+      "targetType": 13,
+      "clientParam1": "5",
+      "serverSave": false,
+      "mapId": 206001001001
+    },
+    "400201": {
+      "id": 400201,
+      "taskType": 4,
+      "originStep": 4002,
+      "necessary": true,
+      "targetType": 13,
+      "clientParam1": "5",
+      "serverSave": false,
+      "mapId": 206001001001
+    }
+  }
+}

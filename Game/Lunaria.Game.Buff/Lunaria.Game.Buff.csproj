@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Manages outside buffs, replacement groups, and duration or battle limits.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lunaria.Game.Resources\Lunaria.Game.Resources.csproj" />
+    <ProjectReference Include="..\..\Protocol\Lunaria.Proto\Lunaria.Proto.csproj" />
+  </ItemGroup>
+
+</Project>

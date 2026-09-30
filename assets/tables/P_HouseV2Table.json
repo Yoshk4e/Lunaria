@@ -1,0 +1,36 @@
+{
+  "P_HouseV2Table": {
+    "1": {
+      "id": 1,
+      "houseType": 1,
+      "levelGroup": 1,
+      "baseIncome": 0,
+      "price": 226830,
+      "unlockTaskId": 101006
+    },
+    "2": {
+      "id": 2,
+      "houseType": 1,
+      "levelGroup": 2,
+      "baseIncome": 0,
+      "price": 150000,
+      "unlockTaskId": 101007
+    },
+    "3": {
+      "id": 3,
+      "houseType": 0,
+      "levelGroup": 1,
+      "baseIncome": 1500,
+      "price": 500,
+      "unlockTaskId": 101007
+    },
+    "4": {
+      "id": 4,
+      "houseType": 1,
+      "levelGroup": 2,
+      "baseIncome": 0,
+      "price": 289000,
+      "unlockTaskId": 101007
+    }
+  }
+}

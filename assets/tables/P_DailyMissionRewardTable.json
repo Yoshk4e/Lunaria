@@ -1,0 +1,44 @@
+{
+  "P_DailyMissionRewardTable": {
+    "1": {
+      "id": 1,
+      "needActivePoint": 20,
+      "items": [
+        "770004=240",
+        "1=5000"
+      ]
+    },
+    "2": {
+      "id": 2,
+      "needActivePoint": 40,
+      "items": [
+        "770004=480",
+        "21308001=2"
+      ]
+    },
+    "3": {
+      "id": 3,
+      "needActivePoint": 60,
+      "items": [
+        "770004=480",
+        "770002=20"
+      ]
+    },
+    "4": {
+      "id": 4,
+      "needActivePoint": 80,
+      "items": [
+        "770004=600",
+        "21308001=2"
+      ]
+    },
+    "5": {
+      "id": 5,
+      "needActivePoint": 100,
+      "items": [
+        "770004=600",
+        "770002=40"
+      ]
+    }
+  }
+}

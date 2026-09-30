@@ -1,0 +1,121 @@
+{
+  "P_ChargeAwardTable": {
+    "1001": {
+      "id": 1001,
+      "chargeType": 3,
+      "subId": 1001,
+      "startTime": 0,
+      "endTime": 0,
+      "chinaPrice": "6.00",
+      "americaPrice": "6.00",
+      "japanPrice": "6.00",
+      "koreaPrice": "6.00",
+      "name": 104060001,
+      "isHide": false
+    },
+    "1002": {
+      "id": 1002,
+      "chargeType": 3,
+      "subId": 1002,
+      "startTime": 0,
+      "endTime": 0,
+      "chinaPrice": "30.00",
+      "americaPrice": "30.00",
+      "japanPrice": "30.00",
+      "koreaPrice": "30.00",
+      "name": 104060002,
+      "isHide": false
+    },
+    "1003": {
+      "id": 1003,
+      "chargeType": 3,
+      "subId": 1003,
+      "startTime": 0,
+      "endTime": 0,
+      "chinaPrice": "98.00",
+      "americaPrice": "98.00",
+      "japanPrice": "98.00",
+      "koreaPrice": "98.00",
+      "name": 104060003,
+      "isHide": false
+    },
+    "1004": {
+      "id": 1004,
+      "chargeType": 3,
+      "subId": 1004,
+      "startTime": 0,
+      "endTime": 0,
+      "chinaPrice": "198.00",
+      "americaPrice": "198.00",
+      "japanPrice": "198.00",
+      "koreaPrice": "198.00",
+      "name": 104060004,
+      "isHide": false
+    },
+    "1005": {
+      "id": 1005,
+      "chargeType": 3,
+      "subId": 1005,
+      "startTime": 0,
+      "endTime": 0,
+      "chinaPrice": "328.00",
+      "americaPrice": "328.00",
+      "japanPrice": "328.00",
+      "koreaPrice": "328.00",
+      "name": 104060005,
+      "isHide": false
+    },
+    "1006": {
+      "id": 1006,
+      "chargeType": 3,
+      "subId": 1006,
+      "startTime": 0,
+      "endTime": 0,
+      "chinaPrice": "648.00",
+      "americaPrice": "648.00",
+      "japanPrice": "648.00",
+      "koreaPrice": "648.00",
+      "name": 104060006,
+      "isHide": false
+    },
+    "2001": {
+      "id": 2001,
+      "chargeType": 1,
+      "subId": 2001,
+      "startTime": 0,
+      "endTime": 0,
+      "chinaPrice": "30.00",
+      "americaPrice": "30.00",
+      "japanPrice": "30.00",
+      "koreaPrice": "30.00",
+      "name": 104060007,
+      "isHide": false
+    },
+    "3001": {
+      "id": 3001,
+      "chargeType": 4,
+      "subId": 3001,
+      "startTime": 0,
+      "endTime": 0,
+      "chinaPrice": "68.00",
+      "americaPrice": "68.00",
+      "japanPrice": "68.00",
+      "koreaPrice": "68.00",
+      "name": 104060008,
+      "isHide": false
+    },
+    "3002": {
+      "id": 3002,
+      "chargeType": 4,
+      "subId": 3002,
+      "startTime": 0,
+      "endTime": 0,
+      "chinaPrice": "98.00",
+      "americaPrice": "98.00",
+      "japanPrice": "98.00",
+      "koreaPrice": "98.00",
+      "name": 104060008,
+      "isHide": false
+    }
+  }
+}

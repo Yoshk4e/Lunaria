@@ -1,0 +1,168 @@
+{
+  "P_RegionSequenceTable_Dayfair": {
+    "1142042101": {
+      "id": 1142042101,
+      "subRegionName": "1010500123.0",
+      "type": 1,
+      "paramId": [
+        9002
+      ],
+      "paramNum": 1,
+      "icon": "T_Navigation_Hud_Regional_Explore"
+    },
+    "1142031001": {
+      "id": 1142031001,
+      "subRegionName": "1010500123.0",
+      "type": 5,
+      "paramId": [
+        9011
+      ],
+      "paramNum": 1,
+      "icon": "T_Navigation_Hud_Regional_Decrypt"
+    },
+    "1142079601": {
+      "id": 1142079601,
+      "subRegionName": "1010500123.0",
+      "type": 6,
+      "paramId": [
+        81001,
+        81002,
+        81003
+      ],
+      "paramNum": 4,
+      "icon": "T_Navigation_Hud_Regional_SilverBiology"
+    },
+    "1142079603": {
+      "id": 1142079603,
+      "subRegionName": "1010500123.0",
+      "type": 6,
+      "paramId": [
+        83001,
+        83002,
+        83003
+      ],
+      "paramNum": 3,
+      "icon": "T_Navigation_Hud_Regional_SilverBiology"
+    },
+    "1142089701": {
+      "id": 1142089701,
+      "subRegionName": "1010500123.0",
+      "type": 7,
+      "paramId": [
+        1010101,
+        1010102,
+        1010103
+      ],
+      "paramNum": 15,
+      "icon": "T_Navigation_Hud_Regional_Collecting"
+    },
+    "1142089702": {
+      "id": 1142089702,
+      "subRegionName": "1010500123.0",
+      "type": 7,
+      "paramId": [
+        1010201
+      ],
+      "paramNum": 6,
+      "icon": "T_Navigation_Hud_Regional_Collecting"
+    },
+    "1142089703": {
+      "id": 1142089703,
+      "subRegionName": "1010500123.0",
+      "type": 7,
+      "paramId": [
+        1010301
+      ],
+      "paramNum": 16,
+      "icon": "T_Navigation_Hud_Regional_Collecting"
+    },
+    "1142089704": {
+      "id": 1142089704,
+      "subRegionName": "1010500123.0",
+      "type": 7,
+      "paramId": [
+        1010401,
+        1010402,
+        1010403
+      ],
+      "paramNum": 10,
+      "icon": "T_Navigation_Hud_Regional_Collecting"
+    },
+    "1142089705": {
+      "id": 1142089705,
+      "subRegionName": "1010500123.0",
+      "type": 7,
+      "paramId": [
+        2010401
+      ],
+      "paramNum": 5,
+      "icon": "T_Navigation_Hud_Regional_Collecting"
+    },
+    "1142069901": {
+      "id": 1142069901,
+      "subRegionName": "1010500123.0",
+      "type": 2,
+      "paramId": [
+        200,
+        201,
+        202,
+        203
+      ],
+      "paramNum": 30,
+      "icon": "T_Navigation_Hud_Regional_Box"
+    },
+    "1142069801": {
+      "id": 1142069801,
+      "subRegionName": "1010500123.0",
+      "type": 2,
+      "paramId": [
+        301
+      ],
+      "paramNum": 15,
+      "icon": "T_Navigation_Hud_Regional_Box"
+    },
+    "1142050101": {
+      "id": 1142050101,
+      "subRegionName": "1010500123.0",
+      "type": 8,
+      "paramId": [
+        11420101
+      ],
+      "paramNum": 1,
+      "icon": "T_Navigation_Hud_Clearance"
+    },
+    "1142050401": {
+      "id": 1142050401,
+      "subRegionName": "1010500123.0",
+      "type": 8,
+      "paramId": [
+        11420401,
+        11420402,
+        11420403,
+        11420404
+      ],
+      "paramNum": 4,
+      "icon": "T_Navigation_Hud_Clearance"
+    },
+    "1142050701": {
+      "id": 1142050701,
+      "subRegionName": "1010500123.0",
+      "type": 8,
+      "paramId": [
+        11420701
+      ],
+      "paramNum": 1,
+      "icon": "T_Navigation_Hud_Clearance"
+    },
+    "1142012401": {
+      "id": 1142012401,
+      "subRegionName": "1010500123.0",
+      "type": 3,
+      "paramId": [
+        241406001
+      ],
+      "paramNum": 1,
+      "icon": "T_Navigation_Hud_Transmission_Close"
+    }
+  }
+}

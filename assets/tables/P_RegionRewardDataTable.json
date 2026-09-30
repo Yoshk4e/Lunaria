@@ -1,0 +1,124 @@
+{
+  "P_RegionRewardDataTable": {
+    "12101": {
+      "id": 12101,
+      "prograssValue": 25,
+      "prograssName": 25,
+      "dropId": 99010101
+    },
+    "12102": {
+      "id": 12102,
+      "prograssValue": 50,
+      "prograssName": 50,
+      "dropId": 99010102
+    },
+    "12103": {
+      "id": 12103,
+      "prograssValue": 75,
+      "prograssName": 75,
+      "dropId": 99010103
+    },
+    "12104": {
+      "id": 12104,
+      "prograssValue": 100,
+      "prograssName": 100,
+      "dropId": 99010104
+    },
+    "12201": {
+      "id": 12201,
+      "prograssValue": 25,
+      "prograssName": 25,
+      "dropId": 99010101
+    },
+    "12202": {
+      "id": 12202,
+      "prograssValue": 50,
+      "prograssName": 50,
+      "dropId": 99010102
+    },
+    "12203": {
+      "id": 12203,
+      "prograssValue": 75,
+      "prograssName": 75,
+      "dropId": 99010103
+    },
+    "12204": {
+      "id": 12204,
+      "prograssValue": 100,
+      "prograssName": 100,
+      "dropId": 99010104
+    },
+    "12301": {
+      "id": 12301,
+      "prograssValue": 25,
+      "prograssName": 25,
+      "dropId": 99010101
+    },
+    "12302": {
+      "id": 12302,
+      "prograssValue": 50,
+      "prograssName": 50,
+      "dropId": 99010102
+    },
+    "12303": {
+      "id": 12303,
+      "prograssValue": 75,
+      "prograssName": 75,
+      "dropId": 99010103
+    },
+    "12304": {
+      "id": 12304,
+      "prograssValue": 100,
+      "prograssName": 100,
+      "dropId": 99010104
+    },
+    "12601": {
+      "id": 12601,
+      "prograssValue": 25,
+      "prograssName": 25,
+      "dropId": 99010101
+    },
+    "12602": {
+      "id": 12602,
+      "prograssValue": 50,
+      "prograssName": 50,
+      "dropId": 99010102
+    },
+    "12603": {
+      "id": 12603,
+      "prograssValue": 75,
+      "prograssName": 75,
+      "dropId": 99010103
+    },
+    "12604": {
+      "id": 12604,
+      "prograssValue": 100,
+      "prograssName": 100,
+      "dropId": 99010104
+    },
+    "12501": {
+      "id": 12501,
+      "prograssValue": 25,
+      "prograssName": 25,
+      "dropId": 99010101
+    },
+    "12502": {
+      "id": 12502,
+      "prograssValue": 50,
+      "prograssName": 50,
+      "dropId": 99010102
+    },
+    "12503": {
+      "id": 12503,
+      "prograssValue": 75,
+      "prograssName": 75,
+      "dropId": 99010103
+    },
+    "12504": {
+      "id": 12504,
+      "prograssValue": 100,
+      "prograssName": 100,
+      "dropId": 99010104
+    }
+  }
+}

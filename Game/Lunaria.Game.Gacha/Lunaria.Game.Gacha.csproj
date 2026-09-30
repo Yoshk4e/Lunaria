@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Gacha pools, pity counters, rebates, and draw limits.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\Lunaria.Common\Lunaria.Common.csproj" />
+    <ProjectReference Include="..\..\Protocol\Lunaria.Proto\Lunaria.Proto.csproj" />
+    <ProjectReference Include="..\Lunaria.Game.Resources\Lunaria.Game.Resources.csproj" />
+  </ItemGroup>
+
+</Project>

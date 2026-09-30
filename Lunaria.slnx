@@ -1,0 +1,37 @@
+<Solution>
+  <Folder Name="/Servers/">
+    <Project Path="Source/Lunaria.GameServer/Lunaria.GameServer.csproj" />
+    <Project Path="Source/Lunaria.QueryGateway/Lunaria.QueryGateway.csproj" />
+    <Project Path="Source/Lunaria.SdkServer/Lunaria.SdkServer.csproj" />
+  </Folder>
+  <Folder Name="/Game/">
+    <Project Path="Game/Lunaria.Game.Characters/Lunaria.Game.Characters.csproj" />
+    <Project Path="Game/Lunaria.Game.Guide/Lunaria.Game.Guide.csproj" />
+    <Project Path="Game/Lunaria.Game.Mail/Lunaria.Game.Mail.csproj" />
+    <Project Path="Game/Lunaria.Game.Inventory/Lunaria.Game.Inventory.csproj" />
+    <Project Path="Game/Lunaria.Game.Limits/Lunaria.Game.Limits.csproj" />
+    <Project Path="Game/Lunaria.Game.Player/Lunaria.Game.Player.csproj" />
+    <Project Path="Game/Lunaria.Game.Progression/Lunaria.Game.Progression.csproj" />
+    <Project Path="Game/Lunaria.Game.Shop/Lunaria.Game.Shop.csproj" />
+    <Project Path="Game/Lunaria.Game.Gacha/Lunaria.Game.Gacha.csproj" />
+    <Project Path="Game/Lunaria.Game.Motives/Lunaria.Game.Motives.csproj" />
+    <Project Path="Game/Lunaria.Game.Resources/Lunaria.Game.Resources.csproj" />
+    <Project Path="Game/Lunaria.Game.World/Lunaria.Game.World.csproj" />
+    <Project Path="Game/Lunaria.Game.Collections/Lunaria.Game.Collections.csproj" />
+    <Project Path="Game/Lunaria.Game.Tasks/Lunaria.Game.Tasks.csproj" />
+    <Project Path="Game/Lunaria.Game.Buff/Lunaria.Game.Buff.csproj" />
+    <Project Path="Game/Lunaria.Game.Battle/Lunaria.Game.Battle.csproj" />
+    <Project Path="Game/Lunaria.Game.Dungeons/Lunaria.Game.Dungeons.csproj" />
+    <Project Path="Game/Lunaria.Game.Wanted/Lunaria.Game.Wanted.csproj" />
+  </Folder>
+  <Folder Name="/Libraries/">
+    <Project Path="Libraries/Lunaria.Common/Lunaria.Common.csproj" />
+    <Project Path="Libraries/Lunaria.Silver/Lunaria.Silver.csproj" />
+  </Folder>
+  <Folder Name="/Protocol/">
+    <Project Path="Protocol/Lunaria.Proto/Lunaria.Proto.csproj" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="Tests/Lunaria.Tests/Lunaria.Tests.csproj" />
+  </Folder>
+</Solution>

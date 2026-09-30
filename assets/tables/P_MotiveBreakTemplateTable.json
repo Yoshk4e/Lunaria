@@ -1,0 +1,1400 @@
+{
+  "P_MotiveBreakTemplateTable": {
+    "1": {
+      "id": 1,
+      "templateId": 1,
+      "breakLevel": 0,
+      "maxLevel": 20,
+      "needWorldLevel": 2,
+      "costItemId": [
+        11201001,
+        11201002,
+        11201003
+      ],
+      "costItemCount": [
+        1,
+        1,
+        1
+      ],
+      "costCurrency": 10
+    },
+    "2": {
+      "id": 2,
+      "templateId": 1,
+      "breakLevel": 1,
+      "maxLevel": 30,
+      "needWorldLevel": 3,
+      "costItemId": [
+        11201001,
+        11201002,
+        11201003
+      ],
+      "costItemCount": [
+        2,
+        2,
+        2
+      ],
+      "costCurrency": 20,
+      "addAttributeId": 1001
+    },
+    "3": {
+      "id": 3,
+      "templateId": 1,
+      "breakLevel": 2,
+      "maxLevel": 40,
+      "needWorldLevel": 4,
+      "costItemId": [
+        11201001,
+        11201002,
+        11201003
+      ],
+      "costItemCount": [
+        3,
+        3,
+        3
+      ],
+      "costCurrency": 30,
+      "addAttributeId": 1002
+    },
+    "4": {
+      "id": 4,
+      "templateId": 1,
+      "breakLevel": 3,
+      "maxLevel": 50,
+      "needWorldLevel": 5,
+      "costItemId": [
+        11201001,
+        11201002,
+        11201003
+      ],
+      "costItemCount": [
+        4,
+        4,
+        4
+      ],
+      "costCurrency": 40,
+      "addAttributeId": 1003
+    },
+    "5": {
+      "id": 5,
+      "templateId": 1,
+      "breakLevel": 4,
+      "maxLevel": 60,
+      "needWorldLevel": 6,
+      "costItemId": [
+        11201001,
+        11201002,
+        11201003
+      ],
+      "costItemCount": [
+        5,
+        5,
+        5
+      ],
+      "costCurrency": 50,
+      "addAttributeId": 1004
+    },
+    "6": {
+      "id": 6,
+      "templateId": 1,
+      "breakLevel": 5,
+      "maxLevel": 70,
+      "needWorldLevel": 7,
+      "costItemId": [
+        11201001,
+        11201002,
+        11201003
+      ],
+      "costItemCount": [
+        6,
+        6,
+        6
+      ],
+      "costCurrency": 60,
+      "addAttributeId": 1005
+    },
+    "7": {
+      "id": 7,
+      "templateId": 1,
+      "breakLevel": 6,
+      "maxLevel": 80,
+      "addAttributeId": 1006
+    },
+    "8": {
+      "id": 8,
+      "templateId": 12031001,
+      "breakLevel": 0,
+      "maxLevel": 20,
+      "needWorldLevel": 2,
+      "costItemId": [
+        12330001
+      ],
+      "costItemCount": [
+        3
+      ],
+      "costCurrency": 960
+    },
+    "9": {
+      "id": 9,
+      "templateId": 12031001,
+      "breakLevel": 1,
+      "maxLevel": 30,
+      "needWorldLevel": 3,
+      "costItemId": [
+        12330001,
+        14020002,
+        41030002
+      ],
+      "costItemCount": [
+        6,
+        2,
+        1
+      ],
+      "costCurrency": 1600,
+      "addAttributeId": 3001
+    },
+    "10": {
+      "id": 10,
+      "templateId": 12031001,
+      "breakLevel": 2,
+      "maxLevel": 40,
+      "needWorldLevel": 4,
+      "costItemId": [
+        12330001,
+        14020002,
+        41030002
+      ],
+      "costItemCount": [
+        12,
+        4,
+        2
+      ],
+      "costCurrency": 3200,
+      "addAttributeId": 3002
+    },
+    "11": {
+      "id": 11,
+      "templateId": 12031001,
+      "breakLevel": 3,
+      "maxLevel": 50,
+      "needWorldLevel": 5,
+      "costItemId": [
+        12330001,
+        14020002,
+        41030002
+      ],
+      "costItemCount": [
+        30,
+        8,
+        4
+      ],
+      "costCurrency": 8000,
+      "addAttributeId": 3003
+    },
+    "12": {
+      "id": 12,
+      "templateId": 12031001,
+      "breakLevel": 4,
+      "maxLevel": 60,
+      "needWorldLevel": 6,
+      "costItemId": [
+        12330001,
+        14020002,
+        41030002
+      ],
+      "costItemCount": [
+        36,
+        10,
+        5
+      ],
+      "costCurrency": 16000,
+      "addAttributeId": 3004
+    },
+    "13": {
+      "id": 13,
+      "templateId": 12031001,
+      "breakLevel": 5,
+      "maxLevel": 70,
+      "needWorldLevel": 7,
+      "costItemId": [
+        12330001,
+        14020002,
+        41030002
+      ],
+      "costItemCount": [
+        42,
+        12,
+        6
+      ],
+      "costCurrency": 32000,
+      "addAttributeId": 3005
+    },
+    "14": {
+      "id": 14,
+      "templateId": 12031001,
+      "breakLevel": 6,
+      "maxLevel": 80,
+      "addAttributeId": 3006
+    },
+    "15": {
+      "id": 15,
+      "templateId": 12032001,
+      "breakLevel": 0,
+      "maxLevel": 20,
+      "needWorldLevel": 2,
+      "costItemId": [
+        12330001
+      ],
+      "costItemCount": [
+        3
+      ],
+      "costCurrency": 960
+    },
+    "16": {
+      "id": 16,
+      "templateId": 12032001,
+      "breakLevel": 1,
+      "maxLevel": 30,
+      "needWorldLevel": 3,
+      "costItemId": [
+        12330001,
+        14020001,
+        41030001
+      ],
+      "costItemCount": [
+        6,
+        2,
+        1
+      ],
+      "costCurrency": 1600,
+      "addAttributeId": 3001
+    },
+    "17": {
+      "id": 17,
+      "templateId": 12032001,
+      "breakLevel": 2,
+      "maxLevel": 40,
+      "needWorldLevel": 4,
+      "costItemId": [
+        12330001,
+        14020001,
+        41030001
+      ],
+      "costItemCount": [
+        12,
+        4,
+        2
+      ],
+      "costCurrency": 3200,
+      "addAttributeId": 3002
+    },
+    "18": {
+      "id": 18,
+      "templateId": 12032001,
+      "breakLevel": 3,
+      "maxLevel": 50,
+      "needWorldLevel": 5,
+      "costItemId": [
+        12330001,
+        14020001,
+        41030001
+      ],
+      "costItemCount": [
+        30,
+        8,
+        4
+      ],
+      "costCurrency": 8000,
+      "addAttributeId": 3003
+    },
+    "19": {
+      "id": 19,
+      "templateId": 12032001,
+      "breakLevel": 4,
+      "maxLevel": 60,
+      "needWorldLevel": 6,
+      "costItemId": [
+        12330001,
+        14020001,
+        41030001
+      ],
+      "costItemCount": [
+        36,
+        10,
+        5
+      ],
+      "costCurrency": 16000,
+      "addAttributeId": 3004
+    },
+    "20": {
+      "id": 20,
+      "templateId": 12032001,
+      "breakLevel": 5,
+      "maxLevel": 70,
+      "needWorldLevel": 7,
+      "costItemId": [
+        12330001,
+        14020001,
+        41030001
+      ],
+      "costItemCount": [
+        42,
+        12,
+        6
+      ],
+      "costCurrency": 32000,
+      "addAttributeId": 3005
+    },
+    "21": {
+      "id": 21,
+      "templateId": 12032001,
+      "breakLevel": 6,
+      "maxLevel": 80,
+      "addAttributeId": 3006
+    },
+    "22": {
+      "id": 22,
+      "templateId": 12033001,
+      "breakLevel": 0,
+      "maxLevel": 20,
+      "needWorldLevel": 2,
+      "costItemId": [
+        12330001
+      ],
+      "costItemCount": [
+        3
+      ],
+      "costCurrency": 960
+    },
+    "23": {
+      "id": 23,
+      "templateId": 12033001,
+      "breakLevel": 1,
+      "maxLevel": 30,
+      "needWorldLevel": 3,
+      "costItemId": [
+        12330001,
+        14020003,
+        41030003
+      ],
+      "costItemCount": [
+        6,
+        2,
+        1
+      ],
+      "costCurrency": 1600,
+      "addAttributeId": 3001
+    },
+    "24": {
+      "id": 24,
+      "templateId": 12033001,
+      "breakLevel": 2,
+      "maxLevel": 40,
+      "needWorldLevel": 4,
+      "costItemId": [
+        12330001,
+        14020003,
+        41030003
+      ],
+      "costItemCount": [
+        12,
+        4,
+        2
+      ],
+      "costCurrency": 3200,
+      "addAttributeId": 3002
+    },
+    "25": {
+      "id": 25,
+      "templateId": 12033001,
+      "breakLevel": 3,
+      "maxLevel": 50,
+      "needWorldLevel": 5,
+      "costItemId": [
+        12330001,
+        14020003,
+        41030003
+      ],
+      "costItemCount": [
+        30,
+        8,
+        4
+      ],
+      "costCurrency": 8000,
+      "addAttributeId": 3003
+    },
+    "26": {
+      "id": 26,
+      "templateId": 12033001,
+      "breakLevel": 4,
+      "maxLevel": 60,
+      "needWorldLevel": 6,
+      "costItemId": [
+        12330001,
+        14020003,
+        41030003
+      ],
+      "costItemCount": [
+        36,
+        10,
+        5
+      ],
+      "costCurrency": 16000,
+      "addAttributeId": 3004
+    },
+    "27": {
+      "id": 27,
+      "templateId": 12033001,
+      "breakLevel": 5,
+      "maxLevel": 70,
+      "needWorldLevel": 7,
+      "costItemId": [
+        12330001,
+        14020003,
+        41030003
+      ],
+      "costItemCount": [
+        42,
+        12,
+        6
+      ],
+      "costCurrency": 32000,
+      "addAttributeId": 3005
+    },
+    "28": {
+      "id": 28,
+      "templateId": 12033001,
+      "breakLevel": 6,
+      "maxLevel": 80,
+      "addAttributeId": 3006
+    },
+    "29": {
+      "id": 29,
+      "templateId": 12034001,
+      "breakLevel": 0,
+      "maxLevel": 20,
+      "needWorldLevel": 2,
+      "costItemId": [
+        12330001
+      ],
+      "costItemCount": [
+        3
+      ],
+      "costCurrency": 960
+    },
+    "30": {
+      "id": 30,
+      "templateId": 12034001,
+      "breakLevel": 1,
+      "maxLevel": 30,
+      "needWorldLevel": 3,
+      "costItemId": [
+        12330001,
+        14020001,
+        41030001
+      ],
+      "costItemCount": [
+        6,
+        2,
+        1
+      ],
+      "costCurrency": 1600,
+      "addAttributeId": 3001
+    },
+    "31": {
+      "id": 31,
+      "templateId": 12034001,
+      "breakLevel": 2,
+      "maxLevel": 40,
+      "needWorldLevel": 4,
+      "costItemId": [
+        12330001,
+        14020001,
+        41030001
+      ],
+      "costItemCount": [
+        12,
+        4,
+        2
+      ],
+      "costCurrency": 3200,
+      "addAttributeId": 3002
+    },
+    "32": {
+      "id": 32,
+      "templateId": 12034001,
+      "breakLevel": 3,
+      "maxLevel": 50,
+      "needWorldLevel": 5,
+      "costItemId": [
+        12330001,
+        14020001,
+        41030001
+      ],
+      "costItemCount": [
+        30,
+        8,
+        4
+      ],
+      "costCurrency": 8000,
+      "addAttributeId": 3003
+    },
+    "33": {
+      "id": 33,
+      "templateId": 12034001,
+      "breakLevel": 4,
+      "maxLevel": 60,
+      "needWorldLevel": 6,
+      "costItemId": [
+        12330001,
+        14020001,
+        41030001
+      ],
+      "costItemCount": [
+        36,
+        10,
+        5
+      ],
+      "costCurrency": 16000,
+      "addAttributeId": 3004
+    },
+    "34": {
+      "id": 34,
+      "templateId": 12034001,
+      "breakLevel": 5,
+      "maxLevel": 70,
+      "needWorldLevel": 7,
+      "costItemId": [
+        12330001,
+        14020001,
+        41030001
+      ],
+      "costItemCount": [
+        42,
+        12,
+        6
+      ],
+      "costCurrency": 32000,
+      "addAttributeId": 3005
+    },
+    "35": {
+      "id": 35,
+      "templateId": 12034001,
+      "breakLevel": 6,
+      "maxLevel": 80,
+      "addAttributeId": 3006
+    },
+    "36": {
+      "id": 36,
+      "templateId": 12035001,
+      "breakLevel": 0,
+      "maxLevel": 20,
+      "needWorldLevel": 2,
+      "costItemId": [
+        12330001
+      ],
+      "costItemCount": [
+        3
+      ],
+      "costCurrency": 960
+    },
+    "37": {
+      "id": 37,
+      "templateId": 12035001,
+      "breakLevel": 1,
+      "maxLevel": 30,
+      "needWorldLevel": 3,
+      "costItemId": [
+        12330001,
+        14020002,
+        41030004
+      ],
+      "costItemCount": [
+        6,
+        2,
+        1
+      ],
+      "costCurrency": 1600,
+      "addAttributeId": 3001
+    },
+    "38": {
+      "id": 38,
+      "templateId": 12035001,
+      "breakLevel": 2,
+      "maxLevel": 40,
+      "needWorldLevel": 4,
+      "costItemId": [
+        12330001,
+        14020002,
+        41030004
+      ],
+      "costItemCount": [
+        12,
+        4,
+        2
+      ],
+      "costCurrency": 3200,
+      "addAttributeId": 3002
+    },
+    "39": {
+      "id": 39,
+      "templateId": 12035001,
+      "breakLevel": 3,
+      "maxLevel": 50,
+      "needWorldLevel": 5,
+      "costItemId": [
+        12330001,
+        14020002,
+        41030004
+      ],
+      "costItemCount": [
+        30,
+        8,
+        4
+      ],
+      "costCurrency": 8000,
+      "addAttributeId": 3003
+    },
+    "40": {
+      "id": 40,
+      "templateId": 12035001,
+      "breakLevel": 4,
+      "maxLevel": 60,
+      "needWorldLevel": 6,
+      "costItemId": [
+        12330001,
+        14020002,
+        41030004
+      ],
+      "costItemCount": [
+        36,
+        10,
+        5
+      ],
+      "costCurrency": 16000,
+      "addAttributeId": 3004
+    },
+    "41": {
+      "id": 41,
+      "templateId": 12035001,
+      "breakLevel": 5,
+      "maxLevel": 70,
+      "needWorldLevel": 7,
+      "costItemId": [
+        12330001,
+        14020002,
+        41030004
+      ],
+      "costItemCount": [
+        42,
+        12,
+        6
+      ],
+      "costCurrency": 32000,
+      "addAttributeId": 3005
+    },
+    "42": {
+      "id": 42,
+      "templateId": 12035001,
+      "breakLevel": 6,
+      "maxLevel": 80,
+      "addAttributeId": 3006
+    },
+    "43": {
+      "id": 43,
+      "templateId": 12036001,
+      "breakLevel": 0,
+      "maxLevel": 20,
+      "needWorldLevel": 2,
+      "costItemId": [
+        12330001
+      ],
+      "costItemCount": [
+        3
+      ],
+      "costCurrency": 960
+    },
+    "44": {
+      "id": 44,
+      "templateId": 12036001,
+      "breakLevel": 1,
+      "maxLevel": 30,
+      "needWorldLevel": 3,
+      "costItemId": [
+        12330001,
+        14020004,
+        41030004
+      ],
+      "costItemCount": [
+        6,
+        2,
+        1
+      ],
+      "costCurrency": 1600,
+      "addAttributeId": 3001
+    },
+    "45": {
+      "id": 45,
+      "templateId": 12036001,
+      "breakLevel": 2,
+      "maxLevel": 40,
+      "needWorldLevel": 4,
+      "costItemId": [
+        12330001,
+        14020004,
+        41030004
+      ],
+      "costItemCount": [
+        12,
+        4,
+        2
+      ],
+      "costCurrency": 3200,
+      "addAttributeId": 3002
+    },
+    "46": {
+      "id": 46,
+      "templateId": 12036001,
+      "breakLevel": 3,
+      "maxLevel": 50,
+      "needWorldLevel": 5,
+      "costItemId": [
+        12330001,
+        14020004,
+        41030004
+      ],
+      "costItemCount": [
+        30,
+        8,
+        4
+      ],
+      "costCurrency": 8000,
+      "addAttributeId": 3003
+    },
+    "47": {
+      "id": 47,
+      "templateId": 12036001,
+      "breakLevel": 4,
+      "maxLevel": 60,
+      "needWorldLevel": 6,
+      "costItemId": [
+        12330001,
+        14020004,
+        41030004
+      ],
+      "costItemCount": [
+        36,
+        10,
+        5
+      ],
+      "costCurrency": 16000,
+      "addAttributeId": 3004
+    },
+    "48": {
+      "id": 48,
+      "templateId": 12036001,
+      "breakLevel": 5,
+      "maxLevel": 70,
+      "needWorldLevel": 7,
+      "costItemId": [
+        12330001,
+        14020004,
+        41030004
+      ],
+      "costItemCount": [
+        42,
+        12,
+        6
+      ],
+      "costCurrency": 32000,
+      "addAttributeId": 3005
+    },
+    "49": {
+      "id": 49,
+      "templateId": 12036001,
+      "breakLevel": 6,
+      "maxLevel": 80,
+      "addAttributeId": 3006
+    },
+    "50": {
+      "id": 50,
+      "templateId": 12041001,
+      "breakLevel": 0,
+      "maxLevel": 20,
+      "needWorldLevel": 2,
+      "costItemId": [
+        12330001
+      ],
+      "costItemCount": [
+        4
+      ],
+      "costCurrency": 1200
+    },
+    "51": {
+      "id": 51,
+      "templateId": 12041001,
+      "breakLevel": 1,
+      "maxLevel": 30,
+      "needWorldLevel": 3,
+      "costItemId": [
+        12330001,
+        14020002,
+        41030002
+      ],
+      "costItemCount": [
+        8,
+        3,
+        2
+      ],
+      "costCurrency": 2000,
+      "addAttributeId": 4001
+    },
+    "52": {
+      "id": 52,
+      "templateId": 12041001,
+      "breakLevel": 2,
+      "maxLevel": 40,
+      "needWorldLevel": 4,
+      "costItemId": [
+        12330001,
+        14020002,
+        41030002
+      ],
+      "costItemCount": [
+        16,
+        6,
+        4
+      ],
+      "costCurrency": 4000,
+      "addAttributeId": 4002
+    },
+    "53": {
+      "id": 53,
+      "templateId": 12041001,
+      "breakLevel": 3,
+      "maxLevel": 50,
+      "needWorldLevel": 5,
+      "costItemId": [
+        12330001,
+        14020002,
+        41030002
+      ],
+      "costItemCount": [
+        40,
+        12,
+        8
+      ],
+      "costCurrency": 10000,
+      "addAttributeId": 4003
+    },
+    "54": {
+      "id": 54,
+      "templateId": 12041001,
+      "breakLevel": 4,
+      "maxLevel": 60,
+      "needWorldLevel": 6,
+      "costItemId": [
+        12330001,
+        14020002,
+        41030002
+      ],
+      "costItemCount": [
+        48,
+        15,
+        10
+      ],
+      "costCurrency": 20000,
+      "addAttributeId": 4004
+    },
+    "55": {
+      "id": 55,
+      "templateId": 12041001,
+      "breakLevel": 5,
+      "maxLevel": 70,
+      "needWorldLevel": 7,
+      "costItemId": [
+        12330001,
+        14020002,
+        41030002
+      ],
+      "costItemCount": [
+        56,
+        18,
+        12
+      ],
+      "costCurrency": 40000,
+      "addAttributeId": 4005
+    },
+    "56": {
+      "id": 56,
+      "templateId": 12041001,
+      "breakLevel": 6,
+      "maxLevel": 80,
+      "addAttributeId": 4006
+    },
+    "57": {
+      "id": 57,
+      "templateId": 12042001,
+      "breakLevel": 0,
+      "maxLevel": 20,
+      "needWorldLevel": 2,
+      "costItemId": [
+        12330001
+      ],
+      "costItemCount": [
+        4
+      ],
+      "costCurrency": 1200
+    },
+    "58": {
+      "id": 58,
+      "templateId": 12042001,
+      "breakLevel": 1,
+      "maxLevel": 30,
+      "needWorldLevel": 3,
+      "costItemId": [
+        12330001,
+        14020001,
+        41030001
+      ],
+      "costItemCount": [
+        8,
+        3,
+        2
+      ],
+      "costCurrency": 2000,
+      "addAttributeId": 4001
+    },
+    "59": {
+      "id": 59,
+      "templateId": 12042001,
+      "breakLevel": 2,
+      "maxLevel": 40,
+      "needWorldLevel": 4,
+      "costItemId": [
+        12330001,
+        14020001,
+        41030001
+      ],
+      "costItemCount": [
+        16,
+        6,
+        4
+      ],
+      "costCurrency": 4000,
+      "addAttributeId": 4002
+    },
+    "60": {
+      "id": 60,
+      "templateId": 12042001,
+      "breakLevel": 3,
+      "maxLevel": 50,
+      "needWorldLevel": 5,
+      "costItemId": [
+        12330001,
+        14020001,
+        41030001
+      ],
+      "costItemCount": [
+        40,
+        12,
+        8
+      ],
+      "costCurrency": 10000,
+      "addAttributeId": 4003
+    },
+    "61": {
+      "id": 61,
+      "templateId": 12042001,
+      "breakLevel": 4,
+      "maxLevel": 60,
+      "needWorldLevel": 6,
+      "costItemId": [
+        12330001,
+        14020001,
+        41030001
+      ],
+      "costItemCount": [
+        48,
+        15,
+        10
+      ],
+      "costCurrency": 20000,
+      "addAttributeId": 4004
+    },
+    "62": {
+      "id": 62,
+      "templateId": 12042001,
+      "breakLevel": 5,
+      "maxLevel": 70,
+      "needWorldLevel": 7,
+      "costItemId": [
+        12330001,
+        14020001,
+        41030001
+      ],
+      "costItemCount": [
+        56,
+        18,
+        12
+      ],
+      "costCurrency": 40000,
+      "addAttributeId": 4005
+    },
+    "63": {
+      "id": 63,
+      "templateId": 12042001,
+      "breakLevel": 6,
+      "maxLevel": 80,
+      "addAttributeId": 4006
+    },
+    "64": {
+      "id": 64,
+      "templateId": 12046001,
+      "breakLevel": 0,
+      "maxLevel": 20,
+      "needWorldLevel": 2,
+      "costItemId": [
+        12330001
+      ],
+      "costItemCount": [
+        4
+      ],
+      "costCurrency": 1200
+    },
+    "65": {
+      "id": 65,
+      "templateId": 12046001,
+      "breakLevel": 1,
+      "maxLevel": 30,
+      "needWorldLevel": 3,
+      "costItemId": [
+        12330001,
+        14020004,
+        41030004
+      ],
+      "costItemCount": [
+        8,
+        3,
+        2
+      ],
+      "costCurrency": 2000,
+      "addAttributeId": 4001
+    },
+    "66": {
+      "id": 66,
+      "templateId": 12046001,
+      "breakLevel": 2,
+      "maxLevel": 40,
+      "needWorldLevel": 4,
+      "costItemId": [
+        12330001,
+        14020004,
+        41030004
+      ],
+      "costItemCount": [
+        16,
+        6,
+        4
+      ],
+      "costCurrency": 4000,
+      "addAttributeId": 4002
+    },
+    "67": {
+      "id": 67,
+      "templateId": 12046001,
+      "breakLevel": 3,
+      "maxLevel": 50,
+      "needWorldLevel": 5,
+      "costItemId": [
+        12330001,
+        14020004,
+        41030004
+      ],
+      "costItemCount": [
+        40,
+        12,
+        8
+      ],
+      "costCurrency": 10000,
+      "addAttributeId": 4003
+    },
+    "68": {
+      "id": 68,
+      "templateId": 12046001,
+      "breakLevel": 4,
+      "maxLevel": 60,
+      "needWorldLevel": 6,
+      "costItemId": [
+        12330001,
+        14020004,
+        41030004
+      ],
+      "costItemCount": [
+        48,
+        15,
+        10
+      ],
+      "costCurrency": 20000,
+      "addAttributeId": 4004
+    },
+    "69": {
+      "id": 69,
+      "templateId": 12046001,
+      "breakLevel": 5,
+      "maxLevel": 70,
+      "needWorldLevel": 7,
+      "costItemId": [
+        12330001,
+        14020004,
+        41030004
+      ],
+      "costItemCount": [
+        56,
+        18,
+        12
+      ],
+      "costCurrency": 40000,
+      "addAttributeId": 4005
+    },
+    "70": {
+      "id": 70,
+      "templateId": 12046001,
+      "breakLevel": 6,
+      "maxLevel": 80,
+      "addAttributeId": 4006
+    },
+    "71": {
+      "id": 71,
+      "templateId": 12051001,
+      "breakLevel": 0,
+      "maxLevel": 20,
+      "needWorldLevel": 2,
+      "costItemId": [
+        12330001
+      ],
+      "costItemCount": [
+        5
+      ],
+      "costCurrency": 1500
+    },
+    "72": {
+      "id": 72,
+      "templateId": 12051001,
+      "breakLevel": 1,
+      "maxLevel": 30,
+      "needWorldLevel": 3,
+      "costItemId": [
+        12330001,
+        14020002,
+        41030002
+      ],
+      "costItemCount": [
+        10,
+        4,
+        3
+      ],
+      "costCurrency": 2500,
+      "addAttributeId": 5001
+    },
+    "73": {
+      "id": 73,
+      "templateId": 12051001,
+      "breakLevel": 2,
+      "maxLevel": 40,
+      "needWorldLevel": 4,
+      "costItemId": [
+        12330001,
+        14020002,
+        41030002
+      ],
+      "costItemCount": [
+        20,
+        8,
+        6
+      ],
+      "costCurrency": 5000,
+      "addAttributeId": 5002
+    },
+    "74": {
+      "id": 74,
+      "templateId": 12051001,
+      "breakLevel": 3,
+      "maxLevel": 50,
+      "needWorldLevel": 5,
+      "costItemId": [
+        12330001,
+        14020002,
+        41030002
+      ],
+      "costItemCount": [
+        50,
+        16,
+        12
+      ],
+      "costCurrency": 12500,
+      "addAttributeId": 5003
+    },
+    "75": {
+      "id": 75,
+      "templateId": 12051001,
+      "breakLevel": 4,
+      "maxLevel": 60,
+      "needWorldLevel": 6,
+      "costItemId": [
+        12330001,
+        14020002,
+        41030002
+      ],
+      "costItemCount": [
+        60,
+        20,
+        15
+      ],
+      "costCurrency": 25000,
+      "addAttributeId": 5004
+    },
+    "76": {
+      "id": 76,
+      "templateId": 12051001,
+      "breakLevel": 5,
+      "maxLevel": 70,
+      "needWorldLevel": 7,
+      "costItemId": [
+        12330001,
+        14020002,
+        41030002
+      ],
+      "costItemCount": [
+        70,
+        24,
+        18
+      ],
+      "costCurrency": 50000,
+      "addAttributeId": 5005
+    },
+    "77": {
+      "id": 77,
+      "templateId": 12051001,
+      "breakLevel": 6,
+      "maxLevel": 80,
+      "addAttributeId": 5006
+    },
+    "78": {
+      "id": 78,
+      "templateId": 12056001,
+      "breakLevel": 0,
+      "maxLevel": 20,
+      "needWorldLevel": 2,
+      "costItemId": [
+        12330001
+      ],
+      "costItemCount": [
+        5
+      ],
+      "costCurrency": 1500
+    },
+    "79": {
+      "id": 79,
+      "templateId": 12056001,
+      "breakLevel": 1,
+      "maxLevel": 30,
+      "needWorldLevel": 3,
+      "costItemId": [
+        12330001,
+        14020004,
+        41030004
+      ],
+      "costItemCount": [
+        10,
+        4,
+        3
+      ],
+      "costCurrency": 2500,
+      "addAttributeId": 5001
+    },
+    "80": {
+      "id": 80,
+      "templateId": 12056001,
+      "breakLevel": 2,
+      "maxLevel": 40,
+      "needWorldLevel": 4,
+      "costItemId": [
+        12330001,
+        14020004,
+        41030004
+      ],
+      "costItemCount": [
+        20,
+        8,
+        6
+      ],
+      "costCurrency": 5000,
+      "addAttributeId": 5002
+    },
+    "81": {
+      "id": 81,
+      "templateId": 12056001,
+      "breakLevel": 3,
+      "maxLevel": 50,
+      "needWorldLevel": 5,
+      "costItemId": [
+        12330001,
+        14020004,
+        41030004
+      ],
+      "costItemCount": [
+        50,
+        16,
+        12
+      ],
+      "costCurrency": 12500,
+      "addAttributeId": 5003
+    },
+    "82": {
+      "id": 82,
+      "templateId": 12056001,
+      "breakLevel": 4,
+      "maxLevel": 60,
+      "needWorldLevel": 6,
+      "costItemId": [
+        12330001,
+        14020004,
+        41030004
+      ],
+      "costItemCount": [
+        60,
+        20,
+        15
+      ],
+      "costCurrency": 25000,
+      "addAttributeId": 5004
+    },
+    "83": {
+      "id": 83,
+      "templateId": 12056001,
+      "breakLevel": 5,
+      "maxLevel": 70,
+      "needWorldLevel": 7,
+      "costItemId": [
+        12330001,
+        14020004,
+        41030004
+      ],
+      "costItemCount": [
+        70,
+        24,
+        18
+      ],
+      "costCurrency": 50000,
+      "addAttributeId": 5005
+    },
+    "84": {
+      "id": 84,
+      "templateId": 12056001,
+      "breakLevel": 6,
+      "maxLevel": 80,
+      "addAttributeId": 5006
+    }
+  }
+}

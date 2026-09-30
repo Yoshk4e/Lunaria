@@ -1,0 +1,30 @@
+syntax = "proto3";
+package msg;
+
+
+message CmdLimitGroup
+{
+    uint32 id = 1; 
+    uint32 count = 2; 
+}
+
+
+
+message CSLimitGroupReq
+{
+}
+
+
+
+message SCLimitGroupRes
+{
+    int32 result = 1;
+    repeated CmdLimitGroup groups = 2;
+}
+
+
+
+message SCLimitGroupNtf
+{
+    repeated CmdLimitGroup groups = 1;
+}

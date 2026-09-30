@@ -1,0 +1,2670 @@
+{
+  "P_ItemTable": {
+    "1": {
+      "id": 1,
+      "showType": 1,
+      "useType": 9,
+      "param": [
+        1
+      ],
+      "autoUse": true,
+      "rare": 3,
+      "holdLimit": 99999999,
+      "useLimit": 0
+    },
+    "101": {
+      "id": 101,
+      "showType": 2,
+      "useType": 8,
+      "param": [
+        101
+      ],
+      "autoUse": true,
+      "rare": 1,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "102": {
+      "id": 102,
+      "showType": 2,
+      "useType": 8,
+      "param": [
+        102
+      ],
+      "autoUse": true,
+      "rare": 2,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "103": {
+      "id": 103,
+      "showType": 2,
+      "useType": 8,
+      "param": [
+        103
+      ],
+      "autoUse": true,
+      "rare": 3,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "104": {
+      "id": 104,
+      "showType": 2,
+      "useType": 8,
+      "param": [
+        104
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "105": {
+      "id": 105,
+      "showType": 2,
+      "useType": 8,
+      "param": [
+        105
+      ],
+      "autoUse": true,
+      "rare": 5,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "770001": {
+      "id": 770001,
+      "showType": 1,
+      "useType": 9,
+      "param": [
+        2
+      ],
+      "autoUse": true,
+      "rare": 5,
+      "holdLimit": 99999999,
+      "useLimit": 0
+    },
+    "770002": {
+      "id": 770002,
+      "showType": 1,
+      "useType": 9,
+      "param": [
+        3
+      ],
+      "autoUse": true,
+      "rare": 5,
+      "holdLimit": 99999999,
+      "useLimit": 0
+    },
+    "770003": {
+      "id": 770003,
+      "showType": 15,
+      "useType": 3,
+      "param": [
+        1
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 999,
+      "useLimit": 0
+    },
+    "770004": {
+      "id": 770004,
+      "showType": 15,
+      "useType": 10,
+      "param": [
+        1
+      ],
+      "autoUse": true,
+      "rare": 1,
+      "holdLimit": 99999999,
+      "useLimit": 0
+    },
+    "770005": {
+      "id": 770005,
+      "showType": 1,
+      "useType": 9,
+      "param": [
+        8
+      ],
+      "autoUse": true,
+      "rare": 5,
+      "holdLimit": 99999999,
+      "useLimit": 0
+    },
+    "770006": {
+      "id": 770006,
+      "showType": 1,
+      "useType": 9,
+      "param": [
+        9
+      ],
+      "autoUse": true,
+      "rare": 3,
+      "holdLimit": 99999999,
+      "useLimit": 0
+    },
+    "770007": {
+      "id": 770007,
+      "showType": 1,
+      "useType": 9,
+      "param": [
+        10
+      ],
+      "autoUse": true,
+      "rare": 3,
+      "holdLimit": 99999999,
+      "useLimit": 0
+    },
+    "770008": {
+      "id": 770008,
+      "showType": 1,
+      "useType": 9,
+      "param": [
+        11
+      ],
+      "autoUse": true,
+      "rare": 3,
+      "holdLimit": 99999999,
+      "useLimit": 0
+    },
+    "770009": {
+      "id": 770009,
+      "showType": 1,
+      "useType": 9,
+      "param": [
+        12
+      ],
+      "autoUse": true,
+      "rare": 3,
+      "holdLimit": 99999999,
+      "useLimit": 0
+    },
+    "770013": {
+      "id": 770013,
+      "showType": 1,
+      "useType": 9,
+      "param": [
+        13
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 99999999,
+      "useLimit": 0
+    },
+    "11041001": {
+      "id": 11041001,
+      "showType": 6,
+      "useType": 6,
+      "param": [
+        1001
+      ],
+      "autoUse": true,
+      "rare": 5,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "11041003": {
+      "id": 11041003,
+      "showType": 6,
+      "useType": 6,
+      "param": [
+        1003
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "11041004": {
+      "id": 11041004,
+      "showType": 6,
+      "useType": 6,
+      "param": [
+        1004
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "11041006": {
+      "id": 11041006,
+      "showType": 6,
+      "useType": 6,
+      "param": [
+        1006
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "11041007": {
+      "id": 11041007,
+      "showType": 6,
+      "useType": 6,
+      "param": [
+        1007
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "11051501": {
+      "id": 11051501,
+      "showType": 6,
+      "useType": 6,
+      "param": [
+        1501
+      ],
+      "autoUse": true,
+      "rare": 5,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "11051505": {
+      "id": 11051505,
+      "showType": 6,
+      "useType": 6,
+      "param": [
+        1505
+      ],
+      "autoUse": true,
+      "rare": 5,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "11201001": {
+      "id": 11201001,
+      "showType": 4,
+      "param": [
+        2000
+      ],
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "11201002": {
+      "id": 11201002,
+      "showType": 4,
+      "param": [
+        5000
+      ],
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "11201003": {
+      "id": 11201003,
+      "showType": 4,
+      "param": [
+        10000
+      ],
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "11300001": {
+      "id": 11300001,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 5,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "11301001": {
+      "id": 11301001,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11301002": {
+      "id": 11301002,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11301003": {
+      "id": 11301003,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11301004": {
+      "id": 11301004,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 5,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11302001": {
+      "id": 11302001,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11302002": {
+      "id": 11302002,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11302003": {
+      "id": 11302003,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11302004": {
+      "id": 11302004,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 5,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11303001": {
+      "id": 11303001,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11303002": {
+      "id": 11303002,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11303003": {
+      "id": 11303003,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11303004": {
+      "id": 11303004,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 5,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11304001": {
+      "id": 11304001,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11304002": {
+      "id": 11304002,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11304003": {
+      "id": 11304003,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11304004": {
+      "id": 11304004,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 5,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11305001": {
+      "id": 11305001,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11305002": {
+      "id": 11305002,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11305003": {
+      "id": 11305003,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11305004": {
+      "id": 11305004,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 5,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11306001": {
+      "id": 11306001,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11306002": {
+      "id": 11306002,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11306003": {
+      "id": 11306003,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11306004": {
+      "id": 11306004,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 5,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11401001": {
+      "id": 11401001,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11401002": {
+      "id": 11401002,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11401003": {
+      "id": 11401003,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11401004": {
+      "id": 11401004,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 5,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11402001": {
+      "id": 11402001,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11402002": {
+      "id": 11402002,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11402003": {
+      "id": 11402003,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11402004": {
+      "id": 11402004,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 5,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11403001": {
+      "id": 11403001,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11403002": {
+      "id": 11403002,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11403003": {
+      "id": 11403003,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11403004": {
+      "id": 11403004,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 5,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11404001": {
+      "id": 11404001,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11404002": {
+      "id": 11404002,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11404003": {
+      "id": 11404003,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11404004": {
+      "id": 11404004,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 5,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11405001": {
+      "id": 11405001,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11405002": {
+      "id": 11405002,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11405003": {
+      "id": 11405003,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11405004": {
+      "id": 11405004,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 5,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11406001": {
+      "id": 11406001,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11406002": {
+      "id": 11406002,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11406003": {
+      "id": 11406003,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11406004": {
+      "id": 11406004,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 5,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "11720001": {
+      "id": 11720001,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "11730001": {
+      "id": 11730001,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "11740001": {
+      "id": 11740001,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "12031001": {
+      "id": 12031001,
+      "showType": 7,
+      "useType": 7,
+      "param": [
+        12031001
+      ],
+      "autoUse": true,
+      "rare": 3,
+      "holdLimit": 999,
+      "useLimit": 0
+    },
+    "12032001": {
+      "id": 12032001,
+      "showType": 7,
+      "useType": 7,
+      "param": [
+        12032001
+      ],
+      "autoUse": true,
+      "rare": 3,
+      "holdLimit": 999,
+      "useLimit": 0
+    },
+    "12033001": {
+      "id": 12033001,
+      "showType": 7,
+      "useType": 7,
+      "param": [
+        12033001
+      ],
+      "autoUse": true,
+      "rare": 3,
+      "holdLimit": 999,
+      "useLimit": 0
+    },
+    "12034001": {
+      "id": 12034001,
+      "showType": 7,
+      "useType": 7,
+      "param": [
+        12034001
+      ],
+      "autoUse": true,
+      "rare": 3,
+      "holdLimit": 999,
+      "useLimit": 0
+    },
+    "12035001": {
+      "id": 12035001,
+      "showType": 7,
+      "useType": 7,
+      "param": [
+        12035001
+      ],
+      "autoUse": true,
+      "rare": 3,
+      "holdLimit": 999,
+      "useLimit": 0
+    },
+    "12036001": {
+      "id": 12036001,
+      "showType": 7,
+      "useType": 7,
+      "param": [
+        12036001
+      ],
+      "autoUse": true,
+      "rare": 3,
+      "holdLimit": 999,
+      "useLimit": 0
+    },
+    "12041001": {
+      "id": 12041001,
+      "showType": 7,
+      "useType": 7,
+      "param": [
+        12041001
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 999,
+      "useLimit": 0
+    },
+    "12042001": {
+      "id": 12042001,
+      "showType": 7,
+      "useType": 7,
+      "param": [
+        12042001
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 999,
+      "useLimit": 0
+    },
+    "12046001": {
+      "id": 12046001,
+      "showType": 7,
+      "useType": 7,
+      "param": [
+        12046001
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 999,
+      "useLimit": 0
+    },
+    "12051001": {
+      "id": 12051001,
+      "showType": 7,
+      "useType": 7,
+      "param": [
+        12051001
+      ],
+      "autoUse": true,
+      "rare": 5,
+      "holdLimit": 999,
+      "useLimit": 0
+    },
+    "12056001": {
+      "id": 12056001,
+      "showType": 7,
+      "useType": 7,
+      "param": [
+        12056001
+      ],
+      "autoUse": true,
+      "rare": 5,
+      "holdLimit": 999,
+      "useLimit": 0
+    },
+    "12220001": {
+      "id": 12220001,
+      "showType": 4,
+      "param": [
+        1600
+      ],
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "12230001": {
+      "id": 12230001,
+      "showType": 4,
+      "param": [
+        4000
+      ],
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "12240001": {
+      "id": 12240001,
+      "showType": 4,
+      "param": [
+        8000
+      ],
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "12300001": {
+      "id": 12300001,
+      "showType": 2,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 999,
+      "useLimit": 0
+    },
+    "12320001": {
+      "id": 12320001,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "12330001": {
+      "id": 12330001,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "12340001": {
+      "id": 12340001,
+      "showType": 4,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "14020001": {
+      "id": 14020001,
+      "showType": 5,
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "14020002": {
+      "id": 14020002,
+      "showType": 5,
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "14020003": {
+      "id": 14020003,
+      "showType": 5,
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "14020004": {
+      "id": 14020004,
+      "showType": 5,
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "14030001": {
+      "id": 14030001,
+      "showType": 5,
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "14030002": {
+      "id": 14030002,
+      "showType": 5,
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "14030003": {
+      "id": 14030003,
+      "showType": 5,
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "14030004": {
+      "id": 14030004,
+      "showType": 5,
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "14040001": {
+      "id": 14040001,
+      "showType": 5,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "14040002": {
+      "id": 14040002,
+      "showType": 5,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "14040003": {
+      "id": 14040003,
+      "showType": 5,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "14040004": {
+      "id": 14040004,
+      "showType": 5,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "21000000": {
+      "id": 21000000,
+      "showType": 1,
+      "useType": 9,
+      "param": [
+        6
+      ],
+      "autoUse": true,
+      "rare": 1,
+      "holdLimit": 999999999,
+      "useLimit": 0
+    },
+    "21100001": {
+      "id": 21100001,
+      "showType": 1,
+      "useType": 9,
+      "param": [
+        4
+      ],
+      "autoUse": true,
+      "rare": 5,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "21100002": {
+      "id": 21100002,
+      "showType": 1,
+      "useType": 9,
+      "param": [
+        5
+      ],
+      "autoUse": true,
+      "rare": 5,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "21100003": {
+      "id": 21100003,
+      "showType": 1,
+      "useType": 9,
+      "param": [
+        7
+      ],
+      "autoUse": true,
+      "rare": 5,
+      "holdLimit": 99999999,
+      "useLimit": 0
+    },
+    "21206001": {
+      "id": 21206001,
+      "showType": 9,
+      "useType": 1,
+      "param": [
+        6001
+      ],
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21206002": {
+      "id": 21206002,
+      "showType": 9,
+      "useType": 1,
+      "param": [
+        6002
+      ],
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21206003": {
+      "id": 21206003,
+      "showType": 9,
+      "useType": 1,
+      "param": [
+        6003
+      ],
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21206004": {
+      "id": 21206004,
+      "showType": 9,
+      "useType": 1,
+      "param": [
+        6004
+      ],
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21206005": {
+      "id": 21206005,
+      "showType": 9,
+      "useType": 1,
+      "param": [
+        6005
+      ],
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21206006": {
+      "id": 21206006,
+      "showType": 9,
+      "useType": 1,
+      "param": [
+        6006
+      ],
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21206007": {
+      "id": 21206007,
+      "showType": 9,
+      "useType": 1,
+      "param": [
+        6007
+      ],
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21206008": {
+      "id": 21206008,
+      "showType": 9,
+      "useType": 1,
+      "param": [
+        6008
+      ],
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21206009": {
+      "id": 21206009,
+      "showType": 9,
+      "useType": 1,
+      "param": [
+        6009
+      ],
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21206010": {
+      "id": 21206010,
+      "showType": 9,
+      "useType": 1,
+      "param": [
+        6010
+      ],
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21206011": {
+      "id": 21206011,
+      "showType": 9,
+      "useType": 1,
+      "param": [
+        6011
+      ],
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21206012": {
+      "id": 21206012,
+      "showType": 9,
+      "useType": 1,
+      "param": [
+        6012
+      ],
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21206013": {
+      "id": 21206013,
+      "showType": 9,
+      "useType": 1,
+      "param": [
+        6013
+      ],
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21206014": {
+      "id": 21206014,
+      "showType": 9,
+      "useType": 1,
+      "param": [
+        6014
+      ],
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21206015": {
+      "id": 21206015,
+      "showType": 9,
+      "useType": 1,
+      "param": [
+        6015
+      ],
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21206016": {
+      "id": 21206016,
+      "showType": 9,
+      "useType": 1,
+      "param": [
+        6016
+      ],
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21206017": {
+      "id": 21206017,
+      "showType": 9,
+      "useType": 1,
+      "param": [
+        6017
+      ],
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21206018": {
+      "id": 21206018,
+      "showType": 9,
+      "useType": 1,
+      "param": [
+        6018
+      ],
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21207001": {
+      "id": 21207001,
+      "showType": 8,
+      "useType": 1,
+      "param": [
+        7001
+      ],
+      "autoUse": true,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21207002": {
+      "id": 21207002,
+      "showType": 8,
+      "useType": 1,
+      "param": [
+        7002
+      ],
+      "autoUse": true,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21207003": {
+      "id": 21207003,
+      "showType": 8,
+      "useType": 1,
+      "param": [
+        7003
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21207004": {
+      "id": 21207004,
+      "showType": 8,
+      "useType": 1,
+      "param": [
+        7004
+      ],
+      "autoUse": true,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21207005": {
+      "id": 21207005,
+      "showType": 8,
+      "useType": 1,
+      "param": [
+        7005
+      ],
+      "autoUse": true,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21207006": {
+      "id": 21207006,
+      "showType": 8,
+      "useType": 1,
+      "param": [
+        7006
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21207007": {
+      "id": 21207007,
+      "showType": 8,
+      "useType": 1,
+      "param": [
+        7007
+      ],
+      "autoUse": true,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21207008": {
+      "id": 21207008,
+      "showType": 8,
+      "useType": 1,
+      "param": [
+        7008
+      ],
+      "autoUse": true,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21207009": {
+      "id": 21207009,
+      "showType": 8,
+      "useType": 1,
+      "param": [
+        7009
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21207010": {
+      "id": 21207010,
+      "showType": 8,
+      "useType": 1,
+      "param": [
+        7010
+      ],
+      "autoUse": true,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21207011": {
+      "id": 21207011,
+      "showType": 8,
+      "useType": 1,
+      "param": [
+        7011
+      ],
+      "autoUse": true,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21207012": {
+      "id": 21207012,
+      "showType": 8,
+      "useType": 1,
+      "param": [
+        7012
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21207013": {
+      "id": 21207013,
+      "showType": 8,
+      "useType": 1,
+      "param": [
+        7013
+      ],
+      "autoUse": true,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21207014": {
+      "id": 21207014,
+      "showType": 8,
+      "useType": 1,
+      "param": [
+        7014
+      ],
+      "autoUse": true,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21207015": {
+      "id": 21207015,
+      "showType": 8,
+      "useType": 1,
+      "param": [
+        7015
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21207016": {
+      "id": 21207016,
+      "showType": 8,
+      "useType": 1,
+      "param": [
+        7016
+      ],
+      "autoUse": true,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21207017": {
+      "id": 21207017,
+      "showType": 8,
+      "useType": 1,
+      "param": [
+        7017
+      ],
+      "autoUse": true,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21207018": {
+      "id": 21207018,
+      "showType": 8,
+      "useType": 1,
+      "param": [
+        7018
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21207019": {
+      "id": 21207019,
+      "showType": 8,
+      "useType": 1,
+      "param": [
+        7019
+      ],
+      "autoUse": true,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21207020": {
+      "id": 21207020,
+      "showType": 8,
+      "useType": 1,
+      "param": [
+        7020
+      ],
+      "autoUse": true,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21207021": {
+      "id": 21207021,
+      "showType": 8,
+      "useType": 1,
+      "param": [
+        7021
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21207022": {
+      "id": 21207022,
+      "showType": 8,
+      "useType": 1,
+      "param": [
+        7022
+      ],
+      "autoUse": true,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21207023": {
+      "id": 21207023,
+      "showType": 8,
+      "useType": 1,
+      "param": [
+        7023
+      ],
+      "autoUse": true,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21207024": {
+      "id": 21207024,
+      "showType": 8,
+      "useType": 1,
+      "param": [
+        7024
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 1
+    },
+    "21308001": {
+      "id": 21308001,
+      "showType": 17,
+      "useType": 3,
+      "param": [
+        60
+      ],
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 6
+    },
+    "21400001": {
+      "id": 21400001,
+      "showType": 14,
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "21400002": {
+      "id": 21400002,
+      "showType": 14,
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "21400003": {
+      "id": 21400003,
+      "showType": 14,
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "21400004": {
+      "id": 21400004,
+      "showType": 14,
+      "autoUse": false,
+      "rare": 2,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "21400005": {
+      "id": 21400005,
+      "showType": 14,
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "21400006": {
+      "id": 21400006,
+      "showType": 14,
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "21400007": {
+      "id": 21400007,
+      "showType": 14,
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "21400008": {
+      "id": 21400008,
+      "showType": 14,
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "21400009": {
+      "id": 21400009,
+      "showType": 14,
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "21400010": {
+      "id": 21400010,
+      "showType": 14,
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "21400011": {
+      "id": 21400011,
+      "showType": 14,
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "21400012": {
+      "id": 21400012,
+      "showType": 14,
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "21400013": {
+      "id": 21400013,
+      "showType": 14,
+      "autoUse": false,
+      "rare": 3,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "21500001": {
+      "id": 21500001,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "21500002": {
+      "id": 21500002,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "21500003": {
+      "id": 21500003,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "21500004": {
+      "id": 21500004,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "21500005": {
+      "id": 21500005,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "21500006": {
+      "id": 21500006,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "21500007": {
+      "id": 21500007,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "21500008": {
+      "id": 21500008,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "21500009": {
+      "id": 21500009,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "21500010": {
+      "id": 21500010,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "21500011": {
+      "id": 21500011,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "21500012": {
+      "id": 21500012,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "21501001": {
+      "id": 21501001,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "21501002": {
+      "id": 21501002,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "21501003": {
+      "id": 21501003,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "21501004": {
+      "id": 21501004,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "21501005": {
+      "id": 21501005,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "21501006": {
+      "id": 21501006,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "21501007": {
+      "id": 21501007,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "21501008": {
+      "id": 21501008,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "21501009": {
+      "id": 21501009,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "21501010": {
+      "id": 21501010,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "21501011": {
+      "id": 21501011,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "21501012": {
+      "id": 21501012,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "21501013": {
+      "id": 21501013,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "21501014": {
+      "id": 21501014,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "21501015": {
+      "id": 21501015,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "21501016": {
+      "id": 21501016,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "21501017": {
+      "id": 21501017,
+      "showType": 13,
+      "autoUse": false,
+      "rare": 4,
+      "holdLimit": 1,
+      "useLimit": 0
+    },
+    "29900001": {
+      "id": 29900001,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        81001
+      ],
+      "autoUse": true,
+      "rare": 1,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900002": {
+      "id": 29900002,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        81001
+      ],
+      "autoUse": true,
+      "rare": 2,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900003": {
+      "id": 29900003,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        81001
+      ],
+      "autoUse": true,
+      "rare": 3,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900004": {
+      "id": 29900004,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        81001
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900005": {
+      "id": 29900005,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        81001
+      ],
+      "autoUse": true,
+      "rare": 5,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900006": {
+      "id": 29900006,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        81002
+      ],
+      "autoUse": true,
+      "rare": 1,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900007": {
+      "id": 29900007,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        81002
+      ],
+      "autoUse": true,
+      "rare": 2,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900008": {
+      "id": 29900008,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        81002
+      ],
+      "autoUse": true,
+      "rare": 3,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900009": {
+      "id": 29900009,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        81002
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900010": {
+      "id": 29900010,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        81002
+      ],
+      "autoUse": true,
+      "rare": 5,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900011": {
+      "id": 29900011,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        81003
+      ],
+      "autoUse": true,
+      "rare": 1,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900012": {
+      "id": 29900012,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        81003
+      ],
+      "autoUse": true,
+      "rare": 2,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900013": {
+      "id": 29900013,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        81003
+      ],
+      "autoUse": true,
+      "rare": 3,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900014": {
+      "id": 29900014,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        81003
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900015": {
+      "id": 29900015,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        81003
+      ],
+      "autoUse": true,
+      "rare": 5,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900016": {
+      "id": 29900016,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        82002
+      ],
+      "autoUse": true,
+      "rare": 1,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900017": {
+      "id": 29900017,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        82002
+      ],
+      "autoUse": true,
+      "rare": 2,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900018": {
+      "id": 29900018,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        82002
+      ],
+      "autoUse": true,
+      "rare": 3,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900019": {
+      "id": 29900019,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        82002
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900020": {
+      "id": 29900020,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        82002
+      ],
+      "autoUse": true,
+      "rare": 5,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900021": {
+      "id": 29900021,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        82003
+      ],
+      "autoUse": true,
+      "rare": 1,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900022": {
+      "id": 29900022,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        82003
+      ],
+      "autoUse": true,
+      "rare": 2,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900023": {
+      "id": 29900023,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        82003
+      ],
+      "autoUse": true,
+      "rare": 3,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900024": {
+      "id": 29900024,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        82003
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900025": {
+      "id": 29900025,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        82003
+      ],
+      "autoUse": true,
+      "rare": 5,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900026": {
+      "id": 29900026,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        83001
+      ],
+      "autoUse": true,
+      "rare": 1,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900027": {
+      "id": 29900027,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        83001
+      ],
+      "autoUse": true,
+      "rare": 2,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900028": {
+      "id": 29900028,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        83001
+      ],
+      "autoUse": true,
+      "rare": 3,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900029": {
+      "id": 29900029,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        83001
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900030": {
+      "id": 29900030,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        83001
+      ],
+      "autoUse": true,
+      "rare": 5,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900031": {
+      "id": 29900031,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        83002
+      ],
+      "autoUse": true,
+      "rare": 1,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900032": {
+      "id": 29900032,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        83002
+      ],
+      "autoUse": true,
+      "rare": 2,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900033": {
+      "id": 29900033,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        83002
+      ],
+      "autoUse": true,
+      "rare": 3,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900034": {
+      "id": 29900034,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        83002
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900035": {
+      "id": 29900035,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        83002
+      ],
+      "autoUse": true,
+      "rare": 5,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900036": {
+      "id": 29900036,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        83003
+      ],
+      "autoUse": true,
+      "rare": 1,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900037": {
+      "id": 29900037,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        83003
+      ],
+      "autoUse": true,
+      "rare": 2,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900038": {
+      "id": 29900038,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        83003
+      ],
+      "autoUse": true,
+      "rare": 3,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900039": {
+      "id": 29900039,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        83003
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900040": {
+      "id": 29900040,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        83003
+      ],
+      "autoUse": true,
+      "rare": 5,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900041": {
+      "id": 29900041,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        81001
+      ],
+      "autoUse": true,
+      "rare": 1,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900042": {
+      "id": 29900042,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        81001
+      ],
+      "autoUse": true,
+      "rare": 5,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900043": {
+      "id": 29900043,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        81002
+      ],
+      "autoUse": true,
+      "rare": 5,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900044": {
+      "id": 29900044,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        81003
+      ],
+      "autoUse": true,
+      "rare": 5,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900045": {
+      "id": 29900045,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        83001
+      ],
+      "autoUse": true,
+      "rare": 5,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900046": {
+      "id": 29900046,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        83002
+      ],
+      "autoUse": true,
+      "rare": 5,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900047": {
+      "id": 29900047,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        83003
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "29900048": {
+      "id": 29900048,
+      "showType": 12,
+      "useType": 8,
+      "param": [
+        83003
+      ],
+      "autoUse": true,
+      "rare": 5,
+      "holdLimit": 10,
+      "useLimit": 0
+    },
+    "31000001": {
+      "id": 31000001,
+      "showType": 1,
+      "useType": 11,
+      "param": [
+        1001
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 99999999,
+      "useLimit": 0
+    },
+    "41030001": {
+      "id": 41030001,
+      "showType": 5,
+      "autoUse": false,
+      "rare": 1,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "41030002": {
+      "id": 41030002,
+      "showType": 5,
+      "autoUse": false,
+      "rare": 1,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "41030003": {
+      "id": 41030003,
+      "showType": 5,
+      "autoUse": false,
+      "rare": 1,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "41030004": {
+      "id": 41030004,
+      "showType": 5,
+      "autoUse": false,
+      "rare": 1,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "41200001": {
+      "id": 41200001,
+      "showType": 18,
+      "autoUse": false,
+      "rare": 5,
+      "holdLimit": 999,
+      "useLimit": 0
+    },
+    "41200002": {
+      "id": 41200002,
+      "showType": 18,
+      "autoUse": false,
+      "rare": 5,
+      "holdLimit": 999,
+      "useLimit": 0
+    },
+    "41200003": {
+      "id": 41200003,
+      "showType": 18,
+      "autoUse": false,
+      "rare": 5,
+      "holdLimit": 999,
+      "useLimit": 0
+    },
+    "41200004": {
+      "id": 41200004,
+      "showType": 18,
+      "autoUse": false,
+      "rare": 5,
+      "holdLimit": 999,
+      "useLimit": 0
+    },
+    "41300001": {
+      "id": 41300001,
+      "showType": 19,
+      "autoUse": false,
+      "rare": 5,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "41300002": {
+      "id": 41300002,
+      "showType": 19,
+      "autoUse": false,
+      "rare": 5,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "41300003": {
+      "id": 41300003,
+      "showType": 19,
+      "autoUse": false,
+      "rare": 5,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "41300004": {
+      "id": 41300004,
+      "showType": 19,
+      "autoUse": false,
+      "rare": 5,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "41300005": {
+      "id": 41300005,
+      "showType": 19,
+      "autoUse": false,
+      "rare": 5,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "41300006": {
+      "id": 41300006,
+      "showType": 19,
+      "autoUse": false,
+      "rare": 5,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "41300007": {
+      "id": 41300007,
+      "showType": 19,
+      "autoUse": false,
+      "rare": 5,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "41300008": {
+      "id": 41300008,
+      "showType": 19,
+      "autoUse": false,
+      "rare": 5,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "41300009": {
+      "id": 41300009,
+      "showType": 19,
+      "autoUse": false,
+      "rare": 5,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "60100001": {
+      "id": 60100001,
+      "showType": 3,
+      "useType": 4,
+      "param": [
+        60100001
+      ],
+      "autoUse": true,
+      "rare": 4,
+      "holdLimit": 99999,
+      "useLimit": 0
+    },
+    "60100002": {
+      "id": 60100002,
+      "showType": 3,
+      "useType": 4,
+      "param": [
+        60100002
+      ],
+      "autoUse": true,
+      "rare": 5,
+      "holdLimit": 99999,
+      "useLimit": 0
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "C_SubRegionConfigReadTarget": {
+    "100001001001": {
+      "id": 100001001001,
+      "regionProgressSheet": "P_RegionProgressTable_Morgue",
+      "regionSequenceSheet": "P_RegionSequenceTable_Morgue",
+      "sequenceUiSheet": "C_RegionSequenceUITable_Morgue"
+    },
+    "100001001002": {
+      "id": 100001001002,
+      "regionProgressSheet": "P_RegionProgressTable_Morgue",
+      "regionSequenceSheet": "P_RegionSequenceTable_Morgue",
+      "sequenceUiSheet": "C_RegionSequenceUITable_Morgue"
+    },
+    "100001001003": {
+      "id": 100001001003,
+      "regionProgressSheet": "P_RegionProgressTable_Morgue",
+      "regionSequenceSheet": "P_RegionSequenceTable_Morgue",
+      "sequenceUiSheet": "C_RegionSequenceUITable_Morgue"
+    },
+    "100001001004": {
+      "id": 100001001004,
+      "regionProgressSheet": "P_RegionProgressTable_Morgue",
+      "regionSequenceSheet": "P_RegionSequenceTable_Morgue",
+      "sequenceUiSheet": "C_RegionSequenceUITable_Morgue"
+    },
+    "100001002001": {
+      "id": 100001002001,
+      "regionProgressSheet": "P_RegionProgressTable_Four",
+      "regionSequenceSheet": "P_RegionSequenceTable_Four",
+      "sequenceUiSheet": "C_RegionSequenceUITable_Four"
+    },
+    "100001002002": {
+      "id": 100001002002,
+      "regionProgressSheet": "P_RegionProgressTable_Four",
+      "regionSequenceSheet": "P_RegionSequenceTable_Four",
+      "sequenceUiSheet": "C_RegionSequenceUITable_Four"
+    },
+    "100001002003": {
+      "id": 100001002003,
+      "regionProgressSheet": "P_RegionProgressTable_Four",
+      "regionSequenceSheet": "P_RegionSequenceTable_Four",
+      "sequenceUiSheet": "C_RegionSequenceUITable_Four"
+    },
+    "100001002004": {
+      "id": 100001002004,
+      "regionProgressSheet": "P_RegionProgressTable_Four",
+      "regionSequenceSheet": "P_RegionSequenceTable_Four",
+      "sequenceUiSheet": "C_RegionSequenceUITable_Four"
+    },
+    "100001002006": {
+      "id": 100001002006,
+      "regionProgressSheet": "P_RegionProgressTable_Dayfair",
+      "regionSequenceSheet": "P_RegionSequenceTable_Dayfair",
+      "sequenceUiSheet": "C_RegionSequenceUITable_Dayfair"
+    },
+    "100001004001": {
+      "id": 100001004001,
+      "regionProgressSheet": "P_RegionProgressTable_Dayfair",
+      "regionSequenceSheet": "P_RegionSequenceTable_Dayfair",
+      "sequenceUiSheet": "C_RegionSequenceUITable_Dayfair"
+    },
+    "100001004002": {
+      "id": 100001004002,
+      "regionProgressSheet": "P_RegionProgressTable_Dayfair",
+      "regionSequenceSheet": "P_RegionSequenceTable_Dayfair",
+      "sequenceUiSheet": "C_RegionSequenceUITable_Dayfair"
+    }
+  }
+}

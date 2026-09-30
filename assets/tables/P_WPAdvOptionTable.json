@@ -1,0 +1,348 @@
+{
+  "P_WPAdvOptionTable": {
+    "1001": {
+      "id": 1001,
+      "optionTitle": 1911100136,
+      "successNextContentId": 10003
+    },
+    "1002": {
+      "id": 1002,
+      "optionTitle": 1911100137,
+      "successNextContentId": 10004
+    },
+    "1011": {
+      "id": 1011,
+      "optionTitle": 1911100105,
+      "optionEffect": [
+        401
+      ],
+      "successNextContentId": 10103
+    },
+    "1012": {
+      "id": 1012,
+      "optionTitle": 1911100106,
+      "optionEffect": [
+        402
+      ],
+      "successNextContentId": 10104
+    },
+    "1013": {
+      "id": 1013,
+      "optionTitle": 1911100107,
+      "optionEffect": [
+        403
+      ],
+      "successNextContentId": 10105
+    },
+    "1021": {
+      "id": 1021,
+      "optionTitle": 1911100203,
+      "optionEffect": [
+        404
+      ],
+      "successNextContentId": 10203
+    },
+    "1022": {
+      "id": 1022,
+      "optionTitle": 1911100204,
+      "optionEffect": [
+        405
+      ],
+      "successNextContentId": 10204
+    },
+    "1031": {
+      "id": 1031,
+      "optionTitle": 1911100303,
+      "optionEffect": [
+        406
+      ],
+      "successNextContentId": 10303
+    },
+    "1032": {
+      "id": 1032,
+      "optionTitle": 1911100304,
+      "optionEffect": [
+        407
+      ],
+      "successNextContentId": 10304
+    },
+    "1041": {
+      "id": 1041,
+      "optionTitle": 1911100403,
+      "optionEffect": [
+        408
+      ],
+      "successNextContentId": 10403
+    },
+    "1042": {
+      "id": 1042,
+      "optionTitle": 1911100404,
+      "optionEffect": [
+        409
+      ],
+      "successNextContentId": 10404
+    },
+    "1051": {
+      "id": 1051,
+      "optionTitle": 1911100506,
+      "optionEffect": [
+        410
+      ],
+      "successNextContentId": 10503
+    },
+    "1052": {
+      "id": 1052,
+      "optionTitle": 1911100507,
+      "optionCost": [
+        601
+      ],
+      "optionEffect": [
+        411
+      ],
+      "successNextContentId": 10504
+    },
+    "1053": {
+      "id": 1053,
+      "optionTitle": 1911100508,
+      "optionCost": [
+        602
+      ],
+      "optionEffect": [
+        412
+      ],
+      "successNextContentId": 10505
+    },
+    "1061": {
+      "id": 1061,
+      "optionTitle": 1911100603,
+      "optionEffect": [
+        413
+      ],
+      "successNextContentId": 10603
+    },
+    "1062": {
+      "id": 1062,
+      "optionTitle": 1911100604,
+      "optionCost": [
+        603
+      ],
+      "optionEffect": [
+        414
+      ],
+      "successNextContentId": 10604
+    },
+    "1071": {
+      "id": 1071,
+      "optionTitle": 1911100703,
+      "optionEffect": [
+        415
+      ],
+      "successNextContentId": 10703
+    },
+    "1072": {
+      "id": 1072,
+      "optionTitle": 1911100704,
+      "optionEffect": [
+        416
+      ],
+      "successNextContentId": 10704
+    },
+    "1073": {
+      "id": 1073,
+      "optionTitle": 1911100705,
+      "optionEffect": [
+        417
+      ],
+      "successNextContentId": 10705
+    },
+    "1081": {
+      "id": 1081,
+      "optionTitle": 1911100803,
+      "optionEffect": [
+        418
+      ],
+      "successNextContentId": 10803
+    },
+    "1082": {
+      "id": 1082,
+      "optionTitle": 1911100804,
+      "optionEffect": [
+        419
+      ],
+      "successNextContentId": 10804,
+      "failNextContentId": 10805
+    },
+    "1083": {
+      "id": 1083,
+      "optionTitle": 1911100805,
+      "optionEffect": [
+        420
+      ],
+      "successNextContentId": 10806,
+      "failNextContentId": 10807
+    },
+    "1091": {
+      "id": 1091,
+      "optionTitle": 1911100903,
+      "optionEffect": [
+        421
+      ],
+      "successNextContentId": 10903
+    },
+    "1092": {
+      "id": 1092,
+      "optionTitle": 1911100904,
+      "optionEffect": [
+        422
+      ],
+      "successNextContentId": 10904,
+      "failNextContentId": 10905
+    },
+    "1093": {
+      "id": 1093,
+      "optionTitle": 1911100905,
+      "optionEffect": [
+        423
+      ],
+      "successNextContentId": 10906,
+      "failNextContentId": 10907
+    },
+    "1101": {
+      "id": 1101,
+      "optionTitle": 1911101002,
+      "optionCost": [
+        604
+      ],
+      "optionEffect": [
+        424
+      ],
+      "successNextContentId": 11003
+    },
+    "1102": {
+      "id": 1102,
+      "optionTitle": 1911101003,
+      "optionCost": [
+        605
+      ],
+      "optionEffect": [
+        425
+      ],
+      "successNextContentId": 11004
+    },
+    "1111": {
+      "id": 1111,
+      "optionTitle": 1911101103,
+      "optionEffect": [
+        426
+      ],
+      "successNextContentId": 11103
+    },
+    "1112": {
+      "id": 1112,
+      "optionTitle": 1911101104,
+      "optionEffect": [
+        427
+      ],
+      "successNextContentId": 11104,
+      "failNextContentId": 11105
+    },
+    "1113": {
+      "id": 1113,
+      "optionTitle": 1911101105,
+      "optionEffect": [
+        428
+      ],
+      "successNextContentId": 11106,
+      "failNextContentId": 11107
+    },
+    "1121": {
+      "id": 1121,
+      "optionTitle": 1911101204,
+      "optionEffect": [
+        429
+      ],
+      "successNextContentId": 11203
+    },
+    "1122": {
+      "id": 1122,
+      "optionTitle": 1911101205,
+      "optionEffect": [
+        430,
+        432,
+        433,
+        431
+      ],
+      "successNextContentId": 11204,
+      "failNextContentId": 11205
+    },
+    "1131": {
+      "id": 1131,
+      "optionTitle": 1911101303,
+      "optionEffect": [
+        435,
+        434
+      ],
+      "successNextContentId": 11303
+    },
+    "1132": {
+      "id": 1132,
+      "optionTitle": 1911101304,
+      "optionEffect": [
+        436,
+        434
+      ],
+      "successNextContentId": 11304
+    },
+    "1133": {
+      "id": 1133,
+      "optionTitle": 1911101305,
+      "successNextContentId": 11305
+    },
+    "1141": {
+      "id": 1141,
+      "optionTitle": 1911101403,
+      "optionEffect": [
+        437,
+        438,
+        440,
+        441
+      ],
+      "successNextContentId": 11403
+    },
+    "1142": {
+      "id": 1142,
+      "optionTitle": 1911101404,
+      "optionEffect": [
+        437,
+        439,
+        440,
+        441
+      ],
+      "successNextContentId": 11404
+    },
+    "1151": {
+      "id": 1151,
+      "optionTitle": 1911101503,
+      "optionEffect": [
+        442
+      ],
+      "successNextContentId": 11503
+    },
+    "1152": {
+      "id": 1152,
+      "optionTitle": 1911101504,
+      "optionEffect": [
+        443
+      ],
+      "successNextContentId": 11504
+    },
+    "1153": {
+      "id": 1153,
+      "optionTitle": 1911101505,
+      "optionEffect": [
+        444
+      ],
+      "successNextContentId": 11505
+    }
+  }
+}

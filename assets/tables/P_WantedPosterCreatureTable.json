@@ -1,0 +1,148 @@
+{
+  "P_WantedPosterCreatureTable": {
+    "8100101": {
+      "id": 8100101,
+      "silverCreatureId": 81001,
+      "quality": 2,
+      "price": 50
+    },
+    "8100102": {
+      "id": 8100102,
+      "silverCreatureId": 81001,
+      "quality": 3,
+      "price": 100
+    },
+    "8100103": {
+      "id": 8100103,
+      "silverCreatureId": 81001,
+      "quality": 4,
+      "price": 200
+    },
+    "8100201": {
+      "id": 8100201,
+      "silverCreatureId": 81002,
+      "quality": 2,
+      "price": 50
+    },
+    "8100202": {
+      "id": 8100202,
+      "silverCreatureId": 81002,
+      "quality": 3,
+      "price": 100
+    },
+    "8100203": {
+      "id": 8100203,
+      "silverCreatureId": 81002,
+      "quality": 4,
+      "price": 200
+    },
+    "8100301": {
+      "id": 8100301,
+      "silverCreatureId": 81003,
+      "quality": 2,
+      "price": 50
+    },
+    "8100302": {
+      "id": 8100302,
+      "silverCreatureId": 81003,
+      "quality": 3,
+      "price": 100
+    },
+    "8100303": {
+      "id": 8100303,
+      "silverCreatureId": 81003,
+      "quality": 4,
+      "price": 200
+    },
+    "8100401": {
+      "id": 8100401,
+      "silverCreatureId": 82002,
+      "quality": 2,
+      "price": 50
+    },
+    "8100402": {
+      "id": 8100402,
+      "silverCreatureId": 82002,
+      "quality": 3,
+      "price": 100
+    },
+    "8100403": {
+      "id": 8100403,
+      "silverCreatureId": 82002,
+      "quality": 4,
+      "price": 200
+    },
+    "8100501": {
+      "id": 8100501,
+      "silverCreatureId": 82003,
+      "quality": 2,
+      "price": 50
+    },
+    "8100502": {
+      "id": 8100502,
+      "silverCreatureId": 82003,
+      "quality": 3,
+      "price": 100
+    },
+    "8100503": {
+      "id": 8100503,
+      "silverCreatureId": 82003,
+      "quality": 4,
+      "price": 200
+    },
+    "8100601": {
+      "id": 8100601,
+      "silverCreatureId": 83001,
+      "quality": 2,
+      "price": 50
+    },
+    "8100602": {
+      "id": 8100602,
+      "silverCreatureId": 83001,
+      "quality": 3,
+      "price": 100
+    },
+    "8100603": {
+      "id": 8100603,
+      "silverCreatureId": 83001,
+      "quality": 4,
+      "price": 200
+    },
+    "8100701": {
+      "id": 8100701,
+      "silverCreatureId": 83002,
+      "quality": 2,
+      "price": 50
+    },
+    "8100702": {
+      "id": 8100702,
+      "silverCreatureId": 83002,
+      "quality": 3,
+      "price": 100
+    },
+    "8100703": {
+      "id": 8100703,
+      "silverCreatureId": 83002,
+      "quality": 4,
+      "price": 200
+    },
+    "8100801": {
+      "id": 8100801,
+      "silverCreatureId": 83003,
+      "quality": 2,
+      "price": 50
+    },
+    "8100802": {
+      "id": 8100802,
+      "silverCreatureId": 83003,
+      "quality": 3,
+      "price": 100
+    },
+    "8100803": {
+      "id": 8100803,
+      "silverCreatureId": 83003,
+      "quality": 4,
+      "price": 200
+    }
+  }
+}

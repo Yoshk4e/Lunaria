@@ -1,0 +1,95 @@
+
+syntax = "proto3";
+package msg;
+
+
+message ClueStatus
+{
+    uint64 clue_id = 1;    
+    bool on_slot = 2;    
+}
+
+
+message EvidenceStatus
+{
+    uint64 evidence_id = 1;    
+    bool decrypted = 2;    
+}
+
+
+message ProcessingCase
+{
+    uint64 case_id = 1;    
+    uint32 finished_phase = 2;    
+    repeated ClueStatus clue_status = 3;    
+    repeated EvidenceStatus evidence_status = 4;    
+}
+
+
+
+message CSCaseData
+{
+}
+
+
+
+message SCCaseData
+{
+    repeated ProcessingCase processing_case = 1;    
+    repeated uint64 finished_case = 2;    
+}
+
+
+
+message CSCaseCluePut
+{
+    uint64 clue_id = 1;    
+}
+
+
+
+message SCCaseCluePut
+{
+    int32 result = 1;  
+    uint64 clue_id = 2;    
+    uint32 case_id = 3;   
+    uint32 finished_phase = 4; 
+}
+
+
+
+message CSCaseEvidenceDecrypted
+{
+    uint64 evidence_id = 1;    
+}
+
+
+
+message SCCaseEvidenceDecrypted
+{
+    int32 result = 1;  
+    uint64 evidence_id = 2;    
+}
+
+
+
+message SCCaseReceiveNtf
+{
+    uint64 case_id = 1;    
+    repeated uint64 clue_ids = 2;    
+    repeated uint64 evidence_ids = 3;    
+}
+
+
+
+message SCCaseNewClueNtf
+{
+    uint64 clue_id = 1;    
+}
+
+
+
+message SCCaseNewEvidenceNtf
+{
+    uint64 evidence_id = 1;    
+}

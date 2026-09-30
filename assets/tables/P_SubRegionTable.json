@@ -1,0 +1,28 @@
+{
+  "P_SubRegionTable": {
+    "100001001001": {
+      "id": 100001001001,
+      "subRegionName": 1010500121,
+      "regionIcon": "Img_RegionalExploration_RiversideDistrict",
+      "regionBgIcon": "Img_RegionalExploration_RiversideDistrict_BIG"
+    },
+    "100001001002": {
+      "id": 100001001002,
+      "subRegionName": 1010500122,
+      "regionIcon": "Img_RegionalExploration_FoodSection",
+      "regionBgIcon": "Img_RegionalExploration_FoodSection_BIG"
+    },
+    "100001004002": {
+      "id": 100001004002,
+      "subRegionName": 1010500123,
+      "regionIcon": "Img_RegionalExploration_South_Of_The_Church",
+      "regionBgIcon": "Img_RegionalExploration_South_Of_The_Church_BIG"
+    },
+    "100001002001": {
+      "id": 100001002001,
+      "subRegionName": 1010500126,
+      "regionIcon": "Img_RegionalExploration_FashionDistrict",
+      "regionBgIcon": "Img_RegionalExploration_FashionDistrict_BIG"
+    }
+  }
+}

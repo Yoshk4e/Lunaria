@@ -1,0 +1,847 @@
+{
+  "P_WantedPosterBattleEffect": {
+    "10010": {
+      "id": 10010,
+      "affixTargetType": 0,
+      "affixList": [
+        10011
+      ]
+    },
+    "10020": {
+      "id": 10020,
+      "affixTargetType": 1,
+      "affixList": [
+        10012
+      ]
+    },
+    "10030": {
+      "id": 10030,
+      "affixTargetType": 2,
+      "affixList": [
+        10013
+      ]
+    },
+    "10040": {
+      "id": 10040,
+      "affixTargetType": 3,
+      "affixTargetParam": [
+        1,
+        2
+      ],
+      "affixList": [
+        10014
+      ]
+    },
+    "10050": {
+      "id": 10050
+    },
+    "10060": {
+      "id": 10060,
+      "affixTargetType": 5,
+      "affixTargetParam": [
+        105
+      ],
+      "affixList": [
+        10016
+      ]
+    },
+    "10070": {
+      "id": 10070,
+      "affixTargetType": 0,
+      "affixList": [
+        10017,
+        10018
+      ]
+    },
+    "10080": {
+      "id": 10080,
+      "affixTargetType": 1,
+      "affixList": [
+        10019
+      ]
+    },
+    "10090": {
+      "id": 10090,
+      "affixTargetType": 3,
+      "affixTargetParam": [
+        1
+      ],
+      "affixList": [
+        10020
+      ]
+    },
+    "10091": {
+      "id": 10091,
+      "affixTargetType": 3,
+      "affixTargetParam": [
+        2
+      ],
+      "affixList": [
+        10021
+      ]
+    },
+    "10100": {
+      "id": 10100,
+      "affixTargetType": 4,
+      "affixTargetParam": [
+        1007
+      ],
+      "affixList": [
+        10022
+      ]
+    },
+    "10101": {
+      "id": 10101,
+      "affixTargetType": 4,
+      "affixTargetParam": [
+        1001
+      ],
+      "affixList": [
+        10023
+      ]
+    },
+    "15010": {
+      "id": 15010,
+      "outsideBuffList": [
+        1
+      ]
+    },
+    "15020": {
+      "id": 15020,
+      "outsideBuffList": [
+        2
+      ]
+    },
+    "15030": {
+      "id": 15030,
+      "outsideBuffList": [
+        3
+      ]
+    },
+    "15040": {
+      "id": 15040,
+      "outsideBuffList": [
+        4
+      ]
+    },
+    "15050": {
+      "id": 15050,
+      "outsideBuffList": [
+        5
+      ]
+    },
+    "15060": {
+      "id": 15060,
+      "outsideBuffList": [
+        6
+      ]
+    },
+    "15070": {
+      "id": 15070
+    },
+    "15080": {
+      "id": 15080
+    },
+    "15090": {
+      "id": 15090
+    },
+    "15091": {
+      "id": 15091
+    },
+    "15100": {
+      "id": 15100
+    },
+    "15101": {
+      "id": 15101
+    },
+    "1": {
+      "id": 1,
+      "affixTargetType": 1,
+      "affixList": [
+        10012
+      ]
+    },
+    "2": {
+      "id": 2
+    },
+    "3": {
+      "id": 3
+    },
+    "61": {
+      "id": 61
+    },
+    "62": {
+      "id": 62
+    },
+    "63": {
+      "id": 63
+    },
+    "101": {
+      "id": 101,
+      "affixTargetType": 1,
+      "affixList": [
+        11000
+      ]
+    },
+    "102": {
+      "id": 102,
+      "affixTargetType": 1,
+      "affixList": [
+        11000,
+        11001
+      ]
+    },
+    "103": {
+      "id": 103,
+      "affixTargetType": 1,
+      "affixList": [
+        11000,
+        11001,
+        11002
+      ]
+    },
+    "104": {
+      "id": 104,
+      "affixTargetType": 1,
+      "affixList": [
+        11000,
+        11001,
+        11002,
+        11003
+      ]
+    },
+    "105": {
+      "id": 105,
+      "affixTargetType": 1,
+      "affixList": [
+        11004
+      ]
+    },
+    "106": {
+      "id": 106,
+      "affixTargetType": 1,
+      "affixList": [
+        11004,
+        11005
+      ]
+    },
+    "107": {
+      "id": 107,
+      "affixTargetType": 1,
+      "affixList": [
+        11006
+      ]
+    },
+    "108": {
+      "id": 108,
+      "affixTargetType": 1,
+      "affixList": [
+        11006,
+        11007
+      ]
+    },
+    "109": {
+      "id": 109,
+      "affixTargetType": 1,
+      "affixList": [
+        11008
+      ]
+    },
+    "110": {
+      "id": 110,
+      "affixTargetType": 1,
+      "affixList": [
+        11008,
+        11009
+      ]
+    },
+    "111": {
+      "id": 111,
+      "affixTargetType": 1,
+      "affixList": [
+        11010
+      ]
+    },
+    "112": {
+      "id": 112,
+      "affixTargetType": 1,
+      "affixList": [
+        11010,
+        11011
+      ]
+    },
+    "113": {
+      "id": 113,
+      "affixTargetType": 1,
+      "affixList": [
+        11012
+      ]
+    },
+    "114": {
+      "id": 114,
+      "affixTargetType": 1,
+      "affixList": [
+        11012,
+        11013
+      ]
+    },
+    "115": {
+      "id": 115,
+      "affixTargetType": 1,
+      "affixList": [
+        11012,
+        11013,
+        11014
+      ]
+    },
+    "116": {
+      "id": 116,
+      "affixTargetType": 1,
+      "affixList": [
+        11015
+      ]
+    },
+    "117": {
+      "id": 117,
+      "affixTargetType": 1,
+      "affixList": [
+        11015,
+        11016
+      ]
+    },
+    "118": {
+      "id": 118,
+      "affixTargetType": 1,
+      "affixList": [
+        11017
+      ]
+    },
+    "119": {
+      "id": 119,
+      "affixTargetType": 1,
+      "affixList": [
+        11017,
+        11018
+      ]
+    },
+    "120": {
+      "id": 120,
+      "affixTargetType": 2,
+      "affixList": [
+        11019
+      ]
+    },
+    "121": {
+      "id": 121,
+      "affixTargetType": 2,
+      "affixList": [
+        11019,
+        11020
+      ]
+    },
+    "122": {
+      "id": 122,
+      "affixTargetType": 2,
+      "affixList": [
+        11019,
+        11020,
+        11021
+      ]
+    },
+    "123": {
+      "id": 123,
+      "affixTargetType": 2,
+      "affixList": [
+        11022
+      ]
+    },
+    "124": {
+      "id": 124,
+      "affixTargetType": 2,
+      "affixList": [
+        11022,
+        11023
+      ]
+    },
+    "125": {
+      "id": 125,
+      "affixTargetType": 2,
+      "affixList": [
+        11022,
+        11023,
+        11024
+      ]
+    },
+    "126": {
+      "id": 126,
+      "affixTargetType": 2,
+      "affixList": [
+        11025
+      ]
+    },
+    "127": {
+      "id": 127,
+      "affixTargetType": 2,
+      "affixList": [
+        11025,
+        11026
+      ]
+    },
+    "128": {
+      "id": 128,
+      "affixTargetType": 2,
+      "affixList": [
+        11027
+      ]
+    },
+    "129": {
+      "id": 129,
+      "affixTargetType": 2,
+      "affixList": [
+        11027,
+        11028
+      ]
+    },
+    "130": {
+      "id": 130,
+      "affixTargetType": 2,
+      "affixList": [
+        11027,
+        11028,
+        11029
+      ]
+    },
+    "131": {
+      "id": 131,
+      "affixTargetType": 2,
+      "affixList": [
+        11027,
+        11028,
+        11029,
+        11030
+      ]
+    },
+    "132": {
+      "id": 132,
+      "affixTargetType": 2,
+      "affixList": [
+        11031
+      ]
+    },
+    "133": {
+      "id": 133,
+      "affixTargetType": 2,
+      "affixList": [
+        11031,
+        11032
+      ]
+    },
+    "134": {
+      "id": 134,
+      "affixTargetType": 2,
+      "affixList": [
+        11031,
+        11032,
+        11033
+      ]
+    },
+    "135": {
+      "id": 135,
+      "affixTargetType": 2,
+      "affixList": [
+        11034
+      ]
+    },
+    "136": {
+      "id": 136,
+      "affixTargetType": 2,
+      "affixList": [
+        11034,
+        11035
+      ]
+    },
+    "137": {
+      "id": 137,
+      "affixTargetType": 2,
+      "affixList": [
+        11034,
+        11035,
+        11036
+      ]
+    },
+    "138": {
+      "id": 138,
+      "affixTargetType": 2,
+      "affixList": [
+        11037
+      ]
+    },
+    "139": {
+      "id": 139,
+      "affixTargetType": 2,
+      "affixList": [
+        11037,
+        11038
+      ]
+    },
+    "140": {
+      "id": 140,
+      "affixTargetType": 2,
+      "affixList": [
+        11037,
+        11038,
+        11039
+      ]
+    },
+    "1000001": {
+      "id": 1000001,
+      "affixTargetType": 1,
+      "affixList": [
+        10999
+      ]
+    },
+    "1000002": {
+      "id": 1000002,
+      "affixTargetType": 1,
+      "affixList": [
+        10998
+      ]
+    },
+    "1000003": {
+      "id": 1000003,
+      "affixTargetType": 2,
+      "affixList": [
+        10997
+      ]
+    },
+    "1000004": {
+      "id": 1000004,
+      "affixTargetType": 2,
+      "affixList": [
+        10996
+      ]
+    },
+    "1000101": {
+      "id": 1000101,
+      "affixTargetType": 1,
+      "affixList": [
+        10003
+      ]
+    },
+    "1000102": {
+      "id": 1000102,
+      "affixTargetType": 1,
+      "affixList": [
+        10004
+      ]
+    },
+    "1000103": {
+      "id": 1000103,
+      "affixTargetType": 1,
+      "affixList": [
+        10005
+      ]
+    },
+    "1000104": {
+      "id": 1000104,
+      "affixTargetType": 1,
+      "affixList": [
+        10006
+      ]
+    },
+    "1000105": {
+      "id": 1000105,
+      "affixTargetType": 1,
+      "affixList": [
+        10007
+      ]
+    },
+    "1000106": {
+      "id": 1000106,
+      "affixTargetType": 1,
+      "affixList": [
+        10008
+      ]
+    },
+    "1000107": {
+      "id": 1000107,
+      "affixTargetType": 1,
+      "affixList": [
+        10009
+      ]
+    },
+    "1000108": {
+      "id": 1000108,
+      "affixTargetType": 1,
+      "affixList": [
+        10010
+      ]
+    },
+    "1000109": {
+      "id": 1000109,
+      "affixTargetType": 1,
+      "affixList": [
+        10011
+      ]
+    },
+    "1000110": {
+      "id": 1000110,
+      "affixTargetType": 1,
+      "affixList": [
+        10012
+      ]
+    },
+    "1000111": {
+      "id": 1000111,
+      "affixTargetType": 1,
+      "affixList": [
+        10013
+      ]
+    },
+    "1000112": {
+      "id": 1000112,
+      "affixTargetType": 1,
+      "affixList": [
+        10014
+      ]
+    },
+    "1000113": {
+      "id": 1000113,
+      "affixTargetType": 1,
+      "affixList": [
+        10015
+      ]
+    },
+    "1000114": {
+      "id": 1000114,
+      "affixTargetType": 1,
+      "affixList": [
+        10016
+      ]
+    },
+    "1000115": {
+      "id": 1000115,
+      "affixTargetType": 1,
+      "affixList": [
+        10017
+      ]
+    },
+    "1000116": {
+      "id": 1000116,
+      "affixTargetType": 1,
+      "affixList": [
+        10018
+      ]
+    },
+    "1000117": {
+      "id": 1000117,
+      "affixTargetType": 1,
+      "affixList": [
+        10019
+      ]
+    },
+    "1000118": {
+      "id": 1000118,
+      "affixTargetType": 1,
+      "affixList": [
+        10020
+      ]
+    },
+    "1000119": {
+      "id": 1000119,
+      "affixTargetType": 1,
+      "affixList": [
+        10021
+      ]
+    },
+    "1000120": {
+      "id": 1000120,
+      "affixTargetType": 1,
+      "affixList": [
+        10022
+      ]
+    },
+    "1000121": {
+      "id": 1000121,
+      "affixTargetType": 1,
+      "affixList": [
+        10023
+      ]
+    },
+    "1000122": {
+      "id": 1000122,
+      "affixTargetType": 2,
+      "affixList": [
+        10024
+      ]
+    },
+    "1000123": {
+      "id": 1000123,
+      "affixTargetType": 2,
+      "affixList": [
+        10025
+      ]
+    },
+    "1000124": {
+      "id": 1000124,
+      "affixTargetType": 2,
+      "affixList": [
+        10026
+      ]
+    },
+    "1000125": {
+      "id": 1000125,
+      "affixTargetType": 2,
+      "affixList": [
+        10027
+      ]
+    },
+    "1000126": {
+      "id": 1000126,
+      "affixTargetType": 2,
+      "affixList": [
+        10028
+      ]
+    },
+    "1000127": {
+      "id": 1000127,
+      "affixTargetType": 2,
+      "affixList": [
+        10029
+      ]
+    },
+    "1000128": {
+      "id": 1000128,
+      "affixTargetType": 2,
+      "affixList": [
+        10030
+      ]
+    },
+    "1000129": {
+      "id": 1000129,
+      "affixTargetType": 2,
+      "affixList": [
+        10031
+      ]
+    },
+    "1000130": {
+      "id": 1000130,
+      "affixTargetType": 2,
+      "affixList": [
+        10032
+      ]
+    },
+    "1000131": {
+      "id": 1000131,
+      "affixTargetType": 2,
+      "affixList": [
+        10033
+      ]
+    },
+    "1000132": {
+      "id": 1000132,
+      "affixTargetType": 2,
+      "affixList": [
+        10034
+      ]
+    },
+    "1000133": {
+      "id": 1000133,
+      "affixTargetType": 2,
+      "affixList": [
+        10035
+      ]
+    },
+    "1000134": {
+      "id": 1000134,
+      "affixTargetType": 2,
+      "affixList": [
+        10036
+      ]
+    },
+    "1000135": {
+      "id": 1000135,
+      "affixTargetType": 2,
+      "affixList": [
+        10037
+      ]
+    },
+    "1000136": {
+      "id": 1000136,
+      "affixTargetType": 2,
+      "affixList": [
+        10038
+      ]
+    },
+    "1000137": {
+      "id": 1000137,
+      "affixTargetType": 2,
+      "affixList": [
+        10039
+      ]
+    },
+    "1000138": {
+      "id": 1000138,
+      "affixTargetType": 2,
+      "affixList": [
+        10040
+      ]
+    },
+    "1000139": {
+      "id": 1000139,
+      "affixTargetType": 2,
+      "affixList": [
+        10041
+      ]
+    },
+    "1000140": {
+      "id": 1000140,
+      "affixTargetType": 2,
+      "affixList": [
+        10042
+      ]
+    },
+    "1000141": {
+      "id": 1000141,
+      "affixTargetType": 2,
+      "affixList": [
+        10043
+      ]
+    },
+    "1000142": {
+      "id": 1000142,
+      "affixTargetType": 2,
+      "affixList": [
+        10044
+      ]
+    },
+    "1000143": {
+      "id": 1000143,
+      "affixTargetType": 2,
+      "affixList": [
+        10045
+      ]
+    },
+    "1000144": {
+      "id": 1000144,
+      "affixTargetType": 2,
+      "affixList": [
+        10046
+      ]
+    },
+    "1000145": {
+      "id": 1000145,
+      "affixTargetType": 2,
+      "affixList": [
+        10047
+      ]
+    },
+    "1000146": {
+      "id": 1000146,
+      "affixTargetType": 2,
+      "affixList": [
+        10048
+      ]
+    }
+  }
+}

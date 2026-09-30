@@ -1,0 +1,77 @@
+{
+  "S_WantedPosterBlessTable": {
+    "1": {
+      "id": 1,
+      "blessType": 1,
+      "bond": "1=1",
+      "battleEffect": [
+        101
+      ],
+      "unlockCondition": 1011
+    },
+    "2": {
+      "id": 2,
+      "blessType": 1,
+      "bond": "1=1",
+      "battleEffect": [
+        102,
+        103
+      ],
+      "unlockCondition": 1011
+    },
+    "3": {
+      "id": 3,
+      "blessType": 1,
+      "bond": "2=1",
+      "battleEffect": [
+        101
+      ],
+      "unlockCondition": 1011
+    },
+    "4": {
+      "id": 4,
+      "blessType": 1,
+      "bond": "3=1",
+      "battleEffect": [
+        101
+      ],
+      "unlockCondition": 1011
+    },
+    "5": {
+      "id": 5,
+      "blessType": 1,
+      "bond": "1=1#2=1",
+      "battleEffect": [
+        101
+      ],
+      "unlockCondition": 1011
+    },
+    "6": {
+      "id": 6,
+      "blessType": 1,
+      "bond": "1=3",
+      "battleEffect": [
+        101
+      ],
+      "unlockCondition": 1011
+    },
+    "7": {
+      "id": 7,
+      "blessType": 2,
+      "bond": "2=1",
+      "battleEffect": [
+        101
+      ],
+      "unlockCondition": 1011
+    },
+    "8": {
+      "id": 8,
+      "blessType": 3,
+      "bond": "3=1",
+      "battleEffect": [
+        101
+      ],
+      "unlockCondition": 1011
+    }
+  }
+}

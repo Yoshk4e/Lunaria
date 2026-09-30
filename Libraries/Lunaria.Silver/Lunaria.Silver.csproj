@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>SilverNet TCP framing, key exchange, session encryption, and UDP establishment.</Description>
+  </PropertyGroup>
+
+</Project>

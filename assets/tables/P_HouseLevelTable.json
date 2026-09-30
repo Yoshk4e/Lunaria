@@ -1,0 +1,292 @@
+{
+  "P_HouseLevelTable": {
+    "1": {
+      "id": 1,
+      "groupId": 1,
+      "level": 1,
+      "upgradeCost": 100,
+      "baseIncome": 200,
+      "propertyList": [
+        100,
+        110,
+        120
+      ],
+      "propertyIncomeCoef": [
+        10000,
+        10000,
+        10000
+      ]
+    },
+    "2": {
+      "id": 2,
+      "groupId": 1,
+      "level": 2,
+      "upgradeCost": 1000,
+      "baseIncome": 400,
+      "propertyList": [
+        110,
+        120,
+        130
+      ],
+      "propertyIncomeCoef": [
+        10000,
+        10000,
+        10000
+      ]
+    },
+    "3": {
+      "id": 3,
+      "groupId": 1,
+      "level": 3,
+      "upgradeCost": 10000,
+      "baseIncome": 800,
+      "propertyList": [
+        120,
+        130,
+        140
+      ],
+      "propertyIncomeCoef": [
+        10000,
+        10000,
+        10000
+      ]
+    },
+    "4": {
+      "id": 4,
+      "groupId": 2,
+      "level": 1,
+      "upgradeCost": 13600,
+      "baseIncome": 1000,
+      "propertyList": [
+        110,
+        120,
+        131
+      ],
+      "propertyIncomeCoef": [
+        10000,
+        10000,
+        10000
+      ]
+    },
+    "5": {
+      "id": 5,
+      "groupId": 2,
+      "level": 2,
+      "upgradeCost": 18550,
+      "baseIncome": 1200,
+      "propertyList": [
+        100,
+        110,
+        122
+      ],
+      "propertyIncomeCoef": [
+        10000,
+        10000,
+        10000
+      ]
+    },
+    "6": {
+      "id": 6,
+      "groupId": 2,
+      "level": 3,
+      "upgradeCost": 23500,
+      "baseIncome": 1400,
+      "propertyList": [
+        110,
+        120,
+        132
+      ],
+      "propertyIncomeCoef": [
+        10000,
+        10000,
+        10000
+      ]
+    },
+    "7": {
+      "id": 7,
+      "groupId": 2,
+      "level": 4,
+      "upgradeCost": 28450,
+      "baseIncome": 1600,
+      "propertyList": [
+        100,
+        110,
+        123
+      ],
+      "propertyIncomeCoef": [
+        10000,
+        10000,
+        10000
+      ]
+    },
+    "8": {
+      "id": 8,
+      "groupId": 2,
+      "level": 5,
+      "upgradeCost": 33400,
+      "baseIncome": 1800,
+      "propertyList": [
+        110,
+        120,
+        133
+      ],
+      "propertyIncomeCoef": [
+        10000,
+        10000,
+        10000
+      ]
+    },
+    "9": {
+      "id": 9,
+      "groupId": 2,
+      "level": 6,
+      "upgradeCost": 38350,
+      "baseIncome": 2000,
+      "propertyList": [
+        100,
+        110,
+        124
+      ],
+      "propertyIncomeCoef": [
+        10000,
+        10000,
+        10000
+      ]
+    },
+    "10": {
+      "id": 10,
+      "groupId": 2,
+      "level": 7,
+      "upgradeCost": 43300,
+      "baseIncome": 2200,
+      "propertyList": [
+        110,
+        120,
+        134
+      ],
+      "propertyIncomeCoef": [
+        10000,
+        10000,
+        10000
+      ]
+    },
+    "11": {
+      "id": 11,
+      "groupId": 2,
+      "level": 8,
+      "upgradeCost": 48250,
+      "baseIncome": 2400,
+      "propertyList": [
+        100,
+        110,
+        125
+      ],
+      "propertyIncomeCoef": [
+        10000,
+        10000,
+        10000
+      ]
+    },
+    "12": {
+      "id": 12,
+      "groupId": 2,
+      "level": 9,
+      "upgradeCost": 53200,
+      "baseIncome": 2600,
+      "propertyList": [
+        110,
+        120,
+        135
+      ],
+      "propertyIncomeCoef": [
+        10000,
+        10000,
+        10000
+      ]
+    },
+    "13": {
+      "id": 13,
+      "groupId": 3,
+      "level": 1,
+      "upgradeCost": 5000000,
+      "baseIncome": 200000,
+      "propertyList": [
+        120,
+        150,
+        150
+      ],
+      "propertyIncomeCoef": [
+        10000,
+        10000,
+        10000
+      ]
+    },
+    "14": {
+      "id": 14,
+      "groupId": 3,
+      "level": 2,
+      "upgradeCost": 10000000,
+      "baseIncome": 365000,
+      "propertyList": [
+        220,
+        230,
+        230
+      ],
+      "propertyIncomeCoef": [
+        10000,
+        10000,
+        10000
+      ]
+    },
+    "15": {
+      "id": 15,
+      "groupId": 3,
+      "level": 3,
+      "upgradeCost": 20000000,
+      "baseIncome": 650000,
+      "propertyList": [
+        290,
+        300,
+        260
+      ],
+      "propertyIncomeCoef": [
+        10000,
+        10000,
+        10000
+      ]
+    },
+    "16": {
+      "id": 16,
+      "groupId": 3,
+      "level": 4,
+      "upgradeCost": 30000000,
+      "baseIncome": 1150000,
+      "propertyList": [
+        350,
+        320,
+        500
+      ],
+      "propertyIncomeCoef": [
+        10000,
+        10000,
+        10000
+      ]
+    },
+    "17": {
+      "id": 17,
+      "groupId": 3,
+      "level": 5,
+      "baseIncome": 1815000,
+      "propertyList": [
+        400,
+        330,
+        750
+      ],
+      "propertyIncomeCoef": [
+        10000,
+        10000,
+        10000
+      ]
+    }
+  }
+}

@@ -1,0 +1,1408 @@
+{
+  "P_CollectionTable": {
+    "100": {
+      "id": 100,
+      "collectionType": 1,
+      "uuid": 5001,
+      "dropId": [
+        1000
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "angle": 45.0,
+      "radius": 200.0,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "101": {
+      "id": 101,
+      "collectionType": 1,
+      "uuid": 5002,
+      "dropId": [
+        92140002
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "angle": 45.0,
+      "radius": 200.0,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "102": {
+      "id": 102,
+      "collectionType": 1,
+      "uuid": 5003,
+      "dropId": [
+        92140001
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "angle": 45.0,
+      "radius": 200.0,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "200": {
+      "id": 200,
+      "collectionType": 1,
+      "uuid": 5001,
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "collectionDropId": 9000,
+      "autoDestroy": true,
+      "angle": 45.0,
+      "radius": 200.0,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "201": {
+      "id": 201,
+      "collectionType": 1,
+      "uuid": 5002,
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "collectionDropId": 9001,
+      "autoDestroy": true,
+      "angle": 45.0,
+      "radius": 200.0,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "202": {
+      "id": 202,
+      "collectionType": 1,
+      "uuid": 5003,
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "collectionDropId": 9002,
+      "autoDestroy": true,
+      "angle": 45.0,
+      "radius": 200.0,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "203": {
+      "id": 203,
+      "collectionType": 1,
+      "uuid": 5004,
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "collectionDropId": 9002,
+      "autoDestroy": true,
+      "angle": 45.0,
+      "radius": 200.0,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "210": {
+      "id": 210,
+      "collectionType": 1,
+      "uuid": 5011,
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "angle": 45.0,
+      "radius": 200.0,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "211": {
+      "id": 211,
+      "collectionType": 1,
+      "uuid": 5012,
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "angle": 45.0,
+      "radius": 200.0,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "212": {
+      "id": 212,
+      "collectionType": 1,
+      "uuid": 5013,
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "angle": 45.0,
+      "radius": 200.0,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "301": {
+      "id": 301,
+      "collectionType": 1,
+      "uuid": 6003,
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "collectionDropId": 9000,
+      "autoDestroy": false,
+      "angle": 30.0,
+      "radius": 200.0,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "2001": {
+      "id": 2001,
+      "collectionType": 0,
+      "uuid": 6001,
+      "dropId": [
+        94110004
+      ],
+      "refreshConfigId": 1002,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "2002": {
+      "id": 2002,
+      "collectionType": 0,
+      "uuid": 6002,
+      "dropId": [
+        104
+      ],
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "2003": {
+      "id": 2003,
+      "collectionType": 0,
+      "uuid": 600201,
+      "dropId": [
+        104
+      ],
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "2004": {
+      "id": 2004,
+      "collectionType": 0,
+      "uuid": 600202,
+      "dropId": [
+        104
+      ],
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "2005": {
+      "id": 2005,
+      "collectionType": 0,
+      "uuid": 101104006,
+      "dropId": [
+        104
+      ],
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "2006": {
+      "id": 2006,
+      "collectionType": 0,
+      "uuid": 101104007,
+      "dropId": [
+        94110004
+      ],
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "3001": {
+      "id": 3001,
+      "collectionType": 0,
+      "uuid": 101103001,
+      "dropId": [
+        104
+      ],
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "1010101": {
+      "id": 1010101,
+      "collectionType": 0,
+      "uuid": 101104001,
+      "dropId": [
+        94100001
+      ],
+      "refreshConfigId": 1003,
+      "rewardLimitId": 10101,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "1010102": {
+      "id": 1010102,
+      "collectionType": 0,
+      "uuid": 101104002,
+      "dropId": [
+        94100001
+      ],
+      "refreshConfigId": 1003,
+      "rewardLimitId": 10101,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "1010103": {
+      "id": 1010103,
+      "collectionType": 0,
+      "uuid": 101104003,
+      "dropId": [
+        94100001
+      ],
+      "refreshConfigId": 1003,
+      "rewardLimitId": 10101,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "1010201": {
+      "id": 1010201,
+      "collectionType": 0,
+      "uuid": 101104004,
+      "dropId": [
+        94100002
+      ],
+      "refreshConfigId": 1003,
+      "rewardLimitId": 10102,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "1010301": {
+      "id": 1010301,
+      "collectionType": 0,
+      "uuid": 101104005,
+      "dropId": [
+        94100003
+      ],
+      "refreshConfigId": 1003,
+      "rewardLimitId": 10103,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "1010401": {
+      "id": 1010401,
+      "collectionType": 0,
+      "uuid": 101104008,
+      "dropId": [
+        94100004
+      ],
+      "refreshConfigId": 1003,
+      "rewardLimitId": 10104,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "1010402": {
+      "id": 1010402,
+      "collectionType": 0,
+      "uuid": 101104009,
+      "dropId": [
+        94100004
+      ],
+      "refreshConfigId": 1003,
+      "rewardLimitId": 10104,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "1010403": {
+      "id": 1010403,
+      "collectionType": 0,
+      "uuid": 101104023,
+      "dropId": [
+        94100004
+      ],
+      "refreshConfigId": 1003,
+      "rewardLimitId": 10104,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "2010101": {
+      "id": 2010101,
+      "collectionType": 0,
+      "uuid": 101104010,
+      "dropId": [
+        413006
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "2010201": {
+      "id": 2010201,
+      "collectionType": 0,
+      "uuid": 101104018,
+      "dropId": [
+        413007
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "2010202": {
+      "id": 2010202,
+      "collectionType": 0,
+      "uuid": 101104024,
+      "dropId": [
+        413008
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "2010203": {
+      "id": 2010203,
+      "collectionType": 0,
+      "uuid": 101104025,
+      "dropId": [
+        413009
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "2010301": {
+      "id": 2010301,
+      "collectionType": 0,
+      "uuid": 101104020,
+      "dropId": [
+        413002
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "2010302": {
+      "id": 2010302,
+      "collectionType": 0,
+      "uuid": 101104021,
+      "dropId": [
+        413003
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "2010303": {
+      "id": 2010303,
+      "collectionType": 0,
+      "uuid": 101104022,
+      "dropId": [
+        413001
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "2010401": {
+      "id": 2010401,
+      "collectionType": 0,
+      "uuid": 101104019,
+      "dropId": [
+        413005
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "111": {
+      "id": 111,
+      "collectionType": 0,
+      "uuid": 4813,
+      "dropId": [
+        410001
+      ],
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "112": {
+      "id": 112,
+      "collectionType": 0,
+      "uuid": 4814,
+      "dropId": [
+        410002
+      ],
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "113": {
+      "id": 113,
+      "collectionType": 0,
+      "uuid": 4815,
+      "dropId": [
+        410003
+      ],
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "121": {
+      "id": 121,
+      "collectionType": 0,
+      "uuid": 4816,
+      "dropId": [
+        410004
+      ],
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "122": {
+      "id": 122,
+      "collectionType": 0,
+      "uuid": 4813,
+      "dropId": [
+        410005
+      ],
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "123": {
+      "id": 123,
+      "collectionType": 0,
+      "uuid": 4814,
+      "dropId": [
+        410006
+      ],
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "124": {
+      "id": 124,
+      "collectionType": 0,
+      "uuid": 4815,
+      "dropId": [
+        410007
+      ],
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "131": {
+      "id": 131,
+      "collectionType": 0,
+      "uuid": 4816,
+      "dropId": [
+        410008
+      ],
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "132": {
+      "id": 132,
+      "collectionType": 0,
+      "uuid": 4813,
+      "dropId": [
+        410009
+      ],
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "133": {
+      "id": 133,
+      "collectionType": 0,
+      "uuid": 4814,
+      "dropId": [
+        410010
+      ],
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "134": {
+      "id": 134,
+      "collectionType": 0,
+      "uuid": 4815,
+      "dropId": [
+        410011
+      ],
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "3010100": {
+      "id": 3010100,
+      "collectionType": 0,
+      "uuid": 101104011,
+      "dropId": [
+        410012
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010101": {
+      "id": 3010101,
+      "collectionType": 0,
+      "uuid": 101104011,
+      "dropId": [
+        410013
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010102": {
+      "id": 3010102,
+      "collectionType": 0,
+      "uuid": 101104011,
+      "dropId": [
+        410014
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010103": {
+      "id": 3010103,
+      "collectionType": 0,
+      "uuid": 101104011,
+      "dropId": [
+        410015
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010104": {
+      "id": 3010104,
+      "collectionType": 0,
+      "uuid": 101104011,
+      "dropId": [
+        410016
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010110": {
+      "id": 3010110,
+      "collectionType": 0,
+      "uuid": 101104007,
+      "dropId": [
+        410017
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010111": {
+      "id": 3010111,
+      "collectionType": 0,
+      "uuid": 101104007,
+      "dropId": [
+        410018
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010112": {
+      "id": 3010112,
+      "collectionType": 0,
+      "uuid": 101104007,
+      "dropId": [
+        410019
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010113": {
+      "id": 3010113,
+      "collectionType": 0,
+      "uuid": 101104007,
+      "dropId": [
+        410020
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010114": {
+      "id": 3010114,
+      "collectionType": 0,
+      "uuid": 101104007,
+      "dropId": [
+        410021
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010120": {
+      "id": 3010120,
+      "collectionType": 0,
+      "uuid": 101104012,
+      "dropId": [
+        410022
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010121": {
+      "id": 3010121,
+      "collectionType": 0,
+      "uuid": 101104012,
+      "dropId": [
+        410023
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010122": {
+      "id": 3010122,
+      "collectionType": 0,
+      "uuid": 101104012,
+      "dropId": [
+        410024
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010123": {
+      "id": 3010123,
+      "collectionType": 0,
+      "uuid": 101104012,
+      "dropId": [
+        410025
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010124": {
+      "id": 3010124,
+      "collectionType": 0,
+      "uuid": 101104012,
+      "dropId": [
+        410026
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010200": {
+      "id": 3010200,
+      "collectionType": 0,
+      "uuid": 101104016,
+      "dropId": [
+        410027
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010201": {
+      "id": 3010201,
+      "collectionType": 0,
+      "uuid": 101104016,
+      "dropId": [
+        410028
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010202": {
+      "id": 3010202,
+      "collectionType": 0,
+      "uuid": 101104016,
+      "dropId": [
+        410029
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010203": {
+      "id": 3010203,
+      "collectionType": 0,
+      "uuid": 101104016,
+      "dropId": [
+        410030
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010204": {
+      "id": 3010204,
+      "collectionType": 0,
+      "uuid": 101104016,
+      "dropId": [
+        410031
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010210": {
+      "id": 3010210,
+      "collectionType": 0,
+      "uuid": 101104017,
+      "dropId": [
+        410032
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010211": {
+      "id": 3010211,
+      "collectionType": 0,
+      "uuid": 101104017,
+      "dropId": [
+        410033
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010212": {
+      "id": 3010212,
+      "collectionType": 0,
+      "uuid": 101104017,
+      "dropId": [
+        410034
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010213": {
+      "id": 3010213,
+      "collectionType": 0,
+      "uuid": 101104017,
+      "dropId": [
+        410035
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010214": {
+      "id": 3010214,
+      "collectionType": 0,
+      "uuid": 101104017,
+      "dropId": [
+        410036
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010300": {
+      "id": 3010300,
+      "collectionType": 0,
+      "uuid": 101104013,
+      "dropId": [
+        410037
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010301": {
+      "id": 3010301,
+      "collectionType": 0,
+      "uuid": 101104013,
+      "dropId": [
+        410038
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010302": {
+      "id": 3010302,
+      "collectionType": 0,
+      "uuid": 101104013,
+      "dropId": [
+        410039
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010303": {
+      "id": 3010303,
+      "collectionType": 0,
+      "uuid": 101104013,
+      "dropId": [
+        410040
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010304": {
+      "id": 3010304,
+      "collectionType": 0,
+      "uuid": 101104013,
+      "dropId": [
+        410041
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010310": {
+      "id": 3010310,
+      "collectionType": 0,
+      "uuid": 101104014,
+      "dropId": [
+        410042
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010311": {
+      "id": 3010311,
+      "collectionType": 0,
+      "uuid": 101104014,
+      "dropId": [
+        410043
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010312": {
+      "id": 3010312,
+      "collectionType": 0,
+      "uuid": 101104014,
+      "dropId": [
+        410044
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010313": {
+      "id": 3010313,
+      "collectionType": 0,
+      "uuid": 101104014,
+      "dropId": [
+        410045
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010314": {
+      "id": 3010314,
+      "collectionType": 0,
+      "uuid": 101104014,
+      "dropId": [
+        410046
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010320": {
+      "id": 3010320,
+      "collectionType": 0,
+      "uuid": 101104015,
+      "dropId": [
+        410047
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010321": {
+      "id": 3010321,
+      "collectionType": 0,
+      "uuid": 101104015,
+      "dropId": [
+        410048
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010322": {
+      "id": 3010322,
+      "collectionType": 0,
+      "uuid": 101104015,
+      "dropId": [
+        410049
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010323": {
+      "id": 3010323,
+      "collectionType": 0,
+      "uuid": 101104015,
+      "dropId": [
+        410050
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010324": {
+      "id": 3010324,
+      "collectionType": 0,
+      "uuid": 101104015,
+      "dropId": [
+        410051
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "13010": {
+      "id": 13010,
+      "collectionType": 0,
+      "uuid": 4816,
+      "dropId": [
+        411001
+      ],
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "13020": {
+      "id": 13020,
+      "collectionType": 0,
+      "uuid": 4812,
+      "dropId": [
+        411002
+      ],
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "13031": {
+      "id": 13031,
+      "collectionType": 0,
+      "uuid": 4814,
+      "dropId": [
+        411003
+      ],
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "13032": {
+      "id": 13032,
+      "collectionType": 0,
+      "uuid": 4814,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "13041": {
+      "id": 13041,
+      "collectionType": 0,
+      "uuid": 4814,
+      "dropId": [
+        411005
+      ],
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "13042": {
+      "id": 13042,
+      "collectionType": 0,
+      "uuid": 4814,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "12010": {
+      "id": 12010,
+      "collectionType": 0,
+      "uuid": 4816,
+      "dropId": [
+        411007
+      ],
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "12020": {
+      "id": 12020,
+      "collectionType": 0,
+      "uuid": 4812,
+      "dropId": [
+        411008
+      ],
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "12031": {
+      "id": 12031,
+      "collectionType": 0,
+      "uuid": 4813,
+      "dropId": [
+        411009
+      ],
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "12032": {
+      "id": 12032,
+      "collectionType": 0,
+      "uuid": 4813,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "12041": {
+      "id": 12041,
+      "collectionType": 0,
+      "uuid": 4813,
+      "dropId": [
+        411011
+      ],
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "12042": {
+      "id": 12042,
+      "collectionType": 0,
+      "uuid": 4813,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "11010": {
+      "id": 11010,
+      "collectionType": 0,
+      "uuid": 4816,
+      "dropId": [
+        411013
+      ],
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "11020": {
+      "id": 11020,
+      "collectionType": 0,
+      "uuid": 4812,
+      "dropId": [
+        411014
+      ],
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "11030": {
+      "id": 11030,
+      "collectionType": 0,
+      "uuid": 4813,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "11040": {
+      "id": 11040,
+      "collectionType": 0,
+      "uuid": 4813,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": false
+    },
+    "20000": {
+      "id": 20000,
+      "collectionType": 0,
+      "uuid": 101104001,
+      "dropId": [
+        311001
+      ],
+      "refreshConfigId": 4001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": true
+    },
+    "20001": {
+      "id": 20001,
+      "collectionType": 0,
+      "uuid": 101104002,
+      "dropId": [
+        311001
+      ],
+      "refreshConfigId": 4001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": true
+    },
+    "20002": {
+      "id": 20002,
+      "collectionType": 0,
+      "uuid": 101104003,
+      "dropId": [
+        311001
+      ],
+      "refreshConfigId": 4001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": true
+    },
+    "20003": {
+      "id": 20003,
+      "collectionType": 0,
+      "uuid": 101104004,
+      "dropId": [
+        311001
+      ],
+      "refreshConfigId": 4001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 0,
+      "wantedPosterUsed": true
+    },
+    "30000": {
+      "id": 30000,
+      "collectionType": 0,
+      "uuid": 101104011,
+      "dropId": [
+        410001
+      ],
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010331": {
+      "id": 3010331,
+      "collectionType": 0,
+      "uuid": 101104011,
+      "dropId": [
+        410052
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010332": {
+      "id": 3010332,
+      "collectionType": 0,
+      "uuid": 101104007,
+      "dropId": [
+        410053
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010333": {
+      "id": 3010333,
+      "collectionType": 0,
+      "uuid": 101104012,
+      "dropId": [
+        410054
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010334": {
+      "id": 3010334,
+      "collectionType": 0,
+      "uuid": 101104013,
+      "dropId": [
+        410055
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010335": {
+      "id": 3010335,
+      "collectionType": 0,
+      "uuid": 101104014,
+      "dropId": [
+        410056
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010336": {
+      "id": 3010336,
+      "collectionType": 0,
+      "uuid": 101104015,
+      "dropId": [
+        410057
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    },
+    "3010337": {
+      "id": 3010337,
+      "collectionType": 0,
+      "uuid": 101104015,
+      "dropId": [
+        410058
+      ],
+      "refreshConfigId": 1001,
+      "rewardLimitId": 1,
+      "autoDestroy": true,
+      "radarId": 2,
+      "wantedPosterUsed": false
+    }
+  }
+}

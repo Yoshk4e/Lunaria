@@ -1,0 +1,48 @@
+{
+  "P_GameTimeTable": {
+    "1": {
+      "id": 1,
+      "name": 1000100007,
+      "start": "6:00",
+      "end": "9:59",
+      "weather": [
+        "1:60",
+        "3:40"
+      ],
+      "icon": "/Game/UI/Common/Atlas/Sprites/CommonSubModule/BigWorldPerformance/ProactiveTimeManagement/img_TimeControl_earlyMorning.img_TimeControl_earlyMorning"
+    },
+    "2": {
+      "id": 2,
+      "name": 1000100008,
+      "start": "10:00",
+      "end": "16:59",
+      "weather": [
+        "1:60",
+        "3:40"
+      ],
+      "icon": "/Game/UI/Common/Atlas/Sprites/CommonSubModule/BigWorldPerformance/ProactiveTimeManagement/img_TimeControl_Noon.img_TimeControl_Noon"
+    },
+    "3": {
+      "id": 3,
+      "name": 1000100009,
+      "start": "17:00",
+      "end": "18:59",
+      "weather": [
+        "1:60",
+        "3:40"
+      ],
+      "icon": "/Game/UI/Common/Atlas/Sprites/CommonSubModule/BigWorldPerformance/ProactiveTimeManagement/img_TimeControl_Sunset.img_TimeControl_Sunset"
+    },
+    "5": {
+      "id": 5,
+      "name": 1000100010,
+      "start": "19:00",
+      "end": "5:59",
+      "weather": [
+        "1:60",
+        "3:40"
+      ],
+      "icon": "/Game/UI/Common/Atlas/Sprites/CommonSubModule/BigWorldPerformance/ProactiveTimeManagement/img_TimeControl_Night.img_TimeControl_Night"
+    }
+  }
+}

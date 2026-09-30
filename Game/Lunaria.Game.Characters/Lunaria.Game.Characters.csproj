@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Character roster, teams, skills, and talents.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\Lunaria.Common\Lunaria.Common.csproj" />
+    <ProjectReference Include="..\Lunaria.Game.Resources\Lunaria.Game.Resources.csproj" />
+    <ProjectReference Include="..\..\Protocol\Lunaria.Proto\Lunaria.Proto.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <Description>Game instance registration, allocation, and discovery.</Description>
+  </PropertyGroup>
+
+</Project>

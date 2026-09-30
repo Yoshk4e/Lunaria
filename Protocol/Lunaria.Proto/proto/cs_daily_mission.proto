@@ -1,0 +1,82 @@
+syntax = "proto3";
+
+package msg;
+
+
+message DailyMissionItem
+{
+    uint32 mission_id = 1;      
+    uint32 progress = 2;        
+    bool is_claimed = 3;        
+}
+
+
+message DailyMissionListData
+{
+    repeated DailyMissionItem mission_items = 1;
+}
+
+
+message DailyMissionRewardData
+{
+    repeated uint32 claimed_rewardids = 1;            
+}
+
+
+message DailyMissionData
+{
+    uint32 active_point = 1;                    
+    DailyMissionListData mission_list_data = 2; 
+    DailyMissionRewardData reward_data = 3;     
+}
+
+
+
+message SCDailyMissionNtf
+{
+    DailyMissionData data = 1;
+}
+
+
+
+message CSDailyMissionQuery
+{
+}
+
+
+
+message SCDailyMissionQuery
+{
+    int32 result = 1;
+    DailyMissionData data = 2;
+}
+
+
+
+message CSDailyMissionActivePointClaim
+{
+    uint32 mission_id = 1;
+}
+
+
+
+message SCDailyMissionActivePointClaim
+{
+    int32 result = 1;
+    uint32 active_point = 2;
+    DailyMissionItem mission_item = 3;
+}
+
+
+
+message CSDailyMissionRewardClaim
+{
+}
+
+
+
+message SCDailyMissionRewardClaim
+{
+    int32 result = 1;
+    DailyMissionRewardData reward_data = 2;
+}

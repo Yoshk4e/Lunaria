@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Tracks battle sessions and validates client combat reports.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Protocol\Lunaria.Proto\Lunaria.Proto.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,722 @@
+{
+  "P_WPAdvContentTable": {
+    "10001": {
+      "id": 10001,
+      "adventureId": 100,
+      "type": 1,
+      "dialogId": [
+        1000101
+      ],
+      "nextDialogId": [
+        10002
+      ]
+    },
+    "10002": {
+      "id": 10002,
+      "adventureId": 100,
+      "type": 2,
+      "dialogId": [
+        1001,
+        1002
+      ]
+    },
+    "10003": {
+      "id": 10003,
+      "adventureId": 100,
+      "type": 1,
+      "dialogId": [
+        1000111
+      ],
+      "nextDialogId": [
+        10005
+      ]
+    },
+    "10004": {
+      "id": 10004,
+      "adventureId": 100,
+      "type": 1,
+      "dialogId": [
+        1000112
+      ],
+      "nextDialogId": [
+        10005
+      ]
+    },
+    "10005": {
+      "id": 10005,
+      "adventureId": 100,
+      "type": 1,
+      "dialogId": [
+        1000113
+      ]
+    },
+    "10101": {
+      "id": 10101,
+      "adventureId": 101,
+      "type": 1,
+      "dialogId": [
+        1010101
+      ],
+      "nextDialogId": [
+        10102
+      ]
+    },
+    "10102": {
+      "id": 10102,
+      "adventureId": 101,
+      "type": 2,
+      "dialogId": [
+        1011,
+        1012,
+        1013
+      ]
+    },
+    "10103": {
+      "id": 10103,
+      "adventureId": 101,
+      "type": 1,
+      "dialogId": [
+        1010105
+      ]
+    },
+    "10104": {
+      "id": 10104,
+      "adventureId": 101,
+      "type": 1,
+      "dialogId": [
+        1010108
+      ]
+    },
+    "10105": {
+      "id": 10105,
+      "adventureId": 101,
+      "type": 1,
+      "dialogId": [
+        1010111
+      ]
+    },
+    "10201": {
+      "id": 10201,
+      "adventureId": 102,
+      "type": 1,
+      "dialogId": [
+        1020101
+      ],
+      "nextDialogId": [
+        10202
+      ]
+    },
+    "10202": {
+      "id": 10202,
+      "adventureId": 102,
+      "type": 2,
+      "dialogId": [
+        1021,
+        1022
+      ]
+    },
+    "10203": {
+      "id": 10203,
+      "adventureId": 102,
+      "type": 1,
+      "dialogId": [
+        1020103
+      ]
+    },
+    "10204": {
+      "id": 10204,
+      "adventureId": 102,
+      "type": 1,
+      "dialogId": [
+        1020106
+      ]
+    },
+    "10301": {
+      "id": 10301,
+      "adventureId": 103,
+      "type": 1,
+      "dialogId": [
+        1030101
+      ],
+      "nextDialogId": [
+        10302
+      ]
+    },
+    "10302": {
+      "id": 10302,
+      "adventureId": 103,
+      "type": 2,
+      "dialogId": [
+        1031,
+        1032
+      ]
+    },
+    "10303": {
+      "id": 10303,
+      "adventureId": 103,
+      "type": 1,
+      "dialogId": [
+        1030103
+      ]
+    },
+    "10304": {
+      "id": 10304,
+      "adventureId": 103,
+      "type": 1,
+      "dialogId": [
+        1030105
+      ]
+    },
+    "10401": {
+      "id": 10401,
+      "adventureId": 104,
+      "type": 1,
+      "dialogId": [
+        1040101
+      ],
+      "nextDialogId": [
+        10402
+      ]
+    },
+    "10402": {
+      "id": 10402,
+      "adventureId": 104,
+      "type": 2,
+      "dialogId": [
+        1041,
+        1042
+      ]
+    },
+    "10403": {
+      "id": 10403,
+      "adventureId": 104,
+      "type": 1,
+      "dialogId": [
+        1040103
+      ]
+    },
+    "10404": {
+      "id": 10404,
+      "adventureId": 104,
+      "type": 1,
+      "dialogId": [
+        1040105
+      ]
+    },
+    "10501": {
+      "id": 10501,
+      "adventureId": 105,
+      "type": 1,
+      "dialogId": [
+        1050101
+      ],
+      "nextDialogId": [
+        10502
+      ]
+    },
+    "10502": {
+      "id": 10502,
+      "adventureId": 105,
+      "type": 2,
+      "dialogId": [
+        1051,
+        1052,
+        1053
+      ]
+    },
+    "10503": {
+      "id": 10503,
+      "adventureId": 105,
+      "type": 1,
+      "dialogId": [
+        1050106
+      ]
+    },
+    "10504": {
+      "id": 10504,
+      "adventureId": 105,
+      "type": 1,
+      "dialogId": [
+        1050108
+      ]
+    },
+    "10505": {
+      "id": 10505,
+      "adventureId": 105,
+      "type": 1,
+      "dialogId": [
+        1050110
+      ]
+    },
+    "10601": {
+      "id": 10601,
+      "adventureId": 106,
+      "type": 1,
+      "dialogId": [
+        1060101
+      ],
+      "nextDialogId": [
+        10602
+      ]
+    },
+    "10602": {
+      "id": 10602,
+      "adventureId": 106,
+      "type": 2,
+      "dialogId": [
+        1061,
+        1062
+      ]
+    },
+    "10603": {
+      "id": 10603,
+      "adventureId": 106,
+      "type": 1,
+      "dialogId": [
+        1060103
+      ]
+    },
+    "10604": {
+      "id": 10604,
+      "adventureId": 106,
+      "type": 1,
+      "dialogId": [
+        1060104
+      ]
+    },
+    "10701": {
+      "id": 10701,
+      "adventureId": 107,
+      "type": 1,
+      "dialogId": [
+        1070101
+      ],
+      "nextDialogId": [
+        10702
+      ]
+    },
+    "10702": {
+      "id": 10702,
+      "adventureId": 107,
+      "type": 2,
+      "dialogId": [
+        1071,
+        1072,
+        1073
+      ]
+    },
+    "10703": {
+      "id": 10703,
+      "adventureId": 107,
+      "type": 1,
+      "dialogId": [
+        1070103
+      ]
+    },
+    "10704": {
+      "id": 10704,
+      "adventureId": 107,
+      "type": 1,
+      "dialogId": [
+        1070104
+      ]
+    },
+    "10705": {
+      "id": 10705,
+      "adventureId": 107,
+      "type": 1,
+      "dialogId": [
+        1070105
+      ]
+    },
+    "10801": {
+      "id": 10801,
+      "adventureId": 108,
+      "type": 1,
+      "dialogId": [
+        1080101
+      ],
+      "nextDialogId": [
+        10802
+      ]
+    },
+    "10802": {
+      "id": 10802,
+      "adventureId": 108,
+      "type": 2,
+      "dialogId": [
+        1081,
+        1082,
+        1083
+      ]
+    },
+    "10803": {
+      "id": 10803,
+      "adventureId": 108,
+      "type": 1,
+      "dialogId": [
+        1080103
+      ]
+    },
+    "10804": {
+      "id": 10804,
+      "adventureId": 108,
+      "type": 1,
+      "dialogId": [
+        1080104
+      ]
+    },
+    "10805": {
+      "id": 10805,
+      "adventureId": 108,
+      "type": 1,
+      "dialogId": [
+        1080105
+      ]
+    },
+    "10806": {
+      "id": 10806,
+      "adventureId": 108,
+      "type": 1,
+      "dialogId": [
+        1080106
+      ]
+    },
+    "10807": {
+      "id": 10807,
+      "adventureId": 108,
+      "type": 1,
+      "dialogId": [
+        1080107
+      ]
+    },
+    "10901": {
+      "id": 10901,
+      "adventureId": 109,
+      "type": 1,
+      "dialogId": [
+        1090101
+      ],
+      "nextDialogId": [
+        10902
+      ]
+    },
+    "10902": {
+      "id": 10902,
+      "adventureId": 109,
+      "type": 2,
+      "dialogId": [
+        1091,
+        1092,
+        1093
+      ]
+    },
+    "10903": {
+      "id": 10903,
+      "adventureId": 109,
+      "type": 1,
+      "dialogId": [
+        1090103
+      ]
+    },
+    "10904": {
+      "id": 10904,
+      "adventureId": 109,
+      "type": 1,
+      "dialogId": [
+        1090104
+      ]
+    },
+    "10905": {
+      "id": 10905,
+      "adventureId": 109,
+      "type": 1,
+      "dialogId": [
+        1090105
+      ]
+    },
+    "10906": {
+      "id": 10906,
+      "adventureId": 109,
+      "type": 1,
+      "dialogId": [
+        1090106
+      ]
+    },
+    "10907": {
+      "id": 10907,
+      "adventureId": 109,
+      "type": 1,
+      "dialogId": [
+        1090107
+      ]
+    },
+    "11001": {
+      "id": 11001,
+      "adventureId": 110,
+      "type": 1,
+      "dialogId": [
+        1100101
+      ],
+      "nextDialogId": [
+        11002
+      ]
+    },
+    "11002": {
+      "id": 11002,
+      "adventureId": 110,
+      "type": 2,
+      "dialogId": [
+        1101,
+        1102
+      ]
+    },
+    "11003": {
+      "id": 11003,
+      "adventureId": 110,
+      "type": 1,
+      "dialogId": [
+        1100102
+      ]
+    },
+    "11004": {
+      "id": 11004,
+      "adventureId": 110,
+      "type": 1,
+      "dialogId": [
+        1100104
+      ]
+    },
+    "11101": {
+      "id": 11101,
+      "adventureId": 111,
+      "type": 1,
+      "dialogId": [
+        1110101
+      ],
+      "nextDialogId": [
+        11102
+      ]
+    },
+    "11102": {
+      "id": 11102,
+      "adventureId": 111,
+      "type": 2,
+      "dialogId": [
+        1111,
+        1112,
+        1113
+      ]
+    },
+    "11103": {
+      "id": 11103,
+      "adventureId": 111,
+      "type": 1,
+      "dialogId": [
+        1110103
+      ]
+    },
+    "11104": {
+      "id": 11104,
+      "adventureId": 111,
+      "type": 1,
+      "dialogId": [
+        1110104
+      ]
+    },
+    "11105": {
+      "id": 11105,
+      "adventureId": 111,
+      "type": 1,
+      "dialogId": [
+        1110106
+      ]
+    },
+    "11106": {
+      "id": 11106,
+      "adventureId": 111,
+      "type": 1,
+      "dialogId": [
+        1110108
+      ]
+    },
+    "11107": {
+      "id": 11107,
+      "adventureId": 111,
+      "type": 1,
+      "dialogId": [
+        1110110
+      ]
+    },
+    "11201": {
+      "id": 11201,
+      "adventureId": 112,
+      "type": 1,
+      "dialogId": [
+        1120101
+      ],
+      "nextDialogId": [
+        11202
+      ]
+    },
+    "11202": {
+      "id": 11202,
+      "adventureId": 112,
+      "type": 2,
+      "dialogId": [
+        1121,
+        1122
+      ]
+    },
+    "11203": {
+      "id": 11203,
+      "adventureId": 112,
+      "type": 1,
+      "dialogId": [
+        1120104
+      ]
+    },
+    "11204": {
+      "id": 11204,
+      "adventureId": 112,
+      "type": 1,
+      "dialogId": [
+        1120107
+      ]
+    },
+    "11205": {
+      "id": 11205,
+      "adventureId": 112,
+      "type": 1,
+      "dialogId": [
+        1120110
+      ]
+    },
+    "11301": {
+      "id": 11301,
+      "adventureId": 113,
+      "type": 1,
+      "dialogId": [
+        1130101
+      ],
+      "nextDialogId": [
+        11302
+      ]
+    },
+    "11302": {
+      "id": 11302,
+      "adventureId": 113,
+      "type": 2,
+      "dialogId": [
+        1131,
+        1132,
+        1133
+      ]
+    },
+    "11303": {
+      "id": 11303,
+      "adventureId": 113,
+      "type": 1,
+      "dialogId": [
+        1130103
+      ]
+    },
+    "11304": {
+      "id": 11304,
+      "adventureId": 113,
+      "type": 1,
+      "dialogId": [
+        1130106
+      ]
+    },
+    "11305": {
+      "id": 11305,
+      "adventureId": 113,
+      "type": 1,
+      "dialogId": [
+        1130109
+      ]
+    },
+    "11401": {
+      "id": 11401,
+      "adventureId": 114,
+      "type": 1,
+      "dialogId": [
+        1140101
+      ],
+      "nextDialogId": [
+        11402
+      ]
+    },
+    "11402": {
+      "id": 11402,
+      "adventureId": 114,
+      "type": 2,
+      "dialogId": [
+        1141,
+        1142
+      ]
+    },
+    "11403": {
+      "id": 11403,
+      "adventureId": 114,
+      "type": 1,
+      "dialogId": [
+        1140103
+      ]
+    },
+    "11404": {
+      "id": 11404,
+      "adventureId": 114,
+      "type": 1,
+      "dialogId": [
+        1140104
+      ]
+    },
+    "11501": {
+      "id": 11501,
+      "adventureId": 115,
+      "type": 1,
+      "dialogId": [
+        1150101
+      ],
+      "nextDialogId": [
+        11502
+      ]
+    },
+    "11502": {
+      "id": 11502,
+      "adventureId": 115,
+      "type": 2,
+      "dialogId": [
+        1151,
+        1152,
+        1153
+      ]
+    },
+    "11503": {
+      "id": 11503,
+      "adventureId": 115,
+      "type": 1,
+      "dialogId": [
+        1150103
+      ]
+    },
+    "11504": {
+      "id": 11504,
+      "adventureId": 115,
+      "type": 1,
+      "dialogId": [
+        1150105
+      ]
+    },
+    "11505": {
+      "id": 11505,
+      "adventureId": 115,
+      "type": 1,
+      "dialogId": [
+        1150107
+      ]
+    }
+  }
+}

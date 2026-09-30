@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Player state, cross-feature operations, and role persistence.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.9" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.11" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\Lunaria.Common\Lunaria.Common.csproj" />
+    <ProjectReference Include="..\..\Protocol\Lunaria.Proto\Lunaria.Proto.csproj" />
+    <ProjectReference Include="..\Lunaria.Game.Characters\Lunaria.Game.Characters.csproj" />
+    <ProjectReference Include="..\Lunaria.Game.Guide\Lunaria.Game.Guide.csproj" />
+    <ProjectReference Include="..\Lunaria.Game.Mail\Lunaria.Game.Mail.csproj" />
+    <ProjectReference Include="..\Lunaria.Game.Progression\Lunaria.Game.Progression.csproj" />
+    <ProjectReference Include="..\Lunaria.Game.Inventory\Lunaria.Game.Inventory.csproj" />
+    <ProjectReference Include="..\Lunaria.Game.Limits\Lunaria.Game.Limits.csproj" />
+    <ProjectReference Include="..\Lunaria.Game.Resources\Lunaria.Game.Resources.csproj" />
+    <ProjectReference Include="..\Lunaria.Game.Shop\Lunaria.Game.Shop.csproj" />
+    <ProjectReference Include="..\Lunaria.Game.Collections\Lunaria.Game.Collections.csproj" />
+    <ProjectReference Include="..\Lunaria.Game.Tasks\Lunaria.Game.Tasks.csproj" />
+    <ProjectReference Include="..\Lunaria.Game.Buff\Lunaria.Game.Buff.csproj" />
+    <ProjectReference Include="..\Lunaria.Game.Battle\Lunaria.Game.Battle.csproj" />
+    <ProjectReference Include="..\Lunaria.Game.Dungeons\Lunaria.Game.Dungeons.csproj" />
+    <ProjectReference Include="..\Lunaria.Game.Wanted\Lunaria.Game.Wanted.csproj" />
+    <ProjectReference Include="..\Lunaria.Game.Gacha\Lunaria.Game.Gacha.csproj" />
+    <ProjectReference Include="..\Lunaria.Game.Motives\Lunaria.Game.Motives.csproj" />
+    <ProjectReference Include="..\Lunaria.Game.World\Lunaria.Game.World.csproj" />
+  </ItemGroup>
+
+</Project>

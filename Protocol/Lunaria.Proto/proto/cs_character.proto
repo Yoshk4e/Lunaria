@@ -1,0 +1,89 @@
+syntax = "proto3";
+package msg;
+
+import "comm_data.proto";
+
+
+message CharacterData {
+    uint64 inst_id = 1;          
+    uint32 character_id = 2;     
+    uint32 level = 3;            
+    uint32 exp = 4;              
+    uint32 break_level = 5;      
+    uint64 motive_uniq_id = 6;   
+}
+
+
+
+message CSCharacterListReq
+{
+}
+
+
+
+message SCCharacterListRsp
+{
+    int32 result = 1;
+    repeated CharacterData list = 2;
+}
+
+
+
+message CSCharacterLevelUp
+{
+    uint64 inst_id = 1;
+	repeated ItemIdCount items = 2; 
+}
+
+
+
+message SCCharacterLevelUp
+{
+    int32 result = 1;
+    CharacterData current_data = 2;             
+    repeated ItemIdCount recycle_items = 3;     
+}
+
+
+
+message CSCharacterLevelBreak
+{
+    uint64 inst_id = 1;
+}
+
+
+
+message SCCharacterLevelBreak
+{
+    int32 result = 1;
+    CharacterData current_data = 2;  
+}
+
+
+
+message SCCharacterNewcomerNtf
+{
+    CharacterData newcomer = 1; 
+    repeated ItemIdCount items = 2; 
+}
+
+
+
+message SCCharacterUpdateNtf
+{
+    repeated CharacterData characters = 1; 
+}
+
+
+
+message CSCharacterHealReq
+{
+    int32 reserved = 1;
+}
+
+
+
+message SCCharacterHealRes
+{
+    int32 result = 1;
+}

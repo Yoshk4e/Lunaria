@@ -1,0 +1,38 @@
+{
+  "P_WantedPosterTaskNPC": {
+    "1": {
+      "id": 1,
+      "npcType": 1,
+      "npcTaskId": 1101,
+      "addTaskTime": 2,
+      "removeTaskTime": 1
+    },
+    "2": {
+      "id": 2,
+      "npcType": 2,
+      "npcTaskId": 1102,
+      "addTaskTime": 1,
+      "removeTaskTime": 1,
+      "params": [
+        2001
+      ]
+    },
+    "3": {
+      "id": 3,
+      "npcType": 2,
+      "npcTaskId": 1102,
+      "addTaskTime": 1,
+      "removeTaskTime": 1,
+      "params": [
+        2002
+      ]
+    },
+    "4": {
+      "id": 4,
+      "npcType": 3,
+      "params": [
+        1001
+      ]
+    }
+  }
+}

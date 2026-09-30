@@ -1,0 +1,581 @@
+{
+  "P_UnlockConditionTable": {
+    "103001101": {
+      "id": 103001101,
+      "unlockType": 1,
+      "finishEvents": [
+        103001,
+        301001
+      ]
+    },
+    "201001101": {
+      "id": 201001101,
+      "unlockType": 1,
+      "finishEvents": [
+        201001
+      ],
+      "unFinishDesc": 1010210001,
+      "finishDesc": 1010100011
+    },
+    "202001101": {
+      "id": 202001101,
+      "unlockType": 1,
+      "finishEvents": [
+        202001
+      ]
+    },
+    "101001201": {
+      "id": 101001201,
+      "unlockType": 2,
+      "finishEvents": [
+        101001
+      ]
+    },
+    "101002201": {
+      "id": 101002201,
+      "unlockType": 2,
+      "finishEvents": [
+        102001,
+        201001
+      ],
+      "unFinishDesc": 1010210002
+    },
+    "302001": {
+      "id": 302001,
+      "unlockType": 2,
+      "finishEvents": [
+        302001
+      ],
+      "finishDesc": 1010100018
+    },
+    "203001": {
+      "id": 203001,
+      "unlockType": 1,
+      "finishEvents": [
+        203001
+      ],
+      "finishDesc": 1010100010
+    },
+    "401001": {
+      "id": 401001,
+      "unlockType": 1,
+      "finishEvents": [
+        401001
+      ]
+    },
+    "402001": {
+      "id": 402001,
+      "unlockType": 1,
+      "finishEvents": [
+        402001
+      ],
+      "unFinishDesc": 1010210003,
+      "finishDesc": 1010100008
+    },
+    "402002": {
+      "id": 402002,
+      "unlockType": 1,
+      "finishEvents": [
+        402002
+      ],
+      "unFinishDesc": 1010210004
+    },
+    "701001": {
+      "id": 701001,
+      "unlockType": 1,
+      "finishEvents": [
+        701001
+      ]
+    },
+    "501001": {
+      "id": 501001,
+      "unlockType": 1,
+      "finishEvents": [
+        501001
+      ]
+    },
+    "702001": {
+      "id": 702001,
+      "unlockType": 1,
+      "finishEvents": [
+        702001
+      ]
+    },
+    "601001": {
+      "id": 601001,
+      "unlockType": 1,
+      "finishEvents": [
+        601001
+      ]
+    },
+    "103002101": {
+      "id": 103002101,
+      "unlockType": 1,
+      "finishEvents": [
+        103001
+      ]
+    },
+    "103002102": {
+      "id": 103002102,
+      "unlockType": 1,
+      "finishEvents": [
+        103002
+      ]
+    },
+    "103002103": {
+      "id": 103002103,
+      "unlockType": 1,
+      "finishEvents": [
+        103003
+      ]
+    },
+    "103002104": {
+      "id": 103002104,
+      "unlockType": 1,
+      "finishEvents": [
+        103004
+      ]
+    },
+    "402001101": {
+      "id": 402001101,
+      "unlockType": 1,
+      "finishEvents": [
+        402001,
+        102002
+      ],
+      "unFinishDesc": 1010210003
+    },
+    "402002101": {
+      "id": 402002101,
+      "unlockType": 1,
+      "finishEvents": [
+        402002,
+        102003
+      ],
+      "unFinishDesc": 1010210004
+    },
+    "402003101": {
+      "id": 402003101,
+      "unlockType": 1,
+      "finishEvents": [
+        402003,
+        102002
+      ],
+      "unFinishDesc": 1010210005
+    },
+    "402004101": {
+      "id": 402004101,
+      "unlockType": 1,
+      "finishEvents": [
+        402004,
+        102003
+      ],
+      "unFinishDesc": 1010210006
+    },
+    "402005101": {
+      "id": 402005101,
+      "unlockType": 1,
+      "finishEvents": [
+        402005,
+        102002
+      ],
+      "unFinishDesc": 1010210007
+    },
+    "402006101": {
+      "id": 402006101,
+      "unlockType": 1,
+      "finishEvents": [
+        402006,
+        102003
+      ],
+      "unFinishDesc": 1010210008
+    },
+    "402007101": {
+      "id": 402007101,
+      "unlockType": 1,
+      "finishEvents": [
+        402007,
+        102002
+      ],
+      "unFinishDesc": 1010210009
+    },
+    "402008101": {
+      "id": 402008101,
+      "unlockType": 1,
+      "finishEvents": [
+        402008,
+        102003
+      ],
+      "unFinishDesc": 1010210010
+    },
+    "402009101": {
+      "id": 402009101,
+      "unlockType": 1,
+      "finishEvents": [
+        402009,
+        102002
+      ],
+      "unFinishDesc": 1010210011
+    },
+    "402010101": {
+      "id": 402010101,
+      "unlockType": 1,
+      "finishEvents": [
+        402010,
+        102003
+      ],
+      "unFinishDesc": 1010210012
+    },
+    "402011101": {
+      "id": 402011101,
+      "unlockType": 1,
+      "finishEvents": [
+        402011,
+        102002
+      ],
+      "unFinishDesc": 1010210013
+    },
+    "402012101": {
+      "id": 402012101,
+      "unlockType": 1,
+      "finishEvents": [
+        402012,
+        102003
+      ],
+      "unFinishDesc": 1010210014
+    },
+    "402013101": {
+      "id": 402013101,
+      "unlockType": 1,
+      "finishEvents": [
+        402013,
+        102002
+      ],
+      "unFinishDesc": 1010210015
+    },
+    "402014101": {
+      "id": 402014101,
+      "unlockType": 1,
+      "finishEvents": [
+        402014,
+        102003
+      ],
+      "unFinishDesc": 1010210016
+    },
+    "402015101": {
+      "id": 402015101,
+      "unlockType": 1,
+      "finishEvents": [
+        402015
+      ],
+      "unFinishDesc": 1010210017
+    },
+    "402016101": {
+      "id": 402016101,
+      "unlockType": 1,
+      "finishEvents": [
+        402016
+      ],
+      "unFinishDesc": 1010210018
+    },
+    "402017101": {
+      "id": 402017101,
+      "unlockType": 1,
+      "finishEvents": [
+        402017
+      ],
+      "unFinishDesc": 1010210019
+    },
+    "402018101": {
+      "id": 402018101,
+      "unlockType": 1,
+      "finishEvents": [
+        402018
+      ],
+      "unFinishDesc": 1010210020
+    },
+    "402019101": {
+      "id": 402019101,
+      "unlockType": 1,
+      "finishEvents": [
+        402019,
+        102002
+      ],
+      "unFinishDesc": 1010210021
+    },
+    "402020101": {
+      "id": 402020101,
+      "unlockType": 1,
+      "finishEvents": [
+        402020,
+        102003
+      ],
+      "unFinishDesc": 1010210022
+    },
+    "402021101": {
+      "id": 402021101,
+      "unlockType": 1,
+      "finishEvents": [
+        402021,
+        102002
+      ],
+      "unFinishDesc": 1010210023
+    },
+    "402022101": {
+      "id": 402022101,
+      "unlockType": 1,
+      "finishEvents": [
+        402022,
+        102003
+      ],
+      "unFinishDesc": 1010210024
+    },
+    "402023101": {
+      "id": 402023101,
+      "unlockType": 1,
+      "finishEvents": [
+        402023,
+        102002
+      ],
+      "unFinishDesc": 1010210025
+    },
+    "402024101": {
+      "id": 402024101,
+      "unlockType": 1,
+      "finishEvents": [
+        402024,
+        102003
+      ],
+      "unFinishDesc": 1010210026
+    },
+    "402025101": {
+      "id": 402025101,
+      "unlockType": 1,
+      "finishEvents": [
+        402025
+      ],
+      "unFinishDesc": 1010210028
+    },
+    "402026101": {
+      "id": 402026101,
+      "unlockType": 1,
+      "finishEvents": [
+        402026
+      ],
+      "unFinishDesc": 1010210029
+    },
+    "402027101": {
+      "id": 402027101,
+      "unlockType": 1,
+      "finishEvents": [
+        402027
+      ],
+      "unFinishDesc": 1010210030
+    },
+    "402028101": {
+      "id": 402028101,
+      "unlockType": 1,
+      "finishEvents": [
+        402028
+      ],
+      "unFinishDesc": 1010210031
+    },
+    "402029101": {
+      "id": 402029101,
+      "unlockType": 1,
+      "finishEvents": [
+        402029
+      ],
+      "unFinishDesc": 1010210032
+    },
+    "504001101": {
+      "id": 504001101,
+      "unlockType": 1,
+      "finishEvents": [
+        504001
+      ],
+      "finishDesc": 1010210027
+    },
+    "504002101": {
+      "id": 504002101,
+      "unlockType": 1,
+      "finishEvents": [
+        504002
+      ],
+      "finishDesc": 1010210027
+    },
+    "103003101": {
+      "id": 103003101,
+      "unlockType": 1,
+      "finishEvents": [
+        103003
+      ],
+      "finishDesc": 1010100005
+    },
+    "103004101": {
+      "id": 103004101,
+      "unlockType": 1,
+      "finishEvents": [
+        103004
+      ]
+    },
+    "302011101": {
+      "id": 302011101,
+      "unlockType": 1,
+      "finishEvents": [
+        302011
+      ],
+      "finishDesc": 1010100010
+    },
+    "302012101": {
+      "id": 302012101,
+      "unlockType": 1,
+      "finishEvents": [
+        302012
+      ],
+      "finishDesc": 1010100008
+    },
+    "302013101": {
+      "id": 302013101,
+      "unlockType": 1,
+      "finishEvents": [
+        302013
+      ],
+      "finishDesc": 1010100023
+    },
+    "302014101": {
+      "id": 302014101,
+      "unlockType": 1,
+      "finishEvents": [
+        302014
+      ],
+      "finishDesc": 1860000011
+    },
+    "407001000": {
+      "id": 407001000,
+      "unlockType": 1,
+      "finishEvents": [
+        407000
+      ],
+      "finishDesc": 1010100006
+    },
+    "407001001": {
+      "id": 407001001,
+      "unlockType": 1,
+      "finishEvents": [
+        407001
+      ],
+      "unFinishDesc": 1910000137
+    },
+    "407001002": {
+      "id": 407001002,
+      "unlockType": 1,
+      "finishEvents": [
+        407002
+      ],
+      "unFinishDesc": 1910000137
+    },
+    "407001003": {
+      "id": 407001003,
+      "unlockType": 1,
+      "finishEvents": [
+        407003
+      ],
+      "unFinishDesc": 1910000137
+    },
+    "407001004": {
+      "id": 407001004,
+      "unlockType": 1,
+      "finishEvents": [
+        407004,
+        102002
+      ],
+      "unFinishDesc": 1910000138
+    },
+    "407001005": {
+      "id": 407001005,
+      "unlockType": 1,
+      "finishEvents": [
+        407005,
+        102002
+      ],
+      "unFinishDesc": 1910000138
+    },
+    "103005101": {
+      "id": 103005101,
+      "unlockType": 1,
+      "finishEvents": [
+        103005
+      ],
+      "finishDesc": 1010100017
+    },
+    "302015101": {
+      "id": 302015101,
+      "unlockType": 1,
+      "finishEvents": [
+        302015
+      ]
+    },
+    "302016101": {
+      "id": 302016101,
+      "unlockType": 1,
+      "finishEvents": [
+        302016
+      ],
+      "finishDesc": 1010100022
+    },
+    "302017101": {
+      "id": 302017101,
+      "unlockType": 1,
+      "finishEvents": [
+        302017
+      ],
+      "finishDesc": 1010100009
+    },
+    "504003101": {
+      "id": 504003101,
+      "unlockType": 1,
+      "finishEvents": [
+        504003
+      ],
+      "finishDesc": 1010210027
+    },
+    "301011101": {
+      "id": 301011101,
+      "unlockType": 1,
+      "finishEvents": [
+        301011
+      ]
+    },
+    "301002101": {
+      "id": 301002101,
+      "unlockType": 1,
+      "finishEvents": [
+        301002
+      ]
+    },
+    "402030101": {
+      "id": 402030101,
+      "unlockType": 1,
+      "finishEvents": [
+        301002,
+        402030
+      ]
+    },
+    "505001101": {
+      "id": 505001101,
+      "unlockType": 1,
+      "finishEvents": [
+        301002,
+        505001
+      ]
+    },
+    "302051101": {
+      "id": 302051101,
+      "unlockType": 1,
+      "finishEvents": [
+        302051
+      ]
+    }
+  }
+}

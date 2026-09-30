@@ -1,0 +1,84 @@
+syntax = "proto3";
+package msg;
+
+
+message CmdOneFinishEvent {
+    uint32 id = 1; 
+    uint64 progress = 2; 
+    bool finish = 3; 
+};
+
+
+message CmdAchievementData {
+    repeated CmdOneFinishEvent finish_events = 1; 
+    repeated uint32 reward_achievements = 2; 
+};
+
+
+
+message SCFinishEventUpdate
+{
+    CmdOneFinishEvent finish_event = 1;
+}
+
+
+
+message CSAchievementReward
+{
+    repeated int32 all_ids = 1;
+}
+
+
+
+message SCAchievementReward
+{
+    int32 result = 1;
+    repeated int32 all_ids = 2;
+}
+
+
+
+message CSAchievementQuery
+{
+}
+
+
+
+message SCAchievementQuery
+{
+    int32 result = 1;
+    CmdAchievementData data = 2;
+}
+
+
+
+message CSAchievementAddProgress
+{
+    uint32 id = 1;
+    uint32 count = 2;
+}
+
+
+
+message SCAchievementAddProgress
+{
+    int32 result = 1;
+    uint32 id = 2;
+}
+
+
+
+message CSAchievementEvent
+{
+    uint32 event = 1; 
+    repeated bytes args = 2;
+}
+
+
+
+message SCAchievementEvent 
+{
+    int32 result = 1;
+    uint32 event = 2;
+    repeated bytes args = 3;
+}

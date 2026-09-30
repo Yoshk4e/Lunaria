@@ -1,0 +1,15 @@
+{
+  "P_RegionSequenceTable": {
+    "1": {
+      "id": 1,
+      "subRegionName": "1010500121.0",
+      "type": 1,
+      "paramId": [
+        10001
+      ],
+      "paramNum": [
+        1
+      ]
+    }
+  }
+}

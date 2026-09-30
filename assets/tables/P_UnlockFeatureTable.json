@@ -1,0 +1,79 @@
+{
+  "P_UnlockFeatureTable": {
+    "1": {
+      "id": 1,
+      "unlockConditionId": 103003101,
+      "clientSystemType": 42
+    },
+    "2": {
+      "id": 2,
+      "unlockConditionId": 103003101,
+      "clientSystemType": 110
+    },
+    "3": {
+      "id": 3,
+      "unlockConditionId": 103003101,
+      "clientSystemType": 109
+    },
+    "4": {
+      "id": 4,
+      "unlockConditionId": 302011101,
+      "clientSystemType": 12
+    },
+    "5": {
+      "id": 5,
+      "unlockConditionId": 302012101,
+      "clientSystemType": 13
+    },
+    "6": {
+      "id": 6,
+      "unlockConditionId": 302013101,
+      "clientSystemType": 41
+    },
+    "7": {
+      "id": 7,
+      "unlockConditionId": 302014101,
+      "clientSystemType": 100
+    },
+    "8": {
+      "id": 8,
+      "unlockConditionId": 407001000,
+      "clientSystemType": 132
+    },
+    "9": {
+      "id": 9,
+      "unlockConditionId": 103005101,
+      "clientSystemType": 102
+    },
+    "10": {
+      "id": 10,
+      "unlockConditionId": 302015101,
+      "clientSystemType": 30
+    },
+    "11": {
+      "id": 11,
+      "unlockConditionId": 302016101,
+      "clientSystemType": 82
+    },
+    "12": {
+      "id": 12,
+      "unlockConditionId": 302016101,
+      "clientSystemType": 83
+    },
+    "13": {
+      "id": 13,
+      "unlockConditionId": 302017101,
+      "clientSystemType": 28
+    },
+    "14": {
+      "id": 14,
+      "unlockConditionId": 301011101,
+      "clientSystemType": 4
+    },
+    "15": {
+      "id": 15,
+      "unlockConditionId": 103003101,
+      "clientSystemType": 44
+    }
+  }
+}

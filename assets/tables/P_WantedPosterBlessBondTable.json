@@ -1,0 +1,204 @@
+{
+  "P_WantedPosterBlessBondTable": {
+    "1": {
+      "id": 1,
+      "bondType": 1,
+      "bond": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "battleEffect": [
+        "101",
+        "102",
+        "103",
+        "104"
+      ]
+    },
+    "2": {
+      "id": 2,
+      "bondType": 2,
+      "bond": [
+        1,
+        2
+      ],
+      "battleEffect": [
+        "105",
+        "106"
+      ]
+    },
+    "3": {
+      "id": 3,
+      "bondType": 2,
+      "bond": [
+        1,
+        2
+      ],
+      "battleEffect": [
+        "107",
+        "108"
+      ]
+    },
+    "4": {
+      "id": 4,
+      "bondType": 2,
+      "bond": [
+        1,
+        2
+      ],
+      "battleEffect": [
+        "109",
+        "110"
+      ]
+    },
+    "5": {
+      "id": 5,
+      "bondType": 2,
+      "bond": [
+        1,
+        2
+      ],
+      "battleEffect": [
+        "111",
+        "112"
+      ]
+    },
+    "6": {
+      "id": 6,
+      "bondType": 2,
+      "bond": [
+        1,
+        2,
+        3
+      ],
+      "battleEffect": [
+        "113",
+        "114",
+        "115"
+      ]
+    },
+    "7": {
+      "id": 7,
+      "bondType": 2,
+      "bond": [
+        1,
+        2
+      ],
+      "battleEffect": [
+        "116",
+        "117"
+      ]
+    },
+    "8": {
+      "id": 8,
+      "bondType": 2,
+      "bond": [
+        1,
+        2
+      ],
+      "battleEffect": [
+        "118",
+        "119"
+      ]
+    },
+    "9": {
+      "id": 9,
+      "bondType": 1,
+      "bond": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "battleEffect": [
+        "128",
+        "129",
+        "130",
+        "131"
+      ]
+    },
+    "10": {
+      "id": 10,
+      "bondType": 2,
+      "bond": [
+        1,
+        2,
+        3
+      ],
+      "battleEffect": [
+        "120",
+        "121",
+        "122"
+      ]
+    },
+    "11": {
+      "id": 11,
+      "bondType": 2,
+      "bond": [
+        1,
+        2,
+        3
+      ],
+      "battleEffect": [
+        "123",
+        "124",
+        "125"
+      ]
+    },
+    "12": {
+      "id": 12,
+      "bondType": 2,
+      "bond": [
+        1,
+        2
+      ],
+      "battleEffect": [
+        "126",
+        "127"
+      ]
+    },
+    "13": {
+      "id": 13,
+      "bondType": 2,
+      "bond": [
+        1,
+        2,
+        3
+      ],
+      "battleEffect": [
+        "135",
+        "136",
+        "137"
+      ]
+    },
+    "14": {
+      "id": 14,
+      "bondType": 2,
+      "bond": [
+        1,
+        2,
+        3
+      ],
+      "battleEffect": [
+        "132",
+        "133",
+        "134"
+      ]
+    },
+    "15": {
+      "id": 15,
+      "bondType": 2,
+      "bond": [
+        1,
+        2,
+        3
+      ],
+      "battleEffect": [
+        "138",
+        "139",
+        "140"
+      ]
+    }
+  }
+}

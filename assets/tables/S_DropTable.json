@@ -1,0 +1,5390 @@
+{
+  "S_DropTable": {
+    "1": {
+      "id": 1,
+      "dropId": 1,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 1000,
+      "odds": 10000
+    },
+    "2": {
+      "id": 2,
+      "dropId": 1,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 1000,
+      "weight": 20
+    },
+    "3": {
+      "id": 3,
+      "dropId": 2,
+      "groupId": 1,
+      "itemId": 21206001,
+      "itemCount": 1,
+      "weight": 80
+    },
+    "4": {
+      "id": 4,
+      "dropId": 2,
+      "groupId": 2,
+      "itemId": 770004,
+      "itemCount": 100,
+      "weight": 20
+    },
+    "5": {
+      "id": 5,
+      "dropId": 2,
+      "groupId": 2,
+      "itemId": 21206005,
+      "itemCount": 1,
+      "weight": 80
+    },
+    "6": {
+      "id": 6,
+      "dropId": 1000,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 1000,
+      "odds": 10000
+    },
+    "7": {
+      "id": 7,
+      "dropId": 216001,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 2000,
+      "odds": 10000
+    },
+    "8": {
+      "id": 8,
+      "dropId": 310001,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 10,
+      "odds": 10000
+    },
+    "9": {
+      "id": 9,
+      "dropId": 310002,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 20,
+      "odds": 10000
+    },
+    "10": {
+      "id": 10,
+      "dropId": 310003,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 30,
+      "odds": 10000
+    },
+    "11": {
+      "id": 11,
+      "dropId": 310004,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 40,
+      "odds": 10000
+    },
+    "12": {
+      "id": 12,
+      "dropId": 310005,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 50,
+      "odds": 10000
+    },
+    "13": {
+      "id": 13,
+      "dropId": 310006,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 60,
+      "odds": 10000
+    },
+    "14": {
+      "id": 14,
+      "dropId": 310007,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 100,
+      "odds": 10000
+    },
+    "15": {
+      "id": 15,
+      "dropId": 310008,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 10,
+      "odds": 10000
+    },
+    "16": {
+      "id": 16,
+      "dropId": 310009,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 20,
+      "odds": 10000
+    },
+    "17": {
+      "id": 17,
+      "dropId": 310010,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 30,
+      "odds": 10000
+    },
+    "18": {
+      "id": 18,
+      "dropId": 310011,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 40,
+      "odds": 10000
+    },
+    "19": {
+      "id": 19,
+      "dropId": 310012,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 60,
+      "odds": 10000
+    },
+    "20": {
+      "id": 20,
+      "dropId": 310013,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 70,
+      "odds": 10000
+    },
+    "21": {
+      "id": 21,
+      "dropId": 310014,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 80,
+      "odds": 10000
+    },
+    "22": {
+      "id": 22,
+      "dropId": 310015,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 90,
+      "odds": 10000
+    },
+    "23": {
+      "id": 23,
+      "dropId": 310016,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 100,
+      "odds": 10000
+    },
+    "24": {
+      "id": 24,
+      "dropId": 310017,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 120,
+      "odds": 10000
+    },
+    "25": {
+      "id": 25,
+      "dropId": 310018,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 140,
+      "odds": 10000
+    },
+    "26": {
+      "id": 26,
+      "dropId": 310019,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 160,
+      "odds": 10000
+    },
+    "27": {
+      "id": 27,
+      "dropId": 310020,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 200,
+      "odds": 10000
+    },
+    "28": {
+      "id": 28,
+      "dropId": 310021,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 20,
+      "odds": 10000
+    },
+    "29": {
+      "id": 29,
+      "dropId": 310022,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 30,
+      "odds": 10000
+    },
+    "30": {
+      "id": 30,
+      "dropId": 310023,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 40,
+      "odds": 10000
+    },
+    "31": {
+      "id": 31,
+      "dropId": 310024,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 50,
+      "odds": 10000
+    },
+    "32": {
+      "id": 32,
+      "dropId": 310025,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 70,
+      "odds": 10000
+    },
+    "33": {
+      "id": 33,
+      "dropId": 310026,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 80,
+      "odds": 10000
+    },
+    "34": {
+      "id": 34,
+      "dropId": 310027,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 90,
+      "odds": 10000
+    },
+    "35": {
+      "id": 35,
+      "dropId": 310028,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 100,
+      "odds": 10000
+    },
+    "36": {
+      "id": 36,
+      "dropId": 310029,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 120,
+      "odds": 10000
+    },
+    "37": {
+      "id": 37,
+      "dropId": 310030,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 140,
+      "odds": 10000
+    },
+    "38": {
+      "id": 38,
+      "dropId": 310031,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 160,
+      "odds": 10000
+    },
+    "39": {
+      "id": 39,
+      "dropId": 310032,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 180,
+      "odds": 10000
+    },
+    "40": {
+      "id": 40,
+      "dropId": 310033,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 220,
+      "odds": 10000
+    },
+    "41": {
+      "id": 41,
+      "dropId": 310034,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 30,
+      "odds": 10000
+    },
+    "42": {
+      "id": 42,
+      "dropId": 310035,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 40,
+      "odds": 10000
+    },
+    "43": {
+      "id": 43,
+      "dropId": 310036,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 50,
+      "odds": 10000
+    },
+    "44": {
+      "id": 44,
+      "dropId": 310037,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 60,
+      "odds": 10000
+    },
+    "45": {
+      "id": 45,
+      "dropId": 310038,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 80,
+      "odds": 10000
+    },
+    "46": {
+      "id": 46,
+      "dropId": 310039,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 90,
+      "odds": 10000
+    },
+    "47": {
+      "id": 47,
+      "dropId": 310040,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 100,
+      "odds": 10000
+    },
+    "48": {
+      "id": 48,
+      "dropId": 310041,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 120,
+      "odds": 10000
+    },
+    "49": {
+      "id": 49,
+      "dropId": 310042,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 140,
+      "odds": 10000
+    },
+    "50": {
+      "id": 50,
+      "dropId": 310043,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 160,
+      "odds": 10000
+    },
+    "51": {
+      "id": 51,
+      "dropId": 310044,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 180,
+      "odds": 10000
+    },
+    "52": {
+      "id": 52,
+      "dropId": 310045,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 200,
+      "odds": 10000
+    },
+    "53": {
+      "id": 53,
+      "dropId": 310046,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 240,
+      "odds": 10000
+    },
+    "54": {
+      "id": 54,
+      "dropId": 310047,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 30,
+      "odds": 10000
+    },
+    "55": {
+      "id": 55,
+      "dropId": 310048,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 40,
+      "odds": 10000
+    },
+    "56": {
+      "id": 56,
+      "dropId": 310049,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 50,
+      "odds": 10000
+    },
+    "57": {
+      "id": 57,
+      "dropId": 310050,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 60,
+      "odds": 10000
+    },
+    "58": {
+      "id": 58,
+      "dropId": 310051,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 90,
+      "odds": 10000
+    },
+    "59": {
+      "id": 59,
+      "dropId": 310052,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 110,
+      "odds": 10000
+    },
+    "60": {
+      "id": 60,
+      "dropId": 310053,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 130,
+      "odds": 10000
+    },
+    "61": {
+      "id": 61,
+      "dropId": 310054,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "62": {
+      "id": 62,
+      "dropId": 310055,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 170,
+      "odds": 10000
+    },
+    "63": {
+      "id": 63,
+      "dropId": 310056,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 190,
+      "odds": 10000
+    },
+    "64": {
+      "id": 64,
+      "dropId": 310057,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 210,
+      "odds": 10000
+    },
+    "65": {
+      "id": 65,
+      "dropId": 310058,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 240,
+      "odds": 10000
+    },
+    "66": {
+      "id": 66,
+      "dropId": 310059,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 300,
+      "odds": 10000
+    },
+    "67": {
+      "id": 67,
+      "dropId": 310060,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 40,
+      "odds": 10000
+    },
+    "68": {
+      "id": 68,
+      "dropId": 310061,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 50,
+      "odds": 10000
+    },
+    "69": {
+      "id": 69,
+      "dropId": 310062,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 60,
+      "odds": 10000
+    },
+    "70": {
+      "id": 70,
+      "dropId": 310063,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 70,
+      "odds": 10000
+    },
+    "71": {
+      "id": 71,
+      "dropId": 310064,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 100,
+      "odds": 10000
+    },
+    "72": {
+      "id": 72,
+      "dropId": 310065,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 120,
+      "odds": 10000
+    },
+    "73": {
+      "id": 73,
+      "dropId": 310066,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "74": {
+      "id": 74,
+      "dropId": 310067,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 180,
+      "odds": 10000
+    },
+    "75": {
+      "id": 75,
+      "dropId": 310068,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 210,
+      "odds": 10000
+    },
+    "76": {
+      "id": 76,
+      "dropId": 310069,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 240,
+      "odds": 10000
+    },
+    "77": {
+      "id": 77,
+      "dropId": 310070,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 270,
+      "odds": 10000
+    },
+    "78": {
+      "id": 78,
+      "dropId": 310071,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 300,
+      "odds": 10000
+    },
+    "79": {
+      "id": 79,
+      "dropId": 310072,
+      "groupId": 1,
+      "itemId": 31000001,
+      "itemCount": 360,
+      "odds": 10000
+    },
+    "80": {
+      "id": 80,
+      "dropId": 310101,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 1000,
+      "odds": 10000
+    },
+    "81": {
+      "id": 81,
+      "dropId": 310101,
+      "groupId": 1,
+      "itemId": 11401001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "82": {
+      "id": 82,
+      "dropId": 310101,
+      "groupId": 1,
+      "itemId": 11402001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "83": {
+      "id": 83,
+      "dropId": 310101,
+      "groupId": 1,
+      "itemId": 11406001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "84": {
+      "id": 84,
+      "dropId": 310101,
+      "groupId": 1,
+      "itemId": 11401002,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "85": {
+      "id": 85,
+      "dropId": 310101,
+      "groupId": 1,
+      "itemId": 11402002,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "86": {
+      "id": 86,
+      "dropId": 310101,
+      "groupId": 1,
+      "itemId": 11406002,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "87": {
+      "id": 87,
+      "dropId": 310101,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 100,
+      "odds": 10000
+    },
+    "88": {
+      "id": 88,
+      "dropId": 310102,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 1500,
+      "odds": 10000
+    },
+    "89": {
+      "id": 89,
+      "dropId": 310102,
+      "groupId": 1,
+      "itemId": 11401001,
+      "itemCount": 2,
+      "odds": 10000
+    },
+    "90": {
+      "id": 90,
+      "dropId": 310102,
+      "groupId": 1,
+      "itemId": 11402001,
+      "itemCount": 2,
+      "odds": 10000
+    },
+    "91": {
+      "id": 91,
+      "dropId": 310102,
+      "groupId": 1,
+      "itemId": 11406001,
+      "itemCount": 2,
+      "odds": 10000
+    },
+    "92": {
+      "id": 92,
+      "dropId": 310102,
+      "groupId": 1,
+      "itemId": 11401002,
+      "itemCount": 2,
+      "odds": 10000
+    },
+    "93": {
+      "id": 93,
+      "dropId": 310102,
+      "groupId": 1,
+      "itemId": 11402002,
+      "itemCount": 2,
+      "odds": 10000
+    },
+    "94": {
+      "id": 94,
+      "dropId": 310102,
+      "groupId": 1,
+      "itemId": 11406002,
+      "itemCount": 2,
+      "odds": 10000
+    },
+    "95": {
+      "id": 95,
+      "dropId": 310102,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 120,
+      "odds": 10000
+    },
+    "96": {
+      "id": 96,
+      "dropId": 310103,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 2000,
+      "odds": 10000
+    },
+    "97": {
+      "id": 97,
+      "dropId": 310103,
+      "groupId": 1,
+      "itemId": 11401001,
+      "itemCount": 3,
+      "odds": 10000
+    },
+    "98": {
+      "id": 98,
+      "dropId": 310103,
+      "groupId": 1,
+      "itemId": 11402001,
+      "itemCount": 3,
+      "odds": 10000
+    },
+    "99": {
+      "id": 99,
+      "dropId": 310103,
+      "groupId": 1,
+      "itemId": 11406001,
+      "itemCount": 3,
+      "odds": 10000
+    },
+    "100": {
+      "id": 100,
+      "dropId": 310103,
+      "groupId": 1,
+      "itemId": 11401002,
+      "itemCount": 3,
+      "odds": 10000
+    },
+    "101": {
+      "id": 101,
+      "dropId": 310103,
+      "groupId": 1,
+      "itemId": 11402002,
+      "itemCount": 3,
+      "odds": 10000
+    },
+    "102": {
+      "id": 102,
+      "dropId": 310103,
+      "groupId": 1,
+      "itemId": 11406002,
+      "itemCount": 3,
+      "odds": 10000
+    },
+    "103": {
+      "id": 103,
+      "dropId": 310103,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 140,
+      "odds": 10000
+    },
+    "104": {
+      "id": 104,
+      "dropId": 310104,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 3000,
+      "odds": 10000
+    },
+    "105": {
+      "id": 105,
+      "dropId": 310104,
+      "groupId": 1,
+      "itemId": 11401001,
+      "itemCount": 4,
+      "odds": 10000
+    },
+    "106": {
+      "id": 106,
+      "dropId": 310104,
+      "groupId": 1,
+      "itemId": 11402001,
+      "itemCount": 4,
+      "odds": 10000
+    },
+    "107": {
+      "id": 107,
+      "dropId": 310104,
+      "groupId": 1,
+      "itemId": 11406001,
+      "itemCount": 4,
+      "odds": 10000
+    },
+    "108": {
+      "id": 108,
+      "dropId": 310104,
+      "groupId": 1,
+      "itemId": 11401002,
+      "itemCount": 4,
+      "odds": 10000
+    },
+    "109": {
+      "id": 109,
+      "dropId": 310104,
+      "groupId": 1,
+      "itemId": 11402002,
+      "itemCount": 4,
+      "odds": 10000
+    },
+    "110": {
+      "id": 110,
+      "dropId": 310104,
+      "groupId": 1,
+      "itemId": 11406002,
+      "itemCount": 4,
+      "odds": 10000
+    },
+    "111": {
+      "id": 111,
+      "dropId": 310104,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 160,
+      "odds": 10000
+    },
+    "112": {
+      "id": 112,
+      "dropId": 310105,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 4000,
+      "odds": 10000
+    },
+    "113": {
+      "id": 113,
+      "dropId": 310105,
+      "groupId": 1,
+      "itemId": 11401001,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "114": {
+      "id": 114,
+      "dropId": 310105,
+      "groupId": 1,
+      "itemId": 11402001,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "115": {
+      "id": 115,
+      "dropId": 310105,
+      "groupId": 1,
+      "itemId": 11406001,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "116": {
+      "id": 116,
+      "dropId": 310105,
+      "groupId": 1,
+      "itemId": 11401002,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "117": {
+      "id": 117,
+      "dropId": 310105,
+      "groupId": 1,
+      "itemId": 11402002,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "118": {
+      "id": 118,
+      "dropId": 310105,
+      "groupId": 1,
+      "itemId": 11406002,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "119": {
+      "id": 119,
+      "dropId": 310105,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 180,
+      "odds": 10000
+    },
+    "120": {
+      "id": 120,
+      "dropId": 310106,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "121": {
+      "id": 121,
+      "dropId": 310106,
+      "groupId": 1,
+      "itemId": 11401001,
+      "itemCount": 6,
+      "odds": 10000
+    },
+    "122": {
+      "id": 122,
+      "dropId": 310106,
+      "groupId": 1,
+      "itemId": 11402001,
+      "itemCount": 6,
+      "odds": 10000
+    },
+    "123": {
+      "id": 123,
+      "dropId": 310106,
+      "groupId": 1,
+      "itemId": 11406001,
+      "itemCount": 6,
+      "odds": 10000
+    },
+    "124": {
+      "id": 124,
+      "dropId": 310106,
+      "groupId": 1,
+      "itemId": 11401002,
+      "itemCount": 6,
+      "odds": 10000
+    },
+    "125": {
+      "id": 125,
+      "dropId": 310106,
+      "groupId": 1,
+      "itemId": 11402002,
+      "itemCount": 6,
+      "odds": 10000
+    },
+    "126": {
+      "id": 126,
+      "dropId": 310106,
+      "groupId": 1,
+      "itemId": 11406002,
+      "itemCount": 6,
+      "odds": 10000
+    },
+    "127": {
+      "id": 127,
+      "dropId": 310106,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 200,
+      "odds": 10000
+    },
+    "128": {
+      "id": 128,
+      "dropId": 310111,
+      "groupId": 1,
+      "itemId": 11405001,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "129": {
+      "id": 129,
+      "dropId": 310111,
+      "groupId": 1,
+      "itemId": 11406001,
+      "itemCount": 10,
+      "odds": 10000
+    },
+    "130": {
+      "id": 130,
+      "dropId": 310112,
+      "groupId": 1,
+      "itemId": 11405002,
+      "itemCount": 10,
+      "odds": 10000
+    },
+    "131": {
+      "id": 131,
+      "dropId": 310112,
+      "groupId": 1,
+      "itemId": 11406002,
+      "itemCount": 10,
+      "odds": 10000
+    },
+    "132": {
+      "id": 132,
+      "dropId": 310113,
+      "groupId": 1,
+      "itemId": 11405003,
+      "itemCount": 15,
+      "odds": 10000
+    },
+    "133": {
+      "id": 133,
+      "dropId": 310113,
+      "groupId": 1,
+      "itemId": 11406003,
+      "itemCount": 10,
+      "odds": 10000
+    },
+    "134": {
+      "id": 134,
+      "dropId": 310114,
+      "groupId": 1,
+      "itemId": 11405003,
+      "itemCount": 15,
+      "odds": 10000
+    },
+    "135": {
+      "id": 135,
+      "dropId": 310114,
+      "groupId": 1,
+      "itemId": 11406003,
+      "itemCount": 15,
+      "odds": 10000
+    },
+    "136": {
+      "id": 136,
+      "dropId": 311001,
+      "groupId": 1,
+      "itemId": 770013,
+      "itemCount": 15,
+      "odds": 10000
+    },
+    "137": {
+      "id": 137,
+      "dropId": 320011,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 200,
+      "odds": 10000
+    },
+    "138": {
+      "id": 138,
+      "dropId": 320011,
+      "groupId": 1,
+      "itemId": 14020001,
+      "itemCount": 2,
+      "odds": 10000
+    },
+    "139": {
+      "id": 139,
+      "dropId": 320012,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 250,
+      "odds": 10000
+    },
+    "140": {
+      "id": 140,
+      "dropId": 320012,
+      "groupId": 1,
+      "itemId": 14020001,
+      "itemCount": 2,
+      "weight": 5000
+    },
+    "141": {
+      "id": 141,
+      "dropId": 320012,
+      "groupId": 1,
+      "itemId": 14020001,
+      "itemCount": 3,
+      "weight": 5000
+    },
+    "142": {
+      "id": 142,
+      "dropId": 320013,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 300,
+      "odds": 10000
+    },
+    "143": {
+      "id": 143,
+      "dropId": 320013,
+      "groupId": 1,
+      "itemId": 14020001,
+      "itemCount": 3,
+      "odds": 10000
+    },
+    "144": {
+      "id": 144,
+      "dropId": 320021,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 200,
+      "odds": 10000
+    },
+    "145": {
+      "id": 145,
+      "dropId": 320021,
+      "groupId": 1,
+      "itemId": 14020003,
+      "itemCount": 2,
+      "odds": 10000
+    },
+    "146": {
+      "id": 146,
+      "dropId": 320022,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 250,
+      "odds": 10000
+    },
+    "147": {
+      "id": 147,
+      "dropId": 320022,
+      "groupId": 1,
+      "itemId": 14020003,
+      "itemCount": 2,
+      "weight": 5000
+    },
+    "148": {
+      "id": 148,
+      "dropId": 320022,
+      "groupId": 1,
+      "itemId": 14020003,
+      "itemCount": 3,
+      "weight": 5000
+    },
+    "149": {
+      "id": 149,
+      "dropId": 320023,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 300,
+      "odds": 10000
+    },
+    "150": {
+      "id": 150,
+      "dropId": 320023,
+      "groupId": 1,
+      "itemId": 14020003,
+      "itemCount": 3,
+      "odds": 10000
+    },
+    "151": {
+      "id": 151,
+      "dropId": 320031,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 200,
+      "odds": 10000
+    },
+    "152": {
+      "id": 152,
+      "dropId": 320031,
+      "groupId": 1,
+      "itemId": 14020004,
+      "itemCount": 2,
+      "odds": 10000
+    },
+    "153": {
+      "id": 153,
+      "dropId": 320032,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 250,
+      "odds": 10000
+    },
+    "154": {
+      "id": 154,
+      "dropId": 320032,
+      "groupId": 1,
+      "itemId": 14020004,
+      "itemCount": 2,
+      "weight": 5000
+    },
+    "155": {
+      "id": 155,
+      "dropId": 320032,
+      "groupId": 1,
+      "itemId": 14020004,
+      "itemCount": 3,
+      "weight": 5000
+    },
+    "156": {
+      "id": 156,
+      "dropId": 320033,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 300,
+      "odds": 10000
+    },
+    "157": {
+      "id": 157,
+      "dropId": 320033,
+      "groupId": 1,
+      "itemId": 14020004,
+      "itemCount": 3,
+      "odds": 10000
+    },
+    "158": {
+      "id": 158,
+      "dropId": 320041,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 200,
+      "odds": 10000
+    },
+    "159": {
+      "id": 159,
+      "dropId": 320041,
+      "groupId": 1,
+      "itemId": 14020002,
+      "itemCount": 2,
+      "odds": 10000
+    },
+    "160": {
+      "id": 160,
+      "dropId": 320042,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 250,
+      "odds": 10000
+    },
+    "161": {
+      "id": 161,
+      "dropId": 320042,
+      "groupId": 1,
+      "itemId": 14020002,
+      "itemCount": 2,
+      "weight": 5000
+    },
+    "162": {
+      "id": 162,
+      "dropId": 320042,
+      "groupId": 1,
+      "itemId": 14020002,
+      "itemCount": 3,
+      "weight": 5000
+    },
+    "163": {
+      "id": 163,
+      "dropId": 320043,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 300,
+      "odds": 10000
+    },
+    "164": {
+      "id": 164,
+      "dropId": 320043,
+      "groupId": 1,
+      "itemId": 14020002,
+      "itemCount": 3,
+      "odds": 10000
+    },
+    "165": {
+      "id": 165,
+      "dropId": 331101,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "166": {
+      "id": 166,
+      "dropId": 331101,
+      "groupId": 2,
+      "itemId": 11401001,
+      "itemCount": 30,
+      "odds": 10000
+    },
+    "167": {
+      "id": 167,
+      "dropId": 331102,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "168": {
+      "id": 168,
+      "dropId": 331102,
+      "groupId": 2,
+      "itemId": 11401001,
+      "itemCount": 10,
+      "odds": 10000
+    },
+    "169": {
+      "id": 169,
+      "dropId": 331102,
+      "groupId": 3,
+      "itemId": 11401002,
+      "itemCount": 15,
+      "odds": 10000
+    },
+    "170": {
+      "id": 170,
+      "dropId": 331103,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "171": {
+      "id": 171,
+      "dropId": 331103,
+      "groupId": 2,
+      "itemId": 11401002,
+      "itemCount": 30,
+      "odds": 10000
+    },
+    "172": {
+      "id": 172,
+      "dropId": 331201,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "173": {
+      "id": 173,
+      "dropId": 331201,
+      "groupId": 2,
+      "itemId": 11402001,
+      "itemCount": 30,
+      "odds": 10000
+    },
+    "174": {
+      "id": 174,
+      "dropId": 331202,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "175": {
+      "id": 175,
+      "dropId": 331202,
+      "groupId": 2,
+      "itemId": 11402001,
+      "itemCount": 10,
+      "odds": 10000
+    },
+    "176": {
+      "id": 176,
+      "dropId": 331202,
+      "groupId": 3,
+      "itemId": 11402002,
+      "itemCount": 15,
+      "odds": 10000
+    },
+    "177": {
+      "id": 177,
+      "dropId": 331203,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "178": {
+      "id": 178,
+      "dropId": 331203,
+      "groupId": 2,
+      "itemId": 11402002,
+      "itemCount": 30,
+      "odds": 10000
+    },
+    "179": {
+      "id": 179,
+      "dropId": 331301,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "180": {
+      "id": 180,
+      "dropId": 331301,
+      "groupId": 2,
+      "itemId": 11403001,
+      "itemCount": 30,
+      "odds": 10000
+    },
+    "181": {
+      "id": 181,
+      "dropId": 331302,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "182": {
+      "id": 182,
+      "dropId": 331302,
+      "groupId": 2,
+      "itemId": 11403001,
+      "itemCount": 10,
+      "odds": 10000
+    },
+    "183": {
+      "id": 183,
+      "dropId": 331302,
+      "groupId": 3,
+      "itemId": 11403002,
+      "itemCount": 15,
+      "odds": 10000
+    },
+    "184": {
+      "id": 184,
+      "dropId": 331303,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "185": {
+      "id": 185,
+      "dropId": 331303,
+      "groupId": 2,
+      "itemId": 11403002,
+      "itemCount": 30,
+      "odds": 10000
+    },
+    "186": {
+      "id": 186,
+      "dropId": 331401,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "187": {
+      "id": 187,
+      "dropId": 331401,
+      "groupId": 2,
+      "itemId": 11404001,
+      "itemCount": 30,
+      "odds": 10000
+    },
+    "188": {
+      "id": 188,
+      "dropId": 331402,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "189": {
+      "id": 189,
+      "dropId": 331402,
+      "groupId": 2,
+      "itemId": 11404001,
+      "itemCount": 10,
+      "odds": 10000
+    },
+    "190": {
+      "id": 190,
+      "dropId": 331402,
+      "groupId": 3,
+      "itemId": 11404002,
+      "itemCount": 15,
+      "odds": 10000
+    },
+    "191": {
+      "id": 191,
+      "dropId": 331403,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "192": {
+      "id": 192,
+      "dropId": 331403,
+      "groupId": 2,
+      "itemId": 11404002,
+      "itemCount": 30,
+      "odds": 10000
+    },
+    "193": {
+      "id": 193,
+      "dropId": 331501,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "194": {
+      "id": 194,
+      "dropId": 331501,
+      "groupId": 2,
+      "itemId": 11405001,
+      "itemCount": 30,
+      "odds": 10000
+    },
+    "195": {
+      "id": 195,
+      "dropId": 331502,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "196": {
+      "id": 196,
+      "dropId": 331502,
+      "groupId": 2,
+      "itemId": 11405001,
+      "itemCount": 10,
+      "odds": 10000
+    },
+    "197": {
+      "id": 197,
+      "dropId": 331502,
+      "groupId": 3,
+      "itemId": 11405002,
+      "itemCount": 15,
+      "odds": 10000
+    },
+    "198": {
+      "id": 198,
+      "dropId": 331503,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "199": {
+      "id": 199,
+      "dropId": 331503,
+      "groupId": 2,
+      "itemId": 11405002,
+      "itemCount": 30,
+      "odds": 10000
+    },
+    "200": {
+      "id": 200,
+      "dropId": 331601,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "201": {
+      "id": 201,
+      "dropId": 331601,
+      "groupId": 2,
+      "itemId": 11406001,
+      "itemCount": 30,
+      "odds": 10000
+    },
+    "202": {
+      "id": 202,
+      "dropId": 331602,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "203": {
+      "id": 203,
+      "dropId": 331602,
+      "groupId": 2,
+      "itemId": 11406001,
+      "itemCount": 10,
+      "odds": 10000
+    },
+    "204": {
+      "id": 204,
+      "dropId": 331602,
+      "groupId": 3,
+      "itemId": 11406002,
+      "itemCount": 15,
+      "odds": 10000
+    },
+    "205": {
+      "id": 205,
+      "dropId": 331603,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "206": {
+      "id": 206,
+      "dropId": 331603,
+      "groupId": 2,
+      "itemId": 11406002,
+      "itemCount": 30,
+      "odds": 10000
+    },
+    "207": {
+      "id": 207,
+      "dropId": 332101,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "208": {
+      "id": 208,
+      "dropId": 332101,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 10,
+      "odds": 10000
+    },
+    "209": {
+      "id": 209,
+      "dropId": 332101,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 100,
+      "odds": 10000
+    },
+    "210": {
+      "id": 210,
+      "dropId": 332101,
+      "groupId": 2,
+      "itemId": 14020001,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "211": {
+      "id": 211,
+      "dropId": 332101,
+      "groupId": 2,
+      "itemId": 14020002,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "212": {
+      "id": 212,
+      "dropId": 332101,
+      "groupId": 2,
+      "itemId": 14020003,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "213": {
+      "id": 213,
+      "dropId": 332101,
+      "groupId": 2,
+      "itemId": 14020004,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "214": {
+      "id": 214,
+      "dropId": 332102,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "215": {
+      "id": 215,
+      "dropId": 332102,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "216": {
+      "id": 216,
+      "dropId": 332102,
+      "groupId": 1,
+      "itemId": 11201002,
+      "itemCount": 4,
+      "odds": 10000
+    },
+    "217": {
+      "id": 217,
+      "dropId": 332102,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "218": {
+      "id": 218,
+      "dropId": 332102,
+      "groupId": 2,
+      "itemId": 14020001,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "219": {
+      "id": 219,
+      "dropId": 332102,
+      "groupId": 2,
+      "itemId": 14020002,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "220": {
+      "id": 220,
+      "dropId": 332102,
+      "groupId": 2,
+      "itemId": 14020003,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "221": {
+      "id": 221,
+      "dropId": 332102,
+      "groupId": 2,
+      "itemId": 14020004,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "222": {
+      "id": 222,
+      "dropId": 332102,
+      "groupId": 3,
+      "itemId": 14020001,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "223": {
+      "id": 223,
+      "dropId": 332102,
+      "groupId": 3,
+      "itemId": 14020002,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "224": {
+      "id": 224,
+      "dropId": 332102,
+      "groupId": 3,
+      "itemId": 14020003,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "225": {
+      "id": 225,
+      "dropId": 332102,
+      "groupId": 3,
+      "itemId": 14020004,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "226": {
+      "id": 226,
+      "dropId": 332103,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "227": {
+      "id": 227,
+      "dropId": 332103,
+      "groupId": 1,
+      "itemId": 11201002,
+      "itemCount": 6,
+      "odds": 10000
+    },
+    "228": {
+      "id": 228,
+      "dropId": 332103,
+      "groupId": 1,
+      "itemId": 11201003,
+      "itemCount": 3,
+      "odds": 10000
+    },
+    "229": {
+      "id": 229,
+      "dropId": 332103,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 300,
+      "odds": 10000
+    },
+    "230": {
+      "id": 230,
+      "dropId": 332103,
+      "groupId": 2,
+      "itemId": 14020001,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "231": {
+      "id": 231,
+      "dropId": 332103,
+      "groupId": 2,
+      "itemId": 14020002,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "232": {
+      "id": 232,
+      "dropId": 332103,
+      "groupId": 2,
+      "itemId": 14020003,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "233": {
+      "id": 233,
+      "dropId": 332103,
+      "groupId": 2,
+      "itemId": 14020004,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "234": {
+      "id": 234,
+      "dropId": 332103,
+      "groupId": 3,
+      "itemId": 14020001,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "235": {
+      "id": 235,
+      "dropId": 332103,
+      "groupId": 3,
+      "itemId": 14020002,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "236": {
+      "id": 236,
+      "dropId": 332103,
+      "groupId": 3,
+      "itemId": 14020003,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "237": {
+      "id": 237,
+      "dropId": 332103,
+      "groupId": 3,
+      "itemId": 14020004,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "238": {
+      "id": 238,
+      "dropId": 332103,
+      "groupId": 4,
+      "itemId": 14020001,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "239": {
+      "id": 239,
+      "dropId": 332103,
+      "groupId": 4,
+      "itemId": 14020002,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "240": {
+      "id": 240,
+      "dropId": 332103,
+      "groupId": 4,
+      "itemId": 14020003,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "241": {
+      "id": 241,
+      "dropId": 332103,
+      "groupId": 4,
+      "itemId": 14020004,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "242": {
+      "id": 242,
+      "dropId": 332201,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "243": {
+      "id": 243,
+      "dropId": 332201,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 15000,
+      "odds": 10000
+    },
+    "244": {
+      "id": 244,
+      "dropId": 332201,
+      "groupId": 2,
+      "itemId": 14020001,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "245": {
+      "id": 245,
+      "dropId": 332201,
+      "groupId": 2,
+      "itemId": 14020002,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "246": {
+      "id": 246,
+      "dropId": 332201,
+      "groupId": 2,
+      "itemId": 14020003,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "247": {
+      "id": 247,
+      "dropId": 332201,
+      "groupId": 2,
+      "itemId": 14020004,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "248": {
+      "id": 248,
+      "dropId": 332202,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "249": {
+      "id": 249,
+      "dropId": 332202,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 18750,
+      "odds": 10000
+    },
+    "250": {
+      "id": 250,
+      "dropId": 332202,
+      "groupId": 2,
+      "itemId": 14020001,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "251": {
+      "id": 251,
+      "dropId": 332202,
+      "groupId": 2,
+      "itemId": 14020002,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "252": {
+      "id": 252,
+      "dropId": 332202,
+      "groupId": 2,
+      "itemId": 14020003,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "253": {
+      "id": 253,
+      "dropId": 332202,
+      "groupId": 2,
+      "itemId": 14020004,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "254": {
+      "id": 254,
+      "dropId": 332202,
+      "groupId": 3,
+      "itemId": 14020001,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "255": {
+      "id": 255,
+      "dropId": 332202,
+      "groupId": 3,
+      "itemId": 14020002,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "256": {
+      "id": 256,
+      "dropId": 332202,
+      "groupId": 3,
+      "itemId": 14020003,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "257": {
+      "id": 257,
+      "dropId": 332202,
+      "groupId": 3,
+      "itemId": 14020004,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "258": {
+      "id": 258,
+      "dropId": 332203,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "259": {
+      "id": 259,
+      "dropId": 332203,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 22500,
+      "odds": 10000
+    },
+    "260": {
+      "id": 260,
+      "dropId": 332203,
+      "groupId": 2,
+      "itemId": 14020001,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "261": {
+      "id": 261,
+      "dropId": 332203,
+      "groupId": 2,
+      "itemId": 14020002,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "262": {
+      "id": 262,
+      "dropId": 332203,
+      "groupId": 2,
+      "itemId": 14020003,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "263": {
+      "id": 263,
+      "dropId": 332203,
+      "groupId": 2,
+      "itemId": 14020004,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "264": {
+      "id": 264,
+      "dropId": 332203,
+      "groupId": 3,
+      "itemId": 14020001,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "265": {
+      "id": 265,
+      "dropId": 332203,
+      "groupId": 3,
+      "itemId": 14020002,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "266": {
+      "id": 266,
+      "dropId": 332203,
+      "groupId": 3,
+      "itemId": 14020003,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "267": {
+      "id": 267,
+      "dropId": 332203,
+      "groupId": 3,
+      "itemId": 14020004,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "268": {
+      "id": 268,
+      "dropId": 332203,
+      "groupId": 4,
+      "itemId": 14020001,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "269": {
+      "id": 269,
+      "dropId": 332203,
+      "groupId": 4,
+      "itemId": 14020002,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "270": {
+      "id": 270,
+      "dropId": 332203,
+      "groupId": 4,
+      "itemId": 14020003,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "271": {
+      "id": 271,
+      "dropId": 332203,
+      "groupId": 4,
+      "itemId": 14020004,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "272": {
+      "id": 272,
+      "dropId": 332301,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "273": {
+      "id": 273,
+      "dropId": 332301,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 10,
+      "odds": 10000
+    },
+    "274": {
+      "id": 274,
+      "dropId": 332301,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 100,
+      "odds": 10000
+    },
+    "275": {
+      "id": 275,
+      "dropId": 332301,
+      "groupId": 2,
+      "itemId": 14020001,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "276": {
+      "id": 276,
+      "dropId": 332301,
+      "groupId": 2,
+      "itemId": 14020002,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "277": {
+      "id": 277,
+      "dropId": 332301,
+      "groupId": 2,
+      "itemId": 14020003,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "278": {
+      "id": 278,
+      "dropId": 332301,
+      "groupId": 2,
+      "itemId": 14020004,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "279": {
+      "id": 279,
+      "dropId": 332302,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "280": {
+      "id": 280,
+      "dropId": 332302,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "281": {
+      "id": 281,
+      "dropId": 332302,
+      "groupId": 1,
+      "itemId": 12230001,
+      "itemCount": 4,
+      "odds": 10000
+    },
+    "282": {
+      "id": 282,
+      "dropId": 332302,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "283": {
+      "id": 283,
+      "dropId": 332302,
+      "groupId": 2,
+      "itemId": 14020001,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "284": {
+      "id": 284,
+      "dropId": 332302,
+      "groupId": 2,
+      "itemId": 14020002,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "285": {
+      "id": 285,
+      "dropId": 332302,
+      "groupId": 2,
+      "itemId": 14020003,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "286": {
+      "id": 286,
+      "dropId": 332302,
+      "groupId": 2,
+      "itemId": 14020004,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "287": {
+      "id": 287,
+      "dropId": 332302,
+      "groupId": 3,
+      "itemId": 14020001,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "288": {
+      "id": 288,
+      "dropId": 332302,
+      "groupId": 3,
+      "itemId": 14020002,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "289": {
+      "id": 289,
+      "dropId": 332302,
+      "groupId": 3,
+      "itemId": 14020003,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "290": {
+      "id": 290,
+      "dropId": 332302,
+      "groupId": 3,
+      "itemId": 14020004,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "291": {
+      "id": 291,
+      "dropId": 332303,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "292": {
+      "id": 292,
+      "dropId": 332303,
+      "groupId": 1,
+      "itemId": 12230001,
+      "itemCount": 6,
+      "odds": 10000
+    },
+    "293": {
+      "id": 293,
+      "dropId": 332303,
+      "groupId": 1,
+      "itemId": 12240001,
+      "itemCount": 3,
+      "odds": 10000
+    },
+    "294": {
+      "id": 294,
+      "dropId": 332303,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 300,
+      "odds": 10000
+    },
+    "295": {
+      "id": 295,
+      "dropId": 332303,
+      "groupId": 2,
+      "itemId": 14020001,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "296": {
+      "id": 296,
+      "dropId": 332303,
+      "groupId": 2,
+      "itemId": 14020002,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "297": {
+      "id": 297,
+      "dropId": 332303,
+      "groupId": 2,
+      "itemId": 14020003,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "298": {
+      "id": 298,
+      "dropId": 332303,
+      "groupId": 2,
+      "itemId": 14020004,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "299": {
+      "id": 299,
+      "dropId": 332303,
+      "groupId": 3,
+      "itemId": 14020001,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "300": {
+      "id": 300,
+      "dropId": 332303,
+      "groupId": 3,
+      "itemId": 14020002,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "301": {
+      "id": 301,
+      "dropId": 332303,
+      "groupId": 3,
+      "itemId": 14020003,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "302": {
+      "id": 302,
+      "dropId": 332303,
+      "groupId": 3,
+      "itemId": 14020004,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "303": {
+      "id": 303,
+      "dropId": 332303,
+      "groupId": 4,
+      "itemId": 14020001,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "304": {
+      "id": 304,
+      "dropId": 332303,
+      "groupId": 4,
+      "itemId": 14020002,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "305": {
+      "id": 305,
+      "dropId": 332303,
+      "groupId": 4,
+      "itemId": 14020003,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "306": {
+      "id": 306,
+      "dropId": 332303,
+      "groupId": 4,
+      "itemId": 14020004,
+      "itemCount": 1,
+      "weight": 5000
+    },
+    "307": {
+      "id": 307,
+      "dropId": 333101,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 300,
+      "odds": 10000
+    },
+    "308": {
+      "id": 308,
+      "dropId": 333101,
+      "groupId": 1,
+      "itemId": 11300001,
+      "itemCount": 12,
+      "odds": 10000
+    },
+    "309": {
+      "id": 309,
+      "dropId": 333101,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "310": {
+      "id": 310,
+      "dropId": 333101,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 10,
+      "odds": 10000
+    },
+    "311": {
+      "id": 311,
+      "dropId": 333101,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 10,
+      "odds": 10000
+    },
+    "312": {
+      "id": 312,
+      "dropId": 333101,
+      "groupId": 4,
+      "itemId": 11401001,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "313": {
+      "id": 313,
+      "dropId": 333101,
+      "groupId": 4,
+      "itemId": 11402001,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "314": {
+      "id": 314,
+      "dropId": 333101,
+      "groupId": 4,
+      "itemId": 11406001,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "315": {
+      "id": 315,
+      "dropId": 333102,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 300,
+      "odds": 10000
+    },
+    "316": {
+      "id": 316,
+      "dropId": 333102,
+      "groupId": 1,
+      "itemId": 11300001,
+      "itemCount": 18,
+      "odds": 10000
+    },
+    "317": {
+      "id": 317,
+      "dropId": 333102,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 6250,
+      "odds": 10000
+    },
+    "318": {
+      "id": 318,
+      "dropId": 333102,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "319": {
+      "id": 319,
+      "dropId": 333102,
+      "groupId": 1,
+      "itemId": 11201002,
+      "itemCount": 3,
+      "odds": 10000
+    },
+    "320": {
+      "id": 320,
+      "dropId": 333102,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "321": {
+      "id": 321,
+      "dropId": 333102,
+      "groupId": 1,
+      "itemId": 12230001,
+      "itemCount": 3,
+      "odds": 10000
+    },
+    "322": {
+      "id": 322,
+      "dropId": 333102,
+      "groupId": 4,
+      "itemId": 11401001,
+      "itemCount": 3,
+      "odds": 10000
+    },
+    "323": {
+      "id": 323,
+      "dropId": 333102,
+      "groupId": 4,
+      "itemId": 11402001,
+      "itemCount": 3,
+      "odds": 10000
+    },
+    "324": {
+      "id": 324,
+      "dropId": 333102,
+      "groupId": 4,
+      "itemId": 11406001,
+      "itemCount": 3,
+      "odds": 10000
+    },
+    "325": {
+      "id": 325,
+      "dropId": 333102,
+      "groupId": 5,
+      "itemId": 11401002,
+      "itemCount": 2,
+      "odds": 10000
+    },
+    "326": {
+      "id": 326,
+      "dropId": 333102,
+      "groupId": 5,
+      "itemId": 11402002,
+      "itemCount": 2,
+      "odds": 10000
+    },
+    "327": {
+      "id": 327,
+      "dropId": 333102,
+      "groupId": 5,
+      "itemId": 11406002,
+      "itemCount": 2,
+      "odds": 10000
+    },
+    "328": {
+      "id": 328,
+      "dropId": 333103,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 300,
+      "odds": 10000
+    },
+    "329": {
+      "id": 329,
+      "dropId": 333103,
+      "groupId": 1,
+      "itemId": 11300001,
+      "itemCount": 24,
+      "odds": 10000
+    },
+    "330": {
+      "id": 330,
+      "dropId": 333103,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 7500,
+      "odds": 10000
+    },
+    "331": {
+      "id": 331,
+      "dropId": 333103,
+      "groupId": 1,
+      "itemId": 11201002,
+      "itemCount": 2,
+      "odds": 10000
+    },
+    "332": {
+      "id": 332,
+      "dropId": 333103,
+      "groupId": 1,
+      "itemId": 11201003,
+      "itemCount": 2,
+      "odds": 10000
+    },
+    "333": {
+      "id": 333,
+      "dropId": 333103,
+      "groupId": 2,
+      "itemId": 12230001,
+      "itemCount": 2,
+      "odds": 10000
+    },
+    "334": {
+      "id": 334,
+      "dropId": 333103,
+      "groupId": 2,
+      "itemId": 12240001,
+      "itemCount": 2,
+      "odds": 10000
+    },
+    "335": {
+      "id": 335,
+      "dropId": 333103,
+      "groupId": 4,
+      "itemId": 11401002,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "336": {
+      "id": 336,
+      "dropId": 333103,
+      "groupId": 4,
+      "itemId": 11402002,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "337": {
+      "id": 337,
+      "dropId": 333103,
+      "groupId": 4,
+      "itemId": 11406002,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "338": {
+      "id": 338,
+      "dropId": 333201,
+      "groupId": 1,
+      "itemId": 770002,
+      "itemCount": 500,
+      "odds": 10000
+    },
+    "339": {
+      "id": 339,
+      "dropId": 333201,
+      "groupId": 1,
+      "itemId": 11401001,
+      "itemCount": 4,
+      "odds": 10000
+    },
+    "340": {
+      "id": 340,
+      "dropId": 333201,
+      "groupId": 1,
+      "itemId": 11402001,
+      "itemCount": 4,
+      "odds": 10000
+    },
+    "341": {
+      "id": 341,
+      "dropId": 333201,
+      "groupId": 1,
+      "itemId": 11406001,
+      "itemCount": 4,
+      "odds": 10000
+    },
+    "342": {
+      "id": 342,
+      "dropId": 333201,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 100,
+      "odds": 10000
+    },
+    "343": {
+      "id": 343,
+      "dropId": 333202,
+      "groupId": 1,
+      "itemId": 770002,
+      "itemCount": 600,
+      "odds": 10000
+    },
+    "344": {
+      "id": 344,
+      "dropId": 333202,
+      "groupId": 1,
+      "itemId": 11401001,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "345": {
+      "id": 345,
+      "dropId": 333202,
+      "groupId": 1,
+      "itemId": 11402001,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "346": {
+      "id": 346,
+      "dropId": 333202,
+      "groupId": 1,
+      "itemId": 11406001,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "347": {
+      "id": 347,
+      "dropId": 333202,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 100,
+      "odds": 10000
+    },
+    "348": {
+      "id": 348,
+      "dropId": 333203,
+      "groupId": 1,
+      "itemId": 770002,
+      "itemCount": 700,
+      "odds": 10000
+    },
+    "349": {
+      "id": 349,
+      "dropId": 333203,
+      "groupId": 1,
+      "itemId": 11401001,
+      "itemCount": 6,
+      "odds": 10000
+    },
+    "350": {
+      "id": 350,
+      "dropId": 333203,
+      "groupId": 1,
+      "itemId": 11402001,
+      "itemCount": 6,
+      "odds": 10000
+    },
+    "351": {
+      "id": 351,
+      "dropId": 333203,
+      "groupId": 1,
+      "itemId": 11406001,
+      "itemCount": 6,
+      "odds": 10000
+    },
+    "352": {
+      "id": 352,
+      "dropId": 333203,
+      "groupId": 1,
+      "itemId": 11401002,
+      "itemCount": 4,
+      "odds": 10000
+    },
+    "353": {
+      "id": 353,
+      "dropId": 333203,
+      "groupId": 1,
+      "itemId": 11402002,
+      "itemCount": 4,
+      "odds": 10000
+    },
+    "354": {
+      "id": 354,
+      "dropId": 333203,
+      "groupId": 1,
+      "itemId": 11406002,
+      "itemCount": 4,
+      "odds": 10000
+    },
+    "355": {
+      "id": 355,
+      "dropId": 333203,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 100,
+      "odds": 10000
+    },
+    "356": {
+      "id": 356,
+      "dropId": 333204,
+      "groupId": 1,
+      "itemId": 770002,
+      "itemCount": 800,
+      "odds": 10000
+    },
+    "357": {
+      "id": 357,
+      "dropId": 333204,
+      "groupId": 1,
+      "itemId": 11401001,
+      "itemCount": 7,
+      "odds": 10000
+    },
+    "358": {
+      "id": 358,
+      "dropId": 333204,
+      "groupId": 1,
+      "itemId": 11402001,
+      "itemCount": 7,
+      "odds": 10000
+    },
+    "359": {
+      "id": 359,
+      "dropId": 333204,
+      "groupId": 1,
+      "itemId": 11406001,
+      "itemCount": 7,
+      "odds": 10000
+    },
+    "360": {
+      "id": 360,
+      "dropId": 333204,
+      "groupId": 1,
+      "itemId": 11401002,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "361": {
+      "id": 361,
+      "dropId": 333204,
+      "groupId": 1,
+      "itemId": 11402002,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "362": {
+      "id": 362,
+      "dropId": 333204,
+      "groupId": 1,
+      "itemId": 11406002,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "363": {
+      "id": 363,
+      "dropId": 333204,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 100,
+      "odds": 10000
+    },
+    "364": {
+      "id": 364,
+      "dropId": 333205,
+      "groupId": 1,
+      "itemId": 770002,
+      "itemCount": 900,
+      "odds": 10000
+    },
+    "365": {
+      "id": 365,
+      "dropId": 333205,
+      "groupId": 1,
+      "itemId": 11401001,
+      "itemCount": 8,
+      "odds": 10000
+    },
+    "366": {
+      "id": 366,
+      "dropId": 333205,
+      "groupId": 1,
+      "itemId": 11402001,
+      "itemCount": 8,
+      "odds": 10000
+    },
+    "367": {
+      "id": 367,
+      "dropId": 333205,
+      "groupId": 1,
+      "itemId": 11406001,
+      "itemCount": 8,
+      "odds": 10000
+    },
+    "368": {
+      "id": 368,
+      "dropId": 333205,
+      "groupId": 1,
+      "itemId": 11401002,
+      "itemCount": 6,
+      "odds": 10000
+    },
+    "369": {
+      "id": 369,
+      "dropId": 333205,
+      "groupId": 1,
+      "itemId": 11402002,
+      "itemCount": 6,
+      "odds": 10000
+    },
+    "370": {
+      "id": 370,
+      "dropId": 333205,
+      "groupId": 1,
+      "itemId": 11406002,
+      "itemCount": 6,
+      "odds": 10000
+    },
+    "371": {
+      "id": 371,
+      "dropId": 333205,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 120,
+      "odds": 10000
+    },
+    "372": {
+      "id": 372,
+      "dropId": 333206,
+      "groupId": 1,
+      "itemId": 770002,
+      "itemCount": 1000,
+      "odds": 10000
+    },
+    "373": {
+      "id": 373,
+      "dropId": 333206,
+      "groupId": 1,
+      "itemId": 11401002,
+      "itemCount": 7,
+      "odds": 10000
+    },
+    "374": {
+      "id": 374,
+      "dropId": 333206,
+      "groupId": 1,
+      "itemId": 11402002,
+      "itemCount": 7,
+      "odds": 10000
+    },
+    "375": {
+      "id": 375,
+      "dropId": 333206,
+      "groupId": 1,
+      "itemId": 11406002,
+      "itemCount": 7,
+      "odds": 10000
+    },
+    "376": {
+      "id": 376,
+      "dropId": 333206,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 120,
+      "odds": 10000
+    },
+    "377": {
+      "id": 377,
+      "dropId": 333207,
+      "groupId": 1,
+      "itemId": 770002,
+      "itemCount": 1200,
+      "odds": 10000
+    },
+    "378": {
+      "id": 378,
+      "dropId": 333207,
+      "groupId": 1,
+      "itemId": 11401002,
+      "itemCount": 8,
+      "odds": 10000
+    },
+    "379": {
+      "id": 379,
+      "dropId": 333207,
+      "groupId": 1,
+      "itemId": 11402002,
+      "itemCount": 8,
+      "odds": 10000
+    },
+    "380": {
+      "id": 380,
+      "dropId": 333207,
+      "groupId": 1,
+      "itemId": 11406002,
+      "itemCount": 8,
+      "odds": 10000
+    },
+    "381": {
+      "id": 381,
+      "dropId": 333207,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 120,
+      "odds": 10000
+    },
+    "382": {
+      "id": 382,
+      "dropId": 333208,
+      "groupId": 1,
+      "itemId": 770002,
+      "itemCount": 1400,
+      "odds": 10000
+    },
+    "383": {
+      "id": 383,
+      "dropId": 333208,
+      "groupId": 1,
+      "itemId": 11401002,
+      "itemCount": 9,
+      "odds": 10000
+    },
+    "384": {
+      "id": 384,
+      "dropId": 333208,
+      "groupId": 1,
+      "itemId": 11402002,
+      "itemCount": 9,
+      "odds": 10000
+    },
+    "385": {
+      "id": 385,
+      "dropId": 333208,
+      "groupId": 1,
+      "itemId": 11406002,
+      "itemCount": 9,
+      "odds": 10000
+    },
+    "386": {
+      "id": 386,
+      "dropId": 333208,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "387": {
+      "id": 387,
+      "dropId": 333209,
+      "groupId": 1,
+      "itemId": 770002,
+      "itemCount": 1600,
+      "odds": 10000
+    },
+    "388": {
+      "id": 388,
+      "dropId": 333209,
+      "groupId": 1,
+      "itemId": 11401002,
+      "itemCount": 10,
+      "odds": 10000
+    },
+    "389": {
+      "id": 389,
+      "dropId": 333209,
+      "groupId": 1,
+      "itemId": 11402002,
+      "itemCount": 10,
+      "odds": 10000
+    },
+    "390": {
+      "id": 390,
+      "dropId": 333209,
+      "groupId": 1,
+      "itemId": 11406002,
+      "itemCount": 10,
+      "odds": 10000
+    },
+    "391": {
+      "id": 391,
+      "dropId": 333209,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "392": {
+      "id": 392,
+      "dropId": 333210,
+      "groupId": 1,
+      "itemId": 770002,
+      "itemCount": 1800,
+      "odds": 10000
+    },
+    "393": {
+      "id": 393,
+      "dropId": 333210,
+      "groupId": 1,
+      "itemId": 11401002,
+      "itemCount": 11,
+      "odds": 10000
+    },
+    "394": {
+      "id": 394,
+      "dropId": 333210,
+      "groupId": 1,
+      "itemId": 11402002,
+      "itemCount": 11,
+      "odds": 10000
+    },
+    "395": {
+      "id": 395,
+      "dropId": 333210,
+      "groupId": 1,
+      "itemId": 11406002,
+      "itemCount": 11,
+      "odds": 10000
+    },
+    "396": {
+      "id": 396,
+      "dropId": 333210,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "397": {
+      "id": 397,
+      "dropId": 334001,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "398": {
+      "id": 398,
+      "dropId": 334001,
+      "groupId": 2,
+      "itemId": 11730001,
+      "itemCount": 10,
+      "odds": 10000
+    },
+    "399": {
+      "id": 399,
+      "dropId": 334001,
+      "groupId": 5,
+      "itemId": 1,
+      "itemCount": 500,
+      "odds": 10000
+    },
+    "400": {
+      "id": 400,
+      "dropId": 334002,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "401": {
+      "id": 401,
+      "dropId": 334002,
+      "groupId": 2,
+      "itemId": 11730001,
+      "itemCount": 15,
+      "odds": 10000
+    },
+    "402": {
+      "id": 402,
+      "dropId": 334002,
+      "groupId": 5,
+      "itemId": 1,
+      "itemCount": 1000,
+      "odds": 10000
+    },
+    "403": {
+      "id": 403,
+      "dropId": 334003,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000,
+      "weight": 5000
+    },
+    "404": {
+      "id": 404,
+      "dropId": 334003,
+      "groupId": 2,
+      "itemId": 11730001,
+      "itemCount": 20,
+      "odds": 10000,
+      "weight": 5000
+    },
+    "405": {
+      "id": 405,
+      "dropId": 334003,
+      "groupId": 5,
+      "itemId": 1,
+      "itemCount": 1500,
+      "odds": 10000
+    },
+    "406": {
+      "id": 406,
+      "dropId": 334011,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "407": {
+      "id": 407,
+      "dropId": 334011,
+      "groupId": 2,
+      "itemId": 12330001,
+      "itemCount": 8,
+      "odds": 10000
+    },
+    "408": {
+      "id": 408,
+      "dropId": 334011,
+      "groupId": 5,
+      "itemId": 1,
+      "itemCount": 500,
+      "odds": 10000
+    },
+    "409": {
+      "id": 409,
+      "dropId": 334012,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "410": {
+      "id": 410,
+      "dropId": 334012,
+      "groupId": 2,
+      "itemId": 12330001,
+      "itemCount": 12,
+      "odds": 10000
+    },
+    "411": {
+      "id": 411,
+      "dropId": 334012,
+      "groupId": 5,
+      "itemId": 1,
+      "itemCount": 1000,
+      "odds": 10000
+    },
+    "412": {
+      "id": 412,
+      "dropId": 334013,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "413": {
+      "id": 413,
+      "dropId": 334013,
+      "groupId": 2,
+      "itemId": 12330001,
+      "itemCount": 16,
+      "odds": 10000
+    },
+    "414": {
+      "id": 414,
+      "dropId": 334013,
+      "groupId": 5,
+      "itemId": 1,
+      "itemCount": 1500,
+      "odds": 10000
+    },
+    "415": {
+      "id": 415,
+      "dropId": 335101,
+      "groupId": 1,
+      "itemId": 770002,
+      "itemCount": 20,
+      "odds": 10000
+    },
+    "416": {
+      "id": 416,
+      "dropId": 335102,
+      "groupId": 1,
+      "itemId": 770002,
+      "itemCount": 30,
+      "odds": 10000
+    },
+    "417": {
+      "id": 417,
+      "dropId": 335103,
+      "groupId": 1,
+      "itemId": 770002,
+      "itemCount": 50,
+      "odds": 10000
+    },
+    "418": {
+      "id": 418,
+      "dropId": 335201,
+      "groupId": 1,
+      "itemId": 770002,
+      "itemCount": 40,
+      "odds": 10000
+    },
+    "419": {
+      "id": 419,
+      "dropId": 335202,
+      "groupId": 1,
+      "itemId": 770002,
+      "itemCount": 60,
+      "odds": 10000
+    },
+    "420": {
+      "id": 420,
+      "dropId": 335203,
+      "groupId": 1,
+      "itemId": 770002,
+      "itemCount": 100,
+      "odds": 10000
+    },
+    "421": {
+      "id": 421,
+      "dropId": 410001,
+      "groupId": 1,
+      "itemId": 29900041,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "422": {
+      "id": 422,
+      "dropId": 410012,
+      "groupId": 1,
+      "itemId": 29900001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "423": {
+      "id": 423,
+      "dropId": 410013,
+      "groupId": 1,
+      "itemId": 29900002,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "424": {
+      "id": 424,
+      "dropId": 410014,
+      "groupId": 1,
+      "itemId": 29900003,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "425": {
+      "id": 425,
+      "dropId": 410015,
+      "groupId": 1,
+      "itemId": 29900004,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "426": {
+      "id": 426,
+      "dropId": 410016,
+      "groupId": 1,
+      "itemId": 29900005,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "427": {
+      "id": 427,
+      "dropId": 410017,
+      "groupId": 1,
+      "itemId": 29900006,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "428": {
+      "id": 428,
+      "dropId": 410018,
+      "groupId": 1,
+      "itemId": 29900007,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "429": {
+      "id": 429,
+      "dropId": 410019,
+      "groupId": 1,
+      "itemId": 29900008,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "430": {
+      "id": 430,
+      "dropId": 410020,
+      "groupId": 1,
+      "itemId": 29900009,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "431": {
+      "id": 431,
+      "dropId": 410021,
+      "groupId": 1,
+      "itemId": 29900010,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "432": {
+      "id": 432,
+      "dropId": 410022,
+      "groupId": 1,
+      "itemId": 29900011,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "433": {
+      "id": 433,
+      "dropId": 410023,
+      "groupId": 1,
+      "itemId": 29900012,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "434": {
+      "id": 434,
+      "dropId": 410024,
+      "groupId": 1,
+      "itemId": 29900013,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "435": {
+      "id": 435,
+      "dropId": 410025,
+      "groupId": 1,
+      "itemId": 29900014,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "436": {
+      "id": 436,
+      "dropId": 410026,
+      "groupId": 1,
+      "itemId": 29900015,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "437": {
+      "id": 437,
+      "dropId": 410027,
+      "groupId": 1,
+      "itemId": 29900016,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "438": {
+      "id": 438,
+      "dropId": 410028,
+      "groupId": 1,
+      "itemId": 29900017,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "439": {
+      "id": 439,
+      "dropId": 410029,
+      "groupId": 1,
+      "itemId": 29900018,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "440": {
+      "id": 440,
+      "dropId": 410030,
+      "groupId": 1,
+      "itemId": 29900019,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "441": {
+      "id": 441,
+      "dropId": 410031,
+      "groupId": 1,
+      "itemId": 29900020,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "442": {
+      "id": 442,
+      "dropId": 410032,
+      "groupId": 1,
+      "itemId": 29900021,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "443": {
+      "id": 443,
+      "dropId": 410033,
+      "groupId": 1,
+      "itemId": 29900022,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "444": {
+      "id": 444,
+      "dropId": 410034,
+      "groupId": 1,
+      "itemId": 29900023,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "445": {
+      "id": 445,
+      "dropId": 410035,
+      "groupId": 1,
+      "itemId": 29900024,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "446": {
+      "id": 446,
+      "dropId": 410036,
+      "groupId": 1,
+      "itemId": 29900025,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "447": {
+      "id": 447,
+      "dropId": 410037,
+      "groupId": 1,
+      "itemId": 29900026,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "448": {
+      "id": 448,
+      "dropId": 410038,
+      "groupId": 1,
+      "itemId": 29900027,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "449": {
+      "id": 449,
+      "dropId": 410039,
+      "groupId": 1,
+      "itemId": 29900028,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "450": {
+      "id": 450,
+      "dropId": 410040,
+      "groupId": 1,
+      "itemId": 29900029,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "451": {
+      "id": 451,
+      "dropId": 410041,
+      "groupId": 1,
+      "itemId": 29900030,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "452": {
+      "id": 452,
+      "dropId": 410042,
+      "groupId": 1,
+      "itemId": 29900031,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "453": {
+      "id": 453,
+      "dropId": 410043,
+      "groupId": 1,
+      "itemId": 29900032,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "454": {
+      "id": 454,
+      "dropId": 410044,
+      "groupId": 1,
+      "itemId": 29900033,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "455": {
+      "id": 455,
+      "dropId": 410045,
+      "groupId": 1,
+      "itemId": 29900034,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "456": {
+      "id": 456,
+      "dropId": 410046,
+      "groupId": 1,
+      "itemId": 29900035,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "457": {
+      "id": 457,
+      "dropId": 410047,
+      "groupId": 1,
+      "itemId": 29900036,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "458": {
+      "id": 458,
+      "dropId": 410048,
+      "groupId": 1,
+      "itemId": 29900037,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "459": {
+      "id": 459,
+      "dropId": 410049,
+      "groupId": 1,
+      "itemId": 29900038,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "460": {
+      "id": 460,
+      "dropId": 410050,
+      "groupId": 1,
+      "itemId": 29900039,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "461": {
+      "id": 461,
+      "dropId": 410051,
+      "groupId": 1,
+      "itemId": 29900040,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "462": {
+      "id": 462,
+      "dropId": 410052,
+      "groupId": 1,
+      "itemId": 29900042,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "463": {
+      "id": 463,
+      "dropId": 410053,
+      "groupId": 1,
+      "itemId": 29900043,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "464": {
+      "id": 464,
+      "dropId": 410054,
+      "groupId": 1,
+      "itemId": 29900044,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "465": {
+      "id": 465,
+      "dropId": 410055,
+      "groupId": 1,
+      "itemId": 29900045,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "466": {
+      "id": 466,
+      "dropId": 410056,
+      "groupId": 1,
+      "itemId": 29900046,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "467": {
+      "id": 467,
+      "dropId": 410057,
+      "groupId": 1,
+      "itemId": 29900047,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "468": {
+      "id": 468,
+      "dropId": 410058,
+      "groupId": 1,
+      "itemId": 29900048,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "469": {
+      "id": 469,
+      "dropId": 411001,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 100,
+      "odds": 10000
+    },
+    "470": {
+      "id": 470,
+      "dropId": 411001,
+      "groupId": 1,
+      "itemId": 770002,
+      "itemCount": 150,
+      "odds": 10000
+    },
+    "471": {
+      "id": 471,
+      "dropId": 411002,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 2000,
+      "odds": 10000
+    },
+    "472": {
+      "id": 472,
+      "dropId": 411003,
+      "groupId": 1,
+      "itemId": 11201002,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "473": {
+      "id": 473,
+      "dropId": 411005,
+      "groupId": 1,
+      "itemId": 12230001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "474": {
+      "id": 474,
+      "dropId": 411007,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 20,
+      "odds": 10000
+    },
+    "475": {
+      "id": 475,
+      "dropId": 411007,
+      "groupId": 1,
+      "itemId": 770002,
+      "itemCount": 50,
+      "odds": 10000
+    },
+    "476": {
+      "id": 476,
+      "dropId": 411008,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 1000,
+      "odds": 10000
+    },
+    "477": {
+      "id": 477,
+      "dropId": 411009,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "478": {
+      "id": 478,
+      "dropId": 411011,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "479": {
+      "id": 479,
+      "dropId": 411013,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 10,
+      "odds": 10000
+    },
+    "480": {
+      "id": 480,
+      "dropId": 411013,
+      "groupId": 1,
+      "itemId": 770002,
+      "itemCount": 20,
+      "odds": 10000
+    },
+    "481": {
+      "id": 481,
+      "dropId": 411014,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 500,
+      "odds": 10000
+    },
+    "482": {
+      "id": 482,
+      "dropId": 413001,
+      "groupId": 1,
+      "itemId": 41300001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "483": {
+      "id": 483,
+      "dropId": 413002,
+      "groupId": 1,
+      "itemId": 41300002,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "484": {
+      "id": 484,
+      "dropId": 413003,
+      "groupId": 1,
+      "itemId": 41300003,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "485": {
+      "id": 485,
+      "dropId": 413004,
+      "groupId": 1,
+      "itemId": 41300004,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "486": {
+      "id": 486,
+      "dropId": 413005,
+      "groupId": 1,
+      "itemId": 41300005,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "487": {
+      "id": 487,
+      "dropId": 413006,
+      "groupId": 1,
+      "itemId": 41300006,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "488": {
+      "id": 488,
+      "dropId": 413007,
+      "groupId": 1,
+      "itemId": 41300007,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "489": {
+      "id": 489,
+      "dropId": 413008,
+      "groupId": 1,
+      "itemId": 41300008,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "490": {
+      "id": 490,
+      "dropId": 413009,
+      "groupId": 1,
+      "itemId": 41300009,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "491": {
+      "id": 491,
+      "dropId": 600001,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 2000,
+      "odds": 10000
+    },
+    "492": {
+      "id": 492,
+      "dropId": 600001,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 10000,
+      "odds": 10000
+    },
+    "493": {
+      "id": 493,
+      "dropId": 600001,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "494": {
+      "id": 494,
+      "dropId": 600001,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 2,
+      "odds": 0
+    },
+    "495": {
+      "id": 495,
+      "dropId": 600002,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 2000,
+      "odds": 10000
+    },
+    "496": {
+      "id": 496,
+      "dropId": 600002,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 10000,
+      "odds": 10000
+    },
+    "497": {
+      "id": 497,
+      "dropId": 600002,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "498": {
+      "id": 498,
+      "dropId": 600002,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 2,
+      "odds": 0
+    },
+    "499": {
+      "id": 499,
+      "dropId": 600003,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 2000,
+      "odds": 0
+    },
+    "500": {
+      "id": 500,
+      "dropId": 600003,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 10000,
+      "odds": 10000
+    },
+    "501": {
+      "id": 501,
+      "dropId": 600003,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "502": {
+      "id": 502,
+      "dropId": 600003,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 2,
+      "odds": 0
+    },
+    "503": {
+      "id": 503,
+      "dropId": 600004,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 2000,
+      "odds": 10000
+    },
+    "504": {
+      "id": 504,
+      "dropId": 600004,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 10000,
+      "odds": 10000
+    },
+    "505": {
+      "id": 505,
+      "dropId": 600004,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "506": {
+      "id": 506,
+      "dropId": 600004,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 2,
+      "odds": 0
+    },
+    "507": {
+      "id": 507,
+      "dropId": 600005,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 2000,
+      "odds": 10000
+    },
+    "508": {
+      "id": 508,
+      "dropId": 600005,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 10000,
+      "odds": 10000
+    },
+    "509": {
+      "id": 509,
+      "dropId": 600005,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "510": {
+      "id": 510,
+      "dropId": 600005,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 2,
+      "odds": 0
+    },
+    "511": {
+      "id": 511,
+      "dropId": 600006,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 2000,
+      "odds": 10000
+    },
+    "512": {
+      "id": 512,
+      "dropId": 600006,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 10000,
+      "odds": 10000
+    },
+    "513": {
+      "id": 513,
+      "dropId": 600006,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "514": {
+      "id": 514,
+      "dropId": 600006,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 2,
+      "odds": 0
+    },
+    "515": {
+      "id": 515,
+      "dropId": 600007,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 2000,
+      "odds": 10000
+    },
+    "516": {
+      "id": 516,
+      "dropId": 600007,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 10000,
+      "odds": 10000
+    },
+    "517": {
+      "id": 517,
+      "dropId": 600007,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "518": {
+      "id": 518,
+      "dropId": 600007,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 2,
+      "odds": 0
+    },
+    "519": {
+      "id": 519,
+      "dropId": 601001,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 350,
+      "odds": 10000
+    },
+    "520": {
+      "id": 520,
+      "dropId": 601001,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "521": {
+      "id": 521,
+      "dropId": 601001,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "522": {
+      "id": 522,
+      "dropId": 601001,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 1,
+      "odds": 0
+    },
+    "523": {
+      "id": 523,
+      "dropId": 601002,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 350,
+      "odds": 10000
+    },
+    "524": {
+      "id": 524,
+      "dropId": 601002,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "525": {
+      "id": 525,
+      "dropId": 601002,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "526": {
+      "id": 526,
+      "dropId": 601002,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 1,
+      "odds": 0
+    },
+    "527": {
+      "id": 527,
+      "dropId": 601003,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 350,
+      "odds": 10000
+    },
+    "528": {
+      "id": 528,
+      "dropId": 601003,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "529": {
+      "id": 529,
+      "dropId": 601003,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "530": {
+      "id": 530,
+      "dropId": 601003,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 1,
+      "odds": 0
+    },
+    "531": {
+      "id": 531,
+      "dropId": 601004,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 350,
+      "odds": 10000
+    },
+    "532": {
+      "id": 532,
+      "dropId": 601004,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "533": {
+      "id": 533,
+      "dropId": 601004,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "534": {
+      "id": 534,
+      "dropId": 601004,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 1,
+      "odds": 0
+    },
+    "535": {
+      "id": 535,
+      "dropId": 601005,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 350,
+      "odds": 10000
+    },
+    "536": {
+      "id": 536,
+      "dropId": 601005,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "537": {
+      "id": 537,
+      "dropId": 601005,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "538": {
+      "id": 538,
+      "dropId": 601005,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 1,
+      "odds": 0
+    },
+    "539": {
+      "id": 539,
+      "dropId": 601006,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 350,
+      "odds": 10000
+    },
+    "540": {
+      "id": 540,
+      "dropId": 601006,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "541": {
+      "id": 541,
+      "dropId": 601006,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "542": {
+      "id": 542,
+      "dropId": 601006,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 1,
+      "odds": 0
+    },
+    "543": {
+      "id": 543,
+      "dropId": 601007,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 350,
+      "odds": 10000
+    },
+    "544": {
+      "id": 544,
+      "dropId": 601007,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "545": {
+      "id": 545,
+      "dropId": 601007,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "546": {
+      "id": 546,
+      "dropId": 601007,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 1,
+      "odds": 0
+    },
+    "547": {
+      "id": 547,
+      "dropId": 601008,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 350,
+      "odds": 10000
+    },
+    "548": {
+      "id": 548,
+      "dropId": 601008,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "549": {
+      "id": 549,
+      "dropId": 601008,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "550": {
+      "id": 550,
+      "dropId": 601008,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 1,
+      "odds": 0
+    },
+    "551": {
+      "id": 551,
+      "dropId": 601009,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 350,
+      "odds": 10000
+    },
+    "552": {
+      "id": 552,
+      "dropId": 601009,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "553": {
+      "id": 553,
+      "dropId": 601009,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "554": {
+      "id": 554,
+      "dropId": 601009,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 1,
+      "odds": 0
+    },
+    "555": {
+      "id": 555,
+      "dropId": 601010,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 350,
+      "odds": 10000
+    },
+    "556": {
+      "id": 556,
+      "dropId": 601010,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "557": {
+      "id": 557,
+      "dropId": 601010,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "558": {
+      "id": 558,
+      "dropId": 601010,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 1,
+      "odds": 0
+    },
+    "559": {
+      "id": 559,
+      "dropId": 601011,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 350,
+      "odds": 10000
+    },
+    "560": {
+      "id": 560,
+      "dropId": 601011,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "561": {
+      "id": 561,
+      "dropId": 601011,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "562": {
+      "id": 562,
+      "dropId": 601011,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 1,
+      "odds": 0
+    },
+    "563": {
+      "id": 563,
+      "dropId": 601012,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 350,
+      "odds": 10000
+    },
+    "564": {
+      "id": 564,
+      "dropId": 601012,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "565": {
+      "id": 565,
+      "dropId": 601012,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "566": {
+      "id": 566,
+      "dropId": 601012,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 1,
+      "odds": 0
+    },
+    "567": {
+      "id": 567,
+      "dropId": 601013,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 350,
+      "odds": 10000
+    },
+    "568": {
+      "id": 568,
+      "dropId": 601013,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "569": {
+      "id": 569,
+      "dropId": 601013,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "570": {
+      "id": 570,
+      "dropId": 601013,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 1,
+      "odds": 0
+    },
+    "571": {
+      "id": 571,
+      "dropId": 601014,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 350,
+      "odds": 10000
+    },
+    "572": {
+      "id": 572,
+      "dropId": 601014,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "573": {
+      "id": 573,
+      "dropId": 601014,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "574": {
+      "id": 574,
+      "dropId": 601014,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 1,
+      "odds": 0
+    },
+    "575": {
+      "id": 575,
+      "dropId": 601015,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 350,
+      "odds": 10000
+    },
+    "576": {
+      "id": 576,
+      "dropId": 601015,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "577": {
+      "id": 577,
+      "dropId": 601015,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "578": {
+      "id": 578,
+      "dropId": 601015,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 1,
+      "odds": 0
+    },
+    "579": {
+      "id": 579,
+      "dropId": 601016,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 350,
+      "odds": 10000
+    },
+    "580": {
+      "id": 580,
+      "dropId": 601016,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "581": {
+      "id": 581,
+      "dropId": 601016,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "582": {
+      "id": 582,
+      "dropId": 601016,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 1,
+      "odds": 0
+    },
+    "583": {
+      "id": 583,
+      "dropId": 601017,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 350,
+      "odds": 10000
+    },
+    "584": {
+      "id": 584,
+      "dropId": 601017,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "585": {
+      "id": 585,
+      "dropId": 601017,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "586": {
+      "id": 586,
+      "dropId": 601017,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 1,
+      "odds": 0
+    },
+    "587": {
+      "id": 587,
+      "dropId": 601018,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 350,
+      "odds": 10000
+    },
+    "588": {
+      "id": 588,
+      "dropId": 601018,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "589": {
+      "id": 589,
+      "dropId": 601018,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "590": {
+      "id": 590,
+      "dropId": 601018,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 1,
+      "odds": 0
+    },
+    "591": {
+      "id": 591,
+      "dropId": 601019,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 350,
+      "odds": 10000
+    },
+    "592": {
+      "id": 592,
+      "dropId": 601019,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "593": {
+      "id": 593,
+      "dropId": 601019,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "594": {
+      "id": 594,
+      "dropId": 601019,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 1,
+      "odds": 0
+    },
+    "595": {
+      "id": 595,
+      "dropId": 602001,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 350,
+      "odds": 10000
+    },
+    "596": {
+      "id": 596,
+      "dropId": 602001,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 10000,
+      "odds": 10000
+    },
+    "597": {
+      "id": 597,
+      "dropId": 602001,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "598": {
+      "id": 598,
+      "dropId": 602001,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 2,
+      "odds": 0
+    },
+    "599": {
+      "id": 599,
+      "dropId": 602002,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 350,
+      "odds": 10000
+    },
+    "600": {
+      "id": 600,
+      "dropId": 602002,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 10000,
+      "odds": 10000
+    },
+    "601": {
+      "id": 601,
+      "dropId": 602002,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 5,
+      "odds": 10000
+    },
+    "602": {
+      "id": 602,
+      "dropId": 602002,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 2,
+      "odds": 0
+    },
+    "603": {
+      "id": 603,
+      "dropId": 605001,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 250,
+      "odds": 10000
+    },
+    "604": {
+      "id": 604,
+      "dropId": 605001,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "605": {
+      "id": 605,
+      "dropId": 605002,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 250,
+      "odds": 10000
+    },
+    "606": {
+      "id": 606,
+      "dropId": 605002,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "607": {
+      "id": 607,
+      "dropId": 605003,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 250,
+      "odds": 10000
+    },
+    "608": {
+      "id": 608,
+      "dropId": 605003,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "609": {
+      "id": 609,
+      "dropId": 605004,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 250,
+      "odds": 10000
+    },
+    "610": {
+      "id": 610,
+      "dropId": 605004,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "611": {
+      "id": 611,
+      "dropId": 605005,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 250,
+      "odds": 10000
+    },
+    "612": {
+      "id": 612,
+      "dropId": 605005,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "613": {
+      "id": 613,
+      "dropId": 606001,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 450,
+      "odds": 10000
+    },
+    "614": {
+      "id": 614,
+      "dropId": 606001,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "615": {
+      "id": 615,
+      "dropId": 606001,
+      "groupId": 1,
+      "itemId": 21501008,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "616": {
+      "id": 616,
+      "dropId": 606001,
+      "groupId": 1,
+      "itemId": 21501010,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "617": {
+      "id": 617,
+      "dropId": 606001,
+      "groupId": 1,
+      "itemId": 21501011,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "618": {
+      "id": 618,
+      "dropId": 606001,
+      "groupId": 1,
+      "itemId": 21501013,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "619": {
+      "id": 619,
+      "dropId": 606001,
+      "groupId": 1,
+      "itemId": 21501014,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "620": {
+      "id": 620,
+      "dropId": 606001,
+      "groupId": 1,
+      "itemId": 21501015,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "621": {
+      "id": 621,
+      "dropId": 606002,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 450,
+      "odds": 10000
+    },
+    "622": {
+      "id": 622,
+      "dropId": 606002,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "623": {
+      "id": 623,
+      "dropId": 606002,
+      "groupId": 1,
+      "itemId": 21501003,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "624": {
+      "id": 624,
+      "dropId": 606002,
+      "groupId": 1,
+      "itemId": 21501005,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "625": {
+      "id": 625,
+      "dropId": 606002,
+      "groupId": 1,
+      "itemId": 21501006,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "626": {
+      "id": 626,
+      "dropId": 606002,
+      "groupId": 1,
+      "itemId": 21501007,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "627": {
+      "id": 627,
+      "dropId": 606002,
+      "groupId": 1,
+      "itemId": 21501009,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "628": {
+      "id": 628,
+      "dropId": 606002,
+      "groupId": 1,
+      "itemId": 21501012,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "629": {
+      "id": 629,
+      "dropId": 606002,
+      "groupId": 1,
+      "itemId": 21501016,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "630": {
+      "id": 630,
+      "dropId": 606003,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 450,
+      "odds": 10000
+    },
+    "631": {
+      "id": 631,
+      "dropId": 606003,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "632": {
+      "id": 632,
+      "dropId": 607001,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 100,
+      "odds": 10000
+    },
+    "633": {
+      "id": 633,
+      "dropId": 607001,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 10000
+    },
+    "634": {
+      "id": 634,
+      "dropId": 607001,
+      "groupId": 1,
+      "itemId": 11201001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "635": {
+      "id": 635,
+      "dropId": 607001,
+      "groupId": 1,
+      "itemId": 12220001,
+      "itemCount": 1,
+      "odds": 0
+    },
+    "636": {
+      "id": 636,
+      "dropId": 607002,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 100,
+      "odds": 10000
+    },
+    "637": {
+      "id": 637,
+      "dropId": 2020011,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "638": {
+      "id": 638,
+      "dropId": 92100001,
+      "groupId": 1,
+      "itemId": 11041003,
+      "itemCount": 1,
+      "weight": 75
+    },
+    "639": {
+      "id": 639,
+      "dropId": 92100001,
+      "groupId": 1,
+      "itemId": 11041004,
+      "itemCount": 1,
+      "weight": 75
+    },
+    "640": {
+      "id": 640,
+      "dropId": 92100001,
+      "groupId": 1,
+      "itemId": 11041006,
+      "itemCount": 1,
+      "weight": 75
+    },
+    "641": {
+      "id": 641,
+      "dropId": 92100001,
+      "groupId": 1,
+      "itemId": 11041007,
+      "itemCount": 1,
+      "weight": 75
+    },
+    "642": {
+      "id": 642,
+      "dropId": 92100001,
+      "groupId": 1,
+      "itemId": 12031001,
+      "itemCount": 1,
+      "weight": 2350
+    },
+    "643": {
+      "id": 643,
+      "dropId": 92100001,
+      "groupId": 1,
+      "itemId": 12041001,
+      "itemCount": 1,
+      "weight": 75
+    },
+    "644": {
+      "id": 644,
+      "dropId": 92100001,
+      "groupId": 1,
+      "itemId": 12032001,
+      "itemCount": 1,
+      "weight": 2350
+    },
+    "645": {
+      "id": 645,
+      "dropId": 92100001,
+      "groupId": 1,
+      "itemId": 12042001,
+      "itemCount": 1,
+      "weight": 75
+    },
+    "646": {
+      "id": 646,
+      "dropId": 92100001,
+      "groupId": 1,
+      "itemId": 12033001,
+      "itemCount": 1,
+      "weight": 2350
+    },
+    "647": {
+      "id": 647,
+      "dropId": 92100001,
+      "groupId": 1,
+      "itemId": 12043001,
+      "itemCount": 1,
+      "weight": 75
+    },
+    "648": {
+      "id": 648,
+      "dropId": 92100001,
+      "groupId": 1,
+      "itemId": 12036001,
+      "itemCount": 1,
+      "weight": 2350
+    },
+    "649": {
+      "id": 649,
+      "dropId": 92100001,
+      "groupId": 1,
+      "itemId": 12046001,
+      "itemCount": 1,
+      "weight": 75
+    },
+    "650": {
+      "id": 650,
+      "dropId": 92140001,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 2000,
+      "odds": 10000
+    },
+    "651": {
+      "id": 651,
+      "dropId": 92140001,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 20000,
+      "odds": 10000
+    },
+    "652": {
+      "id": 652,
+      "dropId": 92140002,
+      "groupId": 1,
+      "itemId": 770004,
+      "itemCount": 500,
+      "odds": 10000
+    },
+    "653": {
+      "id": 653,
+      "dropId": 92140002,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 5000,
+      "odds": 5000
+    },
+    "654": {
+      "id": 654,
+      "dropId": 92140002,
+      "groupId": 1,
+      "itemId": 1,
+      "itemCount": 2000,
+      "odds": 3000
+    },
+    "655": {
+      "id": 655,
+      "dropId": 92200001,
+      "groupId": 1,
+      "itemId": 11041001,
+      "itemCount": 1,
+      "weight": 1000
+    },
+    "656": {
+      "id": 656,
+      "dropId": 92200001,
+      "groupId": 1,
+      "itemId": 11051501,
+      "itemCount": 1,
+      "weight": 2000
+    },
+    "657": {
+      "id": 657,
+      "dropId": 92200001,
+      "groupId": 1,
+      "itemId": 11051505,
+      "itemCount": 1,
+      "weight": 1000
+    },
+    "658": {
+      "id": 658,
+      "dropId": 92310011,
+      "groupId": 1,
+      "itemId": 11051501,
+      "itemCount": 1,
+      "weight": 1000
+    },
+    "659": {
+      "id": 659,
+      "dropId": 92410011,
+      "groupId": 1,
+      "itemId": 11041003,
+      "itemCount": 1,
+      "weight": 50
+    },
+    "660": {
+      "id": 660,
+      "dropId": 92410011,
+      "groupId": 1,
+      "itemId": 11041004,
+      "itemCount": 1,
+      "weight": 30
+    },
+    "661": {
+      "id": 661,
+      "dropId": 92410011,
+      "groupId": 1,
+      "itemId": 11041006,
+      "itemCount": 1,
+      "weight": 50
+    },
+    "662": {
+      "id": 662,
+      "dropId": 92410011,
+      "groupId": 1,
+      "itemId": 11041007,
+      "itemCount": 1,
+      "weight": 50
+    },
+    "663": {
+      "id": 663,
+      "dropId": 92410011,
+      "groupId": 1,
+      "itemId": 12041001,
+      "itemCount": 1,
+      "weight": 30
+    },
+    "664": {
+      "id": 664,
+      "dropId": 92410011,
+      "groupId": 1,
+      "itemId": 12042001,
+      "itemCount": 1,
+      "weight": 30
+    },
+    "665": {
+      "id": 665,
+      "dropId": 92410011,
+      "groupId": 1,
+      "itemId": 12043001,
+      "itemCount": 1,
+      "weight": 30
+    },
+    "666": {
+      "id": 666,
+      "dropId": 92410011,
+      "groupId": 1,
+      "itemId": 12046001,
+      "itemCount": 1,
+      "weight": 30
+    },
+    "667": {
+      "id": 667,
+      "dropId": 92510011,
+      "groupId": 1,
+      "itemId": 11041003,
+      "itemCount": 1,
+      "weight": 1000
+    },
+    "668": {
+      "id": 668,
+      "dropId": 92510011,
+      "groupId": 1,
+      "itemId": 11041004,
+      "itemCount": 1,
+      "weight": 1000
+    },
+    "669": {
+      "id": 669,
+      "dropId": 92510011,
+      "groupId": 1,
+      "itemId": 11041007,
+      "itemCount": 1,
+      "weight": 1000
+    },
+    "670": {
+      "id": 670,
+      "dropId": 94100001,
+      "groupId": 1,
+      "itemId": 41030001,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "671": {
+      "id": 671,
+      "dropId": 94100002,
+      "groupId": 1,
+      "itemId": 41030004,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "672": {
+      "id": 672,
+      "dropId": 94100003,
+      "groupId": 1,
+      "itemId": 41030003,
+      "itemCount": 1,
+      "odds": 10000
+    },
+    "673": {
+      "id": 673,
+      "dropId": 94100004,
+      "groupId": 1,
+      "itemId": 41030002,
+      "itemCount": 1,
+      "odds": 10000
+    }
+  }
+}

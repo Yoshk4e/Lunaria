@@ -1,0 +1,17 @@
+syntax = "proto3";
+package msg;
+
+
+
+message CSReqGM
+{
+    bytes cmd = 1;
+    repeated bytes params = 2;
+}
+
+
+
+message CSNotifyGMText
+{
+    bytes text = 1;
+}

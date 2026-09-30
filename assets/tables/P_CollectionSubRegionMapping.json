@@ -1,0 +1,10 @@
+{
+  "P_CollectionSubRegionMapping": {
+    "206001001001": {
+      "id": 206001001001,
+      "subRegionList": [
+        100001001002
+      ]
+    }
+  }
+}

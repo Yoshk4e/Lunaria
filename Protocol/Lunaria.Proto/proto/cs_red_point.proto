@@ -1,0 +1,30 @@
+syntax = "proto3";
+package msg;
+
+
+
+message CSRedPointList
+{
+}
+
+
+
+message SCRedPointList
+{
+    int32 result  = 1;
+    uint32 role_exchange_activity = 2;
+}
+
+
+
+message CSRedPointMarkRead
+{
+}
+
+
+
+message SCRedPointMarkRead
+{
+    int32 result  = 1;
+    uint32 role_exchange_activity = 2;
+}

@@ -1,0 +1,89 @@
+syntax = "proto3";
+
+package msg;
+
+import "comm_data.proto";
+
+
+
+message CSMailGetList {
+    uint32 from_mail_id = 1;  
+    int32 count = 2;  
+}
+
+
+
+message SCMailGetList {
+    uint32 from_mail_id = 1;
+    int32 count = 2;  
+    repeated MailData mails = 3;
+}
+
+
+
+message CSMailRead {
+    uint32 mail_id = 1;
+}
+
+
+
+message SCMailRead {
+    int32 result = 1;
+    uint32 mail_id = 2;
+}
+
+
+
+message CSMailRecvAttachments {
+    uint32 mail_id = 1;
+}
+
+
+
+message SCMailRecvAttachments {
+    int32 result = 1;
+    uint32 mail_id = 2;
+}
+
+
+
+message CSMailDel {
+    uint32 mail_id = 1;
+}
+
+
+
+message SCMailDel {
+    int32 result = 1;
+    uint32 mail_id = 2;
+}
+
+
+
+message CSMailDelAllReaded {
+}
+
+
+
+message SCMailDelAllReaded {
+    int32 result = 1;
+}
+
+
+
+message CSMailRecvAllAttachments {
+}
+
+
+
+message SCMailRecvAllAttachments {
+    int32 result = 1;
+    repeated uint32 mail_ids = 2;  
+}
+
+
+
+message SCMailAddDelNft {
+    repeated MailData add_mails = 1;  
+    repeated uint32 del_mail_ids = 2;  
+}

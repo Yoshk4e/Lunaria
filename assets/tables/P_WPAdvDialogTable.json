@@ -1,0 +1,850 @@
+{
+  "P_WPAdvDialogTable": {
+    "1000101": {
+      "id": 1000101,
+      "nextId": 1000102,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100121
+    },
+    "1000102": {
+      "id": 1000102,
+      "nextId": 1000103,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100122
+    },
+    "1000103": {
+      "id": 1000103,
+      "nextId": 1000104,
+      "speaker": 1911100004,
+      "speakerType": 1,
+      "content": 1911100123
+    },
+    "1000104": {
+      "id": 1000104,
+      "nextId": 1000105,
+      "speaker": 1911100001,
+      "speakerType": 2,
+      "content": 1911100124
+    },
+    "1000105": {
+      "id": 1000105,
+      "nextId": 1000106,
+      "speaker": 1911100004,
+      "speakerType": 1,
+      "content": 1911100125
+    },
+    "1000106": {
+      "id": 1000106,
+      "nextId": 1000107,
+      "speaker": 1911100001,
+      "speakerType": 2,
+      "content": 1911100126
+    },
+    "1000107": {
+      "id": 1000107,
+      "nextId": 1000108,
+      "speaker": 1911100004,
+      "speakerType": 1,
+      "content": 1911100127
+    },
+    "1000108": {
+      "id": 1000108,
+      "nextId": 1000109,
+      "speaker": 1911100001,
+      "speakerType": 2,
+      "content": 1911100128
+    },
+    "1000109": {
+      "id": 1000109,
+      "nextId": 1000110,
+      "speaker": 1911100001,
+      "speakerType": 2,
+      "content": 1911100129
+    },
+    "1000110": {
+      "id": 1000110,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100130
+    },
+    "1000111": {
+      "id": 1000111,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100131
+    },
+    "1000112": {
+      "id": 1000112,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100132
+    },
+    "1000113": {
+      "id": 1000113,
+      "nextId": 1000114,
+      "speaker": 1911100004,
+      "speakerType": 1,
+      "content": 1911100133
+    },
+    "1000114": {
+      "id": 1000114,
+      "nextId": 1000115,
+      "speaker": 1911100004,
+      "speakerType": 1,
+      "content": 1911100134
+    },
+    "1000115": {
+      "id": 1000115,
+      "speaker": 1911100001,
+      "speakerType": 2,
+      "content": 1911100135
+    },
+    "1010101": {
+      "id": 1010101,
+      "nextId": 1010102,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100101
+    },
+    "1010102": {
+      "id": 1010102,
+      "nextId": 1010103,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100102
+    },
+    "1010103": {
+      "id": 1010103,
+      "nextId": 1010104,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100103
+    },
+    "1010104": {
+      "id": 1010104,
+      "speaker": 1911100002,
+      "speakerType": 1,
+      "content": 1911100104
+    },
+    "1010105": {
+      "id": 1010105,
+      "nextId": 1010106,
+      "speaker": 1911100001,
+      "speakerType": 2,
+      "content": 1911100108
+    },
+    "1010106": {
+      "id": 1010106,
+      "nextId": 1010107,
+      "speaker": 1911100002,
+      "speakerType": 1,
+      "content": 1911100109
+    },
+    "1010107": {
+      "id": 1010107,
+      "speaker": 1911100002,
+      "speakerType": 1,
+      "content": 1911100110
+    },
+    "1010108": {
+      "id": 1010108,
+      "nextId": 1010109,
+      "speaker": 1911100001,
+      "speakerType": 2,
+      "content": 1911100111
+    },
+    "1010109": {
+      "id": 1010109,
+      "nextId": 1010110,
+      "speaker": 1911100002,
+      "speakerType": 1,
+      "content": 1911100112
+    },
+    "1010110": {
+      "id": 1010110,
+      "speaker": 1911100002,
+      "speakerType": 1,
+      "content": 1911100113
+    },
+    "1010111": {
+      "id": 1010111,
+      "nextId": 1010112,
+      "speaker": 1911100001,
+      "speakerType": 2,
+      "content": 1911100114
+    },
+    "1010112": {
+      "id": 1010112,
+      "nextId": 1010113,
+      "speaker": 1911100002,
+      "speakerType": 1,
+      "content": 1911100115
+    },
+    "1010113": {
+      "id": 1010113,
+      "speaker": 1911100002,
+      "speakerType": 2,
+      "content": 1911100116
+    },
+    "1020101": {
+      "id": 1020101,
+      "nextId": 1020102,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100201
+    },
+    "1020102": {
+      "id": 1020102,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100202
+    },
+    "1020103": {
+      "id": 1020103,
+      "nextId": 1020104,
+      "speaker": 1911100001,
+      "speakerType": 2,
+      "content": 1911100205
+    },
+    "1020104": {
+      "id": 1020104,
+      "nextId": 1020105,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100206
+    },
+    "1020105": {
+      "id": 1020105,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100207
+    },
+    "1020106": {
+      "id": 1020106,
+      "nextId": 1020107,
+      "speaker": 1911100001,
+      "speakerType": 2,
+      "content": 1911100208
+    },
+    "1020107": {
+      "id": 1020107,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100209
+    },
+    "1030101": {
+      "id": 1030101,
+      "nextId": 1030102,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100301
+    },
+    "1030102": {
+      "id": 1030102,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100302
+    },
+    "1030103": {
+      "id": 1030103,
+      "nextId": 1030104,
+      "speaker": 1911100001,
+      "speakerType": 2,
+      "content": 1911100305
+    },
+    "1030104": {
+      "id": 1030104,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100306
+    },
+    "1030105": {
+      "id": 1030105,
+      "nextId": 1030106,
+      "speaker": 1911100001,
+      "speakerType": 2,
+      "content": 1911100307
+    },
+    "1030106": {
+      "id": 1030106,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100308
+    },
+    "1040101": {
+      "id": 1040101,
+      "nextId": 1040102,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100401
+    },
+    "1040102": {
+      "id": 1040102,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100402
+    },
+    "1040103": {
+      "id": 1040103,
+      "nextId": 1040104,
+      "speaker": 1911100001,
+      "speakerType": 2,
+      "content": 1911100405
+    },
+    "1040104": {
+      "id": 1040104,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100406
+    },
+    "1040105": {
+      "id": 1040105,
+      "nextId": 1040106,
+      "speaker": 1911100001,
+      "speakerType": 2,
+      "content": 1911100407
+    },
+    "1040106": {
+      "id": 1040106,
+      "nextId": 1040107,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100408
+    },
+    "1040107": {
+      "id": 1040107,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100409
+    },
+    "1050101": {
+      "id": 1050101,
+      "nextId": 1050102,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100501
+    },
+    "1050102": {
+      "id": 1050102,
+      "nextId": 1050103,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100502
+    },
+    "1050103": {
+      "id": 1050103,
+      "nextId": 1050104,
+      "speaker": 1911100001,
+      "speakerType": 2,
+      "content": 1911100503
+    },
+    "1050104": {
+      "id": 1050104,
+      "nextId": 1050105,
+      "speaker": 1911100003,
+      "speakerType": 1,
+      "content": 1911100504
+    },
+    "1050105": {
+      "id": 1050105,
+      "speaker": 1911100003,
+      "speakerType": 1,
+      "content": 1911100505
+    },
+    "1050106": {
+      "id": 1050106,
+      "nextId": 1050107,
+      "speaker": 1911100001,
+      "speakerType": 2,
+      "content": 1911100509
+    },
+    "1050107": {
+      "id": 1050107,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100510
+    },
+    "1050108": {
+      "id": 1050108,
+      "nextId": 1050109,
+      "speaker": 1911100001,
+      "speakerType": 2,
+      "content": 1911100511
+    },
+    "1050109": {
+      "id": 1050109,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100512
+    },
+    "1050110": {
+      "id": 1050110,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100513
+    },
+    "1060101": {
+      "id": 1060101,
+      "nextId": 1060102,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100601
+    },
+    "1060102": {
+      "id": 1060102,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100602
+    },
+    "1060103": {
+      "id": 1060103,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100605
+    },
+    "1060104": {
+      "id": 1060104,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100606
+    },
+    "1070101": {
+      "id": 1070101,
+      "nextId": 1070102,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100701
+    },
+    "1070102": {
+      "id": 1070102,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100702
+    },
+    "1070103": {
+      "id": 1070103,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100706
+    },
+    "1070104": {
+      "id": 1070104,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100707
+    },
+    "1070105": {
+      "id": 1070105,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100708
+    },
+    "1080101": {
+      "id": 1080101,
+      "nextId": 1080102,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100801
+    },
+    "1080102": {
+      "id": 1080102,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100802
+    },
+    "1080103": {
+      "id": 1080103,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100806
+    },
+    "1080104": {
+      "id": 1080104,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100807
+    },
+    "1080105": {
+      "id": 1080105,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100808
+    },
+    "1080106": {
+      "id": 1080106,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100809
+    },
+    "1080107": {
+      "id": 1080107,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100810
+    },
+    "1090101": {
+      "id": 1090101,
+      "nextId": 1090102,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100901
+    },
+    "1090102": {
+      "id": 1090102,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100902
+    },
+    "1090103": {
+      "id": 1090103,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100906
+    },
+    "1090104": {
+      "id": 1090104,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100907
+    },
+    "1090105": {
+      "id": 1090105,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100908
+    },
+    "1090106": {
+      "id": 1090106,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100909
+    },
+    "1090107": {
+      "id": 1090107,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911100910
+    },
+    "1100101": {
+      "id": 1100101,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101001
+    },
+    "1100102": {
+      "id": 1100102,
+      "nextId": 1100103,
+      "speaker": 1911100001,
+      "speakerType": 2,
+      "content": 1911101004
+    },
+    "1100103": {
+      "id": 1100103,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101005
+    },
+    "1100104": {
+      "id": 1100104,
+      "nextId": 1100105,
+      "speaker": 1911100001,
+      "speakerType": 2,
+      "content": 1911101006
+    },
+    "1100105": {
+      "id": 1100105,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101007
+    },
+    "1110101": {
+      "id": 1110101,
+      "nextId": 1110102,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101101
+    },
+    "1110102": {
+      "id": 1110102,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101102
+    },
+    "1110103": {
+      "id": 1110103,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101106
+    },
+    "1110104": {
+      "id": 1110104,
+      "nextId": 1110105,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101107
+    },
+    "1110105": {
+      "id": 1110105,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101108
+    },
+    "1110106": {
+      "id": 1110106,
+      "nextId": 1110107,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101109
+    },
+    "1110107": {
+      "id": 1110107,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101110
+    },
+    "1110108": {
+      "id": 1110108,
+      "nextId": 1110109,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101111
+    },
+    "1110109": {
+      "id": 1110109,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101112
+    },
+    "1110110": {
+      "id": 1110110,
+      "nextId": 1110111,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101113
+    },
+    "1110111": {
+      "id": 1110111,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101114
+    },
+    "1120101": {
+      "id": 1120101,
+      "nextId": 1120102,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101201
+    },
+    "1120102": {
+      "id": 1120102,
+      "nextId": 1120103,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101202
+    },
+    "1120103": {
+      "id": 1120103,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101203
+    },
+    "1120104": {
+      "id": 1120104,
+      "nextId": 1120105,
+      "speaker": 1911100001,
+      "speakerType": 2,
+      "content": 1911101206
+    },
+    "1120105": {
+      "id": 1120105,
+      "nextId": 1120106,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101207
+    },
+    "1120106": {
+      "id": 1120106,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101208
+    },
+    "1120107": {
+      "id": 1120107,
+      "nextId": 1120108,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101209
+    },
+    "1120108": {
+      "id": 1120108,
+      "nextId": 1120109,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101210
+    },
+    "1120109": {
+      "id": 1120109,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101211
+    },
+    "1120110": {
+      "id": 1120110,
+      "nextId": 1120111,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101212
+    },
+    "1120111": {
+      "id": 1120111,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101213
+    },
+    "1130101": {
+      "id": 1130101,
+      "nextId": 1130102,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101301
+    },
+    "1130102": {
+      "id": 1130102,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101302
+    },
+    "1130103": {
+      "id": 1130103,
+      "nextId": 1130104,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101306
+    },
+    "1130104": {
+      "id": 1130104,
+      "nextId": 1130105,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101307
+    },
+    "1130105": {
+      "id": 1130105,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101308
+    },
+    "1130106": {
+      "id": 1130106,
+      "nextId": 1130107,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101309
+    },
+    "1130107": {
+      "id": 1130107,
+      "nextId": 1130108,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101310
+    },
+    "1130108": {
+      "id": 1130108,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101311
+    },
+    "1130109": {
+      "id": 1130109,
+      "nextId": 1130110,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101312
+    },
+    "1130110": {
+      "id": 1130110,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101313
+    },
+    "1140101": {
+      "id": 1140101,
+      "nextId": 1140102,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101401
+    },
+    "1140102": {
+      "id": 1140102,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101402
+    },
+    "1140103": {
+      "id": 1140103,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101405
+    },
+    "1140104": {
+      "id": 1140104,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101406
+    },
+    "1150101": {
+      "id": 1150101,
+      "nextId": 1150102,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101501
+    },
+    "1150102": {
+      "id": 1150102,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101502
+    },
+    "1150103": {
+      "id": 1150103,
+      "nextId": 1150104,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101506
+    },
+    "1150104": {
+      "id": 1150104,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101507
+    },
+    "1150105": {
+      "id": 1150105,
+      "nextId": 1150106,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101508
+    },
+    "1150106": {
+      "id": 1150106,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101509
+    },
+    "1150107": {
+      "id": 1150107,
+      "nextId": 1150108,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101510
+    },
+    "1150108": {
+      "id": 1150108,
+      "speaker": 1911100000,
+      "speakerType": 1,
+      "content": 1911101511
+    }
+  }
+}

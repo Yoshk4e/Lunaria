@@ -1,0 +1,67 @@
+syntax = "proto3";
+package msg;
+
+message GachaCost
+{
+    uint32 type   = 1;
+    uint64 amount = 2;
+}
+
+message GachaPoolInfo
+{
+    uint32 pool_id              = 1; 
+    uint32 total_count          = 2; 
+    uint32 level4_item_remain   = 3; 
+    uint32 level5_item_remain   = 4; 
+    uint32 claimed_rewards_mask = 5; 
+    uint32 daily_count          = 6; 
+    uint32 ret                  = 7; 
+}
+
+
+
+message CSDoGacha
+{
+    uint32 pool_id = 1; 
+    bool   is_mult = 2; 
+}
+
+
+
+message SCDoGachaResult
+{
+    int32         result    = 1; 
+    GachaCost     cost      = 2; 
+    GachaPoolInfo pool_info = 3; 
+}
+
+
+
+message CSGetPoolInfo
+{
+    repeated uint32 pool_id = 1; 
+}
+
+
+
+message SCGetPoolInfo
+{
+    int32                  result    = 1; 
+    repeated GachaPoolInfo pool_info = 2; 
+}
+
+
+
+message CSGetAccumulatedRewards
+{
+    uint32 pool_id = 1; 
+}
+
+
+
+message SCGetAccumulatedRewards
+{
+    int32  result               = 1; 
+    uint32 pool_id              = 2; 
+    uint32 claimed_rewards_mask = 3; 
+}

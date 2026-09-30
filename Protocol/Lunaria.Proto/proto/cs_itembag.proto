@@ -1,0 +1,103 @@
+syntax = "proto3";
+package msg;
+
+import "comm_data.proto";
+import "comm_macro.proto";
+
+
+message CmdItemCD
+{
+    uint32 type = 1;     
+    uint32 cd_time = 2;    
+}
+
+
+
+message CSItemBagGetList
+{
+}
+
+
+
+message SCItemBagGetList
+{
+    repeated CmdItem items = 1;
+    int32 result = 2;
+    repeated CmdItemCD item_cds = 3; 
+}
+
+
+
+message SCItemBagChangeNtf
+{
+    EnmItemReason reason = 1;   
+    repeated CmdItem items = 2; 
+}
+
+
+
+message CSItemUseCount
+{
+    uint32 item_id = 1;     
+    uint32 item_num = 2;    
+    repeated uint64 params = 3;
+};
+
+
+
+message SCItemUseCount
+{
+    int32 result = 1;
+    uint32 item_id = 2;  
+    uint32 success = 3;  
+    uint32 total = 4;    
+};
+
+
+message PreciousAward
+{
+    uint32 item_id = 1;
+    bool is_new = 2;    
+    repeated ItemIdCount repeat_convert = 3;    
+    repeated ItemIdCount extra_items = 4;    
+}
+
+
+
+message SCPreciousAwardShowNtf
+{
+    EnmItemReason source = 1;
+    repeated PreciousAward items = 2; 
+}
+
+
+
+message SCItemCDNtf
+{
+    CmdItemCD cd = 1; 
+}
+
+
+
+message SCItemAddErrorNtf
+{
+    uint32 item_id = 1;
+    int32 result = 2;
+}
+
+
+message ShowAwardInfo
+{
+    uint32 item_id = 1;
+    uint32 item_count = 2;
+    bool is_new = 3;    
+}
+
+
+
+message SCAwardShowNtf
+{
+    repeated ShowAwardInfo items = 1; 
+    EnmAwardShowType type = 2;
+    EnmItemReason source = 3;
+}

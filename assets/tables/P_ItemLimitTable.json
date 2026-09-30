@@ -1,0 +1,14 @@
+{
+  "P_ItemLimitTable": {
+    "1": {
+      "id": 1,
+      "limit": 4294967295,
+      "itemType": "Currency#0"
+    },
+    "2": {
+      "id": 2,
+      "limit": 999999,
+      "itemType": "PlayerData#0$General#0$CharacterCard#0"
+    }
+  }
+}

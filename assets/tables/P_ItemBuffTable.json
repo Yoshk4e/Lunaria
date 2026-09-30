@@ -1,0 +1,148 @@
+{
+  "P_ItemBuffTable": {
+    "1": {
+      "id": 1,
+      "satiety": 1,
+      "buffList": [
+        1
+      ],
+      "buffIcon": "/Game/UI/Common/Atlas/Icon/ShopItemIcon/icon_commodity_buff_reply_02.icon_commodity_buff_reply_02"
+    },
+    "2": {
+      "id": 2,
+      "satiety": 1,
+      "buffList": [
+        2
+      ],
+      "buffIcon": "/Game/UI/Common/Atlas/Icon/ShopItemIcon/icon_commodity_buff_reply_02.icon_commodity_buff_reply_02"
+    },
+    "3": {
+      "id": 3,
+      "satiety": 2,
+      "buffList": [
+        3
+      ],
+      "buffIcon": "/Game/UI/Common/Atlas/Icon/ShopItemIcon/icon_commodity_buff_reply_02.icon_commodity_buff_reply_02"
+    },
+    "4": {
+      "id": 4,
+      "satiety": 1,
+      "buffList": [
+        4
+      ],
+      "buffIcon": "/Game/UI/Common/Atlas/Icon/ShopItemIcon/icon_commodity_buff_reply_02.icon_commodity_buff_reply_02"
+    },
+    "5": {
+      "id": 5,
+      "satiety": 1,
+      "buffList": [
+        5
+      ],
+      "buffIcon": "/Game/UI/Common/Atlas/Icon/ShopItemIcon/icon_commodity_buff_reply_02.icon_commodity_buff_reply_02"
+    },
+    "6": {
+      "id": 6,
+      "satiety": 2,
+      "buffList": [
+        6
+      ],
+      "buffIcon": "/Game/UI/Common/Atlas/Icon/ShopItemIcon/icon_commodity_buff_reply_02.icon_commodity_buff_reply_02"
+    },
+    "7": {
+      "id": 7,
+      "satiety": 1,
+      "buffList": [
+        7
+      ],
+      "buffIcon": "/Game/UI/Common/Atlas/Icon/ShopItemIcon/icon_commodity_buff_reply_02.icon_commodity_buff_reply_02"
+    },
+    "8": {
+      "id": 8,
+      "satiety": 4,
+      "buffList": [
+        8
+      ],
+      "buffIcon": "/Game/UI/Common/Atlas/Icon/ShopItemIcon/icon_commodity_buff_reply_02.icon_commodity_buff_reply_02"
+    },
+    "9": {
+      "id": 9,
+      "satiety": 8,
+      "buffList": [
+        9
+      ],
+      "buffIcon": "/Game/UI/Common/Atlas/Icon/ShopItemIcon/icon_commodity_buff_reply_02.icon_commodity_buff_reply_02"
+    },
+    "10": {
+      "id": 10,
+      "satiety": 1,
+      "buffList": [
+        10
+      ],
+      "buffIcon": "/Game/UI/Common/Atlas/Icon/ShopItemIcon/icon_commodity_buff_skill_02.icon_commodity_buff_skill_02"
+    },
+    "11": {
+      "id": 11,
+      "satiety": 4,
+      "buffList": [
+        11
+      ],
+      "buffIcon": "/Game/UI/Common/Atlas/Icon/ShopItemIcon/icon_commodity_buff_skill_02.icon_commodity_buff_skill_02"
+    },
+    "12": {
+      "id": 12,
+      "satiety": 8,
+      "buffList": [
+        12
+      ],
+      "buffIcon": "/Game/UI/Common/Atlas/Icon/ShopItemIcon/icon_commodity_buff_skill_02.icon_commodity_buff_skill_02"
+    },
+    "13": {
+      "id": 13,
+      "satiety": 1,
+      "buffList": [
+        13
+      ],
+      "buffIcon": "/Game/UI/Common/Atlas/Icon/ShopItemIcon/icon_commodity_buff_skill_02.icon_commodity_buff_skill_02"
+    },
+    "14": {
+      "id": 14,
+      "satiety": 2,
+      "buffList": [
+        14
+      ],
+      "buffIcon": "/Game/UI/Common/Atlas/Icon/ShopItemIcon/icon_commodity_buff_skill_02.icon_commodity_buff_skill_02"
+    },
+    "15": {
+      "id": 15,
+      "satiety": 4,
+      "buffList": [
+        15
+      ],
+      "buffIcon": "/Game/UI/Common/Atlas/Icon/ShopItemIcon/icon_commodity_buff_skill_02.icon_commodity_buff_skill_02"
+    },
+    "16": {
+      "id": 16,
+      "satiety": 1,
+      "buffList": [
+        16
+      ],
+      "buffIcon": "/Game/UI/Common/Atlas/Icon/ShopItemIcon/icon_commodity_buff_skill_02.icon_commodity_buff_skill_02"
+    },
+    "17": {
+      "id": 17,
+      "satiety": 4,
+      "buffList": [
+        17
+      ],
+      "buffIcon": "/Game/UI/Common/Atlas/Icon/ShopItemIcon/icon_commodity_buff_skill_02.icon_commodity_buff_skill_02"
+    },
+    "18": {
+      "id": 18,
+      "satiety": 8,
+      "buffList": [
+        18
+      ],
+      "buffIcon": "/Game/UI/Common/Atlas/Icon/ShopItemIcon/icon_commodity_buff_skill_02.icon_commodity_buff_skill_02"
+    }
+  }
+}

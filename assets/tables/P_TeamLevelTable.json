@@ -1,0 +1,399 @@
+{
+  "P_TeamLevelTable": {
+    "1": {
+      "id": 1,
+      "requireTeamExp": 450,
+      "maximumExp": 100000
+    },
+    "2": {
+      "id": 2,
+      "requireTeamExp": 500,
+      "maximumExp": 100000
+    },
+    "3": {
+      "id": 3,
+      "requireTeamExp": 550,
+      "maximumExp": 100000
+    },
+    "4": {
+      "id": 4,
+      "requireTeamExp": 600,
+      "maximumExp": 100000
+    },
+    "5": {
+      "id": 5,
+      "requireTeamExp": 650,
+      "maximumExp": 100000
+    },
+    "6": {
+      "id": 6,
+      "requireTeamExp": 700,
+      "maximumExp": 100000
+    },
+    "7": {
+      "id": 7,
+      "requireTeamExp": 750,
+      "maximumExp": 100000
+    },
+    "8": {
+      "id": 8,
+      "requireTeamExp": 800,
+      "maximumExp": 100000
+    },
+    "9": {
+      "id": 9,
+      "requireTeamExp": 850,
+      "maximumExp": 100000
+    },
+    "10": {
+      "id": 10,
+      "requireTeamExp": 1500,
+      "maximumExp": 100000
+    },
+    "11": {
+      "id": 11,
+      "requireTeamExp": 1500,
+      "maximumExp": 100000
+    },
+    "12": {
+      "id": 12,
+      "requireTeamExp": 1500,
+      "maximumExp": 100000
+    },
+    "13": {
+      "id": 13,
+      "requireTeamExp": 1500,
+      "maximumExp": 100000
+    },
+    "14": {
+      "id": 14,
+      "requireTeamExp": 1500,
+      "maximumExp": 100000
+    },
+    "15": {
+      "id": 15,
+      "requireTeamExp": 1500,
+      "maximumExp": 100000
+    },
+    "16": {
+      "id": 16,
+      "requireTeamExp": 1500,
+      "maximumExp": 100000
+    },
+    "17": {
+      "id": 17,
+      "requireTeamExp": 1500,
+      "maximumExp": 100000
+    },
+    "18": {
+      "id": 18,
+      "requireTeamExp": 1500,
+      "maximumExp": 100000
+    },
+    "19": {
+      "id": 19,
+      "requireTeamExp": 1500,
+      "maximumExp": 100000
+    },
+    "20": {
+      "id": 20,
+      "requireTeamExp": 1500,
+      "maximumExp": 100000
+    },
+    "21": {
+      "id": 21,
+      "requireTeamExp": 1550,
+      "maximumExp": 100000
+    },
+    "22": {
+      "id": 22,
+      "requireTeamExp": 1600,
+      "maximumExp": 100000
+    },
+    "23": {
+      "id": 23,
+      "requireTeamExp": 1650,
+      "maximumExp": 100000
+    },
+    "24": {
+      "id": 24,
+      "requireTeamExp": 1700,
+      "maximumExp": 100000
+    },
+    "25": {
+      "id": 25,
+      "requireTeamExp": 1750,
+      "maximumExp": 100000
+    },
+    "26": {
+      "id": 26,
+      "requireTeamExp": 1800,
+      "maximumExp": 100000
+    },
+    "27": {
+      "id": 27,
+      "requireTeamExp": 1850,
+      "maximumExp": 100000
+    },
+    "28": {
+      "id": 28,
+      "requireTeamExp": 1900,
+      "maximumExp": 100000
+    },
+    "29": {
+      "id": 29,
+      "requireTeamExp": 1950,
+      "maximumExp": 100000
+    },
+    "30": {
+      "id": 30,
+      "requireTeamExp": 2000,
+      "maximumExp": 100000
+    },
+    "31": {
+      "id": 31,
+      "requireTeamExp": 2700,
+      "maximumExp": 100000
+    },
+    "32": {
+      "id": 32,
+      "requireTeamExp": 3400,
+      "maximumExp": 100000
+    },
+    "33": {
+      "id": 33,
+      "requireTeamExp": 4100,
+      "maximumExp": 100000
+    },
+    "34": {
+      "id": 34,
+      "requireTeamExp": 4800,
+      "maximumExp": 100000
+    },
+    "35": {
+      "id": 35,
+      "requireTeamExp": 5500,
+      "maximumExp": 100000
+    },
+    "36": {
+      "id": 36,
+      "requireTeamExp": 6200,
+      "maximumExp": 100000
+    },
+    "37": {
+      "id": 37,
+      "requireTeamExp": 6900,
+      "maximumExp": 100000
+    },
+    "38": {
+      "id": 38,
+      "requireTeamExp": 7600,
+      "maximumExp": 100000
+    },
+    "39": {
+      "id": 39,
+      "requireTeamExp": 8300,
+      "maximumExp": 100000
+    },
+    "40": {
+      "id": 40,
+      "requireTeamExp": 9000,
+      "maximumExp": 100000
+    },
+    "41": {
+      "id": 41,
+      "requireTeamExp": 9900,
+      "maximumExp": 100000
+    },
+    "42": {
+      "id": 42,
+      "requireTeamExp": 10800,
+      "maximumExp": 100000
+    },
+    "43": {
+      "id": 43,
+      "requireTeamExp": 11700,
+      "maximumExp": 100000
+    },
+    "44": {
+      "id": 44,
+      "requireTeamExp": 12600,
+      "maximumExp": 100000
+    },
+    "45": {
+      "id": 45,
+      "requireTeamExp": 13500,
+      "maximumExp": 100000
+    },
+    "46": {
+      "id": 46,
+      "requireTeamExp": 14400,
+      "maximumExp": 100000
+    },
+    "47": {
+      "id": 47,
+      "requireTeamExp": 15300,
+      "maximumExp": 100000
+    },
+    "48": {
+      "id": 48,
+      "requireTeamExp": 16200,
+      "maximumExp": 100000
+    },
+    "49": {
+      "id": 49,
+      "requireTeamExp": 17100,
+      "maximumExp": 100000
+    },
+    "50": {
+      "id": 50,
+      "requireTeamExp": 18000,
+      "maximumExp": 100000
+    },
+    "51": {
+      "id": 51,
+      "requireTeamExp": 18900,
+      "maximumExp": 100000
+    },
+    "52": {
+      "id": 52,
+      "requireTeamExp": 19800,
+      "maximumExp": 100000
+    },
+    "53": {
+      "id": 53,
+      "requireTeamExp": 20700,
+      "maximumExp": 100000
+    },
+    "54": {
+      "id": 54,
+      "requireTeamExp": 21600,
+      "maximumExp": 100000
+    },
+    "55": {
+      "id": 55,
+      "requireTeamExp": 22500,
+      "maximumExp": 100000
+    },
+    "56": {
+      "id": 56,
+      "requireTeamExp": 23400,
+      "maximumExp": 100000
+    },
+    "57": {
+      "id": 57,
+      "requireTeamExp": 24300,
+      "maximumExp": 100000
+    },
+    "58": {
+      "id": 58,
+      "requireTeamExp": 25200,
+      "maximumExp": 100000
+    },
+    "59": {
+      "id": 59,
+      "requireTeamExp": 26100,
+      "maximumExp": 100000
+    },
+    "60": {
+      "id": 60,
+      "requireTeamExp": 27000,
+      "maximumExp": 100000
+    },
+    "61": {
+      "id": 61,
+      "requireTeamExp": 28350,
+      "maximumExp": 100000
+    },
+    "62": {
+      "id": 62,
+      "requireTeamExp": 29700,
+      "maximumExp": 100000
+    },
+    "63": {
+      "id": 63,
+      "requireTeamExp": 31050,
+      "maximumExp": 100000
+    },
+    "64": {
+      "id": 64,
+      "requireTeamExp": 32400,
+      "maximumExp": 100000
+    },
+    "65": {
+      "id": 65,
+      "requireTeamExp": 33750,
+      "maximumExp": 100000
+    },
+    "66": {
+      "id": 66,
+      "requireTeamExp": 35100,
+      "maximumExp": 100000
+    },
+    "67": {
+      "id": 67,
+      "requireTeamExp": 36450,
+      "maximumExp": 100000
+    },
+    "68": {
+      "id": 68,
+      "requireTeamExp": 37800,
+      "maximumExp": 100000
+    },
+    "69": {
+      "id": 69,
+      "requireTeamExp": 39150,
+      "maximumExp": 100000
+    },
+    "70": {
+      "id": 70,
+      "requireTeamExp": 40500,
+      "maximumExp": 100000
+    },
+    "71": {
+      "id": 71,
+      "requireTeamExp": 43200,
+      "maximumExp": 100000
+    },
+    "72": {
+      "id": 72,
+      "requireTeamExp": 45900,
+      "maximumExp": 100000
+    },
+    "73": {
+      "id": 73,
+      "requireTeamExp": 48600,
+      "maximumExp": 100000
+    },
+    "74": {
+      "id": 74,
+      "requireTeamExp": 51300,
+      "maximumExp": 100000
+    },
+    "75": {
+      "id": 75,
+      "requireTeamExp": 54000,
+      "maximumExp": 100000
+    },
+    "76": {
+      "id": 76,
+      "requireTeamExp": 59400,
+      "maximumExp": 100000
+    },
+    "77": {
+      "id": 77,
+      "requireTeamExp": 64800,
+      "maximumExp": 100000
+    },
+    "78": {
+      "id": 78,
+      "requireTeamExp": 70200,
+      "maximumExp": 100000
+    },
+    "79": {
+      "id": 79,
+      "requireTeamExp": 75600,
+      "maximumExp": 100000
+    }
+  }
+}

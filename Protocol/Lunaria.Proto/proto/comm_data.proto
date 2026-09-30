@@ -1,0 +1,284 @@
+syntax = "proto3";
+
+package msg;
+option  go_package = "proto/GameMsg";
+import "comm_macro.proto";
+
+
+message AccessAuth 
+{
+    bytes token       = 1; 
+    uint32 expire_time = 2; 
+}
+
+enum PlayerAttrType
+{
+    ENM_PLAYER_ATTR_INVALID          = 0;
+    ENM_PLAYER_ATTR_COIN             = 1; 
+    ENM_PLAYER_ATTR_SATIETY          = 2; 
+    ENM_PLAYER_ATTR_STAMINA_CUR      = 3; 
+    ENM_PLAYER_ATTR_STAMINA_FULLTIME = 4; 
+}
+
+
+message PlayerAttr
+{
+    int32 attr_type = 1; 
+    oneof value
+    {
+        int32  value_int32  = 2;
+        uint32 value_uint32 = 3;
+        int64  value_int64  = 4;
+        uint64 value_uint64 = 5;
+        bytes value_bytes = 6;
+    }
+}
+
+
+message PlayerMoney
+{
+    int32 type   = 1;
+    int64 amount = 2;
+}
+
+
+message RoleBaseInfo
+{
+    uint64                    role_id              = 1;  
+    bytes                    role_name            = 2;  
+    int32                     role_level           = 3;  
+    EnmGender                 gender               = 4;  
+    repeated PlayerAttr       player_attr          = 5;  
+
+    PlayerLevelData           level_Data           = 10;
+    repeated PlayerMoney      money                = 11;
+    bytes                     second_role_name = 12;
+}
+
+
+message RoleMapInfo
+{
+    uint32 current_gametime = 1;  
+    uint32 current_weather = 2;  
+}
+
+message CmdMotiveData
+{
+    uint64 motive_uniq_id = 1; 
+    uint64 claim_time = 2;     
+    uint32 level = 3;          
+    uint32 refine = 4;         
+    uint32 lock_state = 5;     
+    uint32 exp = 6;            
+    uint32 break_level = 7;    
+}
+
+
+message CmdItem {
+    uint32 item_id = 1;     
+    uint32 item_num = 2;    
+    bool is_new = 3;
+    uint64 bind_id = 4;     
+    oneof item_uniq_data {
+        CmdMotiveData motive_data = 5;
+    }
+}
+
+
+message RoleInfo
+{
+    RoleBaseInfo base_info   = 1; 
+    RoleMapInfo  map_info    = 2; 
+    GlobalConf   global_conf = 3; 
+}
+
+
+message ItemIdCount
+{
+    uint32 item_id = 1; 
+    uint32 count   = 2; 
+}
+
+
+message Vector3Int 
+{
+    int32 x = 1;
+    int32 y = 2;
+    int32 z = 3;
+}
+
+
+message Rotator 
+{
+    int32 yaw   = 1;
+    int32 pitch = 2;
+    int32 roll  = 3;
+}
+
+
+message ElementParamMap 
+{
+    int32 fire      = 1; 
+    int32 ice       = 2; 
+    int32 thunder   = 3; 
+    int32 gravity   = 4; 
+    int32 radiate   = 5; 
+    int32 silver    = 6; 
+    int32 blackiron = 7; 
+}
+
+message TaskAction
+{
+    uint64 action_id = 1;
+    uint32 progress  = 2; 
+    uint32 max_progress  = 3; 
+}
+
+message TaskStep
+{
+    uint64              step_id = 1;
+    repeated TaskAction actions = 2; 
+}
+
+message TaskData
+{
+    uint32   task_id      = 1;
+    uint32   task_type    = 2;
+    TaskStep current_step = 3; 
+}
+
+message PlayerTaskData
+{
+    repeated TaskData processing_tasks = 2; 
+    repeated TaskData finished_tasks   = 3; 
+}
+
+
+message PlayerLevelData 
+{
+    uint32 world_level_max = 1; 
+    uint32 world_level_cur = 2; 
+    uint32 team_level      = 3; 
+    uint32 team_exp        = 4; 
+}
+
+
+message GlobalConf
+{
+
+    int32 satiety_limit            = 2; 
+    int32 stamina_regen_max        = 3; 
+    int32 max_stamina              = 4; 
+    int32 stamina_regen_interval   = 5; 
+    int32 max_silver_creature_cost = 6; 
+    int32 max_silver_creature_num  = 7; 
+    int32 unlock_collection_range = 8; 
+    bytes launch_date = 9; 
+    int32 max_bag_cell  = 10;
+}
+
+message MailTemplateContentParam {
+    bytes param = 1;
+}
+
+message MailContent {
+    bytes language = 1;
+    bytes title = 2;
+    bytes from = 3;
+    bytes content = 4;
+}
+
+message MailData {
+    uint32 mail_id = 1;
+    bool important = 4;  
+    repeated ItemIdCount items = 6;  
+    bool open = 7;  
+    uint32 time = 8;
+    uint32 template_id = 9;  
+    repeated MailTemplateContentParam template_content_params = 10;  
+    bool has_rcv_attach = 11;  
+    uint32 type = 12;  
+    uint32 expire_time = 13;
+    repeated MailContent contents = 14;
+}
+
+
+
+message GmMailContent {
+    uint32 contentId = 1;    
+    string languageType = 2; 
+    string title = 3;        
+    string content = 4;      
+    string sender = 5;       
+}
+
+
+message GmMailAttachment {
+    uint32 attachmentId = 1; 
+    string propId = 2;       
+    string propType = 3;     
+    string propName = 4;     
+    uint32 propCount = 5;    
+    string propIconUrl = 6;  
+    uint32 mailId = 7;       
+    string createUser = 8;   
+    uint64 createTime = 9;   
+}
+
+
+message GmMailData {
+    uint32 mailId = 1;                            
+    string project = 2;                           
+    uint32 mailStatus = 3;                        
+    uint32 mailTimerType = 4;                     
+    uint64 pushTime = 5;                          
+    uint64 updateTime = 6;                        
+    uint64 validateDay = 7;                       
+    repeated GmMailContent contentList = 8;       
+    repeated GmMailAttachment attachmentList = 9; 
+    uint64 windowPhase = 10;                      
+    uint64 createTime = 11;                       
+    uint32 isDeleteCollect = 12;                  
+}
+
+
+message NoticeData {
+    uint32 notice_id = 1;         
+    uint32 notice_type = 2;       
+    bytes short_title = 3;       
+    bytes long_title = 4;        
+    bytes content = 5;           
+    uint64 push_time = 6;         
+    uint64 create_time = 7;       
+    uint64 end_time = 8;          
+    uint32 login_force_popup = 9; 
+}
+
+
+message GmNoticeContent {
+    uint32 noticeContentId = 1; 
+    uint32 noticeId = 2;        
+    string languageType = 3;    
+    string shortTitle = 4;      
+    string longTitle = 5;       
+    string noticeContent = 6;   
+    string createUser = 7;      
+    uint64 createTime = 8;      
+}
+
+
+message GmNoticeData {
+    uint32 noticeId = 1;                      
+    string project = 2;                       
+    uint32 noticeType = 3;                    
+    uint32 noticeStatus = 4;                  
+    uint32 noticeTimerType = 5;               
+    string noticeDesc = 6;                    
+    uint64 updateTime = 7;                    
+    repeated GmNoticeContent contentList = 8; 
+    uint32 isDelete = 9;                      
+    uint64 pushTime = 10;                     
+    uint64 createTime = 11;                   
+    uint64 endTime = 12;                      
+    uint32 loginForcePopup = 13;              
+}

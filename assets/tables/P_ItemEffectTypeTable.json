@@ -1,0 +1,67 @@
+{
+  "P_ItemEffectTypeTable": {
+    "101": {
+      "id": 101,
+      "revive": 0,
+      "effectType": 1,
+      "buffIcon": "/Game/UI/Common/Atlas/Icon/ShopItemIcon/icon_commodity_foodbuff_life.icon_commodity_foodbuff_life",
+      "cd": 0
+    },
+    "102": {
+      "id": 102,
+      "revive": 0,
+      "effectType": 2,
+      "buffIcon": "/Game/UI/Common/Atlas/Icon/ShopItemIcon/icon_commodity_foodbuff_skill.icon_commodity_foodbuff_skill",
+      "cd": 0
+    },
+    "103": {
+      "id": 103,
+      "revive": 0,
+      "effectType": 3,
+      "buffIcon": "/Game/UI/Common/Atlas/Icon/ShopItemIcon/icon_commodity_foodbuff_skill.icon_commodity_foodbuff_skill",
+      "cd": 0
+    },
+    "104": {
+      "id": 104,
+      "revive": 0,
+      "effectType": 1,
+      "buffIcon": "/Game/UI/Common/Atlas/Icon/ShopItemIcon/icon_commodity_foodbuff_attack.icon_commodity_foodbuff_attack",
+      "cd": 5
+    },
+    "105": {
+      "id": 105,
+      "revive": 0,
+      "effectType": 1,
+      "buffIcon": "/Game/UI/Common/Atlas/Icon/ShopItemIcon/icon_commodity_foodbuff_defense.icon_commodity_foodbuff_defense",
+      "cd": 5
+    },
+    "106": {
+      "id": 106,
+      "revive": 1,
+      "effectType": 1,
+      "buffIcon": "/Game/UI/Common/Atlas/Icon/ShopItemIcon/icon_commodity_foodbuff_resurrection.icon_commodity_foodbuff_resurrection",
+      "cd": 5
+    },
+    "107": {
+      "id": 107,
+      "revive": 0,
+      "effectType": 1,
+      "buffIcon": "/Game/UI/Common/Atlas/Icon/ShopItemIcon/icon_commodity_foodbuff_other.icon_commodity_foodbuff_other",
+      "cd": 5
+    },
+    "201": {
+      "id": 201,
+      "revive": 0,
+      "effectType": 1,
+      "buffIcon": "/Game/UI/Common/Atlas/Icon/ShopItemIcon/icon_commodity_buff_reply_02.icon_commodity_buff_reply_02",
+      "cd": 0
+    },
+    "202": {
+      "id": 202,
+      "revive": 0,
+      "effectType": 2,
+      "buffIcon": "/Game/UI/Common/Atlas/Icon/ShopItemIcon/icon_commodity_buff_skill_02.icon_commodity_buff_skill_02",
+      "cd": 0
+    }
+  }
+}

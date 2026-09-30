@@ -1,0 +1,128 @@
+
+syntax = "proto3";
+package msg;
+
+import "comm_data.proto";
+
+
+
+message CSSavePointUnlock
+{
+    uint64 savepoint_id = 1;    
+}
+
+
+
+message SCSavePointUnlock
+{
+    int32 result = 1;
+    uint64 savepoint_id = 2;
+}
+
+
+
+message CSLocationSync
+{
+    Vector3Int location = 1;
+    uint64 map_id = 2;    
+    uint32 using_member_slot = 3; 
+}
+
+
+
+message CSNpcDialogue
+{
+    uint64 NPC_id = 1;
+}
+
+
+
+message CSEntityOperation
+{
+    uint64 entity_id = 1;
+    uint32 target_status = 2;
+}
+
+
+
+message CSSavePointSync
+{
+    uint64 savepoint_id = 1;    
+}
+
+
+
+message SCSavePointSync
+{
+    int32 result = 1;
+    uint64 savepoint_id = 2;
+}
+
+
+
+message SCGameTimeSlipNtf
+{
+    uint32 slip_to_time = 1;    
+    uint32 cur_weather = 2;     
+    uint32 pass_time = 3;       
+}
+
+
+
+message CSGameTimeSetupReq
+{
+    uint32 pass_time = 1;    
+    uint32 weather = 2;      
+}
+
+
+
+message SCGameTimeSetupRes
+{
+    int32 result = 1;
+    uint32 pass_time = 2;
+    uint32 weather = 3;
+}
+
+message ExposeBattle
+{
+    uint64 battle_id = 1;   
+    uint32 weight = 2;      
+}
+
+message ExposeNpcGroupData
+{
+    uint64 npc_group_id = 1;
+    repeated ExposeBattle battle_list = 2;  
+}
+
+
+
+message CSExposeGetMonsterList 
+{
+    uint64 subregion = 1;
+}
+
+
+
+message SCExposeGetMonsterList 
+{
+    uint32 result = 1;
+    uint64 subregion = 2;
+    repeated ExposeNpcGroupData npcgroup_data = 3;
+}
+
+
+
+message CSReqUnlockTeleport
+{
+    uint64 teleport_id = 1; 
+}
+
+
+
+message SCResUnlockTeleport
+{
+    uint64 teleport_id = 1; 
+    uint32 result = 2; 
+}

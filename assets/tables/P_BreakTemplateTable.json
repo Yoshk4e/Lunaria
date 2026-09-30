@@ -1,0 +1,939 @@
+{
+  "P_BreakTemplateTable": {
+    "10010": {
+      "id": 10010,
+      "templateId": 1001,
+      "breakLevel": 0,
+      "maxLevel": 20,
+      "needWorldLevel": 2,
+      "costItemId": [
+        11730001
+      ],
+      "costItemCount": [
+        5
+      ],
+      "costCurrency": 7500
+    },
+    "10011": {
+      "id": 10011,
+      "templateId": 1001,
+      "breakLevel": 1,
+      "maxLevel": 30,
+      "needWorldLevel": 3,
+      "costItemId": [
+        11730001,
+        14020002,
+        41030001
+      ],
+      "costItemCount": [
+        10,
+        5,
+        4
+      ],
+      "costCurrency": 12500,
+      "developAttributeId": 1001201
+    },
+    "10012": {
+      "id": 10012,
+      "templateId": 1001,
+      "breakLevel": 2,
+      "maxLevel": 40,
+      "needWorldLevel": 4,
+      "costItemId": [
+        11730001,
+        14020002,
+        41030001
+      ],
+      "costItemCount": [
+        15,
+        10,
+        8
+      ],
+      "costCurrency": 25000,
+      "developAttributeId": 1001202
+    },
+    "10013": {
+      "id": 10013,
+      "templateId": 1001,
+      "breakLevel": 3,
+      "maxLevel": 50,
+      "needWorldLevel": 5,
+      "costItemId": [
+        11730001,
+        14020002,
+        41030001
+      ],
+      "costItemCount": [
+        25,
+        20,
+        16
+      ],
+      "costCurrency": 62500,
+      "developAttributeId": 1001203
+    },
+    "10014": {
+      "id": 10014,
+      "templateId": 1001,
+      "breakLevel": 4,
+      "maxLevel": 60,
+      "needWorldLevel": 6,
+      "costItemId": [
+        11730001,
+        14020002,
+        41030001
+      ],
+      "costItemCount": [
+        30,
+        25,
+        20
+      ],
+      "costCurrency": 125000,
+      "developAttributeId": 1001204
+    },
+    "10015": {
+      "id": 10015,
+      "templateId": 1001,
+      "breakLevel": 5,
+      "maxLevel": 70,
+      "needWorldLevel": 7,
+      "costItemId": [
+        11730001,
+        14020002,
+        41030001
+      ],
+      "costItemCount": [
+        35,
+        30,
+        24
+      ],
+      "costCurrency": 250000,
+      "developAttributeId": 1001205
+    },
+    "10016": {
+      "id": 10016,
+      "templateId": 1001,
+      "breakLevel": 6,
+      "maxLevel": 80,
+      "developAttributeId": 1001206
+    },
+    "10030": {
+      "id": 10030,
+      "templateId": 1003,
+      "breakLevel": 0,
+      "maxLevel": 20,
+      "needWorldLevel": 2,
+      "costItemId": [
+        11730001
+      ],
+      "costItemCount": [
+        5
+      ],
+      "costCurrency": 7500,
+      "developAttributeId": 0
+    },
+    "10031": {
+      "id": 10031,
+      "templateId": 1003,
+      "breakLevel": 1,
+      "maxLevel": 30,
+      "needWorldLevel": 3,
+      "costItemId": [
+        11730001,
+        14020001,
+        41030004
+      ],
+      "costItemCount": [
+        10,
+        5,
+        4
+      ],
+      "costCurrency": 12500,
+      "developAttributeId": 1003201
+    },
+    "10032": {
+      "id": 10032,
+      "templateId": 1003,
+      "breakLevel": 2,
+      "maxLevel": 40,
+      "needWorldLevel": 4,
+      "costItemId": [
+        11730001,
+        14020001,
+        41030004
+      ],
+      "costItemCount": [
+        15,
+        10,
+        8
+      ],
+      "costCurrency": 25000,
+      "developAttributeId": 1003202
+    },
+    "10033": {
+      "id": 10033,
+      "templateId": 1003,
+      "breakLevel": 3,
+      "maxLevel": 50,
+      "needWorldLevel": 5,
+      "costItemId": [
+        11730001,
+        14020001,
+        41030004
+      ],
+      "costItemCount": [
+        25,
+        20,
+        16
+      ],
+      "costCurrency": 62500,
+      "developAttributeId": 1003203
+    },
+    "10034": {
+      "id": 10034,
+      "templateId": 1003,
+      "breakLevel": 4,
+      "maxLevel": 60,
+      "needWorldLevel": 6,
+      "costItemId": [
+        11730001,
+        14020001,
+        41030004
+      ],
+      "costItemCount": [
+        30,
+        25,
+        20
+      ],
+      "costCurrency": 125000,
+      "developAttributeId": 1003204
+    },
+    "10035": {
+      "id": 10035,
+      "templateId": 1003,
+      "breakLevel": 5,
+      "maxLevel": 70,
+      "needWorldLevel": 7,
+      "costItemId": [
+        11730001,
+        14020001,
+        41030004
+      ],
+      "costItemCount": [
+        35,
+        30,
+        24
+      ],
+      "costCurrency": 250000,
+      "developAttributeId": 1003205
+    },
+    "10036": {
+      "id": 10036,
+      "templateId": 1003,
+      "breakLevel": 6,
+      "maxLevel": 80,
+      "developAttributeId": 1003206
+    },
+    "10040": {
+      "id": 10040,
+      "templateId": 1004,
+      "breakLevel": 0,
+      "maxLevel": 20,
+      "needWorldLevel": 2,
+      "costItemId": [
+        11730001
+      ],
+      "costItemCount": [
+        5
+      ],
+      "costCurrency": 7500,
+      "developAttributeId": 0
+    },
+    "10041": {
+      "id": 10041,
+      "templateId": 1004,
+      "breakLevel": 1,
+      "maxLevel": 30,
+      "needWorldLevel": 3,
+      "costItemId": [
+        11730001,
+        14020002,
+        41030003
+      ],
+      "costItemCount": [
+        10,
+        5,
+        4
+      ],
+      "costCurrency": 12500,
+      "developAttributeId": 1004201
+    },
+    "10042": {
+      "id": 10042,
+      "templateId": 1004,
+      "breakLevel": 2,
+      "maxLevel": 40,
+      "needWorldLevel": 4,
+      "costItemId": [
+        11730001,
+        14020002,
+        41030003
+      ],
+      "costItemCount": [
+        15,
+        10,
+        8
+      ],
+      "costCurrency": 25000,
+      "developAttributeId": 1004202
+    },
+    "10043": {
+      "id": 10043,
+      "templateId": 1004,
+      "breakLevel": 3,
+      "maxLevel": 50,
+      "needWorldLevel": 5,
+      "costItemId": [
+        11730001,
+        14020002,
+        41030003
+      ],
+      "costItemCount": [
+        25,
+        20,
+        16
+      ],
+      "costCurrency": 62500,
+      "developAttributeId": 1004203
+    },
+    "10044": {
+      "id": 10044,
+      "templateId": 1004,
+      "breakLevel": 4,
+      "maxLevel": 60,
+      "needWorldLevel": 6,
+      "costItemId": [
+        11730001,
+        14020002,
+        41030003
+      ],
+      "costItemCount": [
+        30,
+        25,
+        20
+      ],
+      "costCurrency": 125000,
+      "developAttributeId": 1004204
+    },
+    "10045": {
+      "id": 10045,
+      "templateId": 1004,
+      "breakLevel": 5,
+      "maxLevel": 70,
+      "needWorldLevel": 7,
+      "costItemId": [
+        11730001,
+        14020002,
+        41030003
+      ],
+      "costItemCount": [
+        35,
+        30,
+        24
+      ],
+      "costCurrency": 250000,
+      "developAttributeId": 1004205
+    },
+    "10046": {
+      "id": 10046,
+      "templateId": 1004,
+      "breakLevel": 6,
+      "maxLevel": 80,
+      "developAttributeId": 1004206
+    },
+    "10060": {
+      "id": 10060,
+      "templateId": 1006,
+      "breakLevel": 0,
+      "maxLevel": 20,
+      "needWorldLevel": 2,
+      "costItemId": [
+        11730001
+      ],
+      "costItemCount": [
+        5
+      ],
+      "costCurrency": 7500,
+      "developAttributeId": 0
+    },
+    "10061": {
+      "id": 10061,
+      "templateId": 1006,
+      "breakLevel": 1,
+      "maxLevel": 30,
+      "needWorldLevel": 3,
+      "costItemId": [
+        11730001,
+        14020001,
+        41030003
+      ],
+      "costItemCount": [
+        10,
+        5,
+        4
+      ],
+      "costCurrency": 12500,
+      "developAttributeId": 1006201
+    },
+    "10062": {
+      "id": 10062,
+      "templateId": 1006,
+      "breakLevel": 2,
+      "maxLevel": 40,
+      "needWorldLevel": 4,
+      "costItemId": [
+        11730001,
+        14020001,
+        41030003
+      ],
+      "costItemCount": [
+        15,
+        10,
+        8
+      ],
+      "costCurrency": 25000,
+      "developAttributeId": 1006202
+    },
+    "10063": {
+      "id": 10063,
+      "templateId": 1006,
+      "breakLevel": 3,
+      "maxLevel": 50,
+      "needWorldLevel": 5,
+      "costItemId": [
+        11730001,
+        14020001,
+        41030003
+      ],
+      "costItemCount": [
+        25,
+        20,
+        16
+      ],
+      "costCurrency": 62500,
+      "developAttributeId": 1006203
+    },
+    "10064": {
+      "id": 10064,
+      "templateId": 1006,
+      "breakLevel": 4,
+      "maxLevel": 60,
+      "needWorldLevel": 6,
+      "costItemId": [
+        11730001,
+        14020001,
+        41030003
+      ],
+      "costItemCount": [
+        30,
+        25,
+        20
+      ],
+      "costCurrency": 125000,
+      "developAttributeId": 1006204
+    },
+    "10065": {
+      "id": 10065,
+      "templateId": 1006,
+      "breakLevel": 5,
+      "maxLevel": 70,
+      "needWorldLevel": 7,
+      "costItemId": [
+        11730001,
+        14020001,
+        41030003
+      ],
+      "costItemCount": [
+        35,
+        30,
+        24
+      ],
+      "costCurrency": 250000,
+      "developAttributeId": 1006205
+    },
+    "10066": {
+      "id": 10066,
+      "templateId": 1006,
+      "breakLevel": 6,
+      "maxLevel": 80,
+      "developAttributeId": 1006206
+    },
+    "10070": {
+      "id": 10070,
+      "templateId": 1007,
+      "breakLevel": 0,
+      "maxLevel": 20,
+      "needWorldLevel": 2,
+      "costItemId": [
+        11730001
+      ],
+      "costItemCount": [
+        5
+      ],
+      "costCurrency": 7500,
+      "developAttributeId": 0
+    },
+    "10071": {
+      "id": 10071,
+      "templateId": 1007,
+      "breakLevel": 1,
+      "maxLevel": 30,
+      "needWorldLevel": 3,
+      "costItemId": [
+        11730001,
+        14020004,
+        41030002
+      ],
+      "costItemCount": [
+        10,
+        5,
+        4
+      ],
+      "costCurrency": 12500,
+      "developAttributeId": 1007201
+    },
+    "10072": {
+      "id": 10072,
+      "templateId": 1007,
+      "breakLevel": 2,
+      "maxLevel": 40,
+      "needWorldLevel": 4,
+      "costItemId": [
+        11730001,
+        14020004,
+        41030002
+      ],
+      "costItemCount": [
+        15,
+        10,
+        8
+      ],
+      "costCurrency": 25000,
+      "developAttributeId": 1007202
+    },
+    "10073": {
+      "id": 10073,
+      "templateId": 1007,
+      "breakLevel": 3,
+      "maxLevel": 50,
+      "needWorldLevel": 5,
+      "costItemId": [
+        11730001,
+        14020004,
+        41030002
+      ],
+      "costItemCount": [
+        25,
+        20,
+        16
+      ],
+      "costCurrency": 62500,
+      "developAttributeId": 1007203
+    },
+    "10074": {
+      "id": 10074,
+      "templateId": 1007,
+      "breakLevel": 4,
+      "maxLevel": 60,
+      "needWorldLevel": 6,
+      "costItemId": [
+        11730001,
+        14020004,
+        41030002
+      ],
+      "costItemCount": [
+        30,
+        25,
+        20
+      ],
+      "costCurrency": 125000,
+      "developAttributeId": 1007204
+    },
+    "10075": {
+      "id": 10075,
+      "templateId": 1007,
+      "breakLevel": 5,
+      "maxLevel": 70,
+      "needWorldLevel": 7,
+      "costItemId": [
+        11730001,
+        14020004,
+        41030002
+      ],
+      "costItemCount": [
+        35,
+        30,
+        24
+      ],
+      "costCurrency": 250000,
+      "developAttributeId": 1007205
+    },
+    "10076": {
+      "id": 10076,
+      "templateId": 1007,
+      "breakLevel": 6,
+      "maxLevel": 80,
+      "developAttributeId": 1007206
+    },
+    "15010": {
+      "id": 15010,
+      "templateId": 1501,
+      "breakLevel": 0,
+      "maxLevel": 20,
+      "needWorldLevel": 2,
+      "costItemId": [
+        11730001
+      ],
+      "costItemCount": [
+        5
+      ],
+      "costCurrency": 7500,
+      "developAttributeId": 0
+    },
+    "15011": {
+      "id": 15011,
+      "templateId": 1501,
+      "breakLevel": 1,
+      "maxLevel": 30,
+      "needWorldLevel": 3,
+      "costItemId": [
+        11730001,
+        14020003,
+        41030003
+      ],
+      "costItemCount": [
+        10,
+        5,
+        4
+      ],
+      "costCurrency": 12500,
+      "developAttributeId": 1501201
+    },
+    "15012": {
+      "id": 15012,
+      "templateId": 1501,
+      "breakLevel": 2,
+      "maxLevel": 40,
+      "needWorldLevel": 4,
+      "costItemId": [
+        11730001,
+        14020003,
+        41030003
+      ],
+      "costItemCount": [
+        15,
+        10,
+        8
+      ],
+      "costCurrency": 25000,
+      "developAttributeId": 1501202
+    },
+    "15013": {
+      "id": 15013,
+      "templateId": 1501,
+      "breakLevel": 3,
+      "maxLevel": 50,
+      "needWorldLevel": 5,
+      "costItemId": [
+        11730001,
+        14020003,
+        41030003
+      ],
+      "costItemCount": [
+        25,
+        20,
+        16
+      ],
+      "costCurrency": 62500,
+      "developAttributeId": 1501203
+    },
+    "15014": {
+      "id": 15014,
+      "templateId": 1501,
+      "breakLevel": 4,
+      "maxLevel": 60,
+      "needWorldLevel": 6,
+      "costItemId": [
+        11730001,
+        14020003,
+        41030003
+      ],
+      "costItemCount": [
+        30,
+        25,
+        20
+      ],
+      "costCurrency": 125000,
+      "developAttributeId": 1501204
+    },
+    "15015": {
+      "id": 15015,
+      "templateId": 1501,
+      "breakLevel": 5,
+      "maxLevel": 70,
+      "needWorldLevel": 7,
+      "costItemId": [
+        11730001,
+        14020003,
+        41030003
+      ],
+      "costItemCount": [
+        35,
+        30,
+        24
+      ],
+      "costCurrency": 250000,
+      "developAttributeId": 1501205
+    },
+    "15016": {
+      "id": 15016,
+      "templateId": 1501,
+      "breakLevel": 6,
+      "maxLevel": 80,
+      "developAttributeId": 1501206
+    },
+    "15020": {
+      "id": 15020,
+      "templateId": 1502,
+      "breakLevel": 0,
+      "maxLevel": 20,
+      "needWorldLevel": 2,
+      "costItemId": [
+        11730001
+      ],
+      "costItemCount": [
+        5
+      ],
+      "costCurrency": 7500,
+      "developAttributeId": 0
+    },
+    "15021": {
+      "id": 15021,
+      "templateId": 1502,
+      "breakLevel": 1,
+      "maxLevel": 30,
+      "needWorldLevel": 3,
+      "costItemId": [
+        11730001,
+        14020001,
+        41030002
+      ],
+      "costItemCount": [
+        10,
+        5,
+        4
+      ],
+      "costCurrency": 12500,
+      "developAttributeId": 1502201
+    },
+    "15022": {
+      "id": 15022,
+      "templateId": 1502,
+      "breakLevel": 2,
+      "maxLevel": 40,
+      "needWorldLevel": 4,
+      "costItemId": [
+        11730001,
+        14020001,
+        41030002
+      ],
+      "costItemCount": [
+        15,
+        10,
+        8
+      ],
+      "costCurrency": 25000,
+      "developAttributeId": 1502202
+    },
+    "15023": {
+      "id": 15023,
+      "templateId": 1502,
+      "breakLevel": 3,
+      "maxLevel": 50,
+      "needWorldLevel": 5,
+      "costItemId": [
+        11730001,
+        14020001,
+        41030002
+      ],
+      "costItemCount": [
+        25,
+        20,
+        16
+      ],
+      "costCurrency": 62500,
+      "developAttributeId": 1502203
+    },
+    "15024": {
+      "id": 15024,
+      "templateId": 1502,
+      "breakLevel": 4,
+      "maxLevel": 60,
+      "needWorldLevel": 6,
+      "costItemId": [
+        11730001,
+        14020001,
+        41030002
+      ],
+      "costItemCount": [
+        30,
+        25,
+        20
+      ],
+      "costCurrency": 125000,
+      "developAttributeId": 1502204
+    },
+    "15025": {
+      "id": 15025,
+      "templateId": 1502,
+      "breakLevel": 5,
+      "maxLevel": 70,
+      "needWorldLevel": 7,
+      "costItemId": [
+        11730001,
+        14020001,
+        41030002
+      ],
+      "costItemCount": [
+        35,
+        30,
+        24
+      ],
+      "costCurrency": 250000,
+      "developAttributeId": 1502205
+    },
+    "15026": {
+      "id": 15026,
+      "templateId": 1502,
+      "breakLevel": 6,
+      "maxLevel": 80,
+      "developAttributeId": 1502206
+    },
+    "15050": {
+      "id": 15050,
+      "templateId": 1505,
+      "breakLevel": 0,
+      "maxLevel": 20,
+      "needWorldLevel": 2,
+      "costItemId": [
+        11730001
+      ],
+      "costItemCount": [
+        5
+      ],
+      "costCurrency": 7500,
+      "developAttributeId": 0
+    },
+    "15051": {
+      "id": 15051,
+      "templateId": 1505,
+      "breakLevel": 1,
+      "maxLevel": 30,
+      "needWorldLevel": 3,
+      "costItemId": [
+        11730001,
+        14020004,
+        41030003
+      ],
+      "costItemCount": [
+        10,
+        5,
+        4
+      ],
+      "costCurrency": 12500,
+      "developAttributeId": 1505201
+    },
+    "15052": {
+      "id": 15052,
+      "templateId": 1505,
+      "breakLevel": 2,
+      "maxLevel": 40,
+      "needWorldLevel": 4,
+      "costItemId": [
+        11730001,
+        14020004,
+        41030003
+      ],
+      "costItemCount": [
+        15,
+        10,
+        8
+      ],
+      "costCurrency": 25000,
+      "developAttributeId": 1505202
+    },
+    "15053": {
+      "id": 15053,
+      "templateId": 1505,
+      "breakLevel": 3,
+      "maxLevel": 50,
+      "needWorldLevel": 5,
+      "costItemId": [
+        11730001,
+        14020004,
+        41030003
+      ],
+      "costItemCount": [
+        25,
+        20,
+        16
+      ],
+      "costCurrency": 62500,
+      "developAttributeId": 1505203
+    },
+    "15054": {
+      "id": 15054,
+      "templateId": 1505,
+      "breakLevel": 4,
+      "maxLevel": 60,
+      "needWorldLevel": 6,
+      "costItemId": [
+        11730001,
+        14020004,
+        41030003
+      ],
+      "costItemCount": [
+        30,
+        25,
+        20
+      ],
+      "costCurrency": 125000,
+      "developAttributeId": 1505204
+    },
+    "15055": {
+      "id": 15055,
+      "templateId": 1505,
+      "breakLevel": 5,
+      "maxLevel": 70,
+      "needWorldLevel": 7,
+      "costItemId": [
+        11730001,
+        14020004,
+        41030003
+      ],
+      "costItemCount": [
+        35,
+        30,
+        24
+      ],
+      "costCurrency": 250000,
+      "developAttributeId": 1505205
+    },
+    "15056": {
+      "id": 15056,
+      "templateId": 1505,
+      "breakLevel": 6,
+      "maxLevel": 80,
+      "developAttributeId": 1505206
+    }
+  }
+}

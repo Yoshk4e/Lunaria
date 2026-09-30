@@ -1,0 +1,36 @@
+{
+  "P_RefreshConfigTable": {
+    "1001": {
+      "id": 1001,
+      "refreshType": 1
+    },
+    "1002": {
+      "id": 1002,
+      "refreshType": 2,
+      "param01": 86400,
+      "param02": 86400
+    },
+    "1003": {
+      "id": 1003,
+      "refreshType": 3
+    },
+    "1004": {
+      "id": 1004,
+      "refreshType": 4
+    },
+    "1005": {
+      "id": 1005,
+      "refreshType": 2,
+      "param01": 36000,
+      "param02": 50400
+    },
+    "2001": {
+      "id": 2001,
+      "refreshType": 3
+    },
+    "2002": {
+      "id": 2002,
+      "refreshType": 4
+    }
+  }
+}

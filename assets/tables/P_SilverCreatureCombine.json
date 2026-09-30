@@ -1,0 +1,24 @@
+{
+  "P_SilverCreatureCombine": {
+    "101": {
+      "id": 101,
+      "srcItemNum": 2,
+      "dstItemId": 102
+    },
+    "102": {
+      "id": 102,
+      "srcItemNum": 2,
+      "dstItemId": 103
+    },
+    "103": {
+      "id": 103,
+      "srcItemNum": 2,
+      "dstItemId": 104
+    },
+    "104": {
+      "id": 104,
+      "srcItemNum": 2,
+      "dstItemId": 105
+    }
+  }
+}

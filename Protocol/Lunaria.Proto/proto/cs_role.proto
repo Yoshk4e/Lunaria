@@ -1,0 +1,158 @@
+syntax = "proto3";
+package msg;
+
+import "comm_data.proto";
+import "comm_macro.proto";
+
+message GMDocItem
+{
+    bytes CMD = 1;
+    bytes DESC = 2;
+    bytes PARAM = 3;
+    bytes EXAMPLE = 4;
+}
+
+message GMDocItemS
+{
+    repeated GMDocItem items = 1;
+}
+
+message ReportCollection
+{
+    Vector3Int vector3 = 1; 
+    uint32 radius = 2; 
+    uint64 block_id = 3;
+}
+
+
+message CharacterBattleAfter {
+    uint32 character_id = 1; 
+    uint32 remain_hp_ratio = 2; 
+    uint32 permanent_liquid = 3; 
+}
+
+
+
+message CSBattleReportBattleEnd
+{
+    uint32 cfg_id = 1; 
+    ReportCollection collection = 2; 
+    
+    bool victory = 3;       
+    repeated int64 monsters = 4;    
+    repeated CharacterBattleAfter character_data = 5; 
+    ElementParamMap temporary_liquid = 6; 
+    ElementParamMap temporary_liquid_lv2 = 7; 
+    int32 battleType = 8;    
+}
+
+
+
+message SCBattleReportBattleEnd
+{
+    int32 result = 1;
+
+    bool victory = 2;               
+    uint64 reborn_map_id = 3;       
+    uint64 reborn_savepoint = 4;    
+    repeated CmdItem reward_list = 5; 
+}
+
+
+
+message CSReportTime
+{
+    uint64 timestamp = 1;
+}
+
+
+
+message SCReportTime
+{
+    int32  result = 1;
+    uint64 timestamp = 2;
+}
+
+
+
+message CSQueryTime
+{
+}
+
+
+
+message SCQueryTime
+{
+    int32  result = 1;
+    uint64 timestamp = 2;
+}
+
+
+
+message SCPlayerLevelDataNtf
+{
+    PlayerLevelData update_list = 1; 
+    uint32 result = 2;
+    PlayerLevelData before_list = 3; 
+}
+
+
+
+message CSChangeWorldLevel
+{
+    uint32 world_level = 1; 
+}
+
+
+
+message SCChangeWorldLevel
+{
+    uint32 result = 1;
+    uint32 world_level = 2; 
+}
+
+
+
+
+message SCPlayerAttrUpdateNtf
+{
+    repeated PlayerAttr update_attrs = 1;   
+}
+
+
+
+message CSCheckText
+{
+    FenceEventType event_type = 1;
+    bytes text = 2;
+}
+
+
+
+message SCCheckText
+{
+    int32 result = 1;
+    FenceEventType event_type = 2;
+    bytes text = 3;
+}
+
+
+
+message CSInitRoleGenderAndName
+{
+    EnmGender gender = 1;
+    bytes role_name = 2;
+    bytes second_role_name = 3; 
+}
+
+
+
+message SCInitRoleGenderAndName
+{
+    EnmGender gender = 1;
+    int32 gender_result = 2;
+    bytes role_name = 3;
+    int32 role_name_result = 4;
+    bytes second_role_name = 5;
+    int32 second_role_name_result = 6;
+}

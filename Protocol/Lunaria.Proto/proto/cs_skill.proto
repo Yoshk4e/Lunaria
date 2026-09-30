@@ -1,0 +1,74 @@
+syntax = "proto3";
+package msg;
+
+
+message SkillGrowthInfo
+{
+    uint32 id    = 1;
+    uint32 level = 2;
+}
+
+
+
+message CSSkillBookQuery
+{
+    int32 reserved = 1;
+}
+
+
+
+message SCSkillBookQuery
+{
+    int32 result = 1;
+    repeated SkillGrowthInfo infos = 2;
+}
+
+
+
+message SCSkillUpdate
+{
+    int32 result     = 1;
+    uint64 inst_id = 2; 
+    uint32 groupid   = 3; 
+    uint32 level     = 4; 
+}
+
+
+message TalentInfo
+{
+    uint64 inst_id = 1;       
+    uint64 unlock_mask0 = 2;    
+    uint64 unlock_mask1 = 3;    
+}
+
+
+
+message CSTalentQuery
+{
+    int32 reserved = 1;
+}
+
+
+
+message SCTalentQuery
+{
+    int32 result = 1;
+    repeated TalentInfo infos = 2;
+}
+
+
+
+message CSTalentUnlock
+{
+    uint64 inst_id = 1;   
+    uint32 talent_node = 2; 
+}
+
+
+
+message SCTalentUnlock
+{
+    int32 result = 1;
+    uint64 inst_id = 2;   
+    uint32 talent_node = 3; 
+}

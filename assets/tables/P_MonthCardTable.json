@@ -1,0 +1,15 @@
+{
+  "P_MonthCardTable": {
+    "2001": {
+      "id": 2001,
+      "chargeDays": 30,
+      "daysUplimit": 90,
+      "nowItemId": 770001,
+      "nowNum": 300,
+      "dayItemId": 770001,
+      "dayNum": 90,
+      "name": 1040400002,
+      "desc": 14176
+    }
+  }
+}

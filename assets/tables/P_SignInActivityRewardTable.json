@@ -1,0 +1,44 @@
+{
+  "P_SignInActivityRewardTable": {
+    "3001": {
+      "id": 3001,
+      "activityId": 3,
+      "day": 1,
+      "items": [
+        "1=100000"
+      ]
+    },
+    "3002": {
+      "id": 3002,
+      "activityId": 3,
+      "day": 2,
+      "items": [
+        "11051501=1"
+      ]
+    },
+    "3003": {
+      "id": 3003,
+      "activityId": 3,
+      "day": 3,
+      "items": [
+        "770002=5000"
+      ]
+    },
+    "3004": {
+      "id": 3004,
+      "activityId": 3,
+      "day": 4,
+      "items": [
+        "12051001=1"
+      ]
+    },
+    "3005": {
+      "id": 3005,
+      "activityId": 3,
+      "day": 5,
+      "items": [
+        "770002=5000"
+      ]
+    }
+  }
+}

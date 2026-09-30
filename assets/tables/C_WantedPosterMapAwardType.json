@@ -1,0 +1,29 @@
+{
+  "C_WantedPosterMapAwardType": {
+    "1": {
+      "id": 1,
+      "textId": 1910000069,
+      "iconPath": "/Game/UI/Common/Atlas/Icon/WantedPoster/Task/RewardIcon/icon_task_award_fangshengping.icon_task_award_fangshengping"
+    },
+    "2": {
+      "id": 2,
+      "textId": 1910000070,
+      "iconPath": "/Game/UI/Common/Atlas/Icon/WantedPoster/Task/RewardIcon/icon_task_award_zhufu.icon_task_award_zhufu"
+    },
+    "3": {
+      "id": 3,
+      "textId": 1910000071,
+      "iconPath": "/Game/UI/Common/Atlas/Icon/WantedPoster/Task/RewardIcon/icon_task_award_yiwu.icon_task_award_yiwu"
+    },
+    "4": {
+      "id": 4,
+      "textId": 1910000072,
+      "iconPath": "/Game/UI/Common/Atlas/Icon/WantedPoster/Task/RewardIcon/icon_task_award_zixuan.icon_task_award_zixuan"
+    },
+    "5": {
+      "id": 5,
+      "textId": 1910000073,
+      "iconPath": "/Game/UI/Common/Atlas/Icon/WantedPoster/Task/RewardIcon/icon_task_award_gouwu.icon_task_award_gouwu"
+    }
+  }
+}

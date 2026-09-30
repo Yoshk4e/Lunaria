@@ -1,0 +1,193 @@
+syntax = "proto3";
+package msg;
+
+import "comm_data.proto";
+import "cs_attrib.proto";
+
+
+enum EnmGemStatus
+{
+    EMPTY = 0;   
+    VALID = 1;   
+    INVALID = 2; 
+}
+
+
+message GemSlotData
+{
+    uint32 gem_slot_id = 1;
+    uint32 gem_itemid = 2;
+    EnmGemStatus gem_state = 3;
+}
+
+
+message TeamMemberData
+{
+    uint32 member_slot_id = 1;
+    uint64 inst_id = 2;
+    uint32 character_id = 3;
+    repeated GemSlotData gem_slots = 4;
+}
+
+
+message TeamData {
+    uint32 team_id = 1;
+    bytes name = 2;    
+    repeated TeamMemberData member_data = 3; 
+}
+
+
+message CurTeamData
+{
+    int32 team_type = 1; 
+    uint32 team_src = 2; 
+    uint32 using_member_slot = 3; 
+    TeamData team_data = 4; 
+    ElementParamMap temporary_liquid = 5; 
+    repeated PBCharacterAttribData attrib_data = 6; 
+}
+
+
+
+message CSCharacterTeams
+{
+
+}
+
+
+
+message SCCharacterTeams
+{
+    int32 result = 1;
+    repeated TeamData teams = 2;     
+    CurTeamData cur_team = 3;          
+}
+
+
+
+message CSCharacterUpdateTeam
+{
+    TeamData team_data = 1;     
+}
+
+
+
+message CSCharacterUpdateTeamName
+{
+    uint32 team_id = 1;         
+    bytes name = 2;     
+}
+
+
+
+message SCCharacterUpdateTeam
+{
+    int32 result = 1;
+    TeamData team_data = 2;     
+    uint32 using_member_slot = 3;  
+    repeated PBCharacterAttribData attrib_data = 4; 
+}
+
+
+
+message CSCharacterSwitchTeam
+{
+    uint32 team_id = 1;     
+}
+
+
+
+message SCCharacterSwitchTeam
+{
+    int32 result = 1;
+    uint32 team_id = 2;
+    uint32 using_member_slot = 3;  
+    repeated PBCharacterAttribData attrib_data = 4; 
+}
+
+
+
+message CSCharacterSwitchMember
+{
+    uint32 member_slot = 1;    
+}
+
+
+
+message SCCharacterSwitchMember
+{
+    int32 result = 1;
+    // Keep the shipped field number and the name used by client Lua.
+    uint32 using_member_slot = 2;
+}
+
+
+
+message CSSwitchMainCharacter
+{
+    TeamData team_data = 1; 
+    uint32 using_member_slot = 2; 
+}
+
+
+
+message SCSwitchMainCharacter
+{
+    int32 result = 1;
+    TeamData team_data = 2; 
+    uint32 using_member_slot = 3; 
+    repeated PBCharacterAttribData attrib_data = 4; 
+}
+
+
+
+message CSCharacterUpdateTmpTeam
+{
+    int32 team_type = 1; 
+    uint32 team_src = 2; 
+    TeamData team_data = 3; 
+}
+
+
+
+message SCCharacterUpdateTmpTeam
+{
+    int32 result = 1;
+    int32 team_type = 2; 
+    uint32 team_src = 3; 
+    TeamData team_data = 4; 
+}
+
+
+
+message SCCharacterTempTeamNtf
+{
+    CurTeamData cur_team = 1;
+}
+
+
+
+message CSCharacterTmpTeamQuery
+{
+    int32 team_type = 1; 
+    uint32 team_src = 2; 
+}
+
+
+
+message SCCharacterTmpTeamQuery
+{
+    int32 result = 1;
+    int32 team_type = 2; 
+    uint32 team_src = 3; 
+    TeamData team_data = 4; 
+}
+
+
+
+message SCTemporaryLiquidPoolNtf
+{
+    int32 team_type = 1; 
+    uint32 team_src = 2; 
+    ElementParamMap temporary_liquid = 3; 
+}

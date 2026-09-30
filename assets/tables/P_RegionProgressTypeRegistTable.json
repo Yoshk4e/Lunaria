@@ -1,0 +1,78 @@
+{
+  "P_RegionProgressTypeRegistTable": {
+    "1": {
+      "id": 1,
+      "typeName": 1820100001,
+      "registTableName": "P_Task_POIQuest",
+      "registType": 1,
+      "weight": 5,
+      "isTask": 1,
+      "registShowType": 2,
+      "registTypeSmallIcon": "T_Navigation_Hud_Regional_Explore"
+    },
+    "2": {
+      "id": 2,
+      "typeName": 1820100002,
+      "registTableName": "P_CollectionTable",
+      "registType": 2,
+      "weight": 1,
+      "registShowType": 2,
+      "registTypeSmallIcon": "T_Navigation_Hud_Regional_Box"
+    },
+    "3": {
+      "id": 3,
+      "typeName": 1820100003,
+      "registTableName": "P_TeleportPointTemplate",
+      "registType": 3,
+      "weight": 1,
+      "registShowType": 2,
+      "registTypeSmallIcon": "T_Navigation_Hud_Transmission_Close"
+    },
+    "4": {
+      "id": 4,
+      "typeName": 1820100004,
+      "registType": 4,
+      "weight": 5,
+      "registShowType": 1,
+      "registTypeSmallIcon": "T_Navigation_Hud_Boss"
+    },
+    "5": {
+      "id": 5,
+      "typeName": 1820100005,
+      "registTableName": "P_Task_POIQuest",
+      "registType": 5,
+      "weight": 5,
+      "isTask": 1,
+      "registShowType": 2,
+      "registTypeSmallIcon": "T_Navigation_Hud_Regional_Decrypt"
+    },
+    "6": {
+      "id": 6,
+      "typeName": 1820100006,
+      "registTableName": "P_SilverCreatureGrowth",
+      "registType": 6,
+      "weight": 1,
+      "registShowType": 2,
+      "registTypeSmallIcon": "T_Navigation_Hud_Regional_SilverBiology"
+    },
+    "7": {
+      "id": 7,
+      "typeName": 1820100007,
+      "registTableName": "P_CollectionTable",
+      "registType": 7,
+      "weight": 1,
+      "registShowType": 2,
+      "registTypeSmallIcon": "T_Navigation_Hud_Regional_Collecting"
+    },
+    "8": {
+      "id": 8,
+      "typeName": 1820100008,
+      "registTableName": "P_Task_POIQuest",
+      "registType": 8,
+      "weight": 5,
+      "isTask": 1,
+      "registShowType": 2,
+      "registTypeSmallIcon": "T_Navigation_Hud_Challenge"
+    }
+  }
+}

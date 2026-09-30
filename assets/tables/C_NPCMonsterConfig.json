@@ -1,0 +1,9 @@
+{
+  "C_NPCMonsterConfig": {
+    "1": {
+      "id": 1,
+      "key": "NPCMonsterConfigPath",
+      "value": "/Game/LogicRes/Configs/DataAsset/DA_NPCMonsterConfig.DA_NPCMonsterConfig"
+    }
+  }
+}

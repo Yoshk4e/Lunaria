@@ -1,0 +1,117 @@
+syntax = "proto3";
+package msg;
+
+import "comm_data.proto";
+
+
+
+message CSReqSilverCreatureList
+{
+}
+
+
+message CmdSilverCreatureData
+{
+    uint32 level = 1; 
+}
+
+
+message CmdSilverCreatureItem 
+{
+    uint32 item_id = 1;   
+    uint32 uniq_id = 2;   
+    CmdSilverCreatureData silver_creature_data = 3;
+}
+
+
+
+message SCSilverCreatureList
+{
+    uint32 result = 1; 
+    repeated CmdSilverCreatureItem item_list = 2;
+    uint32 in_battle_uniq_id = 3; 
+}
+
+
+
+message SCSilverCreatureCollectFail
+{
+    repeated ItemIdCount items = 1; 
+}
+
+
+message SilverCreatureChange
+{
+    repeated uint32 remove_list = 1; 
+    repeated CmdSilverCreatureItem add_list = 2; 
+}
+
+
+
+message SCSilverCreatureChangeNtf
+{
+    SilverCreatureChange change = 1; 
+    SilverCreatureChange combine = 2; 
+    SilverCreatureChange replace = 3; 
+    SilverCreatureChange release = 4; 
+}
+
+
+
+message CSSilverCreatureCombine
+{
+    repeated uint32 uniq_id = 1; 
+}
+
+
+
+message SCSilverCreatureCombineResult
+{
+    uint32 result = 1; 
+    SilverCreatureChange change = 2; 
+}
+
+
+
+message CSSilverCreatureRelease
+{
+    repeated uint32 uniq_id = 1; 
+}
+
+
+
+message SCSilverCreatureReleaseResult
+{
+    uint32 result = 1;
+    SilverCreatureChange change = 2; 
+}
+
+
+
+message CSReqSilverCreatureInBattle
+{
+    uint32 uniq_id = 1; 
+}
+
+
+
+message SCResSilverCreatureInBattleResult
+{
+    uint32 result = 1;
+    uint32 uniq_id = 2; 
+}
+
+
+
+message CSReqSilverCreatureLeaveBattle
+{
+    uint32 uniq_id = 1; 
+}
+
+
+
+message SCResSilverCreatureLeaveBattleResult
+{
+    uint32 result = 1;
+    uint32 uniq_id = 2; 
+}

@@ -1,0 +1,1329 @@
+{
+  "C_SystemIDTable": {
+    "9": {
+      "id": 9,
+      "category": 3,
+      "systemFunctionType": 9,
+      "subModuleName": "BigMapSubModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "11": {
+      "id": 11,
+      "category": 4,
+      "systemFunctionType": 11,
+      "subModuleName": "SmallMapSubModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "12": {
+      "id": 12,
+      "category": 3,
+      "systemFunctionType": 12,
+      "subModuleName": "TeamModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "13": {
+      "id": 13,
+      "category": 3,
+      "systemFunctionType": 13,
+      "subModuleName": "CharacterShow",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "14": {
+      "id": 14,
+      "category": 3,
+      "systemFunctionType": 14,
+      "subModuleName": "BigWorldPerformance",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "22": {
+      "id": 22,
+      "category": 3,
+      "systemFunctionType": 22,
+      "subModuleName": "MonthCardUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "23": {
+      "id": 23,
+      "category": 3,
+      "systemFunctionType": 23,
+      "subModuleName": "MainMenuSubModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "25": {
+      "id": 25,
+      "category": 3,
+      "systemFunctionType": 25,
+      "subModuleName": "BuffShopUIModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "26": {
+      "id": 26,
+      "category": 3,
+      "systemFunctionType": 26,
+      "subModuleName": "NextDayCharacter",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "27": {
+      "id": 27,
+      "category": 3,
+      "systemFunctionType": 27,
+      "subModuleName": "TaskPanelSystem",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "28": {
+      "id": 28,
+      "category": 3,
+      "systemFunctionType": 28,
+      "subModuleName": "SilverCreatureUIModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "30": {
+      "id": 30,
+      "category": 3,
+      "systemFunctionType": 30,
+      "subModuleName": "GemModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "31": {
+      "id": 31,
+      "category": 3,
+      "systemFunctionType": 31,
+      "subModuleName": "MailUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "32": {
+      "id": 32,
+      "category": 3,
+      "systemFunctionType": 32,
+      "subModuleName": "GameSettingUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "37": {
+      "id": 37,
+      "category": 3,
+      "systemFunctionType": 37,
+      "subModuleName": "Announcement",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "41": {
+      "id": 41,
+      "category": 3,
+      "systemFunctionType": 41,
+      "subModuleName": "CaseUIModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "42": {
+      "id": 42,
+      "category": 3,
+      "systemFunctionType": 42,
+      "subModuleName": "DetectiveGuideUIModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "55": {
+      "id": 55,
+      "category": 3,
+      "systemFunctionType": 55,
+      "subModuleName": "BagModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "56": {
+      "id": 56,
+      "category": 3,
+      "systemFunctionType": 56,
+      "subModuleName": "SpecialShopUIModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "57": {
+      "id": 57,
+      "category": 3,
+      "systemFunctionType": 57,
+      "subModuleName": "CommonShopUIModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "59": {
+      "id": 59,
+      "category": 3,
+      "systemFunctionType": 59,
+      "subModuleName": "HouseUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "60": {
+      "id": 60,
+      "category": 3,
+      "systemFunctionType": 60,
+      "subModuleName": "RouletteUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "61": {
+      "id": 61,
+      "category": 3,
+      "systemFunctionType": 61,
+      "subModuleName": "GuideModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "62": {
+      "id": 62,
+      "category": 3,
+      "systemFunctionType": 62,
+      "subModuleName": "StoreUIModule",
+      "defaultUnlock": 0,
+      "defaultEnable": false,
+      "showCursor": 1
+    },
+    "1": {
+      "id": 1,
+      "category": 2,
+      "systemFunctionType": 1,
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "2": {
+      "id": 2,
+      "category": 2,
+      "systemFunctionType": 2,
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "3": {
+      "id": 3,
+      "category": 2,
+      "systemFunctionType": 3,
+      "subModuleName": "ExposeObserveUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "4": {
+      "id": 4,
+      "category": 2,
+      "systemFunctionType": 4,
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "10": {
+      "id": 10,
+      "category": 2,
+      "systemFunctionType": 10,
+      "subModuleName": "FocusSubModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "18": {
+      "id": 18,
+      "category": 2,
+      "systemFunctionType": 18,
+      "subModuleName": "BookDecryption",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "24": {
+      "id": 24,
+      "category": 2,
+      "systemFunctionType": 24,
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "29": {
+      "id": 29,
+      "category": 2,
+      "systemFunctionType": 29,
+      "subModuleName": "CaseInspectUIModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "33": {
+      "id": 33,
+      "category": 2,
+      "systemFunctionType": 33,
+      "defaultUnlock": 1,
+      "defaultEnable": false,
+      "showCursor": 0
+    },
+    "34": {
+      "id": 34,
+      "category": 2,
+      "systemFunctionType": 34,
+      "defaultUnlock": 1,
+      "defaultEnable": false,
+      "showCursor": 0
+    },
+    "35": {
+      "id": 35,
+      "category": 2,
+      "systemFunctionType": 35,
+      "defaultUnlock": 1,
+      "defaultEnable": false,
+      "showCursor": 0
+    },
+    "36": {
+      "id": 36,
+      "category": 2,
+      "systemFunctionType": 36,
+      "defaultUnlock": 1,
+      "defaultEnable": false,
+      "showCursor": 0
+    },
+    "49": {
+      "id": 49,
+      "category": 2,
+      "systemFunctionType": 49,
+      "subModuleName": "AimModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "50": {
+      "id": 50,
+      "category": 3,
+      "systemFunctionType": 50,
+      "subModuleName": "MidUpPopTaskModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "51": {
+      "id": 51,
+      "category": 3,
+      "systemFunctionType": 51,
+      "subModuleName": "PuzzleUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "52": {
+      "id": 52,
+      "category": 3,
+      "systemFunctionType": 52,
+      "subModuleName": "MobileOperation",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "53": {
+      "id": 53,
+      "category": 3,
+      "systemFunctionType": 53,
+      "subModuleName": "MidUpPopAdventureLevelModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "54": {
+      "id": 54,
+      "category": 3,
+      "systemFunctionType": 54,
+      "subModuleName": "MidUpPopWorldLevelModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "15": {
+      "id": 15,
+      "category": 3,
+      "systemFunctionType": 15,
+      "subModuleName": "ObtainItemsPopup",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "16": {
+      "id": 16,
+      "category": 3,
+      "systemFunctionType": 16,
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "17": {
+      "id": 17,
+      "category": 3,
+      "systemFunctionType": 17,
+      "defaultUnlock": 0,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "64": {
+      "id": 64,
+      "category": 3,
+      "systemFunctionType": 64,
+      "subModuleName": "GachaUI",
+      "defaultUnlock": 0,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "19": {
+      "id": 19,
+      "category": 3,
+      "systemFunctionType": 19,
+      "subModuleName": "OutsideShopUIModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "20": {
+      "id": 20,
+      "category": 3,
+      "systemFunctionType": 20,
+      "subModuleName": "MiddleUpPopModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "39": {
+      "id": 39,
+      "category": 3,
+      "systemFunctionType": 39,
+      "subModuleName": "Popup",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "40": {
+      "id": 40,
+      "category": 3,
+      "systemFunctionType": 40,
+      "subModuleName": "Popup",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "43": {
+      "id": 43,
+      "category": 3,
+      "systemFunctionType": 43,
+      "subModuleName": "DetectiveGuideUIModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "44": {
+      "id": 44,
+      "category": 3,
+      "systemFunctionType": 44,
+      "subModuleName": "DungeonUIModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "45": {
+      "id": 45,
+      "category": 3,
+      "systemFunctionType": 45,
+      "subModuleName": "DungeonUIModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "46": {
+      "id": 46,
+      "category": 3,
+      "systemFunctionType": 46,
+      "subModuleName": "DungeonUIModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "47": {
+      "id": 47,
+      "category": 3,
+      "systemFunctionType": 47,
+      "subModuleName": "DungeonUIModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "48": {
+      "id": 48,
+      "category": 4,
+      "systemFunctionType": 48,
+      "subModuleName": "CommonUISubModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "58": {
+      "id": 58,
+      "category": 3,
+      "systemFunctionType": 58,
+      "subModuleName": "Popup",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "63": {
+      "id": 63,
+      "category": 3,
+      "systemFunctionType": 63,
+      "subModuleName": "WantedPosterRedeemReward",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "65": {
+      "id": 65,
+      "category": 3,
+      "systemFunctionType": 65,
+      "subModuleName": "FullScreenNotice",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "66": {
+      "id": 66,
+      "category": 3,
+      "systemFunctionType": 66,
+      "subModuleName": "MonthCardUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "67": {
+      "id": 67,
+      "category": 3,
+      "systemFunctionType": 67,
+      "subModuleName": "WantedPosterRandomReward",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "68": {
+      "id": 68,
+      "category": 3,
+      "systemFunctionType": 68,
+      "subModuleName": "WantedPosterSettlementUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "69": {
+      "id": 69,
+      "category": 3,
+      "systemFunctionType": 69,
+      "subModuleName": "WantedPosterPauseFail",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "70": {
+      "id": 70,
+      "category": 3,
+      "systemFunctionType": 70,
+      "subModuleName": "WantedPosterPauseFail",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "106": {
+      "id": 106,
+      "category": 3,
+      "systemFunctionType": 106,
+      "subModuleName": "WantedPosterBattlePassUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "71": {
+      "id": 71,
+      "category": 3,
+      "systemFunctionType": 71,
+      "subModuleName": "DeathUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "72": {
+      "id": 72,
+      "category": 3,
+      "systemFunctionType": 72,
+      "subModuleName": "WantedPosterRewardTip",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "73": {
+      "id": 73,
+      "category": 3,
+      "systemFunctionType": 73,
+      "subModuleName": "WantedPosterSettlementUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "74": {
+      "id": 74,
+      "category": 3,
+      "systemFunctionType": 74,
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "75": {
+      "id": 75,
+      "category": 3,
+      "systemFunctionType": 75,
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "76": {
+      "id": 76,
+      "category": 3,
+      "systemFunctionType": 76,
+      "subModuleName": "WantedPosterDetailDesc",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "77": {
+      "id": 77,
+      "category": 3,
+      "systemFunctionType": 77,
+      "subModuleName": "WantedPosterViewBuild",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "78": {
+      "id": 78,
+      "category": 3,
+      "systemFunctionType": 78,
+      "subModuleName": "WantedPosterEnterUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "79": {
+      "id": 79,
+      "category": 3,
+      "systemFunctionType": 79,
+      "subModuleName": "Popup",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "80": {
+      "id": 80,
+      "category": 3,
+      "systemFunctionType": 80,
+      "subModuleName": "Activity",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "81": {
+      "id": 81,
+      "category": 3,
+      "systemFunctionType": 81,
+      "subModuleName": "7DaySign",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "82": {
+      "id": 82,
+      "category": 3,
+      "systemFunctionType": 82,
+      "subModuleName": "RegionalExplorationTotal",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "83": {
+      "id": 83,
+      "category": 3,
+      "systemFunctionType": 83,
+      "subModuleName": "RegionalExplorationDetail",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "84": {
+      "id": 84,
+      "category": 3,
+      "systemFunctionType": 84,
+      "subModuleName": "WantedPosterAdventureUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "85": {
+      "id": 85,
+      "category": 3,
+      "systemFunctionType": 85,
+      "subModuleName": "WantedPosterViewBlessingBuild",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "86": {
+      "id": 86,
+      "category": 3,
+      "systemFunctionType": 86,
+      "subModuleName": "WantedPosterViewCreatureBuild",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "87": {
+      "id": 87,
+      "category": 3,
+      "systemFunctionType": 87,
+      "subModuleName": "WantedPosterBlessingShopUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "88": {
+      "id": 88,
+      "category": 3,
+      "systemFunctionType": 88,
+      "subModuleName": "WantedPosterBionicsShopUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "89": {
+      "id": 89,
+      "category": 3,
+      "systemFunctionType": 89,
+      "subModuleName": "WantedPosterRelicShopUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "90": {
+      "id": 90,
+      "category": 3,
+      "systemFunctionType": 90,
+      "subModuleName": "TaskPopup",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "91": {
+      "id": 91,
+      "category": 3,
+      "systemFunctionType": 91,
+      "subModuleName": "WantedPosterViewBuildRelic",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "92": {
+      "id": 92,
+      "category": 3,
+      "systemFunctionType": 92,
+      "subModuleName": "WantedPosterMapUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "93": {
+      "id": 93,
+      "category": 3,
+      "systemFunctionType": 93,
+      "subModuleName": "BondLevelTip",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "94": {
+      "id": 94,
+      "category": 3,
+      "systemFunctionType": 94,
+      "subModuleName": "WantedPosterReviveUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "95": {
+      "id": 95,
+      "category": 3,
+      "systemFunctionType": 95,
+      "subModuleName": "ZombieWaveUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "96": {
+      "id": 96,
+      "category": 3,
+      "systemFunctionType": 96,
+      "subModuleName": "ZombieWaveUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "97": {
+      "id": 97,
+      "category": 3,
+      "systemFunctionType": 97,
+      "subModuleName": "ZombieWaveUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "98": {
+      "id": 98,
+      "category": 3,
+      "systemFunctionType": 98,
+      "subModuleName": "CaseInspectModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "99": {
+      "id": 99,
+      "category": 3,
+      "systemFunctionType": 99,
+      "subModuleName": "SneakFailUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "100": {
+      "id": 100,
+      "category": 3,
+      "systemFunctionType": 100,
+      "subModuleName": "TutorialUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "101": {
+      "id": 101,
+      "category": 3,
+      "systemFunctionType": 101,
+      "subModuleName": "CaseUIModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "102": {
+      "id": 102,
+      "category": 3,
+      "systemFunctionType": 102,
+      "subModuleName": "RealEstate",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "103": {
+      "id": 103,
+      "category": 3,
+      "systemFunctionType": 103,
+      "subModuleName": "ElementAbnormal",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "104": {
+      "id": 104,
+      "category": 3,
+      "systemFunctionType": 104,
+      "subModuleName": "Popup",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "105": {
+      "id": 105,
+      "category": 3,
+      "systemFunctionType": 105,
+      "subModuleName": "Popup",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "5": {
+      "id": 5,
+      "category": 3,
+      "systemFunctionType": 5,
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "6": {
+      "id": 6,
+      "category": 3,
+      "systemFunctionType": 6,
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "7": {
+      "id": 7,
+      "category": 3,
+      "systemFunctionType": 7,
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "8": {
+      "id": 8,
+      "category": 3,
+      "systemFunctionType": 8,
+      "subModuleName": "BagModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "107": {
+      "id": 107,
+      "category": 3,
+      "systemFunctionType": 107,
+      "subModuleName": "CharacterAcquisitionUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "108": {
+      "id": 108,
+      "category": 3,
+      "systemFunctionType": 108,
+      "subModuleName": "HouseRegion",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "109": {
+      "id": 109,
+      "category": 3,
+      "systemFunctionType": 109,
+      "subModuleName": "DetectiveGuideUIModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "110": {
+      "id": 110,
+      "category": 3,
+      "systemFunctionType": 110,
+      "subModuleName": "DetectiveGuideUIModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "111": {
+      "id": 111,
+      "category": 4,
+      "systemFunctionType": 111,
+      "subModuleName": "CommonUISubModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "112": {
+      "id": 112,
+      "category": 4,
+      "systemFunctionType": 112,
+      "subModuleName": "InteractingObjectSubModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "113": {
+      "id": 113,
+      "category": 4,
+      "systemFunctionType": 113,
+      "subModuleName": "CommonUISubModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "114": {
+      "id": 114,
+      "category": 4,
+      "systemFunctionType": 114,
+      "subModuleName": "CommonUISubModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "115": {
+      "id": 115,
+      "category": 4,
+      "systemFunctionType": 115,
+      "subModuleName": "ItemsidePanel",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "116": {
+      "id": 116,
+      "category": 4,
+      "systemFunctionType": 116,
+      "subModuleName": "ItemsidePanel",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "117": {
+      "id": 117,
+      "category": 4,
+      "systemFunctionType": 117,
+      "subModuleName": "ItemsidePanel",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "118": {
+      "id": 118,
+      "category": 4,
+      "systemFunctionType": 118,
+      "subModuleName": "ItemsidePanel",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "119": {
+      "id": 119,
+      "category": 4,
+      "systemFunctionType": 119,
+      "subModuleName": "ItemsidePanel",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "120": {
+      "id": 120,
+      "category": 4,
+      "systemFunctionType": 120,
+      "subModuleName": "CommonUISubModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "121": {
+      "id": 121,
+      "category": 4,
+      "systemFunctionType": 121,
+      "subModuleName": "CommonUISubModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "122": {
+      "id": 122,
+      "category": 3,
+      "systemFunctionType": 122,
+      "subModuleName": "DungeonUIModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "123": {
+      "id": 123,
+      "category": 4,
+      "systemFunctionType": 123,
+      "subModuleName": "TaskNavModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "124": {
+      "id": 124,
+      "category": 4,
+      "systemFunctionType": 124,
+      "subModuleName": "CommonUISubModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "125": {
+      "id": 125,
+      "category": 4,
+      "systemFunctionType": 125,
+      "subModuleName": "CommonUISubModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "126": {
+      "id": 126,
+      "category": 4,
+      "systemFunctionType": 126,
+      "subModuleName": "UISkillButton",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "127": {
+      "id": 127,
+      "category": 4,
+      "systemFunctionType": 127,
+      "subModuleName": "CommonUISubModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "128": {
+      "id": 128,
+      "category": 4,
+      "systemFunctionType": 128,
+      "subModuleName": "WantedPosterHUD",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "129": {
+      "id": 129,
+      "category": 4,
+      "systemFunctionType": 129,
+      "subModuleName": "WantedPosterHUD",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "130": {
+      "id": 130,
+      "category": 4,
+      "systemFunctionType": 130,
+      "subModuleName": "WantedPosterHUD",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "131": {
+      "id": 131,
+      "category": 3,
+      "systemFunctionType": 131,
+      "subModuleName": "Popup",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "132": {
+      "id": 132,
+      "category": 3,
+      "systemFunctionType": 132,
+      "subModuleName": "DetectiveGuideUIModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "133": {
+      "id": 133,
+      "category": 3,
+      "systemFunctionType": 133,
+      "subModuleName": "BigWorldPerformance",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "134": {
+      "id": 134,
+      "category": 3,
+      "systemFunctionType": 134,
+      "subModuleName": "GameplaySystemDispatcher",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "135": {
+      "id": 135,
+      "category": 4,
+      "systemFunctionType": 135,
+      "subModuleName": "ZombieWaveUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "136": {
+      "id": 136,
+      "category": 4,
+      "systemFunctionType": 136,
+      "subModuleName": "ZombieWaveUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "137": {
+      "id": 137,
+      "category": 4,
+      "systemFunctionType": 137,
+      "subModuleName": "CommonUISubModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "138": {
+      "id": 138,
+      "category": 2,
+      "systemFunctionType": 138,
+      "subModuleName": "RoleManager",
+      "defaultUnlock": 1,
+      "defaultEnable": false,
+      "showCursor": 0
+    },
+    "139": {
+      "id": 139,
+      "category": 3,
+      "systemFunctionType": 139,
+      "subModuleName": "OutsideShopUIModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "140": {
+      "id": 140,
+      "category": 2,
+      "systemFunctionType": 140,
+      "subModuleName": "RoleManager",
+      "defaultUnlock": 1,
+      "defaultEnable": false,
+      "showCursor": 0
+    },
+    "141": {
+      "id": 141,
+      "category": 2,
+      "systemFunctionType": 141,
+      "subModuleName": "RoleManager",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "144": {
+      "id": 144,
+      "category": 4,
+      "systemFunctionType": 144,
+      "subModuleName": "NavigationTrackModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "145": {
+      "id": 145,
+      "category": 2,
+      "systemFunctionType": 145,
+      "subModuleName": "RoleManager",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "146": {
+      "id": 146,
+      "category": 3,
+      "systemFunctionType": 146,
+      "subModuleName": "WantedPosterTaskBranchUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "147": {
+      "id": 147,
+      "category": 3,
+      "systemFunctionType": 147,
+      "subModuleName": "CharacterDealActivityUI",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "148": {
+      "id": 148,
+      "category": 3,
+      "systemFunctionType": 148,
+      "subModuleName": "TeamModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "149": {
+      "id": 149,
+      "category": 3,
+      "systemFunctionType": 149,
+      "subModuleName": "FeatureInfo",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "150": {
+      "id": 150,
+      "category": 3,
+      "systemFunctionType": 150,
+      "subModuleName": "TeamModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 1
+    },
+    "151": {
+      "id": 151,
+      "category": 2,
+      "systemFunctionType": 151,
+      "subModuleName": "WorldEnemyEncounter",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "153": {
+      "id": 153,
+      "category": 4,
+      "systemFunctionType": 153,
+      "subModuleName": "CommonUISubModule",
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    },
+    "154": {
+      "id": 154,
+      "category": 1,
+      "systemFunctionType": 154,
+      "defaultUnlock": 1,
+      "defaultEnable": true,
+      "showCursor": 0
+    }
+  }
+}

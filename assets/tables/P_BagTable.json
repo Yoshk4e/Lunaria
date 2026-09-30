@@ -1,0 +1,28 @@
+{
+  "P_BagTable": {
+    "1": {
+      "id": 1,
+      "maxCell": 300,
+      "bagType": 1,
+      "desc": 1010700139
+    },
+    "2": {
+      "id": 2,
+      "maxCell": 800,
+      "bagType": 2,
+      "bagFilterType": 1,
+      "desc": 1010700133
+    },
+    "3": {
+      "id": 3,
+      "maxCell": 100,
+      "bagType": 3,
+      "desc": 1010700135
+    },
+    "4": {
+      "id": 4,
+      "maxCell": 100,
+      "bagType": 4
+    }
+  }
+}

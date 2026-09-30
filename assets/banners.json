@@ -1,0 +1,23 @@
+{
+  "_note": "Server-side gacha banner config. OURS, not from the dump: the dump (p_gachatable / p_gacharebatetable) carries banner economics but no pool and no rates anywhere, so the pools live here. Banner ids ride the wire as pool_id; poolId joins each banner to its p_gachatable economics row (cost, pity caps, daily cap, rebate template). Every id below is validated against the tables at startup and an unknown one aborts startup.",
+  "banners": [
+    {
+      "bannerId": 1,
+      "poolId": 1,
+      "kind": "character",
+      "featuredFiveStar": 1001,
+      "standardFiveStar": [1501, 1502],
+      "fourStar": [1003, 1004, 1006, 1007],
+      "threeStar": [12031001, 12032001, 12033001, 12034001, 12035001, 12036001]
+    },
+    {
+      "bannerId": 2,
+      "poolId": 1,
+      "kind": "motive",
+      "featuredFiveStar": 12051001,
+      "standardFiveStar": [12056001],
+      "fourStar": [12041001, 12042001, 12046001],
+      "threeStar": [12031001, 12032001, 12033001]
+    }
+  ]
+}

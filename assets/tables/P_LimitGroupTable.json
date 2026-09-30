@@ -1,0 +1,58 @@
+{
+  "P_LimitGroupTable": {
+    "1": {
+      "id": 1,
+      "rewardLimit": 0
+    },
+    "10101": {
+      "id": 10101,
+      "rewardLimit": 200,
+      "rewardLimitRefreshConfigId": 2001
+    },
+    "10102": {
+      "id": 10102,
+      "rewardLimit": 200,
+      "rewardLimitRefreshConfigId": 2001
+    },
+    "10103": {
+      "id": 10103,
+      "rewardLimit": 200,
+      "rewardLimitRefreshConfigId": 2001
+    },
+    "10104": {
+      "id": 10104,
+      "rewardLimit": 200,
+      "rewardLimitRefreshConfigId": 2001
+    },
+    "101": {
+      "id": 101,
+      "rewardLimit": 3,
+      "rewardLimitRefreshConfigId": 2001
+    },
+    "151": {
+      "id": 151,
+      "rewardLimit": 25,
+      "rewardLimitRefreshConfigId": 2001
+    },
+    "152": {
+      "id": 152,
+      "rewardLimit": 25,
+      "rewardLimitRefreshConfigId": 2001
+    },
+    "153": {
+      "id": 153,
+      "rewardLimit": 25,
+      "rewardLimitRefreshConfigId": 2001
+    },
+    "154": {
+      "id": 154,
+      "rewardLimit": 25,
+      "rewardLimitRefreshConfigId": 2001
+    },
+    "201": {
+      "id": 201,
+      "rewardLimit": 4,
+      "rewardLimitRefreshConfigId": 4001
+    }
+  }
+}

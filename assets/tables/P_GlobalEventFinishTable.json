@@ -1,0 +1,1171 @@
+{
+  "P_GlobalEventFinishTable": {
+    "101001": {
+      "id": 101001,
+      "subType": 1,
+      "needCount": 2,
+      "args": [
+        "3"
+      ],
+      "recordType": 1
+    },
+    "102001": {
+      "id": 102001,
+      "subType": 2,
+      "needCount": 2,
+      "recordType": 1
+    },
+    "102002": {
+      "id": 102002,
+      "subType": 2,
+      "needCount": 2,
+      "recordType": 1
+    },
+    "102003": {
+      "id": 102003,
+      "subType": 2,
+      "needCount": 3,
+      "recordType": 1
+    },
+    "102004": {
+      "id": 102004,
+      "subType": 2,
+      "needCount": 4,
+      "recordType": 1
+    },
+    "102005": {
+      "id": 102005,
+      "subType": 2,
+      "needCount": 5,
+      "recordType": 1
+    },
+    "102006": {
+      "id": 102006,
+      "subType": 2,
+      "needCount": 6,
+      "recordType": 1
+    },
+    "102007": {
+      "id": 102007,
+      "subType": 2,
+      "needCount": 7,
+      "recordType": 1
+    },
+    "102008": {
+      "id": 102008,
+      "subType": 2,
+      "needCount": 8,
+      "recordType": 1
+    },
+    "102009": {
+      "id": 102009,
+      "subType": 2,
+      "needCount": 9,
+      "recordType": 1
+    },
+    "103001": {
+      "id": 103001,
+      "subType": 3,
+      "needCount": 3,
+      "recordType": 1
+    },
+    "301001": {
+      "id": 301001,
+      "subType": 4,
+      "needCount": 1,
+      "args": [
+        "300301"
+      ],
+      "recordType": 1
+    },
+    "301002": {
+      "id": 301002,
+      "subType": 4,
+      "needCount": 1,
+      "args": [
+        "11007.0"
+      ],
+      "recordType": 1
+    },
+    "302001": {
+      "id": 302001,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "30030103"
+      ],
+      "recordType": 1
+    },
+    "201001": {
+      "id": 201001,
+      "subType": 6,
+      "needCount": 1,
+      "args": [
+        "3"
+      ],
+      "recordType": 1
+    },
+    "202001": {
+      "id": 202001,
+      "subType": 7,
+      "needCount": 1,
+      "args": [
+        "1"
+      ],
+      "recordType": 1
+    },
+    "203001": {
+      "id": 203001,
+      "subType": 8,
+      "needCount": 3,
+      "args": [
+        "5"
+      ],
+      "recordType": 1
+    },
+    "401001": {
+      "id": 401001,
+      "subType": 9,
+      "needCount": 3,
+      "args": [
+        "1001"
+      ],
+      "recordType": 1
+    },
+    "402001": {
+      "id": 402001,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "201001"
+      ],
+      "recordType": 1
+    },
+    "402002": {
+      "id": 402002,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "201002"
+      ],
+      "recordType": 1
+    },
+    "402003": {
+      "id": 402003,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "201011"
+      ],
+      "recordType": 1
+    },
+    "402004": {
+      "id": 402004,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "201012"
+      ],
+      "recordType": 1
+    },
+    "402005": {
+      "id": 402005,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "201021"
+      ],
+      "recordType": 1
+    },
+    "402006": {
+      "id": 402006,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "201022"
+      ],
+      "recordType": 1
+    },
+    "402007": {
+      "id": 402007,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "201111"
+      ],
+      "recordType": 1
+    },
+    "402008": {
+      "id": 402008,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "201112"
+      ],
+      "recordType": 1
+    },
+    "402009": {
+      "id": 402009,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "201121"
+      ],
+      "recordType": 1
+    },
+    "402010": {
+      "id": 402010,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "201122"
+      ],
+      "recordType": 1
+    },
+    "402011": {
+      "id": 402011,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "201131"
+      ],
+      "recordType": 1
+    },
+    "402012": {
+      "id": 402012,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "201132"
+      ],
+      "recordType": 1
+    },
+    "402013": {
+      "id": 402013,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "201141"
+      ],
+      "recordType": 1
+    },
+    "402014": {
+      "id": 402014,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "201142"
+      ],
+      "recordType": 1
+    },
+    "402015": {
+      "id": 402015,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "203001"
+      ],
+      "recordType": 1
+    },
+    "402016": {
+      "id": 402016,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "203002"
+      ],
+      "recordType": 1
+    },
+    "402017": {
+      "id": 402017,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "203003"
+      ],
+      "recordType": 1
+    },
+    "402018": {
+      "id": 402018,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "203004"
+      ],
+      "recordType": 1
+    },
+    "402019": {
+      "id": 402019,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "205001"
+      ],
+      "recordType": 1
+    },
+    "402020": {
+      "id": 402020,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "205002"
+      ],
+      "recordType": 1
+    },
+    "402021": {
+      "id": 402021,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "206001"
+      ],
+      "recordType": 1
+    },
+    "402022": {
+      "id": 402022,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "206002"
+      ],
+      "recordType": 1
+    },
+    "402023": {
+      "id": 402023,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "202001"
+      ],
+      "recordType": 1
+    },
+    "402024": {
+      "id": 402024,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "202002"
+      ],
+      "recordType": 1
+    },
+    "402025": {
+      "id": 402025,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "203005"
+      ],
+      "recordType": 1
+    },
+    "402026": {
+      "id": 402026,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "203006"
+      ],
+      "recordType": 1
+    },
+    "402027": {
+      "id": 402027,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "203007"
+      ],
+      "recordType": 1
+    },
+    "402028": {
+      "id": 402028,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "203008"
+      ],
+      "recordType": 1
+    },
+    "402029": {
+      "id": 402029,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "203009"
+      ],
+      "recordType": 1
+    },
+    "402030": {
+      "id": 402030,
+      "subType": 10,
+      "needCount": 1,
+      "args": [
+        "203007.0"
+      ],
+      "recordType": 1
+    },
+    "701001": {
+      "id": 701001,
+      "subType": 11,
+      "needCount": 60,
+      "recordType": 1
+    },
+    "501001": {
+      "id": 501001,
+      "subType": 12,
+      "needCount": 3,
+      "args": [
+        "100001004001",
+        "166937",
+        "32196",
+        "32216",
+        "800"
+      ],
+      "recordType": 1
+    },
+    "702001": {
+      "id": 702001,
+      "subType": 15,
+      "needCount": 2,
+      "args": [
+        "1"
+      ],
+      "recordType": 1
+    },
+    "702002": {
+      "id": 702002,
+      "subType": 15,
+      "needCount": 1,
+      "args": [
+        "2"
+      ],
+      "recordType": 1
+    },
+    "601001": {
+      "id": 601001,
+      "subType": 16,
+      "needCount": 1,
+      "args": [
+        "20111110801"
+      ],
+      "recordType": 1
+    },
+    "103002": {
+      "id": 103002,
+      "subType": 3,
+      "needCount": 5,
+      "recordType": 1
+    },
+    "103003": {
+      "id": 103003,
+      "subType": 3,
+      "needCount": 10,
+      "recordType": 1
+    },
+    "103004": {
+      "id": 103004,
+      "subType": 3,
+      "needCount": 15,
+      "recordType": 1
+    },
+    "103005": {
+      "id": 103005,
+      "subType": 3,
+      "needCount": 13,
+      "recordType": 1
+    },
+    "104001": {
+      "id": 104001,
+      "subType": 21,
+      "needCount": 1,
+      "recordType": 2
+    },
+    "403001": {
+      "id": 403001,
+      "subType": 22,
+      "needCount": 150,
+      "recordType": 2
+    },
+    "404001": {
+      "id": 404001,
+      "subType": 23,
+      "needCount": 2,
+      "args": [
+        "1.0"
+      ],
+      "recordType": 2
+    },
+    "404002": {
+      "id": 404002,
+      "subType": 23,
+      "needCount": 1,
+      "args": [
+        "2.0"
+      ],
+      "recordType": 2
+    },
+    "405001": {
+      "id": 405001,
+      "subType": 28,
+      "needCount": 1,
+      "recordType": 2
+    },
+    "406001": {
+      "id": 406001,
+      "subType": 25,
+      "needCount": 3,
+      "args": [
+        "0.0"
+      ],
+      "recordType": 2
+    },
+    "406002": {
+      "id": 406002,
+      "subType": 25,
+      "needCount": 1,
+      "args": [
+        "1.0"
+      ],
+      "recordType": 2
+    },
+    "204001": {
+      "id": 204001,
+      "subType": 26,
+      "needCount": 1,
+      "args": [
+        "7.0"
+      ],
+      "recordType": 2
+    },
+    "408001": {
+      "id": 408001,
+      "subType": 29,
+      "needCount": 1,
+      "recordType": 2
+    },
+    "504001": {
+      "id": 504001,
+      "subType": 27,
+      "needCount": 1,
+      "args": [
+        "11112401"
+      ],
+      "recordType": 1
+    },
+    "504002": {
+      "id": 504002,
+      "subType": 27,
+      "needCount": 1,
+      "args": [
+        "11422401"
+      ],
+      "recordType": 1
+    },
+    "501002": {
+      "id": 501002,
+      "subType": 12,
+      "needCount": 1,
+      "args": [
+        "100001001002",
+        "139327",
+        "66121",
+        "32703",
+        "1000"
+      ],
+      "recordType": 1
+    },
+    "501003": {
+      "id": 501003,
+      "subType": 12,
+      "needCount": 1,
+      "args": [
+        "100001004002",
+        "143893",
+        "102861",
+        "34367",
+        "1000"
+      ],
+      "recordType": 1
+    },
+    "301011": {
+      "id": 301011,
+      "subType": 4,
+      "needCount": 1,
+      "args": [
+        "11001"
+      ],
+      "recordType": 1
+    },
+    "302011": {
+      "id": 302011,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "11001123"
+      ],
+      "recordType": 1
+    },
+    "302012": {
+      "id": 302012,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "1100116"
+      ],
+      "recordType": 1
+    },
+    "302013": {
+      "id": 302013,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "1100370"
+      ],
+      "recordType": 1
+    },
+    "302014": {
+      "id": 302014,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "11001114"
+      ],
+      "recordType": 1
+    },
+    "302015": {
+      "id": 302015,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "1100501"
+      ],
+      "recordType": 1
+    },
+    "302016": {
+      "id": 302016,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "11002011"
+      ],
+      "recordType": 1
+    },
+    "302017": {
+      "id": 302017,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "1100121"
+      ],
+      "recordType": 1
+    },
+    "302018": {
+      "id": 302018,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "11001116.0"
+      ],
+      "recordType": 1
+    },
+    "302019": {
+      "id": 302019,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "11001114.0"
+      ],
+      "recordType": 1
+    },
+    "302020": {
+      "id": 302020,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "11001122.0"
+      ],
+      "recordType": 1
+    },
+    "302021": {
+      "id": 302021,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "11001118.0"
+      ],
+      "recordType": 1
+    },
+    "302022": {
+      "id": 302022,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "3104101.0"
+      ],
+      "recordType": 1
+    },
+    "302023": {
+      "id": 302023,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "3104101.0"
+      ],
+      "recordType": 1
+    },
+    "302024": {
+      "id": 302024,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "1100201.0"
+      ],
+      "recordType": 1
+    },
+    "302025": {
+      "id": 302025,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "1100113.0"
+      ],
+      "recordType": 1
+    },
+    "302026": {
+      "id": 302026,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "1100113.0"
+      ],
+      "recordType": 1
+    },
+    "302027": {
+      "id": 302027,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "1100291.0"
+      ],
+      "recordType": 1
+    },
+    "302028": {
+      "id": 302028,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "3104210.0"
+      ],
+      "recordType": 1
+    },
+    "302029": {
+      "id": 302029,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "3104211.0"
+      ],
+      "recordType": 1
+    },
+    "302030": {
+      "id": 302030,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "3104221.0"
+      ],
+      "recordType": 1
+    },
+    "302031": {
+      "id": 302031,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "1100294.0"
+      ],
+      "recordType": 1
+    },
+    "302032": {
+      "id": 302032,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "1100294.0"
+      ],
+      "recordType": 1
+    },
+    "302033": {
+      "id": 302033,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "1100227.0"
+      ],
+      "recordType": 1
+    },
+    "302034": {
+      "id": 302034,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "11003040.0"
+      ],
+      "recordType": 1
+    },
+    "302035": {
+      "id": 302035,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "11002342.0"
+      ],
+      "recordType": 1
+    },
+    "302036": {
+      "id": 302036,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "11004050.0"
+      ],
+      "recordType": 1
+    },
+    "302037": {
+      "id": 302037,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "11004161.0"
+      ],
+      "recordType": 1
+    },
+    "302038": {
+      "id": 302038,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "1100321.0"
+      ],
+      "recordType": 1
+    },
+    "302039": {
+      "id": 302039,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "1100371.0"
+      ],
+      "recordType": 1
+    },
+    "302040": {
+      "id": 302040,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "11003222.0"
+      ],
+      "recordType": 1
+    },
+    "302041": {
+      "id": 302041,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "1601.0"
+      ],
+      "recordType": 1
+    },
+    "302042": {
+      "id": 302042,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "1701.0"
+      ],
+      "recordType": 1
+    },
+    "302043": {
+      "id": 302043,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "1801.0"
+      ],
+      "recordType": 1
+    },
+    "302044": {
+      "id": 302044,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "1901.0"
+      ],
+      "recordType": 1
+    },
+    "302045": {
+      "id": 302045,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "2901.0"
+      ],
+      "recordType": 1
+    },
+    "302046": {
+      "id": 302046,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "1601.0"
+      ],
+      "recordType": 1
+    },
+    "302047": {
+      "id": 302047,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "3103502.0"
+      ],
+      "recordType": 1
+    },
+    "302048": {
+      "id": 302048,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "3103509.0"
+      ],
+      "recordType": 1
+    },
+    "302049": {
+      "id": 302049,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "11005004.0"
+      ],
+      "recordType": 1
+    },
+    "302050": {
+      "id": 302050,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "9998800.0"
+      ],
+      "recordType": 1
+    },
+    "302051": {
+      "id": 302051,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "9998800.0"
+      ],
+      "recordType": 1
+    },
+    "302052": {
+      "id": 302052,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "4100107.0"
+      ],
+      "recordType": 1
+    },
+    "302053": {
+      "id": 302053,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "4100199.0"
+      ],
+      "recordType": 1
+    },
+    "302054": {
+      "id": 302054,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "1100113.0"
+      ],
+      "recordType": 1
+    },
+    "302055": {
+      "id": 302055,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "1100113.0"
+      ],
+      "recordType": 1
+    },
+    "302056": {
+      "id": 302056,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "1100298.0"
+      ],
+      "recordType": 1
+    },
+    "302057": {
+      "id": 302057,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "3104101.0"
+      ],
+      "recordType": 1
+    },
+    "302058": {
+      "id": 302058,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "3104101.0"
+      ],
+      "recordType": 1
+    },
+    "302059": {
+      "id": 302059,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "11005203.0"
+      ],
+      "recordType": 1
+    },
+    "302061": {
+      "id": 302061,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "1100113.0"
+      ],
+      "recordType": 1
+    },
+    "302062": {
+      "id": 302062,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "1100113.0"
+      ],
+      "recordType": 1
+    },
+    "302063": {
+      "id": 302063,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "3103611.0"
+      ],
+      "recordType": 1
+    },
+    "302064": {
+      "id": 302064,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "1501.0"
+      ],
+      "recordType": 1
+    },
+    "302065": {
+      "id": 302065,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "1100298.0"
+      ],
+      "recordType": 1
+    },
+    "302066": {
+      "id": 302066,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "11005052.0"
+      ],
+      "recordType": 1
+    },
+    "302067": {
+      "id": 302067,
+      "subType": 5,
+      "needCount": 1,
+      "args": [
+        "1601.0"
+      ],
+      "recordType": 1
+    },
+    "407000": {
+      "id": 407000,
+      "subType": 3,
+      "needCount": 10,
+      "recordType": 1
+    },
+    "407001": {
+      "id": 407001,
+      "subType": 28,
+      "needCount": 1,
+      "args": [
+        "10101"
+      ],
+      "recordType": 1
+    },
+    "407002": {
+      "id": 407002,
+      "subType": 28,
+      "needCount": 1,
+      "args": [
+        "10102"
+      ],
+      "recordType": 1
+    },
+    "407003": {
+      "id": 407003,
+      "subType": 28,
+      "needCount": 1,
+      "args": [
+        "10103"
+      ],
+      "recordType": 1
+    },
+    "407004": {
+      "id": 407004,
+      "subType": 28,
+      "needCount": 1,
+      "args": [
+        "10104"
+      ],
+      "recordType": 1
+    },
+    "407005": {
+      "id": 407005,
+      "subType": 28,
+      "needCount": 1,
+      "args": [
+        "10105"
+      ],
+      "recordType": 1
+    },
+    "504003": {
+      "id": 504003,
+      "subType": 27,
+      "needCount": 1,
+      "args": [
+        "11422402"
+      ],
+      "recordType": 1
+    },
+    "505001": {
+      "id": 505001,
+      "subType": 30,
+      "needCount": 2,
+      "args": [
+        "50.0"
+      ],
+      "recordType": 1
+    }
+  }
+}

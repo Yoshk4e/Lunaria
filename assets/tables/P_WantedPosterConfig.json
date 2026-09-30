@@ -1,0 +1,19 @@
+{
+  "P_WantedPosterConfig": {
+    "1": {
+      "id": 1,
+      "key": "RuleID",
+      "value": "100010.0"
+    },
+    "2": {
+      "id": 2,
+      "key": "CreatureMaxCount",
+      "value": "4.0"
+    },
+    "3": {
+      "id": 3,
+      "key": "ReviveMaxHp",
+      "value": "8000.0"
+    }
+  }
+}

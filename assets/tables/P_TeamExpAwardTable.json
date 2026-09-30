@@ -1,0 +1,44 @@
+{
+  "P_TeamExpAwardTable": {
+    "10": {
+      "id": 10,
+      "reason": 10,
+      "teamExp": 10
+    },
+    "12": {
+      "id": 12,
+      "reason": 12,
+      "teamExp": 5
+    },
+    "16": {
+      "id": 16,
+      "reason": 16,
+      "teamExp": 25
+    },
+    "30": {
+      "id": 30,
+      "reason": 30,
+      "teamExp": 80
+    },
+    "31": {
+      "id": 31,
+      "reason": 31,
+      "teamExp": 20
+    },
+    "32": {
+      "id": 32,
+      "reason": 32,
+      "teamExp": 15
+    },
+    "33": {
+      "id": 33,
+      "reason": 33,
+      "teamExp": 30
+    },
+    "34": {
+      "id": 34,
+      "reason": 34,
+      "teamExp": 10
+    }
+  }
+}

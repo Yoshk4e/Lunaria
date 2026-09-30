@@ -1,0 +1,452 @@
+{
+  "P_TaskSteps_DailyTask": {
+    "101": {
+      "id": 101,
+      "taskType": 4,
+      "originTaskId": 1,
+      "actions": [
+        10101
+      ]
+    },
+    "201": {
+      "id": 201,
+      "taskType": 4,
+      "originTaskId": 2,
+      "actions": [
+        20101
+      ]
+    },
+    "301": {
+      "id": 301,
+      "taskType": 4,
+      "originTaskId": 3,
+      "actions": [
+        30101
+      ]
+    },
+    "401": {
+      "id": 401,
+      "taskType": 4,
+      "originTaskId": 4,
+      "actions": [
+        40101
+      ]
+    },
+    "501": {
+      "id": 501,
+      "taskType": 4,
+      "originTaskId": 5,
+      "actions": [
+        50101
+      ]
+    },
+    "601": {
+      "id": 601,
+      "taskType": 4,
+      "originTaskId": 6,
+      "actions": [
+        60101
+      ]
+    },
+    "701": {
+      "id": 701,
+      "taskType": 4,
+      "originTaskId": 7,
+      "actions": [
+        70101
+      ]
+    },
+    "801": {
+      "id": 801,
+      "taskType": 4,
+      "originTaskId": 8,
+      "actions": [
+        80101
+      ]
+    },
+    "2101": {
+      "id": 2101,
+      "taskType": 4,
+      "originTaskId": 21,
+      "actions": [
+        210101
+      ]
+    },
+    "2201": {
+      "id": 2201,
+      "taskType": 4,
+      "originTaskId": 22,
+      "actions": [
+        220101
+      ]
+    },
+    "2301": {
+      "id": 2301,
+      "taskType": 4,
+      "originTaskId": 23,
+      "actions": [
+        230101
+      ]
+    },
+    "2401": {
+      "id": 2401,
+      "taskType": 4,
+      "originTaskId": 24,
+      "actions": [
+        240101
+      ]
+    },
+    "2501": {
+      "id": 2501,
+      "taskType": 4,
+      "originTaskId": 25,
+      "actions": [
+        250101
+      ]
+    },
+    "2601": {
+      "id": 2601,
+      "taskType": 4,
+      "originTaskId": 26,
+      "actions": [
+        260101
+      ]
+    },
+    "2701": {
+      "id": 2701,
+      "taskType": 4,
+      "originTaskId": 27,
+      "actions": [
+        270101
+      ]
+    },
+    "2801": {
+      "id": 2801,
+      "taskType": 4,
+      "originTaskId": 28,
+      "actions": [
+        280101
+      ]
+    },
+    "2901": {
+      "id": 2901,
+      "taskType": 4,
+      "originTaskId": 29,
+      "actions": [
+        290101
+      ]
+    },
+    "3001": {
+      "id": 3001,
+      "taskType": 4,
+      "originTaskId": 30,
+      "actions": [
+        300101
+      ]
+    },
+    "3101": {
+      "id": 3101,
+      "taskType": 4,
+      "originTaskId": 31,
+      "actions": [
+        310101
+      ]
+    },
+    "3201": {
+      "id": 3201,
+      "taskType": 4,
+      "originTaskId": 32,
+      "actions": [
+        320101
+      ]
+    },
+    "3301": {
+      "id": 3301,
+      "taskType": 4,
+      "originTaskId": 33,
+      "actions": [
+        330101
+      ]
+    },
+    "3401": {
+      "id": 3401,
+      "taskType": 4,
+      "originTaskId": 34,
+      "actions": [
+        340101
+      ]
+    },
+    "3501": {
+      "id": 3501,
+      "taskType": 4,
+      "originTaskId": 35,
+      "actions": [
+        350101
+      ]
+    },
+    "3601": {
+      "id": 3601,
+      "taskType": 4,
+      "originTaskId": 36,
+      "actions": [
+        360101
+      ]
+    },
+    "3701": {
+      "id": 3701,
+      "taskType": 4,
+      "originTaskId": 37,
+      "actions": [
+        370101
+      ]
+    },
+    "3801": {
+      "id": 3801,
+      "taskType": 4,
+      "originTaskId": 38,
+      "actions": [
+        380101
+      ]
+    },
+    "3901": {
+      "id": 3901,
+      "taskType": 4,
+      "originTaskId": 39,
+      "actions": [
+        390101
+      ]
+    },
+    "4001": {
+      "id": 4001,
+      "taskType": 4,
+      "originTaskId": 40,
+      "actions": [
+        400101
+      ]
+    },
+    "102": {
+      "id": 102,
+      "taskType": 4,
+      "originTaskId": 1,
+      "actions": [
+        10201
+      ]
+    },
+    "202": {
+      "id": 202,
+      "taskType": 4,
+      "originTaskId": 2,
+      "actions": [
+        20201
+      ]
+    },
+    "302": {
+      "id": 302,
+      "taskType": 4,
+      "originTaskId": 3,
+      "actions": [
+        30201
+      ]
+    },
+    "402": {
+      "id": 402,
+      "taskType": 4,
+      "originTaskId": 4,
+      "actions": [
+        40201
+      ]
+    },
+    "502": {
+      "id": 502,
+      "taskType": 4,
+      "originTaskId": 5,
+      "actions": [
+        50201
+      ]
+    },
+    "602": {
+      "id": 602,
+      "taskType": 4,
+      "originTaskId": 6,
+      "actions": [
+        60201
+      ]
+    },
+    "702": {
+      "id": 702,
+      "taskType": 4,
+      "originTaskId": 7,
+      "actions": [
+        70201
+      ]
+    },
+    "802": {
+      "id": 802,
+      "taskType": 4,
+      "originTaskId": 8,
+      "actions": [
+        80201
+      ]
+    },
+    "2102": {
+      "id": 2102,
+      "taskType": 4,
+      "originTaskId": 21,
+      "actions": [
+        210201
+      ]
+    },
+    "2202": {
+      "id": 2202,
+      "taskType": 4,
+      "originTaskId": 22,
+      "actions": [
+        220201
+      ]
+    },
+    "2302": {
+      "id": 2302,
+      "taskType": 4,
+      "originTaskId": 23,
+      "actions": [
+        230201
+      ]
+    },
+    "2402": {
+      "id": 2402,
+      "taskType": 4,
+      "originTaskId": 24,
+      "actions": [
+        240201
+      ]
+    },
+    "2502": {
+      "id": 2502,
+      "taskType": 4,
+      "originTaskId": 25,
+      "actions": [
+        250201
+      ]
+    },
+    "2602": {
+      "id": 2602,
+      "taskType": 4,
+      "originTaskId": 26,
+      "actions": [
+        260201
+      ]
+    },
+    "2702": {
+      "id": 2702,
+      "taskType": 4,
+      "originTaskId": 27,
+      "actions": [
+        270201
+      ]
+    },
+    "2802": {
+      "id": 2802,
+      "taskType": 4,
+      "originTaskId": 28,
+      "actions": [
+        280201
+      ]
+    },
+    "2902": {
+      "id": 2902,
+      "taskType": 4,
+      "originTaskId": 29,
+      "actions": [
+        290201
+      ]
+    },
+    "3002": {
+      "id": 3002,
+      "taskType": 4,
+      "originTaskId": 30,
+      "actions": [
+        300201
+      ]
+    },
+    "3102": {
+      "id": 3102,
+      "taskType": 4,
+      "originTaskId": 31,
+      "actions": [
+        310201
+      ]
+    },
+    "3202": {
+      "id": 3202,
+      "taskType": 4,
+      "originTaskId": 32,
+      "actions": [
+        320201
+      ]
+    },
+    "3302": {
+      "id": 3302,
+      "taskType": 4,
+      "originTaskId": 33,
+      "actions": [
+        330201
+      ]
+    },
+    "3402": {
+      "id": 3402,
+      "taskType": 4,
+      "originTaskId": 34,
+      "actions": [
+        340201
+      ]
+    },
+    "3502": {
+      "id": 3502,
+      "taskType": 4,
+      "originTaskId": 35,
+      "actions": [
+        350201
+      ]
+    },
+    "3602": {
+      "id": 3602,
+      "taskType": 4,
+      "originTaskId": 36,
+      "actions": [
+        360201
+      ]
+    },
+    "3702": {
+      "id": 3702,
+      "taskType": 4,
+      "originTaskId": 37,
+      "actions": [
+        370201
+      ]
+    },
+    "3802": {
+      "id": 3802,
+      "taskType": 4,
+      "originTaskId": 38,
+      "actions": [
+        380201
+      ]
+    },
+    "3902": {
+      "id": 3902,
+      "taskType": 4,
+      "originTaskId": 39,
+      "actions": [
+        390201
+      ]
+    },
+    "4002": {
+      "id": 4002,
+      "taskType": 4,
+      "originTaskId": 40,
+      "actions": [
+        400201
+      ]
+    }
+  }
+}

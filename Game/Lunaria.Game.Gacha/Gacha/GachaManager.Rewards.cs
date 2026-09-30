@@ -1,0 +1,34 @@
+using Lunaria.Game.Resources;
+
+namespace Lunaria.Game.Gacha;
+
+/// <summary>Grant rebates at each milestone. Automatic delivery is inferred from the lack of a claim command.</summary>
+public sealed partial class GachaManager
+{
+    public IReadOnlyList<ItemGrant> ClaimRebates(uint bannerId)
+    {
+        if (!_banners.TryGetValue(bannerId, out var banner)
+            || !_states.TryGetValue(bannerId, out var state))
+            return [];
+
+        var due = assets.Gacha.Rebates(banner.PoolId)
+            .Where(milestone => milestone.Index < 32
+                                && state.Total >= milestone.DrawCount
+                                && (state.ClaimedMask & milestone.Bit) == 0)
+            .ToList();
+
+        if (due.Count == 0)
+            return [];
+
+        var mask = state.ClaimedMask;
+
+        foreach (var milestone in due)
+        {
+            mask |= milestone.Bit;
+        }
+        _states[bannerId] = state with { ClaimedMask = mask };
+        Dirty();
+
+        return due.Select(milestone => milestone.Reward).ToList();
+    }
+}

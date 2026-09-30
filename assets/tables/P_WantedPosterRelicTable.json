@@ -1,0 +1,259 @@
+{
+  "P_WantedPosterRelicTable": {
+    "10001": {
+      "id": 10001,
+      "quality": 1,
+      "relicEffect": [
+        101
+      ]
+    },
+    "10002": {
+      "id": 10002,
+      "quality": 2,
+      "relicEffect": [
+        102
+      ]
+    },
+    "10003": {
+      "id": 10003,
+      "quality": 2,
+      "relicEffect": [
+        103
+      ]
+    },
+    "10004": {
+      "id": 10004,
+      "quality": 1,
+      "relicEffect": [
+        104
+      ]
+    },
+    "10005": {
+      "id": 10005,
+      "quality": 1,
+      "relicEffect": [
+        105
+      ]
+    },
+    "10006": {
+      "id": 10006,
+      "quality": 3,
+      "relicEffect": [
+        106
+      ]
+    },
+    "10007": {
+      "id": 10007,
+      "quality": 2,
+      "relicEffect": [
+        107
+      ]
+    },
+    "10008": {
+      "id": 10008,
+      "quality": 2,
+      "relicEffect": [
+        108
+      ]
+    },
+    "10009": {
+      "id": 10009,
+      "quality": 2,
+      "relicEffect": [
+        109
+      ]
+    },
+    "10010": {
+      "id": 10010,
+      "quality": 3,
+      "relicEffect": [
+        110
+      ]
+    },
+    "10011": {
+      "id": 10011,
+      "quality": 4,
+      "relicEffect": [
+        111
+      ]
+    },
+    "10012": {
+      "id": 10012,
+      "quality": 2,
+      "relicEffect": [
+        112
+      ]
+    },
+    "10013": {
+      "id": 10013,
+      "quality": 2,
+      "relicEffect": [
+        113
+      ]
+    },
+    "10014": {
+      "id": 10014,
+      "quality": 2,
+      "relicEffect": [
+        114
+      ]
+    },
+    "10015": {
+      "id": 10015,
+      "quality": 2,
+      "relicEffect": [
+        115
+      ]
+    },
+    "10016": {
+      "id": 10016,
+      "quality": 2,
+      "relicEffect": [
+        116
+      ]
+    },
+    "10017": {
+      "id": 10017,
+      "quality": 2,
+      "relicEffect": [
+        117
+      ]
+    },
+    "10018": {
+      "id": 10018,
+      "quality": 2,
+      "relicEffect": [
+        118
+      ]
+    },
+    "10019": {
+      "id": 10019,
+      "quality": 2,
+      "relicEffect": [
+        119
+      ]
+    },
+    "10020": {
+      "id": 10020,
+      "quality": 3,
+      "relicEffect": [
+        120
+      ]
+    },
+    "10021": {
+      "id": 10021,
+      "quality": 4,
+      "relicEffect": [
+        121
+      ]
+    },
+    "10022": {
+      "id": 10022,
+      "quality": 1,
+      "relicEffect": [
+        122
+      ]
+    },
+    "10023": {
+      "id": 10023,
+      "quality": 4,
+      "relicEffect": [
+        123
+      ]
+    },
+    "10024": {
+      "id": 10024,
+      "quality": 1,
+      "relicEffect": [
+        124
+      ]
+    },
+    "10025": {
+      "id": 10025,
+      "quality": 3,
+      "relicEffect": [
+        125
+      ],
+      "unlockContion": 402029101
+    },
+    "10026": {
+      "id": 10026,
+      "quality": 3,
+      "relicEffect": [
+        126
+      ],
+      "unlockContion": 402029101
+    },
+    "10027": {
+      "id": 10027,
+      "quality": 4,
+      "relicEffect": [
+        127
+      ],
+      "unlockContion": 402029101
+    },
+    "10028": {
+      "id": 10028,
+      "quality": 2,
+      "relicEffect": [
+        128
+      ]
+    },
+    "10029": {
+      "id": 10029,
+      "quality": 2,
+      "relicEffect": [
+        129
+      ]
+    },
+    "10030": {
+      "id": 10030,
+      "quality": 2,
+      "relicEffect": [
+        130
+      ]
+    },
+    "10031": {
+      "id": 10031,
+      "quality": 2,
+      "relicEffect": [
+        131
+      ]
+    },
+    "10032": {
+      "id": 10032,
+      "quality": 2,
+      "relicEffect": [
+        132
+      ]
+    },
+    "10033": {
+      "id": 10033,
+      "quality": 2,
+      "relicEffect": [
+        133
+      ]
+    },
+    "10034": {
+      "id": 10034,
+      "quality": 2,
+      "relicEffect": [
+        134
+      ]
+    },
+    "10035": {
+      "id": 10035,
+      "quality": 1,
+      "relicEffect": [
+        135
+      ]
+    },
+    "10036": {
+      "id": 10036,
+      "quality": 1,
+      "relicEffect": [
+        136
+      ]
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "C_TaskConfigReadTarget": {
+    "1": {
+      "id": 1,
+      "taskSheet": "P_TasksList_QuestMain",
+      "stepSheet": "P_TaskSteps_QuestMain",
+      "actionSheet": "P_TaskActions_QuestMain",
+      "persistentSheet": "P_TaskPersistentTable_QuestMain",
+      "taskUiSheet": "C_TaskTaskUITable",
+      "actionUiSheet": "C_TaskActionsUITable"
+    },
+    "2": {
+      "id": 2,
+      "taskSheet": "P_TasksList_POIQuest",
+      "stepSheet": "P_TaskSteps_POIQuest",
+      "actionSheet": "P_TaskActions_POIQuest",
+      "persistentSheet": "P_TaskPersistentTable_POIQuest",
+      "taskUiSheet": "C_TaskTaskUITable_POI",
+      "actionUiSheet": "C_TaskActionUITable_POI"
+    },
+    "3": {
+      "id": 3,
+      "taskSheet": "P_TasksList_Wanted",
+      "stepSheet": "P_TaskSteps_Wanted",
+      "actionSheet": "P_TaskActions_Wanted",
+      "persistentSheet": "P_TaskPersistentTable_Wanted",
+      "actionUiSheet": "C_TaskActionsUI_Wanted"
+    },
+    "4": {
+      "id": 4,
+      "taskSheet": "P_TasksList_DailyTask",
+      "stepSheet": "P_TaskSteps_DailyTask",
+      "actionSheet": "P_TaskActions_DailyTask",
+      "persistentSheet": "P_TaskPersistentTable_DailyTask"
+    }
+  }
+}

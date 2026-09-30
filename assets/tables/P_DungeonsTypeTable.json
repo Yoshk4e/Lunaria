@@ -1,0 +1,119 @@
+{
+  "P_DungeonsTypeTable": {
+    "1": {
+      "id": 1,
+      "limitType": 1,
+      "limitParam": 0,
+      "exit": true,
+      "vitalityCost": 30,
+      "unlockCondition": 103003101,
+      "dungeonTypeUiStyle": 1,
+      "characterHpRatio": 10000,
+      "characterPermanentLiquidRatio": 0,
+      "temporaryLiquidRatio": 0,
+      "minPassTime": 3
+    },
+    "2": {
+      "id": 2,
+      "limitType": 3,
+      "limitParam": 1,
+      "exit": true,
+      "vitalityCost": 60,
+      "unlockCondition": 103003101,
+      "dungeonTypeUiStyle": 2,
+      "characterHpRatio": 10000,
+      "characterPermanentLiquidRatio": 10000,
+      "temporaryLiquidRatio": 0,
+      "minPassTime": 10
+    },
+    "3": {
+      "id": 3,
+      "limitType": 1,
+      "limitParam": 0,
+      "exit": true,
+      "vitalityCost": 0,
+      "unlockCondition": 302051101,
+      "dungeonTypeUiStyle": 1,
+      "characterHpRatio": 10000,
+      "characterPermanentLiquidRatio": 10000,
+      "temporaryLiquidRatio": 0,
+      "minPassTime": 10
+    },
+    "4": {
+      "id": 4,
+      "limitType": 1,
+      "limitParam": 0,
+      "exit": true,
+      "vitalityCost": 30,
+      "unlockCondition": 103003101,
+      "dungeonTypeUiStyle": 3,
+      "characterHpRatio": 10000,
+      "characterPermanentLiquidRatio": 0,
+      "temporaryLiquidRatio": 0,
+      "minPassTime": 5
+    },
+    "5": {
+      "id": 5,
+      "limitType": 1,
+      "limitParam": 0,
+      "exit": true,
+      "vitalityCost": 0,
+      "dungeonTypeUiStyle": 4,
+      "characterHpRatio": 10000,
+      "characterPermanentLiquidRatio": 0,
+      "temporaryLiquidRatio": 0,
+      "minPassTime": 10
+    },
+    "6": {
+      "id": 6,
+      "limitType": 1,
+      "limitParam": 0,
+      "exit": true,
+      "vitalityCost": 30,
+      "unlockCondition": 103003101,
+      "dungeonTypeUiStyle": 3,
+      "characterHpRatio": 10000,
+      "characterPermanentLiquidRatio": 0,
+      "temporaryLiquidRatio": 0,
+      "minPassTime": 10
+    },
+    "7": {
+      "id": 7,
+      "limitType": 1,
+      "limitParam": 0,
+      "exit": true,
+      "vitalityCost": 30,
+      "unlockCondition": 103003101,
+      "dungeonTypeUiStyle": 1,
+      "characterHpRatio": 10000,
+      "characterPermanentLiquidRatio": 0,
+      "temporaryLiquidRatio": 0,
+      "minPassTime": 5
+    },
+    "8": {
+      "id": 8,
+      "limitType": 1,
+      "limitParam": 0,
+      "exit": true,
+      "vitalityCost": 0,
+      "unlockCondition": 103004101,
+      "dungeonTypeUiStyle": 1,
+      "characterHpRatio": 10000,
+      "characterPermanentLiquidRatio": 0,
+      "temporaryLiquidRatio": 0,
+      "minPassTime": 5
+    },
+    "9": {
+      "id": 9,
+      "limitType": 1,
+      "limitParam": 0,
+      "exit": true,
+      "vitalityCost": 0,
+      "dungeonTypeUiStyle": 1,
+      "characterHpRatio": 10000,
+      "characterPermanentLiquidRatio": 0,
+      "temporaryLiquidRatio": 0,
+      "minPassTime": 5
+    }
+  }
+}

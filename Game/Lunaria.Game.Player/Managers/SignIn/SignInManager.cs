@@ -1,0 +1,101 @@
+using Lunaria.Game.Resources;
+using Msg;
+
+namespace Lunaria.Game.Player.Managers;
+
+public sealed class SignInManager(SignInAssets assets)
+{
+    public SignInManager(GameData assets) : this(assets.SignIn) { }
+
+    // Saves without activity IDs belong to the original calendar, activity 3.
+    public const uint LegacyActivityId = 3;
+    private readonly SortedDictionary<uint, Calendar> _calendars = [];
+
+    public sealed record ActivityState(uint ActivityId, IReadOnlyList<uint> SignedDays,
+        IReadOnlyList<uint> ClaimedDays, long? LastSignInDay);
+
+    public IEnumerable<ActivityState> Activities => _calendars.Select(pair => new ActivityState(pair.Key,
+        pair.Value.Signed.ToArray(), pair.Value.Claimed.ToArray(), pair.Value.LastDay));
+
+    // The lifetime attendance counter still belongs to the original calendar.
+    public IReadOnlyCollection<uint> SignedDays => _calendars.GetValueOrDefault(LegacyActivityId)?.Signed ?? [];
+    public IReadOnlyCollection<uint> ClaimedDays => _calendars.GetValueOrDefault(LegacyActivityId)?.Claimed ?? [];
+    public long? LastSignInDay => _calendars.GetValueOrDefault(LegacyActivityId)?.LastDay;
+    public bool IsDirty { get; private set; }
+    public void ClearDirty() => IsDirty = false;
+
+    public void Load(IEnumerable<uint> signedDays, IEnumerable<uint> claimedDays, long? lastSignInDay = null) =>
+        LoadActivities([new(LegacyActivityId, signedDays.ToArray(), claimedDays.ToArray(), lastSignInDay)]);
+
+    public void LoadActivities(IEnumerable<ActivityState> activities)
+    {
+        _calendars.Clear();
+        foreach (var saved in activities)
+        {
+            if (assets.Activity(saved.ActivityId) is null) continue;
+            var calendar = new Calendar();
+            calendar.Signed.UnionWith(saved.SignedDays.Intersect(assets.Days(saved.ActivityId)));
+            calendar.Claimed.UnionWith(saved.ClaimedDays.Intersect(calendar.Signed));
+            // Old saves have no attendance date. Do not award another day on login.
+            calendar.LastDay = saved.LastSignInDay ?? (calendar.Signed.Count > 0
+                ? DateTimeOffset.UtcNow.ToUnixTimeSeconds() / 86400 : null);
+            _calendars[saved.ActivityId] = calendar;
+        }
+        IsDirty = false;
+    }
+
+    public (int Result, SignInActivityData? Data) Query(uint activityId, DateTimeOffset? at = null)
+    {
+        var activity = assets.Activity(activityId);
+        if (activity is null)
+            return ((int)EnmTextCode.EnmTextSigninActivityIdInvalid, null);
+
+        var calendar = _calendars.GetValueOrDefault(activityId) ?? new Calendar();
+        var now = (at ?? DateTimeOffset.UtcNow).ToUnixTimeSeconds();
+        var open = now >= (long)activity.TimeOffsetStart && now <= (long)activity.TimeOffsetStop;
+        var days = assets.Days(activityId);
+        if (open && (calendar.LastDay is null || now / 86400 > calendar.LastDay))
+        {
+            var next = days.FirstOrDefault(day => !calendar.Signed.Contains(day));
+            if (next != 0 && calendar.Signed.Add(next))
+            {
+                calendar.LastDay = now / 86400;
+                _calendars[activityId] = calendar;
+                IsDirty = true;
+            }
+        }
+
+        var data = new SignInActivityData {
+            ActivityId = activityId, StartTime = activity.TimeOffsetStart, EndTime = activity.TimeOffsetStop
+        };
+        foreach (var day in days)
+            data.SigninDatas.Add(new DaySignInData {
+                Day = day, IsSignedIn = calendar.Signed.Contains(day), HasClaimed = calendar.Claimed.Contains(day)
+            });
+        return (0, data);
+    }
+
+    public (int Result, IReadOnlyList<ItemGrant> Items) Claim(uint activityId, uint day)
+    {
+        if (assets.Activity(activityId) is null)
+            return ((int)EnmTextCode.EnmTextSigninActivityIdInvalid, []);
+        if (!assets.Days(activityId).Contains(day))
+            return ((int)EnmTextCode.EnmTextSigninActivityRewardInvalid, []);
+        if (!_calendars.TryGetValue(activityId, out var calendar)
+            || !calendar.Signed.Contains(day) || !calendar.Claimed.Add(day))
+            return ((int)EnmTextCode.EnmTextSigninActivityCannotClaimReward, []);
+
+        IsDirty = true;
+        return (0, assets.Items(activityId, day));
+    }
+
+    public bool HasClaimableDay(uint activityId) => _calendars.TryGetValue(activityId, out var calendar)
+        && assets.Days(activityId).Any(day => calendar.Signed.Contains(day) && !calendar.Claimed.Contains(day));
+
+    private sealed class Calendar
+    {
+        public SortedSet<uint> Signed { get; } = [];
+        public SortedSet<uint> Claimed { get; } = [];
+        public long? LastDay { get; set; }
+    }
+}

@@ -1,0 +1,74 @@
+{
+  "P_CollectionDropTable": {
+    "1": {
+      "id": 1,
+      "collectionDropId": 9002,
+      "groupId": 1,
+      "collectionId": 13010,
+      "weight": 100
+    },
+    "2": {
+      "id": 2,
+      "collectionDropId": 9002,
+      "groupId": 2,
+      "collectionId": 13020,
+      "weight": 100
+    },
+    "3": {
+      "id": 3,
+      "collectionDropId": 9002,
+      "groupId": 3,
+      "collectionId": 13031,
+      "weight": 100
+    },
+    "4": {
+      "id": 4,
+      "collectionDropId": 9002,
+      "groupId": 4,
+      "collectionId": 13041,
+      "weight": 100
+    },
+    "5": {
+      "id": 5,
+      "collectionDropId": 9001,
+      "groupId": 1,
+      "collectionId": 12010,
+      "weight": 100
+    },
+    "6": {
+      "id": 6,
+      "collectionDropId": 9001,
+      "groupId": 2,
+      "collectionId": 12020,
+      "weight": 100
+    },
+    "7": {
+      "id": 7,
+      "collectionDropId": 9001,
+      "groupId": 3,
+      "collectionId": 12031,
+      "weight": 80
+    },
+    "8": {
+      "id": 8,
+      "collectionDropId": 9001,
+      "groupId": 4,
+      "collectionId": 12041,
+      "weight": 80
+    },
+    "9": {
+      "id": 9,
+      "collectionDropId": 9000,
+      "groupId": 1,
+      "collectionId": 11010,
+      "weight": 100
+    },
+    "10": {
+      "id": 10,
+      "collectionDropId": 9000,
+      "groupId": 2,
+      "collectionId": 11020,
+      "weight": 100
+    }
+  }
+}

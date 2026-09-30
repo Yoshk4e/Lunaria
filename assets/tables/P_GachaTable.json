@@ -1,0 +1,16 @@
+{
+  "P_GachaTable": {
+    "1": {
+      "id": 1,
+      "type": 3,
+      "activityId": 1,
+      "currencyId": 2,
+      "currencyCount": 160,
+      "ssrMaxDrawCount": 80,
+      "srMaxDrawCount": 10,
+      "rebateTemplateId": 1,
+      "repeatedTemplateId": 1,
+      "dailyDrawLimit": 50
+    }
+  }
+}

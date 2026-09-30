@@ -1,0 +1,172 @@
+{
+  "P_WPCreatureShop": {
+    "30001": {
+      "id": 30001,
+      "group": 21,
+      "creatureEntryId": 8100105,
+      "limitNum": 1,
+      "costNum": 700
+    },
+    "30002": {
+      "id": 30002,
+      "group": 21,
+      "creatureEntryId": 8100205,
+      "limitNum": 1,
+      "costNum": 700
+    },
+    "30003": {
+      "id": 30003,
+      "group": 21,
+      "creatureEntryId": 8100305,
+      "limitNum": 1,
+      "costNum": 700
+    },
+    "30004": {
+      "id": 30004,
+      "group": 21,
+      "creatureEntryId": 8200205,
+      "limitNum": 1,
+      "costNum": 700
+    },
+    "30005": {
+      "id": 30005,
+      "group": 21,
+      "creatureEntryId": 8200305,
+      "limitNum": 1,
+      "costNum": 700
+    },
+    "30006": {
+      "id": 30006,
+      "group": 21,
+      "creatureEntryId": 8300105,
+      "limitNum": 1,
+      "costNum": 700
+    },
+    "30007": {
+      "id": 30007,
+      "group": 21,
+      "creatureEntryId": 8300205,
+      "limitNum": 1,
+      "costNum": 700
+    },
+    "30008": {
+      "id": 30008,
+      "group": 21,
+      "creatureEntryId": 8300305,
+      "limitNum": 1,
+      "costNum": 700
+    },
+    "30009": {
+      "id": 30009,
+      "group": 22,
+      "creatureEntryId": 8100102,
+      "limitNum": 1,
+      "costNum": 200
+    },
+    "30010": {
+      "id": 30010,
+      "group": 22,
+      "creatureEntryId": 8100202,
+      "limitNum": 1,
+      "costNum": 200
+    },
+    "30011": {
+      "id": 30011,
+      "group": 22,
+      "creatureEntryId": 8100302,
+      "limitNum": 1,
+      "costNum": 200
+    },
+    "30012": {
+      "id": 30012,
+      "group": 22,
+      "creatureEntryId": 8200202,
+      "limitNum": 1,
+      "costNum": 200
+    },
+    "30013": {
+      "id": 30013,
+      "group": 22,
+      "creatureEntryId": 8200302,
+      "limitNum": 1,
+      "costNum": 200
+    },
+    "30014": {
+      "id": 30014,
+      "group": 22,
+      "creatureEntryId": 8300102,
+      "limitNum": 1,
+      "costNum": 200
+    },
+    "30015": {
+      "id": 30015,
+      "group": 22,
+      "creatureEntryId": 8300202,
+      "limitNum": 1,
+      "costNum": 200
+    },
+    "30016": {
+      "id": 30016,
+      "group": 22,
+      "creatureEntryId": 8300302,
+      "limitNum": 1,
+      "costNum": 200
+    },
+    "30017": {
+      "id": 30017,
+      "group": 23,
+      "creatureEntryId": 8100101,
+      "limitNum": 1,
+      "costNum": 100
+    },
+    "30018": {
+      "id": 30018,
+      "group": 23,
+      "creatureEntryId": 8100201,
+      "limitNum": 1,
+      "costNum": 100
+    },
+    "30019": {
+      "id": 30019,
+      "group": 23,
+      "creatureEntryId": 8100301,
+      "limitNum": 1,
+      "costNum": 100
+    },
+    "30020": {
+      "id": 30020,
+      "group": 23,
+      "creatureEntryId": 8200201,
+      "limitNum": 1,
+      "costNum": 100
+    },
+    "30021": {
+      "id": 30021,
+      "group": 23,
+      "creatureEntryId": 8200301,
+      "limitNum": 1,
+      "costNum": 100
+    },
+    "30022": {
+      "id": 30022,
+      "group": 23,
+      "creatureEntryId": 8300101,
+      "limitNum": 1,
+      "costNum": 100
+    },
+    "30023": {
+      "id": 30023,
+      "group": 23,
+      "creatureEntryId": 8300201,
+      "limitNum": 1,
+      "costNum": 100
+    },
+    "30024": {
+      "id": 30024,
+      "group": 23,
+      "creatureEntryId": 8300301,
+      "limitNum": 1,
+      "costNum": 100
+    }
+  }
+}

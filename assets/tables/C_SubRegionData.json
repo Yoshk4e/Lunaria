@@ -1,0 +1,53 @@
+{
+  "C_SubRegionData": {
+    "100001001001": {
+      "id": 100001001001,
+      "nameId": 1010500121,
+      "worldLocation": "142917.509920,32612.494668,0",
+      "redBarrageGroupId": 40,
+      "whiteBarrageGroupId": 34
+    },
+    "100001001002": {
+      "id": 100001001002,
+      "nameId": 1010500122,
+      "worldLocation": "128296.191958,49672.583448,0",
+      "redBarrageGroupId": 40,
+      "whiteBarrageGroupId": 35
+    },
+    "100001002001": {
+      "id": 100001002001,
+      "nameId": 1010500126,
+      "worldLocation": "123760.858553,80057.466225,0",
+      "redBarrageGroupId": 40,
+      "whiteBarrageGroupId": 36
+    },
+    "100001002002": {
+      "id": 100001002002,
+      "nameId": 1010500125,
+      "worldLocation": "126837.833162,101596.292580,0",
+      "redBarrageGroupId": 40,
+      "whiteBarrageGroupId": 37
+    },
+    "100001004001": {
+      "id": 100001004001,
+      "nameId": 1010500124,
+      "worldLocation": "164456.336092,36781.300271,0",
+      "redBarrageGroupId": 40,
+      "whiteBarrageGroupId": 38
+    },
+    "100001004002": {
+      "id": 100001004002,
+      "nameId": 1010500123,
+      "worldLocation": "151552.891939,86012.902749,0",
+      "redBarrageGroupId": 40,
+      "whiteBarrageGroupId": 39
+    },
+    "211001001001": {
+      "id": 211001001001,
+      "nameId": 1010500121,
+      "worldLocation": "142917.509920,32612.494668,0",
+      "redBarrageGroupId": 40,
+      "whiteBarrageGroupId": 34
+    }
+  }
+}

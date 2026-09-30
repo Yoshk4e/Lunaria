@@ -1,0 +1,318 @@
+{
+  "P_TmpCharacterTable": {
+    "1001001": {
+      "id": 1001001,
+      "characterId": 1001,
+      "level": 1,
+      "affixParams": [
+        20002
+      ],
+      "characterHpRatio": 10000,
+      "characterPermanentLiquidRatio": 0,
+      "characterSkillGrowth": [
+        10011,
+        10012,
+        10013,
+        10014,
+        10015
+      ],
+      "characterSkillGrowthLv": [
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    "1002001": {
+      "id": 1002001,
+      "characterId": 1001,
+      "level": 1,
+      "affixParams": [
+        20002
+      ],
+      "characterHpRatio": 10000,
+      "characterPermanentLiquidRatio": 0,
+      "characterSkillGrowth": [
+        10011,
+        10012,
+        10013,
+        10014,
+        10015
+      ],
+      "characterSkillGrowthLv": [
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    "1004001": {
+      "id": 1004001,
+      "characterId": 1001,
+      "level": 20,
+      "characterHpRatio": 10000,
+      "characterPermanentLiquidRatio": 0,
+      "characterSkillGrowth": [
+        10011,
+        10012,
+        10013,
+        10014,
+        10015
+      ],
+      "characterSkillGrowthLv": [
+        2,
+        2,
+        2,
+        2,
+        0
+      ]
+    },
+    "1005001": {
+      "id": 1005001,
+      "characterId": 1001,
+      "level": 20,
+      "motiveParams": [
+        12031001,
+        10
+      ],
+      "characterHpRatio": 10000,
+      "characterPermanentLiquidRatio": 0,
+      "characterSkillGrowth": [
+        10011,
+        10012,
+        10013,
+        10014,
+        10015
+      ],
+      "characterSkillGrowthLv": [
+        2,
+        2,
+        2,
+        2,
+        0
+      ]
+    },
+    "1005002": {
+      "id": 1005002,
+      "characterId": 1004,
+      "level": 20,
+      "motiveParams": [
+        12031001,
+        10
+      ],
+      "characterHpRatio": 10000,
+      "characterPermanentLiquidRatio": 0,
+      "characterSkillGrowth": [
+        10041,
+        10042,
+        10043,
+        10044,
+        10045
+      ],
+      "characterSkillGrowthLv": [
+        2,
+        2,
+        2,
+        2,
+        0
+      ]
+    },
+    "1005003": {
+      "id": 1005003,
+      "characterId": 1006,
+      "level": 20,
+      "motiveParams": [
+        12032001,
+        10
+      ],
+      "characterHpRatio": 10000,
+      "characterPermanentLiquidRatio": 0,
+      "characterSkillGrowth": [
+        10061,
+        10062,
+        10063,
+        10064,
+        10065
+      ],
+      "characterSkillGrowthLv": [
+        2,
+        2,
+        2,
+        2,
+        0
+      ]
+    },
+    "1005004": {
+      "id": 1005004,
+      "characterId": 1007,
+      "level": 20,
+      "motiveParams": [
+        12036001,
+        10
+      ],
+      "characterHpRatio": 10000,
+      "characterPermanentLiquidRatio": 0,
+      "characterSkillGrowth": [
+        10071,
+        10072,
+        10073,
+        10074,
+        10075
+      ],
+      "characterSkillGrowthLv": [
+        2,
+        2,
+        2,
+        2,
+        0
+      ]
+    },
+    "1006001": {
+      "id": 1006001,
+      "characterId": 1001,
+      "level": 5,
+      "characterHpRatio": 10000,
+      "characterPermanentLiquidRatio": 0,
+      "characterSkillGrowth": [
+        10011,
+        10012,
+        10013,
+        10014,
+        10015
+      ],
+      "characterSkillGrowthLv": [
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    "1007001": {
+      "id": 1007001,
+      "characterId": 1001,
+      "level": 5,
+      "characterHpRatio": 10000,
+      "characterPermanentLiquidRatio": 0,
+      "characterSkillGrowth": [
+        10011,
+        10012,
+        10013,
+        10014,
+        10015
+      ],
+      "characterSkillGrowthLv": [
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    "1008001": {
+      "id": 1008001,
+      "characterId": 1101,
+      "level": 15,
+      "motiveParams": [
+        12031001,
+        5
+      ],
+      "affixParams": [
+        206
+      ],
+      "characterHpRatio": 10000,
+      "characterPermanentLiquidRatio": 0,
+      "characterSkillGrowth": [
+        10011,
+        10012,
+        10013,
+        10014,
+        10015
+      ],
+      "characterSkillGrowthLv": [
+        2,
+        2,
+        2,
+        2,
+        0
+      ]
+    },
+    "1008002": {
+      "id": 1008002,
+      "characterId": 1004,
+      "level": 15,
+      "motiveParams": [
+        12031001,
+        5
+      ],
+      "characterHpRatio": 10000,
+      "characterPermanentLiquidRatio": 0,
+      "characterSkillGrowth": [
+        10041,
+        10042,
+        10043,
+        10044,
+        10045
+      ],
+      "characterSkillGrowthLv": [
+        2,
+        2,
+        2,
+        2,
+        0
+      ]
+    },
+    "1008003": {
+      "id": 1008003,
+      "characterId": 1006,
+      "level": 15,
+      "motiveParams": [
+        12032001,
+        5
+      ],
+      "characterHpRatio": 10000,
+      "characterPermanentLiquidRatio": 0,
+      "characterSkillGrowth": [
+        10061,
+        10062,
+        10063,
+        10064,
+        10065
+      ],
+      "characterSkillGrowthLv": [
+        2,
+        2,
+        2,
+        2,
+        0
+      ]
+    },
+    "1011001": {
+      "id": 1011001,
+      "characterId": 1004,
+      "level": 22,
+      "motiveParams": [
+        12031001,
+        12
+      ],
+      "characterHpRatio": 10000,
+      "characterPermanentLiquidRatio": 0,
+      "characterSkillGrowth": [
+        10041,
+        10042,
+        10043,
+        10044,
+        10045
+      ],
+      "characterSkillGrowthLv": [
+        2,
+        2,
+        2,
+        2,
+        0
+      ]
+    }
+  }
+}

@@ -1,0 +1,153 @@
+syntax = "proto3";
+package msg;
+
+import "comm_data.proto";
+
+
+
+message CSMotiveEquip
+{
+    uint64 motive_uniq_id = 1; 
+    uint64 inst_id = 2;   
+}
+
+
+
+message SCMotiveEquip
+{
+    int32 result = 1;          
+    uint64 motive_uniq_id = 2; 
+    uint64 inst_id = 3;   
+}
+
+
+
+message CSMotiveUnequip
+{
+    uint64 motive_uniq_id = 1; 
+    uint64 inst_id = 2;   
+}
+
+
+
+message SCMotiveUnequip
+{
+    int32 result = 1;          
+    uint64 motive_uniq_id = 2; 
+    uint64 inst_id = 3;   
+}
+
+
+
+message CSMotiveLevelUp
+{
+    uint64 motive_uniq_id = 1;  
+    repeated ItemIdCount items = 2; 
+    repeated uint64 motive_uniq_ids = 3; 
+}
+
+
+
+message SCMotiveLevelUp
+{
+    int32 result = 1;           
+    uint64 motive_uniq_id = 2;  
+    uint32 old_level = 3;       
+    uint32 new_level = 4;       
+    repeated ItemIdCount recycle_items = 5; 
+}
+
+
+
+message CSMotiveBreak
+{
+    uint64 motive_uniq_id = 1;  
+}
+
+
+
+message SCMotiveBreak
+{
+    int32 result = 1;              
+    uint64 motive_uniq_id = 2;     
+    uint32 old_break_level = 3;    
+    uint32 new_break_level = 4;    
+}
+
+
+
+message CSMotiveRefineUp
+{
+    uint64 motive_uniq_id = 1;                  
+    repeated uint64 refine_motive_uniq_ids = 2; 
+}
+
+
+
+message SCMotiveRefineUp
+{
+    int32 result = 1;                   
+    uint64 motive_uniq_id = 2;          
+    uint32 old_refine = 3;              
+    uint32 current_refine = 4;          
+}
+
+
+
+message CSMotiveDecompose
+{
+    repeated uint64 motive_uniq_ids = 1; 
+}
+
+
+
+message SCMotiveDecompose
+{
+    int32 result = 1;               
+    repeated ItemIdCount recycle_items = 2; 
+}
+
+
+
+message CSMotiveLock
+{
+    uint64 motive_uniq_id = 1;      
+    bool lock_state = 2;            
+}
+
+
+
+message SCMotiveLock
+{
+    int32 result = 1;               
+    uint64 motive_uniq_id = 2;      
+    bool lock_state = 3;            
+}
+
+
+message CSMotiveElem 
+{
+    uint64 uniq_id        = 1; 
+    uint32 motive_id      = 2; 
+    uint64 claim_time     = 3; 
+    int32 lv              = 4; 
+    int32 refinelv        = 5; 
+    uint64 equiped_target = 6; 
+    bool locked           = 7; 
+    uint32 item_id        = 8; 
+}
+
+
+
+message CSMotiveQuery
+{
+    uint32 reserved = 1;
+}
+
+
+
+message SCMotiveQuery
+{
+    int32 result = 1;
+    repeated CSMotiveElem motive_elems = 2;
+}

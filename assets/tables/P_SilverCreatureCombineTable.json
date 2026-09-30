@@ -1,0 +1,189 @@
+{
+  "P_SilverCreatureCombineTable": {
+    "101": {
+      "id": 101,
+      "srcItemNum": 2,
+      "dstItemId": 102
+    },
+    "102": {
+      "id": 102,
+      "srcItemNum": 2,
+      "dstItemId": 103
+    },
+    "103": {
+      "id": 103,
+      "srcItemNum": 2,
+      "dstItemId": 104
+    },
+    "104": {
+      "id": 104,
+      "srcItemNum": 2,
+      "dstItemId": 105
+    },
+    "29900001": {
+      "id": 29900001,
+      "srcItemNum": 2,
+      "dstItemId": 29900002
+    },
+    "29900002": {
+      "id": 29900002,
+      "srcItemNum": 2,
+      "dstItemId": 29900003
+    },
+    "29900003": {
+      "id": 29900003,
+      "srcItemNum": 2,
+      "dstItemId": 29900004
+    },
+    "29900004": {
+      "id": 29900004,
+      "srcItemNum": 2,
+      "dstItemId": 29900005
+    },
+    "29900006": {
+      "id": 29900006,
+      "srcItemNum": 2,
+      "dstItemId": 29900007
+    },
+    "29900007": {
+      "id": 29900007,
+      "srcItemNum": 2,
+      "dstItemId": 29900008
+    },
+    "29900008": {
+      "id": 29900008,
+      "srcItemNum": 2,
+      "dstItemId": 29900009
+    },
+    "29900009": {
+      "id": 29900009,
+      "srcItemNum": 2,
+      "dstItemId": 29900010
+    },
+    "29900011": {
+      "id": 29900011,
+      "srcItemNum": 2,
+      "dstItemId": 29900012
+    },
+    "29900012": {
+      "id": 29900012,
+      "srcItemNum": 2,
+      "dstItemId": 29900013
+    },
+    "29900013": {
+      "id": 29900013,
+      "srcItemNum": 2,
+      "dstItemId": 29900014
+    },
+    "29900014": {
+      "id": 29900014,
+      "srcItemNum": 2,
+      "dstItemId": 29900015
+    },
+    "29900016": {
+      "id": 29900016,
+      "srcItemNum": 2,
+      "dstItemId": 29900017
+    },
+    "29900017": {
+      "id": 29900017,
+      "srcItemNum": 2,
+      "dstItemId": 29900018
+    },
+    "29900018": {
+      "id": 29900018,
+      "srcItemNum": 2,
+      "dstItemId": 29900019
+    },
+    "29900019": {
+      "id": 29900019,
+      "srcItemNum": 2,
+      "dstItemId": 29900020
+    },
+    "29900021": {
+      "id": 29900021,
+      "srcItemNum": 2,
+      "dstItemId": 29900022
+    },
+    "29900022": {
+      "id": 29900022,
+      "srcItemNum": 2,
+      "dstItemId": 29900023
+    },
+    "29900023": {
+      "id": 29900023,
+      "srcItemNum": 2,
+      "dstItemId": 29900024
+    },
+    "29900024": {
+      "id": 29900024,
+      "srcItemNum": 2,
+      "dstItemId": 29900025
+    },
+    "29900026": {
+      "id": 29900026,
+      "srcItemNum": 2,
+      "dstItemId": 29900027
+    },
+    "29900027": {
+      "id": 29900027,
+      "srcItemNum": 2,
+      "dstItemId": 29900028
+    },
+    "29900028": {
+      "id": 29900028,
+      "srcItemNum": 2,
+      "dstItemId": 29900029
+    },
+    "29900029": {
+      "id": 29900029,
+      "srcItemNum": 2,
+      "dstItemId": 29900030
+    },
+    "29900031": {
+      "id": 29900031,
+      "srcItemNum": 2,
+      "dstItemId": 29900032
+    },
+    "29900032": {
+      "id": 29900032,
+      "srcItemNum": 2,
+      "dstItemId": 29900033
+    },
+    "29900033": {
+      "id": 29900033,
+      "srcItemNum": 2,
+      "dstItemId": 29900034
+    },
+    "29900034": {
+      "id": 29900034,
+      "srcItemNum": 2,
+      "dstItemId": 29900035
+    },
+    "29900036": {
+      "id": 29900036,
+      "srcItemNum": 2,
+      "dstItemId": 29900037
+    },
+    "29900037": {
+      "id": 29900037,
+      "srcItemNum": 2,
+      "dstItemId": 29900038
+    },
+    "29900038": {
+      "id": 29900038,
+      "srcItemNum": 2,
+      "dstItemId": 29900039
+    },
+    "29900039": {
+      "id": 29900039,
+      "srcItemNum": 2,
+      "dstItemId": 29900040
+    },
+    "29900041": {
+      "id": 29900041,
+      "srcItemNum": 2,
+      "dstItemId": 29900002
+    }
+  }
+}

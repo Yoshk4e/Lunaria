@@ -1,0 +1,29 @@
+{
+  "P_ActivityTable": {
+    "1": {
+      "id": 1,
+      "type": 1,
+      "timeType": 1
+    },
+    "2": {
+      "id": 2,
+      "type": 2,
+      "timeType": 1,
+      "timeOffsetStart": 1749135907
+    },
+    "3": {
+      "id": 3,
+      "type": 3,
+      "timeType": 1,
+      "timeOffsetStart": 1761138323,
+      "timeOffsetStop": 1768838399
+    },
+    "4": {
+      "id": 4,
+      "type": 4,
+      "timeType": 1,
+      "timeOffsetStart": 1761138323,
+      "timeOffsetStop": 1792760723
+    }
+  }
+}

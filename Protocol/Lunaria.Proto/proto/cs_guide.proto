@@ -1,0 +1,48 @@
+syntax = "proto3";
+package msg;
+
+import "comm_macro.proto";
+
+
+message GuideInfo
+{
+    uint32 guide_id = 1; 
+    EnmGuideState state = 2; 
+    int64 unlock_time = 3; 
+}
+
+
+
+message CSReqGuideInfo
+{
+}
+
+
+
+message SCResGuideInfo
+{
+    int32 result = 1; 
+    repeated GuideInfo guide_list = 2;  
+}
+
+
+
+message SCUnlockGuideNtf
+{
+    repeated GuideInfo guide_info = 1; 
+}
+
+
+
+message CSReqReadGuide
+{
+    repeated uint32 guide_id = 1; 
+}
+
+
+
+message SCResReadGuide
+{
+    int32 result = 1; 
+    repeated GuideInfo guide_info = 2; 
+}

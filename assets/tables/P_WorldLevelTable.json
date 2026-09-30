@@ -1,0 +1,42 @@
+{
+  "P_WorldLevelTable": {
+    "1": {
+      "id": 1,
+      "requireTeamLevel": 0,
+      "maxTeamLevel": 20,
+      "maxGemCost": 3
+    },
+    "2": {
+      "id": 2,
+      "requireTeamLevel": 20,
+      "requestTaskId": 31039,
+      "maxTeamLevel": 30,
+      "maxGemCost": 7
+    },
+    "3": {
+      "id": 3,
+      "requireTeamLevel": 30,
+      "requestTaskId": 31040,
+      "maxTeamLevel": 40,
+      "maxGemCost": 14
+    },
+    "4": {
+      "id": 4,
+      "requireTeamLevel": 45,
+      "maxTeamLevel": 40,
+      "maxGemCost": 14
+    },
+    "5": {
+      "id": 5,
+      "requireTeamLevel": 50,
+      "maxTeamLevel": 40,
+      "maxGemCost": 14
+    },
+    "6": {
+      "id": 6,
+      "requireTeamLevel": 60,
+      "maxTeamLevel": 40,
+      "maxGemCost": 14
+    }
+  }
+}

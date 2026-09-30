@@ -1,0 +1,257 @@
+{
+  "P_NPCGroupEnterBattle": {
+    "1": {
+      "id": 1,
+      "npcGroupId": 901,
+      "expand": false,
+      "enterBattleList": [
+        "101100401,50",
+        "101100402,50",
+        "101100701,20",
+        "101101201,20"
+      ]
+    },
+    "2": {
+      "id": 2,
+      "npcGroupId": 916,
+      "expand": false,
+      "enterBattleList": [
+        "101100401,50",
+        "101100402,50",
+        "101100701,20"
+      ]
+    },
+    "3": {
+      "id": 3,
+      "npcGroupId": 9101,
+      "expand": false,
+      "enterBattleList": [
+        "101100401,50",
+        "101100402,50",
+        "101100701,20",
+        "101101201,20"
+      ]
+    },
+    "4": {
+      "id": 4,
+      "npcGroupId": 9121,
+      "expand": false,
+      "enterBattleList": [
+        "101100401,50",
+        "101100402,50",
+        "101100701,20"
+      ]
+    },
+    "5": {
+      "id": 5,
+      "npcGroupId": 908,
+      "expand": false,
+      "enterBattleList": [
+        "101100401,50",
+        "101100402,20",
+        "101100701,20",
+        "101101201,20"
+      ]
+    },
+    "6": {
+      "id": 6,
+      "npcGroupId": 9162,
+      "expand": false,
+      "enterBattleList": [
+        "101100401,50",
+        "101100402,20",
+        "101100701,20"
+      ]
+    },
+    "7": {
+      "id": 7,
+      "npcGroupId": 9102,
+      "expand": false,
+      "enterBattleList": [
+        "101100401,50",
+        "101100402,20",
+        "101100701,20",
+        "101101201,20"
+      ]
+    },
+    "8": {
+      "id": 8,
+      "npcGroupId": 9122,
+      "expand": false,
+      "enterBattleList": [
+        "101100401,50",
+        "101100402,20",
+        "101100701,20"
+      ]
+    },
+    "9": {
+      "id": 9,
+      "npcGroupId": 907,
+      "expand": false,
+      "enterBattleList": [
+        "101100401,20",
+        "101100402,20",
+        "101100701,20",
+        "101101201,50"
+      ]
+    },
+    "10": {
+      "id": 10,
+      "npcGroupId": 9163,
+      "expand": false,
+      "enterBattleList": [
+        "101100401,20",
+        "101100402,20",
+        "101100701,20"
+      ]
+    },
+    "11": {
+      "id": 11,
+      "npcGroupId": 9103,
+      "expand": false,
+      "enterBattleList": [
+        "101100401,20",
+        "101100402,20",
+        "101100701,20",
+        "101101201,50"
+      ]
+    },
+    "12": {
+      "id": 12,
+      "npcGroupId": 9123,
+      "expand": false,
+      "enterBattleList": [
+        "101100401,20",
+        "101100402,20",
+        "101100701,20"
+      ]
+    },
+    "13": {
+      "id": 13,
+      "npcGroupId": 905,
+      "expand": false,
+      "enterBattleList": [
+        "101100401,50",
+        "101100402,50",
+        "101100701,50",
+        "101101201,50"
+      ]
+    },
+    "14": {
+      "id": 14,
+      "npcGroupId": 9172,
+      "expand": false,
+      "enterBattleList": [
+        "101100401,50",
+        "101100402,50",
+        "101100701,50"
+      ]
+    },
+    "15": {
+      "id": 15,
+      "npcGroupId": 9092,
+      "expand": false,
+      "enterBattleList": [
+        "101100401,50",
+        "101100402,50",
+        "101100701,50",
+        "101101201,50"
+      ]
+    },
+    "16": {
+      "id": 16,
+      "npcGroupId": 9112,
+      "expand": false,
+      "enterBattleList": [
+        "101100401,50",
+        "101100402,50",
+        "101100701,50"
+      ]
+    },
+    "17": {
+      "id": 17,
+      "npcGroupId": 9011,
+      "expand": false,
+      "enterBattleList": [
+        "1040102,50"
+      ]
+    },
+    "18": {
+      "id": 18,
+      "npcGroupId": 9171,
+      "expand": false,
+      "enterBattleList": [
+        "1040102,50"
+      ]
+    },
+    "19": {
+      "id": 19,
+      "npcGroupId": 9021,
+      "expand": false,
+      "enterBattleList": [
+        "1040102,50"
+      ]
+    },
+    "20": {
+      "id": 20,
+      "npcGroupId": 9161,
+      "expand": false,
+      "enterBattleList": [
+        "1040102,50"
+      ]
+    },
+    "21": {
+      "id": 21,
+      "npcGroupId": 917,
+      "expand": false,
+      "enterBattleList": [
+        "101100401,50",
+        "101100402,50",
+        "101100701,50"
+      ]
+    },
+    "22": {
+      "id": 22,
+      "npcGroupId": 9111,
+      "expand": false,
+      "enterBattleList": [
+        "101100401,50",
+        "101100402,50",
+        "101100701,50"
+      ]
+    },
+    "23": {
+      "id": 23,
+      "npcGroupId": 906,
+      "expand": false,
+      "enterBattleList": [
+        "101100401,50",
+        "101100402,50",
+        "101100701,50",
+        "101101201,50"
+      ]
+    },
+    "24": {
+      "id": 24,
+      "npcGroupId": 904,
+      "expand": false,
+      "enterBattleList": [
+        "101100401,50",
+        "101100402,50",
+        "101100701,50",
+        "101101201,50"
+      ]
+    },
+    "25": {
+      "id": 25,
+      "npcGroupId": 9091,
+      "expand": false,
+      "enterBattleList": [
+        "101100401,50",
+        "101100402,50",
+        "101100701,50",
+        "101101201,50"
+      ]
+    }
+  }
+}

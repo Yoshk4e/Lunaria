@@ -1,0 +1,59 @@
+
+syntax = "proto3";
+
+package msg;
+
+
+
+message CSMapGetAllTargets
+{
+
+}
+
+
+message TrackedTargetInfo
+{
+    uint64 map_id = 1;
+    uint64 tag_id = 2;
+    uint32 tag_type = 3;
+}
+
+
+
+message SCMapGetAllTargets
+{
+    int32 result = 1;
+    repeated TrackedTargetInfo tracked_target_list = 2;
+}
+
+
+
+message CSMapTrackTarget
+{
+    uint64 map_id = 1;
+    uint64 tag_id = 2;
+    uint32 tag_type = 3;
+}
+
+
+
+message SCMapTrackTarget
+{
+    int32 result = 1;
+}
+
+
+
+message CSMapCancelTrackTarget
+{
+    uint64 map_id = 1;
+    uint64 tag_id = 2;
+    uint32 tag_type = 3;
+}
+
+
+
+message SCMapCancelTrackTarget
+{
+    int32 result = 1;
+}

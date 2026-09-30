@@ -1,0 +1,92 @@
+{
+  "P_MotiveTable": {
+    "12051001": {
+      "id": 12051001,
+      "rare": 5,
+      "identity": 1,
+      "mainAttribute": 101,
+      "levelTemplateId": 12051001,
+      "breakTemplateId": 12051001
+    },
+    "12041001": {
+      "id": 12041001,
+      "rare": 4,
+      "identity": 1,
+      "mainAttribute": 101,
+      "levelTemplateId": 12041001,
+      "breakTemplateId": 12041001
+    },
+    "12042001": {
+      "id": 12042001,
+      "rare": 4,
+      "identity": 2,
+      "mainAttribute": 101,
+      "levelTemplateId": 12042001,
+      "breakTemplateId": 12042001
+    },
+    "12034001": {
+      "id": 12034001,
+      "rare": 3,
+      "identity": 4,
+      "mainAttribute": 101,
+      "levelTemplateId": 12033001,
+      "breakTemplateId": 12034001
+    },
+    "12035001": {
+      "id": 12035001,
+      "rare": 3,
+      "identity": 5,
+      "mainAttribute": 101,
+      "levelTemplateId": 12033001,
+      "breakTemplateId": 12035001
+    },
+    "12056001": {
+      "id": 12056001,
+      "rare": 5,
+      "identity": 6,
+      "mainAttribute": 101,
+      "levelTemplateId": 12056001,
+      "breakTemplateId": 12056001
+    },
+    "12046001": {
+      "id": 12046001,
+      "rare": 4,
+      "identity": 6,
+      "mainAttribute": 101,
+      "levelTemplateId": 12046001,
+      "breakTemplateId": 12046001
+    },
+    "12031001": {
+      "id": 12031001,
+      "rare": 3,
+      "identity": 1,
+      "mainAttribute": 101,
+      "levelTemplateId": 12033001,
+      "breakTemplateId": 12031001
+    },
+    "12032001": {
+      "id": 12032001,
+      "rare": 3,
+      "identity": 2,
+      "mainAttribute": 101,
+      "levelTemplateId": 12033001,
+      "breakTemplateId": 12032001
+    },
+    "12033001": {
+      "id": 12033001,
+      "rare": 3,
+      "identity": 3,
+      "mainAttribute": 101,
+      "levelTemplateId": 12033001,
+      "breakTemplateId": 12033001
+    },
+    "12036001": {
+      "id": 12036001,
+      "rare": 3,
+      "identity": 6,
+      "mainAttribute": 101,
+      "levelTemplateId": 12033001,
+      "breakTemplateId": 12036001
+    }
+  }
+}

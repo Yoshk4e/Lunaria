@@ -1,0 +1,169 @@
+syntax = "proto3";
+package msg;
+
+import "comm_data.proto";
+
+
+
+
+message CSDungeonsTypeData
+{
+    uint32 type       = 1; 
+    uint32 count_day  = 2; 
+    uint32 count_week = 3; 
+}
+
+
+message CSDungeonsCommonData
+{
+    repeated CSDungeonsTypeData type_data = 1; 
+    repeated CSOneDungeonsFinishData dungeons_list = 2;  
+}
+
+
+message CSOneHordeData
+{
+    uint32 id          = 1; 
+    uint32 kill_count  = 2; 
+    uint32 star_award  = 3; 
+}
+
+
+message CSHordeData
+{
+    repeated CSOneHordeData horde_list = 1; 
+}
+
+
+message CSOneDungeonsFinishData
+{
+    uint64 id = 1;
+    uint32 count = 2;
+}
+
+
+message CSDungeonsFinishData
+{
+    repeated CSOneDungeonsFinishData dungeons_list = 1; 
+}
+
+
+message CSDungeonsData
+{
+    CSDungeonsCommonData common_data = 1; 
+    CSHordeData horde_data = 2; 
+}
+
+
+
+
+message CSDungeonsFullData
+{
+}
+
+
+
+message SCDungeonsFullData
+{
+    int32 result = 1;
+    CSDungeonsData data = 2;
+}
+
+
+
+message CSDungeonsEnter
+{
+    uint64 dungeons_id = 1;    
+}
+
+
+
+message SCDungeonsEnter
+{
+    int32 result = 1;
+    uint64 dungeons_id = 2;    
+}
+
+
+
+message CSDungeonsFinish
+{
+    uint64 dungeons_id = 1;    
+    bool victory = 2; 
+    bool leave = 3;
+    HordeFinishDataReq horde_data = 4; 
+}
+
+
+
+message SCDungeonsFinish
+{
+    int32 result = 1;
+    repeated CmdItem reward_list = 2; 
+    HordeFinishDataRes horde_data = 3; 
+}
+
+
+
+message CSDungeonsEnterAlready
+{
+    
+}
+
+
+
+message SCDungeonsEnterAlready
+{
+    int32 result = 1;
+    DungeonsCurrentData info = 2;
+}
+
+
+
+message SCDungeonsDataNtf
+{
+    repeated CSDungeonsTypeData info = 1;
+    repeated CSOneDungeonsFinishData finish_count = 2;
+}
+
+
+message DungeonsCurrentData
+{
+    uint32 dungeons_id = 1; 
+    uint32 battle_id   = 2; 
+}
+
+
+message CSDungeonsCurrentData
+{
+    DungeonsCurrentData info = 1;
+}
+
+
+
+message SCDungeonsCurrentData
+{
+    int32 result = 1;
+    DungeonsCurrentData info = 2;
+}
+
+
+message HordeFinishDataReq
+{
+    uint32 kill_count = 1;    
+}
+
+
+message HordeFinishDataRes
+{
+    uint32 kill_count = 1;    
+}
+
+
+
+message SCHordeDataNtf
+{
+    uint32 id          = 1; 
+    uint32 kill_count  = 2; 
+    uint32 star_award  = 3; 
+}

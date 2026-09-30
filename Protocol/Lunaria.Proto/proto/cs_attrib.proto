@@ -1,0 +1,63 @@
+syntax = "proto3";
+package msg;
+
+
+message PBAttribDataElem
+{
+    int32 attrib_type = 1;
+    int32 base_value = 2;
+    int32 final_value = 3;
+}
+
+
+message PBCharacterAttribData
+{
+    uint64 inst_id = 1;
+    repeated PBAttribDataElem attrib_data = 2;
+}
+
+
+
+message CSOutsideAttribQuery
+{
+    repeated uint64 inst_id = 1;
+}
+
+
+
+message SCOutsideAttribQuery
+{
+    int32 result = 1;
+    repeated PBCharacterAttribData data = 2;
+}
+
+
+
+message SCOutsideAttribNtf
+{
+    PBCharacterAttribData data = 1;
+}
+
+
+
+
+
+message CSWantedBionicsAttribQuery
+{
+    repeated uint64 inst_id = 1;
+}
+
+
+
+message SCWantedBionicsAttribQuery
+{
+    int32 result = 1;
+    repeated PBCharacterAttribData data = 2;
+}
+
+
+
+message SCWantedBionicsAttribNtf
+{
+    PBCharacterAttribData data = 1;
+}

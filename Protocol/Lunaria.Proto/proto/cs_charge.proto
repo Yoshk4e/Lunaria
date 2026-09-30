@@ -1,0 +1,81 @@
+syntax = "proto3";
+package msg;
+import "comm_macro.proto";
+
+
+
+message CSChargeGoodsOrder
+{
+	uint32 goods_id = 1;  
+	bytes channel = 2; 
+}
+
+
+
+message SCChargeGoodsOrder
+{
+	int32 result = 1;  
+	uint32 goods_id = 2;  
+	bytes currency = 3;  
+	bytes price = 4;  
+	bytes developer_payload = 5;  
+	bytes notify_id = 6;  
+	bytes order_sign = 7;  
+	bytes game_header_payload = 8;  
+}
+
+
+
+message SCChargeFinish
+{
+	int32 result = 1;  
+	bytes developer_payload = 2;  
+	bytes order_id = 3;  
+	uint32 goods_id = 4;  
+}
+
+message ChargeGoodsCfg
+{
+	uint32 id = 1;
+    uint32 charge_type = 2;
+    uint32 sub_id = 3;
+    bytes currency = 4;
+    bytes real_price = 5;
+    bool is_show = 6; 
+    repeated uint32 areas_id = 7;
+	uint32 start_time = 8;
+    uint32 end_time = 9;
+    EnmPeriodType period_type = 10; 
+    uint32 period_num = 11;  
+	bool is_first_charge = 12; 
+}
+
+
+
+message CSChargeGoodsList
+{
+	bytes channel = 1; 
+}
+
+
+
+message SCChargeGoodsList
+{
+	repeated ChargeGoodsCfg goods_list = 1;  
+	int32 result = 2;  
+}
+
+
+
+message CSChargeMoneyQuery
+{
+    int32 reserved = 1;
+}
+
+
+
+message SCChargeMoneyQuery
+{
+    int32 result = 1;
+    repeated uint32 charge_money_id = 2; 
+}

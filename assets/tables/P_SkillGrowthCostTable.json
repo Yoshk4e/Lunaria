@@ -1,0 +1,1780 @@
+{
+  "P_SkillGrowthCostTable": {
+    "1001102": {
+      "id": 1001102,
+      "growthId": 10011,
+      "level": 2,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 100
+    },
+    "1001103": {
+      "id": 1001103,
+      "growthId": 10011,
+      "level": 3,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 200
+    },
+    "1001104": {
+      "id": 1001104,
+      "growthId": 10011,
+      "level": 4,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 300
+    },
+    "1001105": {
+      "id": 1001105,
+      "growthId": 10011,
+      "level": 5,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        4
+      ],
+      "costCoinNum": 400
+    },
+    "1001106": {
+      "id": 1001106,
+      "growthId": 10011,
+      "level": 6,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        5
+      ],
+      "costCoinNum": 500
+    },
+    "1001107": {
+      "id": 1001107,
+      "growthId": 10011,
+      "level": 7,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        6
+      ],
+      "costCoinNum": 600
+    },
+    "1001108": {
+      "id": 1001108,
+      "growthId": 10011,
+      "level": 8,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 700
+    },
+    "1001109": {
+      "id": 1001109,
+      "growthId": 10011,
+      "level": 9,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 800
+    },
+    "1001110": {
+      "id": 1001110,
+      "growthId": 10011,
+      "level": 10,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 900
+    },
+    "1001202": {
+      "id": 1001202,
+      "growthId": 10012,
+      "level": 2,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 100
+    },
+    "1001203": {
+      "id": 1001203,
+      "growthId": 10012,
+      "level": 3,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 200
+    },
+    "1001204": {
+      "id": 1001204,
+      "growthId": 10012,
+      "level": 4,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 300
+    },
+    "1001205": {
+      "id": 1001205,
+      "growthId": 10012,
+      "level": 5,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        4
+      ],
+      "costCoinNum": 400
+    },
+    "1001206": {
+      "id": 1001206,
+      "growthId": 10012,
+      "level": 6,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        5
+      ],
+      "costCoinNum": 500
+    },
+    "1001207": {
+      "id": 1001207,
+      "growthId": 10012,
+      "level": 7,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        6
+      ],
+      "costCoinNum": 600
+    },
+    "1001208": {
+      "id": 1001208,
+      "growthId": 10012,
+      "level": 8,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 700
+    },
+    "1001209": {
+      "id": 1001209,
+      "growthId": 10012,
+      "level": 9,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 800
+    },
+    "1001210": {
+      "id": 1001210,
+      "growthId": 10012,
+      "level": 10,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 900
+    },
+    "1001302": {
+      "id": 1001302,
+      "growthId": 10013,
+      "level": 2,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 100
+    },
+    "1001303": {
+      "id": 1001303,
+      "growthId": 10013,
+      "level": 3,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 200
+    },
+    "1001304": {
+      "id": 1001304,
+      "growthId": 10013,
+      "level": 4,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 300
+    },
+    "1001305": {
+      "id": 1001305,
+      "growthId": 10013,
+      "level": 5,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        4
+      ],
+      "costCoinNum": 400
+    },
+    "1001306": {
+      "id": 1001306,
+      "growthId": 10013,
+      "level": 6,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        5
+      ],
+      "costCoinNum": 500
+    },
+    "1001307": {
+      "id": 1001307,
+      "growthId": 10013,
+      "level": 7,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        6
+      ],
+      "costCoinNum": 600
+    },
+    "1001308": {
+      "id": 1001308,
+      "growthId": 10013,
+      "level": 8,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 700
+    },
+    "1001309": {
+      "id": 1001309,
+      "growthId": 10013,
+      "level": 9,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 800
+    },
+    "1001310": {
+      "id": 1001310,
+      "growthId": 10013,
+      "level": 10,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 900
+    },
+    "1001402": {
+      "id": 1001402,
+      "growthId": 10014,
+      "level": 2,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 100
+    },
+    "1001403": {
+      "id": 1001403,
+      "growthId": 10014,
+      "level": 3,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 200
+    },
+    "1001404": {
+      "id": 1001404,
+      "growthId": 10014,
+      "level": 4,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 300
+    },
+    "1001405": {
+      "id": 1001405,
+      "growthId": 10014,
+      "level": 5,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        4
+      ],
+      "costCoinNum": 400
+    },
+    "1001406": {
+      "id": 1001406,
+      "growthId": 10014,
+      "level": 6,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        5
+      ],
+      "costCoinNum": 500
+    },
+    "1001407": {
+      "id": 1001407,
+      "growthId": 10014,
+      "level": 7,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        6
+      ],
+      "costCoinNum": 600
+    },
+    "1001408": {
+      "id": 1001408,
+      "growthId": 10014,
+      "level": 8,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 700
+    },
+    "1001409": {
+      "id": 1001409,
+      "growthId": 10014,
+      "level": 9,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 800
+    },
+    "1001410": {
+      "id": 1001410,
+      "growthId": 10014,
+      "level": 10,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 900
+    },
+    "1001601": {
+      "id": 1001601,
+      "growthId": 10016,
+      "level": 1,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 100
+    },
+    "1002102": {
+      "id": 1002102,
+      "growthId": 10021,
+      "level": 2,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 100
+    },
+    "1002103": {
+      "id": 1002103,
+      "growthId": 10021,
+      "level": 3,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 200
+    },
+    "1002104": {
+      "id": 1002104,
+      "growthId": 10021,
+      "level": 4,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 300
+    },
+    "1002105": {
+      "id": 1002105,
+      "growthId": 10021,
+      "level": 5,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        4
+      ],
+      "costCoinNum": 400
+    },
+    "1002106": {
+      "id": 1002106,
+      "growthId": 10021,
+      "level": 6,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        5
+      ],
+      "costCoinNum": 500
+    },
+    "1002107": {
+      "id": 1002107,
+      "growthId": 10021,
+      "level": 7,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        6
+      ],
+      "costCoinNum": 600
+    },
+    "1002108": {
+      "id": 1002108,
+      "growthId": 10021,
+      "level": 8,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 700
+    },
+    "1002109": {
+      "id": 1002109,
+      "growthId": 10021,
+      "level": 9,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 800
+    },
+    "1002110": {
+      "id": 1002110,
+      "growthId": 10021,
+      "level": 10,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 900
+    },
+    "1002202": {
+      "id": 1002202,
+      "growthId": 10022,
+      "level": 2,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 100
+    },
+    "1002203": {
+      "id": 1002203,
+      "growthId": 10022,
+      "level": 3,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 200
+    },
+    "1002204": {
+      "id": 1002204,
+      "growthId": 10022,
+      "level": 4,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 300
+    },
+    "1002205": {
+      "id": 1002205,
+      "growthId": 10022,
+      "level": 5,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        4
+      ],
+      "costCoinNum": 400
+    },
+    "1002206": {
+      "id": 1002206,
+      "growthId": 10022,
+      "level": 6,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        5
+      ],
+      "costCoinNum": 500
+    },
+    "1002207": {
+      "id": 1002207,
+      "growthId": 10022,
+      "level": 7,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        6
+      ],
+      "costCoinNum": 600
+    },
+    "1002208": {
+      "id": 1002208,
+      "growthId": 10022,
+      "level": 8,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 700
+    },
+    "1002209": {
+      "id": 1002209,
+      "growthId": 10022,
+      "level": 9,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 800
+    },
+    "1002210": {
+      "id": 1002210,
+      "growthId": 10022,
+      "level": 10,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 900
+    },
+    "1002302": {
+      "id": 1002302,
+      "growthId": 10023,
+      "level": 2,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 100
+    },
+    "1002303": {
+      "id": 1002303,
+      "growthId": 10023,
+      "level": 3,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 200
+    },
+    "1002304": {
+      "id": 1002304,
+      "growthId": 10023,
+      "level": 4,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 300
+    },
+    "1002305": {
+      "id": 1002305,
+      "growthId": 10023,
+      "level": 5,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        4
+      ],
+      "costCoinNum": 400
+    },
+    "1002306": {
+      "id": 1002306,
+      "growthId": 10023,
+      "level": 6,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        5
+      ],
+      "costCoinNum": 500
+    },
+    "1002307": {
+      "id": 1002307,
+      "growthId": 10023,
+      "level": 7,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        6
+      ],
+      "costCoinNum": 600
+    },
+    "1002308": {
+      "id": 1002308,
+      "growthId": 10023,
+      "level": 8,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 700
+    },
+    "1002309": {
+      "id": 1002309,
+      "growthId": 10023,
+      "level": 9,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 800
+    },
+    "1002310": {
+      "id": 1002310,
+      "growthId": 10023,
+      "level": 10,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 900
+    },
+    "1002402": {
+      "id": 1002402,
+      "growthId": 10024,
+      "level": 2,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 100
+    },
+    "1002403": {
+      "id": 1002403,
+      "growthId": 10024,
+      "level": 3,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 200
+    },
+    "1002404": {
+      "id": 1002404,
+      "growthId": 10024,
+      "level": 4,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 300
+    },
+    "1002405": {
+      "id": 1002405,
+      "growthId": 10024,
+      "level": 5,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        4
+      ],
+      "costCoinNum": 400
+    },
+    "1002406": {
+      "id": 1002406,
+      "growthId": 10024,
+      "level": 6,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        5
+      ],
+      "costCoinNum": 500
+    },
+    "1002407": {
+      "id": 1002407,
+      "growthId": 10024,
+      "level": 7,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        6
+      ],
+      "costCoinNum": 600
+    },
+    "1002408": {
+      "id": 1002408,
+      "growthId": 10024,
+      "level": 8,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 700
+    },
+    "1002409": {
+      "id": 1002409,
+      "growthId": 10024,
+      "level": 9,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 800
+    },
+    "1002410": {
+      "id": 1002410,
+      "growthId": 10024,
+      "level": 10,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 900
+    },
+    "1002601": {
+      "id": 1002601,
+      "growthId": 10026,
+      "level": 1,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 100
+    },
+    "1003102": {
+      "id": 1003102,
+      "growthId": 10031,
+      "level": 2,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 100
+    },
+    "1003103": {
+      "id": 1003103,
+      "growthId": 10031,
+      "level": 3,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 200
+    },
+    "1003104": {
+      "id": 1003104,
+      "growthId": 10031,
+      "level": 4,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 300
+    },
+    "1003105": {
+      "id": 1003105,
+      "growthId": 10031,
+      "level": 5,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        4
+      ],
+      "costCoinNum": 400
+    },
+    "1003106": {
+      "id": 1003106,
+      "growthId": 10031,
+      "level": 6,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        5
+      ],
+      "costCoinNum": 500
+    },
+    "1003107": {
+      "id": 1003107,
+      "growthId": 10031,
+      "level": 7,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        6
+      ],
+      "costCoinNum": 600
+    },
+    "1003108": {
+      "id": 1003108,
+      "growthId": 10031,
+      "level": 8,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 700
+    },
+    "1003109": {
+      "id": 1003109,
+      "growthId": 10031,
+      "level": 9,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 800
+    },
+    "1003110": {
+      "id": 1003110,
+      "growthId": 10031,
+      "level": 10,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 900
+    },
+    "1003202": {
+      "id": 1003202,
+      "growthId": 10032,
+      "level": 2,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 100
+    },
+    "1003203": {
+      "id": 1003203,
+      "growthId": 10032,
+      "level": 3,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 200
+    },
+    "1003204": {
+      "id": 1003204,
+      "growthId": 10032,
+      "level": 4,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 300
+    },
+    "1003205": {
+      "id": 1003205,
+      "growthId": 10032,
+      "level": 5,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        4
+      ],
+      "costCoinNum": 400
+    },
+    "1003206": {
+      "id": 1003206,
+      "growthId": 10032,
+      "level": 6,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        5
+      ],
+      "costCoinNum": 500
+    },
+    "1003207": {
+      "id": 1003207,
+      "growthId": 10032,
+      "level": 7,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        6
+      ],
+      "costCoinNum": 600
+    },
+    "1003208": {
+      "id": 1003208,
+      "growthId": 10032,
+      "level": 8,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 700
+    },
+    "1003209": {
+      "id": 1003209,
+      "growthId": 10032,
+      "level": 9,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 800
+    },
+    "1003210": {
+      "id": 1003210,
+      "growthId": 10032,
+      "level": 10,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 900
+    },
+    "1003302": {
+      "id": 1003302,
+      "growthId": 10033,
+      "level": 2,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 100
+    },
+    "1003303": {
+      "id": 1003303,
+      "growthId": 10033,
+      "level": 3,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 200
+    },
+    "1003304": {
+      "id": 1003304,
+      "growthId": 10033,
+      "level": 4,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 300
+    },
+    "1003305": {
+      "id": 1003305,
+      "growthId": 10033,
+      "level": 5,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        4
+      ],
+      "costCoinNum": 400
+    },
+    "1003306": {
+      "id": 1003306,
+      "growthId": 10033,
+      "level": 6,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        5
+      ],
+      "costCoinNum": 500
+    },
+    "1003307": {
+      "id": 1003307,
+      "growthId": 10033,
+      "level": 7,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        6
+      ],
+      "costCoinNum": 600
+    },
+    "1003308": {
+      "id": 1003308,
+      "growthId": 10033,
+      "level": 8,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 700
+    },
+    "1003309": {
+      "id": 1003309,
+      "growthId": 10033,
+      "level": 9,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 800
+    },
+    "1003310": {
+      "id": 1003310,
+      "growthId": 10033,
+      "level": 10,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 900
+    },
+    "1003402": {
+      "id": 1003402,
+      "growthId": 10034,
+      "level": 2,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 100
+    },
+    "1003403": {
+      "id": 1003403,
+      "growthId": 10034,
+      "level": 3,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 200
+    },
+    "1003404": {
+      "id": 1003404,
+      "growthId": 10034,
+      "level": 4,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 300
+    },
+    "1003405": {
+      "id": 1003405,
+      "growthId": 10034,
+      "level": 5,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        4
+      ],
+      "costCoinNum": 400
+    },
+    "1003406": {
+      "id": 1003406,
+      "growthId": 10034,
+      "level": 6,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        5
+      ],
+      "costCoinNum": 500
+    },
+    "1003407": {
+      "id": 1003407,
+      "growthId": 10034,
+      "level": 7,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        6
+      ],
+      "costCoinNum": 600
+    },
+    "1003408": {
+      "id": 1003408,
+      "growthId": 10034,
+      "level": 8,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 700
+    },
+    "1003409": {
+      "id": 1003409,
+      "growthId": 10034,
+      "level": 9,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 800
+    },
+    "1003410": {
+      "id": 1003410,
+      "growthId": 10034,
+      "level": 10,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 900
+    },
+    "1003601": {
+      "id": 1003601,
+      "growthId": 10036,
+      "level": 1,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 100
+    },
+    "1004102": {
+      "id": 1004102,
+      "growthId": 10041,
+      "level": 2,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 100
+    },
+    "1004103": {
+      "id": 1004103,
+      "growthId": 10041,
+      "level": 3,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 200
+    },
+    "1004104": {
+      "id": 1004104,
+      "growthId": 10041,
+      "level": 4,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 300
+    },
+    "1004105": {
+      "id": 1004105,
+      "growthId": 10041,
+      "level": 5,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        4
+      ],
+      "costCoinNum": 400
+    },
+    "1004106": {
+      "id": 1004106,
+      "growthId": 10041,
+      "level": 6,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        5
+      ],
+      "costCoinNum": 500
+    },
+    "1004107": {
+      "id": 1004107,
+      "growthId": 10041,
+      "level": 7,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        6
+      ],
+      "costCoinNum": 600
+    },
+    "1004108": {
+      "id": 1004108,
+      "growthId": 10041,
+      "level": 8,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 700
+    },
+    "1004109": {
+      "id": 1004109,
+      "growthId": 10041,
+      "level": 9,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 800
+    },
+    "1004110": {
+      "id": 1004110,
+      "growthId": 10041,
+      "level": 10,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 900
+    },
+    "1004202": {
+      "id": 1004202,
+      "growthId": 10042,
+      "level": 2,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 100
+    },
+    "1004203": {
+      "id": 1004203,
+      "growthId": 10042,
+      "level": 3,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 200
+    },
+    "1004204": {
+      "id": 1004204,
+      "growthId": 10042,
+      "level": 4,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 300
+    },
+    "1004205": {
+      "id": 1004205,
+      "growthId": 10042,
+      "level": 5,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        4
+      ],
+      "costCoinNum": 400
+    },
+    "1004206": {
+      "id": 1004206,
+      "growthId": 10042,
+      "level": 6,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        5
+      ],
+      "costCoinNum": 500
+    },
+    "1004207": {
+      "id": 1004207,
+      "growthId": 10042,
+      "level": 7,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        6
+      ],
+      "costCoinNum": 600
+    },
+    "1004208": {
+      "id": 1004208,
+      "growthId": 10042,
+      "level": 8,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 700
+    },
+    "1004209": {
+      "id": 1004209,
+      "growthId": 10042,
+      "level": 9,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 800
+    },
+    "1004210": {
+      "id": 1004210,
+      "growthId": 10042,
+      "level": 10,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 900
+    },
+    "1004302": {
+      "id": 1004302,
+      "growthId": 10043,
+      "level": 2,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 100
+    },
+    "1004303": {
+      "id": 1004303,
+      "growthId": 10043,
+      "level": 3,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 200
+    },
+    "1004304": {
+      "id": 1004304,
+      "growthId": 10043,
+      "level": 4,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 300
+    },
+    "1004305": {
+      "id": 1004305,
+      "growthId": 10043,
+      "level": 5,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        4
+      ],
+      "costCoinNum": 400
+    },
+    "1004306": {
+      "id": 1004306,
+      "growthId": 10043,
+      "level": 6,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        5
+      ],
+      "costCoinNum": 500
+    },
+    "1004307": {
+      "id": 1004307,
+      "growthId": 10043,
+      "level": 7,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        6
+      ],
+      "costCoinNum": 600
+    },
+    "1004308": {
+      "id": 1004308,
+      "growthId": 10043,
+      "level": 8,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 700
+    },
+    "1004309": {
+      "id": 1004309,
+      "growthId": 10043,
+      "level": 9,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 800
+    },
+    "1004310": {
+      "id": 1004310,
+      "growthId": 10043,
+      "level": 10,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 900
+    },
+    "1004402": {
+      "id": 1004402,
+      "growthId": 10044,
+      "level": 2,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 100
+    },
+    "1004403": {
+      "id": 1004403,
+      "growthId": 10044,
+      "level": 3,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 200
+    },
+    "1004404": {
+      "id": 1004404,
+      "growthId": 10044,
+      "level": 4,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 300
+    },
+    "1004405": {
+      "id": 1004405,
+      "growthId": 10044,
+      "level": 5,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        4
+      ],
+      "costCoinNum": 400
+    },
+    "1004406": {
+      "id": 1004406,
+      "growthId": 10044,
+      "level": 6,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        5
+      ],
+      "costCoinNum": 500
+    },
+    "1004407": {
+      "id": 1004407,
+      "growthId": 10044,
+      "level": 7,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        6
+      ],
+      "costCoinNum": 600
+    },
+    "1004408": {
+      "id": 1004408,
+      "growthId": 10044,
+      "level": 8,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 700
+    },
+    "1004409": {
+      "id": 1004409,
+      "growthId": 10044,
+      "level": 9,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        2
+      ],
+      "costCoinNum": 800
+    },
+    "1004410": {
+      "id": 1004410,
+      "growthId": 10044,
+      "level": 10,
+      "costItemId": [
+        2
+      ],
+      "costItemNum": [
+        3
+      ],
+      "costCoinNum": 900
+    },
+    "1004601": {
+      "id": 1004601,
+      "growthId": 10046,
+      "level": 1,
+      "costItemId": [
+        3
+      ],
+      "costItemNum": [
+        1
+      ],
+      "costCoinNum": 100
+    }
+  }
+}
