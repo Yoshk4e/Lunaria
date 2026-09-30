@@ -24,6 +24,7 @@ public sealed partial class Player
 
         // Ignore client vitals of -1, which mean untracked.
         var changed = new List<ulong>();
+        var wiped = report.BattleResult == EBattleResultType.EnmBattleResultTypeDeadFail;
 
         foreach (var character in report.CharacterData)
         {
@@ -32,7 +33,9 @@ public sealed partial class Player
 
             var (hp, liquid) = (TeamCharacterHp(character.InstId), TeamCharacterLiquid(character.InstId));
 
-            if (character.CurrentHp >= 0)
+            if (wiped)
+                SetTeamCharacterVitals(character.InstId, hp: TeamCharacterMaxHp(character.InstId));
+            else if (character.CurrentHp >= 0)
                 SetTeamCharacterVitals(character.InstId, hp: character.CurrentHp);
 
             if (character.PermanentLiquid >= 0)

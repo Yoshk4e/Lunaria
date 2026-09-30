@@ -61,6 +61,22 @@ public sealed class UtilityManagerTests(TestAssets fixture)
     }
 
     [Fact]
+    public void Map_RebornPointStaysOnTheCurrentMapWithoutRebinding()
+    {
+        var map = new MapManager(fixture.Data);
+        Assert.Equal((TestAssets.StarterMap, TestAssets.DefaultSavepoint), map.RebornPoint());
+
+        // Bound point on another map and nothing unlocked here: the old pair is kept.
+        Assert.Equal(0, map.BeginEnter(TestAssets.SecondMap, 0).Code);
+        Assert.Equal((TestAssets.SecondMap, TestAssets.DefaultSavepoint), map.RebornPoint());
+
+        // An unlocked point on the current map wins, and the bound one is left alone.
+        Assert.Equal(0, map.UnlockSavepoint(11));
+        Assert.Equal((TestAssets.SecondMap, 11ul), map.RebornPoint());
+        Assert.Equal(TestAssets.DefaultSavepoint, map.Savepoint);
+    }
+
+    [Fact]
     public void Map_FirstPositionSyncAtTheArrivalCoordinatesStillMarksARealPosition()
     {
         var map = new MapManager(fixture.Data);

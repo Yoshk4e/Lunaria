@@ -125,6 +125,32 @@ public sealed partial class MapManager
         return true;
     }
 
+    public (ulong MapId, ulong Savepoint) RebornPoint()
+    {
+        if (IsOnLevelOf(Savepoint, SpawnMap))
+            return (SpawnMap, Savepoint);
+
+        for (var i = _unlockedSavepoints.Count - 1; i >= 0; i--)
+        {
+            if (IsOnLevelOf(_unlockedSavepoints[i], SpawnMap))
+                return (SpawnMap, _unlockedSavepoints[i]);
+        }
+
+        return (SpawnMap, Savepoint);
+    }
+
+    private bool IsOnLevelOf(ulong savepoint, ulong mapId)
+    {
+        if (_assets.Maps.Savepoint(savepoint) is not {} npc)
+            return false;
+
+        if (npc.MapId == mapId)
+            return true;
+
+        return _assets.Maps.Map(npc.MapId)?.LevelPath is { Length: > 0 } level
+               && level == _assets.Maps.Map(mapId)?.LevelPath;
+    }
+
     public void Respawn()
     {
         if (_assets.Maps.SavepointPos(Savepoint) is not {} pos)
