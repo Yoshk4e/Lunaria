@@ -9,16 +9,19 @@ public sealed class HandleLeaveBattle
     public async Task OnPacket(NetContext ctx, CSLeaveBattle req)
     {
         var outcome = ctx.Player.LeaveBattle(req);
+        var reborn = ctx.Player.Map.RebornPoint();
 
         await ctx.SendAsync(new SCLeaveBattle {
             Ret = outcome.Result,
             BattleType = req.BattleType,
             BattleFieldId = req.BattleFieldId,
             BattleResult = req.BattleResult,
-            ExtraInfo = req.BattleResult == EBattleResultType.EnmBattleResultTypeDeadFail ?
+            // A wiped hotel (Wanted) battle is retried in place, so no respawn point is sent.
+            ExtraInfo = req.BattleResult == EBattleResultType.EnmBattleResultTypeDeadFail
+                && req.BattleType != EBattleType.EnmBattleTypeWanted ?
                 new BattleExtraInfo {
-                    RebornMapId = ctx.Player.Map.MapId,
-                    RebornSavepoint = ctx.Player.Map.Savepoint
+                    RebornMapId = reborn.MapId,
+                    RebornSavepoint = reborn.Savepoint
                 } :
                 null
         }).ConfigureAwait(false);

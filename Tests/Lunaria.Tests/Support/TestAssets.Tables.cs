@@ -156,6 +156,7 @@ public sealed partial class TestAssets
                     "8": {"Id": 8, "MapId": 100, "Type": 101, "TemplateId": 8, "Position": "1,2,3", "Rotation": "0,0,0"},
                     "9": {"Id": 9, "MapId": 100, "Type": 101, "TemplateId": 9, "Position": "4,5,6", "Rotation": "0,0,0"},
                     "10": {"Id": 10, "MapId": 100, "Type": 101, "TemplateId": 10, "Position": "7,8,9", "Rotation": "0,0,0"},
+                    "11": {"Id": 11, "MapId": 200, "Type": 101, "TemplateId": 10, "Position": "13,14,15", "Rotation": "0,0,0"},
                     "500": {"Id": 500, "MapId": 100, "Type": 106, "TemplateId": 500, "Position": "10,11,12", "Rotation": "0,0,0"}}}
                   """);
 
