@@ -9,8 +9,12 @@ public sealed partial class Player
 
     public BattleLeaveOutcome LeaveBattle(CSLeaveBattle report)
     {
+        // Patrol encounters enter without battle_inst_id/monster_from_type but report them on leave,
+        // so only identifiers sent at entry are checked.
         if (!Enum.IsDefined(report.BattleResult)
-            || Battles.Current is {} running && (running.BattleInstId != report.BattleInstId || running.MonsterFrom != report.MonsterFromType))
+            || Battles.Current is {} running
+            && (running.BattleInstId != 0 && running.BattleInstId != report.BattleInstId
+                || running.MonsterFrom != default && running.MonsterFrom != report.MonsterFromType))
             return new BattleLeaveOutcome((int)EnmTextCode.EnmTextBattleStateNotMatch, RewardDelivery.Empty, false);
         var settlement = Battles.Leave(report.BattleType, report.BattleFieldId,
             report.BattleResult == EBattleResultType.EnmBattleResultTypeSuccess);

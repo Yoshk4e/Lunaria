@@ -121,6 +121,29 @@ public sealed class ServerCorrectnessTests(BundledGameplayFixture fixture)
     }
 
     [Fact]
+    public void BattleReports_PatrolLeaveMayCarryIdentifiersTheEntryOmitted()
+    {
+        var player = Fresh();
+        Assert.Equal(0, player.Battles.Enter(EBattleType.EnmBattleTypePatrol, 109100101, 0, default));
+        Assert.Equal(0, player.Battles.Start(EBattleType.EnmBattleTypePatrol, 109100101));
+        var report = new CSLeaveBattle {
+            BattleType = EBattleType.EnmBattleTypePatrol, BattleFieldId = 109100101,
+            BattleInstId = 3700101, MonsterFromType = EnmMonsterFromType.EmonsterFromTable,
+            BattleResult = EBattleResultType.EnmBattleResultTypeSuccess
+        };
+        Assert.Equal(0, player.LeaveBattle(report).Result);
+        Assert.Null(player.Battles.Current);
+        Assert.Equal(0, player.Battles.Enter(EBattleType.EnmBattleTypePatrol, 109101201, 0, default));
+
+        player.Battles.Leave(EBattleType.EnmBattleTypePatrol, 109101201, false);
+        Assert.Equal(0, player.Battles.Enter(EBattleType.EnmBattleTypePatrol, 109101201, 7, EnmMonsterFromType.EmonsterFromTask));
+        var mismatched = report.Clone();
+        mismatched.BattleFieldId = 109101201;
+        Assert.NotEqual(0, player.LeaveBattle(mismatched).Result);
+        Assert.NotNull(player.Battles.Current);
+    }
+
+    [Fact]
     public void MissingTeamAndInvalidMember_DoNotMutateTeams()
     {
         var player = Fresh();
