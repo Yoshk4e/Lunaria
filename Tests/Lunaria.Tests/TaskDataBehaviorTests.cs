@@ -79,12 +79,27 @@ public sealed class TaskDataBehaviorTests(BundledGameplayFixture fixture)
                 Assert.Empty(result.Outcome.Progress.PassedSteps);
                 Assert.Empty(result.Outcome.Progress.StartedTasks);
                 var rollback = step.TryGetProperty("rollbackStepWhenFail", out var configured) && configured.GetUInt64() != 0
-                    ? configured.GetUInt64() : stepId;
+                    ? configured.GetUInt64() : Assets.Tasks.RollbackStep(type, stepId);
                 Assert.Equal(rollback, result.Outcome.Progress.UpdatedData!.CurrentStep.StepId);
                 tested++;
             }
         }
         Assert.Equal(expected, tested);
+    }
+
+    [Theory]
+    [InlineData(TaskAssets.POIQuest, 900702ul, 900700ul)]
+    [InlineData(TaskAssets.POIQuest, 100203ul, 100202ul)]
+    [InlineData(TaskAssets.QuestMain, 9998102ul, 9998101ul)]
+    public void UnconfiguredPuzzleFailure_RearmsTheArrivalStepsBeforeIt(uint type, ulong failed, ulong expected)
+    {
+        var player = new Player(1, Assets);
+        AtStep(player, type, failed);
+        var failure = Assets.Tasks.FailureActions(type, failed).First();
+        var result = player.ReportTaskAction(type, failure, 1);
+        Assert.Equal(0, result.Code);
+        Assert.True(result.Outcome!.Progress.TaskFailed);
+        Assert.Equal(expected, result.Outcome.Progress.UpdatedData!.CurrentStep.StepId);
     }
 
     [Fact]
