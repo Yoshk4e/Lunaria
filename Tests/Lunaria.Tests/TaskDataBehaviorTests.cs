@@ -88,6 +88,21 @@ public sealed class TaskDataBehaviorTests(BundledGameplayFixture fixture)
     }
 
     [Fact]
+    public async Task MapArrival_MetEmptyMarkersDoNotLoopWhileTheStepWaitsOnAnArrival()
+    {
+        var player = new Player(1, Assets);
+        AtStep(player, TaskAssets.QuestMain, 1100510);
+        Assert.True(player.Map.BeginEnter(209001001001, 0).Ok);
+        Assert.Equal(0, player.Map.FinishEnter());
+
+        var settle = Task.Run(() => player.SettleMapArrival(209001001001));
+        Assert.Same(settle, await Task.WhenAny(settle, Task.Delay(TimeSpan.FromSeconds(10))));
+        Assert.Equal(2, (await settle).Count(o => o.Progress.Recorded));
+        Assert.Equal(1100510ul, player.Tasks.TaskDataOf(TaskAssets.QuestMain, 91004)!.CurrentStep.StepId);
+        Assert.Empty(player.SettleMapArrival(209001001001).Where(o => o.Progress.Recorded));
+    }
+
+    [Fact]
     public void Polling_HandlesMapFailureWithoutPassingOrRewardingTheFailedStep()
     {
         var player = new Player(1, Assets);
