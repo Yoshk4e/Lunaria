@@ -241,6 +241,10 @@ public sealed record RoleSaveDocument
 
         [JsonPropertyName("inst_id")]
         public ulong InstId { get; init; }
+
+        /// <summary>Catalyst item per gem slot, 0 for an empty slot.</summary>
+        [JsonPropertyName("gems")]
+        public IReadOnlyList<uint> Gems { get; init; } = [];
     }
 
     public sealed record SkillGroupSave

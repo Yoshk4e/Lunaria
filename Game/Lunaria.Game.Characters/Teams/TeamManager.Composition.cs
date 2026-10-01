@@ -8,7 +8,8 @@ public sealed partial class TeamManager
     public int SetMembers(
         uint teamId,
         IReadOnlyList<(uint Slot, ulong InstId, uint CharacterId)> members,
-        CharacterManager characters
+        CharacterManager characters,
+        IReadOnlyDictionary<uint, IReadOnlyList<uint>>? gems = null
     )
     {
         if (Get(teamId) is not {} team)
@@ -44,7 +45,8 @@ public sealed partial class TeamManager
             resolved.Add(new TeamMemberState {
                 Slot = slot,
                 InstId = instId,
-                CharacterId = character.CharacterId
+                CharacterId = character.CharacterId,
+                Gems = gems?.GetValueOrDefault(slot) ?? []
             });
         }
 
@@ -55,6 +57,53 @@ public sealed partial class TeamManager
             UsingMemberSlot = SlotOrLowestOccupied(UsingMemberSlot);
 
         return 0;
+    }
+
+    /// <summary>
+    /// Checks the gem slots sent with a team update, with the client's own rules (s_CSM_PDD_GemData._canApplyGem):
+    /// gem slots 1..MaxPerCharacter, a known gem, held in the bag, not twice on one character, and a team cost
+    /// (GemCost[1] + ... + GemCost[n] per character) within <paramref name="maxCost"/>. Returns the gems per member slot.
+    /// </summary>
+    public (int Code, IReadOnlyDictionary<uint, IReadOnlyList<uint>> Gems) CheckGems(
+        IEnumerable<(uint MemberSlot, IEnumerable<(uint GemSlot, uint GemId)> Slots)> members,
+        Func<uint, bool> owned,
+        uint maxCost
+    )
+    {
+        var result = new Dictionary<uint, IReadOnlyList<uint>>();
+        uint cost = 0;
+
+        foreach (var (memberSlot, slots) in members)
+        {
+            var row = new uint[assets.Gems.MaxPerCharacter];
+
+            foreach (var (gemSlot, gemId) in slots)
+            {
+                if (gemSlot < 1 || gemSlot > row.Length)
+                    return ((int)EnmTextCode.EnmTextCharacterTeamGemSizeNotMatch, result);
+
+                if (gemId == 0)
+                    continue;
+
+                if (!assets.Gems.Exists(gemId))
+                    return ((int)EnmTextCode.EnmTextCharacterTeamGemNotExist, result);
+
+                if (!owned(gemId))
+                    return ((int)EnmTextCode.EnmTextCharacterTeamGemNotOwned, result);
+
+                if (row.Contains(gemId))
+                    return ((int)EnmTextCode.EnmTextCharacterTeamGemDuplicate, result);
+
+                row[gemSlot - 1] = gemId;
+            }
+
+            cost += assets.Gems.CharacterCost(row.Count(id => id != 0));
+
+            if (row.Any(id => id != 0))
+                result[memberSlot] = row;
+        }
+
+        return cost > maxCost ? ((int)EnmTextCode.EnmTextCharacterTeamGemCostNotEnough, result) : (0, result);
     }
 
     /// <summary>MAX_TEAM_NAME_LEN limits bytes, not characters.</summary>

@@ -1,0 +1,339 @@
+{
+  "P_GemTable": {
+    "21501001": {
+      "id": 21501001,
+      "gemType": 1,
+      "gemName": 1700010101,
+      "gemDesc": 1700020101,
+      "gemAffixId": [
+        3001
+      ],
+      "gemTag": [
+        5,
+        21,
+        23,
+        3
+      ],
+      "gemEffectTag": [
+        1700000502
+      ]
+    },
+    "21501002": {
+      "id": 21501002,
+      "gemType": 1,
+      "gemName": 1700010102,
+      "gemDesc": 1700020102,
+      "gemAffixId": [
+        3002
+      ],
+      "gemTag": [
+        21,
+        23,
+        72
+      ],
+      "gemEffectTag": [
+        1700000503
+      ]
+    },
+    "21501003": {
+      "id": 21501003,
+      "gemType": 3,
+      "elementLimitType": [
+        2
+      ],
+      "elementLimitNum": [
+        1
+      ],
+      "gemName": 1700010103,
+      "gemDesc": 1700020103,
+      "gemAffixId": [
+        3003
+      ],
+      "gemTag": [
+        21,
+        22,
+        23,
+        24,
+        61
+      ],
+      "gemEffectTag": [
+        1700000504
+      ]
+    },
+    "21501004": {
+      "id": 21501004,
+      "gemType": 1,
+      "gemName": 1700010104,
+      "gemDesc": 1700020104,
+      "gemAffixId": [
+        3004
+      ],
+      "gemTag": [
+        25,
+        26,
+        27,
+        28,
+        83
+      ],
+      "gemEffectTag": [
+        1700000505
+      ]
+    },
+    "21501005": {
+      "id": 21501005,
+      "gemType": 5,
+      "elementLimitType": [
+        4
+      ],
+      "elementLimitNum": [
+        1
+      ],
+      "gemName": 1700010105,
+      "gemDesc": 1700020105,
+      "gemAffixId": [
+        3005
+      ],
+      "gemTag": [
+        21,
+        22,
+        23,
+        24,
+        51
+      ],
+      "gemEffectTag": [
+        1700000502
+      ]
+    },
+    "21501006": {
+      "id": 21501006,
+      "gemType": 1,
+      "gemName": 1700010106,
+      "gemDesc": 1700020106,
+      "gemAffixId": [
+        3006
+      ],
+      "gemTag": [
+        21
+      ],
+      "gemEffectTag": [
+        1700000502
+      ]
+    },
+    "21501007": {
+      "id": 21501007,
+      "gemType": 3,
+      "elementLimitType": [
+        2
+      ],
+      "elementLimitNum": [
+        1
+      ],
+      "gemName": 1700010107,
+      "gemDesc": 1700020107,
+      "gemAffixId": [
+        3007
+      ],
+      "gemTag": [
+        25,
+        26,
+        27,
+        28
+      ],
+      "gemEffectTag": [
+        1700000507
+      ]
+    },
+    "21501008": {
+      "id": 21501008,
+      "gemType": 1,
+      "gemName": 1700010108,
+      "gemDesc": 1700020108,
+      "gemAffixId": [
+        3008
+      ],
+      "gemTag": [
+        27
+      ],
+      "gemEffectTag": [
+        1700000508
+      ]
+    },
+    "21501009": {
+      "id": 21501009,
+      "gemType": 2,
+      "elementLimitType": [
+        1
+      ],
+      "elementLimitNum": [
+        3
+      ],
+      "gemName": 1700010109,
+      "gemDesc": 1700020109,
+      "gemAffixId": [
+        3009
+      ],
+      "gemTag": [
+        1,
+        72,
+        504
+      ],
+      "gemEffectTag": [
+        1700000507
+      ]
+    },
+    "21501010": {
+      "id": 21501010,
+      "gemType": 2,
+      "elementLimitType": [
+        1
+      ],
+      "elementLimitNum": [
+        2
+      ],
+      "gemName": 1700010110,
+      "gemDesc": 1700020110,
+      "gemAffixId": [
+        3010
+      ],
+      "gemTag": [
+        1,
+        72,
+        504
+      ],
+      "gemEffectTag": [
+        1700000510
+      ]
+    },
+    "21501011": {
+      "id": 21501011,
+      "gemType": 2,
+      "elementLimitType": [
+        1
+      ],
+      "elementLimitNum": [
+        1
+      ],
+      "gemName": 1700010111,
+      "gemDesc": 1700020111,
+      "gemAffixId": [
+        3011
+      ],
+      "gemTag": [
+        1,
+        72,
+        504
+      ],
+      "gemEffectTag": [
+        1700000501,
+        1700000502
+      ]
+    },
+    "21501012": {
+      "id": 21501012,
+      "gemType": 1,
+      "gemName": 1700010112,
+      "gemDesc": 1700020112,
+      "gemAffixId": [
+        3012
+      ],
+      "gemTag": [
+        22,
+        24,
+        44,
+        503
+      ],
+      "gemEffectTag": [
+        1700000501
+      ]
+    },
+    "21501013": {
+      "id": 21501013,
+      "gemType": 1,
+      "gemName": 1700010113,
+      "gemDesc": 1700020113,
+      "gemAffixId": [
+        3013
+      ],
+      "gemTag": [
+        22,
+        24,
+        26
+      ],
+      "gemEffectTag": [
+        1700000501
+      ]
+    },
+    "21501014": {
+      "id": 21501014,
+      "gemType": 1,
+      "gemName": 1700010114,
+      "gemDesc": 1700020114,
+      "gemAffixId": [
+        3014
+      ],
+      "gemTag": [
+        21,
+        23
+      ],
+      "gemEffectTag": [
+        1700000503
+      ]
+    },
+    "21501015": {
+      "id": 21501015,
+      "gemType": 1,
+      "gemName": 1700010115,
+      "gemDesc": 1700020115,
+      "gemAffixId": [
+        3015
+      ],
+      "gemTag": [
+        23,
+        24
+      ],
+      "gemEffectTag": [
+        1700000511
+      ]
+    },
+    "21501016": {
+      "id": 21501016,
+      "gemType": 3,
+      "elementLimitType": [
+        2
+      ],
+      "elementLimitNum": [
+        1
+      ],
+      "gemName": 1700010116,
+      "gemDesc": 1700020116,
+      "gemAffixId": [
+        3016
+      ],
+      "gemTag": [
+        21,
+        44,
+        504
+      ],
+      "gemEffectTag": [
+        1700000501,
+        1700000507
+      ]
+    },
+    "21501017": {
+      "id": 21501017,
+      "gemType": 1,
+      "gemName": 1700010117,
+      "gemDesc": 1700020117,
+      "gemAffixId": [
+        3017
+      ],
+      "gemTag": [
+        27,
+        83
+      ],
+      "gemEffectTag": [
+        1700000508
+      ]
+    }
+  }
+}

@@ -73,7 +73,7 @@ public sealed partial class TeamManager(GameData assets)
         {
             var members = team.Members
                 .Where(m => m.Slot >= 1 && m.Slot <= MaxMembers)
-                .Select(m => (m.Slot, Character: characters.Get(m.InstId)))
+                .Select(m => (m.Slot, m.Gems, Character: characters.Get(m.InstId)))
                 .Where(pair => pair.Character is not null)
                 .DistinctBy(pair => pair.Slot)
                 .DistinctBy(pair => pair.Character!.InstId)
@@ -81,7 +81,9 @@ public sealed partial class TeamManager(GameData assets)
                 .Select(pair => new TeamMemberState {
                     Slot = pair.Slot,
                     InstId = pair.Character!.InstId,
-                    CharacterId = pair.Character.CharacterId
+                    CharacterId = pair.Character.CharacterId,
+                    Gems = pair.Gems.Take(assets.Gems.MaxPerCharacter)
+                        .Select(id => assets.Gems.Exists(id) ? id : 0).ToArray()
                 })
                 .ToList();
 
@@ -130,7 +132,17 @@ public sealed partial class TeamManager(GameData assets)
     public TeamMemberData ToTeamMemberData(TeamMemberState member) => new() {
         MemberSlotId = member.Slot,
         InstId = member.InstId,
-        CharacterId = member.CharacterId
+        CharacterId = member.CharacterId,
+        GemSlots = {
+            member.Gems
+                .Select((gemId, index) => (gemId, index))
+                .Where(pair => pair.gemId != 0)
+                .Select(pair => new GemSlotData {
+                    GemSlotId = (uint)pair.index + 1,
+                    GemItemid = pair.gemId,
+                    GemState = EnmGemStatus.Valid
+                })
+        }
     };
 
     /// <summary>Loading requires team_data and numeric team_src and team_type values.</summary>
