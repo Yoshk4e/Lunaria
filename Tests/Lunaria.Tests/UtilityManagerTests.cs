@@ -14,6 +14,24 @@ public sealed class UtilityManagerTests(TestAssets fixture)
     private static readonly DateTimeOffset Now = new(2026, 9, 26, 12, 0, 0, TimeSpan.Zero);
 
     [Fact]
+    public void Collection_ChestDrawsOneCollectionPerGroupAndGrantsItsDrop()
+    {
+        var own = fixture.Data.Collections.Rewards(TestAssets.Collection);
+
+        // Group 1 weights 700:70 and 701:30. A roll of 80 lands on 701; 10 lands on the chest itself, which adds nothing.
+        var drawn = fixture.Data.Collections.Rewards(TestAssets.Collection, new FixedRoll(80));
+        var self = fixture.Data.Collections.Rewards(TestAssets.Collection, new FixedRoll(10));
+
+        Assert.Equal(own.Concat(fixture.Data.Collections.Rewards(TestAssets.IndestructibleCollection)), drawn);
+        Assert.Equal(own, self);
+    }
+
+    private sealed class FixedRoll(long value) : Random
+    {
+        public override long NextInt64(long maxValue) => value;
+    }
+
+    [Fact]
     public void Cooldown_SharedTypeCannotBeShortenedByASecondStart()
     {
         var manager = new ItemCooldownManager();

@@ -70,10 +70,10 @@ public sealed partial class TestAssets
         Write(tables, "P_RefreshConfigTable.json",
             json: """
                   {"P_RefreshConfigTable": {
-                    "9001": {"Id": 9001, "RefreshType": 1},
+                    "9001": {"Id": 9001, "RefreshType": 3},
                     "9002": {"Id": 9002, "RefreshType": 2, "Param01": 3600, "Param02": 0},
-                    "9003": {"Id": 9003, "RefreshType": 3},
-                    "9004": {"Id": 9004, "RefreshType": 4}}}
+                    "9003": {"Id": 9003, "RefreshType": 4},
+                    "9004": {"Id": 9004, "RefreshType": 1}}}
                   """);
 
         Write(tables, "P_ShopTable.json",

@@ -1,9 +1,13 @@
 using Lunaria.Game.Resources;
+using Lunaria.Game.Resources.Tables;
 using Msg;
 
 namespace Lunaria.Game.Collections;
 
-/// <summary>Tables omit spawn positions. Save fixed offsets around the first request position.</summary>
+/// <summary>
+/// World objects come from p_worldcollectobjtable; their uniq id is the table row id, which the client binds to the
+/// level placement. Only objects the player has touched are stored; every other placed object can be collected.
+/// </summary>
 public sealed partial class CollectionManager(GameData assets)
 {
     public const int MaxNodes = 4096;
@@ -17,8 +21,6 @@ public sealed partial class CollectionManager(GameData assets)
 
     public IReadOnlyDictionary<ulong, CollectionState> Entries => _nodes;
 
-    public ulong MaxUniq => _nodes.Count == 0 ? 0 : _nodes.Keys.Max();
-
     public int Count => _nodes.Count;
 
     public bool IsEmpty => _nodes.Count == 0;
@@ -30,6 +32,10 @@ public sealed partial class CollectionManager(GameData assets)
         _gathered.UnionWith(_nodes.Values.Where(node => node.Status == EnmCollectionStatus.EcsCollected).Select(node => node.Cfg));
     }
 
+    /// <summary>
+    /// Rows that do not match a placed object of the same template are dropped. Older saves planted invented nodes
+    /// around the player; those never matched the level, so they are discarded here.
+    /// </summary>
     public void Load(
         IEnumerable<(ulong Uniq, uint Cfg, int Status, DateTimeOffset StatusTime, ulong Block, (int X, int Y, int Z) Position)> persisted
     )
@@ -42,21 +48,13 @@ public sealed partial class CollectionManager(GameData assets)
                      .OrderBy(r => r.Uniq)
                      .Take(MaxNodes))
         {
-            if (row.Uniq == 0 || !assets.Collections.Exists(row.Cfg))
+            if (assets.Collections.WorldObject(row.Uniq) is not {} placed || placed.TemplateId != row.Cfg)
                 continue;
 
             if (!Enum.IsDefined(typeof(EnmCollectionStatus), row.Status))
                 continue;
 
-            _nodes[row.Uniq] = new CollectionState(
-                row.Uniq,
-                row.Cfg,
-                (EnmCollectionStatus)row.Status,
-                row.StatusTime,
-                row.Block,
-                row.Position.X,
-                row.Position.Y,
-                row.Position.Z);
+            _nodes[row.Uniq] = FromPlacement(placed, (EnmCollectionStatus)row.Status, row.StatusTime);
         }
 
         IsDirty = false;
@@ -64,65 +62,40 @@ public sealed partial class CollectionManager(GameData assets)
 
     public void ClearDirty() => IsDirty = false;
 
-    public CollectionState? Get(ulong uniq) => _nodes.GetValueOrDefault(uniq);
-
-    public int EnsureBlock(ulong blockId, DateTimeOffset now, (int X, int Y, int Z) at, Func<ulong> mint)
+    /// <summary>Current state of a placed object, stored or not; null when the id is not a placed object.</summary>
+    public CollectionState? Get(ulong uniq)
     {
-        if (_nodes.Count >= MaxNodes)
-            return 0;
+        if (_nodes.TryGetValue(uniq, out var node))
+            return node;
 
-        var known = new HashSet<uint>();
-
-        foreach (var node in _nodes.Values)
-        {
-            if (node.Block == blockId)
-                known.Add(node.Cfg);
-        }
-
-        var planted = 0;
-
-        foreach (var cfg in assets.Collections.GatherableIds)
-        {
-            if (_nodes.Count >= MaxNodes)
-                break;
-
-            if (!known.Add(cfg))
-                continue;
-
-            var uniq = mint();
-
-            if (uniq == 0 || _nodes.ContainsKey(uniq))
-            {
-                known.Remove(cfg);
-                continue;
-            }
-
-            var (x, y, z) = SpreadAround(at, cfg);
-
-            _nodes[uniq] = new CollectionState(
-                uniq, cfg, EnmCollectionStatus.EcsCanCollect, now, blockId, x, y, z);
-            planted++;
-        }
-
-        if (planted > 0)
-            Dirty();
-        return planted;
+        return assets.Collections.WorldObject(uniq) is {} placed
+            ? FromPlacement(placed, EnmCollectionStatus.EcsCanCollect, DateTimeOffset.UnixEpoch)
+            : null;
     }
 
     public IReadOnlyList<CollectionState> ListBlock(ulong blockId, DateTimeOffset now)
     {
-        RefreshBlock(blockId, now);
-        return _nodes.Values.Where(node => node.Block == blockId).ToList();
+        var placed = assets.Collections.WorldObjects(blockId);
+        var list = new List<CollectionState>(placed.Count);
+
+        foreach (var row in placed)
+        {
+            TryRefreshOne(row.Id, now);
+            list.Add(Get(row.Id)!);
+        }
+
+        return list;
     }
 
-    public int RefreshBlock(ulong blockId, DateTimeOffset now)
+    /// <summary>Stored objects whose respawn time has passed, switched back to collectable.</summary>
+    public IReadOnlyList<CollectionState> RefreshDue(DateTimeOffset now)
     {
-        var revived = 0;
+        var revived = new List<CollectionState>();
 
-        foreach (var node in _nodes.Values.Where(node => node.Block == blockId).ToList())
+        foreach (var uniq in _nodes.Keys.ToList())
         {
-            if (TryRefreshOne(node.Uniq, now))
-                revived++;
+            if (TryRefreshOne(uniq, now))
+                revived.Add(_nodes[uniq]);
         }
 
         return revived;
@@ -146,29 +119,32 @@ public sealed partial class CollectionManager(GameData assets)
         return true;
     }
 
-    public static OneCollectionData ToOneCollectionData(CollectionState node) => new() {
-        UniqId = node.Uniq,
-        CfgId = node.Cfg,
-        Status = node.Status,
-        StatusTime = ToStatusTime(node.StatusTime),
-        BlockId = node.Block,
-        Location = new Vector3Int { X = node.X, Y = node.Y, Z = node.Z },
-        Rotation = new Rotator(),
-        FromType = EnmCollectionFromType.EcollectFromTable,
-        FromId = node.Cfg,
-        FromLocation = new Vector3Int { X = node.X, Y = node.Y, Z = node.Z }
-    };
-
-    private static (int X, int Y, int Z) SpreadAround((int X, int Y, int Z) at, uint cfg)
+    public OneCollectionData ToOneCollectionData(CollectionState node)
     {
-        var dx = ((long)(cfg % 11) - 5) * 120;
-        var dz = ((long)(cfg / 11 % 11) - 5) * 120;
+        var placed = assets.Collections.WorldObject(node.Uniq);
 
-        return (
-            (int)Math.Clamp(at.X + dx, int.MinValue, int.MaxValue),
-            at.Y,
-            (int)Math.Clamp(at.Z + dz, int.MinValue, int.MaxValue));
+        return new OneCollectionData {
+            UniqId = node.Uniq,
+            CfgId = node.Cfg,
+            Status = node.Status,
+            StatusTime = ToStatusTime(node.StatusTime),
+            BlockId = node.Block,
+            Location = new Vector3Int { X = node.X, Y = node.Y, Z = node.Z },
+            Rotation = placed is null ? new Rotator() : new Rotator {
+                Yaw = (int)MathF.Round(placed.Direction),
+                Pitch = (int)MathF.Round(placed.Pitch),
+                Roll = (int)MathF.Round(placed.Roll)
+            },
+            FromType = EnmCollectionFromType.EcollectFromTable,
+            // The client files table objects under StaticServerLocateItemMap[from_id] and matches the level placement.
+            FromId = node.Uniq,
+            FromLocation = new Vector3Int { X = node.X, Y = node.Y, Z = node.Z }
+        };
     }
+
+    private static CollectionState FromPlacement(PWorldCollectObjTable placed, EnmCollectionStatus status, DateTimeOffset time) =>
+        new(placed.Id, placed.TemplateId, status, time, placed.BlockId,
+            (int)MathF.Round(placed.PosX), (int)MathF.Round(placed.PosY), (int)MathF.Round(placed.PosZ));
 
     private static uint ToStatusTime(DateTimeOffset moment)
     {

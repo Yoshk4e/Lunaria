@@ -24,6 +24,8 @@ public sealed partial class Player
         if (DailyMissions.AdvanceTime(now))
             messages.Add(new SCDailyMissionNtf { Data = DailyMissions.ToDailyMissionData(now) });
 
+        if (RespawnedCollections(now) is {} respawned) messages.Add(respawned);
+
         var houses = DueHouseIncomeAnnouncements(now);
         if (houses.Count > 0) messages.Add(new SCHouseIncomeNtf { HouseInfoList = { houses } });
         messages.AddRange(SettleMonthCards(now));

@@ -8,14 +8,27 @@ public sealed record CollectionOutcome(OneCollectionData Item, RewardDelivery De
 
 public sealed partial class Player
 {
-    public IReadOnlyList<OneCollectionData> GetCollections(ulong blockId, DateTimeOffset now)
-    {
-        Collections.EnsureBlock(blockId, now, Map.Position, Guid.Next);
-
-        return Collections.ListBlock(blockId, now)
-            .Select(CollectionManager.ToOneCollectionData)
+    public IReadOnlyList<OneCollectionData> GetCollections(ulong blockId, DateTimeOffset now) =>
+        Collections.ListBlock(blockId, now)
+            .Select(Collections.ToOneCollectionData)
             .ToList();
+
+    /// <summary>The client only re-lists a block when it loads it, so respawned objects are pushed.</summary>
+    public SCCollectionDataNtf? RespawnedCollections(DateTimeOffset now)
+    {
+        var revived = Collections.RefreshDue(now);
+
+        if (revived.Count == 0)
+            return null;
+
+        var ntf = new SCCollectionDataNtf();
+        ntf.NtfList.AddRange(revived.Select(Collections.ToOneCollectionData));
+        return ntf;
     }
+
+    /// <summary>Latest state of an object, sent with refusals so the client does not stay in the opening state.</summary>
+    public OneCollectionData? CollectionData(ulong uniq) =>
+        Collections.Get(uniq) is {} node ? Collections.ToOneCollectionData(node) : null;
 
     public (int Code, CollectionOutcome? Outcome) Collect(ulong uniq, EnmCollectionOp op, DateTimeOffset now)
     {
@@ -35,7 +48,7 @@ public sealed partial class Player
                 return (destroyCode, null);
 
             return (0, new CollectionOutcome(
-                CollectionManager.ToOneCollectionData(destroyed),
+                Collections.ToOneCollectionData(destroyed),
                 RewardDelivery.Empty,
                 assets.Collections.Get(destroyed.Cfg)?.CollectionType ?? 0));
         }
@@ -57,7 +70,7 @@ public sealed partial class Player
         if (quota != 0)
             return (quota, null);
 
-        var delivery = GrantRewards(assets.Collections.Rewards(node.Cfg), EnmItemReason.EnmItemChangeCollect);
+        var delivery = GrantRewards(assets.Collections.Rewards(node.Cfg, Random.Shared), EnmItemReason.EnmItemChangeCollect);
 
         var (collectCode, collected) = Collections.ApplyCollected(uniq, now);
 
@@ -67,7 +80,7 @@ public sealed partial class Player
         Gameplay.Publish(new CollectionGathered(assets.Collections.Get(collected.Cfg)?.CollectionType ?? 0));
 
         return (0, new CollectionOutcome(
-            CollectionManager.ToOneCollectionData(collected),
+            Collections.ToOneCollectionData(collected),
             delivery,
             assets.Collections.Get(collected.Cfg)?.CollectionType ?? 0));
     }
