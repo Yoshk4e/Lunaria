@@ -73,7 +73,7 @@ public sealed partial class TeamManager(GameData assets)
         {
             var members = team.Members
                 .Where(m => m.Slot >= 1 && m.Slot <= MaxMembers)
-                .Select(m => (m.Slot, Character: characters.Get(m.InstId)))
+                .Select(m => (m.Slot, m.Gems, Character: characters.Get(m.InstId)))
                 .Where(pair => pair.Character is not null)
                 .DistinctBy(pair => pair.Slot)
                 .DistinctBy(pair => pair.Character!.InstId)
@@ -81,7 +81,9 @@ public sealed partial class TeamManager(GameData assets)
                 .Select(pair => new TeamMemberState {
                     Slot = pair.Slot,
                     InstId = pair.Character!.InstId,
-                    CharacterId = pair.Character.CharacterId
+                    CharacterId = pair.Character.CharacterId,
+                    Gems = pair.Gems.Take(assets.Gems.MaxPerCharacter)
+                        .Select(id => assets.Gems.Exists(id) ? id : 0).ToArray()
                 })
                 .ToList();
 
@@ -121,16 +123,32 @@ public sealed partial class TeamManager(GameData assets)
 
     public IReadOnlyList<TeamData> TeamsData() => _teams.Select(ToTeamData).ToList();
 
-    public TeamData ToTeamData(TeamState team) => new() {
-        TeamId = team.TeamId,
-        Name = ByteString.CopyFromUtf8(team.Name),
-        MemberData = { team.Members.Select(ToTeamMemberData) }
-    };
+    public TeamData ToTeamData(TeamState team)
+    {
+        var elements = team.Members.Select(member => assets.Characters.ElementOf(member.CharacterId))
+            .CountBy(element => element).ToDictionary();
+        return new TeamData {
+            TeamId = team.TeamId,
+            Name = ByteString.CopyFromUtf8(team.Name),
+            MemberData = { team.Members.Select(member => ToTeamMemberData(member, elements)) }
+        };
+    }
 
-    public TeamMemberData ToTeamMemberData(TeamMemberState member) => new() {
+    public TeamMemberData ToTeamMemberData(TeamMemberState member, IReadOnlyDictionary<uint, int> teamElements) => new() {
         MemberSlotId = member.Slot,
         InstId = member.InstId,
-        CharacterId = member.CharacterId
+        CharacterId = member.CharacterId,
+        GemSlots = {
+            member.Gems
+                .Select((gemId, index) => (gemId, index))
+                .Where(pair => pair.gemId != 0)
+                .Select(pair => new GemSlotData {
+                    GemSlotId = (uint)pair.index + 1,
+                    GemItemid = pair.gemId,
+                    GemState = assets.Gems.MeetsElementRequirements(pair.gemId, teamElements)
+                        ? EnmGemStatus.Valid : EnmGemStatus.Invalid
+                })
+        }
     };
 
     /// <summary>Loading requires team_data and numeric team_src and team_type values.</summary>

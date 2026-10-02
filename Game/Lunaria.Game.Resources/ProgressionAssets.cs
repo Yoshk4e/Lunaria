@@ -86,4 +86,8 @@ public sealed class ProgressionAssets
         var tier = _worldLevels.FirstOrDefault(r => r.Id == worldLevel) ?? _worldLevels[0];
         return Math.Min(tier.MaxTeamLevel, TeamLevelLadderMax);
     }
+
+    /// <summary>Catalyst budget of a team; the client reads it from the highest world level reached.</summary>
+    public uint MaxGemCost(uint worldLevel) =>
+        (_worldLevels.FirstOrDefault(r => r.Id == worldLevel) ?? _worldLevels[0]).MaxGemCost;
 }

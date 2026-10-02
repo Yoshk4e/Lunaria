@@ -7,10 +7,20 @@ public sealed partial class Player
 {
     public SCCharacterUpdateTeam UpdateTeam(TeamData? proposed)
     {
-        var code = proposed is null || ActiveTemporaryTeam is not null || Battles.Current is not null ? (int)EnmTextCode.EnmTextWrongParam
-            : Teams.SetMembers(proposed.TeamId, proposed.MemberData
-                .Select(m => (m.MemberSlotId, m.InstId, m.CharacterId)).ToList(), Characters);
-        return TeamUpdateResult(proposed?.TeamId ?? 0, code);
+        if (proposed is null || ActiveTemporaryTeam is not null || Battles.Current is not null)
+            return TeamUpdateResult(proposed?.TeamId ?? 0, (int)EnmTextCode.EnmTextWrongParam);
+
+        // Catalysts travel in each member's gem_slots; the budget follows the highest world level reached.
+        var (code, gems) = Teams.CheckGems(
+            proposed.MemberData.Select(m => (m.MemberSlotId, m.GemSlots.Select(g => (g.GemSlotId, g.GemItemid)))),
+            gemId => Bag.CountOf(gemId) > 0,
+            assets.Progression.MaxGemCost(Progress.EarnedWorldLevel));
+
+        if (code == 0)
+            code = Teams.SetMembers(proposed.TeamId, proposed.MemberData
+                .Select(m => (m.MemberSlotId, m.InstId, m.CharacterId)).ToList(), Characters, gems);
+
+        return TeamUpdateResult(proposed.TeamId, code);
     }
 
     public SCCharacterUpdateTeam RenameTeam(uint teamId, string name) =>

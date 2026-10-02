@@ -42,6 +42,8 @@ public sealed class GameData(string assetsDir, ILogger<GameData>? logger = null)
     internal readonly Dictionary<string, PFunctionalNPCTable> PFunctionalNPCTable = [];
     internal readonly Dictionary<string, PGachaRebateTable> PGachaRebateTable = [];
     internal readonly Dictionary<string, PGachaTable> PGachaTable = [];
+    internal readonly Dictionary<string, PGemGlobalConfig> PGemGlobalConfig = [];
+    internal readonly Dictionary<string, PGemTable> PGemTable = [];
     internal readonly Dictionary<string, PGlobalEventFinishTable> PGlobalEventFinishTable = [];
     internal readonly Dictionary<string, PGraphicGuideTable> PGraphicGuideTable = [];
     internal readonly Dictionary<string, PHordeTable> PHordeTable = [];
@@ -160,6 +162,7 @@ public sealed class GameData(string assetsDir, ILogger<GameData>? logger = null)
     public GachaAssets Gacha { get; private set; } = null!;
     public NoticeAssets Notices { get; private set; } = null!;
     public CollectionAssets Collections { get; private set; } = null!;
+    public GemAssets Gems { get; private set; } = null!;
     public ExposeAssets Expose { get; private set; } = null!;
     public TaskAssets Tasks { get; private set; } = null!;
     public GameTimeAssets GameTime { get; private set; } = null!;
@@ -220,6 +223,7 @@ public sealed class GameData(string assetsDir, ILogger<GameData>? logger = null)
             Path.Combine(assetsDir, "banners.json"));
         Notices = new NoticeAssets(Path.Combine(assetsDir, "notices.json"));
         Collections = new CollectionAssets(PCollectionTable, PCollectionDropTable, PWorldCollectObjTable, DropTable, Limits);
+        Gems = new GemAssets(PGemTable, PGemGlobalConfig);
 
         GameTime = new GameTimeAssets(PGameTimeTable);
         Tasks = new TaskAssets(

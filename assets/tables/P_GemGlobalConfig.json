@@ -1,0 +1,14 @@
+{
+  "P_GemGlobalConfig": {
+    "1": {
+      "id": 1,
+      "key": "MaxGemPerCharacter",
+      "value": "3.0"
+    },
+    "2": {
+      "id": 2,
+      "key": "GemCost",
+      "value": "1|2|4"
+    }
+  }
+}

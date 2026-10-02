@@ -304,6 +304,150 @@ public sealed class GameplayRegressionTests(BundledGameplayFixture fixture)
         Assert.Equal((uint)stages[^1], player.Cases.FinishedStageId(1003, (uint)stages.Count));
     }
 
+    private static TeamData WithGems(TeamData team, params (int Member, uint GemSlot, uint GemId)[] gems)
+    {
+        var copy = team.Clone();
+        foreach (var member in copy.MemberData) member.GemSlots.Clear();
+        foreach (var (index, slot, gem) in gems)
+            copy.MemberData[index].GemSlots.Add(new GemSlotData { GemSlotId = slot, GemItemid = gem, GemState = EnmGemStatus.Valid });
+        return copy;
+    }
+
+    [Fact]
+    public void Gems_EquipAndRoundTripThroughTheTeamAndTheSave()
+    {
+        var player = Fresh();
+        player.Bag.Add(itemId: 21501001, count: 1);
+        player.Bag.Add(itemId: 21501002, count: 1);
+        var team = player.Teams.ToTeamData(player.Teams.CurrentTeam()!);
+
+        // World level 1 allows a cost of 3: two gems on one character cost 1 + 2.
+        var update = player.UpdateTeam(WithGems(team, (0, 1, 21501001), (0, 3, 21501002)));
+        Assert.Equal(0, update.Result);
+        var slots = update.TeamData.MemberData[0].GemSlots;
+        Assert.Equal([(1u, 21501001u), (3u, 21501002u)], slots.Select(s => (s.GemSlotId, s.GemItemid)));
+        Assert.All(slots, s => Assert.Equal(EnmGemStatus.Valid, s.GemState));
+
+        var json = JsonSerializer.Serialize(RoleSaveMapper.Capture(player), SaveJson.Options);
+        var restored = Fresh();
+        RoleSaveMapper.Apply(restored, JsonSerializer.Deserialize<RoleSaveDocument>(json, SaveJson.Options)!);
+        Assert.Equal(slots, restored.Teams.ToTeamData(restored.Teams.CurrentTeam()!).MemberData[0].GemSlots);
+
+        // Clearing the slots unequips.
+        Assert.Equal(0, player.UpdateTeam(WithGems(team)).Result);
+        Assert.Empty(player.Teams.CurrentTeam()!.Members[0].Gems);
+    }
+
+    [Fact]
+    public void Gems_RepeatedSlotIdsRejectTheWholeUpdate()
+    {
+        var player = Fresh();
+        player.Bag.Add(itemId: 21501001, count: 1);
+        player.Bag.Add(itemId: 21501002, count: 1);
+        var team = player.Teams.ToTeamData(player.Teams.CurrentTeam()!);
+        Assert.Equal(0, player.UpdateTeam(WithGems(team, (0, 2, 21501001))).Result);
+        var before = player.Teams.ToTeamData(player.Teams.CurrentTeam()!);
+        player.Teams.ClearDirty();
+
+        foreach (var firstGem in new uint[] { 0, 21501001 })
+        {
+            var update = player.UpdateTeam(WithGems(team, (0, 1, firstGem), (0, 1, 21501002)));
+            Assert.Equal((int)EnmTextCode.EnmTextCharacterTeamGemSizeNotMatch, update.Result);
+            Assert.Equal(before, update.TeamData);
+            Assert.Equal(before, player.Teams.ToTeamData(player.Teams.CurrentTeam()!));
+            Assert.False(player.Teams.IsDirty);
+        }
+    }
+
+    [Fact]
+    public void Gems_UseEarnedWorldLevelBudgetAfterSelectingALowerLevel()
+    {
+        var player = Fresh();
+        player.Bag.Add(itemId: 21501001, count: 1);
+        player.Bag.Add(itemId: 21501002, count: 1);
+        player.Bag.Add(itemId: 21501004, count: 1);
+        var proposed = WithGems(player.Teams.ToTeamData(player.Teams.CurrentTeam()!),
+            (0, 1, 21501001), (0, 2, 21501002), (0, 3, 21501004));
+        Assert.Equal((int)EnmTextCode.EnmTextCharacterTeamGemCostNotEnough, player.UpdateTeam(proposed).Result);
+
+        player.Progress.QuestGate = _ => true;
+        player.Progress.Load(20, 0, 0, 240, DateTimeOffset.UtcNow);
+        Assert.Equal(2u, player.Progress.EarnedWorldLevel);
+        Assert.Equal(0, player.Progress.SelectWorldLevel(1).Result);
+        Assert.Equal(1u, player.Progress.WorldLevel);
+
+        var update = player.UpdateTeam(proposed);
+        Assert.Equal(0, update.Result);
+        Assert.Equal(proposed.MemberData[0].GemSlots, update.TeamData.MemberData[0].GemSlots);
+    }
+
+    [Fact]
+    public void Gems_RejectUnownedUnknownDuplicateOutOfRangeAndOverBudget()
+    {
+        var player = Fresh();
+        player.Bag.Add(itemId: 21501001, count: 1);
+        player.Bag.Add(itemId: 21501002, count: 1);
+        player.Bag.Add(itemId: 21501003, count: 1);
+        var team = player.Teams.ToTeamData(player.Teams.CurrentTeam()!);
+
+        Assert.Equal((int)EnmTextCode.EnmTextCharacterTeamGemNotOwned, player.UpdateTeam(WithGems(team, (0, 1, 21501004))).Result);
+        Assert.Equal((int)EnmTextCode.EnmTextCharacterTeamGemNotExist, player.UpdateTeam(WithGems(team, (0, 1, 999))).Result);
+        Assert.Equal((int)EnmTextCode.EnmTextCharacterTeamGemDuplicate,
+            player.UpdateTeam(WithGems(team, (0, 1, 21501001), (0, 2, 21501001))).Result);
+        Assert.Equal((int)EnmTextCode.EnmTextCharacterTeamGemSizeNotMatch, player.UpdateTeam(WithGems(team, (0, 4, 21501001))).Result);
+        // Three gems on one character cost 1 + 2 + 4 = 7, over world level 1's budget of 3.
+        Assert.Equal((int)EnmTextCode.EnmTextCharacterTeamGemCostNotEnough,
+            player.UpdateTeam(WithGems(team, (0, 1, 21501001), (0, 2, 21501002), (0, 3, 21501003))).Result);
+
+        // A refused update leaves the team as it was.
+        Assert.All(player.Teams.CurrentTeam()!.Members, m => Assert.Empty(m.Gems));
+    }
+
+    [Theory]
+    [InlineData(21501011u, 1)]
+    [InlineData(21501010u, 2)]
+    [InlineData(21501009u, 3)]
+    public void Gems_ElementStatusFollowsTeamCompositionAndSaveReload(uint gemId, int requiredFireMembers)
+    {
+        var player = Fresh();
+        player.Bag.Add(gemId, 1);
+        var team = player.Teams.ToTeamData(player.Teams.CurrentTeam()!);
+        Assert.Equal(1001u, Assert.Single(team.MemberData).CharacterId); // Gravitas, not Ignis.
+        var update = player.UpdateTeam(WithGems(team, (0, 1, gemId)));
+        Assert.Equal(0, update.Result);
+        Assert.Equal(EnmGemStatus.Invalid, Assert.Single(update.TeamData.MemberData[0].GemSlots).GemState);
+
+        uint[] fireCharacters = [1004, 1501, 1505];
+        for (var i = 0; i < requiredFireMembers; i++)
+        {
+            var granted = player.Characters.Add(player.Guid, fireCharacters[i]);
+            Assert.Equal(0, granted.Code);
+            team = update.TeamData.Clone();
+            team.MemberData.Add(new TeamMemberData {
+                MemberSlotId = (uint)i + 2, InstId = granted.InstId, CharacterId = fireCharacters[i]
+            });
+            update = player.UpdateTeam(team);
+            Assert.Equal(0, update.Result);
+            Assert.Equal(i + 1 == requiredFireMembers ? EnmGemStatus.Valid : EnmGemStatus.Invalid,
+                Assert.Single(update.TeamData.MemberData[0].GemSlots).GemState);
+        }
+
+        var json = JsonSerializer.Serialize(RoleSaveMapper.Capture(player), SaveJson.Options);
+        var restored = Fresh();
+        restored.Characters.Load(player.Characters.All);
+        RoleSaveMapper.Apply(restored, JsonSerializer.Deserialize<RoleSaveDocument>(json, SaveJson.Options)!);
+        team = restored.Teams.ToTeamData(restored.Teams.CurrentTeam()!);
+        Assert.Equal(EnmGemStatus.Valid, Assert.Single(team.MemberData[0].GemSlots).GemState);
+
+        // An earlier VALID status from the client cannot keep a gem active after its requirement is lost.
+        team.MemberData.RemoveAt(team.MemberData.Count - 1);
+        update = restored.UpdateTeam(team);
+        Assert.Equal(0, update.Result);
+        var slot = Assert.Single(update.TeamData.MemberData[0].GemSlots);
+        Assert.Equal(gemId, slot.GemItemid);
+        Assert.Equal(EnmGemStatus.Invalid, slot.GemState);
+    }
+
     [Fact]
     public void WantedShop_WithoutRunRejectsWithoutCharging()
     {

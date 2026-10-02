@@ -51,7 +51,7 @@ internal static class RoleSaveMapper
                 TeamId = team.TeamId,
                 Name = team.Name,
                 Members = team.Members
-                    .Select(m => new RoleSaveDocument.TeamMemberSave { Slot = m.Slot, InstId = m.InstId })
+                    .Select(m => new RoleSaveDocument.TeamMemberSave { Slot = m.Slot, InstId = m.InstId, Gems = m.Gems.ToList() })
                     .ToList(),
                 TemporaryLiquid = ToTeamLiquidSave(team.TemporaryLiquid),
                 TemporaryLiquidLv2 = ToTeamLiquidSave(team.TemporaryLiquidLv2)
@@ -566,7 +566,7 @@ internal static class RoleSaveMapper
         TeamId = team.TeamId,
         Name = team.Name,
         Members = team.Members
-            .Select(m => new TeamMemberState { Slot = m.Slot, InstId = m.InstId, CharacterId = 0 })
+            .Select(m => new TeamMemberState { Slot = m.Slot, InstId = m.InstId, CharacterId = 0, Gems = m.Gems })
             .ToList(),
         TemporaryLiquid = ToTeamLiquid(team.TemporaryLiquid),
         TemporaryLiquidLv2 = ToTeamLiquid(team.TemporaryLiquidLv2)
