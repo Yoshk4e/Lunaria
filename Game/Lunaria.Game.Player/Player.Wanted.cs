@@ -1,3 +1,4 @@
+using Lunaria.Game.Logging;
 using Lunaria.Game.Player.Gameplay;
 using Lunaria.Game.Resources;
 using Msg;
@@ -8,8 +9,12 @@ public sealed partial class Player
 {
     public int EnterWanted(uint entryId, IReadOnlyList<uint>? characterIds = null)
     {
+        using var operationTime = BeginOperation();
         if (Dungeons.Current is not null || Battles.Current is not null)
+        {
+            Log.Flag("wanted {EntryId} entry refused, a dungeon or battle is active", entryId);
             return (int)EnmTextCode.EnmTextWrongParam;
+        }
         InstallQuestGates();
         var code = Wanted.CheckEnter(entryId);
 
@@ -42,14 +47,17 @@ public sealed partial class Player
 
     public int LeaveWanted()
     {
+        using var operationTime = BeginOperation();
         if (Battles.Current is not null) return (int)EnmTextCode.EnmTextWrongParam;
         var code = Wanted.Leave();
+        Log.Event("wanted leave returned {Result}", code);
         if (code == 0) { Tasks.ResetNamespace(TaskAssets.Wanted); ReconcileTemporaryTeam(); }
         return code;
     }
 
     public (int Result, bool Finished, SCWantedStepNtf? Notification) ChooseWantedAward(uint stepAwardId, uint award, ulong replacedBionicsId)
     {
+        using var operationTime = BeginOperation();
         var before = Wanted.ToResource();
         var type = Wanted.CaptureRun()?.Current.Awards.FirstOrDefault(a => a.AwardId == stepAwardId)?.Type;
         var result = Wanted.ChooseAward(stepAwardId, award, replacedBionicsId);
@@ -63,6 +71,7 @@ public sealed partial class Player
 
     public int GiveUpWantedBionics(ulong id)
     {
+        using var operationTime = BeginOperation();
         var before = Wanted.ToResource();
         var code = Wanted.GiveUpBionics(id);
         if (code == 0)
@@ -88,6 +97,7 @@ public sealed partial class Player
         uint dialogId
     )
     {
+        using var operationTime = BeginOperation();
         var before = Wanted.ToResource();
         var (completed, step, grants) = Wanted.OnAdventureResolved(adventureId, contentId, dialogId, optionResult: 0);
         if (completed) Gameplay.Publish(new WantedResourcesChanged(before));
@@ -97,6 +107,7 @@ public sealed partial class Player
 
     public (int Result, CmdWantedGoods? Goods) BuyWantedShopGood(uint shopId, uint goodsId, uint buyCount)
     {
+        using var operationTime = BeginOperation();
         var (code, sandCost) = Wanted.CheckShopBuy(shopId, goodsId, buyCount);
 
         if (code != 0)
@@ -120,6 +131,7 @@ public sealed partial class Player
 
     public int BuyWantedRevive(IReadOnlyList<ulong> characterIds)
     {
+        using var operationTime = BeginOperation();
         if (Wanted.NextReviveCost() is not {} cost)
             return (int)EnmTextCode.EnmTextWantedReviveAllFailed;
 
@@ -156,7 +168,8 @@ public sealed partial class Player
 
     public bool WantedRecover()
     {
-        if (!Wanted.CanRecover())
+        using var operationTime = BeginOperation();
+        if (Battles.Current is not null || !Wanted.CanRecover())
             return false;
 
         var team = CurrentTeamMembers().ToList();
@@ -173,7 +186,12 @@ public sealed partial class Player
 
     public (int Result, SCWantedOver? Settlement, RewardDelivery? Delivery) WantedOver()
     {
-        if (Battles.Current is not null) return ((int)EnmTextCode.EnmTextWrongParam, null, null);
+        using var operationTime = BeginOperation();
+        if (Battles.Current is not null)
+        {
+            Log.Flag("wanted over refused, battle still active");
+            return ((int)EnmTextCode.EnmTextWrongParam, null, null);
+        }
         var (code, settlement, grants) = Wanted.Over();
 
         if (code != 0)
@@ -198,6 +216,7 @@ public sealed partial class Player
 
     public (int Result, RewardDelivery Delivery, uint SpentStamina) WantedStaminaExchange()
     {
+        using var operationTime = BeginOperation();
         if (!Wanted.IsRunning || assets.Wanted.Entry(Wanted.CurrentEntryId) is not {} entry)
             return ((int)EnmTextCode.EnmTextWantedNotInWanted, RewardDelivery.Empty, 0);
         if (!Wanted.CanRedeem)
@@ -207,10 +226,10 @@ public sealed partial class Player
         if (spent == 0 || spent > int.MaxValue || !assets.DropTable.Exists(entry.OptionalAward))
             return ((int)EnmTextCode.EnmTextWrongParam, RewardDelivery.Empty, 0);
 
-        var code = Progress.SpendStamina((int)spent, DateTimeOffset.UtcNow);
+        var code = Progress.SpendStamina((int)spent, UtcNow);
         if (code != 0) return (code, RewardDelivery.Empty, 0);
 
-        var grants = assets.DropTable.Roll(entry.OptionalAward, GachaRng);
+        var grants = assets.DropTable.Roll(entry.OptionalAward, RandomSources.Loot);
         Wanted.MarkRedeemed();
         Gameplay.Publish(new StaminaSpent(spent));
         return (0, GrantRewards(grants, EnmItemReason.EnmItemChangeWantedExchange), spent);

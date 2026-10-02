@@ -1,10 +1,14 @@
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
+using Microsoft.Extensions.Logging;
 using Msg;
 
 namespace Lunaria.Game.Tasks;
 
 public sealed partial class TaskManager(GameData assets)
 {
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Tasks");
+
     /// <summary>Open wanted tasks with their run and daily tasks with the daily reset, not at role creation.</summary>
     private static readonly uint[] SeededNamespaces = [TaskAssets.QuestMain, TaskAssets.POIQuest];
     private readonly SortedSet<(uint Type, uint Id)> _finished = [];
@@ -57,6 +61,7 @@ public sealed partial class TaskManager(GameData assets)
                 continue;
 
             _processing[(row.Type, row.Task)] = new TaskState(row.Type, row.Task, AdoptStep(row.Type, step, row.Actions));
+            Log.Event("restored task {TaskType} {TaskId} at step {StepId}", row.Type, row.Task, step);
         }
 
         foreach (var (type, task) in finished)
@@ -178,7 +183,10 @@ public sealed partial class TaskManager(GameData assets)
             return false;
 
         if (_processing.Count >= MaxProcessing)
+        {
+            Log.Flag("task {TaskType} {TaskId} refused because the processing list is full at {Count}", type, taskId, _processing.Count);
             return false;
+        }
 
         var first = assets.Tasks.FirstStep(type, taskId);
 
@@ -186,6 +194,7 @@ public sealed partial class TaskManager(GameData assets)
             return false;
 
         _processing[(type, taskId)] = new TaskState(type, taskId, FreshStep(type, first));
+        Log.Event("started task {TaskType} {TaskId} at step {StepId}", type, taskId, first);
         Dirty();
         return true;
     }

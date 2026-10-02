@@ -1,4 +1,3 @@
-using Lunaria.Game.Collections;
 using Lunaria.Game.Player.Gameplay;
 using Msg;
 
@@ -8,14 +7,18 @@ public sealed record CollectionOutcome(OneCollectionData Item, RewardDelivery De
 
 public sealed partial class Player
 {
-    public IReadOnlyList<OneCollectionData> GetCollections(ulong blockId, DateTimeOffset now) =>
-        Collections.ListBlock(blockId, now)
+    public IReadOnlyList<OneCollectionData> GetCollections(ulong blockId, DateTimeOffset now)
+    {
+        using var operationTime = BeginOperation(now);
+        return Collections.ListBlock(blockId, now)
             .Select(Collections.ToOneCollectionData)
             .ToList();
+    }
 
     /// <summary>The client only re-lists a block when it loads it, so respawned objects are pushed.</summary>
     public SCCollectionDataNtf? RespawnedCollections(DateTimeOffset now)
     {
+        using var operationTime = BeginOperation(now);
         var revived = Collections.RefreshDue(now);
 
         if (revived.Count == 0)
@@ -32,6 +35,7 @@ public sealed partial class Player
 
     public (int Code, CollectionOutcome? Outcome) Collect(ulong uniq, EnmCollectionOp op, DateTimeOffset now)
     {
+        using var operationTime = BeginOperation(now);
         if (op is not (EnmCollectionOp.EnCollectionOpCollect or EnmCollectionOp.EnCollectionOpDestroy))
             return ((int)EnmTextCode.EnmTextCollectionOpIlegal, null);
 
@@ -39,6 +43,22 @@ public sealed partial class Player
             return ((int)EnmTextCode.EnmTextCollectionNoData, null);
 
         Collections.TryRefreshOne(uniq, now);
+
+        if (Collections.Get(uniq) is not { Status: EnmCollectionStatus.EcsCanCollect } node)
+            return ((int)EnmTextCode.EnmTextCollectionAlreadyOp, null);
+
+        var level = assets.Maps.Map(node.Block)?.LevelPath;
+        if (node.Block != Map.MapId && (string.IsNullOrEmpty(level) || level != assets.Maps.Map(Map.MapId)?.LevelPath))
+            return ((int)EnmTextCode.EnmTextCollectionCondUnmeet, null);
+
+        var range = assets.Collections.Radius(node.Cfg, assets.GlobalConfig.UnlockCollectionRange);
+        var at = Map.Position;
+        var dx = (double)at.X - node.X;
+        var dy = (double)at.Y - node.Y;
+        var dz = (double)at.Z - node.Z;
+
+        if (dx * dx + dy * dy + dz * dz > (double)range * range)
+            return ((int)EnmTextCode.EnmTextCollectionCondUnmeet, null);
 
         if (op == EnmCollectionOp.EnCollectionOpDestroy)
         {
@@ -53,16 +73,8 @@ public sealed partial class Player
                 assets.Collections.Get(destroyed.Cfg)?.CollectionType ?? 0));
         }
 
-        if (Collections.Get(uniq) is not { Status: EnmCollectionStatus.EcsCanCollect } node)
-            return ((int)EnmTextCode.EnmTextCollectionAlreadyOp, null);
-
-        var range = assets.Collections.Radius(node.Cfg, assets.GlobalConfig.UnlockCollectionRange);
-        var at = Map.Position;
-        var dx = (double)at.X - node.X;
-        var dy = (double)at.Y - node.Y;
-        var dz = (double)at.Z - node.Z;
-
-        if (dx * dx + dy * dy + dz * dz > (double)range * range)
+        // A missing definition is not an empty random roll. Keep the node and quota intact.
+        if (!assets.Collections.CanResolveRewards(node.Cfg))
             return ((int)EnmTextCode.EnmTextCollectionCondUnmeet, null);
 
         var quota = Limits.Consume(assets.Collections.RewardLimitGroup(node.Cfg), count: 1, now);
@@ -70,7 +82,7 @@ public sealed partial class Player
         if (quota != 0)
             return (quota, null);
 
-        var delivery = GrantRewards(assets.Collections.Rewards(node.Cfg, Random.Shared), EnmItemReason.EnmItemChangeCollect);
+        var delivery = GrantRewards(assets.Collections.Rewards(node.Cfg, RandomSources.Loot), EnmItemReason.EnmItemChangeCollect);
 
         var (collectCode, collected) = Collections.ApplyCollected(uniq, now);
 

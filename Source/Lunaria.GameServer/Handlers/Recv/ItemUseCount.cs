@@ -13,7 +13,7 @@ public sealed class HandleItemUseCount
                 Result = code,
                 ItemId = req.ItemId,
                 Success = 0,
-                Total = ctx.Player.Bag.CountOf(req.ItemId)
+                Total = ctx.Player.InventoryCount(req.ItemId)
             };
         }
 

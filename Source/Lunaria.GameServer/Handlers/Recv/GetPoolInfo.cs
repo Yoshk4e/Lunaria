@@ -12,7 +12,7 @@ public sealed class HandleGetPoolInfo
             return Task.FromResult(new SCGetPoolInfo { Result = (int)EnmTextCode.EnmTextNotAccLogin });
 
         var res = new SCGetPoolInfo { Result = 0 };
-        res.PoolInfo.AddRange(ctx.Player.GetPoolInfo(req.PoolId, DateTimeOffset.UtcNow));
+        res.PoolInfo.AddRange(ctx.Player.GetPoolInfo(req.PoolId, ctx.Player.UtcNow));
         return Task.FromResult(res);
     }
 }

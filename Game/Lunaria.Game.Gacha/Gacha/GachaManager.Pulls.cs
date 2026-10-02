@@ -1,8 +1,12 @@
+using Lunaria.Game.Logging;
+using Microsoft.Extensions.Logging;
+
 namespace Lunaria.Game.Gacha;
 
 /// <summary>Rates and soft pity are inferred because the dump supplies no rates.</summary>
 public sealed partial class GachaManager
 {
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Gacha");
     internal const double BaseFiveStarRate = 0.008;
 
     internal const int SoftPityStart = 70;
@@ -16,7 +20,10 @@ public sealed partial class GachaManager
     public IReadOnlyList<PullOutcome> Pull(uint bannerId, int count, DateTimeOffset now, Random rng)
     {
         if (!_banners.TryGetValue(bannerId, out var banner))
+        {
+            Log.Flag("gacha pull refused, banner {PoolId} does not exist", bannerId);
             throw new InvalidOperationException($"unknown gacha banner {bannerId}");
+        }
 
         ArgumentOutOfRangeException.ThrowIfLessThan(count, other: 1);
 
@@ -41,6 +48,9 @@ public sealed partial class GachaManager
 
         _states[bannerId] = state;
         Dirty();
+        var fives = outcomes.Count(o => o.Rarity >= 5);
+        var fours = outcomes.Count(o => o.Rarity == 4);
+        Log.Event("gacha banner {PoolId} rolled {Count} pulls, {Fives} five star and {Fours} four star", bannerId, count, fives, fours);
         return outcomes;
     }
 

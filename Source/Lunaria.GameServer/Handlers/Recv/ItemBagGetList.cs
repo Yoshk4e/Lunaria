@@ -11,13 +11,13 @@ public sealed class HandleItemBagGetList(ILogger<HandleItemBagGetList> logger)
     public Task<SCItemBagGetList> OnPacket(NetContext ctx, CSItemBagGetList req)
     {
         var items = ctx.Player.InventoryItems();
-        logger.LogDebug("item bag list: {Cells} cells of {Cap} cap", items.Count, ctx.Player.Bag.CellCap);
+        logger.LogDebug("item bag list: {Cells} cells of {Cap} cap", items.Count, ctx.Player.InventoryCapacity);
 
         return Task.FromResult(new SCItemBagGetList {
             Items = { items },
             Result = 0,
             ItemCds = {
-                ctx.Player.Cooldowns.Active().Select(cd => new CmdItemCD {
+                ctx.Player.InventoryCooldowns().Select(cd => new CmdItemCD {
                     Type = cd.CdType,
                     CdTime = (uint)cd.ReadyUnix
                 })

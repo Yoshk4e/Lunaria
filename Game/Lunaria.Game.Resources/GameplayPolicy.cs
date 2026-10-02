@@ -9,6 +9,7 @@ public sealed record GameplayPolicy
     public string Provenance { get; init; } = "";
     public HouseRentPolicy HouseRent { get; init; } = new();
     public WantedPolicy Wanted { get; init; } = new();
+    public Dictionary<uint, uint> SkillCostItemOverrides { get; init; } = [];
 
     public static GameplayPolicy Load(string path)
     {

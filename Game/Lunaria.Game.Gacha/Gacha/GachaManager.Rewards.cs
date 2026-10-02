@@ -1,3 +1,4 @@
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
 
 namespace Lunaria.Game.Gacha;
@@ -28,6 +29,7 @@ public sealed partial class GachaManager
         }
         _states[bannerId] = state with { ClaimedMask = mask };
         Dirty();
+        Log.Event("gacha banner {PoolId} released {Count} rebate milestones at total {Total}", bannerId, due.Count, state.Total);
 
         return due.Select(milestone => milestone.Reward).ToList();
     }

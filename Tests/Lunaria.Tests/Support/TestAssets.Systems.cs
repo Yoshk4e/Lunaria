@@ -50,6 +50,14 @@ public sealed partial class TestAssets
                     "2": {"Id": 2, "DropId": 700, "ItemId": 1, "ItemCount": 50}}}
                   """);
 
+        // Collection rewards use the server drop table. Item packs use fixed bundles.
+        Write(tables, "S_DropTable.json", mergeOverBundled: true,
+            json: """
+                  {"S_DropTable": {
+                    "990001": {"Id": 990001, "DropId": 700, "GroupId": 1, "ItemId": 900, "ItemCount": 3, "Odds": 10000},
+                    "990002": {"Id": 990002, "DropId": 700, "GroupId": 1, "ItemId": 1, "ItemCount": 50, "Odds": 10000}}}
+                  """);
+
         Write(tables, "P_TemplateMailTable.json",
             json: """
                   {"P_TemplateMailTable": {
@@ -167,14 +175,30 @@ public sealed partial class TestAssets
                             "CollectionDropId": 9002, "RefreshConfigId": 9001, "RewardLimitId": 1,
                             "AutoDestroy": false, "Angle": 45.0, "Radius": 0.0},
                     "702": {"Id": 702, "CollectionType": 1, "Uuid": 5003, "DropId": [700],
-                            "RefreshConfigId": 4001, "RewardLimitId": 1, "AutoDestroy": false}}}
+                            "RefreshConfigId": 4001, "RewardLimitId": 1, "AutoDestroy": false},
+                    "710": {"Id": 710, "DropId": [4294967295], "RewardLimitId": 50, "AutoDestroy": true},
+                    "711": {"Id": 711, "DropId": [700], "CollectionDropId": 9999, "RewardLimitId": 50, "AutoDestroy": true},
+                    "712": {"Id": 712, "DropId": [700], "CollectionDropId": 9003, "RewardLimitId": 50, "AutoDestroy": true},
+                    "713": {"Id": 713, "DropId": [700], "CollectionDropId": 9004, "RewardLimitId": 50, "AutoDestroy": true}}}
                   """);
 
         Write(tables, "P_CollectionDropTable.json",
             json: """
                   {"P_CollectionDropTable": {
                     "1": {"Id": 1, "CollectionDropId": 9002, "GroupId": 1, "CollectionId": 700, "Weight": 70},
-                    "2": {"Id": 2, "CollectionDropId": 9002, "GroupId": 1, "CollectionId": 701, "Weight": 30}}}
+                    "2": {"Id": 2, "CollectionDropId": 9002, "GroupId": 1, "CollectionId": 701, "Weight": 30},
+                    "3": {"Id": 3, "CollectionDropId": 9003, "GroupId": 1, "CollectionId": 4294967295, "Weight": 100},
+                    "4": {"Id": 4, "CollectionDropId": 9004, "GroupId": 1, "CollectionId": 710, "Weight": 100}}}
+                  """);
+
+        Write(tables, "P_WorldCollectObjTable.json",
+            json: """
+                  {"P_WorldCollectObjTable": {
+                    "7000": {"Id": 7000, "BlockId": 100, "TemplateId": 700},
+                    "7100": {"Id": 7100, "BlockId": 100, "TemplateId": 710},
+                    "7110": {"Id": 7110, "BlockId": 100, "TemplateId": 711},
+                    "7120": {"Id": 7120, "BlockId": 100, "TemplateId": 712},
+                    "7130": {"Id": 7130, "BlockId": 100, "TemplateId": 713}}}
                   """);
     }
 

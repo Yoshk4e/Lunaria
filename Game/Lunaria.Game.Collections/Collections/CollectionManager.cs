@@ -5,8 +5,8 @@ using Msg;
 namespace Lunaria.Game.Collections;
 
 /// <summary>
-/// World objects come from p_worldcollectobjtable; their uniq id is the table row id, which the client binds to the
-/// level placement. Only objects the player has touched are stored; every other placed object can be collected.
+/// World objects come from p_worldcollectobjtable. Their uniq id is the table row id used by the client to find the
+/// level placement. Only objects the player has touched are stored. Other placed objects use their default state.
 /// </summary>
 public sealed partial class CollectionManager(GameData assets)
 {
@@ -33,8 +33,7 @@ public sealed partial class CollectionManager(GameData assets)
     }
 
     /// <summary>
-    /// Rows that do not match a placed object of the same template are dropped. Older saves planted invented nodes
-    /// around the player; those never matched the level, so they are discarded here.
+    /// Drop rows that do not match a placed object of the same template, including invented nodes from older saves.
     /// </summary>
     public void Load(
         IEnumerable<(ulong Uniq, uint Cfg, int Status, DateTimeOffset StatusTime, ulong Block, (int X, int Y, int Z) Position)> persisted
@@ -62,7 +61,7 @@ public sealed partial class CollectionManager(GameData assets)
 
     public void ClearDirty() => IsDirty = false;
 
-    /// <summary>Current state of a placed object, stored or not; null when the id is not a placed object.</summary>
+    /// <summary>Current state of a placed object, or null if the id has no placement.</summary>
     public CollectionState? Get(ulong uniq)
     {
         if (_nodes.TryGetValue(uniq, out var node))
@@ -114,7 +113,7 @@ public sealed partial class CollectionManager(GameData assets)
         if (!period.ResetsEver || !period.HasReset(node.StatusTime, now))
             return false;
 
-        _nodes[uniq] = node with { Status = EnmCollectionStatus.EcsCanCollect, StatusTime = now };
+        _nodes[uniq] = FromPlacement(assets.Collections.WorldObject(uniq)!, EnmCollectionStatus.EcsCanCollect, now);
         Dirty();
         return true;
     }
@@ -142,9 +141,14 @@ public sealed partial class CollectionManager(GameData assets)
         };
     }
 
-    private static CollectionState FromPlacement(PWorldCollectObjTable placed, EnmCollectionStatus status, DateTimeOffset time) =>
-        new(placed.Id, placed.TemplateId, status, time, placed.BlockId,
+    private static CollectionState FromPlacement(PWorldCollectObjTable placed, EnmCollectionStatus status, DateTimeOffset time)
+    {
+        // The table has no unlock parameters, so locked placements must stay locked.
+        if (status == EnmCollectionStatus.EcsCanCollect && placed.CollectUnlockType != 0)
+            status = EnmCollectionStatus.EcsLock;
+        return new(placed.Id, placed.TemplateId, status, time, placed.BlockId,
             (int)MathF.Round(placed.PosX), (int)MathF.Round(placed.PosY), (int)MathF.Round(placed.PosZ));
+    }
 
     private static uint ToStatusTime(DateTimeOffset moment)
     {

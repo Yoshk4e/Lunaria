@@ -16,13 +16,14 @@ public sealed class UtilityManagerTests(TestAssets fixture)
     [Fact]
     public void Collection_ChestDrawsOneCollectionPerGroupAndGrantsItsDrop()
     {
-        var own = fixture.Data.Collections.Rewards(TestAssets.Collection);
+        var own = fixture.Data.DropTable.Roll(700, new FixedRoll(0));
 
-        // Group 1 weights 700:70 and 701:30. A roll of 80 lands on 701; 10 lands on the chest itself, which adds nothing.
+        // Group 1 weights 700:70 and 701:30. Roll 80 picks 701. Roll 10 picks the chest and adds nothing.
         var drawn = fixture.Data.Collections.Rewards(TestAssets.Collection, new FixedRoll(80));
         var self = fixture.Data.Collections.Rewards(TestAssets.Collection, new FixedRoll(10));
 
-        Assert.Equal(own.Concat(fixture.Data.Collections.Rewards(TestAssets.IndestructibleCollection)), drawn);
+        Assert.NotEmpty(own);
+        Assert.Equal(own.Concat(own), drawn);
         Assert.Equal(own, self);
     }
 

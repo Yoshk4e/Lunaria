@@ -1,3 +1,4 @@
+using Lunaria.Game.Player.Gameplay;
 using Google.Protobuf;
 using Lunaria.Common;
 using Lunaria.Game.Battle;
@@ -18,15 +19,63 @@ using Lunaria.Game.Resources;
 using Lunaria.Game.Shop;
 using Lunaria.Game.Tasks;
 using Lunaria.Game.Wanted;
+using Lunaria.Game.Logging;
+using Microsoft.Extensions.Logging;
 using Lunaria.Game.World;
 using Msg;
 
 namespace Lunaria.Game.Player;
 
-public sealed partial class Player(ulong sessionId, GameData assets)
+public sealed partial class Player
 {
+    private readonly GameData assets;
+    private readonly OperationTimeProvider _time;
+
+    public Player(ulong sessionId, GameData assets, TimeProvider? timeProvider = null, GameplayRandom? random = null)
+    {
+        this.assets = assets;
+        _time = timeProvider as OperationTimeProvider ?? new OperationTimeProvider(timeProvider ?? TimeProvider.System);
+        RandomSources = random ?? new GameplayRandom();
+        SessionId = sessionId;
+        Map = new(assets);
+        Expose = new(assets.Expose);
+        Characters = new(assets);
+        Teams = new(assets);
+        TempTeams = new(assets);
+        Skills = new(assets);
+        Bag = new(assets);
+        Wallet = new(assets);
+        Progress = new(assets);
+        Guides = new(assets);
+        Limits = new(assets);
+        Mails = new(assets);
+        Shop = new(assets);
+        Motives = new(assets);
+        Gacha = new(assets);
+        Tasks = new(assets);
+        Collections = new(assets);
+        Cases = new(assets);
+        Achievements = new(assets, RandomSources.Loot);
+        Houses = new(assets);
+        DailyMissions = new(assets, _time);
+        SignIn = new(assets, _time);
+        BattlePasses = new(assets);
+        RegionProgress = new(assets);
+        SilverCreatures = new(assets);
+        Buffs = new(assets);
+        MonthCards = new(assets);
+        Dungeons = new(assets);
+        Wanted = new(assets, RandomSources.Wanted);
+        Cooldowns = new(_time);
+        CurrentWeather = (WeatherType)assets.Starter.Weather;
+        GameTimeMinutes = assets.Starter.GameTime;
+    }
+
+    /// <summary>Shared logger for every Player partial. Gameplay events are trace, outcomes are info.</summary>
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Player");
+
     /// <summary>Session ID used by SCAccountLogin.connect_identify_id and SCSchemaInfoSync.login_id.</summary>
-    public ulong SessionId { get; } = sessionId;
+    public ulong SessionId { get; }
 
     public LoadingState LoadingState { get; set; } = LoadingState.Pending;
 
@@ -35,70 +84,72 @@ public sealed partial class Player(ulong sessionId, GameData assets)
 
     public AccountManager Account { get; } = new();
     public RoleManager Roles { get; } = new();
-    public MapManager Map { get; } = new(assets);
-    public ExposeManager Expose { get; } = new(assets.Expose);
-    public CharacterManager Characters { get; } = new(assets);
-    public TeamManager Teams { get; } = new(assets);
+    public MapManager Map { get; }
+    public ExposeManager Expose { get; }
+    public CharacterManager Characters { get; }
+    public TeamManager Teams { get; }
 
-    public TempTeamManager TempTeams { get; } = new(assets);
-    public SkillManager Skills { get; } = new(assets);
-    public ItemBagManager Bag { get; } = new(assets);
+    public TempTeamManager TempTeams { get; }
+    public SkillManager Skills { get; }
+    internal ItemBagManager Bag { get; }
 
-    public ItemCooldownManager Cooldowns { get; } = new();
-    public WalletManager Wallet { get; } = new(assets);
-    public ProgressManager Progress { get; } = new(assets);
+    internal ItemCooldownManager Cooldowns { get; }
+    internal WalletManager Wallet { get; }
+    public ProgressManager Progress { get; }
 
-    public GuideManager Guides { get; } = new(assets);
+    public GuideManager Guides { get; }
 
-    public LimitGroupManager Limits { get; } = new(assets);
+    public LimitGroupManager Limits { get; }
 
-    public MailManager Mails { get; } = new(assets);
+    public MailManager Mails { get; }
 
-    public ShopManager Shop { get; } = new(assets);
+    public ShopManager Shop { get; }
 
-    public MotiveManager Motives { get; } = new(assets);
+    internal MotiveManager Motives { get; }
 
-    public GachaManager Gacha { get; } = new(assets);
+    public GachaManager Gacha { get; }
 
-    public TaskManager Tasks { get; } = new(assets);
+    public TaskManager Tasks { get; }
 
     public bool TasksBootstrapped { get; set; }
 
-    public CollectionManager Collections { get; } = new(assets);
+    public CollectionManager Collections { get; }
 
-    public CaseManager Cases { get; } = new(assets);
+    public CaseManager Cases { get; }
 
-    public AchievementManager Achievements { get; } = new(assets);
+    public AchievementManager Achievements { get; }
 
-    public HouseManager Houses { get; } = new(assets);
+    public HouseManager Houses { get; }
 
-    public DailyMissionManager DailyMissions { get; } = new(assets);
+    public DailyMissionManager DailyMissions { get; }
 
-    public SignInManager SignIn { get; } = new(assets);
+    public SignInManager SignIn { get; }
 
-    public BattlePassManager BattlePasses { get; } = new(assets);
+    public BattlePassManager BattlePasses { get; }
 
-    public RegionProgressManager RegionProgress { get; } = new(assets);
+    public RegionProgressManager RegionProgress { get; }
 
-    public SilverCreatureManager SilverCreatures { get; } = new(assets);
+    public SilverCreatureManager SilverCreatures { get; }
 
-    public BuffManager Buffs { get; } = new(assets);
+    public BuffManager Buffs { get; }
 
     public RedPointManager RedPoints { get; } = new();
 
-    public MonthCardManager MonthCards { get; } = new(assets);
+    public MonthCardManager MonthCards { get; }
 
     /// <summary>Battle state lasts only for the current login session.</summary>
-    public BattleManager Battles { get; } = new();
+    internal BattleManager Battles { get; } = new();
 
-    public DungeonManager Dungeons { get; } = new(assets);
+    public DungeonManager Dungeons { get; }
 
-    public WantedManager Wanted { get; } = new(assets);
+    public WantedManager Wanted { get; }
 
     public bool SignInPopSent { get; set; }
 
-    /// <summary>Keep reward RNG state across role replacement. Gacha tests can supply their own RNG.</summary>
-    public Random GachaRng { get; private set; } = Random.Shared;
+    public GameplayRandom RandomSources { get; }
+    public TimeProvider Time => _time;
+    public DateTimeOffset UtcNow => _time.GetUtcNow();
+    public IDisposable BeginOperation(DateTimeOffset? now = null) => _time.Begin(now);
 
     public GameData Assets => assets;
 

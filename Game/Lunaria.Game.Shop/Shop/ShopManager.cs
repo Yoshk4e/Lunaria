@@ -1,5 +1,7 @@
 using System.Globalization;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
+using Microsoft.Extensions.Logging;
 using Msg;
 
 namespace Lunaria.Game.Shop;
@@ -11,6 +13,8 @@ public sealed record ShopPurchase(uint Count, DateTimeOffset Anchor);
 /// </summary>
 public sealed partial class ShopManager(GameData assets)
 {
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Shop");
+
     private readonly SortedDictionary<uint, ShopPurchase> _bought = [];
 
     public bool IsDirty { get; private set; }
@@ -88,7 +92,8 @@ public sealed partial class ShopManager(GameData assets)
         if ((ulong)current + count > good.LimitNum)
             return (int)EnmTextCode.EnmTextShopGoodsNotEnough;
 
-        _bought[good.Id] = new ShopPurchase(current + count, now);
+        var anchor = entry is not null && entry.Anchor > now ? entry.Anchor : now;
+        _bought[good.Id] = new ShopPurchase(current + count, anchor);
         Dirty();
         return 0;
     }

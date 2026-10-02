@@ -5,10 +5,44 @@ namespace Lunaria.Game.Player;
 
 public sealed partial class Player
 {
+    public Lunaria.Game.Battle.BattleSession? CurrentBattle => Battles.Current;
+    public IReadOnlyList<long> PatrolCooldowns => Battles.PatrolCooldown.ToArray();
 
+    public int EnterBattle(EBattleType type, uint fieldId, uint instanceId, EnmMonsterFromType monsterFrom)
+    {
+        using var operationTime = BeginOperation();
+        if (!BattleContextMatches(type, fieldId)) return (int)EnmTextCode.EnmTextBattleStateNotMatch;
+        // Select the correct story/dungeon/Wanted team before the battle freezes it.
+        if (Battles.Current is null) ReconcileTemporaryTeam();
+        return Battles.Enter(type, fieldId, instanceId, monsterFrom);
+    }
+
+    public int StartBattle(EBattleType type, uint fieldId)
+    {
+        using var operationTime = BeginOperation();
+        return BattleContextMatches(type, fieldId) ? Battles.Start(type, fieldId)
+            : (int)EnmTextCode.EnmTextBattleStateNotMatch;
+    }
+
+    public int PauseBattle(EBattleType type, uint fieldId, bool paused)
+    {
+        using var operationTime = BeginOperation();
+        return BattleContextMatches(type, fieldId) ? Battles.Pause(type, fieldId, paused)
+            : (int)EnmTextCode.EnmTextBattleStateNotMatch;
+    }
+
+    private bool BattleContextMatches(EBattleType type, uint fieldId)
+    {
+        if (type == EBattleType.EnmBattleTypeWanted) return Wanted.MatchesBattle(fieldId);
+        if (Wanted.IsRunning) return false;
+        if (type is EBattleType.EnmBattleTypeRepeatDungeon or EBattleType.EnmBattleTypeWeekDungeon or EBattleType.EnmBattleTypeHorde)
+            return Dungeons.Current is {} dungeon && dungeon.BattleId == fieldId;
+        return Dungeons.Current is null;
+    }
 
     public BattleLeaveOutcome LeaveBattle(CSLeaveBattle report)
     {
+        using var operationTime = BeginOperation();
         if (!Enum.IsDefined(report.BattleResult)
             || Battles.Current is {} running && (running.BattleInstId != report.BattleInstId || running.MonsterFrom != report.MonsterFromType))
             return new BattleLeaveOutcome((int)EnmTextCode.EnmTextBattleStateNotMatch, RewardDelivery.Empty, false);
@@ -24,7 +58,8 @@ public sealed partial class Player
 
         // Ignore client vitals of -1, which mean untracked.
         var changed = new List<ulong>();
-        var wiped = report.BattleResult == EBattleResultType.EnmBattleResultTypeDeadFail;
+        var respawn = report.BattleResult == EBattleResultType.EnmBattleResultTypeDeadFail
+            && report.BattleType != EBattleType.EnmBattleTypeWanted;
 
         foreach (var character in report.CharacterData)
         {
@@ -33,7 +68,7 @@ public sealed partial class Player
 
             var (hp, liquid) = (TeamCharacterHp(character.InstId), TeamCharacterLiquid(character.InstId));
 
-            if (wiped)
+            if (respawn)
                 SetTeamCharacterVitals(character.InstId, hp: TeamCharacterMaxHp(character.InstId));
             else if (character.CurrentHp >= 0)
                 SetTeamCharacterVitals(character.InstId, hp: character.CurrentHp);
@@ -50,10 +85,11 @@ public sealed partial class Player
         if (report.BattleEndInfo?.Monsters is { Count: > 0 } kills)
             Battles.RecordKills(kills.Select(id => id));
 
-        var (buffUpdates, buffRemoved) = Buffs.BattleEnded(DateTimeOffset.UtcNow);
+        var (buffUpdates, buffRemoved) = Buffs.BattleEnded(UtcNow);
 
         var wantedBefore = Wanted.ToResource();
-        var (stepCompleted, _, stepDrop) = settlement.Victory && report.BattleType == EBattleType.EnmBattleTypeWanted ?
+        var (stepCompleted, _, stepDrop) = settlement.Victory && report.BattleType == EBattleType.EnmBattleTypeWanted
+            && Wanted.MatchesBattle(report.BattleFieldId) ?
             Wanted.OnBattleEnded(success: true) :
             (false, null, []);
         if (stepCompleted) Gameplay.Publish(new WantedResourcesChanged(wantedBefore));

@@ -12,7 +12,7 @@ public sealed class HandlePatrolMonsterReq
             return Task.FromResult(new SCPatrolMonsterRes { Result = (int)EnmTextCode.EnmTextNotAccLogin });
 
         var reply = new SCPatrolMonsterRes { Result = 0 };
-        reply.CdMonsters.AddRange(ctx.Player.Battles.PatrolCooldown.Select(id => (uint)id));
+        reply.CdMonsters.AddRange(ctx.Player.PatrolCooldowns.Select(id => (uint)id));
         return Task.FromResult(reply);
     }
 }

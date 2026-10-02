@@ -1,5 +1,7 @@
+using Lunaria.Game.Logging;
 using Lunaria.Game.Player.Persistence.Saves;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace Lunaria.Game.Player.Persistence;
 
@@ -13,6 +15,8 @@ public sealed class RoleStateStore(
     MailRepository mails,
     RoleSaveRepository saves)
 {
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Persistence");
+
     public async Task<IReadOnlyList<Msg.CharacterData>> PreviewCharactersAsync(Player session, long roleId,
         CancellationToken cancellationToken = default)
     {
@@ -29,6 +33,7 @@ public sealed class RoleStateStore(
 
     public async Task SaveAsync(Player player, CancellationToken cancellationToken = default)
     {
+        using var operationTime = player.BeginOperation();
         if (!player.IsLoggedIn || !player.IsDirty) return;
         await using var db = await factory.CreateDbContextAsync(cancellationToken);
         await using var transaction = await db.Database.BeginTransactionAsync(cancellationToken);
@@ -39,6 +44,7 @@ public sealed class RoleStateStore(
                 throw new InvalidOperationException("Cannot save a role outside its account.");
             await roles.SaveAsync(db, role, cancellationToken);
         }
+        Log.Event("saving {Roles} dirty role rows and the active role tables", changedRoles.Count);
 
         if (player.Roles.Active() is {} active)
         {
@@ -56,6 +62,7 @@ public sealed class RoleStateStore(
         await transaction.CommitAsync(cancellationToken);
         foreach (var role in changedRoles) player.Roles.MarkPersisted(role.Id);
         if (!player.HasActiveRole) return;
+        Log.Event("role {RoleId} save committed", player.Roles.Active()!.Id);
         player.Characters.ClearDirty();
         player.Motives.ClearDirty();
         player.Mails.ClearDirty();
@@ -65,6 +72,7 @@ public sealed class RoleStateStore(
 
     public async Task<Player> LoadAsync(Player session, long roleId, DateTimeOffset now, CancellationToken cancellationToken = default)
     {
+        using var operationTime = session.BeginOperation(now);
         var next = session.CreateRoleSession();
         if (!next.Roles.SetActive(roleId)) throw new InvalidOperationException("Unknown role.");
         await using var db = await factory.CreateDbContextAsync(cancellationToken);
@@ -80,6 +88,7 @@ public sealed class RoleStateStore(
         next.Mails.Load(await mails.LoadAsync(db, roleId, cancellationToken));
         await transaction.CommitAsync(cancellationToken);
         next.InitializeRoleState(now, hasSave);
+        Log.State("role {RoleId} loaded, save {HasSave}", roleId, hasSave);
         return next;
     }
 }

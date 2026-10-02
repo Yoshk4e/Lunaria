@@ -1,8 +1,13 @@
+using Lunaria.Game.Logging;
+using Microsoft.Extensions.Logging;
+
 namespace Lunaria.Game.Player.Gameplay;
 
 /// <summary>Queue nested events so hooks cannot call themselves recursively.</summary>
 public sealed class GameplayEventDispatcher(Player player, PlayerChanges changes)
 {
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Player.Gameplay");
+
     private readonly Dictionary<Type, List<Action<IGameplayEvent>>> _handlers = [];
     private readonly Queue<IGameplayEvent> _pending = new();
     private bool _dispatching;
@@ -20,6 +25,7 @@ public sealed class GameplayEventDispatcher(Player player, PlayerChanges changes
     public void Publish<TEvent>(TEvent occurrence) where TEvent : IGameplayEvent
     {
         _started = true;
+        Log.Event("gameplay event {EventName} queued", occurrence.GetType().Name);
         _pending.Enqueue(occurrence);
         if (_dispatching) return;
 
@@ -35,7 +41,10 @@ public sealed class GameplayEventDispatcher(Player player, PlayerChanges changes
                     throw new InvalidOperationException("Gameplay hook cycle exceeded the dispatch budget.");
 
                 if (!_handlers.TryGetValue(next.GetType(), out var handlers))
+                {
+                    Log.Flag("gameplay event {EventName} has no registered hook, dropping it", next.GetType().Name);
                     throw new InvalidOperationException($"No gameplay hook registered for {next.GetType().Name}.");
+                }
 
                 foreach (var handler in handlers)
                 {

@@ -19,7 +19,7 @@ public sealed class HandleCollectionOperate(ILogger<HandleCollectionOperate> log
         if (!ctx.Player.HasActiveRole)
             return Reject((int)EnmTextCode.EnmTextNotAccLogin);
 
-        var now = DateTimeOffset.UtcNow;
+        var now = ctx.Player.UtcNow;
         var (code, outcome) = ctx.Player.Collect(req.UniqId, req.Op, now);
 
         if (code != 0 || outcome is null)

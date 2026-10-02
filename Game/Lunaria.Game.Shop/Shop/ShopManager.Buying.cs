@@ -1,17 +1,23 @@
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
+using Microsoft.Extensions.Logging;
 using Msg;
 
 namespace Lunaria.Game.Shop;
 
 public sealed partial class ShopManager
 {
+
     public (int Code, IReadOnlyList<BasketLine>? Lines) CheckBasket(
         uint shopId,
         IEnumerable<(uint GoodId, uint Count)> basket
     )
     {
         if (!ShopExists(shopId))
+        {
+            Log.Flag("shop basket refused, shop {ShopId} does not exist", shopId);
             return ((int)EnmTextCode.EnmTextShopNotExsit, null);
+        }
 
         var wants = new SortedDictionary<uint, ulong>();
 
@@ -31,10 +37,16 @@ public sealed partial class ShopManager
         foreach (var (goodId, count) in wants)
         {
             if (GoodInShop(shopId, goodId) is not {} good)
+            {
+                Log.Flag("shop basket refused, good {GoodId} is not stocked in shop {ShopId}", goodId, shopId);
                 return ((int)EnmTextCode.EnmTextShopGoodsNotExsit, null);
+            }
 
             if (!assets.Items.IsMoneyType(good.MoneyType))
+            {
+                Log.Flag("shop basket refused, good {GoodId} uses unknown money type {MoneyType}", goodId, good.MoneyType);
                 return ((int)EnmTextCode.EnmTextShopGoodsPayTypeError, null);
+            }
 
             if (!assets.Items.Exists(good.ItemId))
                 return ((int)EnmTextCode.EnmTextShopGoodsNotExsit, null);

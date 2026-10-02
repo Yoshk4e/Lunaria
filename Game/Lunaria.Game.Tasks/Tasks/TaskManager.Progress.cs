@@ -1,3 +1,4 @@
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources.Tables;
 using Msg;
 
@@ -36,7 +37,10 @@ public sealed partial class TaskManager
         var action = assets.Tasks.Action(taskType, actionId);
 
         if (action is null)
+        {
+            Log.Flag("task action report for {TaskType} {ActionId} has no such action", taskType, actionId);
             return ((int)EnmTextCode.EnmTextActionIdNotFound, null);
+        }
 
         // Reused actions can have stale originStep values. Prefer their current occurrence.
         var stepId = _processing.Values.FirstOrDefault(s => s.Type == taskType
@@ -46,13 +50,22 @@ public sealed partial class TaskManager
         var taskId = assets.Tasks.TaskOfStep(taskType, stepId);
 
         if (taskId == 0 || !assets.Tasks.TaskExists(taskType, taskId))
+        {
+            Log.Flag("task action {TaskType} {ActionId} maps to no task, step {StepId}", taskType, actionId, stepId);
             return ((int)EnmTextCode.EnmTextTaskIdNotFound, null);
+        }
 
         if (_finished.Contains((taskType, taskId)))
+        {
+            Log.Event("acknowledged progress on already finished task {TaskType} {TaskId}", taskType, taskId);
             return (0, Acknowledge(taskType, taskId, Maximum(taskType, actionId), Maximum(taskType, actionId)));
+        }
 
         if (!_processing.TryGetValue((taskType, taskId), out var state))
+        {
+            Log.Flag("task action report for {TaskType} {TaskId} has no processing state", taskType, taskId);
             return ((int)EnmTextCode.EnmTextTaskNotProcessing, null);
+        }
 
         // Cleanup actions must not skip ahead or complete a task.
         if (assets.Tasks.IsPostAction(taskType, stepId, actionId))
@@ -171,7 +184,10 @@ public sealed partial class TaskManager
         }
 
         if (IsStepComplete(taskType, stepId, actions))
+        {
+            Log.Event("task {TaskType} {TaskId} step {StepId} complete, advancing", taskType, taskId, stepId);
             return (0, AdvancePast(taskType, taskId, state, stepId, echoProgress, echoMax, passed));
+        }
 
         if (advanced || recorded)
         {
@@ -213,6 +229,9 @@ public sealed partial class TaskManager
                     started.Add(followingTask);
             }
 
+            Log.State("task {TaskType} {TaskId} completed, started {StartedCount} follow up tasks", taskType, taskId, started.Count);
+            Log.Event("task {TaskType} {TaskId} completed at step {StepId}, started tasks {StartedTasks}",
+                taskType, taskId, stepId, started);
             return Snapshot(new TaskProgressResult(
                 taskType, taskId, Recorded: true, echoProgress, echoMax, StepAdvanced: true, TaskCompleted: true, started, passed));
         }

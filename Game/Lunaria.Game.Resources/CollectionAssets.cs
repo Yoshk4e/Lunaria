@@ -3,13 +3,13 @@ using Lunaria.Game.Resources.Tables;
 namespace Lunaria.Game.Resources;
 
 /// <summary>
-/// Drop_ID selects item rewards. A chest's CollectionDropId names weighted groups; each group draws one collection
+/// Drop_ID selects item rewards. A chest's CollectionDropId names weighted groups. Each group draws one collection
 /// whose Drop_ID is granted. World objects are the placed instances the client binds to by id.
 /// </summary>
 public sealed class CollectionAssets
 {
     private readonly Dictionary<uint, PCollectionTable> _collections = [];
-    private readonly DropAssets _drops;
+    private readonly DropTableAssets _drops;
     private readonly LimitAssets _limits;
     private readonly Dictionary<(uint DropId, uint GroupId), (uint CollectionId, uint Weight)[]> _spawnGroups = [];
     private readonly Dictionary<ulong, PWorldCollectObjTable> _worldObjects = [];
@@ -19,7 +19,7 @@ public sealed class CollectionAssets
         IReadOnlyDictionary<string, PCollectionTable> collections,
         IReadOnlyDictionary<string, PCollectionDropTable> spawns,
         IReadOnlyDictionary<string, PWorldCollectObjTable> worldObjects,
-        DropAssets drops,
+        DropTableAssets drops,
         LimitAssets limits
     )
     {
@@ -61,16 +61,23 @@ public sealed class CollectionAssets
 
     public PCollectionTable? Get(uint collectionId) => _collections.GetValueOrDefault(collectionId);
 
-    public IReadOnlyList<ItemGrant> Rewards(uint collectionId) =>
-        _collections.GetValueOrDefault(collectionId) is {} row ? _drops.Bundles(row.DropId) : [];
+    public bool CanResolveRewards(uint collectionId)
+    {
+        if (_collections.GetValueOrDefault(collectionId) is not {} row || !row.DropId.All(_drops.Exists))
+            return false;
+        if (row.CollectionDropId == 0) return true;
+
+        var groups = _spawnGroups.Where(g => g.Key.DropId == row.CollectionDropId).Select(g => g.Value).ToArray();
+        return groups.Length > 0 && groups.All(group => group.Length > 0 && group.All(entry =>
+            _collections.GetValueOrDefault(entry.CollectionId) is {} candidate && candidate.DropId.All(_drops.Exists)));
+    }
 
     /// <summary>Rewards of one opening: the collection's own Drop_ID, then one weighted draw per chest group.</summary>
     public IReadOnlyList<ItemGrant> Rewards(uint collectionId, Random rng)
     {
-        if (_collections.GetValueOrDefault(collectionId) is not {} row)
-            return [];
-
-        var grants = _drops.Bundles(row.DropId).ToList();
+        if (!CanResolveRewards(collectionId)) return [];
+        var row = _collections[collectionId];
+        var grants = row.DropId.SelectMany(id => _drops.Roll(id, rng)).ToList();
 
         if (row.CollectionDropId == 0)
             return grants;
@@ -78,7 +85,7 @@ public sealed class CollectionAssets
         foreach (var group in _spawnGroups.Where(g => g.Key.DropId == row.CollectionDropId).OrderBy(g => g.Key.GroupId))
         {
             if (Draw(group.Value, rng) is {} drawn && drawn != collectionId)
-                grants.AddRange(Rewards(drawn));
+                grants.AddRange(_collections[drawn].DropId.SelectMany(id => _drops.Roll(id, rng)));
         }
 
         return grants;
@@ -108,7 +115,7 @@ public sealed class CollectionAssets
 
     public PWorldCollectObjTable? WorldObject(ulong id) => _worldObjects.GetValueOrDefault(id);
 
-    /// <summary>Placed objects of one block; block 0 lists every block.</summary>
+    /// <summary>Placed objects of one block. Block 0 lists every block.</summary>
     public IReadOnlyList<PWorldCollectObjTable> WorldObjects(ulong blockId) => blockId == 0
         ? _worldObjects.Values.OrderBy(r => r.Id).ToArray()
         : _worldObjectsByBlock.GetValueOrDefault(blockId) ?? [];

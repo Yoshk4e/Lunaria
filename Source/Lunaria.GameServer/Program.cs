@@ -1,3 +1,5 @@
+using Lunaria.Game.Logging;
+using Lunaria.GameServer.Logging;
 using Lunaria.GameServer.Services;
 using Lunaria.Game.Player.Auth;
 using Lunaria.Game.Player.Persistence;
@@ -14,9 +16,21 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
+if (args.Length > 0 && args[0] == "--validate-content")
+{
+    var warnings = ContentValidator.Validate(args.Length > 1 ? args[1] : "assets");
+    foreach (var warning in warnings) Console.WriteLine($"WARNING: {warning}");
+    Console.WriteLine($"Content validation: {warnings.Count} warning(s). Warnings are advisory.");
+    return;
+}
+
 var builder = Host.CreateApplicationBuilder(args);
-builder.Logging.AddFilter(typeof(Router).FullName, LogLevel.Warning);
-builder.Configuration.AddEnvironmentVariables("LUNARIA_");
+builder.Logging.ClearProviders();
+builder.Logging.AddProvider(new StylishConsoleLoggerProvider());
+builder.Configuration
+    .SetBasePath(AppContext.BaseDirectory)
+    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: false)
+    .AddEnvironmentVariables("LUNARIA_");
 builder.Services
     .AddOptions<GameServerOptions>()
     .BindConfiguration("GameServer")
@@ -30,7 +44,8 @@ builder.Services
     .Validate(o => o.SessionQueueDepth > 0, "SessionQueueDepth must be positive")
     .ValidateOnStart();
 builder.Services.AddSingleton(sp => new GameData(
-    sp.GetRequiredService<IOptions<GameServerOptions>>().Value.AssetsDir));
+    sp.GetRequiredService<IOptions<GameServerOptions>>().Value.AssetsDir,
+    sp.GetRequiredService<ILogger<GameData>>()));
 builder.Services.AddHostedService(sp => sp.GetRequiredService<GameData>());
 
 builder.Services.AddDbContextFactory<GameDbContext>((sp, dbOptions) => {
@@ -48,6 +63,7 @@ builder.Services.AddDbContextFactory<GameDbContext>((sp, dbOptions) => {
 
 builder.Services.AddSingleton(sp => sp.GetRequiredService<IOptions<GameServerOptions>>().Value);
 builder.Services.AddSingleton<GameServerRuntime>();
+builder.Services.AddSingleton(TimeProvider.System);
 builder.Services.AddSingleton<Router>();
 builder.Services.AddSingleton<TrustAllAuthenticator>();
 builder.Services.AddSingleton<IAuthenticator>(sp => sp.GetRequiredService<TrustAllAuthenticator>());
@@ -73,4 +89,6 @@ builder.Services.AddHostedService<BootstrapService>();
 builder.Services.AddHostedService<GatewayRegistrationService>();
 
 var host = builder.Build();
+GameLog.Configure(host.Services.GetRequiredService<ILoggerFactory>());
+
 await host.RunAsync().ConfigureAwait(false);
