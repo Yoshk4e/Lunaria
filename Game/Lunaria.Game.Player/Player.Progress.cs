@@ -23,6 +23,7 @@ public sealed partial class Player
 
     public (int Result, uint WorldLevel) SelectWorldLevel(uint worldLevel)
     {
+        using var operationTime = BeginOperation();
         EnsureLevelBaseline();
         var result = Progress.SelectWorldLevel(worldLevel);
         if (result.Result == 0) SynchronizeLevelData();
@@ -41,18 +42,25 @@ public sealed partial class Player
 
     public (PlayerLevelData Before, PlayerLevelData After) GrantTeamExp(ulong exp)
     {
+        using var operationTime = BeginOperation();
         EnsureLevelBaseline();
         var before = LevelData();
 
+        ApplyTeamExperience(exp);
+        var after = LevelData();
+
+        SynchronizeLevelData();
+        return (before, after);
+    }
+
+    private void ApplyTeamExperience(ulong exp)
+    {
+        EnsureLevelBaseline();
         while (exp > 0)
         {
             var chunk = (uint)Math.Min(exp, uint.MaxValue);
             Progress.AddTeamExp(chunk);
             exp -= chunk;
         }
-        var after = LevelData();
-
-        SynchronizeLevelData();
-        return (before, after);
     }
 }

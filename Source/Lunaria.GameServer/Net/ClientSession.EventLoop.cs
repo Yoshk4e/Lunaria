@@ -21,14 +21,17 @@ public sealed partial class ClientSession
         var events = Channel.CreateBounded<(SessionEventKind Kind, object? Payload)>(
             new BoundedChannelOptions(options.SessionQueueDepth) { FullMode = BoundedChannelFullMode.Wait });
 
-        var player = new Player(runtime.AllocateSessionId(), assets);
+        var player = new Player(runtime.AllocateSessionId(), assets, timeProvider);
         var codec = new SessionCodec(established.Aes);
         var handle = new PlayerHandle(notifications);
         var ctx = new NetContext(player, runtime, codec, outbound.Writer, assets, metrics);
 
-        var readerTask = ReadFramesAsync(reader, events.Writer, shutdown);
-        var notifyTask = BridgeNotificationsAsync(notifications.Reader, events.Writer);
-        var udpTask = BridgeUdpAsync(udp.Inbound, events.Writer);
+        using var readersStopped = CancellationTokenSource.CreateLinkedTokenSource(shutdown);
+        // NetContext can be waiting for outbound capacity without a cancellation token.
+        using var closeOutbound = shutdown.Register(() => outbound.Writer.TryComplete());
+        var readerTask = ReadFramesAsync(reader, events.Writer, readersStopped.Token);
+        var notifyTask = BridgeNotificationsAsync(notifications.Reader, events.Writer, readersStopped.Token);
+        var udpTask = BridgeUdpAsync(udp.Inbound, events.Writer, readersStopped.Token);
 
         using var tickSubscription = clock.Subscribe(() => events.Writer.TryWrite((SessionEventKind.Tick, null)));
 
@@ -41,7 +44,7 @@ public sealed partial class ClientSession
         {
             await outbound.Writer.WriteAsync(codec.HeartbeatFrame(), shutdown).ConfigureAwait(false);
 
-            await foreach (var (kind, payload) in events.Reader.ReadAllAsync().ConfigureAwait(false))
+            await foreach (var (kind, payload) in events.Reader.ReadAllAsync(shutdown).ConfigureAwait(false))
             {
                 switch (kind)
                 {
@@ -115,7 +118,7 @@ public sealed partial class ClientSession
                         if ((tick + stagger) % IncomeTicks == 0 && ctx.Player.HasActiveRole)
                         {
                             await ctx.RunCommittedAsync(
-                                async () => await ctx.NotifyAsync(ctx.Player.AdvanceTime(DateTimeOffset.UtcNow)).ConfigureAwait(false),
+                                async () => await ctx.NotifyAsync(ctx.Player.AdvanceTime(ctx.Player.UtcNow)).ConfigureAwait(false),
                                 player => roleStore.SaveAsync(player)).ConfigureAwait(false);
                         }
 
@@ -137,8 +140,16 @@ public sealed partial class ClientSession
         catch (OperationCanceledException) when (shutdown.IsCancellationRequested)
         {
         }
+        catch (ChannelClosedException) when (shutdown.IsCancellationRequested)
+        {
+        }
         finally
         {
+            await readersStopped.CancelAsync().ConfigureAwait(false);
+            events.Writer.TryComplete();
+            notifications.Writer.TryComplete();
+            await Task.WhenAll(readerTask, notifyTask, udpTask).ConfigureAwait(false);
+
             try
             {
                 if (!ctx.PersistenceFaulted) await FlushAsync(ctx.Player).ConfigureAwait(false);
@@ -160,12 +171,7 @@ public sealed partial class ClientSession
 
             handle.AcknowledgeTakeover();
 
-            events.Writer.TryComplete();
-            notifications.Writer.TryComplete();
             outbound.Writer.TryComplete();
-            _ = readerTask;
-            _ = notifyTask;
-            _ = udpTask;
         }
     }
 

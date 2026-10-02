@@ -250,9 +250,33 @@ public sealed class TaskAssets
     {
         var rollback = Of(type)?.Steps.GetValueOrDefault(stepId)?.RollbackStepWhenFail ?? 0;
         var taskId = TaskOfStep(type, stepId);
+
+        // Unconfigured puzzle failures re-arm the arrival steps just before them, otherwise the puzzle restarts
+        // around a player who already left its boundary and fails again.
+        if (rollback == 0)
+            return ApproachStart(type, taskId, stepId);
+
         var index = StepIndex(type, taskId, rollback);
         // A rollback must stay in the same task, but its destination can come after the failed step.
         return index >= 0 ? rollback : stepId;
+    }
+
+    private const int ArrivePositionTarget = 1;
+    private const int PuzzleStateTarget = 33;
+
+    private ulong ApproachStart(uint type, uint taskId, ulong stepId)
+    {
+        if (!FailureActions(type, stepId).Any(id => Action(type, id)?.TargetType == PuzzleStateTarget))
+            return stepId;
+
+        var steps = Steps(type, taskId);
+        var index = StepIndex(type, taskId, stepId);
+
+        while (index > 0 && Actions(type, steps[index - 1]) is [_, ..] actions
+               && actions.All(id => Action(type, id)?.TargetType == ArrivePositionTarget))
+            index--;
+
+        return index >= 0 ? steps[index] : stepId;
     }
 
     private sealed class Namespace

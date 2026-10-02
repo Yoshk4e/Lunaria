@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Lunaria.SdkServer.Services;
 using Lunaria.SdkServer.Wire;
 using Microsoft.AspNetCore.Mvc;
@@ -36,14 +37,15 @@ public sealed class StatusController(
         var target = string.IsNullOrWhiteSpace(ver) ? "0.09.70.4" : ver;
         logger.LogDebug("no hotupdate manifest on disk, returning version-pass stub for ver {Ver}", target);
 
-        return Ok(new {
+        // The client's Lua reads PascalCase keys (Data, ReqResult), so bypass the default camelCase policy.
+        return new JsonResult(new {
             ReqResult = "OK",
             ErrorCode = "",
             Ext = "",
             Data = new[] {
                 new { ver = target, addr = "", totalsize = 0, fileinfo = Array.Empty<object>() }
             }
-        });
+        }, new JsonSerializerOptions());
     }
 
     [HttpGet("/hotupdate/{**path}")]

@@ -16,7 +16,7 @@ public sealed class HandleStartBattle
             });
 
         return Task.FromResult(new SCStartBattle {
-            Ret = ctx.Player.Battles.Start(req.BattleType, req.BattleFieldId),
+            Ret = ctx.Player.StartBattle(req.BattleType, req.BattleFieldId),
             BattleType = req.BattleType,
             BattleFieldId = req.BattleFieldId
         });

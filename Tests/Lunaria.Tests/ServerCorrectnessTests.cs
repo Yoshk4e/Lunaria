@@ -156,6 +156,30 @@ public sealed class ServerCorrectnessTests(BundledGameplayFixture fixture)
         Assert.Equal(before, player.Teams.ToTeamData(player.Teams.Get(player.Teams.Current)!));
     }
 
+    [Theory]
+    [InlineData(7u, EnmMonsterFromType.EmonsterFromInvalid, 8u, EnmMonsterFromType.EmonsterFromTable)]
+    [InlineData(0u, EnmMonsterFromType.EmonsterFromTask, 7u, EnmMonsterFromType.EmonsterFromTable)]
+    [InlineData(0u, EnmMonsterFromType.EmonsterFromInvalid, 7u, (EnmMonsterFromType)999)]
+    public void PatrolLeave_RejectsKnownIdentifierMismatchOrInvalidSource(
+        uint enteredInstance, EnmMonsterFromType enteredSource, uint reportedInstance, EnmMonsterFromType reportedSource)
+    {
+        var player = Fresh();
+        const uint field = 109100101;
+        Assert.Equal(0, player.EnterBattle(EBattleType.EnmBattleTypePatrol, field, enteredInstance, enteredSource));
+        Assert.Equal(0, player.StartBattle(EBattleType.EnmBattleTypePatrol, field));
+        var battle = player.CurrentBattle;
+
+        var result = player.LeaveBattle(new CSLeaveBattle {
+            BattleType = EBattleType.EnmBattleTypePatrol, BattleFieldId = field,
+            BattleInstId = reportedInstance, MonsterFromType = reportedSource,
+            BattleResult = EBattleResultType.EnmBattleResultTypeSuccess
+        });
+
+        Assert.Equal((int)EnmTextCode.EnmTextBattleStateNotMatch, result.Result);
+        Assert.Same(battle, player.CurrentBattle);
+        Assert.Empty(player.DrainGameplayChanges());
+    }
+
     [Fact]
     public void ExperienceOnlyDelivery_IsVisible_AndCombinesWithoutApplyingAgain()
     {

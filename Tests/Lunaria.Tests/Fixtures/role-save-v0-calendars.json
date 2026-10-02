@@ -1,0 +1,5 @@
+{
+  "signin": {
+    "Activities": [{ "ActivityId": 3, "SignedDays": [1, 2, 3, 4, 5], "ClaimedDays": [1], "LastSignInDay": 20000, "AttendanceDays": 42 }]
+  }
+}

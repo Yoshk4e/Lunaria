@@ -23,7 +23,7 @@ public sealed class HandleShopBuy(ILogger<HandleShopBuy> logger)
         var shopId = (uint)req.ShopId;
         var basket = req.Goods.Select(good => (good.Id, good.Num)).ToList();
 
-        var now = DateTimeOffset.UtcNow;
+        var now = ctx.Player.UtcNow;
         var (code, delivery) = ctx.Player.BuyFromShop(shopId, basket, now);
 
         if (code != 0 || delivery is null)
