@@ -9,6 +9,7 @@ public sealed partial class Player
 {
     public ItemUseOutcome UseItem(uint itemId, uint count, IReadOnlyList<ulong> parameters)
     {
+        using var operationTime = BeginOperation();
         var previousStamina = Progress.Stamina;
         var result = UseItemCore(itemId, count, parameters);
 
@@ -70,7 +71,7 @@ public sealed partial class Player
             if (staminaPerUse <= 0)
                 return reject with { Code = (int)EnmTextCode.EnmTextItemNoUsehandler };
 
-            var staminaNow = DateTimeOffset.UtcNow;
+            var staminaNow = UtcNow;
             Progress.Regenerate(staminaNow);
             var missing = Progress.StaminaMax - Progress.Stamina;
 
@@ -98,7 +99,7 @@ public sealed partial class Player
         if (assets.ItemEffects.Effect(itemId) is not {} effect)
             return reject with { Code = (int)EnmTextCode.EnmTextItemNoUsehandler };
 
-        var now = DateTimeOffset.UtcNow;
+        var now = UtcNow;
         uint cdType = 0;
         uint cdSeconds = 0;
         uint cdReadyUnix = 0;
@@ -112,43 +113,26 @@ public sealed partial class Player
             cdSeconds = cooldown.Seconds;
         }
 
-        if (effect.TimedBuffs.Count > 0)
-        {
-            if (Bag.Remove(itemId, count: 1) != 0)
-                return reject with { Code = (int)EnmTextCode.EnmTextItemNotEnough };
-
-            cdReadyUnix = Cooldowns.Start(cdType, cdSeconds, now);
-            var buffSatiety = ApplySatiety(effect.Satiety, consumed: 1);
-            var changes = new List<(PBBuffData Data, bool Refreshed)>();
-            var removed = new List<uint>();
-
-            foreach (var buffId in effect.TimedBuffs)
-            {
-                var (code, refreshed, updated, displaced) = Buffs.Apply(buffId, now);
-
-                if (code != 0)
-                    continue;
-
-                if (updated is not null)
-                    changes.Add((updated, refreshed));
-                removed.AddRange(displaced);
-            }
-
-            return new ItemUseEffects(Code: 0, Used: 1, Bag.CountOf(itemId), [], ChangedTemporaryLiquid: false, ChangedBattlePass: 0, changes,
-                removed, cdType, cdReadyUnix, buffSatiety);
-        }
-
         if (!TryResolveItemTargets(effect, parameters, out var targets))
             return reject with { Code = (int)EnmTextCode.EnmTextWrongParam };
 
-        if (!TryResolveItemPlan(effect, targets, out var plan))
+        var hasImmediate = TryResolveItemPlan(effect, targets, out var plan);
+        var hasTimedBuffs = effect.TimedBuffs.Count > 0;
+        if (!hasImmediate && !hasTimedBuffs)
             return reject with { Code = (int)EnmTextCode.EnmTextItemNoUsehandler };
 
-        var usable = Math.Min(count, plan.Kind switch {
+        if (hasImmediate && plan.Kind == ItemEffectAssets.Blood && !effect.Revive)
+            targets = targets.Where(id => TeamCharacterHp(id) > 0).ToArray();
+
+        var usable = hasImmediate ? Math.Min(count, plan.Kind switch {
             ItemEffectAssets.Blood => UsesUntilHpFull(targets, plan),
             ItemEffectAssets.PermanentLiquid => UsesUntilPermanentLiquidFull(targets[0], plan),
             _ => UsesUntilTemporaryLiquidFull(plan)
-        });
+        }) : 0;
+
+        // A timed buff consumes one item even when its healing has nothing to restore.
+        // Its immediate effects still apply to eligible targets from that same use.
+        if (hasTimedBuffs) usable = 1;
 
         if (usable == 0)
             return reject;
@@ -161,7 +145,7 @@ public sealed partial class Player
         var changedCharacters = new List<ulong>();
         var changedLiquid = false;
 
-        if (plan.Kind == ItemEffectAssets.Blood)
+        if (hasImmediate && plan.Kind == ItemEffectAssets.Blood)
         {
             foreach (var instId in targets)
             {
@@ -172,22 +156,32 @@ public sealed partial class Player
                 if (TeamCharacterHp(instId) != before)
                     changedCharacters.Add(instId);
             }
-        } else if (plan.Kind == ItemEffectAssets.PermanentLiquid)
+        } else if (hasImmediate && plan.Kind == ItemEffectAssets.PermanentLiquid)
         {
             var before = TeamCharacterLiquid(targets[0]);
             SetTeamCharacterVitals(targets[0], liquid: before + checked((int)usable * plan.Value));
 
             if (TeamCharacterLiquid(targets[0]) != before)
                 changedCharacters.Add(targets[0]);
-        } else
+        } else if (hasImmediate)
         {
             changedLiquid = AddCurrentTeamLiquid(plan.Element, checked((int)usable * plan.Value));
+        }
+
+        var buffChanges = new List<(PBBuffData Data, bool Refreshed)>();
+        var buffRemoved = new List<uint>();
+        foreach (var buffId in effect.TimedBuffs)
+        {
+            var (code, refreshed, updated, displaced) = Buffs.Apply(buffId, now);
+            if (code != 0) continue;
+            if (updated is not null) buffChanges.Add((updated, refreshed));
+            buffRemoved.AddRange(displaced);
         }
 
         var satiety = ApplySatiety(effect.Satiety, usable);
 
         return new ItemUseEffects(Code: 0, usable, Bag.CountOf(itemId), changedCharacters, changedLiquid,
-            ChangedBattlePass: 0, BuffChanges: null, BuffRemoved: null, cdType, cdReadyUnix, satiety);
+            ChangedBattlePass: 0, buffChanges, buffRemoved, cdType, cdReadyUnix, satiety);
     }
 
     private bool TryResolveItemTargets(

@@ -180,7 +180,9 @@ public sealed partial class TaskManager
 
                 foreach (var (type, actionId) in InstantMarkersFor(mapId))
                 {
-                    if (ReportAction(type, actionId, progress: 1) is (0, { } result))
+                    // A completed marker can remain beside an unfinished dialogue.
+                    // Only real progress warrants another pass through the current step.
+                    if (ReportAction(type, actionId, progress: 1) is (0, { Recorded: true } result))
                     {
                         results.Add(result);
                         batch.Add(result);

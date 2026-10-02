@@ -1,12 +1,13 @@
 using Lunaria.Game.Resources.Tables;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace Lunaria.Game.Resources;
 
 /// <summary>
 /// Use Binary/Server tables, but take DefaultMap from the client build so the prologue starts on the right map.
 /// </summary>
-public sealed class GameData(string assetsDir) : IHostedService
+public sealed class GameData(string assetsDir, ILogger<GameData>? logger = null) : IHostedService
 {
     internal readonly Dictionary<string, PGameTimeTable> PGameTimeTable = [];
     internal readonly Dictionary<string, CNPCGroupTable> CNPCGroupTable = [];
@@ -180,6 +181,9 @@ public sealed class GameData(string assetsDir) : IHostedService
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
+        if (logger is not null)
+            foreach (var warning in ContentValidator.Validate(assetsDir))
+                logger.LogWarning("Content: {Warning}", warning);
         Resources.Initialize(Path.Combine(assetsDir, "tables"));
         TableLoader.Initialize(this);
         Policy = GameplayPolicy.Load(Path.Combine(assetsDir, "gameplay-policy.json"));
@@ -196,11 +200,12 @@ public sealed class GameData(string assetsDir) : IHostedService
         ItemEffects = new ItemEffectAssets(PItemTable, PItemEffectTable, PItemEffectTypeTable, POutsideBuffTable);
         Maps = new MapAssets(PMapDataTable, PFunctionalNPCTable, PSavePointTemplateTable, PTeleportPointTemplateTable);
         Expose = new ExposeAssets(PSubRegionNPCGroup, PNPCGroupEnterBattle, CNPCGroupTable);
-        Skills = new SkillAssets(PSkillGrowthTable, PSkillGrowthCostTable);
+        Skills = new SkillAssets(PSkillGrowthTable, PSkillGrowthCostTable, Items, Policy.SkillCostItemOverrides);
         Talents = new TalentAssets(PTalentNodeTable);
         Guides = new GuideAssets(PGraphicGuideTable);
 
         Drops = new DropAssets(PFixedDropTable);
+        DropTable = new DropTableAssets(SDropTable, Items);
         Limits = new LimitAssets(PLimitGroupTable, PRefreshConfigTable);
         Mail = new MailAssets(PTemplateMailTable);
         Shops = new ShopAssets(PShopTable, PShopGoodsTable);
@@ -213,7 +218,7 @@ public sealed class GameData(string assetsDir) : IHostedService
             PGachaTable, PGachaRebateTable, Characters, Motives, Items,
             Path.Combine(assetsDir, "banners.json"));
         Notices = new NoticeAssets(Path.Combine(assetsDir, "notices.json"));
-        Collections = new CollectionAssets(PCollectionTable, PCollectionDropTable, Drops, Limits);
+        Collections = new CollectionAssets(PCollectionTable, PCollectionDropTable, DropTable, Limits);
 
         GameTime = new GameTimeAssets(PGameTimeTable);
         Tasks = new TaskAssets(
@@ -242,7 +247,6 @@ public sealed class GameData(string assetsDir) : IHostedService
         SilverCreatures = new SilverCreatureAssets(PSilverCreatureCombineTable, PSilverCreatureGrowthTable);
         TmpTeams = new TmpTeamAssets(PTmpTeamTable, PTmpCharacterTable, Characters);
         Charge = new ChargeAssets(PChargeAwardTable, PChargeMoneyTable, PMonthCardTable, Items);
-        DropTable = new DropTableAssets(SDropTable, Items);
         Dungeons = new DungeonAssets(PRepeatableDungeonsTable, PDungeonsTypeTable, PHordeTable, DropTable);
 
         Wanted = new WantedAssets(

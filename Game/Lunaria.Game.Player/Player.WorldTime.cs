@@ -7,21 +7,23 @@ namespace Lunaria.Game.Player;
 
 public sealed partial class Player
 {
-    public WeatherType CurrentWeather { get; private set; } = (WeatherType)assets.Starter.Weather;
+    public WeatherType CurrentWeather { get; private set; }
 
     public void LoadWeather(uint? weather)
     {
+        using var operationTime = BeginOperation();
         CurrentWeather = (WeatherType)(weather is {} id && WorldTimeRules.WeatherExists(id) ? id : assets.Starter.Weather);
     }
 
     /// <summary>Weather zero selects the client UI's random option for the destination period.</summary>
     public SCGameTimeSetupRes SetupGameTime(uint elapsedMinutes, uint weather, Random? random = null)
     {
+        using var operationTime = BeginOperation();
         if (weather != 0 && !WorldTimeRules.WeatherExists(weather))
             return new SCGameTimeSetupRes { Result = (int)EnmTextCode.EnmTextInvalidArgs };
 
         var selected = weather == 0
-            ? assets.GameTime.ChooseWeather((uint)(((ulong)GameTimeMinutes + elapsedMinutes) % 1440), random ?? Random.Shared)
+            ? assets.GameTime.ChooseWeather((uint)(((ulong)GameTimeMinutes + elapsedMinutes) % 1440), random ?? RandomSources.Weather)
             : (WeatherType)weather;
         if (selected != CurrentWeather)
         {

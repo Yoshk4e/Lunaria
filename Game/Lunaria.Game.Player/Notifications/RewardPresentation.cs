@@ -23,7 +23,7 @@ internal static class RewardPresentation
                 precious.Items.Add(new PreciousAward { ItemId = grant.ItemId, IsNew = player.Bag.IsNew(grant.ItemId) });
         if (precious.Items.Count > 0) messages.Add(precious);
 
-        foreach (var grant in delivery.Undelivered)
+        foreach (var grant in delivery.DirectFailures)
         {
             var full = player.Bag.CountOf(grant.ItemId) == 0 && player.Bag.IsFull;
             messages.Add(new SCItemAddErrorNtf {

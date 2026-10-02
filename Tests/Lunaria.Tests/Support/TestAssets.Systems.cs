@@ -50,6 +50,14 @@ public sealed partial class TestAssets
                     "2": {"Id": 2, "DropId": 700, "ItemId": 1, "ItemCount": 50}}}
                   """);
 
+        // Collection rewards use the server drop table. Item packs use fixed bundles.
+        Write(tables, "S_DropTable.json", mergeOverBundled: true,
+            json: """
+                  {"S_DropTable": {
+                    "990001": {"Id": 990001, "DropId": 700, "GroupId": 1, "ItemId": 900, "ItemCount": 3, "Odds": 10000},
+                    "990002": {"Id": 990002, "DropId": 700, "GroupId": 1, "ItemId": 1, "ItemCount": 50, "Odds": 10000}}}
+                  """);
+
         Write(tables, "P_TemplateMailTable.json",
             json: """
                   {"P_TemplateMailTable": {

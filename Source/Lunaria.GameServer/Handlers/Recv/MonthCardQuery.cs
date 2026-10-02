@@ -11,7 +11,7 @@ public sealed class HandleMonthCardQuery
         if (!ctx.Player.HasActiveRole)
             return new SCMonthCardQuery { Result = (int)EnmTextCode.EnmTextNotAccLogin };
 
-        await ctx.NotifyAsync(ctx.Player.SettleMonthCards(DateTimeOffset.UtcNow)).ConfigureAwait(false);
+        await ctx.NotifyAsync(ctx.Player.SettleMonthCards(ctx.Player.UtcNow)).ConfigureAwait(false);
 
         return new SCMonthCardQuery {
             Result = 0,

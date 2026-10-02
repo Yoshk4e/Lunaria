@@ -6,14 +6,14 @@ namespace Lunaria.Game.Resources;
 public sealed class CollectionAssets
 {
     private readonly Dictionary<uint, PCollectionTable> _collections = [];
-    private readonly DropAssets _drops;
+    private readonly DropTableAssets _drops;
     private readonly LimitAssets _limits;
     private readonly Dictionary<(uint DropId, uint GroupId), (uint CollectionId, uint Weight)[]> _spawnGroups = [];
 
     public CollectionAssets(
         IReadOnlyDictionary<string, PCollectionTable> collections,
         IReadOnlyDictionary<string, PCollectionDropTable> spawns,
-        DropAssets drops,
+        DropTableAssets drops,
         LimitAssets limits
     )
     {
@@ -52,8 +52,12 @@ public sealed class CollectionAssets
 
     public PCollectionTable? Get(uint collectionId) => _collections.GetValueOrDefault(collectionId);
 
-    public IReadOnlyList<ItemGrant> Rewards(uint collectionId) =>
-        _collections.GetValueOrDefault(collectionId) is {} row ? _drops.Bundles(row.DropId) : [];
+    public bool CanResolveRewards(uint collectionId) =>
+        _collections.GetValueOrDefault(collectionId) is {} row && row.DropId.All(_drops.Exists);
+
+    public IReadOnlyList<ItemGrant> Rewards(uint collectionId, Random random) =>
+        _collections.GetValueOrDefault(collectionId) is {} row
+            ? row.DropId.SelectMany(id => _drops.Roll(id, random)).ToArray() : [];
 
     public uint RewardLimitGroup(uint collectionId) =>
         _collections.GetValueOrDefault(collectionId)?.RewardLimitId ?? 0;

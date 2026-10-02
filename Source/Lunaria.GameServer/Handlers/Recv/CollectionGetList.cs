@@ -14,7 +14,7 @@ public sealed class HandleCollectionGetList(ILogger<HandleCollectionGetList> log
                 Result = (int)EnmTextCode.EnmTextNotAccLogin
             });
 
-        var now = DateTimeOffset.UtcNow;
+        var now = ctx.Player.UtcNow;
         var items = ctx.Player.GetCollections(req.BlockId, now);
 
         var res = new SCCollectionGetList { Result = 0 };

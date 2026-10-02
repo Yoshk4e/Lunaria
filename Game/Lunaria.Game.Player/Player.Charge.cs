@@ -11,7 +11,8 @@ public sealed partial class Player
 
     public ChargeOrderOutcome BuyChargeGoods(uint goodsId)
     {
-        var now = DateTimeOffset.UtcNow;
+        using var operationTime = BeginOperation();
+        var now = UtcNow;
         var offer = assets.Charge.Offer(goodsId, !_boughtMoneyPacks.Contains(goodsId), now);
 
         if (offer is null)
@@ -54,6 +55,7 @@ public sealed partial class Player
 
     public void LoadChargePurchases(IEnumerable<uint> boughtMoneyPacks)
     {
+        using var operationTime = BeginOperation();
         _boughtMoneyPacks.Clear();
 
         foreach (var goodsId in boughtMoneyPacks)

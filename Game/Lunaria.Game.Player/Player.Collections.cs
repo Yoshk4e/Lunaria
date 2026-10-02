@@ -10,6 +10,7 @@ public sealed partial class Player
 {
     public IReadOnlyList<OneCollectionData> GetCollections(ulong blockId, DateTimeOffset now)
     {
+        using var operationTime = BeginOperation(now);
         Collections.EnsureBlock(blockId, now, Map.Position, Guid.Next);
 
         return Collections.ListBlock(blockId, now)
@@ -19,6 +20,7 @@ public sealed partial class Player
 
     public (int Code, CollectionOutcome? Outcome) Collect(ulong uniq, EnmCollectionOp op, DateTimeOffset now)
     {
+        using var operationTime = BeginOperation(now);
         if (op is not (EnmCollectionOp.EnCollectionOpCollect or EnmCollectionOp.EnCollectionOpDestroy))
             return ((int)EnmTextCode.EnmTextCollectionOpIlegal, null);
 
@@ -52,12 +54,16 @@ public sealed partial class Player
         if (dx * dx + dy * dy + dz * dz > (double)range * range)
             return ((int)EnmTextCode.EnmTextCollectionCondUnmeet, null);
 
+        // A missing definition is not an empty random roll. Keep the node and quota intact.
+        if (!assets.Collections.CanResolveRewards(node.Cfg))
+            return ((int)EnmTextCode.EnmTextCollectionCondUnmeet, null);
+
         var quota = Limits.Consume(assets.Collections.RewardLimitGroup(node.Cfg), count: 1, now);
 
         if (quota != 0)
             return (quota, null);
 
-        var delivery = GrantRewards(assets.Collections.Rewards(node.Cfg), EnmItemReason.EnmItemChangeCollect);
+        var delivery = GrantRewards(assets.Collections.Rewards(node.Cfg, RandomSources.Loot), EnmItemReason.EnmItemChangeCollect);
 
         var (collectCode, collected) = Collections.ApplyCollected(uniq, now);
 

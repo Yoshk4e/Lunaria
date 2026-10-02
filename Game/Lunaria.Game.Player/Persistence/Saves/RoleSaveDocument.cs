@@ -7,6 +7,10 @@ namespace Lunaria.Game.Player.Persistence.Saves;
 /// <summary>Saved timestamps use Unix seconds. GameTimeMinutes uses minutes.</summary>
 public sealed record RoleSaveDocument
 {
+    // Missing in pre-versioned saves. Only capture/migration sets the current version.
+    [JsonPropertyName("schema_version")]
+    public int SchemaVersion { get; init; }
+
     [JsonPropertyName("pending_reward_mail")]
     public IReadOnlyList<IReadOnlyList<ItemGrant>> PendingRewardMail { get; init; } = [];
 
@@ -553,6 +557,7 @@ public sealed record RoleSaveDocument
         public IReadOnlyList<uint> SignedDays { get; init; } = [];
         public IReadOnlyList<uint> ClaimedDays { get; init; } = [];
         public long? LastSignInDay { get; init; }
+        public uint? AttendanceDays { get; init; }
     }
 
     public sealed record BattlePassSave
