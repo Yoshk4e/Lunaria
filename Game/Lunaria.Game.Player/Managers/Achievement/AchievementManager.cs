@@ -5,8 +5,9 @@ namespace Lunaria.Game.Player.Managers;
 
 public sealed record FinishEventState(uint EventId, ulong Progress, bool Finish);
 
-public sealed class AchievementManager(GameData assets)
+public sealed class AchievementManager(GameData assets, Random? random = null)
 {
+    private readonly Random _random = random ?? new Random();
     private readonly SortedSet<uint> _claimed = [];
     private readonly Dictionary<uint, FinishEventState> _events = [];
 
@@ -115,7 +116,7 @@ public sealed class AchievementManager(GameData assets)
     public IReadOnlyList<ItemGrant> RewardOf(uint achievementId)
     {
         var dropId = assets.Achievements.Get(achievementId)?.DropId ?? 0;
-        return assets.Drops.Exists(dropId) ? assets.Drops.Bundle(dropId) : assets.DropTable.Roll(dropId, Random.Shared);
+        return assets.Drops.Exists(dropId) ? assets.Drops.Bundle(dropId) : assets.DropTable.Roll(dropId, _random);
     }
 
     public bool IsEventFinished(uint eventId) =>

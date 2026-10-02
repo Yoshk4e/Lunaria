@@ -25,7 +25,7 @@ public sealed partial class MotiveManager
             return MotiveExpResult.Rejected((int)EnmTextCode.EnmTextMotiveUidInvalid);
 
         if (exp == 0)
-            return new MotiveExpResult(Code: 0, motive.Level, motive.Exp, LevelsGained: 0, Dropped: 0);
+            return new MotiveExpResult(Code: 0, motive.Level, motive.Level, LevelsGained: 0, Dropped: 0);
 
         var cap = assets.Motives.LevelCap(motive.MotiveId, motive.BreakLevel);
 

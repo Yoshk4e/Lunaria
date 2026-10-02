@@ -11,7 +11,8 @@ public sealed partial class Player
 
     public (int Code, HouseInfo? Info) BuyHouse(uint houseId)
     {
-        var now = DateTimeOffset.UtcNow;
+        using var operationTime = BeginOperation();
+        var now = UtcNow;
 
         if (!Houses.CanBuy(houseId))
             return ((int)EnmTextCode.EnmTextHouseAlreadyOwn, null);
@@ -33,7 +34,8 @@ public sealed partial class Player
 
     public (int Code, HouseInfo? Info) OpenHouse(uint houseId)
     {
-        var now = DateTimeOffset.UtcNow;
+        using var operationTime = BeginOperation();
+        var now = UtcNow;
 
         if (!Houses.CanOpen(houseId))
             return ((int)EnmTextCode.EnmTextHouseNotBuy, null);
@@ -43,7 +45,8 @@ public sealed partial class Player
 
     public (int Code, HouseInfo? Info) UpgradeHouse(uint houseId)
     {
-        var now = DateTimeOffset.UtcNow;
+        using var operationTime = BeginOperation();
+        var now = UtcNow;
         var cost = Houses.NextUpgradeCost(houseId);
 
         if (cost is null)
@@ -65,7 +68,8 @@ public sealed partial class Player
 
     public RewardDelivery ClaimHouseIncome()
     {
-        var now = DateTimeOffset.UtcNow;
+        using var operationTime = BeginOperation();
+        var now = UtcNow;
         var claimable = Houses.ClaimableIncome(now);
 
         if (claimable.Count == 0)
@@ -90,6 +94,7 @@ public sealed partial class Player
 
     public IReadOnlyList<HouseInfo> DueHouseIncomeAnnouncements(DateTimeOffset now)
     {
+        using var operationTime = BeginOperation(now);
         var due = new List<HouseInfo>();
 
         foreach (var info in Houses.ToHouseInfoList(now))

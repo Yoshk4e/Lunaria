@@ -99,7 +99,7 @@ public sealed class TaskDataBehaviorTests(BundledGameplayFixture fixture)
         Assert.Same(settle, await Task.WhenAny(settle, Task.Delay(TimeSpan.FromSeconds(10))));
         Assert.Equal(2, (await settle).Count(o => o.Progress.Recorded));
         Assert.Equal(1100510ul, player.Tasks.TaskDataOf(TaskAssets.QuestMain, 91004)!.CurrentStep.StepId);
-        Assert.Empty(player.SettleMapArrival(209001001001).Where(o => o.Progress.Recorded));
+        Assert.DoesNotContain(player.SettleMapArrival(209001001001), o => o.Progress.Recorded);
     }
 
     [Fact]

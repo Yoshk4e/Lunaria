@@ -12,6 +12,7 @@ public sealed partial class Player
         DateTimeOffset now
     )
     {
+        using var operationTime = BeginOperation(now);
         var (checkedCode, lines) = Shop.CheckBasket(shopId, basket);
 
         if (checkedCode != 0 || lines is null)
