@@ -272,6 +272,39 @@ public sealed class GameplayRegressionTests(BundledGameplayFixture fixture)
     }
 
     [Fact]
+    public void Cases_OpeningGrantsTheCaseEvidence_AndOldSavesGetItBack()
+    {
+        var evidence = Assets.Cases.Evidence(caseId: 1003).Select(row => row.Id).ToArray();
+        Assert.NotEmpty(evidence);
+
+        var player = Fresh();
+        var opened = player.Cases.OpenCase(1003)!.Value;
+        Assert.Equal(evidence, opened.EvidenceIds);
+        Assert.Equal(evidence, player.Cases.Processing[1003].OwnedEvidence);
+        Assert.Equal(evidence, Lunaria.Game.Player.Managers.CaseManager.ToReceiveNotification(1003, opened.ClueIds, opened.EvidenceIds).EvidenceIds);
+
+        // A save written when the opening granted nothing.
+        var restored = Fresh();
+        restored.Cases.Load([(1003u, 1u, new ulong[] { 1003101 }.AsEnumerable(), Array.Empty<ulong>().AsEnumerable())], []);
+        restored.Cases.LoadOwned([(1003u, new ulong[] { 1003101, 1003102 }.AsEnumerable(), Array.Empty<ulong>().AsEnumerable())]);
+        Assert.Equal(evidence, restored.Cases.Processing[1003].OwnedEvidence);
+        Assert.Contains(restored.Cases.ToCaseData().ProcessingCase.Single().EvidenceStatus, s => s.EvidenceId == evidence[0]);
+    }
+
+    [Fact]
+    public void Cases_FinishedPhaseIsSentAsTheLastFinishedStageId()
+    {
+        var stages = Assets.Cases.Stages(caseId: 1003);
+        var player = Fresh();
+        player.Cases.Load([(1003u, 1u, new ulong[] { 1003101 }.AsEnumerable(), Array.Empty<ulong>().AsEnumerable())], []);
+
+        // The client compares it with StageIDList entries; a count of 1 would hide every clue on the board.
+        Assert.Equal((uint)stages[0], player.Cases.ToCaseData().ProcessingCase.Single().FinishedPhase);
+        Assert.Equal(0u, player.Cases.FinishedStageId(1003, 0));
+        Assert.Equal((uint)stages[^1], player.Cases.FinishedStageId(1003, (uint)stages.Count));
+    }
+
+    [Fact]
     public void WantedShop_WithoutRunRejectsWithoutCharging()
     {
         var player = Fresh();

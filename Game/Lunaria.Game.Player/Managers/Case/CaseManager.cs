@@ -97,8 +97,9 @@ public sealed class CaseManager(GameData assets)
 
             _processing[row.CaseId] = state with {
                 OwnedClues = new SortedSet<ulong>(row.Clues.Where(id => BelongsToCase(id, row.CaseId)).Concat(state.OnSlotClues)),
+                // Cases opened before evidence came with the opening still get theirs.
                 OwnedEvidence = new SortedSet<ulong>(row.Evidence.Where(id => assets.Cases.Evidence(id)?.CaseId == row.CaseId)
-                    .Concat(state.DecryptedEvidence))
+                    .Concat(state.DecryptedEvidence).Concat(CaseEvidence(row.CaseId)))
             };
         }
     }
@@ -132,7 +133,7 @@ public sealed class CaseManager(GameData assets)
         {
             var processing = new ProcessingCase {
                 CaseId = state.CaseId,
-                FinishedPhase = state.FinishedPhase
+                FinishedPhase = FinishedStageId(state.CaseId, state.FinishedPhase)
             };
 
             foreach (var clueId in state.OwnedClues)
@@ -212,11 +213,16 @@ public sealed class CaseManager(GameData assets)
         if (!assets.Cases.CaseExists(caseId) || _processing.ContainsKey(caseId) || _finished.Contains(caseId))
             return null;
 
-        _processing[caseId] = new CaseProcessingState(caseId, FinishedPhase: 0, new SortedSet<ulong>(), new SortedSet<ulong>());
+        // No quest action grants a case's evidence; the client expects it in the case's receive notification.
+        var evidence = CaseEvidence(caseId);
+        _processing[caseId] = new CaseProcessingState(caseId, FinishedPhase: 0, new SortedSet<ulong>(), new SortedSet<ulong>())
+            { OwnedEvidence = new SortedSet<ulong>(evidence) };
         Dirty();
 
-        return (true, [], []);
+        return (true, [], evidence);
     }
+
+    private ulong[] CaseEvidence(uint caseId) => assets.Cases.Evidence(caseId).Select(row => row.Id).ToArray();
 
     public static SCCaseReceiveNtf ToReceiveNotification(uint caseId, ulong[] clueIds, ulong[] evidenceIds)
     {
@@ -224,6 +230,16 @@ public sealed class CaseManager(GameData assets)
         ntf.ClueIds.AddRange(clueIds);
         ntf.EvidenceIds.AddRange(evidenceIds);
         return ntf;
+    }
+
+    /// <summary>
+    /// The client's finished_phase is the id of the last finished stage (0 for none), not a count: it looks the
+    /// value up in StageIDList to decide which stages' clues to draw on the board.
+    /// </summary>
+    public uint FinishedStageId(uint caseId, uint finishedPhase)
+    {
+        var stages = assets.Cases.Stages(caseId);
+        return finishedPhase == 0 || stages.Count == 0 ? 0 : (uint)stages[(int)Math.Min(finishedPhase, (uint)stages.Count) - 1];
     }
 
     public ulong NextStage(uint caseId, uint finishedPhase)
