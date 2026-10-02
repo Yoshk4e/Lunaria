@@ -3,21 +3,23 @@ using Msg;
 
 namespace Lunaria.Game.Player.Managers;
 
-public sealed class SignInManager(SignInAssets assets)
+public sealed class SignInManager(SignInAssets assets, TimeProvider? timeProvider = null)
 {
-    public SignInManager(GameData assets) : this(assets.SignIn) { }
+    private readonly TimeProvider _time = timeProvider ?? TimeProvider.System;
+    public SignInManager(GameData assets, TimeProvider? timeProvider = null) : this(assets.SignIn, timeProvider) { }
 
     // Saves without activity IDs belong to the original calendar, activity 3.
     public const uint LegacyActivityId = 3;
     private readonly SortedDictionary<uint, Calendar> _calendars = [];
 
     public sealed record ActivityState(uint ActivityId, IReadOnlyList<uint> SignedDays,
-        IReadOnlyList<uint> ClaimedDays, long? LastSignInDay);
+        IReadOnlyList<uint> ClaimedDays, long? LastSignInDay, uint? AttendanceDays = null);
 
     public IEnumerable<ActivityState> Activities => _calendars.Select(pair => new ActivityState(pair.Key,
-        pair.Value.Signed.ToArray(), pair.Value.Claimed.ToArray(), pair.Value.LastDay));
+        pair.Value.Signed.ToArray(), pair.Value.Claimed.ToArray(), pair.Value.LastDay, pair.Value.AttendanceDays));
 
-    // The lifetime attendance counter still belongs to the original calendar.
+    // Lifetime attendance keeps counting after all reward slots are filled.
+    public uint AttendanceDays => _calendars.GetValueOrDefault(LegacyActivityId)?.AttendanceDays ?? 0;
     public IReadOnlyCollection<uint> SignedDays => _calendars.GetValueOrDefault(LegacyActivityId)?.Signed ?? [];
     public IReadOnlyCollection<uint> ClaimedDays => _calendars.GetValueOrDefault(LegacyActivityId)?.Claimed ?? [];
     public long? LastSignInDay => _calendars.GetValueOrDefault(LegacyActivityId)?.LastDay;
@@ -36,9 +38,10 @@ public sealed class SignInManager(SignInAssets assets)
             var calendar = new Calendar();
             calendar.Signed.UnionWith(saved.SignedDays.Intersect(assets.Days(saved.ActivityId)));
             calendar.Claimed.UnionWith(saved.ClaimedDays.Intersect(calendar.Signed));
+            calendar.AttendanceDays = Math.Max(saved.AttendanceDays ?? 0, (uint)calendar.Signed.Count);
             // Old saves have no attendance date. Do not award another day on login.
             calendar.LastDay = saved.LastSignInDay ?? (calendar.Signed.Count > 0
-                ? DateTimeOffset.UtcNow.ToUnixTimeSeconds() / 86400 : null);
+                ? _time.GetUtcNow().ToUnixTimeSeconds() / 86400 : null);
             _calendars[saved.ActivityId] = calendar;
         }
         IsDirty = false;
@@ -51,18 +54,17 @@ public sealed class SignInManager(SignInAssets assets)
             return ((int)EnmTextCode.EnmTextSigninActivityIdInvalid, null);
 
         var calendar = _calendars.GetValueOrDefault(activityId) ?? new Calendar();
-        var now = (at ?? DateTimeOffset.UtcNow).ToUnixTimeSeconds();
+        var now = (at ?? _time.GetUtcNow()).ToUnixTimeSeconds();
         var open = now >= (long)activity.TimeOffsetStart && now <= (long)activity.TimeOffsetStop;
         var days = assets.Days(activityId);
         if (open && (calendar.LastDay is null || now / 86400 > calendar.LastDay))
         {
             var next = days.FirstOrDefault(day => !calendar.Signed.Contains(day));
-            if (next != 0 && calendar.Signed.Add(next))
-            {
-                calendar.LastDay = now / 86400;
-                _calendars[activityId] = calendar;
-                IsDirty = true;
-            }
+            if (next != 0) calendar.Signed.Add(next);
+            if (calendar.AttendanceDays < uint.MaxValue) calendar.AttendanceDays++;
+            calendar.LastDay = now / 86400;
+            _calendars[activityId] = calendar;
+            IsDirty = true;
         }
 
         var data = new SignInActivityData {
@@ -97,5 +99,6 @@ public sealed class SignInManager(SignInAssets assets)
         public SortedSet<uint> Signed { get; } = [];
         public SortedSet<uint> Claimed { get; } = [];
         public long? LastDay { get; set; }
+        public uint AttendanceDays { get; set; }
     }
 }

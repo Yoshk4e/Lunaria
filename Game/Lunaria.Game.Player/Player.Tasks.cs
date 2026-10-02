@@ -32,6 +32,7 @@ public sealed partial class Player
 
     public (int Code, TaskActionOutcome? Outcome) ReportTaskAction(uint taskType, ulong actionId, uint progress)
     {
+        using var operationTime = BeginOperation();
         EnsureLevelBaseline();
         var effects = new TargetEffects();
 
@@ -47,6 +48,7 @@ public sealed partial class Player
 
     public IReadOnlyList<TaskActionOutcome> SettleMapArrival(ulong mapId)
     {
+        using var operationTime = BeginOperation();
         EnsureLevelBaseline();
         var outcomes = Tasks.OnMapEntered(mapId).Select(Settle).ToList();
         // Resolve dependent quests before FinEnterMap. Lua uses its TaskData snapshot to resume the story.
@@ -101,13 +103,14 @@ public sealed partial class Player
 
     private IReadOnlyList<uint> UnlockPassedGuides(IEnumerable<ulong> passedSteps)
     {
-        var opened = Guides.UnlockMany(passedSteps.SelectMany(Assets.Guides.GuidesForStep), DateTimeOffset.UtcNow.ToUnixTimeSeconds());
+        var opened = Guides.UnlockMany(passedSteps.SelectMany(Assets.Guides.GuidesForStep), UtcNow.ToUnixTimeSeconds());
         if (opened.Count > 0) Gameplay.Publish(new GuidesChanged(opened));
         return opened;
     }
 
     public void UnlockWalkedGuides()
     {
+        using var operationTime = BeginOperation();
         var passed = new List<ulong>();
 
         foreach (var (type, taskId) in Tasks.Finished)
@@ -129,6 +132,7 @@ public sealed partial class Player
 
     public void InstallQuestGates()
     {
+        using var operationTime = BeginOperation();
         Progress.QuestGate = taskId => Tasks.IsFinished(TaskAssets.QuestMain, taskId);
         Wanted.IsConditionMet = id => assets.Unlocks.IsConditionMet(id, Achievements.IsEventFinished);
     }

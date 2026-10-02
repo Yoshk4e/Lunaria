@@ -12,7 +12,7 @@ public sealed class HandleHouseInfo
             return Task.FromResult(new SCResHouseInfo { Result = (int)EnmTextCode.EnmTextNotAccLogin });
 
         var reply = new SCResHouseInfo { Result = 0 };
-        reply.HouseList.AddRange(ctx.Player.Houses.ToHouseInfoList(DateTimeOffset.UtcNow));
+        reply.HouseList.AddRange(ctx.Player.Houses.ToHouseInfoList(ctx.Player.UtcNow));
         return Task.FromResult(reply);
     }
 }

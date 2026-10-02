@@ -201,16 +201,74 @@ public sealed class GameplayRegressionTests(BundledGameplayFixture fixture)
     {
         var player = Fresh();
         var now = DateTimeOffset.UtcNow;
-        player.GetCollections(blockId: 1, now);
+        var block = Assets.Collections.WorldObjects(blockId: 0)[0].BlockId;
+        var nodes = player.GetCollections(block, now);
         Assert.Empty(player.RecalculateRegionProgress());
         Assert.Empty(player.Collections.Gathered);
-        var nodes = player.Collections.Entries.Take(2).ToArray();
-        Assert.Equal(expected: 0, player.Collections.ApplyDestroyed(nodes[0].Key, now).Code);
+        Assert.Empty(player.Collections.Entries);
+        Assert.Equal(expected: 0, player.Collections.ApplyDestroyed(nodes[0].UniqId, now).Code);
         Assert.Empty(player.Collections.Gathered);
-        Assert.Equal(expected: 0, player.Collections.ApplyCollected(nodes[1].Key, now).Code);
-        Assert.Contains(nodes[1].Value.Cfg, player.Collections.Gathered);
-        player.GetCollections(blockId: 1, now.AddDays(30));
-        Assert.Contains(nodes[1].Value.Cfg, player.Collections.Gathered);
+        Assert.Equal(expected: 0, player.Collections.ApplyCollected(nodes[1].UniqId, now).Code);
+        Assert.Contains(nodes[1].CfgId, player.Collections.Gathered);
+        player.GetCollections(block, now.AddDays(30));
+        Assert.Contains(nodes[1].CfgId, player.Collections.Gathered);
+    }
+
+    [Fact]
+    public void Collections_ListThePlacedObjectsTheClientBindsByRowId()
+    {
+        var player = Fresh();
+        var placed = Assets.Collections.WorldObjects(blockId: 0)[0];
+        var listed = player.GetCollections(placed.BlockId, DateTimeOffset.UtcNow);
+
+        Assert.Equal(Assets.Collections.WorldObjects(placed.BlockId).Count, listed.Count);
+        Assert.All(listed, item => {
+            Assert.Equal(item.UniqId, item.FromId);
+            Assert.Equal(EnmCollectionFromType.EcollectFromTable, item.FromType);
+            Assert.Equal(placed.BlockId, item.BlockId);
+        });
+        var first = listed.Single(item => item.UniqId == placed.Id);
+        Assert.Equal(placed.TemplateId, first.CfgId);
+        Assert.Equal((int)MathF.Round(placed.PosX), first.Location.X);
+        Assert.Equal(first.Location, first.FromLocation);
+    }
+
+    [Fact]
+    public void Collections_ChestsStayOpenedWhileDailyGatherablesComeBackAndArePushed()
+    {
+        var player = Fresh();
+        var now = DateTimeOffset.UtcNow;
+        var chest = Assets.Collections.WorldObjects(blockId: 0)
+            .First(row => Assets.Collections.Get(row.TemplateId)!.CollectionType == 1
+                          && !Assets.Collections.Respawn(row.TemplateId).ResetsEver);
+        var daily = Assets.Collections.WorldObjects(blockId: 0)
+            .First(row => Assets.Collections.Respawn(row.TemplateId).Kind == RefreshPeriod.Daily);
+
+        Assert.Equal(expected: 0, player.Collections.ApplyCollected(chest.Id, now).Code);
+        Assert.Equal(expected: 0, player.Collections.ApplyCollected(daily.Id, now).Code);
+        Assert.Null(player.RespawnedCollections(now));
+
+        var pushed = player.RespawnedCollections(now.AddDays(1))!;
+        Assert.Equal([daily.Id], pushed.NtfList.Select(item => item.UniqId));
+        Assert.Equal(EnmCollectionStatus.EcsCanCollect, pushed.NtfList[0].Status);
+        Assert.NotEqual(EnmCollectionStatus.EcsCanCollect, player.Collections.Get(chest.Id)!.Status);
+    }
+
+    [Fact]
+    public void Collections_LoadDropsRowsThatMatchNoPlacedObject()
+    {
+        var player = Fresh();
+        var placed = Assets.Collections.WorldObjects(blockId: 0)[0];
+        var other = Assets.Collections.WorldObjects(blockId: 0).First(row => row.TemplateId != placed.TemplateId);
+        var at = DateTimeOffset.UtcNow;
+        player.Collections.Load([
+            (placed.Id, placed.TemplateId, (int)EnmCollectionStatus.EcsCollected, at, 0UL, (0, 0, 0)),
+            (placed.Id + 1_000_000_000, placed.TemplateId, (int)EnmCollectionStatus.EcsCollected, at, 1UL, (0, 0, 0)),
+            (other.Id, placed.TemplateId, (int)EnmCollectionStatus.EcsCollected, at, 1UL, (0, 0, 0))
+        ]);
+
+        Assert.Equal([placed.Id], player.Collections.Entries.Keys);
+        Assert.Equal(placed.BlockId, player.Collections.Get(placed.Id)!.Block);
     }
 
     [Fact]
@@ -574,9 +632,9 @@ public sealed class GameplayRegressionTests(BundledGameplayFixture fixture)
         Assert.True(player.SaveDirty);
         player.Cases.OpenCase(1002);
         player.Cases.GiveClue(1002101);
-        player.GetCollections(blockId: 1, DateTimeOffset.UtcNow);
-        var node = player.Collections.Entries.First();
-        player.Collections.ApplyCollected(node.Key, DateTimeOffset.UtcNow);
+        var placed = Assets.Collections.WorldObjects(blockId: 0)[0];
+        player.Collections.ApplyCollected(placed.Id, DateTimeOffset.UtcNow);
+        var node = player.Collections.Entries.Single();
         var activity = Assets.SignIn.Activity(3)!;
         player.SignIn.Query(activityId: 3, DateTimeOffset.FromUnixTimeSeconds((long)activity.TimeOffsetStart).AddHours(1));
         var now = DateTimeOffset.UtcNow;

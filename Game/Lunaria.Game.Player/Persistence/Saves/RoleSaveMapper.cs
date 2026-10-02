@@ -8,6 +8,7 @@ namespace Lunaria.Game.Player.Persistence.Saves;
 internal static class RoleSaveMapper
 {
     public static RoleSaveDocument Capture(Player player) => new() {
+        SchemaVersion = RoleSaveMigrations.CurrentVersion,
         GameTimeMinutes = player.GameTimeMinutes,
         CurrentWeather = (uint)player.CurrentWeather,
         PendingRewardMail = player.PendingRewardMail.Select(batch => (IReadOnlyList<Lunaria.Game.Resources.ItemGrant>)batch.ToArray()).ToArray(),
@@ -201,7 +202,7 @@ internal static class RoleSaveMapper
         SignIn = new RoleSaveDocument.SignInSave {
             Activities = player.SignIn.Activities.Select(a => new RoleSaveDocument.SignInActivitySave {
                 ActivityId = a.ActivityId, SignedDays = a.SignedDays, ClaimedDays = a.ClaimedDays,
-                LastSignInDay = a.LastSignInDay
+                LastSignInDay = a.LastSignInDay, AttendanceDays = a.AttendanceDays
             }).ToArray(),
             SignedDays = player.SignIn.SignedDays.ToList(),
             ClaimedDays = player.SignIn.ClaimedDays.ToList(),
@@ -416,7 +417,7 @@ internal static class RoleSaveMapper
 
         if (document.SignIn?.Activities is {} calendars)
             player.SignIn.LoadActivities(calendars.Select(a => new Managers.SignInManager.ActivityState(
-                a.ActivityId, a.SignedDays, a.ClaimedDays, a.LastSignInDay)));
+                a.ActivityId, a.SignedDays, a.ClaimedDays, a.LastSignInDay, a.AttendanceDays)));
         else
             player.SignIn.Load(document.SignIn?.SignedDays ?? [],
                 document.SignIn?.ClaimedDays ?? [], document.SignIn?.LastSignInDay);
@@ -438,7 +439,7 @@ internal static class RoleSaveMapper
 
         player.Buffs.Load(
             document.Buffs.Select(row => (row.BuffId, row.AttachUnix, row.LeftBattle)),
-            DateTimeOffset.UtcNow);
+            player.UtcNow);
 
         player.TempTeams.Load(
             document.TempTeams.Select(row =>
@@ -456,7 +457,7 @@ internal static class RoleSaveMapper
             document.Dungeons?.Types.Select(row => (row.TypeId, row.UsedDay, row.UsedWeek, row.Anchor)) ?? [],
             document.Dungeons?.Hordes.Select(row => (row.HordeId, row.KillCount, row.StarAward)) ?? [],
             document.Dungeons?.Current is {} current ? (current.DungeonId, current.BattleId) : null,
-            DateTimeOffset.UtcNow);
+            player.UtcNow);
 
         player.Wanted.Load(
             document.Wanted.Select(row => (row.EntryId, row.Count)),

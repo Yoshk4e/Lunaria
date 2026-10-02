@@ -121,6 +121,29 @@ public sealed class ServerCorrectnessTests(BundledGameplayFixture fixture)
     }
 
     [Fact]
+    public void BattleReports_PatrolLeaveMayCarryIdentifiersTheEntryOmitted()
+    {
+        var player = Fresh();
+        Assert.Equal(0, player.Battles.Enter(EBattleType.EnmBattleTypePatrol, 109100101, 0, default));
+        Assert.Equal(0, player.Battles.Start(EBattleType.EnmBattleTypePatrol, 109100101));
+        var report = new CSLeaveBattle {
+            BattleType = EBattleType.EnmBattleTypePatrol, BattleFieldId = 109100101,
+            BattleInstId = 3700101, MonsterFromType = EnmMonsterFromType.EmonsterFromTable,
+            BattleResult = EBattleResultType.EnmBattleResultTypeSuccess
+        };
+        Assert.Equal(0, player.LeaveBattle(report).Result);
+        Assert.Null(player.Battles.Current);
+        Assert.Equal(0, player.Battles.Enter(EBattleType.EnmBattleTypePatrol, 109101201, 0, default));
+
+        player.Battles.Leave(EBattleType.EnmBattleTypePatrol, 109101201, false);
+        Assert.Equal(0, player.Battles.Enter(EBattleType.EnmBattleTypePatrol, 109101201, 7, EnmMonsterFromType.EmonsterFromTask));
+        var mismatched = report.Clone();
+        mismatched.BattleFieldId = 109101201;
+        Assert.NotEqual(0, player.LeaveBattle(mismatched).Result);
+        Assert.NotNull(player.Battles.Current);
+    }
+
+    [Fact]
     public void MissingTeamAndInvalidMember_DoNotMutateTeams()
     {
         var player = Fresh();
@@ -131,6 +154,30 @@ public sealed class ServerCorrectnessTests(BundledGameplayFixture fixture)
         proposed.MemberData[0].InstId = ulong.MaxValue;
         Assert.NotEqual(0, player.UpdateTeam(proposed).Result);
         Assert.Equal(before, player.Teams.ToTeamData(player.Teams.Get(player.Teams.Current)!));
+    }
+
+    [Theory]
+    [InlineData(7u, EnmMonsterFromType.EmonsterFromInvalid, 8u, EnmMonsterFromType.EmonsterFromTable)]
+    [InlineData(0u, EnmMonsterFromType.EmonsterFromTask, 7u, EnmMonsterFromType.EmonsterFromTable)]
+    [InlineData(0u, EnmMonsterFromType.EmonsterFromInvalid, 7u, (EnmMonsterFromType)999)]
+    public void PatrolLeave_RejectsKnownIdentifierMismatchOrInvalidSource(
+        uint enteredInstance, EnmMonsterFromType enteredSource, uint reportedInstance, EnmMonsterFromType reportedSource)
+    {
+        var player = Fresh();
+        const uint field = 109100101;
+        Assert.Equal(0, player.EnterBattle(EBattleType.EnmBattleTypePatrol, field, enteredInstance, enteredSource));
+        Assert.Equal(0, player.StartBattle(EBattleType.EnmBattleTypePatrol, field));
+        var battle = player.CurrentBattle;
+
+        var result = player.LeaveBattle(new CSLeaveBattle {
+            BattleType = EBattleType.EnmBattleTypePatrol, BattleFieldId = field,
+            BattleInstId = reportedInstance, MonsterFromType = reportedSource,
+            BattleResult = EBattleResultType.EnmBattleResultTypeSuccess
+        });
+
+        Assert.Equal((int)EnmTextCode.EnmTextBattleStateNotMatch, result.Result);
+        Assert.Same(battle, player.CurrentBattle);
+        Assert.Empty(player.DrainGameplayChanges());
     }
 
     [Fact]

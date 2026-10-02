@@ -4,6 +4,11 @@ namespace Lunaria.Game.Player;
 
 public sealed partial class Player
 {
+    public int InventoryCapacity => Bag.CellCap;
+    public uint InventoryCount(uint itemId) => Bag.CountOf(itemId);
+    public IReadOnlyList<CSMotiveElem> MotiveData() => Motives.ListData();
+    public IReadOnlyList<(uint CdType, long ReadyUnix)> InventoryCooldowns() => Cooldowns.Active();
+
     public ulong OwnedItemCount(uint itemId)
     {
         if (assets.Items.MoneyTypeOf(itemId) is {} currency) return (ulong)Math.Max(0, Wallet.Balance(currency));

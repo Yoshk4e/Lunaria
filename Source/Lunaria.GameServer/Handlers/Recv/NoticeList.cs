@@ -14,7 +14,7 @@ public sealed class HandleNoticeList
 
         var reply = new SCNoticeList { Result = 0 };
 
-        foreach (var notice in ctx.Assets.Notices.Published(DateTimeOffset.UtcNow))
+        foreach (var notice in ctx.Assets.Notices.Published(ctx.Player.UtcNow))
         {
             reply.NoticeList.Add(new NoticeData {
                 NoticeId = notice.NoticeId,

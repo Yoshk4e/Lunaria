@@ -92,7 +92,8 @@ public sealed partial class ShopManager(GameData assets)
         if ((ulong)current + count > good.LimitNum)
             return (int)EnmTextCode.EnmTextShopGoodsNotEnough;
 
-        _bought[good.Id] = new ShopPurchase(current + count, now);
+        var anchor = entry is not null && entry.Anchor > now ? entry.Anchor : now;
+        _bought[good.Id] = new ShopPurchase(current + count, anchor);
         Dirty();
         return 0;
     }

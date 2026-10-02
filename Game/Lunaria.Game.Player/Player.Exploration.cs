@@ -48,7 +48,7 @@ public sealed partial class Player
             return (uint)sequence.ParamId.Count(id => Map.UnlockedTeleports.Contains(id));
 
         if (regist.RegistType == 6)
-            return (uint)sequence.ParamId.Count(growthId => SilverCreatures.CountOfGrowth(growthId) > 0);
+            return (uint)sequence.ParamId.Distinct().Sum(SilverCreatures.CountOfGrowth);
 
         return 0;
     }
