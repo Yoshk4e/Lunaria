@@ -41,19 +41,21 @@ public sealed class AuditRound2CombatTests(BundledGameplayFixture fixture, ITest
     [Fact]
     public void CollectionWithGuaranteedDrops_CreditsRewardsBeforeDestroyingTheNode()
     {
-        const uint collectionId = 13010;
+        const uint collectionId = 202;
         var player = Fresh();
         var now = DateTimeOffset.UtcNow;
         var config = Assets.Collections.Get(collectionId)!;
         Assert.True(config.AutoDestroy);
         Assert.False(Assets.Collections.Respawn(collectionId).ResetsEver);
-        var expected = Assets.DropTable.Roll(Assert.Single(config.DropId), new Random(1));
+        // Chest 202 draws collection 13010 in its first group, including the original regression rewards.
+        var expected = Assets.Collections.Rewards(13010, new Random(1));
         Assert.Equal(new[] { new ItemGrant(770004, 100), new ItemGrant(770002, 150) }, expected);
         var before = expected.ToDictionary(g => g.ItemId, g => player.OwnedItemCount(g.ItemId));
         var experienceBefore = player.Progress.TeamExp;
-        Assert.Equal(0, player.Map.BeginEnter(0, 0).Code);
+        var placed = Assets.Collections.WorldObjects(0).First(row => row.TemplateId == collectionId && row.CollectUnlockType == 0);
+        Assert.Equal(0, player.Map.BeginEnter(placed.BlockId, 0).Code);
         Assert.Equal(0, player.Map.FinishEnter());
-        var node = Assert.Single(player.GetCollections(1, now), n => n.CfgId == collectionId);
+        var node = Assert.Single(player.GetCollections(placed.BlockId, now), n => n.UniqId == placed.Id);
         Assert.True(player.Map.SyncPosition((node.Location.X, node.Location.Y, node.Location.Z)));
 
         var result = player.Collect(node.UniqId, EnmCollectionOp.EnCollectionOpCollect, now);
@@ -61,7 +63,7 @@ public sealed class AuditRound2CombatTests(BundledGameplayFixture fixture, ITest
         Assert.Equal(0, result.Code);
         Assert.NotNull(result.Outcome);
         Assert.Equal(EnmCollectionStatus.EcsDestroyed, result.Outcome.Item.Status);
-        output.WriteLine($"Collection {collectionId}, drop {config.DropId[0]}: collected and destroyed; credited {result.Outcome.Delivery.Credited.Count} reward lines.");
+        output.WriteLine($"Chest {collectionId}: collected and destroyed, credited {result.Outcome.Delivery.Credited.Count} reward lines.");
         foreach (var grant in expected)
         {
             var actual = player.OwnedItemCount(grant.ItemId) - before[grant.ItemId];

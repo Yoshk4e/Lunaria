@@ -9,10 +9,12 @@ public sealed class HandleCollectionOperate(ILogger<HandleCollectionOperate> log
     [GameHandler(EClientServerCmds.CsCollectionOperate)]
     public async Task<SCCollectionOperate> OnPacket(NetContext ctx, CSCollectionOperate req)
     {
-        SCCollectionOperate Reject(int code)
-        {
-            return new SCCollectionOperate { Result = code };
-        }
+        // Without collection_item the client ignores the answer and the object stays in its opening state.
+        SCCollectionOperate Reject(int code) => new() {
+            Result = code,
+            CollectionItem = (ctx.Player.HasActiveRole ? ctx.Player.CollectionData(req.UniqId) : null)
+                             ?? new OneCollectionData { UniqId = req.UniqId }
+        };
 
         if (!ctx.Player.HasActiveRole)
             return Reject((int)EnmTextCode.EnmTextNotAccLogin);

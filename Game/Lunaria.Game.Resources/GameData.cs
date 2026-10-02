@@ -134,6 +134,7 @@ public sealed class GameData(string assetsDir, ILogger<GameData>? logger = null)
     internal readonly Dictionary<string, PWantedPosterShop> PWantedPosterShop = [];
     internal readonly Dictionary<string, PWantedPosterStepCountTable> PWantedPosterStepCountTable = [];
     internal readonly Dictionary<string, PWantedPosterTable> PWantedPosterTable = [];
+    internal readonly Dictionary<string, PWorldCollectObjTable> PWorldCollectObjTable = [];
     internal readonly Dictionary<string, PWorldLevelTable> PWorldLevelTable = [];
     internal readonly Dictionary<string, SDropTable> SDropTable = [];
     internal readonly Dictionary<string, SPlayerIniTable> SPlayerIniTable = [];
@@ -218,7 +219,7 @@ public sealed class GameData(string assetsDir, ILogger<GameData>? logger = null)
             PGachaTable, PGachaRebateTable, Characters, Motives, Items,
             Path.Combine(assetsDir, "banners.json"));
         Notices = new NoticeAssets(Path.Combine(assetsDir, "notices.json"));
-        Collections = new CollectionAssets(PCollectionTable, PCollectionDropTable, DropTable, Limits);
+        Collections = new CollectionAssets(PCollectionTable, PCollectionDropTable, PWorldCollectObjTable, DropTable, Limits);
 
         GameTime = new GameTimeAssets(PGameTimeTable);
         Tasks = new TaskAssets(

@@ -29,7 +29,7 @@ public sealed partial class Player
             if (character.MotiveUniqId != 0 && Motives.Get(character.MotiveUniqId)?.EquipedTarget != character.InstId)
                 Characters.ForceClearMotiveSlot(character.InstId);
 
-        Guid.Adopt(new[] { Guid.LastMinted, Collections.MaxUniq,
+        Guid.Adopt(new[] { Guid.LastMinted,
             Motives.All.Select(m => m.UniqId).DefaultIfEmpty().Max(),
             Mails.Entries.Select(m => (ulong)m.MailId).DefaultIfEmpty().Max() }.Max());
         TasksBootstrapped = false;
