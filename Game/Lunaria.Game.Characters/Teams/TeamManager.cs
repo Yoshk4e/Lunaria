@@ -123,13 +123,18 @@ public sealed partial class TeamManager(GameData assets)
 
     public IReadOnlyList<TeamData> TeamsData() => _teams.Select(ToTeamData).ToList();
 
-    public TeamData ToTeamData(TeamState team) => new() {
-        TeamId = team.TeamId,
-        Name = ByteString.CopyFromUtf8(team.Name),
-        MemberData = { team.Members.Select(ToTeamMemberData) }
-    };
+    public TeamData ToTeamData(TeamState team)
+    {
+        var elements = team.Members.Select(member => assets.Characters.ElementOf(member.CharacterId))
+            .CountBy(element => element).ToDictionary();
+        return new TeamData {
+            TeamId = team.TeamId,
+            Name = ByteString.CopyFromUtf8(team.Name),
+            MemberData = { team.Members.Select(member => ToTeamMemberData(member, elements)) }
+        };
+    }
 
-    public TeamMemberData ToTeamMemberData(TeamMemberState member) => new() {
+    public TeamMemberData ToTeamMemberData(TeamMemberState member, IReadOnlyDictionary<uint, int> teamElements) => new() {
         MemberSlotId = member.Slot,
         InstId = member.InstId,
         CharacterId = member.CharacterId,
@@ -140,7 +145,8 @@ public sealed partial class TeamManager(GameData assets)
                 .Select(pair => new GemSlotData {
                     GemSlotId = (uint)pair.index + 1,
                     GemItemid = pair.gemId,
-                    GemState = EnmGemStatus.Valid
+                    GemState = assets.Gems.MeetsElementRequirements(pair.gemId, teamElements)
+                        ? EnmGemStatus.Valid : EnmGemStatus.Invalid
                 })
         }
     };

@@ -27,9 +27,11 @@ public sealed partial class RoleSessionTests : IDisposable
     private readonly RoleStateStore _store;
     private readonly RoleSessionService _sessions;
     private readonly GameData _assets;
+    private readonly BundledGameplayFixture _fixture;
 
     public RoleSessionTests(BundledGameplayFixture fixture)
     {
+        _fixture = fixture;
         _assets = fixture.Data;
         _connection.Open();
         _options = new DbContextOptionsBuilder<GameDbContext>().UseSqlite(_connection).Options;

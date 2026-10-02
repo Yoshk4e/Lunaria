@@ -17,7 +17,7 @@ public sealed class HandlePauseBattle
             });
 
         return Task.FromResult(new SCPauseBattle {
-            Result = ctx.Player.Battles.Pause(req.BattleType, req.BattleFieldId, req.Pause),
+            Result = ctx.Player.PauseBattle(req.BattleType, req.BattleFieldId, req.Pause),
             BattleType = req.BattleType,
             BattleFieldId = req.BattleFieldId,
             Pause = req.Pause

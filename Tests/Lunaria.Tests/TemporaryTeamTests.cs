@@ -4,6 +4,7 @@ using Lunaria.Game.Player;
 using Lunaria.Game.Player.Persistence.Saves;
 using Lunaria.Game.Resources;
 using Lunaria.Game.Resources.Tables;
+using Lunaria.Game.Tasks;
 using Lunaria.GameServer.Handlers.Recv;
 using Microsoft.Extensions.Logging.Abstractions;
 using Msg;
@@ -62,6 +63,14 @@ public sealed partial class RoleSessionTests
     {
         var row = _assets.TmpTeams.GetBySrc(source)!;
         var step = row.StepId.First(s => _assets.Tasks.TaskOfStep(row.TaskType, s) != 0);
+        var map = _assets.Tasks.Actions(row.TaskType, step).Select(id => _assets.Tasks.Action(row.TaskType, id)!)
+            .Where(action => action.MapId > 0).Select(action => action.MapId).FirstOrDefault();
+        if (map != 0)
+        {
+            var playable = _fixture.Rows("P_MapDataTable").Select(r => r.GetProperty("id").GetUInt64())
+                .First(id => _assets.Maps.MapExists(id) && TaskManager.MatchesMap(map, id));
+            player.Map.Load(playable, _assets.Starter.Savepoint, [_assets.Starter.Savepoint], [], (0, 0, 0));
+        }
         player.Tasks.Load([(row.TaskType, _assets.Tasks.TaskOfStep(row.TaskType, step), step, Array.Empty<(ulong, uint, uint)>())], []);
         Assert.True(player.ReconcileTemporaryTeam());
         Assert.Equal(source, player.ActiveTemporaryTeam!.Source);
@@ -244,6 +253,6 @@ public sealed partial class RoleSessionTests
     public void RoleReplacement_DoesNotRestartTheRewardRandomStream()
     {
         var player = new Player(123, _assets);
-        Assert.Same(player.GachaRng, player.CreateRoleSession().GachaRng);
+        Assert.Same(player.RandomSources, player.CreateRoleSession().RandomSources);
     }
 }

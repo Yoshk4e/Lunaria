@@ -10,7 +10,9 @@ public sealed class SkillAssets
 
     public SkillAssets(
         IReadOnlyDictionary<string, PSkillGrowthTable> groups,
-        IReadOnlyDictionary<string, PSkillGrowthCostTable> costs
+        IReadOnlyDictionary<string, PSkillGrowthCostTable> costs,
+        ItemAssets items,
+        IReadOnlyDictionary<uint, uint> costItemOverrides
     )
     {
         foreach (var row in groups.Values)
@@ -23,7 +25,16 @@ public sealed class SkillAssets
 
         foreach (var row in costs.Values)
         {
-            _costs[(row.GrowthId, row.Level)] = new SkillCost(Pair(row.CostItemId, row.CostItemNum), row.CostCoinNum);
+            var materials = Pair(row.CostItemId, row.CostItemNum).Select(grant => {
+                // Preserve recovered rows. Explicit server policy fills only missing item definitions.
+                var id = items.Exists(grant.ItemId) ? grant.ItemId
+                    : costItemOverrides.GetValueOrDefault(grant.ItemId, grant.ItemId);
+                if (items.Get(id) is not { AutoUse: false, HoldLimit: > 0 })
+                    throw new ResourceException("P_SkillGrowthCostTable.json",
+                        $"skill cost row {row.Id} references unusable material {grant.ItemId} (resolved to {id})");
+                return grant with { ItemId = id };
+            }).ToArray();
+            _costs[(row.GrowthId, row.Level)] = new SkillCost(materials, row.CostCoinNum);
 
             if (row.Level > _ceilings.GetValueOrDefault(row.GrowthId))
                 _ceilings[row.GrowthId] = row.Level;

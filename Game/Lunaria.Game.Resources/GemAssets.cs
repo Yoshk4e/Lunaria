@@ -37,6 +37,20 @@ public sealed class GemAssets
 
     public bool Exists(uint gemId) => _gems.ContainsKey(gemId);
 
+    public bool MeetsElementRequirements(uint gemId, IReadOnlyDictionary<uint, int> teamElements)
+    {
+        if (!_gems.TryGetValue(gemId, out var gem) || gem.ElementLimitType.Count != gem.ElementLimitNum.Count)
+            return false;
+
+        for (var i = 0; i < gem.ElementLimitType.Count; i++)
+        {
+            if (teamElements.GetValueOrDefault(gem.ElementLimitType[i]) < gem.ElementLimitNum[i])
+                return false;
+        }
+
+        return true;
+    }
+
     /// <summary>Cost of one character carrying <paramref name="count"/> gems: GemCost[1] + ... + GemCost[count].</summary>
     public uint CharacterCost(int count)
     {

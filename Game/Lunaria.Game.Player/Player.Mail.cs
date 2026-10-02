@@ -22,6 +22,7 @@ public sealed partial class Player
 
     public (int Code, RewardDelivery? Delivery) ClaimMailAttachments(uint mailId)
     {
+        using var operationTime = BeginOperation();
         ExpireMailBeforeClaim();
         var claim = Mails.BeginClaim(mailId);
 
@@ -30,11 +31,12 @@ public sealed partial class Player
 
         var delivery = GrantWithoutOverflowMail(claim.Attachments, EnmItemReason.EnmItemChangeMail);
         Mails.ResolveClaim(mailId, delivery.Undelivered);
-        return (0, delivery);
+        return (0, PresentRewards(delivery));
     }
 
     public (IReadOnlyList<uint> ClaimedIds, RewardDelivery Delivery) ClaimAllMailAttachments()
     {
+        using var operationTime = BeginOperation();
         ExpireMailBeforeClaim();
         var claimed = new List<uint>();
         var deliveries = new List<RewardDelivery>();
@@ -43,7 +45,7 @@ public sealed partial class Player
         {
             var delivery = GrantWithoutOverflowMail(entry.Items, EnmItemReason.EnmItemChangeMail);
             Mails.ResolveClaim(entry.MailId, delivery.Undelivered);
-            deliveries.Add(delivery);
+            deliveries.Add(PresentRewards(delivery));
             if (delivery.Undelivered.Count == 0) claimed.Add(entry.MailId);
         }
         return (claimed, RewardDelivery.Combine(deliveries));
@@ -51,25 +53,26 @@ public sealed partial class Player
 
     private void ExpireMailBeforeClaim()
     {
-        var expired = Mails.SweepExpired(DateTimeOffset.UtcNow.ToUnixTimeSeconds());
+        var expired = Mails.SweepExpired(UtcNow.ToUnixTimeSeconds());
         if (expired.Count > 0) _changes.Add(new SCMailAddDelNft { DelMailIds = { expired } });
     }
 
     public RewardDelivery GrantRewards(IEnumerable<ItemGrant> grants, EnmItemReason reason)
     {
+        using var operationTime = BeginOperation();
         var delivery = GrantWithoutOverflowMail(grants, reason);
-        if (delivery.Undelivered.Count == 0) return delivery;
+        if (delivery.Undelivered.Count == 0) return PresentRewards(delivery);
 
         Log.Flag("grant reason {Reason} left {Count} undelivered items, sending overflow mail", reason, delivery.Undelivered.Count);
 
-        if (!TrySendOverflowMail(delivery.Undelivered, DateTimeOffset.UtcNow))
+        if (!TrySendOverflowMail(delivery.Undelivered, UtcNow))
         {
             _pendingRewardMail.Add(delivery.Undelivered.ToArray());
             _pendingRewardMailDirty = true;
             Log.Flag("overflow mail failed too, deferring {Count} items to the next mailbox sweep", delivery.Undelivered.Count);
-            return delivery with { Deferred = delivery.Undelivered, Undelivered = [] };
+            return PresentRewards(delivery with { Deferred = delivery.Undelivered, Undelivered = [] });
         }
-        return delivery with { Mailed = delivery.Undelivered, Undelivered = [] };
+        return PresentRewards(delivery with { Mailed = delivery.Undelivered, Undelivered = [] });
     }
 
     private void RetryPendingRewardMail(DateTimeOffset now)

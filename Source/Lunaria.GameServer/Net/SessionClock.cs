@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Lunaria.GameServer.Net;
 
-public sealed class SessionClock(ILogger<SessionClock> logger) : IHostedService
+public sealed class SessionClock(ILogger<SessionClock> logger, TimeProvider? timeProvider = null) : IHostedService
 {
     public static readonly TimeSpan Interval = TimeSpan.FromSeconds(1);
 
@@ -53,7 +53,7 @@ public sealed class SessionClock(ILogger<SessionClock> logger) : IHostedService
 
     private async Task RunAsync(CancellationToken cancellationToken)
     {
-        using var timer = new PeriodicTimer(Interval);
+        using var timer = new PeriodicTimer(Interval, timeProvider ?? TimeProvider.System);
 
         while (await timer.WaitForNextTickAsync(cancellationToken).ConfigureAwait(false))
         {

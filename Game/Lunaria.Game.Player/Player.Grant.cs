@@ -12,6 +12,8 @@ public sealed record RewardDelivery
     public IReadOnlyList<ItemGrant> Stored { get; init; } = [];
     /// <summary>Unclaimed attachments retained on the source mail.</summary>
     public IReadOnlyList<ItemGrant> Undelivered { get; init; } = [];
+    /// <summary>Direct delivery failures, including items subsequently mailed or deferred.</summary>
+    public IReadOnlyList<ItemGrant> DirectFailures { get; init; } = [];
     public IReadOnlyList<ItemGrant> Mailed { get; init; } = [];
     /// <summary>Overflow retained in the role save until mailbox space is available.</summary>
     public IReadOnlyList<ItemGrant> Deferred { get; init; } = [];
@@ -49,6 +51,7 @@ public sealed record RewardDelivery
             Credited = parts.SelectMany(p => p.Credited).ToArray(),
             Stored = parts.SelectMany(p => p.Stored).ToArray(),
             Undelivered = parts.SelectMany(p => p.Undelivered).ToArray(),
+            DirectFailures = parts.SelectMany(p => p.DirectFailures).ToArray(),
             Mailed = parts.SelectMany(p => p.Mailed).ToArray(),
             Deferred = parts.SelectMany(p => p.Deferred).ToArray(),
             CollectedCreatures = parts.SelectMany(p => p.CollectedCreatures).ToArray(),

@@ -13,7 +13,7 @@ public sealed class HandleLimitGroupReq(ILogger<HandleLimitGroupReq> logger)
         if (!ctx.Player.HasActiveRole)
             return new SCLimitGroupRes { Result = (int)EnmTextCode.EnmTextNotAccLogin };
 
-        var now = DateTimeOffset.UtcNow;
+        var now = ctx.Player.UtcNow;
         var reset = ctx.Player.Limits.Refresh(now);
         var groups = ctx.Player.Limits.Groups(now);
         logger.LogDebug("limit groups: {Count} tracked, {Reset} reset", groups.Count, reset);

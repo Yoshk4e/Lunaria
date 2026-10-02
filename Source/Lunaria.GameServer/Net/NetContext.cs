@@ -22,6 +22,7 @@ public sealed class NetContext
     {
         if (PersistenceFaulted) throw new IOException("session has an uncommitted failed operation");
         if (_pendingMessages is not null) throw new InvalidOperationException("nested gameplay operation");
+        using var operationTime = Player.BeginOperation();
         var pending = new List<byte[]>();
         _pendingMessages = pending;
         try

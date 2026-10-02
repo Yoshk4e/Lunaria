@@ -89,38 +89,36 @@ public sealed partial class ClientSession
 
     private static async Task BridgeNotificationsAsync(
         ChannelReader<PlayerNotification> notifications,
-        ChannelWriter<(SessionEventKind, object?)> events
+        ChannelWriter<(SessionEventKind, object?)> events,
+        CancellationToken stopped
     )
     {
-        await foreach (var notification in notifications.ReadAllAsync().ConfigureAwait(false))
+        try
         {
-            try
+            await foreach (var notification in notifications.ReadAllAsync(stopped).ConfigureAwait(false))
             {
-                await events.WriteAsync((SessionEventKind.Notification, notification)).ConfigureAwait(false);
-            }
-            catch (ChannelClosedException)
-            {
-                break;
+                await events.WriteAsync((SessionEventKind.Notification, notification), stopped).ConfigureAwait(false);
             }
         }
+        catch (ChannelClosedException) { }
+        catch (OperationCanceledException) when (stopped.IsCancellationRequested) { }
     }
 
 
     private static async Task BridgeUdpAsync(
         ChannelReader<UdpInbound> udpInbound,
-        ChannelWriter<(SessionEventKind, object?)> events
+        ChannelWriter<(SessionEventKind, object?)> events,
+        CancellationToken stopped
     )
     {
-        await foreach (var datagram in udpInbound.ReadAllAsync().ConfigureAwait(false))
+        try
         {
-            try
+            await foreach (var datagram in udpInbound.ReadAllAsync(stopped).ConfigureAwait(false))
             {
-                await events.WriteAsync((SessionEventKind.Udp, datagram)).ConfigureAwait(false);
-            }
-            catch (ChannelClosedException)
-            {
-                break;
+                await events.WriteAsync((SessionEventKind.Udp, datagram), stopped).ConfigureAwait(false);
             }
         }
+        catch (ChannelClosedException) { }
+        catch (OperationCanceledException) when (stopped.IsCancellationRequested) { }
     }
 }

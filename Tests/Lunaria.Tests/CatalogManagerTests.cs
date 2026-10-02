@@ -120,9 +120,10 @@ public sealed class CatalogManagerTests(BundledGameplayFixture fixture)
         var manager = new CaseManager(Assets);
         var row = fixture.Rows("P_CaseEvidenceTable").First(r => Assets.Cases.CaseExists(r.GetProperty("caseId").GetUInt32()));
         var caseId = row.GetProperty("caseId").GetUInt32();
-        manager.OpenCase(caseId);
         var evidence = row.GetProperty("id").GetUInt64();
         Assert.NotEqual(0, manager.DecryptEvidence(evidence));
+        // Opening the case grants its evidence.
+        manager.OpenCase(caseId);
         Assert.True(manager.GiveEvidence(evidence));
         Assert.Equal(0, manager.DecryptEvidence(evidence));
         manager.ClearDirty();

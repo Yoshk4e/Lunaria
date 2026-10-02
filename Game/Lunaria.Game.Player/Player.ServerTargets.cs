@@ -16,7 +16,7 @@ public sealed partial class Player
     private bool _gameTimeDirty;
     private uint _wantedTasksStep;
 
-    public uint GameTimeMinutes { get; private set; } = assets.Starter.GameTime;
+    public uint GameTimeMinutes { get; private set; }
 
     public void LoadGameTime(uint minute)
     {
@@ -32,6 +32,7 @@ public sealed partial class Player
 
     public void AdvanceGameTime(uint elapsedMinutes)
     {
+        using var operationTime = BeginOperation();
         EnsureLevelBaseline();
         var previous = GameTimeMinutes;
         GameTimeMinutes = (uint)(((ulong)previous + elapsedMinutes) % 1440);
@@ -60,6 +61,7 @@ public sealed partial class Player
 
     public IReadOnlyList<TaskActionOutcome> SettleServerTargets()
     {
+        using var operationTime = BeginOperation();
         EnsureLevelBaseline();
         var outcomes = new List<TaskActionOutcome>();
 

@@ -20,7 +20,7 @@ public sealed class HandleCaseCluePut
             Result = result,
             ClueId = req.ClueId,
             CaseId = caseId,
-            FinishedPhase = phase
+            FinishedPhase = ctx.Player.Cases.FinishedStageId(caseId, phase)
         });
     }
 }

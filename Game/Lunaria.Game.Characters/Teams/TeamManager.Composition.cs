@@ -76,10 +76,11 @@ public sealed partial class TeamManager
         foreach (var (memberSlot, slots) in members)
         {
             var row = new uint[assets.Gems.MaxPerCharacter];
+            var seenSlots = new HashSet<uint>();
 
             foreach (var (gemSlot, gemId) in slots)
             {
-                if (gemSlot < 1 || gemSlot > row.Length)
+                if (gemSlot < 1 || gemSlot > row.Length || !seenSlots.Add(gemSlot))
                     return ((int)EnmTextCode.EnmTextCharacterTeamGemSizeNotMatch, result);
 
                 if (gemId == 0)

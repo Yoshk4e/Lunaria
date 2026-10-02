@@ -201,16 +201,107 @@ public sealed class GameplayRegressionTests(BundledGameplayFixture fixture)
     {
         var player = Fresh();
         var now = DateTimeOffset.UtcNow;
-        player.GetCollections(blockId: 1, now);
+        var block = Assets.Collections.WorldObjects(blockId: 0)[0].BlockId;
+        var nodes = player.GetCollections(block, now);
         Assert.Empty(player.RecalculateRegionProgress());
         Assert.Empty(player.Collections.Gathered);
-        var nodes = player.Collections.Entries.Take(2).ToArray();
-        Assert.Equal(expected: 0, player.Collections.ApplyDestroyed(nodes[0].Key, now).Code);
+        Assert.Empty(player.Collections.Entries);
+        Assert.Equal(expected: 0, player.Collections.ApplyDestroyed(nodes[0].UniqId, now).Code);
         Assert.Empty(player.Collections.Gathered);
-        Assert.Equal(expected: 0, player.Collections.ApplyCollected(nodes[1].Key, now).Code);
-        Assert.Contains(nodes[1].Value.Cfg, player.Collections.Gathered);
-        player.GetCollections(blockId: 1, now.AddDays(30));
-        Assert.Contains(nodes[1].Value.Cfg, player.Collections.Gathered);
+        Assert.Equal(expected: 0, player.Collections.ApplyCollected(nodes[1].UniqId, now).Code);
+        Assert.Contains(nodes[1].CfgId, player.Collections.Gathered);
+        player.GetCollections(block, now.AddDays(30));
+        Assert.Contains(nodes[1].CfgId, player.Collections.Gathered);
+    }
+
+    [Fact]
+    public void Collections_ListThePlacedObjectsTheClientBindsByRowId()
+    {
+        var player = Fresh();
+        var placed = Assets.Collections.WorldObjects(blockId: 0)[0];
+        var listed = player.GetCollections(placed.BlockId, DateTimeOffset.UtcNow);
+
+        Assert.Equal(Assets.Collections.WorldObjects(placed.BlockId).Count, listed.Count);
+        Assert.All(listed, item => {
+            Assert.Equal(item.UniqId, item.FromId);
+            Assert.Equal(EnmCollectionFromType.EcollectFromTable, item.FromType);
+            Assert.Equal(placed.BlockId, item.BlockId);
+        });
+        var first = listed.Single(item => item.UniqId == placed.Id);
+        Assert.Equal(placed.TemplateId, first.CfgId);
+        Assert.Equal((int)MathF.Round(placed.PosX), first.Location.X);
+        Assert.Equal(first.Location, first.FromLocation);
+    }
+
+    [Fact]
+    public void Collections_ChestsStayOpenedWhileDailyGatherablesComeBackAndArePushed()
+    {
+        var player = Fresh();
+        var now = DateTimeOffset.UtcNow;
+        var chest = Assets.Collections.WorldObjects(blockId: 0)
+            .First(row => Assets.Collections.Get(row.TemplateId)!.CollectionType == 1
+                          && !Assets.Collections.Respawn(row.TemplateId).ResetsEver);
+        var daily = Assets.Collections.WorldObjects(blockId: 0)
+            .First(row => Assets.Collections.Respawn(row.TemplateId).Kind == RefreshPeriod.Daily);
+
+        Assert.Equal(expected: 0, player.Collections.ApplyCollected(chest.Id, now).Code);
+        Assert.Equal(expected: 0, player.Collections.ApplyCollected(daily.Id, now).Code);
+        Assert.Null(player.RespawnedCollections(now));
+
+        var pushed = player.RespawnedCollections(now.AddDays(1))!;
+        Assert.Equal([daily.Id], pushed.NtfList.Select(item => item.UniqId));
+        Assert.Equal(EnmCollectionStatus.EcsCanCollect, pushed.NtfList[0].Status);
+        Assert.NotEqual(EnmCollectionStatus.EcsCanCollect, player.Collections.Get(chest.Id)!.Status);
+    }
+
+    [Fact]
+    public void Collections_LoadDropsRowsThatMatchNoPlacedObject()
+    {
+        var player = Fresh();
+        var placed = Assets.Collections.WorldObjects(blockId: 0)[0];
+        var other = Assets.Collections.WorldObjects(blockId: 0).First(row => row.TemplateId != placed.TemplateId);
+        var at = DateTimeOffset.UtcNow;
+        player.Collections.Load([
+            (placed.Id, placed.TemplateId, (int)EnmCollectionStatus.EcsCollected, at, 0UL, (0, 0, 0)),
+            (placed.Id + 1_000_000_000, placed.TemplateId, (int)EnmCollectionStatus.EcsCollected, at, 1UL, (0, 0, 0)),
+            (other.Id, placed.TemplateId, (int)EnmCollectionStatus.EcsCollected, at, 1UL, (0, 0, 0))
+        ]);
+
+        Assert.Equal([placed.Id], player.Collections.Entries.Keys);
+        Assert.Equal(placed.BlockId, player.Collections.Get(placed.Id)!.Block);
+    }
+
+    [Fact]
+    public void Cases_OpeningGrantsTheCaseEvidence_AndOldSavesGetItBack()
+    {
+        var evidence = Assets.Cases.Evidence(caseId: 1003).Select(row => row.Id).ToArray();
+        Assert.NotEmpty(evidence);
+
+        var player = Fresh();
+        var opened = player.Cases.OpenCase(1003)!.Value;
+        Assert.Equal(evidence, opened.EvidenceIds);
+        Assert.Equal(evidence, player.Cases.Processing[1003].OwnedEvidence);
+        Assert.Equal(evidence, Lunaria.Game.Player.Managers.CaseManager.ToReceiveNotification(1003, opened.ClueIds, opened.EvidenceIds).EvidenceIds);
+
+        // A save written when the opening granted nothing.
+        var restored = Fresh();
+        restored.Cases.Load([(1003u, 1u, new ulong[] { 1003101 }.AsEnumerable(), Array.Empty<ulong>().AsEnumerable())], []);
+        restored.Cases.LoadOwned([(1003u, new ulong[] { 1003101, 1003102 }.AsEnumerable(), Array.Empty<ulong>().AsEnumerable())]);
+        Assert.Equal(evidence, restored.Cases.Processing[1003].OwnedEvidence);
+        Assert.Contains(restored.Cases.ToCaseData().ProcessingCase.Single().EvidenceStatus, s => s.EvidenceId == evidence[0]);
+    }
+
+    [Fact]
+    public void Cases_FinishedPhaseIsSentAsTheLastFinishedStageId()
+    {
+        var stages = Assets.Cases.Stages(caseId: 1003);
+        var player = Fresh();
+        player.Cases.Load([(1003u, 1u, new ulong[] { 1003101 }.AsEnumerable(), Array.Empty<ulong>().AsEnumerable())], []);
+
+        // The client compares it with StageIDList entries; a count of 1 would hide every clue on the board.
+        Assert.Equal((uint)stages[0], player.Cases.ToCaseData().ProcessingCase.Single().FinishedPhase);
+        Assert.Equal(0u, player.Cases.FinishedStageId(1003, 0));
+        Assert.Equal((uint)stages[^1], player.Cases.FinishedStageId(1003, (uint)stages.Count));
     }
 
     private static TeamData WithGems(TeamData team, params (int Member, uint GemSlot, uint GemId)[] gems)
@@ -248,6 +339,49 @@ public sealed class GameplayRegressionTests(BundledGameplayFixture fixture)
     }
 
     [Fact]
+    public void Gems_RepeatedSlotIdsRejectTheWholeUpdate()
+    {
+        var player = Fresh();
+        player.Bag.Add(itemId: 21501001, count: 1);
+        player.Bag.Add(itemId: 21501002, count: 1);
+        var team = player.Teams.ToTeamData(player.Teams.CurrentTeam()!);
+        Assert.Equal(0, player.UpdateTeam(WithGems(team, (0, 2, 21501001))).Result);
+        var before = player.Teams.ToTeamData(player.Teams.CurrentTeam()!);
+        player.Teams.ClearDirty();
+
+        foreach (var firstGem in new uint[] { 0, 21501001 })
+        {
+            var update = player.UpdateTeam(WithGems(team, (0, 1, firstGem), (0, 1, 21501002)));
+            Assert.Equal((int)EnmTextCode.EnmTextCharacterTeamGemSizeNotMatch, update.Result);
+            Assert.Equal(before, update.TeamData);
+            Assert.Equal(before, player.Teams.ToTeamData(player.Teams.CurrentTeam()!));
+            Assert.False(player.Teams.IsDirty);
+        }
+    }
+
+    [Fact]
+    public void Gems_UseEarnedWorldLevelBudgetAfterSelectingALowerLevel()
+    {
+        var player = Fresh();
+        player.Bag.Add(itemId: 21501001, count: 1);
+        player.Bag.Add(itemId: 21501002, count: 1);
+        player.Bag.Add(itemId: 21501004, count: 1);
+        var proposed = WithGems(player.Teams.ToTeamData(player.Teams.CurrentTeam()!),
+            (0, 1, 21501001), (0, 2, 21501002), (0, 3, 21501004));
+        Assert.Equal((int)EnmTextCode.EnmTextCharacterTeamGemCostNotEnough, player.UpdateTeam(proposed).Result);
+
+        player.Progress.QuestGate = _ => true;
+        player.Progress.Load(20, 0, 0, 240, DateTimeOffset.UtcNow);
+        Assert.Equal(2u, player.Progress.EarnedWorldLevel);
+        Assert.Equal(0, player.Progress.SelectWorldLevel(1).Result);
+        Assert.Equal(1u, player.Progress.WorldLevel);
+
+        var update = player.UpdateTeam(proposed);
+        Assert.Equal(0, update.Result);
+        Assert.Equal(proposed.MemberData[0].GemSlots, update.TeamData.MemberData[0].GemSlots);
+    }
+
+    [Fact]
     public void Gems_RejectUnownedUnknownDuplicateOutOfRangeAndOverBudget()
     {
         var player = Fresh();
@@ -267,6 +401,51 @@ public sealed class GameplayRegressionTests(BundledGameplayFixture fixture)
 
         // A refused update leaves the team as it was.
         Assert.All(player.Teams.CurrentTeam()!.Members, m => Assert.Empty(m.Gems));
+    }
+
+    [Theory]
+    [InlineData(21501011u, 1)]
+    [InlineData(21501010u, 2)]
+    [InlineData(21501009u, 3)]
+    public void Gems_ElementStatusFollowsTeamCompositionAndSaveReload(uint gemId, int requiredFireMembers)
+    {
+        var player = Fresh();
+        player.Bag.Add(gemId, 1);
+        var team = player.Teams.ToTeamData(player.Teams.CurrentTeam()!);
+        Assert.Equal(1001u, Assert.Single(team.MemberData).CharacterId); // Gravitas, not Ignis.
+        var update = player.UpdateTeam(WithGems(team, (0, 1, gemId)));
+        Assert.Equal(0, update.Result);
+        Assert.Equal(EnmGemStatus.Invalid, Assert.Single(update.TeamData.MemberData[0].GemSlots).GemState);
+
+        uint[] fireCharacters = [1004, 1501, 1505];
+        for (var i = 0; i < requiredFireMembers; i++)
+        {
+            var granted = player.Characters.Add(player.Guid, fireCharacters[i]);
+            Assert.Equal(0, granted.Code);
+            team = update.TeamData.Clone();
+            team.MemberData.Add(new TeamMemberData {
+                MemberSlotId = (uint)i + 2, InstId = granted.InstId, CharacterId = fireCharacters[i]
+            });
+            update = player.UpdateTeam(team);
+            Assert.Equal(0, update.Result);
+            Assert.Equal(i + 1 == requiredFireMembers ? EnmGemStatus.Valid : EnmGemStatus.Invalid,
+                Assert.Single(update.TeamData.MemberData[0].GemSlots).GemState);
+        }
+
+        var json = JsonSerializer.Serialize(RoleSaveMapper.Capture(player), SaveJson.Options);
+        var restored = Fresh();
+        restored.Characters.Load(player.Characters.All);
+        RoleSaveMapper.Apply(restored, JsonSerializer.Deserialize<RoleSaveDocument>(json, SaveJson.Options)!);
+        team = restored.Teams.ToTeamData(restored.Teams.CurrentTeam()!);
+        Assert.Equal(EnmGemStatus.Valid, Assert.Single(team.MemberData[0].GemSlots).GemState);
+
+        // An earlier VALID status from the client cannot keep a gem active after its requirement is lost.
+        team.MemberData.RemoveAt(team.MemberData.Count - 1);
+        update = restored.UpdateTeam(team);
+        Assert.Equal(0, update.Result);
+        var slot = Assert.Single(update.TeamData.MemberData[0].GemSlots);
+        Assert.Equal(gemId, slot.GemItemid);
+        Assert.Equal(EnmGemStatus.Invalid, slot.GemState);
     }
 
     [Fact]
@@ -597,9 +776,9 @@ public sealed class GameplayRegressionTests(BundledGameplayFixture fixture)
         Assert.True(player.SaveDirty);
         player.Cases.OpenCase(1002);
         player.Cases.GiveClue(1002101);
-        player.GetCollections(blockId: 1, DateTimeOffset.UtcNow);
-        var node = player.Collections.Entries.First();
-        player.Collections.ApplyCollected(node.Key, DateTimeOffset.UtcNow);
+        var placed = Assets.Collections.WorldObjects(blockId: 0)[0];
+        player.Collections.ApplyCollected(placed.Id, DateTimeOffset.UtcNow);
+        var node = player.Collections.Entries.Single();
         var activity = Assets.SignIn.Activity(3)!;
         player.SignIn.Query(activityId: 3, DateTimeOffset.FromUnixTimeSeconds((long)activity.TimeOffsetStart).AddHours(1));
         var now = DateTimeOffset.UtcNow;

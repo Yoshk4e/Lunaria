@@ -449,3 +449,4 @@ config.json
 *.db
 game_server.db
 hotupdate/
+docs/*

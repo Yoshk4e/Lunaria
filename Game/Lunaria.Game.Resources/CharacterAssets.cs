@@ -62,6 +62,8 @@ public sealed class CharacterAssets
 
     public bool Exists(uint characterId) => _characters.ContainsKey(characterId);
 
+    public uint ElementOf(uint characterId) => (uint)(_characters.GetValueOrDefault(characterId)?.ElementType ?? 0);
+
     public CharacterRow? Get(uint characterId)
     {
         if (!_characters.TryGetValue(characterId, out var row) ||

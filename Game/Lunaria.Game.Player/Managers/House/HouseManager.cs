@@ -149,9 +149,11 @@ public sealed class HouseManager(GameData assets, HouseRentPolicy? rentPolicy = 
                 continue;
 
             var interval = _rent.IntervalSeconds;
-            if (now < state.IncomeAnchor) continue;
             var elapsed = Math.Max(val1: 0, now.ToUnixTimeSeconds() - state.IncomeAnchor.ToUnixTimeSeconds());
-            _houses[houseId] = state with { IncomeAnchor = now.AddSeconds(-(elapsed % interval)), BankedIncome = 0 };
+            // Banked rent can be claimed while the clock is behind the last upgrade.
+            // Clear that payment without moving the accrual clock backward.
+            var anchor = now < state.IncomeAnchor ? state.IncomeAnchor : now.AddSeconds(-(elapsed % interval));
+            _houses[houseId] = state with { IncomeAnchor = anchor, BankedIncome = 0 };
             Dirty();
         }
     }
