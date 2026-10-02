@@ -1,0 +1,6 @@
+<Project>
+  <ItemGroup Condition="'$(MSBuildProjectName)' != 'Lunaria.Proto.Analyzers' and '$(MSBuildProjectName)' != 'Lunaria.Proto.Analyzers.Tests' and '$(MSBuildProjectName)' != 'Lunaria.Proto'">
+    <ProjectReference Include="$(MSBuildThisFileDirectory)Protocol/Lunaria.Proto.Analyzers/Lunaria.Proto.Analyzers.csproj"
+                      OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+</Project>

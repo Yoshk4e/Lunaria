@@ -29,9 +29,11 @@
     <Project Path="Libraries/Lunaria.Silver/Lunaria.Silver.csproj" />
   </Folder>
   <Folder Name="/Protocol/">
+    <Project Path="Protocol/Lunaria.Proto.Analyzers/Lunaria.Proto.Analyzers.csproj" />
     <Project Path="Protocol/Lunaria.Proto/Lunaria.Proto.csproj" />
   </Folder>
   <Folder Name="/Tests/">
+    <Project Path="Tests/Lunaria.Proto.Analyzers.Tests/Lunaria.Proto.Analyzers.Tests.csproj" />
     <Project Path="Tests/Lunaria.Tests/Lunaria.Tests.csproj" />
   </Folder>
 </Solution>
