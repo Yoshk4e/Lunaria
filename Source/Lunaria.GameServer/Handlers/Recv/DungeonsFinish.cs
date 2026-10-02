@@ -35,7 +35,7 @@ public sealed class HandleDungeonsFinish
                 .ConfigureAwait(false);
         }
 
-        await ctx.NotifyAsync(ctx.Player.Dungeons.ToDataNotification(DateTimeOffset.UtcNow))
+        await ctx.NotifyAsync(ctx.Player.Dungeons.ToDataNotification(ctx.Player.UtcNow))
             .ConfigureAwait(false);
 
         return reply;

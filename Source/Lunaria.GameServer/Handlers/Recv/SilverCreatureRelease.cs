@@ -13,7 +13,7 @@ public sealed class HandleSilverCreatureRelease
                 Result = (int)EnmTextCode.EnmTextNotAccLogin
             });
 
-        var (result, change) = ctx.Player.SilverCreatures.Release(req.UniqId);
+        var (result, change) = ctx.Player.ReleaseSilverCreatures(req.UniqId);
 
         return Task.FromResult(new SCSilverCreatureReleaseResult {
             Result = (uint)result,

@@ -8,6 +8,7 @@ public sealed partial class Player
 {
     public IReadOnlyList<IMessage> SettleMonthCards(DateTimeOffset now)
     {
+        using var operationTime = BeginOperation(now);
         var notifications = new List<IMessage>();
         foreach (var (cardId, grant) in MonthCards.DueDailyGrants(now))
             notifications.AddRange(DeliverMonthCardReward(cardId, grant));

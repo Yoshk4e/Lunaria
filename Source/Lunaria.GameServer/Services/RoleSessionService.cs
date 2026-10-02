@@ -31,7 +31,7 @@ public sealed class RoleSessionService(RoleStateStore store, ILogger<RoleSession
         try
         {
             await store.SaveAsync(ctx.Player).ConfigureAwait(false);
-            var next = await store.LoadAsync(ctx.Player, (long)requestedRole, DateTimeOffset.UtcNow).ConfigureAwait(false);
+            var next = await store.LoadAsync(ctx.Player, (long)requestedRole, ctx.Player.UtcNow).ConfigureAwait(false);
             ctx.ReplacePlayer(next);
             return 0;
         }

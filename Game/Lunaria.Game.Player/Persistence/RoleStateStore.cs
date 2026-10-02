@@ -33,6 +33,7 @@ public sealed class RoleStateStore(
 
     public async Task SaveAsync(Player player, CancellationToken cancellationToken = default)
     {
+        using var operationTime = player.BeginOperation();
         if (!player.IsLoggedIn || !player.IsDirty) return;
         await using var db = await factory.CreateDbContextAsync(cancellationToken);
         await using var transaction = await db.Database.BeginTransactionAsync(cancellationToken);
@@ -71,6 +72,7 @@ public sealed class RoleStateStore(
 
     public async Task<Player> LoadAsync(Player session, long roleId, DateTimeOffset now, CancellationToken cancellationToken = default)
     {
+        using var operationTime = session.BeginOperation(now);
         var next = session.CreateRoleSession();
         if (!next.Roles.SetActive(roleId)) throw new InvalidOperationException("Unknown role.");
         await using var db = await factory.CreateDbContextAsync(cancellationToken);

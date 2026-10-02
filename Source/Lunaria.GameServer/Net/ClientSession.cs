@@ -20,7 +20,8 @@ public sealed partial class ClientSession(
     ConnectionGate gate,
     GameServerMetrics metrics,
     GameServerOptions options,
-    ILogger<ClientSession> logger
+    ILogger<ClientSession> logger,
+    TimeProvider? timeProvider = null
 )
 {
     public const int HeartbeatTicks = 5;
@@ -97,19 +98,22 @@ public sealed partial class ClientSession(
             FullMode = BoundedChannelFullMode.Wait
         });
 
+        using var stopped = CancellationTokenSource.CreateLinkedTokenSource(shutdown);
         var stream = reader.Stream;
-        var writeTask = WriteLoopAsync(stream, outbound.Reader);
+        var writeTask = WriteLoopAsync(stream, outbound, stopped);
 
         var udp = runtime.UdpSessions.Bind(established.NotifySessionId, established.UdpPort);
 
         try
         {
-            await RunEventLoopAsync(reader, established, outbound, notifications, udp, shutdown)
+            await RunEventLoopAsync(reader, established, outbound, notifications, udp, stopped.Token)
                 .ConfigureAwait(false);
         }
         finally
         {
             outbound.Writer.TryComplete();
+            // Allow final notifications to drain, but bound writes to a peer that stopped reading.
+            stopped.CancelAfter(TimeSpan.FromMilliseconds(250));
 
             try
             {
@@ -122,20 +126,29 @@ public sealed partial class ClientSession(
         }
     }
 
-    private async Task WriteLoopAsync(Stream writer, ChannelReader<byte[]> frames)
+    private async Task WriteLoopAsync(Stream writer, Channel<byte[]> frames, CancellationTokenSource stopped)
     {
-        await foreach (var bytes in frames.ReadAllAsync().ConfigureAwait(false))
+        try
         {
-            try
+            await foreach (var bytes in frames.Reader.ReadAllAsync(stopped.Token).ConfigureAwait(false))
             {
-                await writer.WriteAsync(bytes).ConfigureAwait(false);
-                await writer.FlushAsync().ConfigureAwait(false);
+                await writer.WriteAsync(bytes, stopped.Token).ConfigureAwait(false);
+                await writer.FlushAsync(stopped.Token).ConfigureAwait(false);
             }
-            catch (Exception ex) when (ex is IOException or ObjectDisposedException)
-            {
-                logger.LogDebug("write loop stopping: {Message}", ex.Message);
-                return;
-            }
+        }
+        catch (Exception ex) when (ex is IOException or ObjectDisposedException)
+        {
+            logger.LogDebug("write loop stopping: {Message}", ex.Message);
+            // Wake both blocked producers and the reader, even if the peer never sends EOF.
+            frames.Writer.TryComplete();
+            await stopped.CancelAsync().ConfigureAwait(false);
+        }
+        catch (OperationCanceledException) when (stopped.IsCancellationRequested)
+        {
+        }
+        finally
+        {
+            frames.Writer.TryComplete();
         }
     }
 }

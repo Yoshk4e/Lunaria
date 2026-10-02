@@ -8,7 +8,7 @@ public sealed partial class Player
 
     public Player CreateRoleSession()
     {
-        var next = new Player(SessionId, Assets) { GachaRng = GachaRng };
+        var next = new Player(SessionId, Assets, Time, RandomSources);
         if (Account.Id is {} accountId)
         {
             next.Account.Bind(accountId, Account.AccountKey, Account.Userid, Account.BoundAt);
@@ -21,6 +21,7 @@ public sealed partial class Player
 
     public void InitializeRoleState(DateTimeOffset now, bool hasSave = false)
     {
+        using var operationTime = BeginOperation(now);
         foreach (var motive in Motives.All.ToArray())
             if (motive.EquipedTarget != 0 && Characters.Get(motive.EquipedTarget)?.MotiveUniqId != motive.UniqId)
                 Motives.ForceClearEquip(motive.UniqId);
@@ -28,7 +29,7 @@ public sealed partial class Player
             if (character.MotiveUniqId != 0 && Motives.Get(character.MotiveUniqId)?.EquipedTarget != character.InstId)
                 Characters.ForceClearMotiveSlot(character.InstId);
 
-        Guid.Adopt(new[] { Guid.LastMinted, Collections.MaxUniq,
+        Guid.Adopt(new[] { Guid.LastMinted,
             Motives.All.Select(m => m.UniqId).DefaultIfEmpty().Max(),
             Mails.Entries.Select(m => (ulong)m.MailId).DefaultIfEmpty().Max() }.Max());
         TasksBootstrapped = false;
@@ -46,6 +47,8 @@ public sealed partial class Player
         }
         Mails.SweepExpired(now.ToUnixTimeSeconds());
         Progress.Regenerate(now);
+        RetryStoredCreatures();
+        RetryStoredMotives(now);
         CompleteRoleLogin();
     }
 }

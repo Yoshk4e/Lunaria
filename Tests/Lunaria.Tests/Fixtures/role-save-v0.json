@@ -1,0 +1,5 @@
+{
+  "wallet": [{ "money_type": 1, "amount": 123 }],
+  "signin": { "signed_days": [1, 2, 3], "claimed_days": [1] },
+  "pending_reward_mail": [[{ "ItemId": 21206001, "Count": 2 }]]
+}

@@ -64,6 +64,7 @@ public sealed partial class Player
 
     public void CompleteRoleLogin()
     {
+        using var operationTime = BeginOperation();
         _changes.Clear();
         Bag.DrainChanged();
         Wallet.DrainChanged();
@@ -74,6 +75,7 @@ public sealed partial class Player
 
     public int UnlockTeleport(ulong pointId)
     {
+        using var operationTime = BeginOperation();
         var known = Map.UnlockedTeleports.Contains(pointId);
         var code = Map.UnlockTeleport(pointId);
         if (code == 0 && !known) Gameplay.Publish(new TeleportUnlocked(pointId));
@@ -82,12 +84,14 @@ public sealed partial class Player
 
     public int UnlockSavepoint(ulong pointId)
     {
+        using var operationTime = BeginOperation();
         var code = Map.UnlockSavepoint(pointId);
         return code;
     }
 
     public (int Result, SignInActivityData? Data) QuerySignIn(uint activityId)
     {
+        using var operationTime = BeginOperation();
         var result = SignIn.Query(activityId);
         if (result.Result == 0) Gameplay.Publish(new AttendanceChanged());
         return result;
@@ -95,6 +99,7 @@ public sealed partial class Player
 
     public int ReportClientProgress(uint eventId, uint count)
     {
+        using var operationTime = BeginOperation();
         if (!assets.Unlocks.IsClientReportable(eventId) || count == 0)
             return (int)EnmTextCode.EnmTextAchievementInvalidEvent;
 

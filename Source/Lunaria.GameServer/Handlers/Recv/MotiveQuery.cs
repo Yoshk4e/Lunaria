@@ -9,7 +9,7 @@ public sealed class HandleMotiveQuery(ILogger<HandleMotiveQuery> logger)
     [GameHandler(EClientServerCmds.CsMotiveQuery)]
     public Task<SCMotiveQuery> OnPacket(NetContext ctx, CSMotiveQuery req)
     {
-        var elems = ctx.Player.Motives.ListData();
+        var elems = ctx.Player.MotiveData();
         logger.LogDebug("motive query: {Count} entries", elems.Count);
 
         return Task.FromResult(new SCMotiveQuery {
