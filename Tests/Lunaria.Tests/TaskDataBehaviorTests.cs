@@ -79,13 +79,38 @@ public sealed class TaskDataBehaviorTests(BundledGameplayFixture fixture)
                 Assert.Empty(result.Outcome.Progress.PassedSteps);
                 Assert.Empty(result.Outcome.Progress.StartedTasks);
                 var rollback = step.TryGetProperty("rollbackStepWhenFail", out var configured) && configured.GetUInt64() != 0
-                    ? configured.GetUInt64() : Assets.Tasks.RollbackStep(type, stepId);
+                    ? configured.GetUInt64() : ExpectedPuzzleRollback(type, stepId);
                 Assert.Equal(rollback, result.Outcome.Progress.UpdatedData!.CurrentStep.StepId);
                 tested++;
             }
         }
         Assert.Equal(expected, tested);
     }
+
+    private static ulong ExpectedPuzzleRollback(uint type, ulong step) => (type, step) switch {
+        (TaskAssets.QuestMain, 1100303) => 1100301,
+        (TaskAssets.QuestMain, 9998102) => 9998101,
+        (TaskAssets.QuestMain, 9998202) => 9998201,
+        (TaskAssets.QuestMain, 9998302) => 9998301,
+        (TaskAssets.QuestMain, 9998402) => 9998401,
+        (TaskAssets.QuestMain, 9998502) => 9998501,
+        (TaskAssets.QuestMain, 9998602) => 9998601,
+        (TaskAssets.POIQuest, 100203) => 100202,
+        (TaskAssets.POIQuest, 900702) => 900700,
+        (TaskAssets.POIQuest, 900802) => 900800,
+        (TaskAssets.POIQuest, 900902) => 900900,
+        (TaskAssets.POIQuest, 901002) => 901000,
+        (TaskAssets.POIQuest, 901102) => 901100,
+        (TaskAssets.POIQuest, 901302) => 901300,
+        (TaskAssets.POIQuest, 901402) => 901400,
+        (TaskAssets.POIQuest, 901502) => 901500,
+        (TaskAssets.POIQuest, 901602) => 901600,
+        (TaskAssets.POIQuest, 901702) => 901700,
+        (TaskAssets.POIQuest, 901902) => 901900,
+        (TaskAssets.POIQuest, 902002) => 902000,
+        (TaskAssets.POIQuest, 902102) => 902100,
+        _ => step
+    };
 
     [Theory]
     [InlineData(TaskAssets.POIQuest, 900702ul, 900700ul)]
@@ -100,6 +125,21 @@ public sealed class TaskDataBehaviorTests(BundledGameplayFixture fixture)
         Assert.Equal(0, result.Code);
         Assert.True(result.Outcome!.Progress.TaskFailed);
         Assert.Equal(expected, result.Outcome.Progress.UpdatedData!.CurrentStep.StepId);
+    }
+
+    [Fact]
+    public async Task MapArrival_MetEmptyMarkersDoNotLoopWhileTheStepWaitsOnAnArrival()
+    {
+        var player = new Player(1, Assets);
+        AtStep(player, TaskAssets.QuestMain, 1100510);
+        Assert.True(player.Map.BeginEnter(209001001001, 0).Ok);
+        Assert.Equal(0, player.Map.FinishEnter());
+
+        var settle = Task.Run(() => player.SettleMapArrival(209001001001));
+        Assert.Same(settle, await Task.WhenAny(settle, Task.Delay(TimeSpan.FromSeconds(10))));
+        Assert.Equal(2, (await settle).Count(o => o.Progress.Recorded));
+        Assert.Equal(1100510ul, player.Tasks.TaskDataOf(TaskAssets.QuestMain, 91004)!.CurrentStep.StepId);
+        Assert.DoesNotContain(player.SettleMapArrival(209001001001), o => o.Progress.Recorded);
     }
 
     [Fact]

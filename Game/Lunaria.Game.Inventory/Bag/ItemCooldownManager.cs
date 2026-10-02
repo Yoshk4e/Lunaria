@@ -1,8 +1,9 @@
 namespace Lunaria.Game.Inventory;
 
 /// <summary>Cooldowns use Unix seconds and are keyed by CD type, not item ID.</summary>
-public sealed class ItemCooldownManager
+public sealed class ItemCooldownManager(TimeProvider? timeProvider = null)
 {
+    private readonly TimeProvider _time = timeProvider ?? TimeProvider.System;
     private readonly Dictionary<uint, DateTimeOffset> _readyAt = [];
 
     public bool IsDirty { get; private set; }
@@ -10,7 +11,7 @@ public sealed class ItemCooldownManager
     public void Load(IEnumerable<(uint CdType, long ReadyUnix)> persisted)
     {
         _readyAt.Clear();
-        var now = DateTimeOffset.UtcNow;
+        var now = _time.GetUtcNow();
 
         foreach (var (cdType, readyUnix) in persisted)
         {
@@ -24,7 +25,7 @@ public sealed class ItemCooldownManager
 
     public IReadOnlyList<(uint CdType, long ReadyUnix)> Active()
     {
-        var now = DateTimeOffset.UtcNow;
+        var now = _time.GetUtcNow();
         List<(uint, long)> active = [];
 
         foreach (var (cdType, readyAt) in _readyAt.ToArray())

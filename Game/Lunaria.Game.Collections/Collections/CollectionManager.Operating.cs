@@ -30,11 +30,14 @@ public sealed partial class CollectionManager
 
     private bool TryGetOperable(ulong uniq, out CollectionState node, out int code)
     {
-        if (!_nodes.TryGetValue(uniq, out node!))
+        if (Get(uniq) is not {} found)
         {
+            node = null!;
             code = (int)EnmTextCode.EnmTextCollectionNoData;
             return false;
         }
+
+        node = found;
 
         if (node.Status != EnmCollectionStatus.EcsCanCollect)
         {

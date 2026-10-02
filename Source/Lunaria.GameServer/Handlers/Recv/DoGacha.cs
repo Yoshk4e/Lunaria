@@ -17,8 +17,8 @@ public sealed class HandleDoGacha(ILogger<HandleDoGacha> logger)
         if (!ctx.Player.HasActiveRole)
             return Reject((int)EnmTextCode.EnmTextNotAccLogin);
 
-        var now = DateTimeOffset.UtcNow;
-        var (code, delivery) = ctx.Player.DoGacha(req.PoolId, req.IsMult, now, ctx.Player.GachaRng);
+        var now = ctx.Player.UtcNow;
+        var (code, delivery) = ctx.Player.DoGacha(req.PoolId, req.IsMult, now, ctx.Player.RandomSources.Gacha);
 
         if (code != 0 || delivery is null)
             return Reject(code);

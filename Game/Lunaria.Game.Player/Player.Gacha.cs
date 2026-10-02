@@ -26,6 +26,7 @@ public sealed partial class Player
         Random rng
     )
     {
+        using var operationTime = BeginOperation(now);
         if (!Gacha.TryGetBanner(poolId, out var banner) || banner is null)
         {
             Log.Flag("gacha refused, pool {PoolId} has no banner", poolId);

@@ -180,7 +180,9 @@ public sealed partial class TaskManager
 
                 foreach (var (type, actionId) in InstantMarkersFor(mapId))
                 {
-                    if (ReportAction(type, actionId, progress: 1) is (0, { } result))
+                    // A marker already met only echoes an acknowledgement. Repeating it would never drain the batch
+                    // while the step waits on its other actions.
+                    if (ReportAction(type, actionId, progress: 1) is (0, { Recorded: true } or { StepAdvanced: true }) and (_, { } result))
                     {
                         results.Add(result);
                         batch.Add(result);

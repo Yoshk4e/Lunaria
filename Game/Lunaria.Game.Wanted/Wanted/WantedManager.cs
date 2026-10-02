@@ -461,7 +461,15 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
         return 0;
     }
 
-    public bool CanRecover() => _run is not null;
+    public bool CanRecover() => _run is {} run && !run.Current.EventDone
+        && assets.Wanted.Event(run.Current.EventId) is {} row
+        // The rest encounter enables recovery via its auxiliary NPC task (event 8, task/NPC 11).
+        && row.EventStartAddTask.Any(id => assets.Wanted.Npc(id)?.NpcType == (uint)WantedNpcType.RecoverHp);
+
+    public bool MatchesBattle(uint battlefieldId) => _run is {} run && !run.Current.EventDone
+        && assets.Wanted.Event(run.Current.EventId) is {} row && IsBattleType(row.WantedEventType)
+        && assets.Wanted.Npc(run.Current.EventId) is { NpcType: (uint)WantedNpcType.NormalBattle
+            or (uint)WantedNpcType.EndlessBattle, Params: > 0 } npc && npc.Params == battlefieldId;
 
     public void SetResetPoint(uint id, (int X, int Y, int Z) position)
     {

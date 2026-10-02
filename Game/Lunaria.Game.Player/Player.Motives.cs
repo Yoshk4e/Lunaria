@@ -7,8 +7,31 @@ namespace Lunaria.Game.Player;
 
 public sealed partial class Player
 {
+    private void RetryStoredMotives(DateTimeOffset now)
+    {
+        if (Motives.Count >= MotiveManager.MaxMotives) return;
+        var stored = Bag.All().Where(stack => assets.Items.Get(stack.ItemId) is
+                { AutoUse: true, UseType: (int)ItemUseType.AddMotive, Param.Count: > 0 })
+            .Select(stack => new ItemGrant(stack.ItemId, stack.Count)).ToArray();
+        var changed = false;
+        foreach (var grant in stored)
+        {
+            uint added = 0;
+            var motiveId = assets.Items.Get(grant.ItemId)!.Param[0];
+            while (added < grant.Count && Motives.Add(Guid, motiveId, (ulong)now.ToUnixTimeSeconds()).Ok)
+                added++;
+            if (added == 0) continue;
+            Bag.Remove(grant.ItemId, added);
+            changed = true;
+            // The item was counted when stored. Count equipment acquisition now.
+            Gameplay.Publish(new MotiveAcquired(motiveId, added));
+        }
+        if (changed) Gameplay.Publish(new BagChanged(EnmItemReason.EnmItemChangeNormal));
+    }
+
     public int EquipMotive(ulong motiveUniq, ulong charInstId)
     {
+        using var operationTime = BeginOperation();
         if (Motives.Get(motiveUniq) is null)
             return (int)EnmTextCode.EnmTextMotiveUidInvalid;
 
@@ -41,6 +64,7 @@ public sealed partial class Player
 
     public int UnequipMotive(ulong motiveUniq, ulong charInstId)
     {
+        using var operationTime = BeginOperation();
         if (Motives.Get(motiveUniq) is null)
             return (int)EnmTextCode.EnmTextMotiveUidInvalid;
 
@@ -75,6 +99,7 @@ public sealed partial class Player
 
     public int SetMotiveLock(ulong motiveUniq, bool locked)
     {
+        using var operationTime = BeginOperation();
         var code = Motives.SetLocked(motiveUniq, locked);
         if (code == 0) Gameplay.Publish(new BagChanged(EnmItemReason.EnmItemChangeMotiveLockOrUnlock));
         return code;
@@ -86,6 +111,7 @@ public sealed partial class Player
         IReadOnlyList<ulong> feedUniqs
     )
     {
+        using var operationTime = BeginOperation();
         if (Motives.Get(motiveUniq) is not {} target)
             return MotiveLevelOutcome.Rejected((int)EnmTextCode.EnmTextMotiveUidInvalid);
 
@@ -176,6 +202,7 @@ public sealed partial class Player
         }
 
         var recycle = Motives.ExpToMaterials(granted.Dropped);
+        RetryStoredMotives(UtcNow);
         Gameplay.Publish(new BagChanged(EnmItemReason.EnmItemChangeMotiveLevelUp));
         return new MotiveLevelOutcome(Code: 0, oldLevel, granted.NewLevel, recycle) {
             Delivery = recycle.Count > 0 ? GrantRewards(recycle, EnmItemReason.EnmItemChangeMotiveLevelUpRecycle) : RewardDelivery.Empty
@@ -184,6 +211,7 @@ public sealed partial class Player
 
     public MotiveBreakOutcome BreakMotive(ulong motiveUniq)
     {
+        using var operationTime = BeginOperation();
         var code = Motives.CheckBreak(motiveUniq, Progress.WorldLevel);
 
         if (code != 0)
@@ -207,13 +235,16 @@ public sealed partial class Player
 
     public MotiveRefineOutcome RefineMotive(ulong motiveUniq, IReadOnlyList<ulong> feeds)
     {
+        using var operationTime = BeginOperation();
         var (code, oldRefine, newRefine) = Motives.RefineUp(motiveUniq, feeds);
+        if (code == 0) RetryStoredMotives(UtcNow);
         if (code == 0) Gameplay.Publish(new BagChanged(EnmItemReason.EnmItemChangeMotiveRefineUp));
         return new MotiveRefineOutcome(code, oldRefine, newRefine);
     }
 
     public MotiveDecomposeOutcome DecomposeMotives(IReadOnlyList<ulong> uniqs)
     {
+        using var operationTime = BeginOperation();
         var (code, removed) = Motives.Decompose(uniqs);
 
         if (code != 0)
@@ -227,6 +258,7 @@ public sealed partial class Player
         }
         var exp = total > uint.MaxValue ? uint.MaxValue : (uint)total;
         var recycle = Motives.ExpToMaterials(exp);
+        RetryStoredMotives(UtcNow);
         if (recycle.Count == 0) Gameplay.Publish(new BagChanged(EnmItemReason.EnmItemChangeDecomposeMotives));
         return new MotiveDecomposeOutcome(Code: 0, recycle) {
             Delivery = recycle.Count > 0 ? GrantRewards(recycle, EnmItemReason.EnmItemChangeDecomposeMotives) : RewardDelivery.Empty

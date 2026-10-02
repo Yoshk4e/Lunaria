@@ -16,7 +16,7 @@ public sealed class HandleEnterBattle
             });
 
         return Task.FromResult(new SCEnterBattle {
-            Ret = ctx.Player.Battles.Enter(req.BattleType, req.BattleFieldId, req.BattleInstId, req.MonsterFromType),
+            Ret = ctx.Player.EnterBattle(req.BattleType, req.BattleFieldId, req.BattleInstId, req.MonsterFromType),
             BattleType = req.BattleType,
             BattleFieldId = req.BattleFieldId
         });

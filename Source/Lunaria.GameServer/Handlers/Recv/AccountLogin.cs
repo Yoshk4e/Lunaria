@@ -13,11 +13,10 @@ public sealed class HandleAccountLogin(
     ILogger<HandleAccountLogin> logger
 )
 {
-    private static long UnixNow() => DateTimeOffset.UtcNow.ToUnixTimeSeconds();
-
     [GameHandler(EClientServerCmds.CsAccountLogin)]
     public async Task<SCAccountLogin> OnPacket(NetContext ctx, CSAccountLogin req)
     {
+        using var operationTime = ctx.Player.BeginOperation();
         var attempt = LoginAttempt.FromRequest(req);
 
         logger.LogInformation(
@@ -62,7 +61,7 @@ public sealed class HandleAccountLogin(
         }
 
         var bound = ctx.Player.Account.Bind(
-            account.Id, account.AccountKey, account.Userid, DateTimeOffset.UtcNow);
+            account.Id, account.AccountKey, account.Userid, ctx.Player.UtcNow);
 
         if (bound != 0)
         {
@@ -81,7 +80,7 @@ public sealed class HandleAccountLogin(
             Result = 0,
             ConnectIdentifyId = ctx.Player.SessionId,
             WorldId = 1,
-            Timestamp = UnixNow(),
+            Timestamp = ctx.Player.UtcNow.ToUnixTimeSeconds(),
             BriefRole = ctx.Player.Roles.Newest() is {} newest ? new RoleListBriefInfo { RoleId = (ulong)newest.Id } : null,
             Userid = ByteString.CopyFromUtf8(ctx.Player.Account.Userid)
         };

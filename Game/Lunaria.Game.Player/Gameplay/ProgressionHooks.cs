@@ -183,7 +183,7 @@ internal sealed class ProgressionHooks :
     {
         foreach (var id in p.Assets.Unlocks.EventsOfSubType(GlobalEventSub.PassDay))
         {
-            EnsureAtLeast(p, changes, id, (uint)p.SignIn.SignedDays.Count);
+            EnsureAtLeast(p, changes, id, p.SignIn.AttendanceDays);
         }
     }
 

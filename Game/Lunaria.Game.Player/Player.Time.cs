@@ -10,6 +10,7 @@ public sealed partial class Player
 
     public IReadOnlyList<IMessage> AdvanceTime(DateTimeOffset now)
     {
+        using var operationTime = BeginOperation(now);
         // Moving the system clock backward must not reset daily counters.
         if (_lastTimeSettlement is {} previous && now < previous) return [];
         _lastTimeSettlement = now;
@@ -21,8 +22,12 @@ public sealed partial class Player
         var expiredMail = Mails.SweepExpired(now.ToUnixTimeSeconds());
         if (expiredMail.Count > 0) messages.Add(new SCMailAddDelNft { DelMailIds = { expiredMail } });
         RetryPendingRewardMail(now);
+        RetryStoredCreatures();
+        RetryStoredMotives(now);
         if (DailyMissions.AdvanceTime(now))
             messages.Add(new SCDailyMissionNtf { Data = DailyMissions.ToDailyMissionData(now) });
+
+        if (RespawnedCollections(now) is {} respawned) messages.Add(respawned);
 
         var houses = DueHouseIncomeAnnouncements(now);
         if (houses.Count > 0) messages.Add(new SCHouseIncomeNtf { HouseInfoList = { houses } });

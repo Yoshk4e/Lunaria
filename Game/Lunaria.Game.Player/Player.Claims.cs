@@ -8,6 +8,7 @@ public sealed partial class Player
 {
     public (int Code, RewardDelivery Delivery) ClaimAchievementRewards(IReadOnlyList<uint> ids)
     {
+        using var operationTime = BeginOperation();
         var code = Achievements.CheckClaim(ids);
         if (code != 0) return (code, RewardDelivery.Empty);
         var grants = ids.SelectMany(Achievements.RewardOf).ToArray();
@@ -17,6 +18,7 @@ public sealed partial class Player
 
     public (int Code, uint Level, IReadOnlyList<ItemGrant> Items, RewardDelivery Delivery) ClaimBattlePassAwards(uint passId)
     {
+        using var operationTime = BeginOperation();
         if (!BattlePasses.Exists(passId))
             return ((int)EnmTextCode.EnmTextBattlePassNotExist, 0, [], RewardDelivery.Empty);
         var levels = BattlePasses.ClaimableLevels(passId);
@@ -34,6 +36,7 @@ public sealed partial class Player
 
     public RewardDelivery ClaimDailyMissionRewards()
     {
+        using var operationTime = BeginOperation();
         var deliveries = new List<RewardDelivery>();
         foreach (var reward in DailyMissions.EligibleRewards())
         {
@@ -46,6 +49,7 @@ public sealed partial class Player
 
     public (int Code, IReadOnlyList<uint> Values, RewardDelivery Delivery) ClaimRegionRewards(ulong subRegionId)
     {
+        using var operationTime = BeginOperation();
         var eligible = RegionProgress.EligibleRewards(subRegionId);
         if (eligible.Count == 0)
             return ((int)EnmTextCode.EnmTextSubRegionNoAvailableRewards, [], RewardDelivery.Empty);
@@ -57,12 +61,14 @@ public sealed partial class Player
 
     public (int Code, IReadOnlyList<ItemGrant> Items, RewardDelivery Delivery) ClaimSignInReward(uint activityId, uint day)
     {
+        using var operationTime = BeginOperation();
         var (code, items) = SignIn.Claim(activityId, day);
         return (code, items, code == 0 ? GrantRewards(items, EnmItemReason.EnmItemChangeSigninActivity) : RewardDelivery.Empty);
     }
 
     public (IReadOnlyList<uint> Changed, RewardDelivery Delivery) ReadGuides(IReadOnlyList<uint> ids)
     {
+        using var operationTime = BeginOperation();
         var changed = Guides.MarkRead(ids);
 
         if (changed.Count == 0)
@@ -77,6 +83,6 @@ public sealed partial class Player
     private IReadOnlyList<ItemGrant> BrowseRewardsOf(uint guideId)
     {
         var dropId = Assets.Guides.BrowseRewardOf(guideId);
-        return Assets.Drops.Exists(dropId) ? Assets.Drops.Bundle(dropId) : Assets.DropTable.Roll(dropId, GachaRng);
+        return Assets.Drops.Exists(dropId) ? Assets.Drops.Bundle(dropId) : Assets.DropTable.Roll(dropId, RandomSources.Loot);
     }
 }

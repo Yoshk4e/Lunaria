@@ -16,7 +16,7 @@ public sealed class HandleHouseIncome
         await ctx.NotifyAsync(delivery.Presentation).ConfigureAwait(false);
 
         var reply = new SCResClaimHouseIncome { Result = 0 };
-        reply.HouseInfoList.AddRange(ctx.Player.Houses.ToHouseInfoList(DateTimeOffset.UtcNow));
+        reply.HouseInfoList.AddRange(ctx.Player.Houses.ToHouseInfoList(ctx.Player.UtcNow));
         return reply;
     }
 }

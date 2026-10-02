@@ -32,7 +32,7 @@ public sealed class RoleSaveRepository(
 
         try
         {
-            document = JsonSerializer.Deserialize<RoleSaveDocument>(blob, SaveJson.Options);
+            document = RoleSaveMigrations.Read(blob, player.UtcNow);
         }
         catch (JsonException ex)
         {
@@ -60,11 +60,12 @@ public sealed class RoleSaveRepository(
 
         if (row is null)
         {
-            db.RoleSaves.Add(new RoleSave { RoleId = roleId, State = state, UpdatedAt = DateTime.UtcNow });
+            db.RoleSaves.Add(new RoleSave { RoleId = roleId, State = state, UpdatedAt = player.UtcNow.UtcDateTime });
         } else
         {
+            RoleSaveMigrations.CheckVersion(row.State);
             row.State = state;
-            row.UpdatedAt = DateTime.UtcNow;
+            row.UpdatedAt = player.UtcNow.UtcDateTime;
         }
 
         await db.SaveChangesAsync(cancellationToken);

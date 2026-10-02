@@ -19,7 +19,7 @@ public sealed class HandleDungeonsFullData
 
         return Task.FromResult(new SCDungeonsFullData {
             Result = 0,
-            Data = ctx.Player.Dungeons.ToFullData(DateTimeOffset.UtcNow)
+            Data = ctx.Player.Dungeons.ToFullData(ctx.Player.UtcNow)
         });
     }
 }
