@@ -1,3 +1,4 @@
+using Lunaria.Game.Logging;
 using Lunaria.Game.Player.Gameplay;
 using Msg;
 
@@ -49,16 +50,28 @@ public sealed partial class Player
 
         var level = assets.Maps.Map(node.Block)?.LevelPath;
         if (node.Block != Map.MapId && (string.IsNullOrEmpty(level) || level != assets.Maps.Map(Map.MapId)?.LevelPath))
+        {
+            Log.Flag("collection {Uniq} refused: block {Block} is not on map {Map} ({Phase})", uniq, node.Block, Map.MapId, Map.Phase);
             return ((int)EnmTextCode.EnmTextCollectionCondUnmeet, null);
+        }
 
-        var range = assets.Collections.Radius(node.Cfg, assets.GlobalConfig.UnlockCollectionRange);
+        // P_CollectionTable.Radius is the client's interaction sphere, but objects are also absorbed from afar (a
+        // mailbox was taken at 8 m) and the synced position lags half a second, so UnlockCollectionRange is the floor.
+        var range = Math.Max(
+            assets.Collections.Radius(node.Cfg, assets.GlobalConfig.UnlockCollectionRange),
+            assets.GlobalConfig.UnlockCollectionRange);
         var at = Map.Position;
         var dx = (double)at.X - node.X;
         var dy = (double)at.Y - node.Y;
         var dz = (double)at.Z - node.Z;
 
         if (dx * dx + dy * dy + dz * dz > (double)range * range)
+        {
+            Log.Flag(
+                "collection {Uniq} refused: player at {Player} ({Phase}), object at {Object}, distance {Distance:F0} > range {Range}",
+                uniq, at, Map.Phase, (node.X, node.Y, node.Z), Math.Sqrt(dx * dx + dy * dy + dz * dz), range);
             return ((int)EnmTextCode.EnmTextCollectionCondUnmeet, null);
+        }
 
         if (op == EnmCollectionOp.EnCollectionOpDestroy)
         {
@@ -75,7 +88,10 @@ public sealed partial class Player
 
         // A missing definition is not an empty random roll. Keep the node and quota intact.
         if (!assets.Collections.CanResolveRewards(node.Cfg))
+        {
+            Log.Flag("collection {Uniq} refused: rewards of template {Cfg} cannot be resolved", uniq, node.Cfg);
             return ((int)EnmTextCode.EnmTextCollectionCondUnmeet, null);
+        }
 
         var quota = Limits.Consume(assets.Collections.RewardLimitGroup(node.Cfg), count: 1, now);
 

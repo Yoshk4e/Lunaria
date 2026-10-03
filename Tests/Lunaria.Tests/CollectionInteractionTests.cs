@@ -46,6 +46,21 @@ public sealed class CollectionInteractionTests(BundledGameplayFixture fixture)
         Assert.Empty(player.Limits.Entries);
     }
 
+    [Fact]
+    public void SmallInteractionRadius_StillAcceptsAnAbsorbWithinTheUnlockRange()
+    {
+        var placed = Assets.Collections.WorldObjects(0).First(row =>
+            Assets.Collections.Get(row.TemplateId) is { Radius: > 0 } template
+            && template.Radius < Assets.GlobalConfig.UnlockCollectionRange
+            && row.CollectUnlockType == 0 && Assets.Collections.CanResolveRewards(row.TemplateId));
+        var player = At(placed);
+        var position = player.Map.Position;
+        player.Map.Load(placed.BlockId, Assets.Starter.Savepoint, [], [],
+            (position.X + Assets.GlobalConfig.UnlockCollectionRange - 1, position.Y, position.Z));
+
+        Assert.Equal(0, player.Collect(placed.Id, EnmCollectionOp.EnCollectionOpCollect, Now).Code);
+    }
+
     [Theory]
     [InlineData(EnmCollectionOp.EnCollectionOpCollect)]
     [InlineData(EnmCollectionOp.EnCollectionOpDestroy)]
