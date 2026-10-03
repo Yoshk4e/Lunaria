@@ -448,5 +448,7 @@ data/
 config.json
 *.db
 game_server.db
+*.db-wal
+*.db-shm
 hotupdate/
 docs/*
