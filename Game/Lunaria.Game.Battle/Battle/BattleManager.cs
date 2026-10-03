@@ -35,7 +35,7 @@ public sealed partial class BattleManager : TrackedObject
     [Untracked]
     public BattleSession? Current { get; private set; }
 
-    public IReadOnlyCollection<long> PatrolCooldown => _patrolCooldown.Keys;
+    public IReadOnlyCollection<long> PatrolCooldown => _patrolCooldown.Keys.ToArray();
 
     public IReadOnlyDictionary<long, DateTimeOffset> PatrolCooldownEnds => _patrolCooldown;
 
