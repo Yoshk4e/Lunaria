@@ -27,6 +27,12 @@ public sealed class HandleLeaveBattle
                 null
         }).ConfigureAwait(false);
 
+        // Sent right away: the client shows battle loot (reason 7) in its side panel without waiting for a later sync.
+        if (outcome.BattleReward.HasChanges)
+            await ctx.NotifyAsync(outcome.BattleReward.Presentation).ConfigureAwait(false);
+
+        await ctx.NotifyAsync(outcome.Notifications).ConfigureAwait(false);
+
         if (outcome.WantedStepCompleted)
         {
             if (outcome.WantedReward.HasChanges)

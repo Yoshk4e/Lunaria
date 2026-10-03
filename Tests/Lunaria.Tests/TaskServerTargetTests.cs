@@ -122,7 +122,7 @@ public sealed class TaskServerTargetTests(BundledGameplayFixture fixture)
             {
                 Assert.Equal(0, player.Map.BeginEnter(100001001001, 0).Code);
                 Assert.Equal(0, player.Map.FinishEnter());
-                player.Battles.RecordKills([12020016]);
+                player.Battles.StartPatrolCooldown(12020016, DateTimeOffset.MaxValue);
             }
             Assert.Empty(player.SettleServerTargets());
             Completed(player, action);
@@ -147,7 +147,7 @@ public sealed class TaskServerTargetTests(BundledGameplayFixture fixture)
             var effects = player.Tasks.AppliedEffects.ToArray();
             AtAction(player, action);
             player.Tasks.LoadAppliedEffects(effects);
-            if (target == ServerTarget.ResetMonster) player.Battles.RecordKills([12020016]);
+            if (target == ServerTarget.ResetMonster) player.Battles.StartPatrolCooldown(12020016, DateTimeOffset.MaxValue);
             var replay = player.ReportTaskAction(action.TaskType, action.Id, 1);
             Assert.Equal(0, replay.Code);
             Assert.True(replay.Outcome!.Progress.Recorded);

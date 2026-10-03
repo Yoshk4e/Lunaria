@@ -30,6 +30,7 @@ public sealed partial class Player
             messages.Add(new SCDailyMissionNtf { Data = DailyMissions.ToDailyMissionData(now) });
 
         if (RespawnedCollections(now) is {} respawned) messages.Add(respawned);
+        messages.AddRange(RespawnedPatrols(now));
 
         var houses = DueHouseIncomeAnnouncements(now);
         if (houses.Count > 0) messages.Add(new SCHouseIncomeNtf { HouseInfoList = { houses } });

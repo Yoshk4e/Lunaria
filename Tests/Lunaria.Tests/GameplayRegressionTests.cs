@@ -596,7 +596,7 @@ public sealed class GameplayRegressionTests(BundledGameplayFixture fixture)
         Assert.Equal(expected: 0, player.Map.FinishEnter());
         Assert.NotEmpty(player.SettleServerTargets());
         AtAction(player, actionId: 1100900301);
-        player.Battles.RecordKills([12020016]);
+        player.Battles.StartPatrolCooldown(12020016, DateTimeOffset.MaxValue);
         player.ReportTaskAction(taskType: 1, actionId: 1100900301, progress: 1);
         Assert.DoesNotContain(expected: 12020016L, player.Battles.PatrolCooldown);
         Assert.True(TaskManager.MatchesMap("100.0", player.Map.MapId));

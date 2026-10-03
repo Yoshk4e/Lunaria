@@ -48,7 +48,8 @@ internal static class RoleSaveMapper
         ChargePurchases = CaptureChargePurchases(player),
         Dungeons = CaptureDungeons(player),
         Wanted = CaptureWanted(player),
-        WantedRun = CaptureWantedRun(player)
+        WantedRun = CaptureWantedRun(player),
+        PatrolCooldowns = CapturePatrolCooldowns(player)
     };
 
     internal static readonly SaveSection[] Sections = [
@@ -131,7 +132,9 @@ internal static class RoleSaveMapper
         new("wanted", player => System.Text.Json.JsonSerializer.Serialize(CaptureWanted(player), SaveJson.Options),
             player => player.Changes.IsChanged("Wanted")),
         new("wanted_run", player => System.Text.Json.JsonSerializer.Serialize(CaptureWantedRun(player), SaveJson.Options),
-            player => player.Changes.IsChanged("Wanted"))
+            player => player.Changes.IsChanged("Wanted")),
+        new("patrol_cooldowns", player => System.Text.Json.JsonSerializer.Serialize(CapturePatrolCooldowns(player), SaveJson.Options),
+            player => player.Changes.IsChanged("Battles"))
     ];
 
     internal static int CaptureSchemaVersion(Player player) =>
@@ -514,6 +517,13 @@ internal static class RoleSaveMapper
     internal static RoleSaveDocument.WantedRunSave? CaptureWantedRun(Player player) =>
         ToWantedRunSave(player.Wanted.CaptureRun());
 
+    internal static IReadOnlyList<RoleSaveDocument.PatrolCooldownSave> CapturePatrolCooldowns(Player player) =>
+        player.Battles.PatrolCooldownEnds
+            .Select(pair => new RoleSaveDocument.PatrolCooldownSave {
+                ClusterId = pair.Key,
+                UntilUnix = pair.Value.ToUnixTimeSeconds()
+            })
+            .ToList();
 
     /// <summary>Load the roster before resolving saved team and talent instance IDs.</summary>
     public static void Apply(Player player, RoleSaveDocument document)
@@ -670,6 +680,8 @@ internal static class RoleSaveMapper
         player.Wanted.Load(
             document.Wanted.Select(row => (row.EntryId, row.Count)),
             FromWantedRunSave(document.WantedRun));
+        player.Battles.LoadPatrolCooldowns(document.PatrolCooldowns
+            .Select(row => (row.ClusterId, DateTimeOffset.FromUnixTimeSeconds(row.UntilUnix))));
         player.RestoreWantedTaskStep();
         player.LoadTemporaryTeams(document.TemporarySelections, document.ActiveTemporaryTeam, document.SuspendedStoryTeam);
     }

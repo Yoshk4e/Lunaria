@@ -1,3 +1,4 @@
+using Lunaria.Common.Tracking;
 using Lunaria.Game.Logging;
 using Microsoft.Extensions.Logging;
 using Msg;
@@ -15,19 +16,67 @@ public sealed record BattleSession(
 
 public sealed record BattleSettlement(int Result, bool Accepted, bool Begun, bool Victory);
 
-public sealed class BattleManager
+public sealed partial class BattleManager : TrackedObject
 {
     private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Battle");
 
     private const int MinType = (int)EBattleType.EnmBattleTypeExpose;
     private const int MaxType = (int)EBattleType.EnmBattleTypeHorde;
-    private readonly SortedSet<long> _patrolCooldown = [];
+    /// <summary>
+    /// CBT1 patrol clusters carry no RefreshConfigId, so a defeated cluster comes back after this fixed delay.
+    /// </summary>
+    public static readonly TimeSpan PatrolRespawnDelay = TimeSpan.FromSeconds(300);
 
+    // Static patrol cluster id (the TemplateID the client reports as battle_inst_id) to the end of its cooldown.
+    private readonly TrackedSortedDictionary<long, DateTimeOffset> __tracked_patrolCooldown = [];
+    [Tracked]
+    private partial TrackedSortedDictionary<long, DateTimeOffset> _patrolCooldown { get; }
+
+    [Untracked]
     public BattleSession? Current { get; private set; }
 
-    public IReadOnlyCollection<long> PatrolCooldown => _patrolCooldown;
+    public IReadOnlyCollection<long> PatrolCooldown => _patrolCooldown.Keys.ToArray();
 
-    public void ResetMonster(long monsterId) => _patrolCooldown.Remove(monsterId);
+    public IReadOnlyDictionary<long, DateTimeOffset> PatrolCooldownEnds => _patrolCooldown;
+
+    public void LoadPatrolCooldowns(IEnumerable<(long Cluster, DateTimeOffset Until)> persisted)
+    {
+        _patrolCooldown.Clear();
+
+        foreach (var (cluster, until) in persisted)
+        {
+            if (cluster > 0 && cluster <= uint.MaxValue)
+                _patrolCooldown[cluster] = until;
+        }
+
+        AcceptLoadedState();
+    }
+
+    public bool ResetMonster(long monsterId)
+    {
+        if (!_patrolCooldown.Remove(monsterId))
+            return false;
+
+        return true;
+    }
+
+    public void StartPatrolCooldown(long cluster, DateTimeOffset until)
+    {
+        _patrolCooldown[cluster] = until;
+    }
+
+    /// <summary>Clusters whose cooldown ended by <paramref name="now"/>, removed from the cooldown list.</summary>
+    public IReadOnlyList<long> ExpirePatrolCooldowns(DateTimeOffset now)
+    {
+        var expired = _patrolCooldown.Where(pair => pair.Value <= now).Select(pair => pair.Key).ToList();
+
+        foreach (var cluster in expired)
+        {
+            _patrolCooldown.Remove(cluster);
+        }
+
+        return expired;
+    }
 
     public int Enter(EBattleType type, uint battleFieldId, uint battleInstId, EnmMonsterFromType monsterFrom)
     {
@@ -123,14 +172,6 @@ public sealed class BattleManager
         Log.State("battle settled with type {BattleType} field {BattleFieldId} instance {BattleInstId}, started {Started}, requested victory {RequestedVictory}, accepted victory {Victory}",
             type, battleFieldId, running.BattleInstId, begun, victory, begun && victory);
         return new BattleSettlement(0, true, begun, begun && victory);
-    }
-
-    public void RecordKills(IEnumerable<long> monsters)
-    {
-        foreach (var monster in monsters)
-        {
-            _patrolCooldown.Add(monster);
-        }
     }
 
     private static int Validate(EBattleType type)
