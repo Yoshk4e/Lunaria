@@ -5,17 +5,20 @@ namespace Lunaria.Game.Characters;
 
 public sealed partial class CharacterManager : TrackedObject
 {
-    /// <summary>MAXHP in table units, with the Motive and talent bonuses the client shows.</summary>
+    /// <summary>MAXHP in table units, with the break, Motive and talent bonuses the client shows.</summary>
     public int MaxHp(ulong instId)
     {
         if (Get(instId) is not {} character)
             return 0;
 
+        var maxHp = assets.Inside.Attr.Maxhp;
+        var unit = assets.Inside.Scale(maxHp, 1);
         var baseMaxHp = assets.Attribs.MaxHp(
             character.CharacterId,
-            assets.Characters.DevelopAttributeId(character.CharacterId, character.Level));
-        var bonus = Bonuses(instId).GetValueOrDefault(assets.Inside.Attr.Maxhp);
-        return (int)Math.Clamp((baseMaxHp + bonus.Add) * (10_000 + bonus.Multi) / 10_000, 0, int.MaxValue);
+            assets.Characters.DevelopAttributeId(character.CharacterId, character.Level),
+            assets.Characters.BreakDevelopAttributeId(character.CharacterId, character.BreakLevel));
+        var (_, final) = WithBonus(maxHp, baseMaxHp * unit, Bonuses(instId).GetValueOrDefault(maxHp));
+        return Math.Max(final / unit, 0);
     }
 
     public int PermanentLiquidMax(ulong instId) =>

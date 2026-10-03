@@ -30,4 +30,13 @@ public record PDevelopAttributeTable : TableRow
     public int AtkPursueBreakDef { get; init; }
     public int AtkPursueCatalyst { get; init; }
     public int AtkAbnElemMaster { get; init; }
+    public int AtkAbnElemAccumEfficiency { get; init; }
+    public int AtkFireDamageAddRate { get; init; }
+    public int AtkIceDamageAddRate { get; init; }
+    public int AtkThunderDamageAddRate { get; init; }
+    public int AtkGravityDamageAddRate { get; init; }
+    public int AtkRadiationDamageAddRate { get; init; }
+    public int AtkSilverDamageAddRate { get; init; }
+    public int AtkBlackIronDamageAddRate { get; init; }
+    public int LiquidAbsorbRate { get; init; }
 }
