@@ -1,9 +1,11 @@
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
 
 namespace Lunaria.Game.Mail;
 
 /// <summary>BeginClaim returns the rewards. ResolveClaim keeps anything that could not be delivered.</summary>
-public sealed partial class MailManager
+public sealed partial class MailManager : TrackedObject
 {
     public bool MarkRead(uint mailId)
     {
@@ -14,17 +16,23 @@ public sealed partial class MailManager
             return true;
 
         _mails[mailId] = entry with { Open = true };
-        IsDirty = true;
+
         return true;
     }
 
     public MailClaim BeginClaim(uint mailId)
     {
         if (!_mails.TryGetValue(mailId, out var entry))
+        {
+            Log.Stage("mail claim refused for missing mail {MailId}", mailId);
             return MailClaim.Unknown(mailId);
+        }
 
         if (!entry.HasUnclaimed)
+        {
+            Log.Stage("mail claim ignored for mail {MailId} with no remaining attachments", mailId);
             return MailClaim.AlreadyReceived(mailId);
+        }
 
         return MailClaim.Granted(mailId, entry.Items.ToList());
     }
@@ -38,17 +46,19 @@ public sealed partial class MailManager
 
         if (next.SequenceEqual(entry.Items))
         {
+            Log.Stage("mail claim for mail {MailId} delivered no attachments, retaining {Count} lines", mailId, next.Count);
             if (!entry.Open)
             {
                 _mails[mailId] = entry with { Open = true };
-                IsDirty = true;
+
             }
 
             return true;
         }
 
         _mails[mailId] = entry with { Items = next, Open = true };
-        IsDirty = true;
+
+        Log.Stage("mail claim resolved for mail {MailId}, attachment lines before {BeforeCount}, remaining {RemainingCount}", mailId, entry.Items.Count, next.Count);
         return true;
     }
 
@@ -57,7 +67,6 @@ public sealed partial class MailManager
         if (!_mails.Remove(mailId))
             return false;
 
-        IsDirty = true;
         return true;
     }
 
@@ -76,7 +85,7 @@ public sealed partial class MailManager
         {
             _mails.Remove(mailId);
         }
-        IsDirty = true;
+
         return doomed;
     }
 

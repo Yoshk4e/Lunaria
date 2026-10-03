@@ -1,15 +1,18 @@
+using Lunaria.Common.Tracking;
 using Lunaria.Common;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
 using Msg;
 
 namespace Lunaria.Game.Mail;
 
-public sealed partial class MailManager
+public sealed partial class MailManager : TrackedObject
 {
     public (MailEntry? Added, uint? EvictedMailId) SendFromTemplate(
         GuidManager guid,
         uint templateId,
-        long nowUnixSec
+        long nowUnixSec,
+        IReadOnlyList<string>? templateContentParams = null
     )
     {
         var template = assets.Mail.Template(templateId);
@@ -24,14 +27,15 @@ public sealed partial class MailManager
             template.Important,
             template.Attachments,
             nowUnixSec,
-            ExpireOf(nowUnixSec, template.ExpirationDays));
+            ExpireOf(nowUnixSec, template.ExpirationDays), templateContentParams);
     }
 
     public (MailEntry? Added, uint? EvictedMailId) SendFromTemplate(
         GuidManager guid,
         uint templateId,
         IReadOnlyList<ItemGrant> attachments,
-        long nowUnixSec
+        long nowUnixSec,
+        IReadOnlyList<string>? templateContentParams = null
     )
     {
         var template = assets.Mail.Template(templateId);
@@ -46,7 +50,7 @@ public sealed partial class MailManager
             template.Important,
             attachments,
             nowUnixSec,
-            ExpireOf(nowUnixSec, template.ExpirationDays));
+            ExpireOf(nowUnixSec, template.ExpirationDays), templateContentParams);
     }
 
     public (MailEntry? Added, uint? EvictedMailId) SendSystem(
@@ -54,16 +58,20 @@ public sealed partial class MailManager
         IReadOnlyList<ItemGrant> attachments,
         bool important,
         long nowUnixSec,
+        IReadOnlyList<MailText> contents,
         uint expireTime = 0
-    ) =>
-        Insert(
+    )
+    {
+        if (contents.Count == 0) return (null, null);
+        return Insert(
             guid,
             templateId: 0,
             (uint)EMailType.EnmMailTypeSys,
             important,
             attachments,
             nowUnixSec,
-            expireTime);
+            expireTime, contents: contents);
+    }
 
     public IReadOnlyList<uint> SweepExpired(long nowUnixSec)
     {
@@ -80,7 +88,8 @@ public sealed partial class MailManager
         {
             _mails.Remove(mailId);
         }
-        IsDirty = true;
+
+        Log.Stage("mail sweep removed {Count} expired messages at {Now}", expired.Count, nowUnixSec);
         return expired;
     }
 
@@ -91,7 +100,9 @@ public sealed partial class MailManager
         bool important,
         IReadOnlyList<ItemGrant> attachments,
         long nowUnixSec,
-        uint expireTime
+        uint expireTime,
+        IReadOnlyList<string>? templateContentParams = null,
+        IReadOnlyList<MailText>? contents = null
     )
     {
         uint? evicted = null;
@@ -99,7 +110,10 @@ public sealed partial class MailManager
         if (_mails.Count >= BoxCap)
         {
             if (!TryEvictOldest(out var evictedId))
+            {
+                Log.Flag("mail delivery refused for template {TemplateId}, mailbox count {Count} at capacity {Capacity} with no evictable mail", templateId, _mails.Count, BoxCap);
                 return (null, null);
+            }
 
             evicted = evictedId;
         }
@@ -117,10 +131,14 @@ public sealed partial class MailManager
             Open = false,
             Items = attachments.Where(grant => grant.ItemId != 0 && grant.Count != 0).ToList(),
             Time = unchecked((uint)nowUnixSec),
-            ExpireTime = expireTime
+            ExpireTime = expireTime,
+            TemplateContentParams = templateContentParams?.ToArray() ?? [],
+            Contents = contents?.ToArray() ?? []
         };
         _mails[mailId] = added;
-        IsDirty = true;
+
+        Log.Stage("mail {MailId} inserted with template {TemplateId} type {MailType}, attachment lines {AttachmentCount}, evicted mail {EvictedMailId}",
+            mailId, templateId, type, added.Items.Count, evicted);
         return (added, evicted);
     }
 
