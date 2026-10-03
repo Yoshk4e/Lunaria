@@ -1,6 +1,7 @@
+using Lunaria.Common.Tracking;
 using Lunaria.Game.Logging;
-using Lunaria.Game.Resources;
 using Lunaria.Game.Resources.Tables;
+using Lunaria.Game.Resources;
 using Microsoft.Extensions.Logging;
 using Msg;
 
@@ -48,21 +49,25 @@ public sealed record WantedRunSnapshot(
     IReadOnlyList<uint>? RedeemedSteps = null
 );
 
-public sealed partial class WantedManager(GameData assets, Random? random = null)
+public sealed partial class WantedManager(GameData assets, Random? random = null) : TrackedObject
 {
     private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Wanted");
 
-    private readonly SortedDictionary<uint, uint> _finishes = [];
+    private readonly TrackedSortedDictionary<uint, uint> __tracked_finishes = [];
+    [Tracked]
+    private partial TrackedSortedDictionary<uint, uint> _finishes { get; }
     private readonly Random _random = random ?? new();
 
     /// <summary>Set by <see cref="Over"/> so the client's follow-up CS_WANTED_LEAVE still succeeds.</summary>
+    [Untracked]
     private bool _settledRun;
 
+    [Untracked]
     public Func<uint, bool> IsConditionMet { get; set; } = id => id == 0;
 
-    private RunState? _run;
-
-    public bool IsDirty { get; private set; }
+    private RunState? __tracked_run = default!;
+    [Tracked]
+    private partial RunState? _run { get; set; }
 
     public IReadOnlyDictionary<uint, uint> Finishes => _finishes;
 
@@ -92,7 +97,7 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
 
         if (run is not null)
             AdoptRun(run);
-        IsDirty = false;
+        AcceptLoadedState();
     }
 
     public WantedRunSnapshot? CaptureRun() =>
@@ -158,8 +163,6 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
         _run.LastBionicsId = Math.Max(_run.LastBionicsId, snapshot.LastBionicsId);
         _run.RedeemedSteps.UnionWith(snapshot.RedeemedSteps ?? []);
     }
-
-    public void ClearDirty() => IsDirty = false;
 
     public bool IsEventComplete(uint eventId) => _run is {} run
                                                  && (run.Current.EventId == eventId ?
@@ -229,7 +232,7 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
             entryId, route, maxStep, step: 1, BuildStep(entry, route, step: 1), [],
             [], [], [], coinsTotal: 0, reviveCount: 0, resetPoint: null, [], []);
         Log.State("wanted run started on entry {EntryId} route {RouteId} with {MaxStep} steps", entryId, route, maxStep);
-        Dirty();
+
     }
 
     public SCWantedInsideData? ToInsideData()
@@ -268,44 +271,75 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
         return CompleteEvent(run);
     }
 
-    public (bool Completed, SCWantedStepNtf? Notification, IReadOnlyList<ItemGrant> StepDrop) OnAdventureResolved(
+    public (int Result, bool Completed, SCWantedStepNtf? Notification, IReadOnlyList<ItemGrant> StepDrop) OnAdventureResolved(
         uint adventureId,
         uint contentId,
         uint dialogId,
         int optionResult
     )
     {
-        if (_run is not {} run || run.Current.EventDone)
-            return (false, null, []);
+        if (_run is not {} run)
+        {
+            Log.Stage("wanted adventure {AdventureId} update refused, no active run", adventureId);
+            return ((int)EnmTextCode.EnmTextWantedNotInWanted, false, null, []);
+        }
+        if (run.Current.EventDone)
+        {
+            Log.Stage("wanted adventure {AdventureId} update refused, event {EventId} already completed", adventureId, run.Current.EventId);
+            return ((int)EnmTextCode.EnmTextWrongParam, false, null, []);
+        }
 
         var @event = assets.Wanted.Event(run.Current.EventId);
 
         if (@event is null || @event.WantedEventType != (uint)WantedEventType.Adventure)
-            return (false, null, []);
+        {
+            Log.Stage("wanted adventure {AdventureId} update refused, current event {EventId} is not an adventure", adventureId, run.Current.EventId);
+            return ((int)EnmTextCode.EnmTextWrongParam, false, null, []);
+        }
 
         if (assets.Wanted.Adventure(adventureId) is not {} adventure
             || !assets.Wanted.TryAdvanceAdventure(adventureId, contentId, dialogId, out var next))
-            return (false, null, []);
+        {
+            Log.Stage("wanted adventure update refused for adventure {AdventureId} content {ContentId} dialog {DialogId}, no valid transition", adventureId, contentId, dialogId);
+            return ((int)EnmTextCode.EnmTextWrongParam, false, null, []);
+        }
 
         if (assets.Wanted.Npc(run.Current.EventId) is { NpcType: (uint)WantedNpcType.Adventure } npc && npc.Params != adventureId)
-            return (false, null, []);
+        {
+            Log.Stage("wanted adventure {AdventureId} update refused, event {EventId} expects adventure {ExpectedAdventureId}", adventureId, run.Current.EventId, npc.Params);
+            return ((int)EnmTextCode.EnmTextWrongParam, false, null, []);
+        }
 
         var previous = run.Adventures.LastOrDefault(a => a.AdventureId == adventureId);
         var expected = adventure.ContentHeadId;
 
         if (previous is not null)
         {
-            if (previous.ContentId == contentId && previous.DialogId == dialogId) return (false, null, []);
+            if (previous.ContentId == contentId && previous.DialogId == dialogId)
+            {
+                Log.Stage("wanted adventure {AdventureId} replay refused for content {ContentId} dialog {DialogId}", adventureId, contentId, dialogId);
+                return ((int)EnmTextCode.EnmTextWrongParam, false, null, []);
+            }
 
             if (!assets.Wanted.TryAdvanceAdventure(adventureId, previous.ContentId, previous.DialogId, out expected))
-                return (false, null, []);
+            {
+                Log.Flag("wanted adventure {AdventureId} saved transition is invalid for content {ContentId} dialog {DialogId}", adventureId, previous.ContentId, previous.DialogId);
+                return ((int)EnmTextCode.EnmTextWrongParam, false, null, []);
+            }
         }
-        if (contentId != expected) return (false, null, []);
+        if (contentId != expected)
+        {
+            Log.Stage("wanted adventure {AdventureId} content {ContentId} refused, expected content {ExpectedContentId}", adventureId, contentId, expected);
+            return ((int)EnmTextCode.EnmTextWrongParam, false, null, []);
+        }
 
         run.Adventures.RemoveAll(a => a.AdventureId == adventureId);
         run.Adventures.Add(new WantedAdventure(adventureId, contentId, dialogId, optionResult));
-        Dirty();
-        return next == 0 ? CompleteEvent(run) : (false, null, []);
+
+        Log.Stage("wanted adventure {AdventureId} accepted content {ContentId} dialog {DialogId}, next content {NextContentId}", adventureId, contentId, dialogId, next);
+        if (next != 0) return (0, false, null, []);
+        var (completed, notification, grants) = CompleteEvent(run);
+        return (0, completed, notification, grants);
     }
 
     public (int Result, bool Finished, SCWantedStepNtf? Notification) ChooseAward(
@@ -320,7 +354,10 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
         var offered = run.Current.Awards.FirstOrDefault(a => a.AwardId == stepAwardId);
 
         if (offered is null || offered.Chosen || !offered.Options.Contains(award))
+        {
+            Log.Stage("wanted award selection refused for entry {EntryId} step {Step}, award group {StepAwardId}, option {AwardId}", run.EntryId, run.Step, stepAwardId, award);
             return ((int)EnmTextCode.EnmTextWantedStepWrongAward, false, null);
+        }
 
         var code = ApplyAward(run, offered.Type, award, replacedBionicsUniqId);
 
@@ -338,7 +375,7 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
         if (finished && run.Step < run.MaxStep)
             AdvanceStep(run);
 
-        Dirty();
+        Log.Stage("wanted award group {StepAwardId} option {AwardId} applied to entry {EntryId}, all choices finished {Finished}", stepAwardId, award, run.EntryId, finished);
         return (0, finished, ToStepNotification());
     }
 
@@ -428,7 +465,6 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
         {
             AddBionics(entry);
         }
-        Dirty();
 
         return (
             new CmdWantedGoods {
@@ -457,7 +493,7 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
 
         run.ReviveCount++;
         Log.State("wanted revive {Count} committed on entry {EntryId}", run.ReviveCount, run.EntryId);
-        Dirty();
+
         return 0;
     }
 
@@ -477,7 +513,7 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
             return;
 
         _run.ResetPoint = (id, position.X, position.Y, position.Z);
-        Dirty();
+
     }
 
     public CmdWantedResource ToResource()
@@ -550,7 +586,7 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
             return (int)EnmTextCode.EnmTextWantedBionicsReplaceIdNotExist;
 
         run.Bionics.Remove(bionics);
-        Dirty();
+
         return 0;
     }
 
@@ -589,7 +625,7 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
         _settledRun = true;
         Log.State("wanted run on entry {EntryId} settled at step {Step} of {MaxStep}, victory {Victory}, finish count {FinishCount}",
             run.EntryId, run.Step, run.MaxStep, victory, _finishes.GetValueOrDefault(run.EntryId));
-        Dirty();
+
         return (0, settlement, grants);
     }
 
@@ -597,16 +633,15 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
     {
         if (_run is null)
         {
-            // The client always sends CS_WANTED_LEAVE right after a settled CS_WANTED_OVER (the run is
-            // already gone then). Rejecting it strands the player in the wanted map because the client
-            // only travels out on result 0.
+            // CS_WANTED_LEAVE follows CS_WANTED_OVER after the run is gone.
+            // Return success so the client can leave the wanted map.
             return _settledRun ? 0 : (int)EnmTextCode.EnmTextWantedNotInWanted;
         }
 
         Log.State("wanted run on entry {EntryId} abandoned at step {Step} of {MaxStep}", _run.EntryId, _run.Step, _run.MaxStep);
         _run = null;
         _settledRun = false;
-        Dirty();
+
         return 0;
     }
 
@@ -658,7 +693,6 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
                 run.Current = run.Current with { Status = EnmWantedStepStatus.EnmWssAwardFinished };
         }
 
-        Dirty();
         return (true, ToStepNotification(), drop);
     }
 
@@ -812,9 +846,7 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
         return data;
     }
 
-    private void Dirty() => IsDirty = true;
-
-    private sealed class RunState(
+    private sealed partial class RunState(
         uint entryId,
         uint routeId,
         uint maxStep,
@@ -829,23 +861,49 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
         (uint Id, int X, int Y, int Z)? resetPoint,
         List<WantedAdventure> adventures,
         SortedDictionary<uint, uint> shopBuys
-    )
+    ) : TrackedObject
     {
         public uint EntryId { get; } = entryId;
         public uint RouteId { get; } = routeId;
         public uint MaxStep { get; } = maxStep;
-        public uint Step { get; set; } = step;
-        public WantedStepState Current { get; set; } = current;
-        public List<(uint ProcessId, uint EventId)> History { get; } = history;
-        public List<uint> Blesses { get; } = blesses;
-        public List<WantedBionics> Bionics { get; } = bionics;
-        public uint LastBionicsId { get; set; } = bionics.Select(b => b.UniqId).DefaultIfEmpty().Max();
-        public HashSet<uint> RedeemedSteps { get; } = [];
-        public List<uint> Relics { get; } = relics;
-        public uint CoinsTotal { get; set; } = coinsTotal;
-        public uint ReviveCount { get; set; } = reviveCount;
-        public (uint Id, int X, int Y, int Z)? ResetPoint { get; set; } = resetPoint;
-        public List<WantedAdventure> Adventures { get; } = adventures;
-        public SortedDictionary<uint, uint> ShopBuys { get; } = shopBuys;
+        private uint __trackedStep = step;
+        [Tracked]
+        public partial uint Step { get; set; }
+        private WantedStepState __trackedCurrent = current;
+        [Tracked]
+        public partial WantedStepState Current { get; set; }
+        private readonly TrackedList<(uint ProcessId, uint EventId)> __trackedHistory = new(history);
+        [Tracked]
+        public partial TrackedList<(uint ProcessId, uint EventId)> History { get; }
+        private readonly TrackedList<uint> __trackedBlesses = new(blesses);
+        [Tracked]
+        public partial TrackedList<uint> Blesses { get; }
+        private readonly TrackedList<WantedBionics> __trackedBionics = new(bionics);
+        [Tracked]
+        public partial TrackedList<WantedBionics> Bionics { get; }
+        private uint __trackedLastBionicsId = bionics.Select(b => b.UniqId).DefaultIfEmpty().Max();
+        [Tracked]
+        public partial uint LastBionicsId { get; set; }
+        private readonly TrackedSet<uint> __trackedRedeemedSteps = [];
+        [Tracked]
+        public partial TrackedSet<uint> RedeemedSteps { get; }
+        private readonly TrackedList<uint> __trackedRelics = new(relics);
+        [Tracked]
+        public partial TrackedList<uint> Relics { get; }
+        private uint __trackedCoinsTotal = coinsTotal;
+        [Tracked]
+        public partial uint CoinsTotal { get; set; }
+        private uint __trackedReviveCount = reviveCount;
+        [Tracked]
+        public partial uint ReviveCount { get; set; }
+        private (uint Id, int X, int Y, int Z)? __trackedResetPoint = resetPoint;
+        [Tracked]
+        public partial (uint Id, int X, int Y, int Z)? ResetPoint { get; set; }
+        private readonly TrackedList<WantedAdventure> __trackedAdventures = new(adventures);
+        [Tracked]
+        public partial TrackedList<WantedAdventure> Adventures { get; }
+        private readonly TrackedSortedDictionary<uint, uint> __trackedShopBuys = new(shopBuys);
+        [Tracked]
+        public partial TrackedSortedDictionary<uint, uint> ShopBuys { get; }
     }
 }

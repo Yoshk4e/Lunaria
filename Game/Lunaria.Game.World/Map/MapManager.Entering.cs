@@ -1,8 +1,10 @@
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
 using Msg;
 
 namespace Lunaria.Game.World;
 
-public sealed partial class MapManager
+public sealed partial class MapManager : TrackedObject
 {
     /// <summary>
     /// Returns use saved coordinates and teleports use their selected point. New arrivals use savepoints to avoid
@@ -66,9 +68,11 @@ public sealed partial class MapManager
                 ReturnPoint = null;
         }
 
+        Log.Stage("map entry prepared for map {MapId} teleport {TeleportId} savepoint {Savepoint}, saved position {PositionSynced}, return map {ReturnMapId}",
+            target, teleportId, Savepoint, _positionIsSynced, ReturnPoint?.MapId);
         TeleportId = teleportId;
         Phase = MapPhase.Entering;
-        IsDirty = true;
+
         return new EnterMapResult(Code: 0, SpawnMap);
     }
 
@@ -84,9 +88,13 @@ public sealed partial class MapManager
     public int FinishEnter()
     {
         if (Phase != MapPhase.Entering)
+        {
+            Log.Stage("map finish entry refused for map {MapId} in phase {Phase}", SpawnMap, Phase);
             return (int)EnmTextCode.EnmTextMapCondition;
+        }
 
         Phase = MapPhase.Loaded;
+        Log.Stage("map entry completed for map {MapId} teleport {TeleportId}", SpawnMap, TeleportId);
         return 0;
     }
 
@@ -106,7 +114,7 @@ public sealed partial class MapManager
         _positionIsSynced = true;
         ReturnPoint = null;
         TeleportId = 0;
-        IsDirty = true;
+
         return true;
     }
 
@@ -121,7 +129,7 @@ public sealed partial class MapManager
 
         _position = position;
         _positionIsSynced = true;
-        IsDirty = true;
+
         return true;
     }
 
@@ -164,6 +172,5 @@ public sealed partial class MapManager
         if (_assets.Maps.Savepoint(Savepoint) is {} npc && npc.MapId != SpawnMap)
             SpawnMap = npc.MapId;
 
-        IsDirty = true;
     }
 }

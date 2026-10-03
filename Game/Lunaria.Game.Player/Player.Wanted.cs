@@ -25,13 +25,16 @@ public sealed partial class Player
         {
             if (characterIds.Count > Lunaria.Game.Characters.TeamManager.MaxMembers)
                 return (int)EnmTextCode.EnmTextWrongParam;
+            var previous = QueryTemporaryTeam((int)EnmTmpTeamType.Wanted, entryId);
             var selection = new TeamData { TeamId = entryId };
             for (var index = 0; index < characterIds.Count; index++)
             {
                 if (characterIds[index] == 0) continue;
                 if (Characters.Get(characterIds[index]) is not {} character) return (int)EnmTextCode.EnmTextWrongParam;
-                selection.MemberData.Add(new TeamMemberData { MemberSlotId = (uint)index + 1,
-                    InstId = character.InstId, CharacterId = character.CharacterId });
+                var member = previous?.MemberData.FirstOrDefault(m => m.InstId == character.InstId)?.Clone()
+                    ?? new TeamMemberData { InstId = character.InstId, CharacterId = character.CharacterId };
+                member.MemberSlotId = (uint)index + 1;
+                selection.MemberData.Add(member);
             }
             var selectionResult = UpdateTemporaryTeam((int)EnmTmpTeamType.Wanted, entryId, selection);
             if (selectionResult.Result != 0) return selectionResult.Result;
@@ -91,7 +94,7 @@ public sealed partial class Player
         GrantRewards([new ItemGrant(currency, checked((uint)price))], EnmItemReason.EnmItemChangeNormal);
     }
 
-    public (bool Completed, SCWantedStepNtf? Step, RewardDelivery Delivery) ResolveWantedAdventure(
+    public (int Result, bool Completed, SCWantedStepNtf? Step, RewardDelivery Delivery) ResolveWantedAdventure(
         uint adventureId,
         uint contentId,
         uint dialogId
@@ -99,10 +102,10 @@ public sealed partial class Player
     {
         using var operationTime = BeginOperation();
         var before = Wanted.ToResource();
-        var (completed, step, grants) = Wanted.OnAdventureResolved(adventureId, contentId, dialogId, optionResult: 0);
+        var (code, completed, step, grants) = Wanted.OnAdventureResolved(adventureId, contentId, dialogId, optionResult: 0);
         if (completed) Gameplay.Publish(new WantedResourcesChanged(before));
         var delivery = completed ? GrantRewards(grants, EnmItemReason.EnmItemChangeWantedAdventure) : RewardDelivery.Empty;
-        return (completed, step, delivery);
+        return (code, completed, step, delivery);
     }
 
     public (int Result, CmdWantedGoods? Goods) BuyWantedShopGood(uint shopId, uint goodsId, uint buyCount)
@@ -202,13 +205,15 @@ public sealed partial class Player
         ReconcileTemporaryTeam();
 
         var delivery = GrantRewards(grants, settlement.Victory ? EnmItemReason.EnmItemChangeWantedOver : default);
+        settlement.AwardFirst.Clear();
+        settlement.AwardFirst.AddRange(RewardItems(grants));
         if (settlement.Victory) Gameplay.Publish(new WantedCleared(settlement.WantedId));
 
-        if (assets.BattlePasses.Exists(settlement.BattlePassId)
-            && BattlePasses.AddExp(settlement.BattlePassId, settlement.BattlePassAddScore) is { Changed: true, Data: {} pass })
+        if (assets.BattlePasses.Exists(settlement.BattlePassId))
         {
+            var (changed, pass) = BattlePasses.AddExp(settlement.BattlePassId, settlement.BattlePassAddScore);
             settlement.BattlePassTotalScore = pass.Exp;
-            Gameplay.Publish(new BattlePassChanged(settlement.BattlePassId));
+            if (changed) Gameplay.Publish(new BattlePassChanged(settlement.BattlePassId));
         }
 
         return (0, settlement, delivery);

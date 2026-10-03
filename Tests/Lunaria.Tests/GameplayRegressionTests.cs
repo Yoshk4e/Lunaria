@@ -283,7 +283,7 @@ public sealed class GameplayRegressionTests(BundledGameplayFixture fixture)
         Assert.Equal(evidence, player.Cases.Processing[1003].OwnedEvidence);
         Assert.Equal(evidence, Lunaria.Game.Player.Managers.CaseManager.ToReceiveNotification(1003, opened.ClueIds, opened.EvidenceIds).EvidenceIds);
 
-        // A save written when the opening granted nothing.
+        // Older saves did not grant evidence when a case opened.
         var restored = Fresh();
         restored.Cases.Load([(1003u, 1u, new ulong[] { 1003101 }.AsEnumerable(), Array.Empty<ulong>().AsEnumerable())], []);
         restored.Cases.LoadOwned([(1003u, new ulong[] { 1003101, 1003102 }.AsEnumerable(), Array.Empty<ulong>().AsEnumerable())]);
@@ -298,7 +298,7 @@ public sealed class GameplayRegressionTests(BundledGameplayFixture fixture)
         var player = Fresh();
         player.Cases.Load([(1003u, 1u, new ulong[] { 1003101 }.AsEnumerable(), Array.Empty<ulong>().AsEnumerable())], []);
 
-        // The client compares it with StageIDList entries; a count of 1 would hide every clue on the board.
+        // The client looks up a stage ID in StageIDList. Sending a count would hide the clues.
         Assert.Equal((uint)stages[0], player.Cases.ToCaseData().ProcessingCase.Single().FinishedPhase);
         Assert.Equal(0u, player.Cases.FinishedStageId(1003, 0));
         Assert.Equal((uint)stages[^1], player.Cases.FinishedStageId(1003, (uint)stages.Count));
@@ -333,7 +333,6 @@ public sealed class GameplayRegressionTests(BundledGameplayFixture fixture)
         RoleSaveMapper.Apply(restored, JsonSerializer.Deserialize<RoleSaveDocument>(json, SaveJson.Options)!);
         Assert.Equal(slots, restored.Teams.ToTeamData(restored.Teams.CurrentTeam()!).MemberData[0].GemSlots);
 
-        // Clearing the slots unequips.
         Assert.Equal(0, player.UpdateTeam(WithGems(team)).Result);
         Assert.Empty(player.Teams.CurrentTeam()!.Members[0].Gems);
     }
@@ -399,7 +398,6 @@ public sealed class GameplayRegressionTests(BundledGameplayFixture fixture)
         Assert.Equal((int)EnmTextCode.EnmTextCharacterTeamGemCostNotEnough,
             player.UpdateTeam(WithGems(team, (0, 1, 21501001), (0, 2, 21501002), (0, 3, 21501003))).Result);
 
-        // A refused update leaves the team as it was.
         Assert.All(player.Teams.CurrentTeam()!.Members, m => Assert.Empty(m.Gems));
     }
 
@@ -526,6 +524,7 @@ public sealed class GameplayRegressionTests(BundledGameplayFixture fixture)
             }
             Assert.True(Assets.Wanted.TryAdvanceAdventure(adventureId, contentId, dialogId, out var next));
             var result = player.Wanted.OnAdventureResolved(adventureId, contentId, dialogId, optionResult: 0);
+            Assert.Equal(0, result.Result);
             Assert.Equal(next == 0, result.Completed);
             if (next == 0) return result.Completed;
 
