@@ -38,9 +38,9 @@ public sealed partial class TestAssets
         Write(tables, "P_BreakTemplateTable.json",
             json: """
                   {"P_BreakTemplateTable": {
-                    "1": {"Id": 1, "TemplateId": 1001, "BreakLevel": 0, "MaxLevel": 3, "NeedWorldLevel": 0},
-                    "2": {"Id": 2, "TemplateId": 1001, "BreakLevel": 1, "MaxLevel": 5, "NeedWorldLevel": 2,
-                          "CostItemId": [901], "CostItemCount": [2], "CostCurrency": 500}}}
+                    "1": {"Id": 1, "TemplateId": 1001, "BreakLevel": 0, "MaxLevel": 3, "NeedWorldLevel": 2,
+                          "CostItemId": [901], "CostItemCount": [2], "CostCurrency": 500},
+                    "2": {"Id": 2, "TemplateId": 1001, "BreakLevel": 1, "MaxLevel": 5, "NeedWorldLevel": 3}}}
                   """);
 
         Write(tables, "P_LevelUpTemplateTable.json",

@@ -133,9 +133,9 @@ public sealed partial class TestAssets
         Write(tables, "P_MotiveBreakTemplateTable.json",
             json: """
                   {"P_MotiveBreakTemplateTable": {
-                    "1": {"Id": 1, "TemplateId": 1, "BreakLevel": 0, "MaxLevel": 2, "NeedWorldLevel": 0},
-                    "2": {"Id": 2, "TemplateId": 1, "BreakLevel": 1, "MaxLevel": 3, "NeedWorldLevel": 2,
-                          "CostItemId": [901], "CostItemCount": [1], "CostCurrency": 200,
+                    "1": {"Id": 1, "TemplateId": 1, "BreakLevel": 0, "MaxLevel": 2, "NeedWorldLevel": 2,
+                          "CostItemId": [901], "CostItemCount": [1], "CostCurrency": 200},
+                    "2": {"Id": 2, "TemplateId": 1, "BreakLevel": 1, "MaxLevel": 3, "NeedWorldLevel": 3,
                           "AddAttributeId": 2003}}}
                   """);
 
