@@ -6,7 +6,8 @@
       "elementType": 4,
       "rareType": 5,
       "fixedAttributeId": 1001,
-      "levelUpTemplateId": 1001
+      "levelUpTemplateId": 1001,
+      "breakUpTemplateId": 1001
     },
     "1502": {
       "id": 1502,
@@ -14,7 +15,8 @@
       "elementType": 2,
       "rareType": 5,
       "fixedAttributeId": 1502,
-      "levelUpTemplateId": 1502
+      "levelUpTemplateId": 1502,
+      "breakUpTemplateId": 1502
     },
     "1004": {
       "id": 1004,
@@ -22,15 +24,17 @@
       "elementType": 1,
       "rareType": 4,
       "fixedAttributeId": 1004,
-      "levelUpTemplateId": 1004
+      "levelUpTemplateId": 1004,
+      "breakUpTemplateId": 1004
     },
     "1501": {
       "id": 1501,
-      "identityType": 3,
+      "identityType": 1,
       "elementType": 1,
       "rareType": 5,
       "fixedAttributeId": 1501,
-      "levelUpTemplateId": 1501
+      "levelUpTemplateId": 1501,
+      "breakUpTemplateId": 1501
     },
     "1003": {
       "id": 1003,
@@ -38,7 +42,8 @@
       "elementType": 5,
       "rareType": 4,
       "fixedAttributeId": 1003,
-      "levelUpTemplateId": 1003
+      "levelUpTemplateId": 1003,
+      "breakUpTemplateId": 1003
     },
     "1505": {
       "id": 1505,
@@ -46,7 +51,8 @@
       "elementType": 1,
       "rareType": 5,
       "fixedAttributeId": 1505,
-      "levelUpTemplateId": 1505
+      "levelUpTemplateId": 1505,
+      "breakUpTemplateId": 1505
     },
     "1006": {
       "id": 1006,
@@ -54,7 +60,8 @@
       "elementType": 3,
       "rareType": 4,
       "fixedAttributeId": 1006,
-      "levelUpTemplateId": 1006
+      "levelUpTemplateId": 1006,
+      "breakUpTemplateId": 1006
     },
     "1007": {
       "id": 1007,
@@ -62,15 +69,35 @@
       "elementType": 2,
       "rareType": 4,
       "fixedAttributeId": 1007,
-      "levelUpTemplateId": 1007
+      "levelUpTemplateId": 1007,
+      "breakUpTemplateId": 1007
     },
     "1503": {
       "id": 1503,
       "identityType": 1,
       "elementType": 3,
       "rareType": 5,
-      "fixedAttributeId": 1503,
-      "levelUpTemplateId": 1503
+      "fixedAttributeId": 1007,
+      "levelUpTemplateId": 1007,
+      "breakUpTemplateId": 1001
+    },
+    "1005": {
+      "id": 1005,
+      "identityType": 4,
+      "elementType": 3,
+      "rareType": 4,
+      "fixedAttributeId": 1006,
+      "levelUpTemplateId": 1006,
+      "breakUpTemplateId": 1001
+    },
+    "1504": {
+      "id": 1504,
+      "identityType": 2,
+      "elementType": 1,
+      "rareType": 5,
+      "fixedAttributeId": 1001,
+      "levelUpTemplateId": 1001,
+      "breakUpTemplateId": 1001
     },
     "1101": {
       "id": 1101,

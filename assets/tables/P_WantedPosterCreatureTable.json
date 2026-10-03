@@ -3,146 +3,304 @@
     "8100101": {
       "id": 8100101,
       "silverCreatureId": 81001,
-      "quality": 2,
-      "price": 50
+      "quality": 1,
+      "price": 0,
+      "levelUpID": 8100102
     },
     "8100102": {
       "id": 8100102,
       "silverCreatureId": 81001,
-      "quality": 3,
-      "price": 100
+      "quality": 2,
+      "price": 0,
+      "levelUpID": 8100103
     },
     "8100103": {
       "id": 8100103,
       "silverCreatureId": 81001,
+      "quality": 3,
+      "price": 0,
+      "levelUpID": 8100104
+    },
+    "8100104": {
+      "id": 8100104,
+      "silverCreatureId": 81001,
       "quality": 4,
-      "price": 200
+      "price": 0,
+      "levelUpID": 8100105
+    },
+    "8100105": {
+      "id": 8100105,
+      "silverCreatureId": 81001,
+      "quality": 5,
+      "price": 0
     },
     "8100201": {
       "id": 8100201,
       "silverCreatureId": 81002,
-      "quality": 2,
-      "price": 50
+      "quality": 1,
+      "price": 0,
+      "levelUpID": 8100202
     },
     "8100202": {
       "id": 8100202,
       "silverCreatureId": 81002,
-      "quality": 3,
-      "price": 100
+      "quality": 2,
+      "price": 0,
+      "levelUpID": 8100203
     },
     "8100203": {
       "id": 8100203,
       "silverCreatureId": 81002,
+      "quality": 3,
+      "price": 0,
+      "levelUpID": 8100204
+    },
+    "8100204": {
+      "id": 8100204,
+      "silverCreatureId": 81002,
       "quality": 4,
-      "price": 200
+      "price": 0,
+      "levelUpID": 8100205
+    },
+    "8100205": {
+      "id": 8100205,
+      "silverCreatureId": 81002,
+      "quality": 5,
+      "price": 0
     },
     "8100301": {
       "id": 8100301,
       "silverCreatureId": 81003,
-      "quality": 2,
-      "price": 50
+      "quality": 1,
+      "price": 0,
+      "levelUpID": 8100302
     },
     "8100302": {
       "id": 8100302,
       "silverCreatureId": 81003,
-      "quality": 3,
-      "price": 100
+      "quality": 2,
+      "price": 0,
+      "levelUpID": 8100303
     },
     "8100303": {
       "id": 8100303,
       "silverCreatureId": 81003,
-      "quality": 4,
-      "price": 200
+      "quality": 3,
+      "price": 0,
+      "levelUpID": 8100304
     },
-    "8100401": {
-      "id": 8100401,
+    "8100304": {
+      "id": 8100304,
+      "silverCreatureId": 81003,
+      "quality": 4,
+      "price": 0,
+      "levelUpID": 8100305
+    },
+    "8100305": {
+      "id": 8100305,
+      "silverCreatureId": 81003,
+      "quality": 5,
+      "price": 0
+    },
+    "8200201": {
+      "id": 8200201,
+      "silverCreatureId": 82002,
+      "quality": 1,
+      "price": 0,
+      "affixIDList": [
+        10995
+      ],
+      "levelUpID": 8200202
+    },
+    "8200202": {
+      "id": 8200202,
       "silverCreatureId": 82002,
       "quality": 2,
-      "price": 50
+      "price": 0,
+      "affixIDList": [
+        10995
+      ],
+      "levelUpID": 8200203
     },
-    "8100402": {
-      "id": 8100402,
+    "8200203": {
+      "id": 8200203,
       "silverCreatureId": 82002,
       "quality": 3,
-      "price": 100
+      "price": 0,
+      "affixIDList": [
+        10995
+      ],
+      "levelUpID": 8200204
     },
-    "8100403": {
-      "id": 8100403,
+    "8200204": {
+      "id": 8200204,
       "silverCreatureId": 82002,
       "quality": 4,
-      "price": 200
+      "price": 0,
+      "affixIDList": [
+        10995
+      ],
+      "levelUpID": 8200205
     },
-    "8100501": {
-      "id": 8100501,
+    "8200205": {
+      "id": 8200205,
+      "silverCreatureId": 82002,
+      "quality": 5,
+      "price": 0,
+      "affixIDList": [
+        10995
+      ]
+    },
+    "8200301": {
+      "id": 8200301,
+      "silverCreatureId": 82003,
+      "quality": 1,
+      "price": 0,
+      "affixIDList": [
+        10995
+      ],
+      "levelUpID": 8200302
+    },
+    "8200302": {
+      "id": 8200302,
       "silverCreatureId": 82003,
       "quality": 2,
-      "price": 50
+      "price": 0,
+      "affixIDList": [
+        10995
+      ],
+      "levelUpID": 8200303
     },
-    "8100502": {
-      "id": 8100502,
+    "8200303": {
+      "id": 8200303,
       "silverCreatureId": 82003,
       "quality": 3,
-      "price": 100
+      "price": 0,
+      "affixIDList": [
+        10995
+      ],
+      "levelUpID": 8200304
     },
-    "8100503": {
-      "id": 8100503,
+    "8200304": {
+      "id": 8200304,
       "silverCreatureId": 82003,
       "quality": 4,
-      "price": 200
+      "price": 0,
+      "affixIDList": [
+        10995
+      ],
+      "levelUpID": 8200305
     },
-    "8100601": {
-      "id": 8100601,
+    "8200305": {
+      "id": 8200305,
+      "silverCreatureId": 82003,
+      "quality": 5,
+      "price": 0,
+      "affixIDList": [
+        10995
+      ]
+    },
+    "8300101": {
+      "id": 8300101,
+      "silverCreatureId": 83001,
+      "quality": 1,
+      "price": 0,
+      "levelUpID": 8300102
+    },
+    "8300102": {
+      "id": 8300102,
       "silverCreatureId": 83001,
       "quality": 2,
-      "price": 50
+      "price": 0,
+      "levelUpID": 8300103
     },
-    "8100602": {
-      "id": 8100602,
+    "8300103": {
+      "id": 8300103,
       "silverCreatureId": 83001,
       "quality": 3,
-      "price": 100
+      "price": 0,
+      "levelUpID": 8300104
     },
-    "8100603": {
-      "id": 8100603,
+    "8300104": {
+      "id": 8300104,
       "silverCreatureId": 83001,
       "quality": 4,
-      "price": 200
+      "price": 0,
+      "levelUpID": 8300105
     },
-    "8100701": {
-      "id": 8100701,
+    "8300105": {
+      "id": 8300105,
+      "silverCreatureId": 83001,
+      "quality": 5,
+      "price": 0
+    },
+    "8300201": {
+      "id": 8300201,
+      "silverCreatureId": 83002,
+      "quality": 1,
+      "price": 0,
+      "levelUpID": 8300202
+    },
+    "8300202": {
+      "id": 8300202,
       "silverCreatureId": 83002,
       "quality": 2,
-      "price": 50
+      "price": 0,
+      "levelUpID": 8300203
     },
-    "8100702": {
-      "id": 8100702,
+    "8300203": {
+      "id": 8300203,
       "silverCreatureId": 83002,
       "quality": 3,
-      "price": 100
+      "price": 0,
+      "levelUpID": 8300204
     },
-    "8100703": {
-      "id": 8100703,
+    "8300204": {
+      "id": 8300204,
       "silverCreatureId": 83002,
       "quality": 4,
-      "price": 200
+      "price": 0,
+      "levelUpID": 8300205
     },
-    "8100801": {
-      "id": 8100801,
+    "8300205": {
+      "id": 8300205,
+      "silverCreatureId": 83002,
+      "quality": 5,
+      "price": 0
+    },
+    "8300301": {
+      "id": 8300301,
+      "silverCreatureId": 83003,
+      "quality": 1,
+      "price": 0,
+      "levelUpID": 8300302
+    },
+    "8300302": {
+      "id": 8300302,
       "silverCreatureId": 83003,
       "quality": 2,
-      "price": 50
+      "price": 0,
+      "levelUpID": 8300303
     },
-    "8100802": {
-      "id": 8100802,
+    "8300303": {
+      "id": 8300303,
       "silverCreatureId": 83003,
       "quality": 3,
-      "price": 100
+      "price": 0,
+      "levelUpID": 8300304
     },
-    "8100803": {
-      "id": 8100803,
+    "8300304": {
+      "id": 8300304,
       "silverCreatureId": 83003,
       "quality": 4,
-      "price": 200
+      "price": 0,
+      "levelUpID": 8300305
+    },
+    "8300305": {
+      "id": 8300305,
+      "silverCreatureId": 83003,
+      "quality": 5,
+      "price": 0
     }
   }
 }

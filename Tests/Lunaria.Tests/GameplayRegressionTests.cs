@@ -753,6 +753,15 @@ public sealed class GameplayRegressionTests(BundledGameplayFixture fixture)
         Assert.NotEmpty(player.SettleServerTargets());
     }
 
+    [Theory]
+    [InlineData(1001u), InlineData(1003u), InlineData(1004u), InlineData(1006u)]
+    [InlineData(1007u), InlineData(1501u), InlineData(1502u), InlineData(1505u)]
+    public void PlayableCharacters_HaveTheirFiveSkillGroups(uint characterId)
+    {
+        // The bundled 1505 row once listed 15056 as a sixth group, which left the character without skills.
+        Assert.Equal(5, Assets.Characters.StartingSkillGroups(characterId).Count);
+    }
+
     [Fact]
     public void BattlePass_CanLeaveFirstLevel_AndRetainsRemainder()
     {

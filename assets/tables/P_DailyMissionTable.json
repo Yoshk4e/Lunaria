@@ -4,7 +4,7 @@
       "id": 1,
       "name": 1011410001,
       "event": 104001,
-      "activePoint": 20
+      "activePoint": 10
     },
     "2": {
       "id": 2,
@@ -40,19 +40,19 @@
       "id": 7,
       "name": 1011410006,
       "event": 406001,
-      "activePoint": 20
+      "activePoint": 10
     },
     "8": {
       "id": 8,
       "name": 1011410007,
       "event": 406002,
-      "activePoint": 20
+      "activePoint": 10
     },
     "9": {
       "id": 9,
       "name": 1011410008,
       "event": 204001,
-      "activePoint": 20
+      "activePoint": 10
     }
   }
 }
