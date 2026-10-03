@@ -31,6 +31,7 @@ internal static class LoginRejection
 
     // The client expects these request IDs and nested messages even when login is rejected.
     // Other replies use the status code alone, or empty data when there is no status field.
+    // this is probably definitly not the best idea.... feel free to criticize :3
     private static IMessage? Payload(NetContext ctx, IMessage request) => request switch {
         CSAchievementAddProgress req => new SCAchievementAddProgress { Id = req.Id },
         CSAchievementEvent req => new SCAchievementEvent { Event = req.Event, Args = { req.Args } },
