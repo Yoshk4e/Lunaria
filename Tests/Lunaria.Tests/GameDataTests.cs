@@ -131,7 +131,7 @@ public sealed class GameDataTests(TestAssets assets)
         Assert.Equal(expected: 2, Data.Guides.Count);
 
         Assert.True(Data.Talents.NodeExists(0));
-        Assert.False(Data.Talents.NodeExists(2));
+        Assert.False(Data.Talents.NodeExists(3));
         Assert.Equal([0u], Data.Talents.Prerequisites(1));
         Assert.Equal(expected: 3u, Data.Talents.UnlockLevel(1));
     }

@@ -41,7 +41,7 @@ public sealed partial class Player
         Result = ActiveTemporaryTeam is not null || Battles.Current is not null ? (int)EnmTextCode.EnmTextWrongParam : Teams.SetCurrent(teamId),
         TeamId = Teams.Current,
         UsingMemberSlot = ActiveTemporaryTeam?.Slot ?? Teams.UsingMemberSlot,
-        AttribData = { Teams.CurrentMemberInstIds().Select(Characters.AttribData) }
+        AttribData = { Teams.CurrentMemberInstIds().Select(id => Characters.AttribData(id)) }
     };
 
     public SCCharacterSwitchMember SwitchTeamMember(uint slot) => new() {
@@ -60,14 +60,7 @@ public sealed partial class Player
         return new SCSwitchMainCharacter {
             Result = result.Result, TeamData = result.TeamData,
             UsingMemberSlot = ActiveTemporaryTeam?.Slot ?? Teams.UsingMemberSlot,
-            AttribData = { Teams.CurrentMemberInstIds().Select(Characters.AttribData) }
+            AttribData = { Teams.CurrentMemberInstIds().Select(id => Characters.AttribData(id)) }
         };
-    }
-
-    public int UnlockTalent(ulong instanceId, uint node)
-    {
-        var code = Skills.UnlockTalent(instanceId, node, Characters);
-        if (code == 0) Gameplay.Publish(new CharactersChanged([instanceId]));
-        return code;
     }
 }

@@ -82,7 +82,20 @@ public sealed partial class TestAssets
             json: """
                   {"P_TalentNodeTable": {
                     "0": {"Id": 0, "GroupType": 1, "UnlockLevel": 1},
-                    "1": {"Id": 1, "GroupType": 1, "ParentIdList": [0], "UnlockLevel": 3}}}
+                    "1": {"Id": 1, "GroupType": 1, "ParentIdList": [0], "UnlockLevel": 3},
+                    "2": {"Id": 2, "GroupType": 1, "ParentIdList": [0], "UnlockLevel": 1}}}
+                  """);
+
+        // Node 0 raises priced group 11 to level 3, node 1 adds 50 MAXHP, node 2 opens locked group 15.
+        Write(tables, "P_TalentContentTable.json",
+            json: """
+                  {"P_TalentContentTable": {
+                    "100101": {"Id": 100101, "CharacterId": 1001, "NodeId": 0, "ContentType": 1, "ContentParam1": 11,
+                               "ContentParam2": 3, "ItemIdList": [900], "ItemCountList": [1], "MoneyCount": 50},
+                    "100102": {"Id": 100102, "CharacterId": 1001, "NodeId": 1, "ContentType": 3, "ContentParam1": 1,
+                               "ContentParam2": 50},
+                    "100103": {"Id": 100103, "CharacterId": 1001, "NodeId": 2, "ContentType": 2, "ContentParam1": 15,
+                               "ContentParam2": 1}}}
                   """);
 
         WriteAttributeTables(tables);

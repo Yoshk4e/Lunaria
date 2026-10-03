@@ -163,6 +163,10 @@ public sealed class UtilityManagerTests(TestAssets fixture)
         Assert.Empty(player.DrainGameplayChanges());
         player.Characters.Load([owned with { Level = 3 }]);
         Assert.NotEqual(0, player.UnlockTalent(owned.InstId, 1));
+        Assert.NotEqual(0, player.UnlockTalent(owned.InstId, 0));
+        Assert.Empty(player.DrainGameplayChanges());
+        player.Wallet.Credit(TestAssets.CoinMoneyType, 50);
+        player.Bag.Add(TestAssets.MaterialItem, 1);
         Assert.Equal(0, player.UnlockTalent(owned.InstId, 0));
         Assert.NotEmpty(player.DrainGameplayChanges());
         Assert.Equal(0, player.UnlockTalent(owned.InstId, 1));
@@ -170,6 +174,78 @@ public sealed class UtilityManagerTests(TestAssets fixture)
         Assert.NotEqual(0, player.UnlockTalent(owned.InstId, 1));
         Assert.NotEqual(0, player.UnlockTalent(owned.InstId, 128));
         Assert.Empty(player.DrainGameplayChanges());
+    }
+
+    [Fact]
+    public void Talents_ChargeTheirCostAndApplySkillAndAttributeContent()
+    {
+        var player = Fresh();
+        var owned = Assert.Single(player.Characters.All);
+        var maxHp = fixture.Data.Inside.Attr.Maxhp;
+        int MaxHpFinal() => player.Characters.AttribData(owned.InstId).AttribData.Single(a => a.AttribType == maxHp).FinalValue;
+        player.Characters.Load([owned with { Level = 3 }]);
+        var before = MaxHpFinal();
+        player.Wallet.Credit(TestAssets.CoinMoneyType, 80);
+        player.Bag.Add(TestAssets.MaterialItem, 2);
+
+        Assert.Equal(0, player.UnlockTalent(owned.InstId, 0));
+        Assert.Equal(30, player.Wallet.Balance(TestAssets.CoinMoneyType));
+        Assert.Equal(1u, player.Bag.CountOf(TestAssets.MaterialItem));
+        Assert.Equal(3u, player.Skills.GroupLevel(TestAssets.PricedGroup));
+        var update = Assert.Single(player.DrainGameplayChanges().OfType<SCSkillUpdate>());
+        Assert.Equal((owned.InstId, TestAssets.PricedGroup, 3u), (update.InstId, update.Groupid, update.Level));
+
+        Assert.Equal(0, player.UnlockTalent(owned.InstId, 2));
+        Assert.Equal(1u, player.Skills.GroupLevel(TestAssets.LockedGroup));
+
+        Assert.Equal(0, player.UnlockTalent(owned.InstId, 1));
+        Assert.Equal(before + 50 * 10_000, MaxHpFinal());
+        Assert.Contains(player.DrainGameplayChanges().OfType<SCOutsideAttribNtf>(),
+            n => n.Data.AttribData.Any(a => a.AttribType == maxHp && a.FinalValue == before + 50 * 10_000));
+    }
+
+    [Fact]
+    public void Talents_ReapplyTheirSkillLevelsAfterASaveClampedThem()
+    {
+        var player = Fresh();
+        var owned = Assert.Single(player.Characters.All);
+        player.Skills.Load([(TestAssets.PricedGroup, 1u), (TestAssets.LockedGroup, 1u)],
+            [(owned.InstId, new TalentMasks().WithUnlock(0).WithUnlock(2))], player.Characters);
+        Assert.Equal(0u, player.Skills.GroupLevel(TestAssets.LockedGroup));
+        Assert.Equal(1u, player.Skills.GroupLevel(TestAssets.PricedGroup));
+
+        player.InitializeRoleState(Now, hasSave: true);
+
+        Assert.Equal(1u, player.Skills.GroupLevel(TestAssets.LockedGroup));
+        Assert.Equal(3u, player.Skills.GroupLevel(TestAssets.PricedGroup));
+    }
+
+    [Fact]
+    public void Motive_EquippedBonusRaisesFinalAttributesUntilUnequipped()
+    {
+        var player = Fresh();
+        var owned = Assert.Single(player.Characters.All);
+        var maxHp = fixture.Data.Inside.Attr.Maxhp;
+        var atk = fixture.Data.Inside.Attr.Atk;
+        PBAttribDataElem Attr(int id) => player.Characters.AttribData(owned.InstId).AttribData.Single(a => a.AttribType == id);
+        var hpBefore = Attr(maxHp);
+        var atkBefore = Attr(atk);
+        var motive = player.Motives.Add(player.Guid, 12051001, 1).UniqId;
+
+        Assert.Equal(0, player.EquipMotive(motive, owned.InstId));
+        // Level 1 row 2001: MAXHP +100 and ATK +10, sent as the difference between final and base.
+        Assert.Equal(hpBefore.BaseValue, Attr(maxHp).BaseValue);
+        Assert.Equal(hpBefore.FinalValue + 100 * 10_000, Attr(maxHp).FinalValue);
+        Assert.Equal(atkBefore.FinalValue + 10 * 10_000, Attr(atk).FinalValue);
+        Assert.Single(player.DrainGameplayChanges().OfType<SCOutsideAttribNtf>());
+        // A full character stays full: current HP may fill the raised MAXHP.
+        Assert.Equal(Attr(maxHp).FinalValue, Attr(fixture.Data.Inside.Attr.Hp).FinalValue);
+        Assert.Equal(0, player.Characters.SetHp(owned.InstId, int.MaxValue));
+        Assert.Equal(Attr(maxHp).FinalValue, Attr(fixture.Data.Inside.Attr.Hp).FinalValue);
+
+        Assert.Equal(0, player.UnequipMotive(motive, owned.InstId));
+        Assert.Equal(hpBefore.FinalValue, Attr(maxHp).FinalValue);
+        Assert.Single(player.DrainGameplayChanges().OfType<SCOutsideAttribNtf>());
     }
 
     [Fact]

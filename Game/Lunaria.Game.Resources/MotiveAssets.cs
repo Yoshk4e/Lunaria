@@ -9,6 +9,7 @@ public sealed class MotiveAssets
     private readonly Dictionary<uint, BreakStep[]> _breaks = [];
 
     private readonly Dictionary<(uint Template, uint Level), uint> _levelAttributes = [];
+    private readonly Dictionary<(uint Template, uint BreakLevel), uint> _breakAttributes = [];
 
     private readonly Dictionary<(uint Rare, uint Level), uint> _levelCosts = [];
     private readonly Dictionary<uint, PMotiveTable> _motives = [];
@@ -44,6 +45,11 @@ public sealed class MotiveAssets
         foreach (var row in levelTemplates.Values)
         {
             _levelAttributes[(row.TemplateId, row.Level)] = row.AddAttributeId;
+        }
+
+        foreach (var row in breaks.Values.Where(r => r.AddAttributeId != 0))
+        {
+            _breakAttributes[(row.TemplateId, row.BreakLevel)] = row.AddAttributeId;
         }
 
         foreach (var group in breaks.Values.GroupBy(r => r.TemplateId))
@@ -116,6 +122,9 @@ public sealed class MotiveAssets
 
     public uint AddAttributeId(uint motiveId, uint level) =>
         _motives.GetValueOrDefault(motiveId) is {} motive ? _levelAttributes.GetValueOrDefault((motive.LevelTemplateId, level)) : 0;
+
+    public uint BreakAddAttributeId(uint motiveId, uint breakLevel) =>
+        _motives.GetValueOrDefault(motiveId) is {} motive ? _breakAttributes.GetValueOrDefault((motive.BreakTemplateId, breakLevel)) : 0;
 
     public PMotiveAttributeTable? Attributes(uint addAttributeId) =>
         _attributes.GetValueOrDefault(addAttributeId);

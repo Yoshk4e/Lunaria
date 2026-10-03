@@ -48,4 +48,19 @@ public sealed partial class SkillManager : TrackedObject
         Log.Stage("talent node {NodeId} unlocked for character {InstId}", nodeId, instId);
         return 0;
     }
+
+    /// <summary>
+    /// Raises a known group to at least <paramref name="level"/>. Talent levels are not capped by the coin ladder:
+    /// affix groups such as 10015 start at 0, have no cost rows and only open through a talent node.
+    /// </summary>
+    public bool RaiseFromTalent(uint group, uint level)
+    {
+        if (!_groups.TryGetValue(group, out var current) || current >= level)
+            return false;
+
+        _groups[group] = level;
+
+        Log.Stage("skill group {GroupId} raised to level {Level} by a talent", group, level);
+        return true;
+    }
 }

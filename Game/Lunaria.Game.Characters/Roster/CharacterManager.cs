@@ -111,18 +111,45 @@ public sealed partial class CharacterManager(GameData assets) : TrackedObject
                 assets.Characters.DevelopAttributeId(character.CharacterId, character.Level),
                 character.Hp,
                 character.PermanentLiquid,
-                assets.Characters.FixedAttributeId(character.CharacterId)) :
+                assets.Characters.FixedAttributeId(character.CharacterId),
+                MaxHp(instId)) :
             [];
 
-    /// <summary>The client displays the extra attribute column as final minus base.</summary>
-    public PBCharacterAttribData AttribData(ulong instId) => new() {
-        InstId = instId,
-        AttribData = {
-            Attribs(instId).Select(pair => new PBAttribDataElem {
-                AttribType = pair.Id,
-                BaseValue = pair.Value,
-                FinalValue = pair.Value
-            })
+    /// <summary>Equipped Motive and talent bonuses of a character, supplied by the player.</summary>
+    [Untracked]
+    public Func<ulong, IEnumerable<AttributeModifier>>? Modifiers { get; set; }
+
+    /// <summary>
+    /// The client displays the extra attribute column as final minus base, and fights with the final value, so
+    /// bonuses go into FinalValue: (base + add) raised by the summed permyriad increase.
+    /// </summary>
+    public PBCharacterAttribData AttribData(ulong instId)
+    {
+        var data = new PBCharacterAttribData { InstId = instId };
+        var bonuses = Bonuses(instId);
+
+        foreach (var (id, value) in Attribs(instId))
+        {
+            var bonus = bonuses.GetValueOrDefault(id);
+            bonuses.Remove(id);
+            data.AttribData.Add(new PBAttribDataElem { AttribType = id, BaseValue = value, FinalValue = Final(id, value, bonus) });
         }
-    };
+
+        if (Get(instId) is not null)
+            foreach (var (id, bonus) in bonuses)
+                data.AttribData.Add(new PBAttribDataElem { AttribType = id, BaseValue = 0, FinalValue = Final(id, 0, bonus) });
+
+        return data;
+    }
+
+    private Dictionary<int, (long Add, long Multi)> Bonuses(ulong instId) =>
+        (Modifiers?.Invoke(instId) ?? [])
+            .GroupBy(m => m.AttrId)
+            .ToDictionary(g => g.Key, g => (Add: g.Sum(m => (long)m.Add), Multi: g.Sum(m => (long)m.Multi)));
+
+    private int Final(int id, int value, (long Add, long Multi) bonus)
+    {
+        var raw = (value + (long)assets.Inside.Scale(id, 1) * bonus.Add) * (10_000 + bonus.Multi) / 10_000;
+        return (int)Math.Clamp(raw, int.MinValue, int.MaxValue);
+    }
 }
