@@ -1,0 +1,143 @@
+{
+  "P_BattleFieldRewardGroupTable": {
+    "1": {
+      "id": 1,
+      "rewardGroupId": 1,
+      "worldLevelLowerLimit": 1,
+      "dropId": 320011,
+      "rewardLimitId": 151,
+      "rewardShow": [
+        "1=0",
+        "14020001=0"
+      ]
+    },
+    "2": {
+      "id": 2,
+      "rewardGroupId": 1,
+      "worldLevelLowerLimit": 2,
+      "dropId": 320012,
+      "rewardLimitId": 151,
+      "rewardShow": [
+        "1=0",
+        "14020001=0"
+      ]
+    },
+    "3": {
+      "id": 3,
+      "rewardGroupId": 1,
+      "worldLevelLowerLimit": 3,
+      "dropId": 320013,
+      "rewardLimitId": 151,
+      "rewardShow": [
+        "1=0",
+        "14020001=0"
+      ]
+    },
+    "4": {
+      "id": 4,
+      "rewardGroupId": 2,
+      "worldLevelLowerLimit": 1,
+      "dropId": 320041,
+      "rewardLimitId": 154,
+      "rewardShow": [
+        "1=0",
+        "14020002=0"
+      ]
+    },
+    "5": {
+      "id": 5,
+      "rewardGroupId": 2,
+      "worldLevelLowerLimit": 2,
+      "dropId": 320042,
+      "rewardLimitId": 154,
+      "rewardShow": [
+        "1=0",
+        "14020002=0"
+      ]
+    },
+    "6": {
+      "id": 6,
+      "rewardGroupId": 2,
+      "worldLevelLowerLimit": 3,
+      "dropId": 320043,
+      "rewardLimitId": 154,
+      "rewardShow": [
+        "1=0",
+        "14020002=0"
+      ]
+    },
+    "7": {
+      "id": 7,
+      "rewardGroupId": 3,
+      "worldLevelLowerLimit": 1,
+      "dropId": 320021,
+      "rewardLimitId": 153,
+      "rewardShow": [
+        "1=0",
+        "14020003=0"
+      ]
+    },
+    "8": {
+      "id": 8,
+      "rewardGroupId": 3,
+      "worldLevelLowerLimit": 2,
+      "dropId": 320022,
+      "rewardLimitId": 153,
+      "rewardShow": [
+        "1=0",
+        "14020003=0"
+      ]
+    },
+    "9": {
+      "id": 9,
+      "rewardGroupId": 3,
+      "worldLevelLowerLimit": 3,
+      "dropId": 320023,
+      "rewardLimitId": 153,
+      "rewardShow": [
+        "1=0",
+        "14020003=0"
+      ]
+    },
+    "10": {
+      "id": 10,
+      "rewardGroupId": 4,
+      "worldLevelLowerLimit": 1,
+      "dropId": 320031,
+      "rewardLimitId": 152,
+      "rewardShow": [
+        "1=0",
+        "14020004=0"
+      ]
+    },
+    "11": {
+      "id": 11,
+      "rewardGroupId": 4,
+      "worldLevelLowerLimit": 2,
+      "dropId": 320032,
+      "rewardLimitId": 152,
+      "rewardShow": [
+        "1=0",
+        "14020004=0"
+      ]
+    },
+    "12": {
+      "id": 12,
+      "rewardGroupId": 4,
+      "worldLevelLowerLimit": 3,
+      "dropId": 320033,
+      "rewardLimitId": 152,
+      "rewardShow": [
+        "1=0",
+        "14020004=0"
+      ]
+    },
+    "13": {
+      "id": 13,
+      "rewardGroupId": 5,
+      "worldLevelLowerLimit": 1,
+      "dropId": 311001,
+      "rewardLimitId": 201
+    }
+  }
+}

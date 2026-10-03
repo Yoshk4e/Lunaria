@@ -1,0 +1,76 @@
+{
+  "P_BattleFieldRewardTable": {
+    "109100101": {
+      "id": 109100101,
+      "rewardGroupId": 4
+    },
+    "109100102": {
+      "id": 109100102,
+      "rewardGroupId": 4
+    },
+    "109100201": {
+      "id": 109100201,
+      "rewardGroupId": 3
+    },
+    "109100202": {
+      "id": 109100202,
+      "rewardGroupId": 3
+    },
+    "109100301": {
+      "id": 109100301,
+      "rewardGroupId": 3
+    },
+    "109100302": {
+      "id": 109100302,
+      "rewardGroupId": 3
+    },
+    "109100401": {
+      "id": 109100401,
+      "rewardGroupId": 1
+    },
+    "109100402": {
+      "id": 109100402,
+      "rewardGroupId": 1
+    },
+    "109100403": {
+      "id": 109100403,
+      "rewardGroupId": 1
+    },
+    "109100501": {
+      "id": 109100501,
+      "rewardGroupId": 2
+    },
+    "109101201": {
+      "id": 109101201,
+      "rewardGroupId": 2
+    },
+    "101100401": {
+      "id": 101100401,
+      "rewardGroupId": 1
+    },
+    "101100402": {
+      "id": 101100402,
+      "rewardGroupId": 3
+    },
+    "101100701": {
+      "id": 101100701,
+      "rewardGroupId": 4
+    },
+    "101101201": {
+      "id": 101101201,
+      "rewardGroupId": 2
+    },
+    "1040102": {
+      "id": 1040102,
+      "rewardGroupId": 1
+    },
+    "2060501001": {
+      "id": 2060501001,
+      "rewardGroupId": 5
+    },
+    "2060501002": {
+      "id": 2060501002,
+      "rewardGroupId": 5
+    }
+  }
+}

@@ -1,3 +1,5 @@
+using Google.Protobuf;
+using Lunaria.Game.Battle;
 using Lunaria.Game.Player.Gameplay;
 using Msg;
 
@@ -6,7 +8,9 @@ namespace Lunaria.Game.Player;
 public sealed partial class Player
 {
     public Lunaria.Game.Battle.BattleSession? CurrentBattle => Battles.Current;
-    public IReadOnlyList<long> PatrolCooldowns => Battles.PatrolCooldown.ToArray();
+    /// <summary>Patrol clusters still cooling down, as SC_PATROL_MONSTER_RES lists them.</summary>
+    public IReadOnlyList<long> PatrolCooldowns =>
+        Battles.PatrolCooldownEnds.Where(pair => pair.Value > UtcNow).Select(pair => pair.Key).ToArray();
 
     public int EnterBattle(EBattleType type, uint fieldId, uint instanceId, EnmMonsterFromType monsterFrom)
     {
@@ -50,7 +54,8 @@ public sealed partial class Player
             || Battles.Current is {} running
             && (running.BattleInstId != 0 && running.BattleInstId != report.BattleInstId
                 || running.MonsterFrom != default && running.MonsterFrom != report.MonsterFromType))
-            return new BattleLeaveOutcome((int)EnmTextCode.EnmTextBattleStateNotMatch, RewardDelivery.Empty, false);
+            return new BattleLeaveOutcome((int)EnmTextCode.EnmTextBattleStateNotMatch, RewardDelivery.Empty, false,
+                RewardDelivery.Empty, []);
         var settlement = Battles.Leave(report.BattleType, report.BattleFieldId,
             report.BattleResult == EBattleResultType.EnmBattleResultTypeSuccess);
 
@@ -58,7 +63,8 @@ public sealed partial class Player
         if (!settlement.Accepted || !settlement.Begun)
         {
             if (settlement.Accepted) ReconcileTemporaryTeam();
-            return new BattleLeaveOutcome(settlement.Result, RewardDelivery.Empty, WantedStepCompleted: false);
+            return new BattleLeaveOutcome(settlement.Result, RewardDelivery.Empty, WantedStepCompleted: false,
+                RewardDelivery.Empty, []);
         }
 
         // Ignore client vitals of -1, which mean untracked.
@@ -87,8 +93,14 @@ public sealed partial class Player
 
         var changedLiquid = ApplyCurrentTeamLiquid(report.TemporaryLiquid, report.TemporaryLiquidLv2);
 
-        if (report.BattleEndInfo?.Monsters is { Count: > 0 } kills)
-            Battles.RecordKills(kills.Select(id => id));
+        // battle_inst_id names the static patrol cluster (its TemplateID). Quest-spawned groups do not cool down.
+        var notifications = new List<IMessage>();
+        if (settlement.Victory && report.BattleType == EBattleType.EnmBattleTypePatrol
+            && report.MonsterFromType == EnmMonsterFromType.EmonsterFromTable && report.BattleInstId != 0)
+        {
+            Battles.StartPatrolCooldown(report.BattleInstId, UtcNow + BattleManager.PatrolRespawnDelay);
+            notifications.Add(new SCPatrolMonsterNtf { MonsterId = report.BattleInstId, CdIsOk = false });
+        }
 
         var (buffUpdates, buffRemoved) = Buffs.BattleEnded(UtcNow);
 
@@ -116,8 +128,24 @@ public sealed partial class Player
 
         return new BattleLeaveOutcome(
             settlement.Result,
-            stepCompleted ? GrantRewards(stepDrop, EnmItemReason.EnmItemChangeWantedStep) : RewardDelivery.Empty, stepCompleted);
+            stepCompleted ? GrantRewards(stepDrop, EnmItemReason.EnmItemChangeWantedStep) : RewardDelivery.Empty, stepCompleted,
+            settlement.Victory && report.BattleType != EBattleType.EnmBattleTypeWanted ? GrantBattleLoot(report.BattleFieldId) : RewardDelivery.Empty,
+            notifications);
     }
+
+    /// <summary>Victory loot of the battlefield at the current world level. Daily caps (RewardLimitID) are not applied.</summary>
+    private RewardDelivery GrantBattleLoot(uint battleFieldId)
+    {
+        var dropId = Assets.BattleRewards.DropFor(battleFieldId, Progress.WorldLevel);
+        if (dropId == 0) return RewardDelivery.Empty;
+
+        var grants = Assets.DropTable.Roll(dropId, RandomSources.Loot);
+        return grants.Count > 0 ? GrantRewards(grants, EnmItemReason.EnmItemChangeBattleEnd) : RewardDelivery.Empty;
+    }
+
+    /// <summary>Patrol clusters whose cooldown ended, announced as available again.</summary>
+    private IEnumerable<IMessage> RespawnedPatrols(DateTimeOffset now) =>
+        Battles.ExpirePatrolCooldowns(now).Select(cluster => new SCPatrolMonsterNtf { MonsterId = (uint)cluster, CdIsOk = true });
 
     public IReadOnlyList<ulong> HealRoster()
     {
@@ -132,6 +160,8 @@ public sealed partial class Player
     public readonly record struct BattleLeaveOutcome(
         int Result,
         RewardDelivery WantedReward,
-        bool WantedStepCompleted
+        bool WantedStepCompleted,
+        RewardDelivery BattleReward,
+        IReadOnlyList<IMessage> Notifications
     );
 }

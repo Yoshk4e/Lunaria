@@ -241,7 +241,7 @@ public sealed partial class Player
 
                 Battles.ResetMonster((long)monster);
                 var patrol = new SCPatrolMonsterRes();
-                patrol.CdMonsters.AddRange(Battles.PatrolCooldown.Select(m => (uint)m));
+                patrol.CdMonsters.AddRange(PatrolCooldowns.Select(m => (uint)m));
                 effects.Notifications.Add(patrol);
                 result = 1;
                 break;

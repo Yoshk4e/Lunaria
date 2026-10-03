@@ -192,7 +192,8 @@ public sealed partial class Player
         || RedPoints.IsDirty
         || MonthCards.IsDirty
         || Dungeons.IsDirty
-        || Wanted.IsDirty;
+        || Wanted.IsDirty
+        || Battles.IsDirty;
 
     /// <summary>Clear all dirty flags only after the role transaction commits.</summary>
     public void ClearSaveDirty()
@@ -226,6 +227,7 @@ public sealed partial class Player
         MonthCards.ClearDirty();
         Dungeons.ClearDirty();
         Wanted.ClearDirty();
+        Battles.ClearDirty();
     }
 
     public RoleInfo RoleInfo(RoleState role) => new() {

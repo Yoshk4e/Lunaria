@@ -119,6 +119,9 @@ public sealed record RoleSaveDocument
     [JsonPropertyName("wanted_run")]
     public WantedRunSave? WantedRun { get; init; }
 
+    [JsonPropertyName("patrol_cooldowns")]
+    public IReadOnlyList<PatrolCooldownSave> PatrolCooldowns { get; init; } = [];
+
     public sealed record ProgressSave
     {
         [JsonPropertyName("team_level")]
@@ -741,6 +744,15 @@ public sealed record RoleSaveDocument
 
         [JsonPropertyName("star_award")]
         public uint StarAward { get; init; }
+    }
+
+    public sealed record PatrolCooldownSave
+    {
+        [JsonPropertyName("cluster_id")]
+        public long ClusterId { get; init; }
+
+        [JsonPropertyName("until_unix")]
+        public long UntilUnix { get; init; }
     }
 
     public sealed record WantedFinishSave

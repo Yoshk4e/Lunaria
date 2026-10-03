@@ -306,7 +306,13 @@ internal static class RoleSaveMapper
                 Count = pair.Value
             })
             .ToList(),
-        WantedRun = ToWantedRunSave(player.Wanted.CaptureRun())
+        WantedRun = ToWantedRunSave(player.Wanted.CaptureRun()),
+        PatrolCooldowns = player.Battles.PatrolCooldownEnds
+            .Select(pair => new RoleSaveDocument.PatrolCooldownSave {
+                ClusterId = pair.Key,
+                UntilUnix = pair.Value.ToUnixTimeSeconds()
+            })
+            .ToList()
     };
 
     /// <summary>Load the roster before resolving saved team and talent instance IDs.</summary>
@@ -462,6 +468,8 @@ internal static class RoleSaveMapper
         player.Wanted.Load(
             document.Wanted.Select(row => (row.EntryId, row.Count)),
             FromWantedRunSave(document.WantedRun));
+        player.Battles.LoadPatrolCooldowns(document.PatrolCooldowns
+            .Select(row => (row.ClusterId, DateTimeOffset.FromUnixTimeSeconds(row.UntilUnix))));
         player.RestoreWantedTaskStep();
         player.LoadTemporaryTeams(document.TemporarySelections, document.ActiveTemporaryTeam, document.SuspendedStoryTeam);
     }
