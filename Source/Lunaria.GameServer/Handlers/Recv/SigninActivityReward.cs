@@ -5,16 +5,10 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleSigninActivityReward
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsSigninActivityReward)]
     public async Task<SCSignInActivityReward> OnPacket(NetContext ctx, CSSignInActivityReward req)
     {
-        if (!ctx.Player.HasActiveRole)
-            return new SCSignInActivityReward {
-                Result = (int)EnmTextCode.EnmTextNotAccLogin,
-                ActivityId = req.ActivityId,
-                Day = req.Day
-            };
-
         var (result, items, delivery) = ctx.Player.ClaimSignInReward(req.ActivityId, req.Day);
         if (result == 0)
             await ctx.NotifyAsync(delivery.Presentation).ConfigureAwait(false);

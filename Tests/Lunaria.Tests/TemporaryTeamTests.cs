@@ -1,3 +1,4 @@
+using System.Threading.Channels;
 using Lunaria.Game.Characters;
 using Lunaria.Game.Characters.Teams;
 using Lunaria.Game.Player;
@@ -238,15 +239,15 @@ public sealed partial class RoleSessionTests
     [Fact]
     public async Task FinishMap_RequiresMatchingActiveRole_AndRetainsPendingEntryOnRejection()
     {
-        var ctx = Context();
-        var handler = new HandleFinEnterMap(NullLogger<HandleFinEnterMap>.Instance);
-        Assert.NotEqual(0, (await handler.OnPacket(ctx, new() { RoleId = 1 })).Result);
+        var outbound = Channel.CreateUnbounded<byte[]>();
+        var ctx = Context(outbound);
+        Assert.NotEqual(0, (await DispatchReplyAsync(ctx, outbound, new CSFinEnterMap { RoleId = 1 }, SCFinEnterMap.Parser)).Result);
         Assert.Equal(0, await _sessions.ActivateAsync(ctx, 1));
         Assert.Equal(0, ctx.Player.Map.BeginEnter(0, 0).Code);
         var phase = ctx.Player.Map.Phase;
-        Assert.NotEqual(0, (await handler.OnPacket(ctx, new() { RoleId = 2 })).Result);
+        Assert.NotEqual(0, (await DispatchReplyAsync(ctx, outbound, new CSFinEnterMap { RoleId = 2 }, SCFinEnterMap.Parser)).Result);
         Assert.Equal(phase, ctx.Player.Map.Phase);
-        Assert.Equal(0, (await handler.OnPacket(ctx, new() { RoleId = 1 })).Result);
+        Assert.Equal(0, (await DispatchReplyAsync(ctx, outbound, new CSFinEnterMap { RoleId = 1 }, SCFinEnterMap.Parser)).Result);
     }
 
     [Fact]

@@ -8,5 +8,7 @@ public sealed record HandlerEntry(
     Type RequestType,
     Func<ByteString, object> Parse,
     Func<NetContext, object, ValueTask> Invoke,
-    bool ExpectsReply
+    bool ExpectsReply,
+    RequireLoginAttribute? Login,
+    Func<NetContext, object, ValueTask>? RejectLogin
 );

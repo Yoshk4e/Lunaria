@@ -6,6 +6,7 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleLocationSync(ILogger<HandleLocationSync> logger)
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsLocationSync)]
     public Task OnPacket(NetContext ctx, CSLocationSync req)
     {

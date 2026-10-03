@@ -6,14 +6,10 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleMailRecvAllAttachments(ILogger<HandleMailRecvAllAttachments> logger)
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsMailRecvAllAttachments)]
     public async Task<SCMailRecvAllAttachments> OnPacket(NetContext ctx, CSMailRecvAllAttachments req)
     {
-        if (!ctx.Player.HasActiveRole)
-            return new SCMailRecvAllAttachments {
-                Result = (int)EnmTextCode.EnmTextNotAccLogin
-            };
-
         var (claimedIds, delivery) = ctx.Player.ClaimAllMailAttachments();
         await ctx.NotifyAsync(delivery.Presentation).ConfigureAwait(false);
 

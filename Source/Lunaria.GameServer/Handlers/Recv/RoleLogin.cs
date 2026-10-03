@@ -6,6 +6,7 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleRoleLogin(RoleSessionService sessions)
 {
+    [RequireLogin(LoginRequirement.Account)]
     [GameHandler(EClientServerCmds.CsRoleLogin)]
     public async Task<SCRoleLogin> OnPacket(NetContext ctx, CSRoleLogin req)
     {

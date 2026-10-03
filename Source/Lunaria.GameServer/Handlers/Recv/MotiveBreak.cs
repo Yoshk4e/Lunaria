@@ -6,6 +6,7 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleMotiveBreak(ILogger<HandleMotiveBreak> logger)
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsMotiveBreak)]
     public async Task<SCMotiveBreak> OnPacket(NetContext ctx, CSMotiveBreak req)
     {
@@ -18,9 +19,6 @@ public sealed class HandleMotiveBreak(ILogger<HandleMotiveBreak> logger)
                 NewBreakLevel = oldBreak
             };
         }
-
-        if (!ctx.Player.HasActiveRole)
-            return Reject((int)EnmTextCode.EnmTextNotAccLogin);
 
         var outcome = ctx.Player.BreakMotive(req.MotiveUniqId);
 

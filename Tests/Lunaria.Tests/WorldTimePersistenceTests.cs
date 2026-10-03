@@ -82,11 +82,12 @@ public sealed partial class RoleSessionTests
     [Fact]
     public async Task TimeRequest_RejectsWithoutAnActiveRole()
     {
-        var ctx = Context();
+        var outbound = Channel.CreateUnbounded<byte[]>();
+        var ctx = Context(outbound);
         var before = ctx.Player.GameTimeMinutes;
-        var reply = await new HandleGameTimeSetup().OnPacket(ctx, new CSGameTimeSetupReq {
+        var reply = await DispatchReplyAsync(ctx, outbound, new CSGameTimeSetupReq {
             PassTime = 100, Weather = (uint)WeatherType.Foggy
-        });
+        }, SCGameTimeSetupRes.Parser);
         Assert.NotEqual(0, reply.Result);
         Assert.Equal(before, ctx.Player.GameTimeMinutes);
         Assert.Equal((WeatherType)_assets.Starter.Weather, ctx.Player.CurrentWeather);

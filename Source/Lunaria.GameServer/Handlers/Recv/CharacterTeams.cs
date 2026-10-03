@@ -6,6 +6,7 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleCharacterTeams(ILogger<HandleCharacterTeams> logger)
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsCharacterTeams)]
     public Task<SCCharacterTeams> OnPacket(NetContext ctx, CSCharacterTeams req)
     {

@@ -6,6 +6,7 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleOutsideAttribQuery(ILogger<HandleOutsideAttribQuery> logger)
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsOutsideAttribQuery)]
     public Task<SCOutsideAttribQuery> OnPacket(NetContext ctx, CSOutsideAttribQuery req)
     {

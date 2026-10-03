@@ -7,6 +7,7 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleTaskActionUpdate(ILogger<HandleTaskActionUpdate> logger)
 {
+    [RequireLogin(Reply = typeof(SCTaskActionUpdate))]
     [GameHandler(EClientServerCmds.CsTaskActionUpdate)]
     public async Task OnPacket(NetContext ctx, CSTaskActionUpdate req)
     {
@@ -18,12 +19,6 @@ public sealed class HandleTaskActionUpdate(ILogger<HandleTaskActionUpdate> logge
                 TaskType = req.TaskType,
                 MaxProgress = 1
             };
-        }
-
-        if (!ctx.Player.HasActiveRole)
-        {
-            await ctx.SendAsync(Reject((int)EnmTextCode.EnmTextNotAccLogin)).ConfigureAwait(false);
-            return;
         }
 
         var (code, outcome) = ctx.Player.ReportTaskAction(req.TaskType, req.ActionId, req.Progress);

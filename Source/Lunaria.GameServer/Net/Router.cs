@@ -1,6 +1,7 @@
 using System.Collections.Concurrent;
 using System.Reflection;
 using Google.Protobuf;
+using Lunaria.Game.Logging;
 using Lunaria.GameServer.Handlers;
 using Lunaria.Game.Player.Persistence;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,6 +31,7 @@ public sealed class Router
 
     public async Task DispatchAsync(NetContext ctx, byte[] plaintext)
     {
+        using var logScope = _logger.BeginPlayerScope(ctx.Player.SessionId, () => ctx.Player.Roles.Active()?.Id);
         CSMsgPkg? pkg;
 
         try
@@ -62,6 +64,13 @@ public sealed class Router
         catch (InvalidProtocolBufferException ex)
         {
             throw new IOException($"failed to decode {entry.RequestType.Name}: {ex.Message}", ex);
+        }
+
+        if (entry.Login is {} login && !login.IsSatisfied(ctx))
+        {
+            _logger.LogDebug("command {Cmd} requires {Requirement} login", cmd, login.Requirement);
+            await entry.RejectLogin!(ctx, request).ConfigureAwait(false);
+            return;
         }
 
         await ctx.RunCommittedAsync(async () => {
@@ -108,7 +117,14 @@ public sealed class Router
 
             var invoke = CompileInvoke(method, instance, requestType);
             var parse = CompileParser(requestType);
-            var entry = new HandlerEntry(attribute.CmdId, requestType, parse, invoke, expectsReply);
+            var login = method.GetCustomAttribute<RequireLoginAttribute>();
+            if (login is not null && !Enum.IsDefined(login.Requirement))
+                throw new InvalidOperationException($"Unknown login requirement on {method.DeclaringType?.Name}");
+            var replyType = expectsReply ? method.ReturnType.GetGenericArguments()[0] : login?.Reply;
+            if (expectsReply && login?.Reply is {} overrideType && overrideType != replyType)
+                throw new InvalidOperationException($"Login rejection type does not match the reply on {method.DeclaringType?.Name}");
+            var reject = login is null ? null : LoginRejection.Compile(replyType);
+            var entry = new HandlerEntry(attribute.CmdId, requestType, parse, invoke, expectsReply, login, reject);
 
             if (!table.TryAdd(attribute.CmdId, entry))
                 throw new InvalidOperationException(

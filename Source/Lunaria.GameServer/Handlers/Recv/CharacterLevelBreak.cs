@@ -5,6 +5,7 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleCharacterLevelBreak
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsCharacterLevelBreak)]
     public async Task<SCCharacterLevelBreak> OnPacket(NetContext ctx, CSCharacterLevelBreak req)
     {
@@ -15,9 +16,6 @@ public sealed class HandleCharacterLevelBreak
                 CurrentData = ctx.Player.Characters.Get(req.InstId) is {} before ? ctx.Player.Characters.ToCharacterData(before) : null
             };
         }
-
-        if (!ctx.Player.HasActiveRole)
-            return Reject((int)EnmTextCode.EnmTextNotAccLogin);
 
         var code = ctx.Player.BreakCharacter(req.InstId);
 

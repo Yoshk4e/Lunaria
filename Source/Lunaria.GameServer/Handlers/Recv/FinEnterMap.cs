@@ -6,14 +6,11 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleFinEnterMap(ILogger<HandleFinEnterMap> logger)
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsFinEnterMap)]
     public async Task<SCFinEnterMap> OnPacket(NetContext ctx, CSFinEnterMap req)
     {
-        if (ctx.Player.Roles.Active() is not {} role)
-        {
-            logger.LogWarning("fin_enter_map without active role: role {RoleId}", req.RoleId);
-            return new SCFinEnterMap { Result = (int)EnmTextCode.EnmTextNotAccLogin, RoleId = req.RoleId };
-        }
+        var role = ctx.Player.Roles.Active()!;
 
         if ((ulong)role.Id != req.RoleId)
             return new SCFinEnterMap { Result = (int)EnmTextCode.EnmTextWrongParam, RoleId = req.RoleId };

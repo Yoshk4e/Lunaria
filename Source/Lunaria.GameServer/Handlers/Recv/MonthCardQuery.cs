@@ -5,12 +5,10 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleMonthCardQuery
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsMonthCardQuery)]
     public async Task<SCMonthCardQuery> OnPacket(NetContext ctx, CSMonthCardQuery req)
     {
-        if (!ctx.Player.HasActiveRole)
-            return new SCMonthCardQuery { Result = (int)EnmTextCode.EnmTextNotAccLogin };
-
         await ctx.NotifyAsync(ctx.Player.SettleMonthCards(ctx.Player.UtcNow)).ConfigureAwait(false);
 
         return new SCMonthCardQuery {

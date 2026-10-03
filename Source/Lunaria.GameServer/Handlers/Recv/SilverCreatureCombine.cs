@@ -5,14 +5,10 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleSilverCreatureCombine
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsSilverCreatureCombine)]
     public Task<SCSilverCreatureCombineResult> OnPacket(NetContext ctx, CSSilverCreatureCombine req)
     {
-        if (!ctx.Player.HasActiveRole)
-            return Task.FromResult(new SCSilverCreatureCombineResult {
-                Result = (int)EnmTextCode.EnmTextNotAccLogin
-            });
-
         var (result, change) = ctx.Player.CombineSilverCreatures(req.UniqId);
 
         return Task.FromResult(new SCSilverCreatureCombineResult {

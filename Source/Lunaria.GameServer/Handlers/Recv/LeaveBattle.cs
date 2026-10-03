@@ -5,6 +5,7 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleLeaveBattle
 {
+    [RequireLogin(Reply = typeof(SCLeaveBattle))]
     [GameHandler(EClientServerCmds.CsLeaveBattle)]
     public async Task OnPacket(NetContext ctx, CSLeaveBattle req)
     {

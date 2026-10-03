@@ -6,14 +6,10 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleReadGuide(ILogger<HandleReadGuide> logger)
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsReqReadGuide)]
     public async Task<SCResReadGuide> OnPacket(NetContext ctx, CSReqReadGuide req)
     {
-        if (!ctx.Player.HasActiveRole)
-            return new SCResReadGuide {
-                Result = (int)EnmTextCode.EnmTextNotAccLogin
-            };
-
         var (changed, delivery) = ctx.Player.ReadGuides(req.GuideId.ToList());
         if (changed.Count > 0)
             logger.LogDebug("guides read: {Ids}", string.Join(separator: ',', changed));

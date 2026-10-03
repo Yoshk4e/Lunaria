@@ -6,18 +6,16 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleCollectionOperate(ILogger<HandleCollectionOperate> logger)
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsCollectionOperate)]
     public async Task<SCCollectionOperate> OnPacket(NetContext ctx, CSCollectionOperate req)
     {
         // Without collection_item the client ignores the answer and the object stays in its opening state.
         SCCollectionOperate Reject(int code) => new() {
             Result = code,
-            CollectionItem = (ctx.Player.HasActiveRole ? ctx.Player.CollectionData(req.UniqId) : null)
+            CollectionItem = ctx.Player.CollectionData(req.UniqId)
                              ?? new OneCollectionData { UniqId = req.UniqId }
         };
-
-        if (!ctx.Player.HasActiveRole)
-            return Reject((int)EnmTextCode.EnmTextNotAccLogin);
 
         var now = ctx.Player.UtcNow;
         var (code, outcome) = ctx.Player.Collect(req.UniqId, req.Op, now);

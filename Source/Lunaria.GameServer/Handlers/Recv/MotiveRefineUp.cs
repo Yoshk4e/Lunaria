@@ -6,6 +6,7 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleMotiveRefineUp(ILogger<HandleMotiveRefineUp> logger)
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsMotiveRefineup)]
     public Task<SCMotiveRefineUp> OnPacket(NetContext ctx, CSMotiveRefineUp req)
     {
@@ -18,9 +19,6 @@ public sealed class HandleMotiveRefineUp(ILogger<HandleMotiveRefineUp> logger)
                 CurrentRefine = refine
             };
         }
-
-        if (!ctx.Player.HasActiveRole)
-            return Task.FromResult(Reject((int)EnmTextCode.EnmTextNotAccLogin));
 
         var outcome = ctx.Player.RefineMotive(req.MotiveUniqId, req.RefineMotiveUniqIds.ToList());
 

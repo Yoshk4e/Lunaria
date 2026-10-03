@@ -6,12 +6,10 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleChargeGoodsOrder
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsChaegrGoodsOrder)]
     public async Task<SCChargeGoodsOrder> OnPacket(NetContext ctx, CSChargeGoodsOrder req)
     {
-        if (!ctx.Player.HasActiveRole)
-            return new SCChargeGoodsOrder { Result = (int)EnmTextCode.EnmTextNotAccLogin, GoodsId = req.GoodsId };
-
         var outcome = ctx.Player.BuyChargeGoods(req.GoodsId);
 
         if (outcome.Code != 0)

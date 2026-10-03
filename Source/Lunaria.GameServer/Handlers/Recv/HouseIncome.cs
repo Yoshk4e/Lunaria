@@ -6,12 +6,10 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleHouseIncome
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsReqClaimHouseIncome)]
     public async Task<SCResClaimHouseIncome> OnPacket(NetContext ctx, CSReqClaimHouseIncome req)
     {
-        if (!ctx.Player.HasActiveRole)
-            return new SCResClaimHouseIncome { Result = (int)EnmTextCode.EnmTextNotAccLogin };
-
         var delivery = ctx.Player.ClaimHouseIncome();
         await ctx.NotifyAsync(delivery.Presentation).ConfigureAwait(false);
 

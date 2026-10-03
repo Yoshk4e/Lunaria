@@ -6,6 +6,7 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleMotiveQuery(ILogger<HandleMotiveQuery> logger)
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsMotiveQuery)]
     public Task<SCMotiveQuery> OnPacket(NetContext ctx, CSMotiveQuery req)
     {

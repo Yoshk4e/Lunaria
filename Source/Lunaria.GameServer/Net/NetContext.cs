@@ -78,6 +78,13 @@ public sealed class NetContext
 
     public ValueTask NotifyAsync(IMessage message) => WriteAppAsync(message);
 
+    // A rejected login must not flush pending gameplay notifications or commit player state.
+    internal ValueTask SendRejectionAsync(IMessage message)
+    {
+        if (PersistenceFaulted) throw new IOException("session has an uncommitted failed operation");
+        return WriteMessageAsync(message);
+    }
+
     public async ValueTask NotifyAsync(IEnumerable<IMessage> messages)
     {
         await FlushGameplayChangesAsync().ConfigureAwait(false);

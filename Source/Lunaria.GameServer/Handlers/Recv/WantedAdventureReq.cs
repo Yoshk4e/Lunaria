@@ -5,12 +5,10 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleWantedAdventureReq
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsWantedAdventureReq)]
     public Task<SCWantedAdventureRes> OnPacket(NetContext ctx, CSWantedAdventureReq req)
     {
-        if (!ctx.Player.HasActiveRole)
-            return Task.FromResult(new SCWantedAdventureRes { Result = (int)EnmTextCode.EnmTextNotAccLogin });
-
         var reply = new SCWantedAdventureRes { Result = 0 };
 
         foreach (var adventure in ctx.Player.Wanted.Adventures)

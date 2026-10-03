@@ -6,17 +6,10 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleTaskList
 {
+    [RequireLogin(Reply = typeof(SCTaskList))]
     [GameHandler(EClientServerCmds.CsReqTaskList)]
     public async Task OnPacket(NetContext ctx, CSTaskList req)
     {
-        if (!ctx.Player.HasActiveRole)
-        {
-            await ctx.SendAsync(new SCTaskList {
-                Result = (int)EnmTextCode.EnmTextNotAccLogin
-            }).ConfigureAwait(false);
-            return;
-        }
-
         if (ctx.Player.TasksBootstrapped)
         {
             await ctx.SendAsync(new SCTaskList {

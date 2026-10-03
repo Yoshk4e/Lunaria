@@ -6,6 +6,7 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleShopBuy(ILogger<HandleShopBuy> logger)
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsShopBuy)]
     public async Task<SCShopBuy> OnPacket(NetContext ctx, CSShopBuy req)
     {
@@ -13,9 +14,6 @@ public sealed class HandleShopBuy(ILogger<HandleShopBuy> logger)
         {
             return new SCShopBuy { Result = code, ShopId = req.ShopId };
         }
-
-        if (!ctx.Player.HasActiveRole)
-            return Reject((int)EnmTextCode.EnmTextNotAccLogin);
 
         if (req.ShopId <= 0)
             return Reject((int)EnmTextCode.EnmTextShopNotExsit);

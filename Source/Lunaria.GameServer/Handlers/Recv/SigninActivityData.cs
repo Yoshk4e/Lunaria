@@ -5,15 +5,10 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleSigninActivityData
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsSigninActivityData)]
     public async Task<SCSignInActivityData> OnPacket(NetContext ctx, CSSignInActivityData req)
     {
-        if (!ctx.Player.HasActiveRole)
-            return new SCSignInActivityData {
-                Result = (int)EnmTextCode.EnmTextNotAccLogin,
-                ActivityData = new SignInActivityData { ActivityId = req.ActivityId }
-            };
-
         var (result, data) = ctx.Player.QuerySignIn(req.ActivityId);
 
 

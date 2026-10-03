@@ -5,6 +5,7 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleSkillBookQuery
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsSkillBookQuery)]
     public Task<SCSkillBookQuery> OnPacket(NetContext ctx, CSSkillBookQuery req)
         => Task.FromResult(new SCSkillBookQuery {

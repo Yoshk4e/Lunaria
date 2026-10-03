@@ -12,6 +12,7 @@ public sealed class HandleInitRoleGenderAndName(
     ILogger<HandleInitRoleGenderAndName> logger
 )
 {
+    [RequireLogin(LoginRequirement.Account)]
     [GameHandler(EClientServerCmds.CsInitRoleGenderAndName)]
     public async Task<SCInitRoleGenderAndName> OnPacket(
         NetContext ctx,
@@ -30,7 +31,7 @@ public sealed class HandleInitRoleGenderAndName(
             };
         }
 
-        if (!ctx.Player.IsLoggedIn || ctx.Player.Roles.IsEmpty)
+        if (ctx.Player.Roles.IsEmpty)
             return Echo(NamingOutcome.Rejected((int)EnmTextCode.EnmTextNotAccLogin));
 
         var candidates = new[] {
