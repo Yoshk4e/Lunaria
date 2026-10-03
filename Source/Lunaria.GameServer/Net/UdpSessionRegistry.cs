@@ -12,15 +12,24 @@ public sealed class UdpSessionRegistry
 
     public void DetachSender(ushort port) => _senders.TryRemove(port, out _);
 
-    public UdpChannel Bind(ulong notifySessionId, ushort udpPort)
+    /// <summary>
+    /// The CBT1 client stamps its UDP data (position syncs) with the hello session id, not the notify session id,
+    /// so the channel answers to both.
+    /// </summary>
+    public UdpChannel Bind(ulong notifySessionId, ulong helloSessionId, ushort udpPort)
     {
         _senders.TryGetValue(udpPort, out var sender);
         var channel = new UdpChannel(notifySessionId, sender);
         _channels[notifySessionId] = channel;
+        if (helloSessionId != notifySessionId) _channels[helloSessionId] = channel;
         return channel;
     }
 
-    public void Unbind(ulong notifySessionId) => _channels.TryRemove(notifySessionId, out _);
+    public void Unbind(ulong notifySessionId, ulong helloSessionId)
+    {
+        if (_channels.TryRemove(notifySessionId, out var channel) && helloSessionId != notifySessionId)
+            _channels.TryRemove(new KeyValuePair<ulong, UdpChannel>(helloSessionId, channel));
+    }
 
     public bool TryRoute(ulong notifySessionId, byte[] ciphertext, uint plaintextLength, IPEndPoint peer)
     {

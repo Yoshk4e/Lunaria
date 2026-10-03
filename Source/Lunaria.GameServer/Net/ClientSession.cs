@@ -106,7 +106,7 @@ public sealed partial class ClientSession(
         var stream = reader.Stream;
         var writeTask = WriteLoopAsync(stream, outbound, stopped);
 
-        var udp = runtime.UdpSessions.Bind(established.NotifySessionId, established.UdpPort);
+        var udp = runtime.UdpSessions.Bind(established.NotifySessionId, established.HelloSessionId, established.UdpPort);
 
         try
         {

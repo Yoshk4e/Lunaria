@@ -170,7 +170,7 @@ public sealed partial class ClientSession
                     ctx.Player.Account.AccountKey, runtime.Sessions.Online);
             }
 
-            runtime.UdpSessions.Unbind(established.NotifySessionId);
+            runtime.UdpSessions.Unbind(established.NotifySessionId, established.HelloSessionId);
 
             handle.AcknowledgeTakeover();
 
