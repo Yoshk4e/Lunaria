@@ -189,7 +189,7 @@ public sealed class TaskServerTargetTests(BundledGameplayFixture fixture)
     }
 
     [Theory]
-    [InlineData(ServerTarget.UseItem, 2)]
+    [InlineData(ServerTarget.BuyItem, 2)]
     [InlineData(ServerTarget.CompleteBattle, 1)]
     public void EveryEventTarget_OnlyCountsMatchingEventsWhileActive(ServerTarget target, int expected)
     {
@@ -204,7 +204,7 @@ public sealed class TaskServerTargetTests(BundledGameplayFixture fixture)
             Assert.Empty(player.SettleServerTargets());
             Assert.False(player.ReportTaskAction(action.TaskType, action.Id, uint.MaxValue).Outcome!.Progress.Recorded);
             player.RecordTaskEvent(target, id, 0);
-            if (target == ServerTarget.UseItem) player.RecordTaskEvent(target, id + 1);
+            if (target == ServerTarget.BuyItem) player.RecordTaskEvent(target, id + 1);
             Assert.Empty(player.SettleServerTargets());
             player.RecordTaskEvent(target, id == 0 ? 123u : id, uint.MaxValue);
             var settled = player.SettleServerTargets();

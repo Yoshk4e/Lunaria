@@ -78,7 +78,7 @@ public sealed partial class RoleSessionTests
     }
 
     [Theory]
-    [InlineData(EnmTmpTeamType.Dungeon, 201001u)]
+    [InlineData(EnmTmpTeamType.Dungeon, 1u)] // dungeon type of 201001
     [InlineData(EnmTmpTeamType.Wanted, 10101u)]
     public async Task TemporarySelection_UsesOwnedInstances_AndSurvivesRoleSwitch(EnmTmpTeamType type, uint source)
     {
@@ -205,13 +205,13 @@ public sealed partial class RoleSessionTests
         Assert.Equal(0, await _sessions.ActivateAsync(ctx, 1));
         var player = ctx.Player;
         var member = player.Characters.All.First();
-        var data = new TeamData { TeamId = 201001, MemberData = { new TeamMemberData {
+        var data = new TeamData { TeamId = 1, MemberData = { new TeamMemberData {
             InstId = member.InstId, CharacterId = member.CharacterId, MemberSlotId = 3 } } };
-        Assert.Equal(0, player.UpdateTemporaryTeam((int)EnmTmpTeamType.Dungeon, 201001, data).Result);
+        Assert.Equal(0, player.UpdateTemporaryTeam((int)EnmTmpTeamType.Dungeon, 1, data).Result);
         player.Progress.Load(1, 0, 0, 240, DateTimeOffset.UtcNow);
         Assert.Equal(0, player.EnterDungeon(201001).Code);
         Assert.Equal(3u, player.CurrentTeamData()!.UsingMemberSlot);
-        Assert.NotEqual(0, player.UpdateTemporaryTeam((int)EnmTmpTeamType.Dungeon, 201001, data).Result);
+        Assert.NotEqual(0, player.UpdateTemporaryTeam((int)EnmTmpTeamType.Dungeon, 1, data).Result);
         Assert.NotEqual(0, player.EnterWanted(10101));
         Assert.Equal(0, player.FinishDungeon(201001, false, true, 0).Code);
         Assert.Equal(EnmTmpTeamType.Task, player.ActiveTemporaryTeam!.Type);

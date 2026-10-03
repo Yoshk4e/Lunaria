@@ -62,6 +62,8 @@ public sealed class DungeonAssets
         _types.Values.OrderBy(row => row.Id).ToList();
 
     public PRepeatableDungeonsTable? Dungeon(ulong id) => _dungeons.GetValueOrDefault(id);
+
+    public bool IsDungeonMap(ulong mapId) => _dungeons.Values.Any(row => row.MapId == mapId);
     public PDungeonsTypeTable? Type(uint id) => _types.GetValueOrDefault(id);
     public PHordeTable? Horde(uint id) => _hordes.GetValueOrDefault(id);
 }

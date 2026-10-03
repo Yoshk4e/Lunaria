@@ -193,7 +193,14 @@ public sealed partial class Player : TrackedObject
         yield return IntAttr(PlayerAttrType.EnmPlayerAttrCoin, (int)Math.Min(Wallet.Coin, int.MaxValue));
         yield return IntAttr(PlayerAttrType.EnmPlayerAttrSatiety, Progress.Satiety);
         yield return IntAttr(PlayerAttrType.EnmPlayerAttrStaminaCur, Progress.Stamina);
+        yield return StaminaFullTimeAttr();
     }
+
+    /// <summary>Unix seconds at which natural regeneration fills the stamina meter.</summary>
+    internal PlayerAttr StaminaFullTimeAttr() => new() {
+        AttrType = (int)PlayerAttrType.EnmPlayerAttrStaminaFulltime,
+        ValueUint32 = (uint)Math.Clamp(Progress.StaminaFullTime(UtcNow).ToUnixTimeSeconds(), 0, uint.MaxValue)
+    };
 
     private static PlayerAttr IntAttr(PlayerAttrType attrType, int value) => new() {
         AttrType = (int)attrType,

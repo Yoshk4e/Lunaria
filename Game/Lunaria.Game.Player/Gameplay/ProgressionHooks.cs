@@ -72,8 +72,6 @@ internal sealed class ProgressionHooks :
 
     public void Handle(Player p, ItemUsed e, PlayerChanges changes)
     {
-        p.RecordTaskEvent(ServerTarget.UseItem, e.ItemId, e.Count);
-
         if (p.Assets.Items.Get(e.ItemId) is {} item)
             Increment(p, changes, p.Assets.Unlocks.ArgEvents(GlobalEventSub.UseItemType, (ulong)item.ShowType), e.Count);
     }

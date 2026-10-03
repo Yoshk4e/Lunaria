@@ -104,21 +104,22 @@ public sealed partial class CharacterManager(GameData assets) : TrackedObject
         MotiveUniqId = character.MotiveUniqId
     };
 
-    public IReadOnlyList<(int Id, int Value)> Attribs(ulong instId) =>
+    /// <summary>Attributes of an owned character, optionally with run-scoped vitals instead of its own.</summary>
+    public IReadOnlyList<(int Id, int Value)> Attribs(ulong instId, int? hp = null, int? liquid = null) =>
         Get(instId) is {} character ?
             assets.Attribs.ForCharacter(
                 character.CharacterId,
                 assets.Characters.DevelopAttributeId(character.CharacterId, character.Level),
-                character.Hp,
-                character.PermanentLiquid,
+                hp ?? character.Hp,
+                liquid ?? character.PermanentLiquid,
                 assets.Characters.FixedAttributeId(character.CharacterId)) :
             [];
 
     /// <summary>The client displays the extra attribute column as final minus base.</summary>
-    public PBCharacterAttribData AttribData(ulong instId) => new() {
+    public PBCharacterAttribData AttribData(ulong instId, int? hp = null, int? liquid = null) => new() {
         InstId = instId,
         AttribData = {
-            Attribs(instId).Select(pair => new PBAttribDataElem {
+            Attribs(instId, hp, liquid).Select(pair => new PBAttribDataElem {
                 AttribType = pair.Id,
                 BaseValue = pair.Value,
                 FinalValue = pair.Value

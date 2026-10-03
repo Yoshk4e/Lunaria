@@ -21,6 +21,14 @@ public sealed class StaminaTimingTests(BundledGameplayFixture fixture)
     }
 
     [Fact]
+    public void StaminaFullTime_IsWhenRegenerationFillsTheMeter()
+    {
+        var meter = Meter(Assets.GlobalConfig.StaminaRegenMax - 3);
+        Assert.Equal(meter.StaminaTickAt.AddSeconds(3.0 * Interval), meter.StaminaFullTime(Start));
+        Assert.Equal(Start, Meter(Assets.GlobalConfig.StaminaRegenMax).StaminaFullTime(Start));
+    }
+
+    [Fact]
     public void Spend_UsesEarnedStaminaAndPreservesPartialInterval()
     {
         var meter = Meter(0);

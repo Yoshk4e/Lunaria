@@ -11,7 +11,7 @@ public sealed partial class Player
     {
         using var operationTime = BeginOperation();
         if (dungeonId > uint.MaxValue || Wanted.IsRunning || Battles.Current is not null
-            || QueryTemporaryTeam((int)EnmTmpTeamType.Dungeon, (uint)dungeonId)?.MemberData.Count is not > 0)
+            || QueryTemporaryTeam((int)EnmTmpTeamType.Dungeon, DungeonTeamSource(dungeonId))?.MemberData.Count is not > 0)
         {
             Log.Flag("dungeon {DungeonId} entry refused, wanted or battle active or no dungeon team", dungeonId);
             return new DungeonEntryOutcome((int)EnmTextCode.EnmTextWrongParam, dungeonId, 0);
@@ -31,9 +31,9 @@ public sealed partial class Player
         }
 
         Dungeons.Enter(dungeonId, now);
-        ResetDungeonEntryLiquid(dungeonId);
         ReconcileTemporaryTeam();
-        if (cost > 0) Gameplay.Publish(new StaminaSpent(cost));
+        // The run's stamina only counts as spent once it is won (see FinishDungeon); entry just syncs the meter.
+        if (cost > 0) Gameplay.Publish(new StaminaChanged(Progress.Stamina));
         return new DungeonEntryOutcome(Code: 0, dungeonId, cost);
     }
 
@@ -42,7 +42,7 @@ public sealed partial class Player
         using var operationTime = BeginOperation();
         if (dungeonId > uint.MaxValue || Wanted.IsRunning
             || Dungeons.Current is null && Battles.Current is not null
-            || QueryTemporaryTeam((int)EnmTmpTeamType.Dungeon, (uint)dungeonId)?.MemberData.Count is not > 0)
+            || QueryTemporaryTeam((int)EnmTmpTeamType.Dungeon, DungeonTeamSource(dungeonId))?.MemberData.Count is not > 0)
             return new DungeonEntryOutcome((int)EnmTextCode.EnmTextWrongParam, dungeonId, 0);
         var now = UtcNow;
         var (code, opened) = Dungeons.AdoptCurrent(dungeonId, battleId, now);
@@ -61,27 +61,10 @@ public sealed partial class Player
             return new DungeonEntryOutcome((int)EnmTextCode.EnmTextStaminaNotEnough, dungeonId, StaminaSpent: 0);
         }
 
-        ResetDungeonEntryLiquid(dungeonId);
         ReconcileTemporaryTeam();
-        if (cost > 0) Gameplay.Publish(new StaminaSpent(cost));
+        // The run's stamina only counts as spent once it is won (see FinishDungeon); entry just syncs the meter.
+        if (cost > 0) Gameplay.Publish(new StaminaChanged(Progress.Stamina));
         return new DungeonEntryOutcome(Code: 0, dungeonId, cost);
-    }
-
-    private void ResetDungeonEntryLiquid(ulong dungeonId)
-    {
-        var dungeon = assets.Dungeons.Dungeon(dungeonId)!;
-        if (assets.Dungeons.Type(dungeon.DungeonType)?.CharacterPermanentLiquidRatio != 0) return;
-
-        // Only a newly opened, paid run resets its selected participants. Reconnects
-        // and temporary-team reconciliation must preserve their current combat state.
-        var changed = new List<ulong>();
-        foreach (var member in QueryTemporaryTeam((int)EnmTmpTeamType.Dungeon, (uint)dungeonId)!.MemberData)
-        {
-            if (Characters.PermanentLiquid(member.InstId) == 0) continue;
-            Characters.SetPermanentLiquid(member.InstId, 0);
-            changed.Add(member.InstId);
-        }
-        if (changed.Count > 0) Gameplay.Publish(new VitalsChanged(changed));
     }
 
     public (int Code, RewardDelivery? Delivery, HordeState? Horde) FinishDungeon(
@@ -106,10 +89,31 @@ public sealed partial class Player
         Log.State("dungeon {DungeonId} settled, victory {Victory}, leave {Leave}, rewards {RewardLines}",
             dungeonId, result.Victory, leave, result.Rewards.Count);
         if (result.Victory) Gameplay.Publish(new DungeonCleared(dungeonId));
+        SettleDungeonStamina(dungeonId, result.Victory);
         return (0, delivery, result.Horde);
     }
 
     public readonly record struct DungeonEntryOutcome(int Code, ulong DungeonId, uint StaminaSpent);
+
+    /// <summary>
+    /// Stamina is paid on entry. A won run keeps it; a lost or abandoned run gives it back, as the client's exit prompt
+    /// promises ("Stamina will be returned"), and defeats are refunded the same way.
+    /// </summary>
+    private void SettleDungeonStamina(ulong dungeonId, bool victory)
+    {
+        var cost = assets.Dungeons.Dungeon(dungeonId) is {} dungeon ? assets.Dungeons.Type(dungeon.DungeonType)?.VitalityCost ?? 0 : 0;
+        if (cost == 0 || cost > int.MaxValue) return;
+
+        if (victory)
+        {
+            Gameplay.Publish(new StaminaSpent(cost));
+            return;
+        }
+
+        if (Progress.AddStamina((int)cost, UtcNow) == 0)
+            Gameplay.Publish(new StaminaChanged(Progress.Stamina));
+        Log.State("dungeon {DungeonId} not won, stamina {Cost} refunded", dungeonId, cost);
+    }
 
     private int SpendDungeonStamina(uint cost, DateTimeOffset now)
     {

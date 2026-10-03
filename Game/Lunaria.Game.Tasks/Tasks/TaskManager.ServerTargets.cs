@@ -71,7 +71,7 @@ public sealed partial class TaskManager : TrackedObject
 
         var parameter = (ServerTarget)action.ServerTargetType switch {
             ServerTarget.OwnHouse => action.ServerParam1,
-            ServerTarget.UseItem or ServerTarget.OwnItem or ServerTarget.CompleteDungeon
+            ServerTarget.BuyItem or ServerTarget.OwnItem or ServerTarget.CompleteDungeon
                 or ServerTarget.CompleteBattle => action.ServerParam2,
             _ => "1"
         };

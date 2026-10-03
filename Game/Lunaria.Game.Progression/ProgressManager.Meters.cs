@@ -36,6 +36,16 @@ public sealed partial class ProgressManager : TrackedObject
         return 0;
     }
 
+    /// <summary>When natural regeneration fills the meter, or <paramref name="now"/> if it already is.</summary>
+    public DateTimeOffset StaminaFullTime(DateTimeOffset now)
+    {
+        var interval = assets.GlobalConfig.StaminaRegenInterval;
+        if (interval <= 0 || Stamina >= StaminaRegenMax) return now;
+
+        var full = StaminaTickAt.AddSeconds((double)(StaminaRegenMax - Stamina) * interval);
+        return full > now ? full : now;
+    }
+
     public int Regenerate(DateTimeOffset now)
     {
         var interval = assets.GlobalConfig.StaminaRegenInterval;

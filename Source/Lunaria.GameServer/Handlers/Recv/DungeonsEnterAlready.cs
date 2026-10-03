@@ -14,7 +14,7 @@ public sealed class HandleDungeonsEnterAlready
             Info = ctx.Player.Dungeons.Current is {} current ?
                 new DungeonsCurrentData {
                     DungeonsId = (uint)current.DungeonId,
-                    BattleId = current.BattleId
+                    BattleId = ctx.Player.Dungeons.CompletedBattle()
                 } :
                 null
         });

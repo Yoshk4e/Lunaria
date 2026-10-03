@@ -1,3 +1,4 @@
+using Lunaria.Game.Tasks;
 using Lunaria.Game.Logging;
 using Lunaria.Game.Player.Gameplay;
 using Msg;
@@ -68,6 +69,8 @@ public sealed partial class Player
             }
 
             delivery = GrantRewards(price.Grants, EnmItemReason.EnmItemChangeShopBuy);
+            foreach (var grant in price.Grants)
+                RecordTaskEvent(ServerTarget.BuyItem, grant.ItemId, (uint)grant.Count);
             return 0;
         });
 
