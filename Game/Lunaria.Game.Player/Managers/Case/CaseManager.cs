@@ -1,4 +1,7 @@
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
+using Microsoft.Extensions.Logging;
 using Msg;
 
 namespace Lunaria.Game.Player.Managers;
@@ -14,12 +17,16 @@ public sealed record CaseProcessingState(
     public IReadOnlySet<ulong> OwnedEvidence { get; init; } = new SortedSet<ulong>();
 }
 
-public sealed class CaseManager(GameData assets)
+public sealed partial class CaseManager(GameData assets) : TrackedObject
 {
-    private readonly SortedSet<uint> _finished = [];
-    private readonly SortedDictionary<uint, CaseProcessingState> _processing = [];
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Player.Case");
 
-    public bool IsDirty { get; private set; }
+    private readonly TrackedSet<uint> __tracked_finished = [];
+    [Tracked]
+    private partial TrackedSet<uint> _finished { get; }
+    private readonly TrackedSortedDictionary<uint, CaseProcessingState> __tracked_processing = [];
+    [Tracked]
+    private partial TrackedSortedDictionary<uint, CaseProcessingState> _processing { get; }
 
     public IReadOnlyDictionary<uint, CaseProcessingState> Processing => _processing;
 
@@ -67,7 +74,7 @@ public sealed class CaseManager(GameData assets)
             _finished.Add(caseId);
         }
 
-        IsDirty = false;
+        AcceptLoadedState();
     }
 
     public uint EnsureStarted()
@@ -81,13 +88,11 @@ public sealed class CaseManager(GameData assets)
             return 0;
 
         _processing[beginning] = new CaseProcessingState(beginning, FinishedPhase: 0, new SortedSet<ulong>(), new SortedSet<ulong>());
-        Dirty();
+
         return beginning;
     }
 
     public bool IsProcessing(uint caseId) => _processing.ContainsKey(caseId);
-
-    public void ClearDirty() => IsDirty = false;
 
     public void LoadOwned(IEnumerable<(uint CaseId, IEnumerable<ulong> Clues, IEnumerable<ulong> Evidence)> owned)
     {
@@ -97,7 +102,7 @@ public sealed class CaseManager(GameData assets)
 
             _processing[row.CaseId] = state with {
                 OwnedClues = new SortedSet<ulong>(row.Clues.Where(id => BelongsToCase(id, row.CaseId)).Concat(state.OnSlotClues)),
-                // Cases opened before evidence came with the opening still get theirs.
+                // Restore opening evidence missing from older saves.
                 OwnedEvidence = new SortedSet<ulong>(row.Evidence.Where(id => assets.Cases.Evidence(id)?.CaseId == row.CaseId)
                     .Concat(state.DecryptedEvidence).Concat(CaseEvidence(row.CaseId)))
             };
@@ -110,7 +115,7 @@ public sealed class CaseManager(GameData assets)
         if (state.OwnedClues.Contains(clueId)) return true;
 
         _processing[clue.CaseId] = state with { OwnedClues = new SortedSet<ulong>(state.OwnedClues) { clueId } };
-        Dirty();
+
         return true;
     }
 
@@ -120,7 +125,7 @@ public sealed class CaseManager(GameData assets)
         if (state.OwnedEvidence.Contains(evidenceId)) return true;
 
         _processing[evidence.CaseId] = state with { OwnedEvidence = new SortedSet<ulong>(state.OwnedEvidence) { evidenceId } };
-        Dirty();
+
         return true;
     }
 
@@ -180,12 +185,13 @@ public sealed class CaseManager(GameData assets)
         {
             _processing.Remove(clue.CaseId);
             _finished.Add(clue.CaseId);
+            Log.State("case {CaseId} completed by clue {ClueId} at phase {Phase}", clue.CaseId, clueId, phase);
         } else
         {
             _processing[clue.CaseId] = state with { OnSlotClues = clues, FinishedPhase = phase };
         }
-        Dirty();
 
+        Log.Stage("case {CaseId} clue {ClueId} placed, phase {PreviousPhase} to {Phase}", clue.CaseId, clueId, state.FinishedPhase, phase);
         return (0, clue.CaseId, phase);
     }
 
@@ -204,7 +210,8 @@ public sealed class CaseManager(GameData assets)
 
         var decrypted = new SortedSet<ulong>(state.DecryptedEvidence) { evidenceId };
         _processing[evidence.CaseId] = state with { DecryptedEvidence = decrypted };
-        Dirty();
+
+        Log.Stage("case {CaseId} evidence {EvidenceId} decrypted", evidence.CaseId, evidenceId);
         return 0;
     }
 
@@ -213,11 +220,12 @@ public sealed class CaseManager(GameData assets)
         if (!assets.Cases.CaseExists(caseId) || _processing.ContainsKey(caseId) || _finished.Contains(caseId))
             return null;
 
-        // No quest action grants a case's evidence; the client expects it in the case's receive notification.
+        // No quest action grants this evidence. The client expects it in the case's receive notification.
         var evidence = CaseEvidence(caseId);
         _processing[caseId] = new CaseProcessingState(caseId, FinishedPhase: 0, new SortedSet<ulong>(), new SortedSet<ulong>())
             { OwnedEvidence = new SortedSet<ulong>(evidence) };
-        Dirty();
+
+        Log.State("case {CaseId} opened with {EvidenceCount} evidence entries", caseId, evidence.Length);
 
         return (true, [], evidence);
     }
@@ -233,8 +241,8 @@ public sealed class CaseManager(GameData assets)
     }
 
     /// <summary>
-    /// The client's finished_phase is the id of the last finished stage (0 for none), not a count: it looks the
-    /// value up in StageIDList to decide which stages' clues to draw on the board.
+    /// The client looks up finished_phase in StageIDList to choose which clues to draw.
+    /// Send the last finished stage ID, or 0 if none are finished.
     /// </summary>
     public uint FinishedStageId(uint caseId, uint finishedPhase)
     {
@@ -284,5 +292,4 @@ public sealed class CaseManager(GameData assets)
 
     private bool BelongsToCase(ulong clueId, uint caseId) => assets.Cases.Clue(clueId)?.CaseId == caseId;
 
-    private void Dirty() => IsDirty = true;
 }

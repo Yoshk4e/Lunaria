@@ -1,9 +1,10 @@
+using Lunaria.Common.Tracking;
 using Lunaria.Game.Resources;
 using Msg;
 
 namespace Lunaria.Game.Wanted;
 
-public sealed partial class WantedManager
+public sealed partial class WantedManager : TrackedObject
 {
     private IReadOnlyList<WantedStepAward> BuildAwards(RunState run, List<ItemGrant> grants)
     {
@@ -100,6 +101,6 @@ public sealed partial class WantedManager
     {
         if (!CanRedeem) throw new InvalidOperationException("Wanted redemption is not eligible");
         _run!.RedeemedSteps.Add(RedemptionStep);
-        Dirty();
+
     }
 }

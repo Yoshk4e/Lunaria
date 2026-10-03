@@ -1,3 +1,4 @@
+using Lunaria.Common.Tracking;
 using Lunaria.Game.Logging;
 using Lunaria.Game.Resources.Tables;
 using Msg;
@@ -24,7 +25,7 @@ public sealed record TaskProgressResult(
     public IReadOnlyList<TaskAction> SettledActions { get; init; } = [];
 }
 
-public sealed partial class TaskManager
+public sealed partial class TaskManager : TrackedObject
 {
     public (int Code, TaskProgressResult? Result) ReportAction(
         uint taskType,
@@ -128,8 +129,8 @@ public sealed partial class TaskManager
             return (0, FailStep(state));
         }
 
-        // Client reports activate server targets but cannot set their progress. Validate the full seek before running
-        // commands.
+        // Client reports activate server targets but cannot set their progress.
+        // Validate the full seek before running commands.
         if (action.ServerTargetType != 0)
         {
             var current = state.CurrentStep.Actions.GetValueOrDefault(actionId);
@@ -137,9 +138,7 @@ public sealed partial class TaskManager
             if (current?.IsComplete == true)
                 return (0, Acknowledge(taskType, taskId, current.Progress, current.MaxProgress));
 
-            if (IsCommand(action.ServerTargetType) && _reportedTargets.Add((taskType, actionId)))
-                Dirty();
-
+            if (IsCommand(action.ServerTargetType)) _reportedTargets.Add((taskType, actionId));
             var evaluated = evaluateTarget?.Invoke(action)
                             ?? (evaluateTarget is null && action.ServerTargetType == ArriveMapTarget ? 1u : null);
 
@@ -148,7 +147,7 @@ public sealed partial class TaskManager
                 if (advanced)
                 {
                     _processing[(taskType, taskId)] = state;
-                    Dirty();
+
                 }
 
                 return (0, Snapshot(new TaskProgressResult(taskType, taskId, advanced,
@@ -157,7 +156,7 @@ public sealed partial class TaskManager
             progress = evaluated.Value;
         }
 
-        var actions = new SortedDictionary<ulong, TaskActionState>(state.CurrentStep.Actions);
+        var actions = new SortedDictionary<ulong, TaskActionState>(state.CurrentStep.Actions.ToDictionary(p => p.Key, p => p.Value));
 
         foreach (var tracked in assets.Tasks.ServerActions(taskType, stepId))
         {
@@ -192,7 +191,7 @@ public sealed partial class TaskManager
         if (advanced || recorded)
         {
             _processing[(taskType, taskId)] = state;
-            Dirty();
+
         }
 
         return (0, Snapshot(new TaskProgressResult(
@@ -219,7 +218,6 @@ public sealed partial class TaskManager
             if (_finished.Count >= MaxFinished && _finished.Min is {} oldest)
                 _finished.Remove(oldest);
             _finished.Add((taskType, taskId));
-            Dirty();
 
             var started = new List<uint>();
 
@@ -237,7 +235,6 @@ public sealed partial class TaskManager
         }
 
         _processing[(taskType, taskId)] = state with { CurrentStep = EnteredStep(taskType, following, state.CurrentStep) };
-        Dirty();
 
         return Snapshot(new TaskProgressResult(
             taskType, taskId, Recorded: true, echoProgress, echoMax, StepAdvanced: true, TaskCompleted: false, [], passed));

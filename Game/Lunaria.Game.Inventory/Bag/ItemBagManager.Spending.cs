@@ -1,9 +1,10 @@
+using Lunaria.Common.Tracking;
 using Lunaria.Game.Resources;
 using Msg;
 
 namespace Lunaria.Game.Inventory;
 
-public sealed partial class ItemBagManager
+public sealed partial class ItemBagManager : TrackedObject
 {
     public int Remove(uint itemId, uint count)
     {
@@ -17,7 +18,7 @@ public sealed partial class ItemBagManager
 
         if (stack.Count == 0)
             _stacks.Remove(itemId);
-        IsDirty = true;
+
         MarkChanged(itemId);
         return 0;
     }

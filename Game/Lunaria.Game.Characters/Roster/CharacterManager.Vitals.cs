@@ -1,8 +1,9 @@
+using Lunaria.Common.Tracking;
 using Msg;
 
 namespace Lunaria.Game.Characters;
 
-public sealed partial class CharacterManager
+public sealed partial class CharacterManager : TrackedObject
 {
     public int MaxHp(ulong instId) =>
         Get(instId) is {} character ?

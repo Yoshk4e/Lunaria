@@ -1,8 +1,10 @@
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
 using Msg;
 
 namespace Lunaria.Game.Motives;
 
-public sealed partial class MotiveManager
+public sealed partial class MotiveManager : TrackedObject
 {
     public int CheckEquip(ulong motiveUniq)
     {
@@ -27,6 +29,7 @@ public sealed partial class MotiveManager
 
         var motive = Get(motiveUniq)!;
         Replace(motive with { EquipedTarget = charInstId });
+        Log.Stage("motive {UniqId} equipped on character {InstId}", motiveUniq, charInstId);
         return 0;
     }
 
@@ -50,6 +53,7 @@ public sealed partial class MotiveManager
 
         var motive = Get(motiveUniq)!;
         Replace(motive with { EquipedTarget = 0 });
+        Log.Stage("motive {UniqId} unequipped from character {InstId}", motiveUniq, charInstId);
         return 0;
     }
 

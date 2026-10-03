@@ -96,7 +96,7 @@ public sealed class UtilityManagerTests(TestAssets fixture)
     }
 
     [Fact]
-    public void Map_FirstPositionSyncAtTheArrivalCoordinatesStillMarksARealPosition()
+    public void Map_FirstPositionSyncAtArrivalChangesSpawnModeWithoutRewritingCoordinates()
     {
         var map = new MapManager(fixture.Data);
         Assert.Equal(0, map.BeginEnter(TestAssets.StarterMap, 0).Code);
@@ -105,7 +105,7 @@ public sealed class UtilityManagerTests(TestAssets fixture)
         map.ClearDirty();
         Assert.True(map.SyncPosition(map.Position));
         Assert.Equal(EnmBornPosType.EnmBornPosition, map.BornPosType);
-        Assert.True(map.IsDirty);
+        Assert.False(map.IsDirty);
         map.ClearDirty();
         Assert.True(map.SyncPosition(map.Position));
         Assert.False(map.IsDirty);

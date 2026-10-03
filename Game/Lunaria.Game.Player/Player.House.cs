@@ -1,3 +1,4 @@
+using Lunaria.Common.Tracking;
 using Lunaria.Game.Player.Gameplay;
 using Lunaria.Game.Player.Managers;
 using Lunaria.Game.Resources;
@@ -7,6 +8,7 @@ namespace Lunaria.Game.Player;
 
 public sealed partial class Player
 {
+    [Untracked]
     private readonly Dictionary<uint, uint> _announcedIncome = [];
 
     public (int Code, HouseInfo? Info) BuyHouse(uint houseId)

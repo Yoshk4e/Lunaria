@@ -1,13 +1,18 @@
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
+using Microsoft.Extensions.Logging;
 using Msg;
 
 namespace Lunaria.Game.Inventory;
 
-public sealed partial class WalletManager(GameData assets)
+public sealed partial class WalletManager(GameData assets) : TrackedObject
 {
-    private readonly SortedDictionary<int, long> _balances = [];
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Inventory.Wallet");
 
-    public bool IsDirty { get; private set; }
+    private readonly TrackedSortedDictionary<int, long> __tracked_balances = [];
+    [Tracked]
+    private partial TrackedSortedDictionary<int, long> _balances { get; }
 
     public bool IsEmpty => _balances.Count == 0;
 
@@ -38,15 +43,13 @@ public sealed partial class WalletManager(GameData assets)
                 _balances[moneyType] = amount;
         }
         _changedMoney.Clear();
-        IsDirty = false;
+        AcceptLoadedState();
     }
 
     public long Balance(int moneyType) => _balances.GetValueOrDefault(moneyType);
 
     public IEnumerable<(int MoneyType, long Amount)> All() =>
         _balances.Select(kv => (kv.Key, kv.Value));
-
-    public void ClearDirty() => IsDirty = false;
 
     public IReadOnlyList<PlayerMoney> MoneyData() =>
         All().Select(pair => new PlayerMoney { Type = pair.MoneyType, Amount = pair.Amount }).ToList();

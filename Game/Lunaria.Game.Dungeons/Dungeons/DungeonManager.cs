@@ -1,7 +1,8 @@
+using Lunaria.Common.Tracking;
 using System.Globalization;
 using Lunaria.Game.Logging;
-using Lunaria.Game.Resources;
 using Lunaria.Game.Resources.Tables;
+using Lunaria.Game.Resources;
 using Microsoft.Extensions.Logging;
 using Msg;
 
@@ -11,17 +12,23 @@ public sealed record DungeonTypeState(uint TypeId, uint UsedDay, uint UsedWeek, 
 
 public sealed record HordeState(uint HordeId, uint KillCount, uint StarAward);
 
-public sealed class DungeonManager(GameData assets)
+public sealed partial class DungeonManager(GameData assets) : TrackedObject
 {
     private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Dungeons");
 
-    private readonly SortedDictionary<ulong, uint> _finishes = [];
-    private readonly SortedDictionary<uint, HordeState> _hordes = [];
-    private readonly Dictionary<uint, DungeonTypeState> _types = [];
+    private readonly TrackedSortedDictionary<ulong, uint> __tracked_finishes = [];
+    [Tracked]
+    private partial TrackedSortedDictionary<ulong, uint> _finishes { get; }
+    private readonly TrackedSortedDictionary<uint, HordeState> __tracked_hordes = [];
+    [Tracked]
+    private partial TrackedSortedDictionary<uint, HordeState> _hordes { get; }
+    private readonly TrackedDictionary<uint, DungeonTypeState> __tracked_types = [];
+    [Tracked]
+    private partial TrackedDictionary<uint, DungeonTypeState> _types { get; }
 
-    private (ulong DungeonId, uint BattleId)? _current;
-
-    public bool IsDirty { get; private set; }
+    private (ulong DungeonId, uint BattleId)? __tracked_current = default!;
+    [Tracked]
+    private partial (ulong DungeonId, uint BattleId)? _current { get; set; }
 
     public IReadOnlyDictionary<ulong, uint> Finishes => _finishes;
 
@@ -68,10 +75,8 @@ public sealed class DungeonManager(GameData assets)
         if (current is {} run && assets.Dungeons.Dungeon(run.DungeonId) is not null)
             _current = run;
 
-        IsDirty = false;
+        AcceptLoadedState();
     }
-
-    public void ClearDirty() => IsDirty = false;
 
     public (uint CountDay, uint CountWeek) RemainingAttempts(uint typeId, DateTimeOffset now)
     {
@@ -122,7 +127,7 @@ public sealed class DungeonManager(GameData assets)
         var dungeon = assets.Dungeons.Dungeon(dungeonId)!;
         _current = (dungeonId, dungeon.BattleId.FirstOrDefault());
         Log.State("dungeon {DungeonId} entered, battle {BattleId}", dungeonId, _current.Value.BattleId);
-        Dirty();
+
     }
 
     public bool IsCurrent(ulong dungeonId) => _current is {} current && current.DungeonId == dungeonId;
@@ -142,14 +147,17 @@ public sealed class DungeonManager(GameData assets)
             return (code, false);
 
         _current = (dungeonId, battleId);
-        Dirty();
+
+        Log.Stage("dungeon {DungeonId} adopted as current with battle {BattleId}", dungeonId, battleId);
         return (0, true);
     }
 
     public void AbandonCurrent()
     {
+        if (_current is {} current)
+            Log.Stage("dungeon {DungeonId} abandoned with battle {BattleId}", current.DungeonId, current.BattleId);
         _current = null;
-        Dirty();
+
     }
 
     public DungeonSettlement Finish(
@@ -165,7 +173,10 @@ public sealed class DungeonManager(GameData assets)
             return DungeonSettlement.Rejected((int)EnmTextCode.EnmTextDungeonsFail);
 
         if (_current is not {} current || current.DungeonId != dungeonId)
+        {
+            Log.Stage("dungeon {DungeonId} settlement refused, current dungeon {CurrentDungeonId}", dungeonId, _current?.DungeonId);
             return DungeonSettlement.Rejected((int)EnmTextCode.EnmTextDungeonsNotIn);
+        }
 
         var settled = !leave;
 
@@ -217,7 +228,6 @@ public sealed class DungeonManager(GameData assets)
             horde = state;
         }
 
-        Dirty();
         Log.State("dungeon {DungeonId} finished, victory {Victory}, leave {Leave}, horde kills {Kills}, reward lines {RewardCount}",
             dungeonId, victory, leave, hordeKills, rewards.Count);
         return new DungeonSettlement(0, settled, settled && victory, rewards, horde);
@@ -317,7 +327,7 @@ public sealed class DungeonManager(GameData assets)
     {
         var state = StateOf(typeId, now);
         _types[typeId] = state with { UsedDay = state.UsedDay + 1, UsedWeek = state.UsedWeek + 1 };
-        Dirty();
+
     }
 
     private DungeonTypeState StateOf(uint typeId, DateTimeOffset now)
@@ -346,7 +356,7 @@ public sealed class DungeonManager(GameData assets)
             UsedWeek = newWeek ? 0 : state.UsedWeek,
             Anchor = now
         };
-        Dirty();
+
     }
 
     private static int WeekOf(DateTimeOffset moment)
@@ -355,5 +365,4 @@ public sealed class DungeonManager(GameData assets)
         return ISOWeek.GetYear(date) * 100 + ISOWeek.GetWeekOfYear(date);
     }
 
-    private void Dirty() => IsDirty = true;
 }

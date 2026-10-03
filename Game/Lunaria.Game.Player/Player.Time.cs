@@ -1,3 +1,4 @@
+using Lunaria.Common.Tracking;
 using Google.Protobuf;
 using Lunaria.Game.Player.Gameplay;
 using Msg;
@@ -6,6 +7,7 @@ namespace Lunaria.Game.Player;
 
 public sealed partial class Player
 {
+    [Untracked]
     private DateTimeOffset? _lastTimeSettlement;
 
     public IReadOnlyList<IMessage> AdvanceTime(DateTimeOffset now)

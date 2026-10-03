@@ -1,12 +1,17 @@
+using Lunaria.Common.Tracking;
 using Msg;
 
 namespace Lunaria.Game.World;
 
-public sealed partial class MapManager
+public sealed partial class MapManager : TrackedObject
 {
-    private readonly List<TrackedTargetInfo> _trackedTargets = [];
+    private sealed record MapTarget(ulong MapId, ulong TagId, uint TagType);
+    private readonly TrackedList<MapTarget> __tracked_trackedTargets = [];
+    [Tracked]
+    private partial TrackedList<MapTarget> _trackedTargets { get; }
 
-    public IReadOnlyList<TrackedTargetInfo> TrackedTargets => _trackedTargets;
+    public IReadOnlyList<TrackedTargetInfo> TrackedTargets => _trackedTargets.Select(t => new TrackedTargetInfo {
+        MapId = t.MapId, TagId = t.TagId, TagType = t.TagType }).ToArray();
 
     public int TrackTarget(ulong mapId, ulong tagId, uint tagType)
     {
@@ -16,8 +21,8 @@ public sealed partial class MapManager
         if (IsTracked(mapId, tagId, tagType))
             return 0;
 
-        _trackedTargets.Add(new TrackedTargetInfo { MapId = mapId, TagId = tagId, TagType = tagType });
-        IsDirty = true;
+        _trackedTargets.Add(new MapTarget(mapId, tagId, tagType));
+
         return 0;
     }
 
@@ -28,7 +33,7 @@ public sealed partial class MapManager
 
         _trackedTargets.RemoveAll(target =>
             target.MapId == mapId && target.TagId == tagId && target.TagType == tagType);
-        IsDirty = true;
+
         return 0;
     }
 

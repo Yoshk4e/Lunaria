@@ -1,8 +1,10 @@
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
 using Msg;
 
 namespace Lunaria.Game.Characters;
 
-public sealed partial class SkillManager
+public sealed partial class SkillManager : TrackedObject
 {
     public TalentMasks TalentsOf(ulong instId) =>
         _talents.TryGetValue(instId, out var masks) ? masks : new TalentMasks();
@@ -42,7 +44,8 @@ public sealed partial class SkillManager
             return code;
 
         _talents[instId] = TalentsOf(instId).WithUnlock(nodeId);
-        IsDirty = true;
+
+        Log.Stage("talent node {NodeId} unlocked for character {InstId}", nodeId, instId);
         return 0;
     }
 }

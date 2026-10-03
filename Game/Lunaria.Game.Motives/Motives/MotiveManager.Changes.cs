@@ -1,9 +1,11 @@
+using Lunaria.Common.Tracking;
 using Msg;
 
 namespace Lunaria.Game.Motives;
 
-public sealed partial class MotiveManager
+public sealed partial class MotiveManager : TrackedObject
 {
+    [Untracked]
     private readonly Dictionary<ulong, CmdItem> _changed = [];
 
     public CmdItem ToInventoryItem(MotiveState state, bool removed = false, bool isNew = false) => new() {

@@ -1,3 +1,4 @@
+using Lunaria.Common.Tracking;
 using System.Globalization;
 using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
@@ -11,13 +12,13 @@ public sealed record ShopPurchase(uint Count, DateTimeOffset Anchor);
 /// <summary>
 /// Purchase periods use EnmPeriodType: 1 daily, 2 weekly, 3 monthly, 4 forever. They are separate from shared quotas.
 /// </summary>
-public sealed partial class ShopManager(GameData assets)
+public sealed partial class ShopManager(GameData assets) : TrackedObject
 {
     private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Shop");
 
-    private readonly SortedDictionary<uint, ShopPurchase> _bought = [];
-
-    public bool IsDirty { get; private set; }
+    private readonly TrackedSortedDictionary<uint, ShopPurchase> __tracked_bought = [];
+    [Tracked]
+    private partial TrackedSortedDictionary<uint, ShopPurchase> _bought { get; }
 
     public IReadOnlyDictionary<uint, ShopPurchase> Entries => _bought;
 
@@ -34,10 +35,8 @@ public sealed partial class ShopManager(GameData assets)
             if (assets.Shops.IsCapped(good))
                 _bought[good] = new ShopPurchase(count, anchor);
         }
-        IsDirty = false;
+        AcceptLoadedState();
     }
-
-    public void ClearDirty() => IsDirty = false;
 
     public bool ShopExists(uint shopId) => assets.Shops.ShopExists(shopId);
 
@@ -94,7 +93,7 @@ public sealed partial class ShopManager(GameData assets)
 
         var anchor = entry is not null && entry.Anchor > now ? entry.Anchor : now;
         _bought[good.Id] = new ShopPurchase(current + count, anchor);
-        Dirty();
+
         return 0;
     }
 
@@ -107,7 +106,7 @@ public sealed partial class ShopManager(GameData assets)
             return false;
 
         _bought[good.Id] = entry with { Count = 0, Anchor = now };
-        Dirty();
+
         return true;
     }
 
@@ -138,5 +137,4 @@ public sealed partial class ShopManager(GameData assets)
     private static int MonthOf(DateTimeOffset moment) =>
         moment.UtcDateTime.Year * 12 + moment.UtcDateTime.Month;
 
-    private void Dirty() => IsDirty = true;
 }

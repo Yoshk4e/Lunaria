@@ -1,3 +1,4 @@
+using Lunaria.Common.Tracking;
 using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
 using Microsoft.Extensions.Logging;
@@ -5,20 +6,22 @@ using Msg;
 
 namespace Lunaria.Game.Tasks;
 
-public sealed partial class TaskManager(GameData assets)
+public sealed partial class TaskManager(GameData assets) : TrackedObject
 {
     private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Tasks");
 
     /// <summary>Open wanted tasks with their run and daily tasks with the daily reset, not at role creation.</summary>
     private static readonly uint[] SeededNamespaces = [TaskAssets.QuestMain, TaskAssets.POIQuest];
-    private readonly SortedSet<(uint Type, uint Id)> _finished = [];
+    private readonly TrackedSet<(uint Type, uint Id)> __tracked_finished = [];
+    [Tracked]
+    private partial TrackedSet<(uint Type, uint Id)> _finished { get; }
 
-    private readonly SortedDictionary<(uint Type, uint Id), TaskState> _processing = [];
+    private readonly TrackedSortedDictionary<(uint Type, uint Id), TaskState> __tracked_processing = [];
+    [Tracked]
+    private partial TrackedSortedDictionary<(uint Type, uint Id), TaskState> _processing { get; }
     public static int MaxProcessing => (int)EnmSizeLimit.MaxProcessingTasksLen;
 
     public static int MaxFinished => (int)EnmSizeLimit.MaxCompletedTasksLen;
-
-    public bool IsDirty { get; private set; }
 
     public IReadOnlyDictionary<(uint Type, uint Id), TaskState> Processing => _processing;
 
@@ -78,7 +81,7 @@ public sealed partial class TaskManager(GameData assets)
             _finished.Add((type, task));
         }
 
-        IsDirty = false;
+        AcceptLoadedState();
     }
 
     private TaskStepState AdoptStep(uint type, ulong step, IEnumerable<(ulong Action, uint Progress, uint Max)> actions)
@@ -139,8 +142,6 @@ public sealed partial class TaskManager(GameData assets)
 
     public bool IsFinished(uint type, uint taskId) => _finished.Contains((type, taskId));
 
-    public void ClearDirty() => IsDirty = false;
-
     public TaskData? TaskDataOf(uint type, uint taskId)
     {
         if (!assets.Tasks.TaskExists(type, taskId))
@@ -195,7 +196,7 @@ public sealed partial class TaskManager(GameData assets)
 
         _processing[(type, taskId)] = new TaskState(type, taskId, FreshStep(type, first));
         Log.Event("started task {TaskType} {TaskId} at step {StepId}", type, taskId, first);
-        Dirty();
+
         return true;
     }
 
@@ -266,5 +267,4 @@ public sealed partial class TaskManager(GameData assets)
         return data;
     }
 
-    private void Dirty() => IsDirty = true;
 }

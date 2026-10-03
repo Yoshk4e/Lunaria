@@ -1,3 +1,4 @@
+using Lunaria.Common.Tracking;
 using Google.Protobuf;
 using Lunaria.Game.Player.Gameplay;
 using Msg;
@@ -7,6 +8,7 @@ namespace Lunaria.Game.Player;
 public sealed partial class Player
 {
     private readonly PlayerChanges _changes = new();
+    [Untracked]
     private GameplayEventDispatcher? _gameplay;
 
     private GameplayEventDispatcher Gameplay

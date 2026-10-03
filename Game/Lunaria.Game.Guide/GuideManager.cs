@@ -1,13 +1,18 @@
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
+using Microsoft.Extensions.Logging;
 using Msg;
 
 namespace Lunaria.Game.Guide;
 
-public sealed partial class GuideManager(GameData assets)
+public sealed partial class GuideManager(GameData assets) : TrackedObject
 {
-    private readonly SortedDictionary<uint, GuideEntry> _entries = [];
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Guide");
 
-    public bool IsDirty { get; private set; }
+    private readonly TrackedSortedDictionary<uint, GuideEntry> __tracked_entries = [];
+    [Tracked]
+    private partial TrackedSortedDictionary<uint, GuideEntry> _entries { get; }
 
     public IReadOnlyDictionary<uint, GuideEntry> Entries => _entries;
 
@@ -25,14 +30,12 @@ public sealed partial class GuideManager(GameData assets)
             if (assets.Guides.Exists(guideId))
                 _entries[guideId] = entry;
         }
-        IsDirty = false;
+        AcceptLoadedState();
     }
 
     public GuideEntry? Entry(uint guideId) => _entries.GetValueOrDefault(guideId);
 
     public bool IsUnlocked(uint guideId) => _entries.ContainsKey(guideId);
-
-    public void ClearDirty() => IsDirty = false;
 
     public IReadOnlyList<GuideInfo> Infos() =>
         _entries.Select(kv => ToGuideInfo(kv.Key, kv.Value)).ToList();

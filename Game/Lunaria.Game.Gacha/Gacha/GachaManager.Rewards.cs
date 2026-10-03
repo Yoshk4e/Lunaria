@@ -1,10 +1,11 @@
+using Lunaria.Common.Tracking;
 using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
 
 namespace Lunaria.Game.Gacha;
 
 /// <summary>Grant rebates at each milestone. Automatic delivery is inferred from the lack of a claim command.</summary>
-public sealed partial class GachaManager
+public sealed partial class GachaManager : TrackedObject
 {
     public IReadOnlyList<ItemGrant> ClaimRebates(uint bannerId)
     {
@@ -28,7 +29,7 @@ public sealed partial class GachaManager
             mask |= milestone.Bit;
         }
         _states[bannerId] = state with { ClaimedMask = mask };
-        Dirty();
+
         Log.Event("gacha banner {PoolId} released {Count} rebate milestones at total {Total}", bannerId, due.Count, state.Total);
 
         return due.Select(milestone => milestone.Reward).ToList();

@@ -1,3 +1,4 @@
+using Lunaria.Common.Tracking;
 using Lunaria.Game.Resources;
 using Msg;
 
@@ -5,7 +6,8 @@ namespace Lunaria.Game.Player;
 
 public sealed partial class Player
 {
-    private readonly HashSet<uint> _boughtMoneyPacks = [];
+    private readonly TrackedSet<uint> __tracked_boughtMoneyPacks = [];
+    [Tracked] private partial TrackedSet<uint> _boughtMoneyPacks { get; }
 
     public IReadOnlyCollection<uint> BoughtMoneyPacks => _boughtMoneyPacks;
 

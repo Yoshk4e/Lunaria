@@ -1,10 +1,11 @@
+using Lunaria.Common.Tracking;
 using Lunaria.Game.Logging;
 using Microsoft.Extensions.Logging;
 using Msg;
 
 namespace Lunaria.Game.Progression;
 
-public sealed partial class ProgressManager
+public sealed partial class ProgressManager : TrackedObject
 {
     private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Progression");
 
@@ -31,7 +32,6 @@ public sealed partial class ProgressManager
 
         TeamLevel = level;
         TeamExp = (uint)Math.Min(pool, cap);
-        Dirty();
 
         if (gained > 0)
             Log.State("team level advanced to {Level} with {LevelsGained} levels gained from {Exp} exp", level, gained, exp);

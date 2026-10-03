@@ -1,13 +1,18 @@
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
+using Microsoft.Extensions.Logging;
 using Msg;
 
 namespace Lunaria.Game.Inventory;
 
-public sealed partial class ItemBagManager(GameData assets)
+public sealed partial class ItemBagManager(GameData assets) : TrackedObject
 {
-    private readonly SortedDictionary<uint, ItemStack> _stacks = [];
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Inventory.Bag");
 
-    public bool IsDirty { get; private set; }
+    private readonly TrackedSortedDictionary<uint, ItemStack> __tracked_stacks = [];
+    [Tracked]
+    private partial TrackedSortedDictionary<uint, ItemStack> _stacks { get; }
 
     /// <summary>Must match the MaxBagCell value sent in global_conf.</summary>
     public int CellCap => assets.GlobalConfig.MaxBagCell;
@@ -53,7 +58,7 @@ public sealed partial class ItemBagManager(GameData assets)
         }
 
         _changed.Clear();
-        IsDirty = false;
+        AcceptLoadedState();
     }
 
     public uint CountOf(uint itemId) => _stacks.TryGetValue(itemId, out var stack) ? stack.Count : 0;
@@ -69,12 +74,10 @@ public sealed partial class ItemBagManager(GameData assets)
             if (_stacks.TryGetValue(id, out var stack) && stack.IsNew)
             {
                 stack.IsNew = false;
-                IsDirty = true;
+
             }
         }
     }
-
-    public void ClearDirty() => IsDirty = false;
 
     public IReadOnlyList<CmdItem> ItemsData() =>
         _stacks.Values

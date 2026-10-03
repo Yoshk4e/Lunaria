@@ -1,3 +1,4 @@
+using Lunaria.Common.Tracking;
 using Google.Protobuf;
 using Lunaria.Game.Resources;
 using Lunaria.Game.Tasks;
@@ -5,9 +6,11 @@ using Msg;
 
 namespace Lunaria.Game.Player;
 
-public sealed partial class Player
+public sealed partial class Player : TrackedObject
 {
-    public WeatherType CurrentWeather { get; private set; }
+    private WeatherType __trackedCurrentWeather = default!;
+    [Tracked]
+    public partial WeatherType CurrentWeather { get; private set; }
 
     public void LoadWeather(uint? weather)
     {
@@ -28,7 +31,7 @@ public sealed partial class Player
         if (selected != CurrentWeather)
         {
             CurrentWeather = selected;
-            _gameTimeDirty = true;
+
         }
         // Capture the reply before a completed target changes time again. Later changes use slip notifications.
         var reply = new SCGameTimeSetupRes { PassTime = elapsedMinutes, Weather = (uint)CurrentWeather };
@@ -51,7 +54,7 @@ public sealed partial class Player
             var elapsed = (next + 1440 - previous) % 1440;
             GameTimeMinutes = next;
             CurrentWeather = weather;
-            _gameTimeDirty = true;
+
             notifications.Add(new SCGameTimeSlipNtf {
                 SlipToTime = next, CurWeather = (uint)weather, PassTime = elapsed
             });

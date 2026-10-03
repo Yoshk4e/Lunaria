@@ -1,8 +1,10 @@
+using Lunaria.Common.Tracking;
 namespace Lunaria.Game.Inventory;
 
-/// <summary>ClearDirty must not discard unsent balance updates.</summary>
-public sealed partial class WalletManager
+/// <summary>Balance updates stay queued after persistence accepts changes.</summary>
+public sealed partial class WalletManager : TrackedObject
 {
+    [Untracked]
     private readonly HashSet<int> _changedMoney = [];
 
     private void MarkChanged(int moneyType) => _changedMoney.Add(moneyType);

@@ -1,5 +1,8 @@
-using Lunaria.Game.Resources;
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources.Tables;
+using Lunaria.Game.Resources;
+using Microsoft.Extensions.Logging;
 using Msg;
 
 namespace Lunaria.Game.Player.Managers;
@@ -10,13 +13,16 @@ public sealed record SubRegionProgressState(
     IReadOnlySet<uint> ClaimedValues
 );
 
-public sealed class RegionProgressManager(GameData assets)
+public sealed partial class RegionProgressManager(GameData assets) : TrackedObject
 {
-    private static readonly SortedSet<uint> EmptyValues = [];
-    private readonly SortedDictionary<ulong, SubRegionProgressState> _subregions = [];
-    private readonly List<ulong> _unlocked = [];
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Player.RegionProgress");
 
-    public bool IsDirty { get; private set; }
+    private static readonly SortedSet<uint> EmptyValues = [];
+    private readonly TrackedSortedDictionary<ulong, SubRegionProgressState> __tracked_subregions = [];
+    [Tracked]
+    private partial TrackedSortedDictionary<ulong, SubRegionProgressState> _subregions { get; }
+    [Untracked]
+    private readonly List<ulong> _unlocked = [];
 
     public IReadOnlyDictionary<ulong, SubRegionProgressState> Subregions => _subregions;
 
@@ -44,7 +50,7 @@ public sealed class RegionProgressManager(GameData assets)
             _subregions[row.SubRegionId] = new SubRegionProgressState(row.SubRegionId, sequences, claimed);
         }
 
-        IsDirty = false;
+        AcceptLoadedState();
     }
 
     public IReadOnlyList<ulong> DrainUnlocked()
@@ -56,8 +62,6 @@ public sealed class RegionProgressManager(GameData assets)
         _unlocked.Clear();
         return drained;
     }
-
-    public void ClearDirty() => IsDirty = false;
 
     public SCResRegionProgress ToRegionProgress()
     {
@@ -120,7 +124,8 @@ public sealed class RegionProgressManager(GameData assets)
             return;
 
         _subregions[subRegionId] = state with { ClaimedValues = claimed };
-        Dirty();
+
+        Log.Stage("subregion {SubRegionId} recorded {NewCount} new reward claims", subRegionId, claimed.Count - state.ClaimedValues.Count);
     }
 
     public IReadOnlyList<ItemGrant> RewardOf(PRegionRewardDataTable reward) =>
@@ -150,7 +155,7 @@ public sealed class RegionProgressManager(GameData assets)
             [sequenceId] = count
         };
         _subregions[subRegionId] = state with { Sequences = sequences };
-        Dirty();
+
         return true;
     }
 
@@ -228,8 +233,8 @@ public sealed class RegionProgressManager(GameData assets)
         state = new SubRegionProgressState(subRegionId, new SortedDictionary<uint, uint>(), new SortedSet<uint>());
         _subregions[subRegionId] = state;
         _unlocked.Add(subRegionId);
+        Log.Stage("subregion {SubRegionId} progress unlocked", subRegionId);
         return state;
     }
 
-    private void Dirty() => IsDirty = true;
 }

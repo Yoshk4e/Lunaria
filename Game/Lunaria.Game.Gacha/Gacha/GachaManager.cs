@@ -1,3 +1,4 @@
+using Lunaria.Common.Tracking;
 using Lunaria.Game.Resources;
 using Msg;
 
@@ -14,12 +15,13 @@ public sealed record GachaBannerState(
     DateTimeOffset DailyAnchor
 );
 
-public sealed partial class GachaManager(GameData assets)
+public sealed partial class GachaManager(GameData assets) : TrackedObject
 {
+    [Untracked]
     private readonly SortedDictionary<uint, BannerConfig> _banners = BuildBanners(assets);
-    private readonly SortedDictionary<uint, GachaBannerState> _states = [];
-
-    public bool IsDirty { get; private set; }
+    private readonly TrackedSortedDictionary<uint, GachaBannerState> __tracked_states = [];
+    [Tracked]
+    private partial TrackedSortedDictionary<uint, GachaBannerState> _states { get; }
 
     public IReadOnlyDictionary<uint, GachaBannerState> Entries => _states;
 
@@ -37,10 +39,8 @@ public sealed partial class GachaManager(GameData assets)
                     row.Total, row.SinceFive, row.SinceFour, row.FeaturedSince,
                     row.Guaranteed, row.ClaimedMask, row.DailyCount, row.Anchor);
         }
-        IsDirty = false;
+        AcceptLoadedState();
     }
-
-    public void ClearDirty() => IsDirty = false;
 
     public bool BannerExists(uint bannerId) => _banners.ContainsKey(bannerId);
 
@@ -57,7 +57,7 @@ public sealed partial class GachaManager(GameData assets)
         if (HasReset(state.DailyAnchor, now))
         {
             _states[bannerId] = state with { DailyCount = 0, DailyAnchor = now };
-            Dirty();
+
             return 0;
         }
 
@@ -108,5 +108,4 @@ public sealed partial class GachaManager(GameData assets)
     private static bool HasReset(DateTimeOffset anchor, DateTimeOffset now) =>
         now.UtcDateTime.Date > anchor.UtcDateTime.Date;
 
-    private void Dirty() => IsDirty = true;
 }

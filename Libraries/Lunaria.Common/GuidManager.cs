@@ -1,11 +1,14 @@
+using Lunaria.Common.Tracking;
 namespace Lunaria.Common;
 
 
-public sealed class GuidManager
+public sealed partial class GuidManager : TrackedObject
 {
     public ulong Peek => checked(LastMinted + 1);
 
-    public ulong LastMinted { get; private set; }
+    private ulong __trackedLastMinted = default!;
+    [Tracked]
+    public partial ulong LastMinted { get; private set; }
 
     public ulong Next()
     {

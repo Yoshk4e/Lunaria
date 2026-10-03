@@ -1,4 +1,7 @@
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
+using Microsoft.Extensions.Logging;
 using Msg;
 
 namespace Lunaria.Game.Player.Managers;
@@ -8,14 +11,16 @@ public sealed record HouseState(uint HouseId, EnmHouseState State, uint Level, D
     public uint BankedIncome { get; init; }
 }
 
-public sealed class HouseManager(GameData assets, HouseRentPolicy? rentPolicy = null)
+public sealed partial class HouseManager(GameData assets, HouseRentPolicy? rentPolicy = null) : TrackedObject
 {
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Player.House");
+
     private readonly HouseRentPolicy _rent = rentPolicy ?? assets.Policy.HouseRent;
     public const MoneyType HouseCurrency = MoneyType.HouseCoins;
 
-    private readonly SortedDictionary<uint, HouseState> _houses = [];
-
-    public bool IsDirty { get; private set; }
+    private readonly TrackedSortedDictionary<uint, HouseState> __tracked_houses = [];
+    [Tracked]
+    private partial TrackedSortedDictionary<uint, HouseState> _houses { get; }
 
     public IReadOnlyDictionary<uint, HouseState> Houses => _houses;
 
@@ -42,10 +47,8 @@ public sealed class HouseManager(GameData assets, HouseRentPolicy? rentPolicy = 
                 { BankedIncome = bankedIncome?.GetValueOrDefault(row.HouseId) ?? 0 };
         }
 
-        IsDirty = false;
+        AcceptLoadedState();
     }
-
-    public void ClearDirty() => IsDirty = false;
 
     public IReadOnlyList<HouseInfo> ToHouseInfoList(DateTimeOffset now)
     {
@@ -66,7 +69,8 @@ public sealed class HouseManager(GameData assets, HouseRentPolicy? rentPolicy = 
     {
         _houses[houseId] = new HouseState(
             houseId, EnmHouseState.Purchased, Level: 1, now);
-        Dirty();
+
+        Log.State("house {HouseId} ownership recorded at level 1", houseId);
         return ToHouseInfo(_houses[houseId], now);
     }
 
@@ -79,7 +83,8 @@ public sealed class HouseManager(GameData assets, HouseRentPolicy? rentPolicy = 
             return null;
 
         _houses[houseId] = state with { State = EnmHouseState.Open, IncomeAnchor = now };
-        Dirty();
+
+        Log.State("house {HouseId} opened with income anchor {IncomeAnchor}", houseId, now);
         return ToHouseInfo(_houses[houseId], now);
     }
 
@@ -108,7 +113,8 @@ public sealed class HouseManager(GameData assets, HouseRentPolicy? rentPolicy = 
             BankedIncome = AccruedIncome(houseId, now),
             IncomeAnchor = now
         };
-        Dirty();
+
+        Log.State("house {HouseId} upgraded to level {Level}, banked income {BankedIncome}", houseId, _houses[houseId].Level, _houses[houseId].BankedIncome);
         return ToHouseInfo(_houses[houseId], now);
     }
 
@@ -154,7 +160,9 @@ public sealed class HouseManager(GameData assets, HouseRentPolicy? rentPolicy = 
             // Clear that payment without moving the accrual clock backward.
             var anchor = now < state.IncomeAnchor ? state.IncomeAnchor : now.AddSeconds(-(elapsed % interval));
             _houses[houseId] = state with { IncomeAnchor = anchor, BankedIncome = 0 };
-            Dirty();
+
+            Log.Stage("house {HouseId} income claim recorded, anchor {PreviousAnchor} to {IncomeAnchor}, banked income cleared {BankedIncome}",
+                houseId, state.IncomeAnchor, anchor, state.BankedIncome);
         }
     }
 
@@ -165,5 +173,4 @@ public sealed class HouseManager(GameData assets, HouseRentPolicy? rentPolicy = 
         Income = AccruedIncome(state.HouseId, now)
     };
 
-    private void Dirty() => IsDirty = true;
 }

@@ -1,3 +1,4 @@
+using Lunaria.Common.Tracking;
 using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
 using Microsoft.Extensions.Logging;
@@ -5,7 +6,7 @@ using Msg;
 
 namespace Lunaria.Game.Shop;
 
-public sealed partial class ShopManager
+public sealed partial class ShopManager : TrackedObject
 {
 
     public (int Code, IReadOnlyList<BasketLine>? Lines) CheckBasket(

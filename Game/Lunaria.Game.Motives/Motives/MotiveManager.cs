@@ -1,16 +1,22 @@
+using Lunaria.Common.Tracking;
 using Lunaria.Common;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
+using Microsoft.Extensions.Logging;
 using Msg;
 
 namespace Lunaria.Game.Motives;
 
-public sealed partial class MotiveManager(GameData assets)
+public sealed partial class MotiveManager(GameData assets) : TrackedObject
 {
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Motives");
+
     public const int MaxMotives = (int)EnmSizeLimit.MaxMotiveElemNum;
 
-    private readonly SortedDictionary<ulong, MotiveState> _motives = [];
-
-    public bool IsDirty { get; private set; }
+    private readonly TrackedSortedDictionary<ulong, MotiveState> __tracked_motives = [];
+    [Tracked]
+    private partial TrackedSortedDictionary<ulong, MotiveState> _motives { get; }
+    public IReadOnlyList<ulong> ChangedIds => _motives.Changes.ChangedKeys.Cast<ulong>().ToArray();
 
     public IReadOnlyList<MotiveState> All => _motives.Values.ToList();
     public bool IsEmpty => _motives.Count == 0;
@@ -30,7 +36,7 @@ public sealed partial class MotiveManager(GameData assets)
         {
             _motives[motive.UniqId] = motive;
         }
-        IsDirty = false;
+        AcceptLoadedState();
     }
 
     public MotiveGrant Add(GuidManager guid, uint motiveId, ulong claimTime)
@@ -55,7 +61,7 @@ public sealed partial class MotiveManager(GameData assets)
             Locked = false,
             EquipedTarget = 0
         };
-        IsDirty = true;
+
         MarkChanged(_motives[uniqId], isNew: true);
         return new MotiveGrant(Code: 0, uniqId);
     }
@@ -63,8 +69,6 @@ public sealed partial class MotiveManager(GameData assets)
     public MotiveState? Get(ulong uniqId) => _motives.GetValueOrDefault(uniqId);
 
     public bool Owns(ulong uniqId) => _motives.ContainsKey(uniqId);
-
-    public void ClearDirty() => IsDirty = false;
 
     private MotiveState Clamp(MotiveState motive)
     {
@@ -111,7 +115,7 @@ public sealed partial class MotiveManager(GameData assets)
             return;
 
         _motives[motive.UniqId] = motive;
-        IsDirty = true;
+
         MarkChanged(motive);
     }
 }

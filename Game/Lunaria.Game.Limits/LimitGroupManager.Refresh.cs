@@ -1,6 +1,9 @@
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
+
 namespace Lunaria.Game.Limits;
 
-public sealed partial class LimitGroupManager
+public sealed partial class LimitGroupManager : TrackedObject
 {
     public int Refresh(DateTimeOffset now)
     {
@@ -29,7 +32,8 @@ public sealed partial class LimitGroupManager
             return false;
 
         _counts[group] = entry with { Count = 0, Anchor = now };
-        Dirty();
+
+        Log.Event("limit group {GroupId} reset from count {Count}, anchor {PreviousAnchor} to {Anchor}", group, entry.Count, entry.Anchor, now);
         return true;
     }
 }

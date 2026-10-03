@@ -1,10 +1,11 @@
+using Lunaria.Common.Tracking;
 using Lunaria.Game.Logging;
 using Microsoft.Extensions.Logging;
 
 namespace Lunaria.Game.Gacha;
 
 /// <summary>Rates and soft pity are inferred because the dump supplies no rates.</summary>
-public sealed partial class GachaManager
+public sealed partial class GachaManager : TrackedObject
 {
     private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Gacha");
     internal const double BaseFiveStarRate = 0.008;
@@ -47,7 +48,7 @@ public sealed partial class GachaManager
             outcomes.Add(PullOne(banner, ref state, rng));
 
         _states[bannerId] = state;
-        Dirty();
+
         var fives = outcomes.Count(o => o.Rarity >= 5);
         var fours = outcomes.Count(o => o.Rarity == 4);
         Log.Event("gacha banner {PoolId} rolled {Count} pulls, {Fives} five star and {Fours} four star", bannerId, count, fives, fours);

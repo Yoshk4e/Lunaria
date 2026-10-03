@@ -1,19 +1,25 @@
+using Lunaria.Common.Tracking;
 using Lunaria.Common;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
+using Microsoft.Extensions.Logging;
 using Msg;
 
 namespace Lunaria.Game.Characters;
 
 /// <summary>Teams use character IDs, so each character can have only one roster instance.</summary>
-public sealed partial class CharacterManager(GameData assets)
+public sealed partial class CharacterManager(GameData assets) : TrackedObject
 {
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Characters");
+
     public const int MaxCharacters = (int)EnmSizeLimit.MaxCharacterNums;
 
-    private readonly List<CharacterState> _roster = [];
-
-    public bool IsDirty { get; private set; }
+    private readonly TrackedList<CharacterState> __tracked_roster = new(c => c.InstId);
+    [Tracked]
+    private partial TrackedList<CharacterState> _roster { get; }
 
     public IReadOnlyList<CharacterState> All => _roster;
+    public IReadOnlyList<ulong> ChangedIds => _roster.Changes.ChangedKeys.Cast<ulong>().ToArray();
     public bool IsEmpty => _roster.Count == 0;
     public int Count => _roster.Count;
 
@@ -44,7 +50,7 @@ public sealed partial class CharacterManager(GameData assets)
             .OrderBy(c => c.InstId)
             .Take(MaxCharacters)
             .Select(Clamp));
-        IsDirty = false;
+        AcceptLoadedState();
     }
 
     public CharacterGrant Add(GuidManager guid, uint characterId)
@@ -68,7 +74,8 @@ public sealed partial class CharacterManager(GameData assets)
             BreakLevel = Starter.CharacterBreakLevel,
             MotiveUniqId = 0
         });
-        IsDirty = true;
+
+        Log.Stage("character {CharacterId} added as instance {InstId}", characterId, instId);
         return new CharacterGrant(Code: 0, instId);
     }
 
@@ -78,8 +85,6 @@ public sealed partial class CharacterManager(GameData assets)
 
     public CharacterState? InstanceOf(uint characterId) =>
         _roster.FirstOrDefault(c => c.CharacterId == characterId);
-
-    public void ClearDirty() => IsDirty = false;
 
     private CharacterState Clamp(CharacterState character)
     {

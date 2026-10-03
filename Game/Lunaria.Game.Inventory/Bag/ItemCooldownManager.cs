@@ -1,12 +1,13 @@
+using Lunaria.Common.Tracking;
 namespace Lunaria.Game.Inventory;
 
 /// <summary>Cooldowns use Unix seconds and are keyed by CD type, not item ID.</summary>
-public sealed class ItemCooldownManager(TimeProvider? timeProvider = null)
+public sealed partial class ItemCooldownManager(TimeProvider? timeProvider = null) : TrackedObject
 {
     private readonly TimeProvider _time = timeProvider ?? TimeProvider.System;
-    private readonly Dictionary<uint, DateTimeOffset> _readyAt = [];
-
-    public bool IsDirty { get; private set; }
+    private readonly TrackedDictionary<uint, DateTimeOffset> __tracked_readyAt = [];
+    [Tracked]
+    private partial TrackedDictionary<uint, DateTimeOffset> _readyAt { get; }
 
     public void Load(IEnumerable<(uint CdType, long ReadyUnix)> persisted)
     {
@@ -20,7 +21,7 @@ public sealed class ItemCooldownManager(TimeProvider? timeProvider = null)
             if (readyAt > now)
                 _readyAt[cdType] = readyAt;
         }
-        IsDirty = false;
+        AcceptLoadedState();
     }
 
     public IReadOnlyList<(uint CdType, long ReadyUnix)> Active()
@@ -58,11 +59,8 @@ public sealed class ItemCooldownManager(TimeProvider? timeProvider = null)
             return (uint)existing.ToUnixTimeSeconds();
 
         _readyAt[cdType] = readyAt;
-        Dirty();
+
         return (uint)readyAt.ToUnixTimeSeconds();
     }
 
-    public void ClearDirty() => IsDirty = false;
-
-    private void Dirty() => IsDirty = true;
 }
