@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Lunaria.Game.Characters;
 using Lunaria.Game.Player;
 using Lunaria.Game.Player.Persistence.Saves;
 using Lunaria.Game.Resources;
@@ -38,6 +39,36 @@ public sealed class BundledGameplayFixture
 [Collection("bundled-gameplay")]
 public sealed class GameplayRegressionTests(BundledGameplayFixture fixture)
 {
+    [Fact]
+    public void Attributes_StackLevelBreakTalentsAndMotive_LikeTheClientFormula()
+    {
+        // Munin level 30 break 1, talent nodes 1 and 3 (MAXHP +578 each), Motive 12031001 level 10 (ATK +49, +10.92%).
+        var player = new Player(1, fixture.Data);
+        player.Characters.GrantStarter(player.Guid);
+        player.Skills.GrantStarter(player.Characters);
+        var munin = player.Characters.All.Single(c => c.CharacterId == 1001);
+        player.Characters.Load([munin with { Level = 30, BreakLevel = 1 }]);
+        var motive = player.Motives.Add(player.Guid, 12031001, 1).UniqId;
+        player.Motives.Load([player.Motives.Get(motive)! with { Level = 10 }]);
+        player.Skills.Load(player.Skills.SkillGroups(),
+            [(munin.InstId, new TalentMasks().WithUnlock(0).WithUnlock(1).WithUnlock(2).WithUnlock(3))], player.Characters);
+        Assert.Equal(0, player.EquipMotive(motive, munin.InstId));
+        var attr = fixture.Data.Inside.Attr;
+        PBAttribDataElem Attr(int id) => player.Characters.AttribData(munin.InstId).AttribData.Single(a => a.AttribType == id);
+
+        // p_developattributetable 100130 (4095, 240, 585, 25%, 80%) plus the break 1 row 1001201 (420, 25, 60).
+        Assert.Equal((4095 + 420 + 2 * 578) * 10_000, Attr(attr.Maxhp).FinalValue);
+        Assert.Equal((585 + 60) * 10_000, Attr(attr.Def).FinalValue);
+        Assert.Equal(2500, Attr(attr.AtkCriticalChance).FinalValue);
+        Assert.Equal(8000, Attr(attr.AtkCriticalDamage).FinalValue);
+        Assert.Equal(Attr(attr.Maxhp).FinalValue, Attr(attr.Hp).FinalValue);
+        Assert.Contains(player.Characters.AttribData(munin.InstId).AttribData, a => a.AttribType == 1149 && a.FinalValue > 0);
+
+        // OutsideAttributeData formula 1: base = 240 + 25 + 49, extra = floor(base * 10.92%).
+        Assert.Equal(314 * 10_000, Attr(attr.Atk).BaseValue);
+        Assert.Equal(314 * 10_000 + 314 * 1092, Attr(attr.Atk).FinalValue);
+    }
+
     private GameData Assets => fixture.Data;
 
     private Player Fresh()

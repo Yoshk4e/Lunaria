@@ -112,7 +112,8 @@ public sealed partial class CharacterManager(GameData assets) : TrackedObject
                 character.Hp,
                 character.PermanentLiquid,
                 assets.Characters.FixedAttributeId(character.CharacterId),
-                MaxHp(instId)) :
+                MaxHp(instId),
+                assets.Characters.BreakDevelopAttributeId(character.CharacterId, character.BreakLevel)) :
             [];
 
     /// <summary>Equipped Motive and talent bonuses of a character, supplied by the player.</summary>
@@ -120,8 +121,8 @@ public sealed partial class CharacterManager(GameData assets) : TrackedObject
     public Func<ulong, IEnumerable<AttributeModifier>>? Modifiers { get; set; }
 
     /// <summary>
-    /// The client displays the extra attribute column as final minus base, and fights with the final value, so
-    /// bonuses go into FinalValue: (base + add) raised by the summed permyriad increase.
+    /// The client displays the extra attribute column as final minus base, and fights with the final value. Its
+    /// formula counts Motive and talent flat bonuses in the base, then adds the Motive rates on top as extra.
     /// </summary>
     public PBCharacterAttribData AttribData(ulong instId)
     {
@@ -132,12 +133,16 @@ public sealed partial class CharacterManager(GameData assets) : TrackedObject
         {
             var bonus = bonuses.GetValueOrDefault(id);
             bonuses.Remove(id);
-            data.AttribData.Add(new PBAttribDataElem { AttribType = id, BaseValue = value, FinalValue = Final(id, value, bonus) });
+            var (baseValue, final) = WithBonus(id, value, bonus);
+            data.AttribData.Add(new PBAttribDataElem { AttribType = id, BaseValue = baseValue, FinalValue = final });
         }
 
         if (Get(instId) is not null)
             foreach (var (id, bonus) in bonuses)
-                data.AttribData.Add(new PBAttribDataElem { AttribType = id, BaseValue = 0, FinalValue = Final(id, 0, bonus) });
+            {
+                var (baseValue, final) = WithBonus(id, 0, bonus);
+                data.AttribData.Add(new PBAttribDataElem { AttribType = id, BaseValue = baseValue, FinalValue = final });
+            }
 
         return data;
     }
@@ -147,9 +152,11 @@ public sealed partial class CharacterManager(GameData assets) : TrackedObject
             .GroupBy(m => m.AttrId)
             .ToDictionary(g => g.Key, g => (Add: g.Sum(m => (long)m.Add), Multi: g.Sum(m => (long)m.Multi)));
 
-    private int Final(int id, int value, (long Add, long Multi) bonus)
+    /// <summary>OutsideAttributeData: base = level + flat bonuses, extra = floor(base * Motive rate).</summary>
+    private (int Base, int Final) WithBonus(int id, int value, (long Add, long Multi) bonus)
     {
-        var raw = (value + (long)assets.Inside.Scale(id, 1) * bonus.Add) * (10_000 + bonus.Multi) / 10_000;
-        return (int)Math.Clamp(raw, int.MinValue, int.MaxValue);
+        var baseValue = value + (long)assets.Inside.Scale(id, 1) * bonus.Add;
+        var final = baseValue + baseValue * bonus.Multi / 10_000;
+        return ((int)Math.Clamp(baseValue, int.MinValue, int.MaxValue), (int)Math.Clamp(final, int.MinValue, int.MaxValue));
     }
 }
