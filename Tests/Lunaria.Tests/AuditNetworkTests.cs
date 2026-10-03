@@ -48,7 +48,7 @@ public sealed partial class RoleSessionTests
         using var stopped = new CancellationTokenSource();
         var writes = (Task)writeMethod.Invoke(session, [stream, outbound, stopped])!;
         var events = (Task)eventMethod.Invoke(session,
-            [reader, established, outbound, notifications, udp, stopped.Token])!;
+            [reader, established, runtime.AllocateSessionId(), outbound, notifications, udp, stopped.Token])!;
         bool exited;
         try
         {

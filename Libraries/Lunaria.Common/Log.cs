@@ -1,3 +1,4 @@
+using System.Collections;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 
@@ -18,6 +19,13 @@ public static class GameLog
 
 public static class GameLogExtensions
 {
+    public static IDisposable? BeginPlayerScope(this ILogger logger, ulong sessionId, long? roleId = null) =>
+        logger.BeginPlayerScope(sessionId, () => roleId);
+
+    // Read the active role when a message is written because login and logout can replace the player.
+    public static IDisposable? BeginPlayerScope(this ILogger logger, ulong sessionId, Func<long?> activeRole) =>
+        logger.BeginScope(new PlayerScope(sessionId, activeRole));
+
     public static void Event(this ILogger logger, string message, params object?[] args) =>
         logger.LogTrace(message, args);
 
@@ -29,4 +37,25 @@ public static class GameLogExtensions
 
     public static void Flag(this ILogger logger, string message, params object?[] args) =>
         logger.LogWarning(message, args);
+
+    private sealed class PlayerScope(ulong sessionId, Func<long?> activeRole) : IReadOnlyList<KeyValuePair<string, object?>>
+    {
+        public int Count => 2;
+
+        public KeyValuePair<string, object?> this[int index] => index switch {
+            0 => new("SessionId", sessionId),
+            1 => new("RoleId", activeRole()),
+            _ => throw new ArgumentOutOfRangeException(nameof(index))
+        };
+
+        public IEnumerator<KeyValuePair<string, object?>> GetEnumerator()
+        {
+            yield return this[0];
+            yield return this[1];
+        }
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
+        public override string ToString() => $"SessionId={sessionId} RoleId={activeRole()?.ToString() ?? "-"}";
+    }
 }

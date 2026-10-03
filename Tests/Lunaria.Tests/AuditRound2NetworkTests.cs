@@ -28,7 +28,7 @@ public sealed partial class RoleSessionTests
         using var shutdown = new CancellationTokenSource();
         var established = new EstablishedSession(new AesSession(new byte[16]), 71, 72, 0);
         var runMethod = typeof(ClientSession).GetMethod("RunSessionAsync", BindingFlags.Instance | BindingFlags.NonPublic)!;
-        var run = (Task)runMethod.Invoke(session, [reader, established, shutdown.Token])!;
+        var run = (Task)runMethod.Invoke(session, [reader, established, runtime.AllocateSessionId(), shutdown.Token])!;
         bool completed;
         try
         {

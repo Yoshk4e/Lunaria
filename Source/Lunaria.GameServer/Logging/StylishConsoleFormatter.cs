@@ -22,7 +22,7 @@ internal static class PaletteExtensions
     public static string Paint(this Palette color, string text) => $"\x1b[{(int)color}m{text}\x1b[0m";
 }
 
-public sealed class StylishConsoleLoggerProvider : ILoggerProvider
+public sealed class StylishConsoleLoggerProvider : ILoggerProvider, ISupportExternalScope
 {
     private static readonly string NarrowTimeFormat = "HH:mm:ss.fff";
 
@@ -37,14 +37,17 @@ public sealed class StylishConsoleLoggerProvider : ILoggerProvider
     ];
 
     private readonly ConcurrentDictionary<string, StylishLogger> _loggers = new();
+    private IExternalScopeProvider _scopes = new LoggerExternalScopeProvider();
 
-    public ILogger CreateLogger(string category) => _loggers.GetOrAdd(category, c => new StylishLogger(c));
+    public ILogger CreateLogger(string category) => _loggers.GetOrAdd(category, c => new StylishLogger(c, this));
+
+    public void SetScopeProvider(IExternalScopeProvider scopeProvider) => _scopes = scopeProvider;
 
     public void Dispose() => _loggers.Clear();
 
-    private sealed class StylishLogger(string category) : ILogger
+    private sealed class StylishLogger(string category, StylishConsoleLoggerProvider provider) : ILogger
     {
-        public IDisposable? BeginScope<TState>(TState state) where TState : notnull => null;
+        public IDisposable? BeginScope<TState>(TState state) where TState : notnull => provider._scopes.Push(state);
 
         public bool IsEnabled(LogLevel logLevel) => logLevel is not LogLevel.None;
 
@@ -64,10 +67,12 @@ public sealed class StylishConsoleLoggerProvider : ILoggerProvider
             var label = Shorten(category);
             var message = formatter(state, error);
             var payload = string.IsNullOrWhiteSpace(message) ? "-" : message.ReplaceLineEndings(" | ");
+            var context = ScopeContext();
             var line = new StringBuilder(160)
                 .Append(timestamp).Append(' ')
                 .Append(color.Code()).Append(tag).Append("\x1b[0m ")
                 .Append(Palette.Dim.Code()).Append(label).Append("\x1b[0m ")
+                .Append(context)
                 .Append(payload)
                 .ToString();
 
@@ -75,7 +80,26 @@ public sealed class StylishConsoleLoggerProvider : ILoggerProvider
 
             if (error is not null)
                 Console.Out.WriteLine(
-                    $"     {Palette.Red.Paint(error.GetType().Name)} {error.Message.ReplaceLineEndings(" | ")}");
+                    $"     {context}{Palette.Red.Paint(error.GetType().Name)} {error.Message.ReplaceLineEndings(" | ")}");
+        }
+
+        private string ScopeContext()
+        {
+            var fields = new Dictionary<string, object?>();
+            provider._scopes.ForEachScope((scope, values) => {
+                if (scope is IEnumerable<KeyValuePair<string, object?>> properties)
+                    foreach (var (key, value) in properties)
+                        if (key != "{OriginalFormat}") values[key] = value;
+            }, fields);
+            if (fields.Count == 0) return string.Empty;
+
+            var text = new StringBuilder("[");
+            foreach (var (key, value) in fields)
+            {
+                if (text.Length > 1) text.Append(' ');
+                text.Append(key).Append('=').Append((value?.ToString() ?? "-").ReplaceLineEndings(" | "));
+            }
+            return text.Append("] ").ToString();
         }
 
         private static string Shorten(string category)
