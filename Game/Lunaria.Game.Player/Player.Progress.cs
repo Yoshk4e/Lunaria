@@ -1,3 +1,4 @@
+using Lunaria.Common.Tracking;
 using Lunaria.Game.Player.Gameplay;
 using Msg;
 
@@ -5,6 +6,7 @@ namespace Lunaria.Game.Player;
 
 public sealed partial class Player
 {
+    [Untracked]
     private PlayerLevelData? _syncedLevelData;
 
     private void EnsureLevelBaseline() => _syncedLevelData ??= LevelData();

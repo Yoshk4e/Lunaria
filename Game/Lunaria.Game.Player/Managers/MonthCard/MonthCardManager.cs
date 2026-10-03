@@ -1,4 +1,7 @@
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
+using Microsoft.Extensions.Logging;
 using Msg;
 
 namespace Lunaria.Game.Player.Managers;
@@ -8,13 +11,16 @@ public sealed record MonthCardState(uint CardId, DateTimeOffset OverdueAt, DateT
 public sealed record MonthCardPurchase(
     int Result, MonthCardState? State, IReadOnlyList<ItemGrant> Immediate, IReadOnlyList<ItemGrant> Accrued);
 
-public sealed class MonthCardManager(GameData assets)
+public sealed partial class MonthCardManager(GameData assets) : TrackedObject
 {
-    private readonly SortedDictionary<uint, MonthCardState> _cards = [];
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Player.MonthCard");
 
+    private readonly TrackedSortedDictionary<uint, MonthCardState> __tracked_cards = [];
+    [Tracked]
+    private partial TrackedSortedDictionary<uint, MonthCardState> _cards { get; }
+
+    [Untracked]
     private readonly HashSet<uint> _overdueNotified = [];
-
-    public bool IsDirty { get; private set; }
 
     public IReadOnlyDictionary<uint, MonthCardState> Cards => _cards;
 
@@ -35,10 +41,8 @@ public sealed class MonthCardManager(GameData assets)
                 DateTimeOffset.FromUnixTimeSeconds(row.RewardUnix));
         }
 
-        IsDirty = false;
+        AcceptLoadedState();
     }
-
-    public void ClearDirty() => IsDirty = false;
 
     public CSMonthCardData ToMonthCardData()
     {
@@ -60,7 +64,11 @@ public sealed class MonthCardManager(GameData assets)
     public MonthCardPurchase Buy(uint cardId, DateTimeOffset now)
     {
         var code = CanBuy(cardId, now);
-        if (code != 0) return new(code, null, [], []);
+        if (code != 0)
+        {
+            Log.Stage("month card {CardId} purchase refused with code {Code}", cardId, code);
+            return new(code, null, [], []);
+        }
 
         var card = assets.Charge.MonthCardOf(cardId)!;
         var state = _cards.GetValueOrDefault(cardId);
@@ -72,7 +80,8 @@ public sealed class MonthCardManager(GameData assets)
         var rewardAt = state is not null && state.OverdueAt > now ? state.RewardAt : now;
         _cards[cardId] = new MonthCardState(cardId, overdue, rewardAt);
         _overdueNotified.Remove(cardId);
-        Dirty();
+
+        Log.State("month card {CardId} extended until {OverdueAt}, accrued reward lines {AccruedCount}", cardId, overdue, accrued.Count);
         return new(0, _cards[cardId], [new ItemGrant(card.NowItemId, card.NowNum)], accrued);
     }
 
@@ -117,7 +126,9 @@ public sealed class MonthCardManager(GameData assets)
             amount -= count;
         }
         _cards[state.CardId] = state with { RewardAt = effectiveEnd };
-        Dirty();
+
+        Log.Stage("month card {CardId} accrued {Days} reward days through {RewardAt}, item {ItemId}, daily amount {DailyAmount}",
+            state.CardId, payable, effectiveEnd, card.DayItemId, card.DayNum);
         return grants;
     }
 
@@ -132,6 +143,7 @@ public sealed class MonthCardManager(GameData assets)
 
             _overdueNotified.Add(card.CardId);
             lapsed.Add(card.CardId);
+            Log.Stage("month card {CardId} expiry queued for notification, expired at {OverdueAt}", card.CardId, card.OverdueAt);
         }
 
         return lapsed;
@@ -145,5 +157,4 @@ public sealed class MonthCardManager(GameData assets)
         return (int)(to.UtcDateTime.Date - from.UtcDateTime.Date).TotalDays;
     }
 
-    private void Dirty() => IsDirty = true;
 }

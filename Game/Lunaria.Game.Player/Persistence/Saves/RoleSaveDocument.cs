@@ -666,6 +666,8 @@ public sealed record RoleSaveDocument
 
         [JsonPropertyName("character_id")]
         public uint CharacterId { get; init; }
+
+        public IReadOnlyList<uint> Gems { get; init; } = [];
     }
 
     public sealed record RedPointSave

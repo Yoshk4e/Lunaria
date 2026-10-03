@@ -5,12 +5,10 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleDungeonsFinish
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsDungeonsFinish)]
     public async Task<SCDungeonsFinish> OnPacket(NetContext ctx, CSDungeonsFinish req)
     {
-        if (!ctx.Player.HasActiveRole)
-            return new SCDungeonsFinish { Result = (int)EnmTextCode.EnmTextNotAccLogin };
-
         var (code, delivery, horde) = ctx.Player.FinishDungeon(
             req.DungeonsId, req.Victory, req.Leave, req.HordeData?.KillCount ?? 0);
 
@@ -26,10 +24,7 @@ public sealed class HandleDungeonsFinish
         {
             var rewards = delivery.Credited.Concat(delivery.Stored).ToList();
 
-            reply.RewardList.AddRange(rewards.Select(grant => new CmdItem {
-                ItemId = grant.ItemId,
-                ItemNum = grant.Count
-            }));
+            reply.RewardList.AddRange(ctx.Player.RewardItems(rewards));
 
             await ctx.NotifyAsync(delivery.Presentation)
                 .ConfigureAwait(false);

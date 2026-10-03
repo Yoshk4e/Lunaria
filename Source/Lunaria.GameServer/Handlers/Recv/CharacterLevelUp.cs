@@ -6,6 +6,7 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleCharacterLevelUp
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsReqCharacterLevelUp)]
     public async Task<SCCharacterLevelUp> OnPacket(NetContext ctx, CSCharacterLevelUp req)
     {
@@ -16,9 +17,6 @@ public sealed class HandleCharacterLevelUp
                 CurrentData = ctx.Player.Characters.Get(req.InstId) is {} before ? ctx.Player.Characters.ToCharacterData(before) : null
             };
         }
-
-        if (!ctx.Player.HasActiveRole)
-            return Reject((int)EnmTextCode.EnmTextNotAccLogin);
 
         var items = req.Items
             .Where(item => item.Count > 0)

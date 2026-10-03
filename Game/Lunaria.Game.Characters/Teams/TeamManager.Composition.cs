@@ -1,9 +1,11 @@
+using Lunaria.Common.Tracking;
 using System.Text;
+using Lunaria.Game.Logging;
 using Msg;
 
 namespace Lunaria.Game.Characters;
 
-public sealed partial class TeamManager
+public sealed partial class TeamManager : TrackedObject
 {
     public int SetMembers(
         uint teamId,
@@ -51,6 +53,7 @@ public sealed partial class TeamManager
         }
 
         Replace(team with { Members = resolved });
+        Log.Stage("team {TeamId} composition updated with {MemberCount} members", teamId, resolved.Count);
 
         // Keep the controlled slot occupied or the client cannot spawn a character.
         if (teamId == Current)
@@ -60,9 +63,8 @@ public sealed partial class TeamManager
     }
 
     /// <summary>
-    /// Checks the gem slots sent with a team update, with the client's own rules (s_CSM_PDD_GemData._canApplyGem):
-    /// gem slots 1..MaxPerCharacter, a known gem, held in the bag, not twice on one character, and a team cost
-    /// (GemCost[1] + ... + GemCost[n] per character) within <paramref name="maxCost"/>. Returns the gems per member slot.
+    /// Match s_CSM_PDD_GemData._canApplyGem. Each character's cost is GemCost[1] + ... + GemCost[n],
+    /// and the team's total must stay within <paramref name="maxCost"/>.
     /// </summary>
     public (int Code, IReadOnlyDictionary<uint, IReadOnlyList<uint>> Gems) CheckGems(
         IEnumerable<(uint MemberSlot, IEnumerable<(uint GemSlot, uint GemId)> Slots)> members,
@@ -137,9 +139,10 @@ public sealed partial class TeamManager
         if (teamId == Current)
             return 0;
 
+        Log.Stage("active team changed from {PreviousTeamId} to {TeamId}", Current, teamId);
         Current = teamId;
         UsingMemberSlot = SlotOrLowestOccupied(UsingMemberSlot);
-        IsDirty = true;
+
         return 0;
     }
 
@@ -155,7 +158,7 @@ public sealed partial class TeamManager
             return 0;
 
         UsingMemberSlot = slot;
-        IsDirty = true;
+
         return 0;
     }
 
@@ -169,7 +172,7 @@ public sealed partial class TeamManager
                 continue;
 
             _teams[index] = team with { Members = team.Members.Where(m => m.InstId != instId).ToList() };
-            IsDirty = true;
+
         }
 
         UsingMemberSlot = SlotOrLowestOccupied(UsingMemberSlot);
@@ -183,6 +186,6 @@ public sealed partial class TeamManager
             return;
 
         _teams[index] = team;
-        IsDirty = true;
+
     }
 }

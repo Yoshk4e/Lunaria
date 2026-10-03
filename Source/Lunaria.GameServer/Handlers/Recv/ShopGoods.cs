@@ -6,15 +6,10 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleShopGoods(ILogger<HandleShopGoods> logger)
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsShopGoods)]
     public Task<SCShopGoods> OnPacket(NetContext ctx, CSShopGoods req)
     {
-        if (!ctx.Player.HasActiveRole)
-            return Task.FromResult(new SCShopGoods {
-                Result = (int)EnmTextCode.EnmTextNotAccLogin,
-                ShopId = req.ShopId
-            });
-
         if (req.ShopId <= 0 || !ctx.Player.Shop.ShopExists((uint)req.ShopId))
             return Task.FromResult(new SCShopGoods {
                 Result = (int)EnmTextCode.EnmTextShopNotExsit,

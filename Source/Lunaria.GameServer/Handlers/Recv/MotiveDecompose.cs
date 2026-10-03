@@ -6,6 +6,7 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleMotiveDecompose(ILogger<HandleMotiveDecompose> logger)
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsMotiveDecompose)]
     public async Task<SCMotiveDecompose> OnPacket(NetContext ctx, CSMotiveDecompose req)
     {
@@ -13,9 +14,6 @@ public sealed class HandleMotiveDecompose(ILogger<HandleMotiveDecompose> logger)
         {
             return new SCMotiveDecompose { Result = code };
         }
-
-        if (!ctx.Player.HasActiveRole)
-            return Reject((int)EnmTextCode.EnmTextNotAccLogin);
 
         var outcome = ctx.Player.DecomposeMotives(req.MotiveUniqIds.ToList());
 

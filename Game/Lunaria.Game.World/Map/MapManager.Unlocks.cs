@@ -1,8 +1,10 @@
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
 using Msg;
 
 namespace Lunaria.Game.World;
 
-public sealed partial class MapManager
+public sealed partial class MapManager : TrackedObject
 {
     public bool IsSavepointUnlocked(ulong id) => _unlockedSavepoints.Contains(id);
 
@@ -20,7 +22,8 @@ public sealed partial class MapManager
             return (int)EnmTextCode.EnmTextCountGroupLimit;
 
         _unlockedSavepoints.Add(id);
-        IsDirty = true;
+        Log.Stage("savepoint {SavepointId} unlocked on map {MapId}", id, SpawnMap);
+
         return 0;
     }
 
@@ -36,7 +39,7 @@ public sealed partial class MapManager
             return 0;
 
         Savepoint = id;
-        IsDirty = true;
+
         return 0;
     }
 
@@ -59,7 +62,8 @@ public sealed partial class MapManager
             return (int)EnmTextCode.EnmTextCollectionAlreadyOp;
 
         _unlockedTeleports.Add(id);
-        IsDirty = true;
+        Log.Stage("teleport {TeleportId} unlocked on map {MapId}", id, SpawnMap);
+
         return 0;
     }
 }

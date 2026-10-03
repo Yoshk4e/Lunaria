@@ -6,12 +6,10 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleChargeGoodsList
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsChaegrGoodsList)]
     public Task<SCChargeGoodsList> OnPacket(NetContext ctx, CSChargeGoodsList req)
     {
-        if (!ctx.Player.HasActiveRole)
-            return Task.FromResult(new SCChargeGoodsList { Result = (int)EnmTextCode.EnmTextNotAccLogin });
-
         var reply = new SCChargeGoodsList { Result = 0 };
 
         foreach (var good in ctx.Assets.Charge.Offered)

@@ -5,15 +5,10 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleDungeonsEnter
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsDungeonsEnter)]
     public async Task<SCDungeonsEnter> OnPacket(NetContext ctx, CSDungeonsEnter req)
     {
-        if (!ctx.Player.HasActiveRole)
-            return new SCDungeonsEnter {
-                Result = (int)EnmTextCode.EnmTextNotAccLogin,
-                DungeonsId = req.DungeonsId
-            };
-
         var outcome = ctx.Player.EnterDungeon(req.DungeonsId);
 
         if (outcome.Code != 0)

@@ -6,12 +6,10 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleWantedShopBuyReq
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsWantedShopBuyReq)]
     public async Task<SCWantedShopBuyRes> OnPacket(NetContext ctx, CSWantedShopBuyReq req)
     {
-        if (!ctx.Player.HasActiveRole)
-            return new SCWantedShopBuyRes { Result = (int)EnmTextCode.EnmTextNotAccLogin };
-
         var (code, goods) = ctx.Player.BuyWantedShopGood(req.ShopId, req.GoodsId, req.BuyCount);
 
         if (code != 0 || goods is null)

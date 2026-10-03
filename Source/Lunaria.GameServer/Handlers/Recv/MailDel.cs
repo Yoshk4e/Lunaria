@@ -7,15 +7,10 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleMailDel(ILogger<HandleMailDel> logger)
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsMailDel)]
     public Task<SCMailDel> OnPacket(NetContext ctx, CSMailDel req)
     {
-        if (!ctx.Player.HasActiveRole)
-            return Task.FromResult(new SCMailDel {
-                Result = (int)EnmTextCode.EnmTextNotAccLogin,
-                MailId = req.MailId
-            });
-
         if (!ctx.Player.Mails.TryDelete(req.MailId))
             return Task.FromResult(new SCMailDel {
                 Result = (int)EnmTextCode.EnmTextWrongParam,

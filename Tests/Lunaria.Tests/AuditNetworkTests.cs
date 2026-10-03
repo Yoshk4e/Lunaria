@@ -39,7 +39,7 @@ public sealed partial class RoleSessionTests
         });
         var notifications = Channel.CreateBounded<PlayerNotification>(8);
         var established = new EstablishedSession(aes, 1, 2, 0);
-        var udp = runtime.UdpSessions.Bind(established.NotifySessionId, established.UdpPort);
+        var udp = runtime.UdpSessions.Bind(established.NotifySessionId, established.HelloSessionId, established.UdpPort);
 
         // Compose the same two private loops as RunSessionAsync while retaining the
         // channel so the test can clean up a blocked writer without leaving a hung task.
@@ -48,7 +48,7 @@ public sealed partial class RoleSessionTests
         using var stopped = new CancellationTokenSource();
         var writes = (Task)writeMethod.Invoke(session, [stream, outbound, stopped])!;
         var events = (Task)eventMethod.Invoke(session,
-            [reader, established, outbound, notifications, udp, stopped.Token])!;
+            [reader, established, runtime.AllocateSessionId(), outbound, notifications, udp, stopped.Token])!;
         bool exited;
         try
         {

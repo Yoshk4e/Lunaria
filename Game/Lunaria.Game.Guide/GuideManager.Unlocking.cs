@@ -1,6 +1,9 @@
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
+
 namespace Lunaria.Game.Guide;
 
-public sealed partial class GuideManager
+public sealed partial class GuideManager : TrackedObject
 {
     public bool Unlock(uint guideId, long unlockedAt)
     {
@@ -8,7 +11,8 @@ public sealed partial class GuideManager
             return false;
 
         _entries[guideId] = new GuideEntry { UnlockedAt = unlockedAt, Read = false };
-        IsDirty = true;
+
+        Log.Event("guide {GuideId} unlocked at {UnlockedAt}", guideId, unlockedAt);
         return true;
     }
 
@@ -28,8 +32,6 @@ public sealed partial class GuideManager
             transitioned.Add(id);
         }
 
-        if (transitioned.Count > 0)
-            IsDirty = true;
         return transitioned;
     }
 

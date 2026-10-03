@@ -6,14 +6,11 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleEnterMap(ILogger<HandleEnterMap> logger)
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsEnterMap)]
     public async Task OnPacket(NetContext ctx, CSEnterMap req)
     {
-        if (ctx.Player.Roles.Active() is not {} role)
-        {
-            logger.LogWarning("enter_map before role login: role {RoleId}", req.RoleId);
-            return;
-        }
+        var role = ctx.Player.Roles.Active()!;
 
         if ((ulong)role.Id != req.RoleId)
         {

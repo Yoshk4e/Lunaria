@@ -5,15 +5,10 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleAchievementReward
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsAchievementReward)]
     public async Task<SCAchievementReward> OnPacket(NetContext ctx, CSAchievementReward req)
     {
-        if (!ctx.Player.HasActiveRole)
-            return new SCAchievementReward {
-                Result = (int)EnmTextCode.EnmTextNotAccLogin,
-                AllIds = { req.AllIds }
-            };
-
         var ids = req.AllIds.Where(id => id > 0).Select(id => (uint)id).ToList();
 
         var (code, delivery) = ctx.Player.ClaimAchievementRewards(ids);

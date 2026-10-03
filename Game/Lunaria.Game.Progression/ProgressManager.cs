@@ -1,21 +1,34 @@
+using Lunaria.Common.Tracking;
 using Lunaria.Game.Resources;
 using Msg;
 
 namespace Lunaria.Game.Progression;
 
-public sealed partial class ProgressManager(GameData assets)
+public sealed partial class ProgressManager(GameData assets) : TrackedObject
 {
-    private uint? _worldLevelSelection;
-    public bool IsDirty { get; private set; }
+    private uint? __tracked_worldLevelSelection = default!;
+    [Tracked]
+    private partial uint? _worldLevelSelection { get; set; }
 
-    public uint TeamLevel { get; private set; } = Starter.TeamLevel;
-    public uint TeamExp { get; private set; }
-    public int Satiety { get; private set; } = assets.Starter.Satiety;
-    public int Stamina { get; private set; } = assets.Starter.Stamina;
+    private uint __trackedTeamLevel = Starter.TeamLevel;
+    [Tracked]
+    public partial uint TeamLevel { get; private set; }
+    private uint __trackedTeamExp = default!;
+    [Tracked]
+    public partial uint TeamExp { get; private set; }
+    private int __trackedSatiety = assets.Starter.Satiety;
+    [Tracked]
+    public partial int Satiety { get; private set; }
+    private int __trackedStamina = assets.Starter.Stamina;
+    [Tracked]
+    public partial int Stamina { get; private set; }
 
-    public DateTimeOffset StaminaTickAt { get; private set; } = DateTimeOffset.UnixEpoch;
+    private DateTimeOffset __trackedStaminaTickAt = DateTimeOffset.UnixEpoch;
+    [Tracked]
+    public partial DateTimeOffset StaminaTickAt { get; private set; }
 
     /// <summary>Checks RequestTaskId in QuestMain. Null skips the gate until task state is loaded.</summary>
+    [Untracked]
     public Func<uint, bool>? QuestGate { get; set; }
 
     public uint EarnedWorldLevel => assets.Progression.WorldLevelFor(TeamLevel, QuestGate);
@@ -30,7 +43,7 @@ public sealed partial class ProgressManager(GameData assets)
             return ((int)EnmTextCode.EnmTextWorldLevelNotEnough, WorldLevel);
 
         _worldLevelSelection = worldLevel;
-        Dirty();
+
         return (0, worldLevel);
     }
 
@@ -54,10 +67,7 @@ public sealed partial class ProgressManager(GameData assets)
                                && worldLevelSelection <= EarnedWorldLevel ?
             worldLevelSelection :
             null;
-        IsDirty = false;
+        AcceptLoadedState();
     }
 
-    public void ClearDirty() => IsDirty = false;
-
-    private void Dirty() => IsDirty = true;
 }

@@ -8,6 +8,7 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleCreateRole(RoleRepository repo, ILogger<HandleCreateRole> logger)
 {
+    [RequireLogin(LoginRequirement.Account)]
     [GameHandler(EClientServerCmds.CsCreateRole)]
     public async Task<SCCreateRole> OnPacket(NetContext ctx, CSCreateRole req)
     {
@@ -16,8 +17,7 @@ public sealed class HandleCreateRole(RoleRepository repo, ILogger<HandleCreateRo
             return new SCCreateRole { Result = code };
         }
 
-        if (ctx.Player.Account.Id is not {} accountId)
-            return Reject((int)EnmTextCode.EnmTextNotAccLogin);
+        var accountId = ctx.Player.Account.Id!.Value;
 
         if (ctx.Player.Roles.AtCap)
             return Reject((int)EnmTextCode.EnmTextCreateRoleRetInitRoleDataFail);

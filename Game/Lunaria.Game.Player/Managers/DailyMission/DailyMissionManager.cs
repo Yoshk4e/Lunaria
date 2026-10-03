@@ -1,19 +1,28 @@
-using Lunaria.Game.Resources;
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources.Tables;
+using Lunaria.Game.Resources;
+using Microsoft.Extensions.Logging;
 using Msg;
 
 namespace Lunaria.Game.Player.Managers;
 
 public sealed record DailyMissionState(uint MissionId, uint Progress, bool Claimed);
 
-public sealed class DailyMissionManager(GameData assets, TimeProvider? timeProvider = null)
+public sealed partial class DailyMissionManager(GameData assets, TimeProvider? timeProvider = null) : TrackedObject
 {
-    private readonly SortedSet<uint> _claimedRewards = [];
-    private readonly Dictionary<uint, DailyMissionState> _missions = [];
-    private readonly TimeProvider _time = timeProvider ?? TimeProvider.System;
-    private DateTimeOffset _dayAnchor = DateTimeOffset.UnixEpoch;
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Player.DailyMission");
 
-    public bool IsDirty { get; private set; }
+    private readonly TrackedSet<uint> __tracked_claimedRewards = [];
+    [Tracked]
+    private partial TrackedSet<uint> _claimedRewards { get; }
+    private readonly TrackedDictionary<uint, DailyMissionState> __tracked_missions = [];
+    [Tracked]
+    private partial TrackedDictionary<uint, DailyMissionState> _missions { get; }
+    private readonly TimeProvider _time = timeProvider ?? TimeProvider.System;
+    private DateTimeOffset __tracked_dayAnchor = DateTimeOffset.UnixEpoch;
+    [Tracked]
+    private partial DateTimeOffset _dayAnchor { get; set; }
 
     public IReadOnlyDictionary<uint, DailyMissionState> Missions => _missions;
 
@@ -21,7 +30,9 @@ public sealed class DailyMissionManager(GameData assets, TimeProvider? timeProvi
 
     public IReadOnlyCollection<uint> ClaimedRewards => _claimedRewards;
 
-    public uint ActivePoint { get; private set; }
+    private uint __trackedActivePoint = default!;
+    [Tracked]
+    public partial uint ActivePoint { get; private set; }
 
     public void Load(
         long dayAnchor,
@@ -52,11 +63,9 @@ public sealed class DailyMissionManager(GameData assets, TimeProvider? timeProvi
                 _claimedRewards.Add(rewardId);
         }
 
-        IsDirty = false;
+        AcceptLoadedState();
         RollDay(_time.GetUtcNow());
     }
-
-    public void ClearDirty() => IsDirty = false;
 
     public DailyMissionData ToDailyMissionData(DateTimeOffset? now = null)
     {
@@ -101,7 +110,8 @@ public sealed class DailyMissionManager(GameData assets, TimeProvider? timeProvi
         state = new DailyMissionState(missionId, state.Progress, Claimed: true);
         _missions[missionId] = state;
         ActivePoint = (uint)Math.Min((ulong)ActivePoint + mission.ActivePoint, uint.MaxValue);
-        Dirty();
+
+        Log.Stage("daily mission {MissionId} claimed for {AddedPoints} points, total active points {ActivePoint}", missionId, mission.ActivePoint, ActivePoint);
 
         return (0, ToItem(missionId, state), ActivePoint);
     }
@@ -118,7 +128,10 @@ public sealed class DailyMissionManager(GameData assets, TimeProvider? timeProvi
     public void MarkRewardClaimed(uint rewardId)
     {
         if (_claimedRewards.Add(rewardId))
-            Dirty();
+        {
+
+            Log.Stage("daily mission reward {RewardId} claim recorded at {ActivePoint} points", rewardId, ActivePoint);
+        }
     }
 
     public bool AddEventProgress(uint eventId, uint count)
@@ -143,8 +156,6 @@ public sealed class DailyMissionManager(GameData assets, TimeProvider? timeProvi
             changed = true;
         }
 
-        if (changed)
-            Dirty();
         return changed;
     }
 
@@ -164,18 +175,19 @@ public sealed class DailyMissionManager(GameData assets, TimeProvider? timeProvi
         if (_dayAnchor == DateTimeOffset.UnixEpoch)
         {
             _dayAnchor = now;
-            Dirty();
+
             return true;
         }
 
         if (now.UtcDateTime.Date <= _dayAnchor.UtcDateTime.Date)
             return false;
 
+        Log.Stage("daily missions reset from {PreviousDay} to {Day}, clearing {ActivePoint} points and {ClaimCount} reward claims", _dayAnchor, now, ActivePoint, _claimedRewards.Count);
         _dayAnchor = now;
         _missions.Clear();
         _claimedRewards.Clear();
         ActivePoint = 0;
-        Dirty();
+
         return true;
     }
 
@@ -184,5 +196,4 @@ public sealed class DailyMissionManager(GameData assets, TimeProvider? timeProvi
         return RollDay(now);
     }
 
-    private void Dirty() => IsDirty = true;
 }

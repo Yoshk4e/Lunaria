@@ -1,3 +1,4 @@
+using Lunaria.Common.Tracking;
 using Google.Protobuf;
 using Lunaria.Game.Player.Gameplay;
 using Lunaria.Game.Player.Managers;
@@ -9,19 +10,23 @@ using Msg;
 
 namespace Lunaria.Game.Player;
 
-public sealed partial class Player
+public sealed partial class Player : TrackedObject
 {
+    [Untracked]
     private readonly Queue<TaskActionOutcome> _pendingTaskOutcomes = new();
+    [Untracked]
     private readonly Queue<TaskProgressResult> _pendingTimeTargets = new();
-    private bool _gameTimeDirty;
+    [Untracked]
     private uint _wantedTasksStep;
 
-    public uint GameTimeMinutes { get; private set; }
+    private uint __trackedGameTimeMinutes = default!;
+    [Tracked]
+    public partial uint GameTimeMinutes { get; private set; }
 
     public void LoadGameTime(uint minute)
     {
         GameTimeMinutes = minute % 1440;
-        _gameTimeDirty = false;
+
     }
 
     /// <summary>Older saves used a clock of 0. Use the table's start time for those saves.</summary>
@@ -36,7 +41,6 @@ public sealed partial class Player
         EnsureLevelBaseline();
         var previous = GameTimeMinutes;
         GameTimeMinutes = (uint)(((ulong)previous + elapsedMinutes) % 1440);
-        _gameTimeDirty |= GameTimeMinutes != previous;
 
         foreach (var result in Tasks.OnGameTimeAdvanced(previous, elapsedMinutes))
         {

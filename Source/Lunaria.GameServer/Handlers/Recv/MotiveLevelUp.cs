@@ -7,6 +7,7 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleMotiveLevelUp(ILogger<HandleMotiveLevelUp> logger)
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsMotiveLeveup)]
     public async Task<SCMotiveLevelUp> OnPacket(NetContext ctx, CSMotiveLevelUp req)
     {
@@ -19,9 +20,6 @@ public sealed class HandleMotiveLevelUp(ILogger<HandleMotiveLevelUp> logger)
                 NewLevel = 0
             };
         }
-
-        if (!ctx.Player.HasActiveRole)
-            return Reject((int)EnmTextCode.EnmTextNotAccLogin);
 
         var items = req.Items.Select(g => new ItemGrant(g.ItemId, g.Count)).ToList();
         var feeds = req.MotiveUniqIds.ToList();

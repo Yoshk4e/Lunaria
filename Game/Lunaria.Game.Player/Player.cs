@@ -1,3 +1,4 @@
+using Lunaria.Common.Tracking;
 using Lunaria.Game.Player.Gameplay;
 using Google.Protobuf;
 using Lunaria.Common;
@@ -26,10 +27,12 @@ using Msg;
 
 namespace Lunaria.Game.Player;
 
-public sealed partial class Player
+[TrackChildren]
+public sealed partial class Player : TrackedObject
 {
     private readonly GameData assets;
     private readonly OperationTimeProvider _time;
+    internal Persistence.Saves.RoleSaveBaseline SaveBaseline { get; } = new();
 
     public Player(ulong sessionId, GameData assets, TimeProvider? timeProvider = null, GameplayRandom? random = null)
     {
@@ -69,14 +72,18 @@ public sealed partial class Player
         Cooldowns = new(_time);
         CurrentWeather = (WeatherType)assets.Starter.Weather;
         GameTimeMinutes = assets.Starter.GameTime;
+        ConnectTrackedChildren();
+        Changes.PreserveLoadedChanges = () => HasActiveRole;
+        Changes.AcceptAll();
     }
 
-    /// <summary>Shared logger for every Player partial. Gameplay events are trace, outcomes are info.</summary>
+    // Log gameplay events at trace level and outcomes at info level.
     private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Player");
 
     /// <summary>Session ID used by SCAccountLogin.connect_identify_id and SCSchemaInfoSync.login_id.</summary>
     public ulong SessionId { get; }
 
+    [Untracked]
     public LoadingState LoadingState { get; set; } = LoadingState.Pending;
 
     /// <summary>All player systems share one instance ID sequence.</summary>
@@ -111,6 +118,7 @@ public sealed partial class Player
 
     public TaskManager Tasks { get; }
 
+    [Untracked]
     public bool TasksBootstrapped { get; set; }
 
     public CollectionManager Collections { get; }
@@ -144,6 +152,7 @@ public sealed partial class Player
 
     public WantedManager Wanted { get; }
 
+    [Untracked]
     public bool SignInPopSent { get; set; }
 
     public GameplayRandom RandomSources { get; }
@@ -155,80 +164,10 @@ public sealed partial class Player
 
     public bool IsLoggedIn => Account.IsBound;
 
-    public bool IsDirty =>
-        Roles.IsDirty
-        || Characters.IsDirty
-        || Mails.IsDirty
-        || Motives.IsDirty
-        || Guides.IsDirty
-        || SaveDirty;
+    public bool SaveDirty => Changes.HasChanges;
 
-    public bool SaveDirty =>
-        _gameTimeDirty
-        || _pendingRewardMailDirty
-        || Map.IsDirty
-        || Teams.IsDirty
-        || Skills.IsDirty
-        || Bag.IsDirty
-        || Cooldowns.IsDirty
-        || Wallet.IsDirty
-        || Progress.IsDirty
-        || Limits.IsDirty
-        || Shop.IsDirty
-        || Gacha.IsDirty
-        || Collections.IsDirty
-        || Tasks.IsDirty
-        || Cases.IsDirty
-        || Achievements.IsDirty
-        || Houses.IsDirty
-        || DailyMissions.IsDirty
-        || SignIn.IsDirty
-        || BattlePasses.IsDirty
-        || RegionProgress.IsDirty
-        || SilverCreatures.IsDirty
-        || TempTeams.IsDirty
-        || TemporaryTeamDirty
-        || Buffs.IsDirty
-        || RedPoints.IsDirty
-        || MonthCards.IsDirty
-        || Dungeons.IsDirty
-        || Wanted.IsDirty
-        || Battles.IsDirty;
-
-    /// <summary>Clear all dirty flags only after the role transaction commits.</summary>
-    public void ClearSaveDirty()
-    {
-        _gameTimeDirty = false;
-        _pendingRewardMailDirty = false;
-        Map.ClearDirty();
-        Teams.ClearDirty();
-        Skills.ClearDirty();
-        Bag.ClearDirty();
-        Cooldowns.ClearDirty();
-        Wallet.ClearDirty();
-        Progress.ClearDirty();
-        Limits.ClearDirty();
-        Shop.ClearDirty();
-        Gacha.ClearDirty();
-        Collections.ClearDirty();
-        Tasks.ClearDirty();
-        Cases.ClearDirty();
-        Achievements.ClearDirty();
-        Houses.ClearDirty();
-        DailyMissions.ClearDirty();
-        SignIn.ClearDirty();
-        BattlePasses.ClearDirty();
-        RegionProgress.ClearDirty();
-        SilverCreatures.ClearDirty();
-        TempTeams.ClearDirty();
-        TemporaryTeamDirty = false;
-        Buffs.ClearDirty();
-        RedPoints.ClearDirty();
-        MonthCards.ClearDirty();
-        Dungeons.ClearDirty();
-        Wanted.ClearDirty();
-        Battles.ClearDirty();
-    }
+    /// <summary>Accept all current changes. Saves should accept their captured batch after commit.</summary>
+    public void ClearSaveDirty() => Changes.AcceptAll();
 
     public RoleInfo RoleInfo(RoleState role) => new() {
         BaseInfo = new RoleBaseInfo {

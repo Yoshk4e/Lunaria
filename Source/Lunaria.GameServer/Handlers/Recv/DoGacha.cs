@@ -6,6 +6,7 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleDoGacha(ILogger<HandleDoGacha> logger)
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsDoGachaReq)]
     public async Task<SCDoGachaResult> OnPacket(NetContext ctx, CSDoGacha req)
     {
@@ -13,9 +14,6 @@ public sealed class HandleDoGacha(ILogger<HandleDoGacha> logger)
         {
             return new SCDoGachaResult { Result = code };
         }
-
-        if (!ctx.Player.HasActiveRole)
-            return Reject((int)EnmTextCode.EnmTextNotAccLogin);
 
         var now = ctx.Player.UtcNow;
         var (code, delivery) = ctx.Player.DoGacha(req.PoolId, req.IsMult, now, ctx.Player.RandomSources.Gacha);

@@ -1,8 +1,10 @@
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
 using Msg;
 
 namespace Lunaria.Game.Collections;
 
-public sealed partial class CollectionManager
+public sealed partial class CollectionManager : TrackedObject
 {
     public (int Code, CollectionState? Updated) ApplyCollected(ulong uniq, DateTimeOffset now)
     {
@@ -13,7 +15,8 @@ public sealed partial class CollectionManager
         var next = node with { Status = status, StatusTime = now };
         _nodes[uniq] = next;
         _gathered.Add(node.Cfg);
-        Dirty();
+
+        Log.Event("collection {UniqId} with config {ConfigId} collected, new status {Status}", uniq, node.Cfg, status);
         return (0, next);
     }
 
@@ -24,7 +27,7 @@ public sealed partial class CollectionManager
 
         var next = node with { Status = EnmCollectionStatus.EcsDestroyed, StatusTime = now };
         _nodes[uniq] = next;
-        Dirty();
+
         return (0, next);
     }
 
@@ -33,6 +36,7 @@ public sealed partial class CollectionManager
         if (Get(uniq) is not {} found)
         {
             node = null!;
+            Log.Stage("collection operation refused for unknown object {UniqId}", uniq);
             code = (int)EnmTextCode.EnmTextCollectionNoData;
             return false;
         }
@@ -41,6 +45,7 @@ public sealed partial class CollectionManager
 
         if (node.Status != EnmCollectionStatus.EcsCanCollect)
         {
+            Log.Stage("collection operation refused for object {UniqId} in status {Status}", uniq, node.Status);
             code = (int)EnmTextCode.EnmTextCollectionAlreadyOp;
             return false;
         }

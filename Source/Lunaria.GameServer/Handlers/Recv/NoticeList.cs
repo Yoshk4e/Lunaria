@@ -6,12 +6,10 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleNoticeList
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsReqNoticeList)]
     public Task<SCNoticeList> OnPacket(NetContext ctx, CSNoticeList req)
     {
-        if (!ctx.Player.HasActiveRole)
-            return Task.FromResult(new SCNoticeList { Result = (int)EnmTextCode.EnmTextNotAccLogin });
-
         var reply = new SCNoticeList { Result = 0 };
 
         foreach (var notice in ctx.Assets.Notices.Published(ctx.Player.UtcNow))
@@ -22,6 +20,7 @@ public sealed class HandleNoticeList
                 ShortTitle = ByteString.CopyFromUtf8(notice.ShortTitle),
                 LongTitle = ByteString.CopyFromUtf8(notice.LongTitle),
                 Content = ByteString.CopyFromUtf8(notice.Content),
+                CreateTime = (ulong)notice.CreateTime,
                 PushTime = (ulong)notice.PushTime,
                 EndTime = (ulong)notice.EndTime,
                 LoginForcePopup = notice.LoginForcePopup ? 1u : 0u

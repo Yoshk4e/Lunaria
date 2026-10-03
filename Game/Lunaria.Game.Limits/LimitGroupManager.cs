@@ -1,15 +1,20 @@
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
+using Microsoft.Extensions.Logging;
 using Msg;
 
 namespace Lunaria.Game.Limits;
 
 public sealed record LimitCounter(uint Count, DateTimeOffset Anchor);
 
-public sealed partial class LimitGroupManager(GameData assets)
+public sealed partial class LimitGroupManager(GameData assets) : TrackedObject
 {
-    private readonly SortedDictionary<uint, LimitCounter> _counts = [];
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Limits");
 
-    public bool IsDirty { get; private set; }
+    private readonly TrackedSortedDictionary<uint, LimitCounter> __tracked_counts = [];
+    [Tracked]
+    private partial TrackedSortedDictionary<uint, LimitCounter> _counts { get; }
 
     public IReadOnlyDictionary<uint, LimitCounter> Entries => _counts;
 
@@ -26,10 +31,8 @@ public sealed partial class LimitGroupManager(GameData assets)
             if (assets.Limits.GroupExists(group))
                 _counts[group] = new LimitCounter(count, anchor);
         }
-        IsDirty = false;
+        AcceptLoadedState();
     }
-
-    public void ClearDirty() => IsDirty = false;
 
     public uint CountOf(uint group, DateTimeOffset now)
     {
@@ -54,12 +57,15 @@ public sealed partial class LimitGroupManager(GameData assets)
         var cap = assets.Limits.Cap(group);
 
         if (cap.HasValue && (ulong)current + count > cap.Value)
+        {
+            Log.Stage("limit group {GroupId} consumption refused, current {Current}, requested {Count}, cap {Cap}", group, current, count, cap.Value);
             return (int)EnmTextCode.EnmTextCountGroupLimit;
+        }
 
         // Cap unlimited-group counters without wrapping. Keep the latest clock to prevent a second daily reset.
         var anchor = entry is not null && entry.Anchor > now ? entry.Anchor : now;
         _counts[group] = new LimitCounter((uint)Math.Min((ulong)current + count, uint.MaxValue), anchor);
-        Dirty();
+
         return 0;
     }
 
@@ -77,5 +83,4 @@ public sealed partial class LimitGroupManager(GameData assets)
         Count = count
     };
 
-    private void Dirty() => IsDirty = true;
 }

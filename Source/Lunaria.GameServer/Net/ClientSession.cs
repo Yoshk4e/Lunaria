@@ -1,6 +1,7 @@
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Channels;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Player.Persistence;
 using Lunaria.Game.Player.Persistence.Saves;
 using Lunaria.Game.Resources;
@@ -74,10 +75,13 @@ public sealed partial class ClientSession(
 
             promoted = true;
 
+            var sessionId = runtime.AllocateSessionId();
+            using var logScope = logger.BeginPlayerScope(sessionId);
+
             if (logger.IsEnabled(LogLevel.Debug))
                 logger.LogDebug("session established: notify-sid {NotifySid:x16}", established.NotifySessionId);
 
-            await RunSessionAsync(reader, established, shutdown).ConfigureAwait(false);
+            await RunSessionAsync(reader, established, sessionId, shutdown).ConfigureAwait(false);
         }
         finally
         {
@@ -88,7 +92,7 @@ public sealed partial class ClientSession(
         }
     }
 
-    private async Task RunSessionAsync(FrameReader reader, EstablishedSession established, CancellationToken shutdown)
+    private async Task RunSessionAsync(FrameReader reader, EstablishedSession established, ulong sessionId, CancellationToken shutdown)
     {
         var outbound = Channel.CreateBounded<byte[]>(new BoundedChannelOptions(64) {
             FullMode = BoundedChannelFullMode.Wait
@@ -102,11 +106,11 @@ public sealed partial class ClientSession(
         var stream = reader.Stream;
         var writeTask = WriteLoopAsync(stream, outbound, stopped);
 
-        var udp = runtime.UdpSessions.Bind(established.NotifySessionId, established.UdpPort);
+        var udp = runtime.UdpSessions.Bind(established.NotifySessionId, established.HelloSessionId, established.UdpPort);
 
         try
         {
-            await RunEventLoopAsync(reader, established, outbound, notifications, udp, stopped.Token)
+            await RunEventLoopAsync(reader, established, sessionId, outbound, notifications, udp, stopped.Token)
                 .ConfigureAwait(false);
         }
         finally

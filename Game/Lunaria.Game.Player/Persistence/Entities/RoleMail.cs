@@ -11,6 +11,8 @@ public sealed class RoleMail
     public bool Open { get; set; }
     public bool HasAttach { get; set; }
     public string Items { get; set; } = "[]";
+    public string TemplateContentParams { get; set; } = "[]";
+    public string Contents { get; set; } = "[]";
     public long Time { get; set; }
     public long ExpireTime { get; set; }
 

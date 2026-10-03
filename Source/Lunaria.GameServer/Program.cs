@@ -67,7 +67,8 @@ builder.Services.AddSingleton(TimeProvider.System);
 builder.Services.AddSingleton<Router>();
 builder.Services.AddSingleton<TrustAllAuthenticator>();
 builder.Services.AddSingleton<IAuthenticator>(sp => sp.GetRequiredService<TrustAllAuthenticator>());
-builder.Services.AddSingleton<UdpSessionRegistry>();
+// Sessions bind their UDP channel in the runtime registry, so the UDP listener must route through that same instance.
+builder.Services.AddSingleton(sp => sp.GetRequiredService<GameServerRuntime>().UdpSessions);
 builder.Services.AddSingleton<UdpListenerService>();
 builder.Services.AddSingleton<ConnectionGate>();
 builder.Services.AddSingleton<GameServerMetrics>();

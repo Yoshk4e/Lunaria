@@ -12,9 +12,19 @@ public sealed class GameDbContext(DbContextOptions<GameDbContext> options) : DbC
     public DbSet<RoleGuide> RoleGuides => Set<RoleGuide>();
     public DbSet<RoleMail> RoleMails => Set<RoleMail>();
     public DbSet<RoleSave> RoleSaves => Set<RoleSave>();
+    public DbSet<RoleSaveSection> RoleSaveSections => Set<RoleSaveSection>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<RoleSaveSection>(entity => {
+            entity.ToTable("role_save_sections");
+            entity.HasKey(s => new { s.RoleId, s.Name });
+            entity.Property(s => s.RoleId).HasColumnName("role_id");
+            entity.Property(s => s.Name).HasColumnName("name");
+            entity.Property(s => s.State).HasColumnName("state").IsRequired();
+            entity.Property(s => s.UpdatedAt).HasColumnName("updated_at");
+            entity.HasOne(s => s.Role).WithMany().HasForeignKey(s => s.RoleId).OnDelete(DeleteBehavior.Cascade);
+        });
         modelBuilder.Entity<Account>(entity => {
             entity.ToTable("accounts");
             entity.HasKey(a => a.Id);
@@ -110,6 +120,8 @@ public sealed class GameDbContext(DbContextOptions<GameDbContext> options) : DbC
             entity.Property(m => m.Open).HasColumnName("open");
             entity.Property(m => m.HasAttach).HasColumnName("has_attach");
             entity.Property(m => m.Items).HasColumnName("items");
+            entity.Property(m => m.TemplateContentParams).HasColumnName("template_content_params").HasDefaultValue("[]");
+            entity.Property(m => m.Contents).HasColumnName("contents").HasDefaultValue("[]");
             entity.Property(m => m.Time).HasColumnName("time");
             entity.Property(m => m.ExpireTime).HasColumnName("expire_time");
             entity.HasIndex(m => m.RoleId);

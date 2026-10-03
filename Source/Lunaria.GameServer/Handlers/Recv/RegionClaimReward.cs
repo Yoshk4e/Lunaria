@@ -5,12 +5,10 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleRegionClaimReward
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsReqClaimReward)]
     public async Task<SCResClaimReward> OnPacket(NetContext ctx, CSReqClaimReward req)
     {
-        if (!ctx.Player.HasActiveRole)
-            return new SCResClaimReward { Result = (int)EnmTextCode.EnmTextNotAccLogin, SubRegionId = req.SubRegionId };
-
         var (code, values, delivery) = ctx.Player.ClaimRegionRewards(req.SubRegionId);
         if (code != 0)
             return new SCResClaimReward { Result = (uint)code, SubRegionId = req.SubRegionId };

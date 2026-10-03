@@ -1,16 +1,23 @@
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
+using Microsoft.Extensions.Logging;
 using Msg;
 
 namespace Lunaria.Game.Player.Managers;
 
-public sealed class SignInManager(SignInAssets assets, TimeProvider? timeProvider = null)
+public sealed partial class SignInManager(SignInAssets assets, TimeProvider? timeProvider = null) : TrackedObject
 {
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Player.SignIn");
+
     private readonly TimeProvider _time = timeProvider ?? TimeProvider.System;
     public SignInManager(GameData assets, TimeProvider? timeProvider = null) : this(assets.SignIn, timeProvider) { }
 
     // Saves without activity IDs belong to the original calendar, activity 3.
     public const uint LegacyActivityId = 3;
-    private readonly SortedDictionary<uint, Calendar> _calendars = [];
+    private readonly TrackedSortedDictionary<uint, Calendar> __tracked_calendars = [];
+    [Tracked]
+    private partial TrackedSortedDictionary<uint, Calendar> _calendars { get; }
 
     public sealed record ActivityState(uint ActivityId, IReadOnlyList<uint> SignedDays,
         IReadOnlyList<uint> ClaimedDays, long? LastSignInDay, uint? AttendanceDays = null);
@@ -23,8 +30,6 @@ public sealed class SignInManager(SignInAssets assets, TimeProvider? timeProvide
     public IReadOnlyCollection<uint> SignedDays => _calendars.GetValueOrDefault(LegacyActivityId)?.Signed ?? [];
     public IReadOnlyCollection<uint> ClaimedDays => _calendars.GetValueOrDefault(LegacyActivityId)?.Claimed ?? [];
     public long? LastSignInDay => _calendars.GetValueOrDefault(LegacyActivityId)?.LastDay;
-    public bool IsDirty { get; private set; }
-    public void ClearDirty() => IsDirty = false;
 
     public void Load(IEnumerable<uint> signedDays, IEnumerable<uint> claimedDays, long? lastSignInDay = null) =>
         LoadActivities([new(LegacyActivityId, signedDays.ToArray(), claimedDays.ToArray(), lastSignInDay)]);
@@ -44,7 +49,7 @@ public sealed class SignInManager(SignInAssets assets, TimeProvider? timeProvide
                 ? _time.GetUtcNow().ToUnixTimeSeconds() / 86400 : null);
             _calendars[saved.ActivityId] = calendar;
         }
-        IsDirty = false;
+        AcceptLoadedState();
     }
 
     public (int Result, SignInActivityData? Data) Query(uint activityId, DateTimeOffset? at = null)
@@ -64,7 +69,9 @@ public sealed class SignInManager(SignInAssets assets, TimeProvider? timeProvide
             if (calendar.AttendanceDays < uint.MaxValue) calendar.AttendanceDays++;
             calendar.LastDay = now / 86400;
             _calendars[activityId] = calendar;
-            IsDirty = true;
+
+            Log.Stage("sign in recorded for activity {ActivityId}, reward day {RewardDay}, attendance days {AttendanceDays}, calendar day {CalendarDay}",
+                activityId, next, calendar.AttendanceDays, calendar.LastDay);
         }
 
         var data = new SignInActivityData {
@@ -87,18 +94,26 @@ public sealed class SignInManager(SignInAssets assets, TimeProvider? timeProvide
             || !calendar.Signed.Contains(day) || !calendar.Claimed.Add(day))
             return ((int)EnmTextCode.EnmTextSigninActivityCannotClaimReward, []);
 
-        IsDirty = true;
+        Log.Stage("sign in reward claimed for activity {ActivityId} day {Day}", activityId, day);
         return (0, assets.Items(activityId, day));
     }
 
     public bool HasClaimableDay(uint activityId) => _calendars.TryGetValue(activityId, out var calendar)
         && assets.Days(activityId).Any(day => calendar.Signed.Contains(day) && !calendar.Claimed.Contains(day));
 
-    private sealed class Calendar
+    private sealed partial class Calendar : TrackedObject
     {
-        public SortedSet<uint> Signed { get; } = [];
-        public SortedSet<uint> Claimed { get; } = [];
-        public long? LastDay { get; set; }
-        public uint AttendanceDays { get; set; }
+        private readonly TrackedSet<uint> __trackedSigned = [];
+        [Tracked]
+        public partial TrackedSet<uint> Signed { get; }
+        private readonly TrackedSet<uint> __trackedClaimed = [];
+        [Tracked]
+        public partial TrackedSet<uint> Claimed { get; }
+        private long? __trackedLastDay = default!;
+        [Tracked]
+        public partial long? LastDay { get; set; }
+        private uint __trackedAttendanceDays = default!;
+        [Tracked]
+        public partial uint AttendanceDays { get; set; }
     }
 }

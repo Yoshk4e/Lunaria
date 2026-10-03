@@ -6,6 +6,7 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleMotiveLock(ILogger<HandleMotiveLock> logger)
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsMotiveLock)]
     public Task<SCMotiveLock> OnPacket(NetContext ctx, CSMotiveLock req)
     {
@@ -17,9 +18,6 @@ public sealed class HandleMotiveLock(ILogger<HandleMotiveLock> logger)
                 LockState = req.LockState
             };
         }
-
-        if (!ctx.Player.HasActiveRole)
-            return Task.FromResult(Reject((int)EnmTextCode.EnmTextNotAccLogin));
 
         var code = ctx.Player.SetMotiveLock(req.MotiveUniqId, req.LockState);
 

@@ -10,11 +10,11 @@ public sealed class RoleSessionService(RoleStateStore store, ILogger<RoleSession
     public async Task<SCCharacterListRsp> CharacterListAsync(NetContext ctx)
     {
         if (!ctx.Player.IsLoggedIn) return new SCCharacterListRsp { Result = (int)EnmTextCode.EnmTextNotAccLogin };
-        if (ctx.Player.HasActiveRole) return new SCCharacterListRsp { List = { ctx.Player.Characters.ListData() } };
-        if (ctx.Player.Roles.Newest() is not {} newest) return new SCCharacterListRsp();
+        if (ctx.Player.HasActiveRole) return new SCCharacterListRsp { Result = 0, List = { ctx.Player.Characters.ListData() } };
+        if (ctx.Player.Roles.Newest() is not {} newest) return new SCCharacterListRsp { Result = 0 };
         try
         {
-            return new SCCharacterListRsp { List = { await store.PreviewCharactersAsync(ctx.Player, newest.Id).ConfigureAwait(false) } };
+            return new SCCharacterListRsp { Result = 0, List = { await store.PreviewCharactersAsync(ctx.Player, newest.Id).ConfigureAwait(false) } };
         }
         catch (Exception ex)
         {

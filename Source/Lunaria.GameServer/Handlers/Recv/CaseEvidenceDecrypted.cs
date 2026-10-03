@@ -5,15 +5,10 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleCaseEvidenceDecrypted
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsCaseEvidenceDecrypted)]
     public Task<SCCaseEvidenceDecrypted> OnPacket(NetContext ctx, CSCaseEvidenceDecrypted req)
     {
-        if (!ctx.Player.HasActiveRole)
-            return Task.FromResult(new SCCaseEvidenceDecrypted {
-                Result = (int)EnmTextCode.EnmTextNotAccLogin,
-                EvidenceId = req.EvidenceId
-            });
-
         return Task.FromResult(new SCCaseEvidenceDecrypted {
             Result = ctx.Player.Cases.DecryptEvidence(req.EvidenceId),
             EvidenceId = req.EvidenceId

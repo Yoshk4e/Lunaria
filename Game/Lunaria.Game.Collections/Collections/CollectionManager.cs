@@ -1,23 +1,30 @@
-using Lunaria.Game.Resources;
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources.Tables;
+using Lunaria.Game.Resources;
+using Microsoft.Extensions.Logging;
 using Msg;
 
 namespace Lunaria.Game.Collections;
 
 /// <summary>
-/// World objects come from p_worldcollectobjtable. Their uniq id is the table row id used by the client to find the
-/// level placement. Only objects the player has touched are stored. Other placed objects use their default state.
+/// The client uses row IDs from p_worldcollectobjtable to find objects in the level.
+/// Save only objects the player has touched. Other objects use their default state.
 /// </summary>
-public sealed partial class CollectionManager(GameData assets)
+public sealed partial class CollectionManager(GameData assets) : TrackedObject
 {
-    public const int MaxNodes = 4096;
-    private readonly SortedSet<uint> _gathered = [];
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Collections");
 
-    private readonly SortedDictionary<ulong, CollectionState> _nodes = [];
+    public const int MaxNodes = 4096;
+    private readonly TrackedSet<uint> __tracked_gathered = [];
+    [Tracked]
+    private partial TrackedSet<uint> _gathered { get; }
+
+    private readonly TrackedSortedDictionary<ulong, CollectionState> __tracked_nodes = [];
+    [Tracked]
+    private partial TrackedSortedDictionary<ulong, CollectionState> _nodes { get; }
 
     public IReadOnlySet<uint> Gathered => _gathered;
-
-    public bool IsDirty { get; private set; }
 
     public IReadOnlyDictionary<ulong, CollectionState> Entries => _nodes;
 
@@ -33,7 +40,7 @@ public sealed partial class CollectionManager(GameData assets)
     }
 
     /// <summary>
-    /// Drop rows that do not match a placed object of the same template, including invented nodes from older saves.
+    /// Ignore nodes from older saves that do not match a placed object and its template.
     /// </summary>
     public void Load(
         IEnumerable<(ulong Uniq, uint Cfg, int Status, DateTimeOffset StatusTime, ulong Block, (int X, int Y, int Z) Position)> persisted
@@ -56,10 +63,8 @@ public sealed partial class CollectionManager(GameData assets)
             _nodes[row.Uniq] = FromPlacement(placed, (EnmCollectionStatus)row.Status, row.StatusTime);
         }
 
-        IsDirty = false;
+        AcceptLoadedState();
     }
-
-    public void ClearDirty() => IsDirty = false;
 
     /// <summary>Current state of a placed object, or null if the id has no placement.</summary>
     public CollectionState? Get(ulong uniq)
@@ -86,7 +91,6 @@ public sealed partial class CollectionManager(GameData assets)
         return list;
     }
 
-    /// <summary>Stored objects whose respawn time has passed, switched back to collectable.</summary>
     public IReadOnlyList<CollectionState> RefreshDue(DateTimeOffset now)
     {
         var revived = new List<CollectionState>();
@@ -114,7 +118,7 @@ public sealed partial class CollectionManager(GameData assets)
             return false;
 
         _nodes[uniq] = FromPlacement(assets.Collections.WorldObject(uniq)!, EnmCollectionStatus.EcsCanCollect, now);
-        Dirty();
+
         return true;
     }
 
@@ -156,5 +160,4 @@ public sealed partial class CollectionManager(GameData assets)
         return unix < 0 ? 0 : unix > uint.MaxValue ? uint.MaxValue : (uint)unix;
     }
 
-    private void Dirty() => IsDirty = true;
 }

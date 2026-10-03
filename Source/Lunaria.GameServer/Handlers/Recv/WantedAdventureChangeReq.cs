@@ -5,14 +5,15 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleWantedAdventureChangeReq
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsWantedAdventureChangeReq)]
     public async Task<SCWantedAdventureChangeRes> OnPacket(NetContext ctx, CSWantedAdventureChangeReq req)
     {
-        if (!ctx.Player.HasActiveRole)
-            return new SCWantedAdventureChangeRes { Result = (int)EnmTextCode.EnmTextNotAccLogin };
-
-        var (completed, step, delivery) = ctx.Player.ResolveWantedAdventure(
+        var (code, completed, step, delivery) = ctx.Player.ResolveWantedAdventure(
             req.AdventureId, req.ContentId, req.DialogId);
+
+        if (code != 0)
+            return new SCWantedAdventureChangeRes { Result = code };
 
         if (completed && delivery.HasChanges)
         {
@@ -27,7 +28,8 @@ public sealed class HandleWantedAdventureChangeReq
             Adventure = new CmdWantedOneAdventure {
                 AdventureId = req.AdventureId,
                 ContentId = req.ContentId,
-                DialogId = req.DialogId
+                DialogId = req.DialogId,
+                OptionResult = 0
             }
         };
     }

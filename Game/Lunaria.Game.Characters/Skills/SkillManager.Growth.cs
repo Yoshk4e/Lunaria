@@ -1,9 +1,11 @@
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
 using Msg;
 
 namespace Lunaria.Game.Characters;
 
-public sealed partial class SkillManager
+public sealed partial class SkillManager : TrackedObject
 {
     public bool KnowsGroup(uint group) => _groups.ContainsKey(group);
 
@@ -36,7 +38,8 @@ public sealed partial class SkillManager
             return code;
 
         _groups[group] += 1;
-        IsDirty = true;
+
+        Log.Stage("skill group {GroupId} raised to level {Level}", group, _groups[group]);
         return 0;
     }
 
@@ -54,7 +57,7 @@ public sealed partial class SkillManager
             return 0;
 
         _groups[group] = clamped;
-        IsDirty = true;
+
         return 0;
     }
 

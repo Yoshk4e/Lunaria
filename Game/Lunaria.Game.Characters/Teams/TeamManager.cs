@@ -1,11 +1,16 @@
+using Lunaria.Common.Tracking;
 using Google.Protobuf;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
+using Microsoft.Extensions.Logging;
 using Msg;
 
 namespace Lunaria.Game.Characters;
 
-public sealed partial class TeamManager(GameData assets)
+public sealed partial class TeamManager(GameData assets) : TrackedObject
 {
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Characters.Teams");
+
     public const int MaxMembers = (int)EnmSizeLimit.MaxCharacterTeamMembers;
 
     public const int MaxTeams = (int)EnmSizeLimit.MaxCharacterTeams;
@@ -15,13 +20,17 @@ public sealed partial class TeamManager(GameData assets)
     /// <summary>The client reads this field as GBK. The default name uses ASCII.</summary>
     public const string DefaultTeamName = "TheBigBang";
 
-    private readonly List<TeamState> _teams = [];
+    private readonly TrackedList<TeamState> __tracked_teams = [];
+    [Tracked]
+    private partial TrackedList<TeamState> _teams { get; }
 
-    public bool IsDirty { get; private set; }
+    private uint __trackedCurrent = BigWorldTeamId;
+    [Tracked]
+    public partial uint Current { get; private set; }
 
-    public uint Current { get; private set; } = BigWorldTeamId;
-
-    public uint UsingMemberSlot { get; private set; } = 1;
+    private uint __trackedUsingMemberSlot = 1;
+    [Tracked]
+    public partial uint UsingMemberSlot { get; private set; }
 
     public IReadOnlyList<TeamState> All => _teams;
     public bool IsEmpty => _teams.Count == 0;
@@ -60,7 +69,7 @@ public sealed partial class TeamManager(GameData assets)
         else _teams.Add(starter);
         Current = BigWorldTeamId;
         UsingMemberSlot = members[0].Slot;
-        IsDirty = true;
+
         return true;
     }
 
@@ -99,7 +108,7 @@ public sealed partial class TeamManager(GameData assets)
                   ?? _teams.FirstOrDefault(t => t.Members.Count > 0)?.TeamId
                   ?? BigWorldTeamId;
         UsingMemberSlot = SlotOrLowestOccupied(usingMemberSlot);
-        IsDirty = false;
+        AcceptLoadedState();
     }
 
     public TeamState? CurrentTeam() => _teams.FirstOrDefault(t => t.TeamId == Current);
@@ -108,8 +117,6 @@ public sealed partial class TeamManager(GameData assets)
 
     public IReadOnlyList<ulong> CurrentMemberInstIds() =>
         CurrentTeam()?.Members.Select(m => m.InstId).ToList() ?? [];
-
-    public void ClearDirty() => IsDirty = false;
 
     private uint SlotOrLowestOccupied(uint slot)
     {
@@ -123,14 +130,16 @@ public sealed partial class TeamManager(GameData assets)
 
     public IReadOnlyList<TeamData> TeamsData() => _teams.Select(ToTeamData).ToList();
 
-    public TeamData ToTeamData(TeamState team)
+    public TeamData ToTeamData(TeamState team) => ToTeamData(team.TeamId, team.Name, team.Members);
+
+    public TeamData ToTeamData(uint teamId, string name, IReadOnlyList<TeamMemberState> members)
     {
-        var elements = team.Members.Select(member => assets.Characters.ElementOf(member.CharacterId))
+        var elements = members.Select(member => assets.Characters.ElementOf(member.CharacterId))
             .CountBy(element => element).ToDictionary();
         return new TeamData {
-            TeamId = team.TeamId,
-            Name = ByteString.CopyFromUtf8(team.Name),
-            MemberData = { team.Members.Select(member => ToTeamMemberData(member, elements)) }
+            TeamId = teamId,
+            Name = ByteString.CopyFromUtf8(name),
+            MemberData = { members.Select(member => ToTeamMemberData(member, elements)) }
         };
     }
 

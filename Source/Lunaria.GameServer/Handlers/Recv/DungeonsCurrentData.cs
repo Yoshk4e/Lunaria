@@ -5,15 +5,10 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleDungeonsCurrentData
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsDungeonsCurrentData)]
     public async Task<SCDungeonsCurrentData> OnPacket(NetContext ctx, CSDungeonsCurrentData req)
     {
-        if (!ctx.Player.HasActiveRole)
-            return new SCDungeonsCurrentData {
-                Result = (int)EnmTextCode.EnmTextNotAccLogin,
-                Info = req.Info
-            };
-
         if (req.Info is {} info)
         {
             var outcome = ctx.Player.AdoptDungeonCurrent(info.DungeonsId, info.BattleId);

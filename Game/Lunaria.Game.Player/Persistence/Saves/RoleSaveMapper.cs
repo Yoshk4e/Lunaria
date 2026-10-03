@@ -1,5 +1,6 @@
 using Lunaria.Game.Characters;
 using Lunaria.Game.Inventory;
+using Lunaria.Game.Resources;
 using Lunaria.Game.Wanted;
 using Msg;
 
@@ -8,28 +9,171 @@ namespace Lunaria.Game.Player.Persistence.Saves;
 internal static class RoleSaveMapper
 {
     public static RoleSaveDocument Capture(Player player) => new() {
-        SchemaVersion = RoleSaveMigrations.CurrentVersion,
-        GameTimeMinutes = player.GameTimeMinutes,
-        CurrentWeather = (uint)player.CurrentWeather,
-        PendingRewardMail = player.PendingRewardMail.Select(batch => (IReadOnlyList<Lunaria.Game.Resources.ItemGrant>)batch.ToArray()).ToArray(),
-        GatheredCollections = player.Collections.Gathered.ToList(),
-        Progress = new RoleSaveDocument.ProgressSave {
+        SchemaVersion = CaptureSchemaVersion(player),
+        GameTimeMinutes = CaptureGameTimeMinutes(player),
+        CurrentWeather = CaptureCurrentWeather(player),
+        PendingRewardMail = CapturePendingRewardMail(player),
+        GatheredCollections = CaptureGatheredCollections(player),
+        Progress = CaptureProgress(player),
+        CharacterVitals = CaptureCharacterVitals(player),
+        Map = CaptureMap(player),
+        Teams = CaptureTeams(player),
+        CurrentTeam = CaptureCurrentTeam(player),
+        UsingMemberSlot = CaptureUsingMemberSlot(player),
+        SkillGroups = CaptureSkillGroups(player),
+        Talents = CaptureTalents(player),
+        Bag = CaptureBag(player),
+        ItemCds = CaptureItemCds(player),
+        Wallet = CaptureWallet(player),
+        Limits = CaptureLimits(player),
+        Shop = CaptureShop(player),
+        Gacha = CaptureGacha(player),
+        Collections = CaptureCollections(player),
+        Quests = CaptureQuests(player),
+        Cases = CaptureCases(player),
+        Achievements = CaptureAchievements(player),
+        Houses = CaptureHouses(player),
+        DailyMissions = CaptureDailyMissions(player),
+        SignIn = CaptureSignIn(player),
+        BattlePasses = CaptureBattlePasses(player),
+        RegionProgress = CaptureRegionProgress(player),
+        SilverCreatures = CaptureSilverCreatures(player),
+        Buffs = CaptureBuffs(player),
+        TemporarySelections = CaptureTemporarySelections(player),
+        ActiveTemporaryTeam = CaptureActiveTemporaryTeam(player),
+        SuspendedStoryTeam = CaptureSuspendedStoryTeam(player),
+        TempTeams = CaptureTempTeams(player),
+        RedPoint = CaptureRedPoint(player),
+        MonthCards = CaptureMonthCards(player),
+        ChargePurchases = CaptureChargePurchases(player),
+        Dungeons = CaptureDungeons(player),
+        Wanted = CaptureWanted(player),
+        WantedRun = CaptureWantedRun(player),
+        PatrolCooldowns = CapturePatrolCooldowns(player)
+    };
+
+    internal static readonly SaveSection[] Sections = [
+        new("schema_version", player => System.Text.Json.JsonSerializer.Serialize(CaptureSchemaVersion(player), SaveJson.Options),
+            player => false),
+        new("GameTimeMinutes", player => System.Text.Json.JsonSerializer.Serialize(CaptureGameTimeMinutes(player), SaveJson.Options),
+            player => player.Changes.IsChanged("GameTimeMinutes")),
+        new("CurrentWeather", player => System.Text.Json.JsonSerializer.Serialize(CaptureCurrentWeather(player), SaveJson.Options),
+            player => player.Changes.IsChanged("CurrentWeather")),
+        new("pending_reward_mail", player => System.Text.Json.JsonSerializer.Serialize(CapturePendingRewardMail(player), SaveJson.Options),
+            player => player.Changes.IsChanged("_pendingRewardMail")),
+        new("GatheredCollections", player => System.Text.Json.JsonSerializer.Serialize(CaptureGatheredCollections(player), SaveJson.Options),
+            player => player.Changes.IsChanged("Collections")),
+        new("progress", player => System.Text.Json.JsonSerializer.Serialize(CaptureProgress(player), SaveJson.Options),
+            player => player.Changes.IsChanged("Progress")),
+        new("character_vitals", player => System.Text.Json.JsonSerializer.Serialize(CaptureCharacterVitals(player), SaveJson.Options),
+            player => player.Changes.IsChanged("Characters")),
+        new("map", player => System.Text.Json.JsonSerializer.Serialize(CaptureMap(player), SaveJson.Options),
+            player => player.Changes.IsChanged("Map")),
+        new("teams", player => System.Text.Json.JsonSerializer.Serialize(CaptureTeams(player), SaveJson.Options),
+            player => player.Changes.IsChanged("Teams")),
+        new("current_team", player => System.Text.Json.JsonSerializer.Serialize(CaptureCurrentTeam(player), SaveJson.Options),
+            player => player.Changes.IsChanged("Teams")),
+        new("using_member_slot", player => System.Text.Json.JsonSerializer.Serialize(CaptureUsingMemberSlot(player), SaveJson.Options),
+            player => player.Changes.IsChanged("Teams")),
+        new("skill_groups", player => System.Text.Json.JsonSerializer.Serialize(CaptureSkillGroups(player), SaveJson.Options),
+            player => player.Changes.IsChanged("Skills")),
+        new("talents", player => System.Text.Json.JsonSerializer.Serialize(CaptureTalents(player), SaveJson.Options),
+            player => player.Changes.IsChanged("Skills")),
+        new("bag", player => System.Text.Json.JsonSerializer.Serialize(CaptureBag(player), SaveJson.Options),
+            player => player.Changes.IsChanged("Bag")),
+        new("item_cds", player => System.Text.Json.JsonSerializer.Serialize(CaptureItemCds(player), SaveJson.Options),
+            player => player.Changes.IsChanged("Cooldowns")),
+        new("wallet", player => System.Text.Json.JsonSerializer.Serialize(CaptureWallet(player), SaveJson.Options),
+            player => player.Changes.IsChanged("Wallet")),
+        new("limits", player => System.Text.Json.JsonSerializer.Serialize(CaptureLimits(player), SaveJson.Options),
+            player => player.Changes.IsChanged("Limits")),
+        new("shop", player => System.Text.Json.JsonSerializer.Serialize(CaptureShop(player), SaveJson.Options),
+            player => player.Changes.IsChanged("Shop")),
+        new("gacha", player => System.Text.Json.JsonSerializer.Serialize(CaptureGacha(player), SaveJson.Options),
+            player => player.Changes.IsChanged("Gacha")),
+        new("collections", player => System.Text.Json.JsonSerializer.Serialize(CaptureCollections(player), SaveJson.Options),
+            player => player.Changes.IsChanged("Collections")),
+        new("quests", player => System.Text.Json.JsonSerializer.Serialize(CaptureQuests(player), SaveJson.Options),
+            player => player.Changes.IsChanged("Tasks")),
+        new("cases", player => System.Text.Json.JsonSerializer.Serialize(CaptureCases(player), SaveJson.Options),
+            player => player.Changes.IsChanged("Cases")),
+        new("achievements", player => System.Text.Json.JsonSerializer.Serialize(CaptureAchievements(player), SaveJson.Options),
+            player => player.Changes.IsChanged("Achievements")),
+        new("houses", player => System.Text.Json.JsonSerializer.Serialize(CaptureHouses(player), SaveJson.Options),
+            player => player.Changes.IsChanged("Houses")),
+        new("daily_missions", player => System.Text.Json.JsonSerializer.Serialize(CaptureDailyMissions(player), SaveJson.Options),
+            player => player.Changes.IsChanged("DailyMissions")),
+        new("signin", player => System.Text.Json.JsonSerializer.Serialize(CaptureSignIn(player), SaveJson.Options),
+            player => player.Changes.IsChanged("SignIn")),
+        new("battle_passes", player => System.Text.Json.JsonSerializer.Serialize(CaptureBattlePasses(player), SaveJson.Options),
+            player => player.Changes.IsChanged("BattlePasses")),
+        new("region_progress", player => System.Text.Json.JsonSerializer.Serialize(CaptureRegionProgress(player), SaveJson.Options),
+            player => player.Changes.IsChanged("RegionProgress")),
+        new("silver_creatures", player => System.Text.Json.JsonSerializer.Serialize(CaptureSilverCreatures(player), SaveJson.Options),
+            player => player.Changes.IsChanged("SilverCreatures")),
+        new("buffs", player => System.Text.Json.JsonSerializer.Serialize(CaptureBuffs(player), SaveJson.Options),
+            player => player.Changes.IsChanged("Buffs")),
+        new("TemporarySelections", player => System.Text.Json.JsonSerializer.Serialize(CaptureTemporarySelections(player), SaveJson.Options),
+            player => player.Changes.IsChanged("_temporarySelections")),
+        new("ActiveTemporaryTeam", player => System.Text.Json.JsonSerializer.Serialize(CaptureActiveTemporaryTeam(player), SaveJson.Options),
+            player => player.Changes.IsChanged("ActiveTemporaryTeam")),
+        new("SuspendedStoryTeam", player => System.Text.Json.JsonSerializer.Serialize(CaptureSuspendedStoryTeam(player), SaveJson.Options),
+            player => player.Changes.IsChanged("SuspendedStoryTeam")),
+        new("temp_teams", player => System.Text.Json.JsonSerializer.Serialize(CaptureTempTeams(player), SaveJson.Options),
+            player => player.Changes.IsChanged("TempTeams")),
+        new("red_point", player => System.Text.Json.JsonSerializer.Serialize(CaptureRedPoint(player), SaveJson.Options),
+            player => player.Changes.IsChanged("RedPoints")),
+        new("month_cards", player => System.Text.Json.JsonSerializer.Serialize(CaptureMonthCards(player), SaveJson.Options),
+            player => player.Changes.IsChanged("MonthCards")),
+        new("charge_purchases", player => System.Text.Json.JsonSerializer.Serialize(CaptureChargePurchases(player), SaveJson.Options),
+            player => player.Changes.IsChanged("_boughtMoneyPacks")),
+        new("dungeons", player => System.Text.Json.JsonSerializer.Serialize(CaptureDungeons(player), SaveJson.Options),
+            player => player.Changes.IsChanged("Dungeons")),
+        new("wanted", player => System.Text.Json.JsonSerializer.Serialize(CaptureWanted(player), SaveJson.Options),
+            player => player.Changes.IsChanged("Wanted")),
+        new("wanted_run", player => System.Text.Json.JsonSerializer.Serialize(CaptureWantedRun(player), SaveJson.Options),
+            player => player.Changes.IsChanged("Wanted")),
+        new("patrol_cooldowns", player => System.Text.Json.JsonSerializer.Serialize(CapturePatrolCooldowns(player), SaveJson.Options),
+            player => player.Changes.IsChanged("Battles"))
+    ];
+
+    internal static int CaptureSchemaVersion(Player player) =>
+        RoleSaveMigrations.CurrentVersion;
+
+    internal static uint CaptureGameTimeMinutes(Player player) =>
+        player.GameTimeMinutes;
+
+    internal static uint? CaptureCurrentWeather(Player player) =>
+        (uint)player.CurrentWeather;
+
+    internal static IReadOnlyList<IReadOnlyList<ItemGrant>> CapturePendingRewardMail(Player player) =>
+        player.PendingRewardMail.Select(batch => (IReadOnlyList<Lunaria.Game.Resources.ItemGrant>)batch.ToArray()).ToArray();
+
+    internal static IReadOnlyList<uint> CaptureGatheredCollections(Player player) =>
+        player.Collections.Gathered.ToList();
+
+    internal static RoleSaveDocument.ProgressSave? CaptureProgress(Player player) =>
+        new RoleSaveDocument.ProgressSave {
             TeamLevel = player.Progress.TeamLevel,
             TeamExp = player.Progress.TeamExp,
             Satiety = player.Progress.Satiety,
             Stamina = player.Progress.Stamina,
             StaminaTickAt = player.Progress.StaminaTickAt.ToUnixTimeSeconds(),
             WorldLevelSelection = player.Progress.WorldLevel == player.Progress.EarnedWorldLevel ? null : player.Progress.WorldLevel
-        },
-        CharacterVitals = player.Characters.Vitals()
+        };
+
+    internal static IReadOnlyList<RoleSaveDocument.CharacterVitalSave> CaptureCharacterVitals(Player player) =>
+        player.Characters.Vitals()
             .Where(vital => vital.Hp is not null || vital.PermanentLiquid is not null)
             .Select(vital => new RoleSaveDocument.CharacterVitalSave {
                 InstId = vital.InstId,
                 Hp = vital.Hp,
                 PermanentLiquid = vital.PermanentLiquid
             })
-            .ToList(),
-        Map = new RoleSaveDocument.MapSave {
+            .ToList();
+
+    internal static RoleSaveDocument.MapSave? CaptureMap(Player player) =>
+        new RoleSaveDocument.MapSave {
             MapId = player.Map.MapId,
             ReturnPoint = player.Map.ReturnPoint,
             Savepoint = player.Map.Savepoint,
@@ -45,8 +189,10 @@ internal static class RoleSaveMapper
                     TagType = target.TagType
                 })
                 .ToList()
-        },
-        Teams = player.Teams.All
+        };
+
+    internal static IReadOnlyList<RoleSaveDocument.TeamSave> CaptureTeams(Player player) =>
+        player.Teams.All
             .Select(team => new RoleSaveDocument.TeamSave {
                 TeamId = team.TeamId,
                 Name = team.Name,
@@ -56,50 +202,70 @@ internal static class RoleSaveMapper
                 TemporaryLiquid = ToTeamLiquidSave(team.TemporaryLiquid),
                 TemporaryLiquidLv2 = ToTeamLiquidSave(team.TemporaryLiquidLv2)
             })
-            .ToList(),
-        CurrentTeam = player.Teams.Current,
-        UsingMemberSlot = player.Teams.UsingMemberSlot,
-        SkillGroups = player.Skills.SkillGroups()
+            .ToList();
+
+    internal static uint CaptureCurrentTeam(Player player) =>
+        player.Teams.Current;
+
+    internal static uint CaptureUsingMemberSlot(Player player) =>
+        player.Teams.UsingMemberSlot;
+
+    internal static IReadOnlyList<RoleSaveDocument.SkillGroupSave> CaptureSkillGroups(Player player) =>
+        player.Skills.SkillGroups()
             .Select(pair => new RoleSaveDocument.SkillGroupSave { Group = pair.Group, Level = pair.Level })
-            .ToList(),
-        Talents = player.Skills.Talents()
+            .ToList();
+
+    internal static IReadOnlyList<RoleSaveDocument.TalentSave> CaptureTalents(Player player) =>
+        player.Skills.Talents()
             .Select(pair => new RoleSaveDocument.TalentSave {
                 InstId = pair.InstId,
                 Mask0 = pair.Masks.Mask0,
                 Mask1 = pair.Masks.Mask1
             })
-            .ToList(),
-        Bag = player.Bag.All()
+            .ToList();
+
+    internal static IReadOnlyList<RoleSaveDocument.ItemSave> CaptureBag(Player player) =>
+        player.Bag.All()
             .Select(stack => new RoleSaveDocument.ItemSave {
                 ItemId = stack.ItemId,
                 Count = stack.Count,
                 IsNew = stack.IsNew
             })
-            .ToList(),
-        ItemCds = player.Cooldowns.Active()
+            .ToList();
+
+    internal static IReadOnlyList<RoleSaveDocument.ItemCdSave> CaptureItemCds(Player player) =>
+        player.Cooldowns.Active()
             .Select(cd => new RoleSaveDocument.ItemCdSave {
                 CdType = cd.CdType,
                 ReadyUnix = cd.ReadyUnix
             })
-            .ToList(),
-        Wallet = player.Wallet.All()
+            .ToList();
+
+    internal static IReadOnlyList<RoleSaveDocument.MoneySave> CaptureWallet(Player player) =>
+        player.Wallet.All()
             .Select(pair => new RoleSaveDocument.MoneySave { MoneyType = pair.MoneyType, Amount = pair.Amount })
-            .ToList(),
-        Limits = player.Limits.Entries
+            .ToList();
+
+    internal static IReadOnlyList<RoleSaveDocument.LimitSave> CaptureLimits(Player player) =>
+        player.Limits.Entries
             .Select(pair => new RoleSaveDocument.LimitSave {
                 Group = pair.Key,
                 Count = pair.Value.Count,
                 Anchor = pair.Value.Anchor.ToUnixTimeSeconds()
             })
-            .ToList(),
-        Shop = player.Shop.Entries
+            .ToList();
+
+    internal static IReadOnlyList<RoleSaveDocument.ShopSave> CaptureShop(Player player) =>
+        player.Shop.Entries
             .Select(pair => new RoleSaveDocument.ShopSave {
                 Good = pair.Key,
                 Count = pair.Value.Count,
                 Anchor = pair.Value.Anchor.ToUnixTimeSeconds()
             })
-            .ToList(),
-        Gacha = player.Gacha.Entries
+            .ToList();
+
+    internal static IReadOnlyList<RoleSaveDocument.GachaSave> CaptureGacha(Player player) =>
+        player.Gacha.Entries
             .Select(pair => new RoleSaveDocument.GachaSave {
                 Banner = pair.Key,
                 Total = pair.Value.Total,
@@ -111,8 +277,10 @@ internal static class RoleSaveMapper
                 DailyCount = pair.Value.DailyCount,
                 Anchor = pair.Value.DailyAnchor.ToUnixTimeSeconds()
             })
-            .ToList(),
-        Collections = player.Collections.Entries
+            .ToList();
+
+    internal static IReadOnlyList<RoleSaveDocument.CollectionSave> CaptureCollections(Player player) =>
+        player.Collections.Entries
             .Select(pair => new RoleSaveDocument.CollectionSave {
                 Uniq = pair.Value.Uniq,
                 Cfg = pair.Value.Cfg,
@@ -123,8 +291,10 @@ internal static class RoleSaveMapper
                 Y = pair.Value.Y,
                 Z = pair.Value.Z
             })
-            .ToList(),
-        Quests = new RoleSaveDocument.QuestsSave {
+            .ToList();
+
+    internal static RoleSaveDocument.QuestsSave? CaptureQuests(Player player) =>
+        new RoleSaveDocument.QuestsSave {
             AppliedEffects = player.Tasks.AppliedEffects.Select(e => new RoleSaveDocument.TaskTargetRefSave
                 { TaskType = e.Type, Action = e.Action }).ToArray(),
             ReportedTargets = player.Tasks.ReportedTargets.Select(e => new RoleSaveDocument.TaskTargetRefSave
@@ -150,8 +320,10 @@ internal static class RoleSaveMapper
                     Task = row.Id
                 })
                 .ToList()
-        },
-        Cases = new RoleSaveDocument.CaseSave {
+        };
+
+    internal static RoleSaveDocument.CaseSave? CaptureCases(Player player) =>
+        new RoleSaveDocument.CaseSave {
             Processing = player.Cases.Processing.Values
                 .Select(state => new RoleSaveDocument.CaseProcessingSave {
                     CaseId = state.CaseId,
@@ -163,8 +335,10 @@ internal static class RoleSaveMapper
                 })
                 .ToList(),
             Finished = player.Cases.Finished.ToList()
-        },
-        Achievements = new RoleSaveDocument.AchievementSave {
+        };
+
+    internal static RoleSaveDocument.AchievementSave? CaptureAchievements(Player player) =>
+        new RoleSaveDocument.AchievementSave {
             Events = player.Achievements.Events.Values
                 .OrderBy(state => state.EventId)
                 .Select(state => new RoleSaveDocument.FinishEventSave {
@@ -174,8 +348,10 @@ internal static class RoleSaveMapper
                 })
                 .ToList(),
             Claimed = player.Achievements.Claimed.ToList()
-        },
-        Houses = new RoleSaveDocument.HouseSave {
+        };
+
+    internal static RoleSaveDocument.HouseSave? CaptureHouses(Player player) =>
+        new RoleSaveDocument.HouseSave {
             Houses = player.Houses.Houses.Values
                 .Select(state => new RoleSaveDocument.HouseEntrySave {
                     HouseId = state.HouseId,
@@ -185,8 +361,10 @@ internal static class RoleSaveMapper
                     BankedIncome = state.BankedIncome
                 })
                 .ToList()
-        },
-        DailyMissions = new RoleSaveDocument.DailyMissionSave {
+        };
+
+    internal static RoleSaveDocument.DailyMissionSave? CaptureDailyMissions(Player player) =>
+        new RoleSaveDocument.DailyMissionSave {
             DayAnchor = player.DailyMissions.DayAnchor.ToUnixTimeSeconds(),
             Missions = player.DailyMissions.Missions.Values
                 .OrderBy(state => state.MissionId)
@@ -198,8 +376,10 @@ internal static class RoleSaveMapper
                 .ToList(),
             ActivePoint = player.DailyMissions.ActivePoint,
             ClaimedRewards = player.DailyMissions.ClaimedRewards.ToList()
-        },
-        SignIn = new RoleSaveDocument.SignInSave {
+        };
+
+    internal static RoleSaveDocument.SignInSave? CaptureSignIn(Player player) =>
+        new RoleSaveDocument.SignInSave {
             Activities = player.SignIn.Activities.Select(a => new RoleSaveDocument.SignInActivitySave {
                 ActivityId = a.ActivityId, SignedDays = a.SignedDays, ClaimedDays = a.ClaimedDays,
                 LastSignInDay = a.LastSignInDay, AttendanceDays = a.AttendanceDays
@@ -207,16 +387,20 @@ internal static class RoleSaveMapper
             SignedDays = player.SignIn.SignedDays.ToList(),
             ClaimedDays = player.SignIn.ClaimedDays.ToList(),
             LastSignInDay = player.SignIn.LastSignInDay
-        },
-        BattlePasses = new RoleSaveDocument.BattlePassSave {
+        };
+
+    internal static RoleSaveDocument.BattlePassSave? CaptureBattlePasses(Player player) =>
+        new RoleSaveDocument.BattlePassSave {
             Passes = player.BattlePasses.Passes.Select(pair => new RoleSaveDocument.BattlePassEntrySave {
                 PassId = pair.Key,
                 Level = pair.Value.Level,
                 Exp = pair.Value.Exp,
                 AwardLevel = pair.Value.AwardLevel
             }).ToList()
-        },
-        RegionProgress = new RoleSaveDocument.RegionProgressSave {
+        };
+
+    internal static RoleSaveDocument.RegionProgressSave? CaptureRegionProgress(Player player) =>
+        new RoleSaveDocument.RegionProgressSave {
             Subregions = player.RegionProgress.Subregions.Values
                 .Select(state => new RoleSaveDocument.SubRegionProgressSave {
                     SubRegionId = state.SubRegionId,
@@ -227,8 +411,10 @@ internal static class RoleSaveMapper
                     ClaimedValues = state.ClaimedValues.ToList()
                 })
                 .ToList()
-        },
-        SilverCreatures = new RoleSaveDocument.SilverCreatureSave {
+        };
+
+    internal static RoleSaveDocument.SilverCreatureSave? CaptureSilverCreatures(Player player) =>
+        new RoleSaveDocument.SilverCreatureSave {
             Creatures = player.SilverCreatures.Creatures.Values
                 .Select(creature => new RoleSaveDocument.SilverCreatureEntrySave {
                     UniqId = creature.UniqId,
@@ -238,40 +424,59 @@ internal static class RoleSaveMapper
                 .ToList(),
             InBattleUniqId = player.SilverCreatures.InBattleUniqId,
             LastMinted = player.SilverCreatures.LastMinted
-        },
-        Buffs = player.Buffs.Buffs.Values
+        };
+
+    internal static IReadOnlyList<RoleSaveDocument.BuffSave> CaptureBuffs(Player player) =>
+        player.Buffs.Buffs.Values
             .Select(buff => new RoleSaveDocument.BuffSave {
                 BuffId = buff.BuffId,
                 AttachUnix = buff.AttachedAt.ToUnixTimeSeconds(),
                 LeftBattle = buff.LeftBattle
             })
-            .ToList(),
-        TemporarySelections = player.TemporarySelections.ToArray(),
-        ActiveTemporaryTeam = player.ActiveTemporaryTeam,
-        SuspendedStoryTeam = player.SuspendedStoryTeam,
-        TempTeams = player.TempTeams.Teams.Values
+            .ToList();
+
+    internal static IReadOnlyList<TemporaryTeamSelection> CaptureTemporarySelections(Player player) =>
+        player.TemporarySelections.ToArray();
+
+    internal static ActiveTemporaryTeam? CaptureActiveTemporaryTeam(Player player) =>
+        player.ActiveTemporaryTeam;
+
+    internal static ActiveTemporaryTeam? CaptureSuspendedStoryTeam(Player player) =>
+        player.SuspendedStoryTeam;
+
+    internal static IReadOnlyList<RoleSaveDocument.TempTeamSave> CaptureTempTeams(Player player) =>
+        player.TempTeams.Teams.Values
             .Select(team => new RoleSaveDocument.TempTeamSave {
                 TeamSrc = team.TeamSrc,
                 Members = team.Members
                     .Select(member => new RoleSaveDocument.TempTeamMemberSave {
                         Slot = member.Slot,
-                        CharacterId = member.CharacterId
+                        CharacterId = member.CharacterId,
+                        Gems = member.Gems.ToArray()
                     })
                     .ToList()
             })
-            .ToList(),
-        RedPoint = new RoleSaveDocument.RedPointSave {
+            .ToList();
+
+    internal static RoleSaveDocument.RedPointSave? CaptureRedPoint(Player player) =>
+        new RoleSaveDocument.RedPointSave {
             ExchangeActivityRead = player.RedPoints.ExchangeActivityRead
-        },
-        MonthCards = player.MonthCards.Cards.Values
+        };
+
+    internal static IReadOnlyList<RoleSaveDocument.MonthCardSave> CaptureMonthCards(Player player) =>
+        player.MonthCards.Cards.Values
             .Select(card => new RoleSaveDocument.MonthCardSave {
                 CardId = card.CardId,
                 OverdueUnix = card.OverdueAt.ToUnixTimeSeconds(),
                 RewardUnix = card.RewardAt.ToUnixTimeSeconds()
             })
-            .ToList(),
-        ChargePurchases = player.BoughtMoneyPacks.Order().ToList(),
-        Dungeons = new RoleSaveDocument.DungeonSave {
+            .ToList();
+
+    internal static IReadOnlyList<uint> CaptureChargePurchases(Player player) =>
+        player.BoughtMoneyPacks.Order().ToList();
+
+    internal static RoleSaveDocument.DungeonSave? CaptureDungeons(Player player) =>
+        new RoleSaveDocument.DungeonSave {
             Finishes = player.Dungeons.Finishes
                 .Select(pair => new RoleSaveDocument.DungeonFinishSave {
                     DungeonId = pair.Key,
@@ -299,21 +504,26 @@ internal static class RoleSaveMapper
                     BattleId = current.BattleId
                 } :
                 null
-        },
-        Wanted = player.Wanted.Finishes
+        };
+
+    internal static IReadOnlyList<RoleSaveDocument.WantedFinishSave> CaptureWanted(Player player) =>
+        player.Wanted.Finishes
             .Select(pair => new RoleSaveDocument.WantedFinishSave {
                 EntryId = pair.Key,
                 Count = pair.Value
             })
-            .ToList(),
-        WantedRun = ToWantedRunSave(player.Wanted.CaptureRun()),
-        PatrolCooldowns = player.Battles.PatrolCooldownEnds
+            .ToList();
+
+    internal static RoleSaveDocument.WantedRunSave? CaptureWantedRun(Player player) =>
+        ToWantedRunSave(player.Wanted.CaptureRun());
+
+    internal static IReadOnlyList<RoleSaveDocument.PatrolCooldownSave> CapturePatrolCooldowns(Player player) =>
+        player.Battles.PatrolCooldownEnds
             .Select(pair => new RoleSaveDocument.PatrolCooldownSave {
                 ClusterId = pair.Key,
                 UntilUnix = pair.Value.ToUnixTimeSeconds()
             })
-            .ToList()
-    };
+            .ToList();
 
     /// <summary>Load the roster before resolving saved team and talent instance IDs.</summary>
     public static void Apply(Player player, RoleSaveDocument document)
@@ -449,7 +659,9 @@ internal static class RoleSaveMapper
 
         player.TempTeams.Load(
             document.TempTeams.Select(row =>
-                (row.TeamSrc, row.Members.Select(member => (member.Slot, member.CharacterId)))));
+                (row.TeamSrc, row.Members.Select(member => new TeamMemberState {
+                    Slot = member.Slot, InstId = member.CharacterId, CharacterId = member.CharacterId, Gems = member.Gems
+                }))));
 
         player.RedPoints.Load(document.RedPoint?.ExchangeActivityRead ?? false);
 

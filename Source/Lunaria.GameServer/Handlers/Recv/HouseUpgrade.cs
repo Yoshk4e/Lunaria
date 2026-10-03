@@ -5,12 +5,10 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleHouseUpgrade
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsReqUpgradeHouse)]
     public async Task<SCResUpgradeHouse> OnPacket(NetContext ctx, CSReqUpgradeHouse req)
     {
-        if (!ctx.Player.HasActiveRole)
-            return new SCResUpgradeHouse { Result = (int)EnmTextCode.EnmTextNotAccLogin };
-
         var (code, info) = ctx.Player.UpgradeHouse(req.HouseId);
 
         if (code != 0)

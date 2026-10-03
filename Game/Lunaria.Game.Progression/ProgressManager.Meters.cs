@@ -1,9 +1,10 @@
+using Lunaria.Common.Tracking;
 using Msg;
 
 namespace Lunaria.Game.Progression;
 
 /// <summary>Natural stamina regeneration stops at StaminaRegenMax. Items can reach MaxStamina.</summary>
-public sealed partial class ProgressManager
+public sealed partial class ProgressManager : TrackedObject
 {
     public int StaminaRegenMax => assets.GlobalConfig.StaminaRegenMax;
 
@@ -19,7 +20,7 @@ public sealed partial class ProgressManager
             return;
 
         Satiety = clamped;
-        Dirty();
+
     }
 
     public int SpendSatiety(int cost)
@@ -31,7 +32,7 @@ public sealed partial class ProgressManager
             return (int)EnmTextCode.EnmTextItemNotEnough;
 
         Satiety -= cost;
-        Dirty();
+
         return 0;
     }
 
@@ -48,7 +49,7 @@ public sealed partial class ProgressManager
             if (now > StaminaTickAt)
             {
                 StaminaTickAt = now;
-                Dirty();
+
             }
             return 0;
         }
@@ -66,7 +67,7 @@ public sealed partial class ProgressManager
         var gain = (int)Math.Min(ticks, StaminaRegenMax - Stamina);
         Stamina += gain;
         StaminaTickAt = Stamina >= StaminaRegenMax ? now : StaminaTickAt.AddSeconds((double)ticks * interval);
-        Dirty();
+
         return gain;
     }
 
@@ -84,7 +85,7 @@ public sealed partial class ProgressManager
 
         if (wasFull && now > StaminaTickAt)
             StaminaTickAt = now;
-        Dirty();
+
         return 0;
     }
 
@@ -103,7 +104,6 @@ public sealed partial class ProgressManager
         if (wasBelowRegenMax && Stamina >= StaminaRegenMax && now > StaminaTickAt)
             StaminaTickAt = now;
 
-        Dirty();
         return 0;
     }
 }

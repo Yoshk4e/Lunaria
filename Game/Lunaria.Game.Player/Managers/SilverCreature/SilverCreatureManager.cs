@@ -1,21 +1,31 @@
-using Lunaria.Game.Resources;
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources.Tables;
+using Lunaria.Game.Resources;
+using Microsoft.Extensions.Logging;
 using Msg;
 
 namespace Lunaria.Game.Player.Managers;
 
 public sealed record SilverCreatureState(uint UniqId, uint ItemId, uint Level);
 
-public sealed class SilverCreatureManager(GameData assets)
+public sealed partial class SilverCreatureManager(GameData assets) : TrackedObject
 {
-    private readonly SortedDictionary<uint, SilverCreatureState> _creatures = [];
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Player.SilverCreature");
 
-    public bool IsDirty { get; private set; }
-    public uint LastMinted { get; private set; }
+    private readonly TrackedSortedDictionary<uint, SilverCreatureState> __tracked_creatures = [];
+    [Tracked]
+    private partial TrackedSortedDictionary<uint, SilverCreatureState> _creatures { get; }
+
+    private uint __trackedLastMinted = default!;
+    [Tracked]
+    public partial uint LastMinted { get; private set; }
 
     public IReadOnlyDictionary<uint, SilverCreatureState> Creatures => _creatures;
 
-    public uint InBattleUniqId { get; private set; }
+    private uint __trackedInBattleUniqId = default!;
+    [Tracked]
+    public partial uint InBattleUniqId { get; private set; }
 
     public uint TotalCost => (uint)Math.Min(uint.MaxValue,
         _creatures.Values.Sum(creature => (long)(GrowthOf(creature.ItemId)?.Cost ?? 0)));
@@ -41,10 +51,8 @@ public sealed class SilverCreatureManager(GameData assets)
         if (_creatures.ContainsKey(inBattleUniqId))
             InBattleUniqId = inBattleUniqId;
 
-        IsDirty = false;
+        AcceptLoadedState();
     }
-
-    public void ClearDirty() => IsDirty = false;
 
     public SCSilverCreatureList ToList()
     {
@@ -98,8 +106,9 @@ public sealed class SilverCreatureManager(GameData assets)
 
         if (fieldedRemoved)
             InBattleUniqId = newUniq;
-        Dirty();
 
+        Log.Stage("silver creature combination consumed {Count} copies of item {ItemId}, created instance {UniqId} item {NewItemId}, active instance {InBattleUniqId}",
+            sources.Count, itemId, newUniq, combine.DstItemId, InBattleUniqId);
         return (0, Change(sources.Select(creature => creature.UniqId).ToList(), _creatures[newUniq]));
     }
 
@@ -125,8 +134,8 @@ public sealed class SilverCreatureManager(GameData assets)
 
         if (removed.Contains(InBattleUniqId))
             InBattleUniqId = 0;
-        Dirty();
 
+        Log.Stage("silver creature release removed {Count} instances, active instance {InBattleUniqId}", removed.Count, InBattleUniqId);
         return (0, Change(removed, add: null));
     }
 
@@ -138,7 +147,7 @@ public sealed class SilverCreatureManager(GameData assets)
         if (InBattleUniqId != uniqId)
         {
             InBattleUniqId = uniqId;
-            Dirty();
+
         }
         return (0, uniqId);
     }
@@ -149,7 +158,7 @@ public sealed class SilverCreatureManager(GameData assets)
             return ((int)EnmTextCode.EnmTextSilverCreatureNotFound, 0);
 
         InBattleUniqId = 0;
-        Dirty();
+
         return (0, uniqId);
     }
 
@@ -165,14 +174,21 @@ public sealed class SilverCreatureManager(GameData assets)
         var cost = growth?.Cost ?? 0;
 
         if (_creatures.Count >= assets.GlobalConfig.MaxSilverCreatureNum)
+        {
+            Log.Stage("silver creature collection refused for item {ItemId}, count {Count} at cap {Cap}", itemId, _creatures.Count, assets.GlobalConfig.MaxSilverCreatureNum);
             return (false, null);
+        }
 
         if ((long)TotalCost + cost > assets.GlobalConfig.MaxSilverCreatureCost)
+        {
+            Log.Stage("silver creature collection refused for item {ItemId}, added cost {Cost}, current cost {TotalCost}, cap {Cap}",
+                itemId, cost, TotalCost, assets.GlobalConfig.MaxSilverCreatureCost);
             return (false, null);
+        }
 
         if (!TryMintUniq(out var uniqId)) return (false, null);
         _creatures[uniqId] = new SilverCreatureState(uniqId, itemId, growth?.Level ?? 1);
-        Dirty();
+
         return (true, ToCmdItem(_creatures[uniqId]));
     }
 
@@ -209,10 +225,13 @@ public sealed class SilverCreatureManager(GameData assets)
     {
         LastMinted = Math.Max(LastMinted, _creatures.Keys.DefaultIfEmpty().Max());
         id = 0;
-        if (LastMinted == uint.MaxValue) return false;
+        if (LastMinted == uint.MaxValue)
+        {
+            Log.Flag("silver creature instance allocation failed, ID space exhausted at {LastMinted}", LastMinted);
+            return false;
+        }
         id = ++LastMinted;
         return true;
     }
 
-    private void Dirty() => IsDirty = true;
 }

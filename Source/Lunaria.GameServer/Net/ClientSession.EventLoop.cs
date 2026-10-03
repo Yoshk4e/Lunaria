@@ -1,4 +1,5 @@
 using System.Threading.Channels;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Player;
 using Lunaria.GameServer.Handlers;
 using Lunaria.Silver;
@@ -12,6 +13,7 @@ public sealed partial class ClientSession
     private async Task RunEventLoopAsync(
         FrameReader reader,
         EstablishedSession established,
+        ulong sessionId,
         Channel<byte[]> outbound,
         Channel<PlayerNotification> notifications,
         UdpChannel udp,
@@ -21,10 +23,11 @@ public sealed partial class ClientSession
         var events = Channel.CreateBounded<(SessionEventKind Kind, object? Payload)>(
             new BoundedChannelOptions(options.SessionQueueDepth) { FullMode = BoundedChannelFullMode.Wait });
 
-        var player = new Player(runtime.AllocateSessionId(), assets, timeProvider);
+        var player = new Player(sessionId, assets, timeProvider);
         var codec = new SessionCodec(established.Aes);
         var handle = new PlayerHandle(notifications);
         var ctx = new NetContext(player, runtime, codec, outbound.Writer, assets, metrics);
+        using var logScope = logger.BeginPlayerScope(sessionId, () => ctx.Player.Roles.Active()?.Id);
 
         using var readersStopped = CancellationTokenSource.CreateLinkedTokenSource(shutdown);
         // NetContext can be waiting for outbound capacity without a cancellation token.
@@ -167,7 +170,7 @@ public sealed partial class ClientSession
                     ctx.Player.Account.AccountKey, runtime.Sessions.Online);
             }
 
-            runtime.UdpSessions.Unbind(established.NotifySessionId);
+            runtime.UdpSessions.Unbind(established.NotifySessionId, established.HelloSessionId);
 
             handle.AcknowledgeTakeover();
 

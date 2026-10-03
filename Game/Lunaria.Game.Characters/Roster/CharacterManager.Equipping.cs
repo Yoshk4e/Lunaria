@@ -1,9 +1,10 @@
+using Lunaria.Common.Tracking;
 using Msg;
 
 namespace Lunaria.Game.Characters;
 
 /// <summary>Update the character slot and motive owner together.</summary>
-public sealed partial class CharacterManager
+public sealed partial class CharacterManager : TrackedObject
 {
     public int EquipMotive(ulong instId, ulong motiveUniqId)
     {

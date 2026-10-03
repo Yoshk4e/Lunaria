@@ -1,17 +1,24 @@
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
+using Microsoft.Extensions.Logging;
 using Msg;
 
 namespace Lunaria.Game.Player.Managers;
 
 public sealed record FinishEventState(uint EventId, ulong Progress, bool Finish);
 
-public sealed class AchievementManager(GameData assets, Random? random = null)
+public sealed partial class AchievementManager(GameData assets, Random? random = null) : TrackedObject
 {
-    private readonly Random _random = random ?? new Random();
-    private readonly SortedSet<uint> _claimed = [];
-    private readonly Dictionary<uint, FinishEventState> _events = [];
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Player.Achievement");
 
-    public bool IsDirty { get; private set; }
+    private readonly Random _random = random ?? new Random();
+    private readonly TrackedSet<uint> __tracked_claimed = [];
+    [Tracked]
+    private partial TrackedSet<uint> _claimed { get; }
+    private readonly TrackedDictionary<uint, FinishEventState> __tracked_events = [];
+    [Tracked]
+    private partial TrackedDictionary<uint, FinishEventState> _events { get; }
 
     public IReadOnlyDictionary<uint, FinishEventState> Events => _events;
 
@@ -42,10 +49,8 @@ public sealed class AchievementManager(GameData assets, Random? random = null)
                 _claimed.Add(achievementId);
         }
 
-        IsDirty = false;
+        AcceptLoadedState();
     }
-
-    public void ClearDirty() => IsDirty = false;
 
     public CmdAchievementData ToAchievementData()
     {
@@ -78,7 +83,9 @@ public sealed class AchievementManager(GameData assets, Random? random = null)
 
         var state = new FinishEventState(eventId, progress, progress >= threshold);
         _events[eventId] = state;
-        Dirty();
+
+        if (state.Finish && current?.Finish != true)
+            Log.Stage("achievement event {EventId} completed at progress {Progress} with threshold {Threshold}", eventId, progress, threshold);
         return (0, true, state);
     }
 
@@ -109,7 +116,10 @@ public sealed class AchievementManager(GameData assets, Random? random = null)
         foreach (var id in achievementIds)
         {
             if (_claimed.Add(id))
-                Dirty();
+            {
+
+                Log.Stage("achievement {AchievementId} reward claim recorded", id);
+            }
         }
     }
 
@@ -137,5 +147,4 @@ public sealed class AchievementManager(GameData assets, Random? random = null)
         };
     }
 
-    private void Dirty() => IsDirty = true;
 }

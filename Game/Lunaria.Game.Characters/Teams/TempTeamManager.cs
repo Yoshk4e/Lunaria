@@ -1,21 +1,31 @@
-using Google.Protobuf;
-using Lunaria.Game.Resources;
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources.Tables;
+using Lunaria.Game.Resources;
+using Microsoft.Extensions.Logging;
 using Msg;
 
 namespace Lunaria.Game.Characters.Teams;
 
 public sealed record TempTeamState(uint TeamSrc, IReadOnlyList<TeamMemberState> Members);
 
-public sealed class TempTeamManager(GameData assets)
+public sealed partial class TempTeamManager(GameData assets) : TrackedObject
 {
-    private readonly Dictionary<uint, TempTeamState> _teams = [];
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Characters.TempTeams");
 
-    public bool IsDirty { get; private set; }
+    private readonly TrackedDictionary<uint, TempTeamState> __tracked_teams = [];
+    [Tracked]
+    private partial TrackedDictionary<uint, TempTeamState> _teams { get; }
+    private readonly TeamManager _teamData = new(assets);
 
     public IReadOnlyDictionary<uint, TempTeamState> Teams => _teams;
 
     public void Load(IEnumerable<(uint TeamSrc, IEnumerable<(uint Slot, uint CharacterId)> Members)> persisted)
+        => Load(persisted.Select(row => (row.TeamSrc, row.Members.Select(m => new TeamMemberState {
+            Slot = m.Slot, InstId = m.CharacterId, CharacterId = m.CharacterId
+        }))));
+
+    public void Load(IEnumerable<(uint TeamSrc, IEnumerable<TeamMemberState> Members)> persisted)
     {
         _teams.Clear();
 
@@ -29,21 +39,22 @@ public sealed class TempTeamManager(GameData assets)
             var valid = FieldableIds(table).ToHashSet();
             var members = new List<TeamMemberState>();
 
-            foreach (var (slot, characterId) in row.Members)
+            foreach (var member in row.Members)
             {
+                var (slot, characterId) = (member.Slot, member.CharacterId);
                 if (valid.Contains(characterId) && slot is >= 1 and <= TeamManager.MaxMembers
                     && members.All(m => m.Slot != slot && m.CharacterId != characterId))
-                    members.Add(new TeamMemberState { Slot = slot, InstId = characterId, CharacterId = characterId });
+                    members.Add(member with { InstId = characterId,
+                        Gems = member.Gems.Take(assets.Gems.MaxPerCharacter)
+                            .Select(id => assets.Gems.Exists(id) ? id : 0).ToArray() });
             }
 
             if (members.Count > 0)
                 _teams[row.TeamSrc] = new TempTeamState(row.TeamSrc, members);
         }
 
-        IsDirty = false;
+        AcceptLoadedState();
     }
-
-    public void ClearDirty() => IsDirty = false;
 
     public TeamData? ToTeamData(int teamType, uint teamSrc)
     {
@@ -52,11 +63,7 @@ public sealed class TempTeamManager(GameData assets)
         if (table is null)
             return null;
 
-        return new TeamData {
-            TeamId = teamSrc,
-            Name = ByteString.CopyFromUtf8(TeamManager.DefaultTeamName),
-            MemberData = { MembersOf(table).Select(ToMemberData) }
-        };
+        return _teamData.ToTeamData(teamSrc, TeamManager.DefaultTeamName, MembersOf(table));
     }
 
     public CurTeamData? ToCurTeamData(PTmpTeamTable table)
@@ -72,21 +79,22 @@ public sealed class TempTeamManager(GameData assets)
             TeamType = (int)EnmTmpTeamType.Task,
             TeamSrc = table.Id,
             UsingMemberSlot = members.Min(member => member.Slot),
-            TeamData = new TeamData {
-                TeamId = table.Id,
-                Name = ByteString.CopyFromUtf8(TeamManager.DefaultTeamName),
-                MemberData = { members.Select(ToMemberData) }
-            },
+            TeamData = _teamData.ToTeamData(table.Id, TeamManager.DefaultTeamName, members),
             TemporaryLiquid = InitialLiquid(table).ToProto(),
             AttribData = { members.Select(member => AttribDataOf(rows.First(r => r.CharacterId == member.CharacterId), member.InstId)) }
         };
     }
 
-    public (int Result, TeamData? Team) Update(int teamType, uint teamSrc, TeamData? data)
+    public (int Result, TeamData? Team) Update(int teamType, uint teamSrc, TeamData? data,
+        IReadOnlyDictionary<uint, IReadOnlyList<uint>>? gems = null)
     {
         var table = assets.TmpTeams.Get(teamType, teamSrc);
 
         if (table is null || data is null || data.TeamId != teamSrc)
+            return ((int)EnmTextCode.EnmTextWrongParam, null);
+
+        // Nonempty gem selections must pass the player's ownership and cost checks.
+        if (gems is null && data.MemberData.Any(m => m.GemSlots.Count > 0))
             return ((int)EnmTextCode.EnmTextWrongParam, null);
 
         var maxMembers = TeamManager.MaxMembers;
@@ -112,12 +120,14 @@ public sealed class TempTeamManager(GameData assets)
             members.Add(new TeamMemberState {
                 Slot = member.MemberSlotId,
                 InstId = member.CharacterId,
-                CharacterId = member.CharacterId
+                CharacterId = member.CharacterId,
+                Gems = gems?.GetValueOrDefault(member.MemberSlotId) ?? []
             });
         }
 
         _teams[teamSrc] = new TempTeamState(teamSrc, members.OrderBy(member => member.Slot).ToList());
-        Dirty();
+
+        Log.Stage("story team {TeamSrc} selection updated with {MemberCount} members", teamSrc, members.Count);
         return (0, ToTeamData(teamType, teamSrc));
     }
 
@@ -169,11 +179,4 @@ public sealed class TempTeamManager(GameData assets)
             .ToList();
     }
 
-    private static TeamMemberData ToMemberData(TeamMemberState member) => new() {
-        MemberSlotId = member.Slot,
-        InstId = member.InstId,
-        CharacterId = member.CharacterId
-    };
-
-    private void Dirty() => IsDirty = true;
 }

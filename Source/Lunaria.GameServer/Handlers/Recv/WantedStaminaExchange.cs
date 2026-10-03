@@ -5,12 +5,10 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleWantedStaminaExchange
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsWantedStaminaExchange)]
     public async Task<SCWantedStaminaExchange> OnPacket(NetContext ctx, CSWantedStaminaExchange req)
     {
-        if (!ctx.Player.HasActiveRole)
-            return new SCWantedStaminaExchange { Result = (int)EnmTextCode.EnmTextNotAccLogin };
-
         var (result, delivery, _) = ctx.Player.WantedStaminaExchange();
 
         if (result != 0)
@@ -24,10 +22,7 @@ public sealed class HandleWantedStaminaExchange
 
         var reply = new SCWantedStaminaExchange { Result = 0 };
 
-        reply.Items.AddRange(delivery.Credited.Concat(delivery.Stored).Select(grant => new CmdItem {
-            ItemId = grant.ItemId,
-            ItemNum = grant.Count
-        }));
+        reply.Items.AddRange(ctx.Player.RewardItems(delivery.Credited.Concat(delivery.Stored)));
         return reply;
     }
 }

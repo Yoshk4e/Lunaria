@@ -222,7 +222,8 @@ public sealed partial class RoleSessionTests : IDisposable
     [Fact]
     public async Task Logout_KeepsAccount_AndRejectsGameplayUntilRoleLogin()
     {
-        var ctx = Context();
+        var outbound = Channel.CreateUnbounded<byte[]>();
+        var ctx = Context(outbound);
         Assert.Equal(0, await _sessions.ActivateAsync(ctx, 1));
         Assert.NotEqual(0, await _sessions.LogoutAsync(ctx, 2));
         Assert.True(ctx.Player.HasActiveRole);
@@ -230,7 +231,7 @@ public sealed partial class RoleSessionTests : IDisposable
         Assert.True(ctx.Player.IsLoggedIn);
         Assert.False(ctx.Player.HasActiveRole);
         Assert.Empty(ctx.Player.InventoryItems());
-        var reply = await new CharacterTeamMutations.UpdateTeam().OnPacket(ctx, new CSCharacterUpdateTeam());
+        var reply = await DispatchReplyAsync(ctx, outbound, new CSCharacterUpdateTeam(), SCCharacterUpdateTeam.Parser);
         Assert.Equal((int)EnmTextCode.EnmTextNotAccLogin, reply.Result);
     }
 

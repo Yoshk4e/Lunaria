@@ -44,6 +44,8 @@ public sealed class MailRepository(
                 Important = row.Important,
                 Open = row.Open,
                 Items = ParseItems(row, roleId),
+                TemplateContentParams = ParseText<string>(row.TemplateContentParams, row.MailId, roleId),
+                Contents = ParseText<MailText>(row.Contents, row.MailId, roleId),
                 Time = unchecked((uint)row.Time),
                 ExpireTime = unchecked((uint)row.ExpireTime)
             });
@@ -65,7 +67,8 @@ public sealed class MailRepository(
     internal async Task SaveAsync(GameDbContext db,
         long roleId,
         IReadOnlyList<MailEntry> mails,
-        CancellationToken cancellationToken = default
+        CancellationToken cancellationToken = default,
+        IReadOnlyCollection<uint>? changedIds = null
     )
     {
         var role = await db.Roles.SingleOrDefaultAsync(r => r.Id == roleId, cancellationToken);
@@ -73,10 +76,12 @@ public sealed class MailRepository(
         if (role is null)
             return;
 
+        var ids = changedIds?.Select(id => (long)id).ToArray();
         var rows = await db.RoleMails
-            .Where(m => m.RoleId == roleId)
+            .Where(m => m.RoleId == roleId && (ids == null || ids.Contains(m.MailId)))
             .ToListAsync(cancellationToken);
 
+        mails = changedIds is null ? mails : mails.Where(s => changedIds.Contains(s.MailId)).ToArray();
         var live = mails.ToDictionary(m => m.MailId);
 
         foreach (var row in rows)
@@ -116,8 +121,23 @@ public sealed class MailRepository(
         row.Open = entry.Open;
         row.HasAttach = entry.HasUnclaimed;
         row.Items = JsonSerializer.Serialize(entry.Items, SaveJson.Options);
+        row.TemplateContentParams = JsonSerializer.Serialize(entry.TemplateContentParams, SaveJson.Options);
+        row.Contents = JsonSerializer.Serialize(entry.Contents, SaveJson.Options);
         row.Time = unchecked(entry.Time);
         row.ExpireTime = unchecked(entry.ExpireTime);
+    }
+
+    private static IReadOnlyList<T> ParseText<T>(string json, long mailId, long roleId)
+    {
+        try
+        {
+            return JsonSerializer.Deserialize<List<T>>(json, SaveJson.Options)
+                ?? throw new InvalidDataException($"Mail {mailId} for role {roleId} has invalid text.");
+        }
+        catch (JsonException ex)
+        {
+            throw new InvalidDataException($"Mail {mailId} for role {roleId} has corrupt text.", ex);
+        }
     }
 
     /// <summary>Reject corrupt attachments so the next save cannot erase them.</summary>

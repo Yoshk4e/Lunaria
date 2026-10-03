@@ -1,14 +1,21 @@
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
+using Microsoft.Extensions.Logging;
 using Msg;
 
 namespace Lunaria.Game.Characters;
 
-public sealed partial class SkillManager(GameData assets)
+public sealed partial class SkillManager(GameData assets) : TrackedObject
 {
-    private readonly SortedDictionary<uint, uint> _groups = [];
-    private readonly SortedDictionary<ulong, TalentMasks> _talents = [];
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Characters.Skills");
 
-    public bool IsDirty { get; private set; }
+    private readonly TrackedSortedDictionary<uint, uint> __tracked_groups = [];
+    [Tracked]
+    private partial TrackedSortedDictionary<uint, uint> _groups { get; }
+    private readonly TrackedSortedDictionary<ulong, TalentMasks> __tracked_talents = [];
+    [Tracked]
+    private partial TrackedSortedDictionary<ulong, TalentMasks> _talents { get; }
 
     public bool GrantStarter(CharacterManager characters)
     {
@@ -26,8 +33,6 @@ public sealed partial class SkillManager(GameData assets)
             }
         }
 
-        if (added)
-            IsDirty = true;
         return added;
     }
 
@@ -55,7 +60,7 @@ public sealed partial class SkillManager(GameData assets)
                 _talents[instId] = masks;
         }
 
-        IsDirty = false;
+        AcceptLoadedState();
     }
 
     public IReadOnlyList<(uint Group, uint Level)> SkillGroups() =>
@@ -63,8 +68,6 @@ public sealed partial class SkillManager(GameData assets)
 
     public IReadOnlyList<(ulong InstId, TalentMasks Masks)> Talents() =>
         _talents.Select(kv => (kv.Key, kv.Value)).ToList();
-
-    public void ClearDirty() => IsDirty = false;
 
     public IReadOnlyList<SkillGrowthInfo> GrowthInfos() =>
         _groups.Select(kv => new SkillGrowthInfo { Id = kv.Key, Level = kv.Value }).ToList();

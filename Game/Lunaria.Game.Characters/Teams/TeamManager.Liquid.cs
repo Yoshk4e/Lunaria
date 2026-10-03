@@ -1,8 +1,9 @@
+using Lunaria.Common.Tracking;
 using Msg;
 
 namespace Lunaria.Game.Characters;
 
-public sealed partial class TeamManager
+public sealed partial class TeamManager : TrackedObject
 {
     /// <summary>Save both liquid levels even though the team packet only carries level 1.</summary>
     public bool ApplyBattleLiquid(ElementParamMap? temporaryLiquid, ElementParamMap? temporaryLiquidLv2)

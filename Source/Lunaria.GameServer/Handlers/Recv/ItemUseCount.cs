@@ -4,6 +4,7 @@ using Msg;
 namespace Lunaria.GameServer.Handlers.Recv;
 public sealed class HandleItemUseCount
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsItemUseCount)]
     public async Task<SCItemUseCount> OnPacket(NetContext ctx, CSItemUseCount req)
     {
@@ -16,9 +17,6 @@ public sealed class HandleItemUseCount
                 Total = ctx.Player.InventoryCount(req.ItemId)
             };
         }
-
-        if (!ctx.Player.HasActiveRole)
-            return Reject((int)EnmTextCode.EnmTextNotAccLogin);
 
         var outcome = ctx.Player.UseItem(req.ItemId, req.ItemNum, req.Params);
 

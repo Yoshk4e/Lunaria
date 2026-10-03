@@ -5,6 +5,7 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleSavePointUnlock
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsSavepointUnlock)]
     public async Task<SCSavePointUnlock> OnPacket(NetContext ctx, CSSavePointUnlock req)
     {

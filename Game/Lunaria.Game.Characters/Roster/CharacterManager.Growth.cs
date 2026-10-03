@@ -1,9 +1,11 @@
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
 using Msg;
 
 namespace Lunaria.Game.Characters;
 
-public sealed partial class CharacterManager
+public sealed partial class CharacterManager : TrackedObject
 {
     public uint LevelCap(ulong instId) =>
         Get(instId) is {} character ? assets.Characters.LevelCap(character.CharacterId, character.BreakLevel) : 0;
@@ -44,6 +46,8 @@ public sealed partial class CharacterManager
         var dropped = capped ? (uint)pool : 0;
 
         Replace(character with { Level = level, Exp = kept });
+        Log.Stage("character {InstId} experience applied, level {PreviousLevel} to {Level}, kept experience {KeptExp}, dropped experience {DroppedExp}",
+            instId, character.Level, level, kept, dropped);
 
         return new ExpGrant(
             Code: 0,
@@ -97,6 +101,6 @@ public sealed partial class CharacterManager
             return;
 
         _roster[index] = character;
-        IsDirty = true;
+
     }
 }

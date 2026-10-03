@@ -1,15 +1,20 @@
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
+using Microsoft.Extensions.Logging;
 using Msg;
 
 namespace Lunaria.Game.Player.Managers;
 
 public sealed record BattlePassState(uint Level, uint Exp, uint AwardLevel);
 
-public sealed class BattlePassManager(GameData assets)
+public sealed partial class BattlePassManager(GameData assets) : TrackedObject
 {
-    private readonly SortedDictionary<uint, BattlePassState> _passes = [];
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Player.BattlePass");
 
-    public bool IsDirty { get; private set; }
+    private readonly TrackedSortedDictionary<uint, BattlePassState> __tracked_passes = [];
+    [Tracked]
+    private partial TrackedSortedDictionary<uint, BattlePassState> _passes { get; }
 
     public IReadOnlyDictionary<uint, BattlePassState> Passes => _passes;
 
@@ -32,10 +37,8 @@ public sealed class BattlePassManager(GameData assets)
                 Math.Min(row.AwardLevel, level));
         }
 
-        IsDirty = false;
+        AcceptLoadedState();
     }
-
-    public void ClearDirty() => IsDirty = false;
 
     public SCBattlePassData ToBattlePassData(IReadOnlyList<uint> passIds)
     {
@@ -87,7 +90,8 @@ public sealed class BattlePassManager(GameData assets)
 
         state = new BattlePassState(level, (uint)Math.Min(uint.MaxValue, remaining), state.AwardLevel);
         _passes[passId] = state;
-        Dirty();
+
+        Log.Stage("battle pass {PassId} gained {AddedExp} experience, level {Level}, remaining experience {RemainingExp}", passId, exp, state.Level, state.Exp);
         return (true, ToCmdOne(passId, state));
     }
 
@@ -112,7 +116,8 @@ public sealed class BattlePassManager(GameData assets)
             return;
 
         _passes[passId] = state with { AwardLevel = awardLevel };
-        Dirty();
+
+        Log.Stage("battle pass {PassId} reward claims advanced from level {PreviousLevel} through {AwardLevel}", passId, state.AwardLevel, awardLevel);
     }
 
     public IReadOnlyList<ItemGrant> AwardOf(uint passId, uint level) =>
@@ -130,7 +135,7 @@ public sealed class BattlePassManager(GameData assets)
         if (assets.BattlePasses.Exists(passId))
         {
             _passes[passId] = state;
-            Dirty();
+
         }
         return state;
     }
@@ -142,5 +147,4 @@ public sealed class BattlePassManager(GameData assets)
         AwardLv = state.AwardLevel
     };
 
-    private void Dirty() => IsDirty = true;
 }

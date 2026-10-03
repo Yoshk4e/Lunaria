@@ -50,9 +50,13 @@ public sealed class GuideRepository(IDbContextFactory<GameDbContext> factory, IL
         await SaveAsync(db, roleId, guides, cancellationToken).ConfigureAwait(false);
     }
 
-    internal async Task SaveAsync(GameDbContext db, long roleId, GuideManager guides, CancellationToken cancellationToken = default)
+    internal Task SaveAsync(GameDbContext db, long roleId, GuideManager guides, CancellationToken cancellationToken = default) =>
+        SaveEntriesAsync(db, roleId, guides.Entries.ToDictionary(p => p.Key, p => p.Value), cancellationToken);
+
+    internal async Task SaveEntriesAsync(GameDbContext db, long roleId, IReadOnlyDictionary<uint, GuideEntry> saved,
+        CancellationToken cancellationToken = default)
     {
-        var blob = new GuideBlob { Entries = guides.Entries.ToDictionary(kv => kv.Key, kv => kv.Value) };
+        var blob = new GuideBlob { Entries = saved.ToDictionary(kv => kv.Key, kv => kv.Value) };
         var entries = JsonSerializer.Serialize(blob, SaveJson.Options);
 
         var row = await db.RoleGuides.SingleOrDefaultAsync(g => g.RoleId == roleId, cancellationToken);

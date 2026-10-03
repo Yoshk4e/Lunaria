@@ -57,7 +57,8 @@ public sealed class MotiveRepository(
     internal async Task SaveAsync(GameDbContext db,
         long roleId,
         IReadOnlyList<MotiveState> motives,
-        CancellationToken cancellationToken = default
+        CancellationToken cancellationToken = default,
+        IReadOnlyCollection<ulong>? changedIds = null
     )
     {
         var role = await db.Roles.SingleOrDefaultAsync(r => r.Id == roleId, cancellationToken);
@@ -65,10 +66,12 @@ public sealed class MotiveRepository(
         if (role is null)
             return;
 
+        var ids = changedIds?.Select(id => (long)id).ToArray();
         var rows = await db.RoleMotives
-            .Where(m => m.RoleId == roleId)
+            .Where(m => m.RoleId == roleId && (ids == null || ids.Contains(m.UniqId)))
             .ToListAsync(cancellationToken);
 
+        motives = changedIds is null ? motives : motives.Where(s => changedIds.Contains(s.UniqId)).ToArray();
         var live = motives.ToDictionary(m => m.UniqId);
 
         foreach (var row in rows)

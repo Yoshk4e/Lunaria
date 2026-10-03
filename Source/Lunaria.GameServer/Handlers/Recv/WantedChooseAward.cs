@@ -5,12 +5,10 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleWantedChooseAward
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsWantedChooseAward)]
     public async Task<SCWantedChooseAward> OnPacket(NetContext ctx, CSWantedChooseAward req)
     {
-        if (!ctx.Player.HasActiveRole)
-            return new SCWantedChooseAward { Result = (int)EnmTextCode.EnmTextNotAccLogin };
-
         var (result, finished, step) = ctx.Player.ChooseWantedAward(
             req.StepAwardId, req.Award, req.ReplacedBionicsUniqid);
 

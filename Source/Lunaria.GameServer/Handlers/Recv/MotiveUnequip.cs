@@ -6,6 +6,7 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleMotiveUnequip(ILogger<HandleMotiveUnequip> logger)
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsMotiveUnequip)]
     public Task<SCMotiveUnequip> OnPacket(NetContext ctx, CSMotiveUnequip req)
     {
@@ -17,9 +18,6 @@ public sealed class HandleMotiveUnequip(ILogger<HandleMotiveUnequip> logger)
                 InstId = req.InstId
             };
         }
-
-        if (!ctx.Player.HasActiveRole)
-            return Task.FromResult(Reject((int)EnmTextCode.EnmTextNotAccLogin));
 
         var code = ctx.Player.UnequipMotive(req.MotiveUniqId, req.InstId);
 

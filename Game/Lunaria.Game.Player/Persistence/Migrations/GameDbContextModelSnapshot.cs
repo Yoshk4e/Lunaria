@@ -172,6 +172,98 @@ namespace Lunaria.Game.Player.Persistence.Migrations
                     b.ToTable("role_characters", (string)null);
                 });
 
+            modelBuilder.Entity("Lunaria.Game.Player.Persistence.Entities.RoleGuide", b =>
+                {
+                    b.Property<long>("RoleId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("role_id");
+
+                    b.Property<string>("Entries")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("entries");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("updated_at");
+
+                    b.HasKey("RoleId");
+
+                    b.ToTable("role_guides", (string)null);
+                });
+
+            modelBuilder.Entity("Lunaria.Game.Player.Persistence.Entities.RoleMail", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("id");
+
+                    b.Property<string>("Contents")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT")
+                        .HasDefaultValue("[]")
+                        .HasColumnName("contents");
+
+                    b.Property<long>("ExpireTime")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("expire_time");
+
+                    b.Property<bool>("HasAttach")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("has_attach");
+
+                    b.Property<bool>("Important")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("important");
+
+                    b.Property<string>("Items")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("items");
+
+                    b.Property<long>("MailId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("mail_id");
+
+                    b.Property<bool>("Open")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("open");
+
+                    b.Property<long>("RoleId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("role_id");
+
+                    b.Property<string>("TemplateContentParams")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT")
+                        .HasDefaultValue("[]")
+                        .HasColumnName("template_content_params");
+
+                    b.Property<uint>("TemplateId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("template_id");
+
+                    b.Property<long>("Time")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("time");
+
+                    b.Property<uint>("Type")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("type");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.HasIndex("RoleId", "MailId")
+                        .IsUnique();
+
+                    b.ToTable("role_mails", (string)null);
+                });
+
             modelBuilder.Entity("Lunaria.Game.Player.Persistence.Entities.RoleMotive", b =>
                 {
                     b.Property<long>("Id")
@@ -233,84 +325,6 @@ namespace Lunaria.Game.Player.Persistence.Migrations
                     b.ToTable("role_motives", (string)null);
                 });
 
-            modelBuilder.Entity("Lunaria.Game.Player.Persistence.Entities.RoleGuide", b =>
-                {
-                    b.Property<long>("RoleId")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("role_id");
-
-                    b.Property<string>("Entries")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("entries");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("updated_at");
-
-                    b.HasKey("RoleId");
-
-                    b.ToTable("role_guides", (string)null);
-                });
-
-            modelBuilder.Entity("Lunaria.Game.Player.Persistence.Entities.RoleMail", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("id");
-
-                    b.Property<long>("ExpireTime")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("expire_time");
-
-                    b.Property<bool>("HasAttach")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("has_attach");
-
-                    b.Property<bool>("Important")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("important");
-
-                    b.Property<string>("Items")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("items");
-
-                    b.Property<long>("MailId")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("mail_id");
-
-                    b.Property<bool>("Open")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("open");
-
-                    b.Property<long>("RoleId")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("role_id");
-
-                    b.Property<uint>("TemplateId")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("template_id");
-
-                    b.Property<long>("Time")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("time");
-
-                    b.Property<uint>("Type")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("type");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RoleId");
-
-                    b.HasIndex("RoleId", "MailId")
-                        .IsUnique();
-
-                    b.ToTable("role_mails", (string)null);
-                });
-
             modelBuilder.Entity("Lunaria.Game.Player.Persistence.Entities.RoleSave", b =>
                 {
                     b.Property<long>("RoleId")
@@ -329,6 +343,30 @@ namespace Lunaria.Game.Player.Persistence.Migrations
                     b.HasKey("RoleId");
 
                     b.ToTable("role_saves", (string)null);
+                });
+
+            modelBuilder.Entity("Lunaria.Game.Player.Persistence.Entities.RoleSaveSection", b =>
+                {
+                    b.Property<long>("RoleId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("role_id");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("name");
+
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("state");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("updated_at");
+
+                    b.HasKey("RoleId", "Name");
+
+                    b.ToTable("role_save_sections", (string)null);
                 });
 
             modelBuilder.Entity("Lunaria.Game.Player.Persistence.Entities.Role", b =>
@@ -364,17 +402,6 @@ namespace Lunaria.Game.Player.Persistence.Migrations
                     b.Navigation("Role");
                 });
 
-            modelBuilder.Entity("Lunaria.Game.Player.Persistence.Entities.RoleMotive", b =>
-                {
-                    b.HasOne("Lunaria.Game.Player.Persistence.Entities.Role", "Role")
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Role");
-                });
-
             modelBuilder.Entity("Lunaria.Game.Player.Persistence.Entities.RoleMail", b =>
                 {
                     b.HasOne("Lunaria.Game.Player.Persistence.Entities.Role", "Role")
@@ -386,7 +413,29 @@ namespace Lunaria.Game.Player.Persistence.Migrations
                     b.Navigation("Role");
                 });
 
+            modelBuilder.Entity("Lunaria.Game.Player.Persistence.Entities.RoleMotive", b =>
+                {
+                    b.HasOne("Lunaria.Game.Player.Persistence.Entities.Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
+                });
+
             modelBuilder.Entity("Lunaria.Game.Player.Persistence.Entities.RoleSave", b =>
+                {
+                    b.HasOne("Lunaria.Game.Player.Persistence.Entities.Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("Lunaria.Game.Player.Persistence.Entities.RoleSaveSection", b =>
                 {
                     b.HasOne("Lunaria.Game.Player.Persistence.Entities.Role", "Role")
                         .WithMany()

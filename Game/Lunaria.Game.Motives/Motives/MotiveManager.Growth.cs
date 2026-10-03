@@ -1,9 +1,11 @@
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
 using Msg;
 
 namespace Lunaria.Game.Motives;
 
-public sealed partial class MotiveManager
+public sealed partial class MotiveManager : TrackedObject
 {
     public const int MaxRefineLevel = 5;
 
@@ -55,6 +57,8 @@ public sealed partial class MotiveManager
         var dropped = capped ? (uint)pool : 0;
 
         Replace(motive with { Level = level, Exp = kept });
+        Log.Stage("motive {UniqId} experience applied, level {PreviousLevel} to {Level}, kept experience {KeptExp}, dropped experience {DroppedExp}",
+            uniqId, motive.Level, level, kept, dropped);
 
         return new MotiveExpResult(Code: 0, motive.Level, level, gained, dropped);
     }
@@ -89,6 +93,7 @@ public sealed partial class MotiveManager
         var motive = Get(uniqId)!;
         var step = assets.Motives.NextBreak(motive.MotiveId, motive.BreakLevel)!;
         Replace(motive with { BreakLevel = step.BreakLevel });
+        Log.Stage("motive {UniqId} advanced to break level {BreakLevel}", uniqId, step.BreakLevel);
         return 0;
     }
 
@@ -191,8 +196,6 @@ public sealed partial class MotiveManager
             MarkChanged(state, removed: true);
         }
 
-        if (states.Count > 0)
-            IsDirty = true;
         consumed = states;
         return 0;
     }
@@ -243,6 +246,7 @@ public sealed partial class MotiveManager
         }
         var next = target.RefineLevel + (uint)feeds.Count;
         Replace(target with { RefineLevel = next });
+        Log.Stage("motive {UniqId} refined from {PreviousLevel} to {Level}, consumed {FeedCount} motives", targetUniq, target.RefineLevel, next, feeds.Count);
         return (0, target.RefineLevel, next);
     }
 
@@ -278,7 +282,8 @@ public sealed partial class MotiveManager
             _motives.Remove(state.UniqId);
             MarkChanged(state, removed: true);
         }
-        IsDirty = true;
+
+        Log.Stage("motive decomposition removed {Count} motives", states.Count);
         return (0, states);
     }
 }

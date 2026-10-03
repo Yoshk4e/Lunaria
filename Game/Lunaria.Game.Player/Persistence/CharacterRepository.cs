@@ -60,7 +60,8 @@ public sealed class CharacterRepository(
         long roleId,
         IReadOnlyList<CharacterState> roster,
         ulong lastMintedInstId,
-        CancellationToken cancellationToken = default
+        CancellationToken cancellationToken = default,
+        IReadOnlyCollection<ulong>? changedIds = null
     )
     {
         var role = await db.Roles.SingleOrDefaultAsync(r => r.Id == roleId, cancellationToken);
@@ -70,10 +71,12 @@ public sealed class CharacterRepository(
 
         role.LastMintedInstId = (long)lastMintedInstId;
 
+        var ids = changedIds?.Select(id => (long)id).ToArray();
         var rows = await db.RoleCharacters
-            .Where(c => c.RoleId == roleId)
+            .Where(c => c.RoleId == roleId && (ids == null || ids.Contains(c.InstId)))
             .ToListAsync(cancellationToken);
 
+        roster = changedIds is null ? roster : roster.Where(s => changedIds.Contains(s.InstId)).ToArray();
         var live = roster.ToDictionary(c => c.InstId);
 
         foreach (var row in rows)

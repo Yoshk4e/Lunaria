@@ -1,9 +1,10 @@
+using Lunaria.Common.Tracking;
 using Lunaria.Game.Resources.Tables;
 using Msg;
 
 namespace Lunaria.Game.Tasks;
 
-public sealed partial class TaskManager
+public sealed partial class TaskManager : TrackedObject
 {
     public const int ArriveMapTarget = (int)ServerTarget.ArriveMap;
 
@@ -11,15 +12,19 @@ public sealed partial class TaskManager
     public const int EmptyActionTarget = 13;
 
     // Do not repeat grant commands when a failed step rolls back.
-    private readonly SortedSet<(uint Type, ulong Action)> _appliedEffects = [];
-    private readonly SortedSet<(uint Type, ulong Action)> _reportedTargets = [];
+    private readonly TrackedSet<(uint Type, ulong Action)> __tracked_appliedEffects = [];
+    [Tracked]
+    private partial TrackedSet<(uint Type, ulong Action)> _appliedEffects { get; }
+    private readonly TrackedSet<(uint Type, ulong Action)> __tracked_reportedTargets = [];
+    [Tracked]
+    private partial TrackedSet<(uint Type, ulong Action)> _reportedTargets { get; }
     public IReadOnlyCollection<(uint Type, ulong Action)> AppliedEffects => _appliedEffects;
     public IReadOnlyCollection<(uint Type, ulong Action)> ReportedTargets => _reportedTargets;
     public bool HasAppliedEffect(uint type, ulong action) => _appliedEffects.Contains((type, action));
 
     public void MarkEffectApplied(uint type, ulong action)
     {
-        if (_appliedEffects.Add((type, action))) Dirty();
+        _appliedEffects.Add((type, action));
     }
 
     public void LoadAppliedEffects(IEnumerable<(uint Type, ulong Action)> effects)
@@ -56,7 +61,7 @@ public sealed partial class TaskManager
         _finished.RemoveWhere(key => key.Type == type);
         _appliedEffects.RemoveWhere(key => key.Type == type);
         _reportedTargets.RemoveWhere(key => key.Type == type);
-        Dirty();
+
     }
 
     public uint Maximum(uint type, ulong actionId)
@@ -74,8 +79,8 @@ public sealed partial class TaskManager
     }
 
     /// <summary>
-    /// Yield each transition so the next sees its rewards and case changes. Client commands still need an activation
-    /// report.
+    /// Yield each transition so the next sees its rewards and case changes.
+    /// Client commands still need an activation report.
     /// </summary>
     public IEnumerable<TaskProgressResult> EvaluateServerTargets(Func<PTaskActionsTyped, uint?> evaluate)
     {
@@ -151,7 +156,6 @@ public sealed partial class TaskManager
         {
             _reportedTargets.Remove((state.Type, action));
         }
-        Dirty();
 
         return Snapshot(new TaskProgressResult(state.Type, state.TaskId, Recorded: true, Progress: 1, MaxProgress: 1, StepAdvanced: false,
                 TaskCompleted: false, [], [])
@@ -180,8 +184,8 @@ public sealed partial class TaskManager
 
                 foreach (var (type, actionId) in InstantMarkersFor(mapId))
                 {
-                    // A marker already met only echoes an acknowledgement. Repeating it would never drain the batch
-                    // while the step waits on its other actions.
+                    // Repeating a completed marker only sends another acknowledgement.
+                    // Yield only new progress so the batch can finish while other actions are pending.
                     if (ReportAction(type, actionId, progress: 1) is (0, { Recorded: true } or { StepAdvanced: true }) and (_, { } result))
                     {
                         results.Add(result);
@@ -289,12 +293,11 @@ public sealed partial class TaskManager
         var next = Math.Min(progress, max);
         if (next <= (current?.Progress ?? 0)) return null;
 
-        var actions = new SortedDictionary<ulong, TaskActionState>(state.CurrentStep.Actions) {
+        var actions = new SortedDictionary<ulong, TaskActionState>(state.CurrentStep.Actions.ToDictionary(p => p.Key, p => p.Value)) {
             [action] = new(next, max)
         };
         state = state with { CurrentStep = state.CurrentStep with { Actions = actions } };
         _processing[(type, task)] = state;
-        Dirty();
 
         var result = IsStepComplete(type, state.CurrentStep.StepId, actions) ?
             AdvancePast(type, task, state, state.CurrentStep.StepId, next, max, []) :

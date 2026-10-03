@@ -5,14 +5,10 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleDungeonsEnterAlready
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsDungeonsEnterAlready)]
     public Task<SCDungeonsEnterAlready> OnPacket(NetContext ctx, CSDungeonsEnterAlready req)
     {
-        if (!ctx.Player.HasActiveRole)
-            return Task.FromResult(new SCDungeonsEnterAlready {
-                Result = (int)EnmTextCode.EnmTextNotAccLogin
-            });
-
         return Task.FromResult(new SCDungeonsEnterAlready {
             Result = 0,
             Info = ctx.Player.Dungeons.Current is {} current ?

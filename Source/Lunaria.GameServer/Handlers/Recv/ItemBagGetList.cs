@@ -7,6 +7,7 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleItemBagGetList(ILogger<HandleItemBagGetList> logger)
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsItemBagGetList)]
     public Task<SCItemBagGetList> OnPacket(NetContext ctx, CSItemBagGetList req)
     {

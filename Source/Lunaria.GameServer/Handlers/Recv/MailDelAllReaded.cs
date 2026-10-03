@@ -6,14 +6,10 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleMailDelAllReaded(ILogger<HandleMailDelAllReaded> logger)
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsMailDelAllReaded)]
     public Task<SCMailDelAllReaded> OnPacket(NetContext ctx, CSMailDelAllReaded req)
     {
-        if (!ctx.Player.HasActiveRole)
-            return Task.FromResult(new SCMailDelAllReaded {
-                Result = (int)EnmTextCode.EnmTextNotAccLogin
-            });
-
         var removed = ctx.Player.Mails.DeleteAllRead();
 
         if (removed.Count > 0)

@@ -6,14 +6,10 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleCollectionGetList(ILogger<HandleCollectionGetList> logger)
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsCollectionGetList)]
     public Task<SCCollectionGetList> OnPacket(NetContext ctx, CSCollectionGetList req)
     {
-        if (!ctx.Player.HasActiveRole)
-            return Task.FromResult(new SCCollectionGetList {
-                Result = (int)EnmTextCode.EnmTextNotAccLogin
-            });
-
         var now = ctx.Player.UtcNow;
         var items = ctx.Player.GetCollections(req.BlockId, now);
 

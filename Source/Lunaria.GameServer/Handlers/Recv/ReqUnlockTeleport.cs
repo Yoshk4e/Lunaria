@@ -5,6 +5,7 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleReqUnlockTeleport
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsReqUnlockTeleport)]
     public async Task<SCResUnlockTeleport> OnPacket(NetContext ctx, CSReqUnlockTeleport req)
     {

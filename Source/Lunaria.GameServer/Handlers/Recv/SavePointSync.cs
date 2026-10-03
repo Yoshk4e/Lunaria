@@ -5,6 +5,7 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleSavePointSync
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsSavepointSync)]
     public Task<SCSavePointSync> OnPacket(NetContext ctx, CSSavePointSync req) =>
         Task.FromResult(new SCSavePointSync {

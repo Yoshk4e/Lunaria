@@ -1,16 +1,21 @@
-using Lunaria.Game.Resources;
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources.Tables;
+using Lunaria.Game.Resources;
+using Microsoft.Extensions.Logging;
 using Msg;
 
 namespace Lunaria.Game.Buff;
 
 public sealed record BuffState(uint BuffId, DateTimeOffset AttachedAt, int LeftBattle);
 
-public sealed class BuffManager(GameData assets)
+public sealed partial class BuffManager(GameData assets) : TrackedObject
 {
-    private readonly SortedDictionary<uint, BuffState> _buffs = [];
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.Buff");
 
-    public bool IsDirty { get; private set; }
+    private readonly TrackedSortedDictionary<uint, BuffState> __tracked_buffs = [];
+    [Tracked]
+    private partial TrackedSortedDictionary<uint, BuffState> _buffs { get; }
 
     public IReadOnlyDictionary<uint, BuffState> Buffs => _buffs;
 
@@ -33,10 +38,8 @@ public sealed class BuffManager(GameData assets)
             _buffs[row.BuffId] = new BuffState(row.BuffId, attached, row.LeftBattle);
         }
 
-        IsDirty = false;
+        AcceptLoadedState();
     }
-
-    public void ClearDirty() => IsDirty = false;
 
     public IReadOnlyList<PBBuffData> ToBuffData(DateTimeOffset now)
     {
@@ -65,7 +68,8 @@ public sealed class BuffManager(GameData assets)
                 return (0, true, ToPb(running, now), removed);
 
             _buffs[buffId] = new BuffState(buffId, now, buff.DurationBattle);
-            Dirty();
+
+            Log.Event("buff {BuffId} refreshed with {Battles} battles remaining", buffId, buff.DurationBattle);
             return (0, true, ToPb(_buffs[buffId], now), removed);
         }
 
@@ -84,7 +88,8 @@ public sealed class BuffManager(GameData assets)
         }
 
         _buffs[buffId] = new BuffState(buffId, now, buff.DurationBattle);
-        Dirty();
+
+        Log.Event("buff {BuffId} applied, mutex group {MutexGroup}, removed {RemovedCount} buffs", buffId, buff.MutexGroup, removed.Count);
         return (0, false, ToPb(_buffs[buffId], now), removed);
     }
 
@@ -116,16 +121,18 @@ public sealed class BuffManager(GameData assets)
             {
                 _buffs.Remove(state.BuffId);
                 removed.Add(state.BuffId);
-                Dirty();
+
             } else
             {
                 var next = state with { LeftBattle = state.LeftBattle - 1 };
                 _buffs[state.BuffId] = next;
                 updated.Add(ToPb(next, now));
-                Dirty();
+
             }
         }
 
+        if (updated.Count > 0 || removed.Count > 0)
+            Log.Event("battle buff settlement updated {UpdatedCount} and removed {RemovedCount} buffs", updated.Count, removed.Count);
         return (updated, removed);
     }
 
@@ -148,11 +155,12 @@ public sealed class BuffManager(GameData assets)
             {
                 _buffs.Remove(state.BuffId);
                 removed.Add(state.BuffId);
-                Dirty();
+
             }
         }
+        if (removed.Count > 0)
+            Log.Event("buff sweep removed {Count} expired or unavailable buffs", removed.Count);
         return removed;
     }
 
-    private void Dirty() => IsDirty = true;
 }

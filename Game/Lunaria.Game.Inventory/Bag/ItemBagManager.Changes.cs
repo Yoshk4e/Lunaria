@@ -1,10 +1,12 @@
+using Lunaria.Common.Tracking;
 using Msg;
 
 namespace Lunaria.Game.Inventory;
 
-/// <summary>ClearDirty must not discard unsent inventory notifications.</summary>
-public sealed partial class ItemBagManager
+/// <summary>Inventory notifications stay queued after persistence accepts changes.</summary>
+public sealed partial class ItemBagManager : TrackedObject
 {
+    [Untracked]
     private readonly HashSet<uint> _changed = [];
 
     private void MarkChanged(uint itemId) => _changed.Add(itemId);

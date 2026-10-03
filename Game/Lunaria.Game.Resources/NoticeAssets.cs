@@ -11,7 +11,10 @@ public sealed record NoticeEntry(
     long PushTime,
     long EndTime,
     bool LoginForcePopup
-);
+)
+{
+    public long CreateTime { get; init; } = PushTime;
+}
 
 public sealed class NoticeAssets
 {

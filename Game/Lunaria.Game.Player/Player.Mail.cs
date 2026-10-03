@@ -1,3 +1,4 @@
+using Lunaria.Common.Tracking;
 using Lunaria.Game.Logging;
 using Lunaria.Game.Mail;
 using Lunaria.Game.Resources;
@@ -7,8 +8,9 @@ namespace Lunaria.Game.Player;
 
 public sealed partial class Player
 {
-    private readonly List<IReadOnlyList<ItemGrant>> _pendingRewardMail = [];
-    private bool _pendingRewardMailDirty;
+    private readonly TrackedList<IReadOnlyList<ItemGrant>> __tracked_pendingRewardMail = [];
+    [Tracked]
+    private partial TrackedList<IReadOnlyList<ItemGrant>> _pendingRewardMail { get; }
 
     /// <summary>Save rewards with the operation that earned them while they wait for mailbox space.</summary>
     public IReadOnlyList<IReadOnlyList<ItemGrant>> PendingRewardMail => _pendingRewardMail;
@@ -17,7 +19,7 @@ public sealed partial class Player
     {
         _pendingRewardMail.Clear();
         _pendingRewardMail.AddRange(pending.Select(batch => (IReadOnlyList<ItemGrant>)batch.ToArray()));
-        _pendingRewardMailDirty = false;
+
     }
 
     public (int Code, RewardDelivery? Delivery) ClaimMailAttachments(uint mailId)
@@ -68,7 +70,7 @@ public sealed partial class Player
         if (!TrySendOverflowMail(delivery.Undelivered, UtcNow))
         {
             _pendingRewardMail.Add(delivery.Undelivered.ToArray());
-            _pendingRewardMailDirty = true;
+
             Log.Flag("overflow mail failed too, deferring {Count} items to the next mailbox sweep", delivery.Undelivered.Count);
             return PresentRewards(delivery with { Deferred = delivery.Undelivered, Undelivered = [] });
         }
@@ -80,7 +82,7 @@ public sealed partial class Player
         while (_pendingRewardMail.Count > 0 && TrySendOverflowMail(_pendingRewardMail[0], now))
         {
             _pendingRewardMail.RemoveAt(0);
-            _pendingRewardMailDirty = true;
+
         }
     }
 

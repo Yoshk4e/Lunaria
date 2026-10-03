@@ -1,19 +1,30 @@
+using Lunaria.Common.Tracking;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
+using Microsoft.Extensions.Logging;
 using Msg;
 
 namespace Lunaria.Game.World;
 
-public sealed partial class MapManager
+public sealed partial class MapManager : TrackedObject
 {
-    /// <summary>proto <c>MAX_SAVEPOINTS</c>.</summary>
+    private static readonly ILogger Log = GameLog.Create("Lunaria.Game.World.Map");
+
     public const int MaxSavepoints = (int)EnmSizeLimit.MaxSavepoints;
 
     private readonly GameData _assets;
-    private readonly List<ulong> _unlockedSavepoints;
-    private readonly List<ulong> _unlockedTeleports = [];
+    private TrackedList<ulong> __tracked_unlockedSavepoints = default!;
+    [Tracked]
+    private partial TrackedList<ulong> _unlockedSavepoints { get; set; }
+    private readonly TrackedList<ulong> __tracked_unlockedTeleports = [];
+    [Tracked]
+    private partial TrackedList<ulong> _unlockedTeleports { get; }
 
-    private (int X, int Y, int Z) _position;
+    private (int X, int Y, int Z) __tracked_position = default!;
+    [Tracked]
+    private partial (int X, int Y, int Z) _position { get; set; }
 
+    [Untracked]
     private bool _positionIsSynced;
 
     public MapManager(GameData assets)
@@ -25,21 +36,27 @@ public sealed partial class MapManager
         _position = assets.Starter.SpawnPos;
     }
 
-    public bool IsDirty { get; private set; }
-
+    [Untracked]
     public MapPhase Phase { get; private set; } = MapPhase.Idle;
 
-    public ulong SpawnMap { get; private set; }
+    private ulong __trackedSpawnMap = default!;
+    [Tracked]
+    public partial ulong SpawnMap { get; private set; }
 
     public ulong MapId => SpawnMap;
+    [Untracked]
     public ulong TeleportId { get; private set; }
 
-    public ulong Savepoint { get; private set; }
+    private ulong __trackedSavepoint = default!;
+    [Tracked]
+    public partial ulong Savepoint { get; private set; }
 
     public IReadOnlyList<ulong> UnlockedSavepoints => _unlockedSavepoints;
     public IReadOnlyList<ulong> UnlockedTeleports => _unlockedTeleports;
     public (int X, int Y, int Z) Position => _position;
-    public MapReturnPoint? ReturnPoint { get; private set; }
+    private MapReturnPoint? __trackedReturnPoint = default!;
+    [Tracked]
+    public partial MapReturnPoint? ReturnPoint { get; private set; }
 
     public void Load(
         ulong mapId,
@@ -80,17 +97,12 @@ public sealed partial class MapManager
             foreach (var (pinMap, tagId, tagType) in trackedTargets)
             {
                 if (_assets.Maps.MapExists(pinMap) && !IsTracked(pinMap, tagId, tagType))
-                    _trackedTargets.Add(new TrackedTargetInfo {
-                        MapId = pinMap,
-                        TagId = tagId,
-                        TagType = tagType
-                    });
+                    _trackedTargets.Add(new MapTarget(pinMap, tagId, tagType));
             }
 
         TeleportId = 0;
         Phase = MapPhase.Idle;
-        IsDirty = false;
+        AcceptLoadedState();
     }
 
-    public void ClearDirty() => IsDirty = false;
 }

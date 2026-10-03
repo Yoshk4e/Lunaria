@@ -5,12 +5,10 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleRedPointMarkRead
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsReqRedpointMarkread)]
     public Task<SCRedPointMarkRead> OnPacket(NetContext ctx, CSRedPointMarkRead req)
     {
-        if (!ctx.Player.HasActiveRole)
-            return Task.FromResult(new SCRedPointMarkRead { Result = (int)EnmTextCode.EnmTextNotAccLogin });
-
         ctx.Player.RedPoints.MarkExchangeActivityRead();
 
         return Task.FromResult(new SCRedPointMarkRead {

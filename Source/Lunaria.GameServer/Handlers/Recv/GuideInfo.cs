@@ -6,6 +6,7 @@ namespace Lunaria.GameServer.Handlers.Recv;
 
 public sealed class HandleGuideInfo(ILogger<HandleGuideInfo> logger)
 {
+    [RequireLogin]
     [GameHandler(EClientServerCmds.CsReqGuideInfo)]
     public Task<SCResGuideInfo> OnPacket(NetContext ctx, CSReqGuideInfo req)
     {

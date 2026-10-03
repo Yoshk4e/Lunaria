@@ -1,19 +1,18 @@
+using Lunaria.Common.Tracking;
 using Lunaria.Game.Player.Persistence;
 using Msg;
 
 namespace Lunaria.Game.Player.Managers;
 
-public sealed partial class RoleManager
+public sealed partial class RoleManager : TrackedObject
 {
     public const int MaxRoles = (int)EnmSizeLimit.MaxRoleNumOneAccount;
 
-    private readonly HashSet<long> _dirty = [];
+    private readonly TrackedList<RoleState> __tracked_roles = new(r => r.Id);
+    [Tracked] private partial TrackedList<RoleState> _roles { get; }
 
-    private readonly List<RoleState> _roles = [];
-
+    [Untracked]
     private long? _active;
-
-    public bool IsDirty => _dirty.Count > 0;
 
     public bool IsEmpty => _roles.Count == 0;
     public int Count => _roles.Count;
@@ -27,7 +26,7 @@ public sealed partial class RoleManager
     {
         _roles.Clear();
         _roles.AddRange(rows.Select(RoleState.FromRow).OrderBy(r => r.Id));
-        _dirty.Clear();
+        AcceptLoadedState();
         _active = null;
     }
 
@@ -35,6 +34,7 @@ public sealed partial class RoleManager
     {
         var state = RoleState.FromRow(row);
         _roles.Add(state);
+        _roles.Changes.AcceptKey(state.Id);
         return state;
     }
 
@@ -57,9 +57,9 @@ public sealed partial class RoleManager
     public RoleState? Active() => _active is {} id ? Get(id) : null;
 
     public IReadOnlyList<RoleState> DirtyRoles() =>
-        _roles.Where(r => _dirty.Contains(r.Id)).ToList();
+        _roles.Changes.ChangedKeys.Cast<long>().Select(Get).OfType<RoleState>().ToList();
 
-    public void MarkPersisted(long roleId) => _dirty.Remove(roleId);
+    public void MarkPersisted(long roleId) => _roles.Changes.AcceptKey(roleId);
 
     private void Replace(RoleState role)
     {
@@ -69,6 +69,5 @@ public sealed partial class RoleManager
             return;
 
         _roles[index] = role;
-        _dirty.Add(role.Id);
     }
 }

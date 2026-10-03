@@ -1,5 +1,7 @@
-using Lunaria.Game.Characters;
+using Lunaria.Common.Tracking;
 using Lunaria.Game.Characters.Teams;
+using Lunaria.Game.Characters;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Resources.Tables;
 using Lunaria.Game.Tasks;
 using Msg;
@@ -13,13 +15,20 @@ public sealed record ActiveTemporaryTeam(
     EnmTmpTeamType Type, uint Source, uint Slot, IReadOnlyList<TeamMemberState> Members,
     IReadOnlyList<TrialVitals> Trials, TeamLiquid Liquid, TeamLiquid LiquidLv2);
 
-public sealed partial class Player
+public sealed partial class Player : TrackedObject
 {
-    private readonly Dictionary<(EnmTmpTeamType, uint), TemporaryTeamSelection> _temporarySelections = [];
-    public IReadOnlyCollection<TemporaryTeamSelection> TemporarySelections => _temporarySelections.Values;
-    public ActiveTemporaryTeam? ActiveTemporaryTeam { get; private set; }
-    public ActiveTemporaryTeam? SuspendedStoryTeam { get; private set; }
-    public bool TemporaryTeamDirty { get; private set; }
+    private readonly TrackedDictionary<(EnmTmpTeamType, uint), TemporaryTeamSelection> __tracked_temporarySelections = [];
+    [Tracked]
+    private partial TrackedDictionary<(EnmTmpTeamType, uint), TemporaryTeamSelection> _temporarySelections { get; }
+    public IReadOnlyCollection<TemporaryTeamSelection> TemporarySelections => (IReadOnlyCollection<TemporaryTeamSelection>)_temporarySelections.Values;
+    private ActiveTemporaryTeam? __trackedActiveTemporaryTeam = default!;
+    [Tracked]
+    public partial ActiveTemporaryTeam? ActiveTemporaryTeam { get; private set; }
+    private ActiveTemporaryTeam? __trackedSuspendedStoryTeam = default!;
+    [Tracked]
+    public partial ActiveTemporaryTeam? SuspendedStoryTeam { get; private set; }
+    public bool TemporaryTeamDirty => Changes.IsChanged(nameof(_temporarySelections))
+        || Changes.IsChanged(nameof(ActiveTemporaryTeam)) || Changes.IsChanged(nameof(SuspendedStoryTeam));
 
     private bool ValidTemporarySource(EnmTmpTeamType type, uint source) => type switch {
         EnmTmpTeamType.Task => assets.TmpTeams.GetBySrc(source) is {} row && assets.TmpTeams.MembersOf(row).Count > 0,
@@ -46,11 +55,23 @@ public sealed partial class Player
             || Battles.Current is not null
             || ActiveTemporaryTeam is {} active && active.Type == kind && active.Source == source)
             return ((int)EnmTextCode.EnmTextWrongParam, null);
-        if (kind == EnmTmpTeamType.Task) return TempTeams.Update(type, source, data);
-        if (!ValidOwnedMembers(data.MemberData)) return ((int)EnmTextCode.EnmTextWrongParam, null);
+        if (kind != EnmTmpTeamType.Task && !ValidOwnedMembers(data.MemberData))
+            return ((int)EnmTextCode.EnmTextWrongParam, null);
+        var (code, gems) = Teams.CheckGems(
+            data.MemberData.Select(m => (m.MemberSlotId, m.GemSlots.Select(g => (g.GemSlotId, g.GemItemid)))),
+            gemId => Bag.CountOf(gemId) > 0,
+            assets.Progression.MaxGemCost(Progress.EarnedWorldLevel));
+        if (code != 0)
+        {
+            Log.Stage("temporary team gem selection refused for type {TeamType} source {TeamSource} with code {Code}", kind, source, code);
+            return (code, null);
+        }
+        if (kind == EnmTmpTeamType.Task) return TempTeams.Update(type, source, data, gems);
         _temporarySelections[(kind, source)] = new(kind, source, data.MemberData.OrderBy(m => m.MemberSlotId)
-            .Select(m => new TeamMemberState { Slot = m.MemberSlotId, InstId = m.InstId, CharacterId = m.CharacterId }).ToArray());
-        TemporaryTeamDirty = true;
+            .Select(m => new TeamMemberState { Slot = m.MemberSlotId, InstId = m.InstId, CharacterId = m.CharacterId,
+                Gems = gems.GetValueOrDefault(m.MemberSlotId) ?? [] }).ToArray());
+
+        Log.Stage("temporary team selection updated for type {TeamType} source {TeamSource} with {MemberCount} members", kind, source, data.MemberData.Count);
         return (0, QueryTemporaryTeam(type, source));
     }
 
@@ -65,11 +86,8 @@ public sealed partial class Player
             && members.Select(m => m.CharacterId).Distinct().Count() == members.Length;
     }
 
-    private static TeamData TemporaryTeamData(uint source, IEnumerable<TeamMemberState> members) => new() {
-        TeamId = source,
-        Name = Google.Protobuf.ByteString.CopyFromUtf8(TeamManager.DefaultTeamName),
-        MemberData = { members.Select(m => new TeamMemberData { MemberSlotId = m.Slot, InstId = m.InstId, CharacterId = m.CharacterId }) }
-    };
+    private TeamData TemporaryTeamData(uint source, IReadOnlyList<TeamMemberState> members) =>
+        Teams.ToTeamData(source, TeamManager.DefaultTeamName, members);
 
     public bool ReconcileTemporaryTeam(bool notify = true)
     {
@@ -113,12 +131,17 @@ public sealed partial class Player
                         TempTeamManager.Ratio(assets.Attribs.MaxHp(template.CharacterId, assets.Characters.DevelopAttributeId(template.CharacterId, template.Level)), template.CharacterHpRatio),
                         TempTeamManager.Ratio(assets.Attribs.PermanentLiquidMax(assets.Characters.FixedAttributeId(template.CharacterId)), template.CharacterPermanentLiquidRatio)));
                 }
-                return new TeamMemberState { Slot = m.MemberSlotId, InstId = id, CharacterId = m.CharacterId };
+                var gems = new uint[assets.Gems.MaxPerCharacter];
+                foreach (var gem in m.GemSlots) gems[gem.GemSlotId - 1] = gem.GemItemid;
+                return new TeamMemberState { Slot = m.MemberSlotId, InstId = id, CharacterId = m.CharacterId,
+                    Gems = gems.Any(g => g != 0) ? gems : [] };
             }).ToArray();
             ActiveTemporaryTeam = new(type, source, members.Min(m => m.Slot), members, trials,
                 story is not null && type == EnmTmpTeamType.Task ? TempTeamManager.InitialLiquid(story) : TeamLiquid.Empty, TeamLiquid.Empty);
         }
-        TemporaryTeamDirty = true;
+
+        Log.State("active temporary team changed to type {TeamType} source {TeamSource} with {MemberCount} members, suspended story source {SuspendedSource}",
+            type, source, ActiveTemporaryTeam?.Members.Count ?? 0, SuspendedStoryTeam?.Source);
         if (notify && CurrentTeamData() is {} data) _changes.Add(new SCCharacterTempTeamNtf { CurTeam = data });
         return true;
     }
@@ -160,7 +183,7 @@ public sealed partial class Player
                 Liquid = liquid < 0 ? trial.Liquid : Math.Clamp(liquid, 0, TeamCharacterMaxLiquid(id)) };
             if (next == trial) return;
             ActiveTemporaryTeam = ActiveTemporaryTeam! with { Trials = ActiveTemporaryTeam.Trials.Select(t => t.InstanceId == id ? next : t).ToArray() };
-            TemporaryTeamDirty = true;
+
         }
         else
         {
@@ -173,7 +196,7 @@ public sealed partial class Player
     {
         if (ActiveTemporaryTeam is not {} active) return Teams.SetUsingMemberSlot(slot);
         if (active.Members.All(m => m.Slot != slot)) return (int)EnmTextCode.EnmTextWrongParam;
-        if (active.Slot != slot) { ActiveTemporaryTeam = active with { Slot = slot }; TemporaryTeamDirty = true; }
+        if (active.Slot != slot) { ActiveTemporaryTeam = active with { Slot = slot };  }
         return 0;
     }
 
@@ -184,7 +207,7 @@ public sealed partial class Player
         var next = active with { Liquid = first is null ? active.Liquid : TeamLiquid.FromProto(first), LiquidLv2 = second is null ? active.LiquidLv2 : TeamLiquid.FromProto(second) };
         if (next == active) return false;
         ActiveTemporaryTeam = next;
-        TemporaryTeamDirty = true;
+
         return true;
     }
     private bool AddCurrentTeamLiquid(int element, int amount) => ActiveTemporaryTeam is {} active
@@ -195,12 +218,16 @@ public sealed partial class Player
 
     public void LoadTemporaryTeams(IEnumerable<TemporaryTeamSelection> selections, ActiveTemporaryTeam? active, ActiveTemporaryTeam? suspended = null)
     {
+        IReadOnlyList<TeamMemberState> NormalizeMembers(IReadOnlyList<TeamMemberState> members) => members
+            .Select(m => m with { Gems = m.Gems.Take(assets.Gems.MaxPerCharacter)
+                .Select(id => assets.Gems.Exists(id) ? id : 0).ToArray() }).ToArray();
+
         _temporarySelections.Clear();
         ActiveTemporaryTeam = null;
         foreach (var selection in selections)
             if (selection.Type is EnmTmpTeamType.Dungeon or EnmTmpTeamType.Wanted && ValidTemporarySource(selection.Type, selection.Source)
                 && ValidOwnedMembers(TemporaryTeamData(selection.Source, selection.Members).MemberData))
-                _temporarySelections[(selection.Type, selection.Source)] = selection;
+                _temporarySelections[(selection.Type, selection.Source)] = selection with { Members = NormalizeMembers(selection.Members) };
         SuspendedStoryTeam = null;
         foreach (var candidate in new[] { suspended, active })
         {
@@ -218,13 +245,14 @@ public sealed partial class Player
                 : candidate.Trials.Count == 0 && ValidOwnedMembers(wire.MemberData);
             if (valid)
             {
-                ActiveTemporaryTeam = candidate with { Slot = candidate.Members.Any(m => m.Slot == candidate.Slot) ? candidate.Slot : candidate.Members.Min(m => m.Slot),
+                ActiveTemporaryTeam = candidate with { Members = NormalizeMembers(candidate.Members),
+                    Slot = candidate.Members.Any(m => m.Slot == candidate.Slot) ? candidate.Slot : candidate.Members.Min(m => m.Slot),
                     Liquid = candidate.Liquid.Normalized(), LiquidLv2 = candidate.LiquidLv2.Normalized() };
                 foreach (var trial in candidate.Trials) SetTeamCharacterVitals(trial.InstanceId, Math.Max(0, trial.Hp), Math.Max(0, trial.Liquid));
                 foreach (var trial in candidate.Trials) Guid.Adopt(trial.InstanceId);
                 if (ReferenceEquals(candidate, suspended) && candidate.Type == EnmTmpTeamType.Task) SuspendedStoryTeam = ActiveTemporaryTeam;
             }
         }
-        TemporaryTeamDirty = false;
+
     }
 }
