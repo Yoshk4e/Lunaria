@@ -16,6 +16,7 @@ internal sealed class SyncHooks :
     IGameplayHook<SkillGroupsChanged>,
     IGameplayHook<BuffsChanged>,
     IGameplayHook<CharactersChanged>,
+    IGameplayHook<TaskProgressed>,
     IGameplayHook<CharacterLeveled>,
     IGameplayHook<CharactersAcquired>,
     IGameplayHook<GuidesChanged>,
@@ -118,6 +119,15 @@ internal sealed class SyncHooks :
             if (p.Characters.Get(id) is {} character)
                 update.Characters.Add(p.Characters.ToCharacterData(character));
         if (update.Characters.Count > 0) changes.Add(update);
+    }
+
+    public void Handle(Player p, TaskProgressed e, PlayerChanges changes)
+    {
+        var progress = e.Progress;
+        var tasks = progress.StartedTasks.Select(id => (progress.TaskType, id)).Append((progress.TaskType, progress.TaskId));
+
+        if (p.TaskCollectionChanges(tasks) is {} ntf)
+            changes.Add(ntf);
     }
 
     public void Handle(Player p, CharacterLeveled e, PlayerChanges changes) =>

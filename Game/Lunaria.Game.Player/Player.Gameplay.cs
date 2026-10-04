@@ -48,6 +48,7 @@ public sealed partial class Player
             dispatcher.Register<SatietyChanged>(sync);
             dispatcher.Register<CooldownStarted>(sync);
             dispatcher.Register<VitalsChanged>(sync);
+            dispatcher.Register<TaskProgressed>(sync);
             dispatcher.Register<SkillGroupsChanged>(sync);
             dispatcher.Register<LiquidChanged>(sync);
             dispatcher.Register<BuffsChanged>(sync);

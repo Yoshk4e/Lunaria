@@ -3,6 +3,7 @@ using Lunaria.Game.Player.Gameplay;
 using Lunaria.Game.Player.Persistence.Saves;
 using Lunaria.Game.Resources;
 using Lunaria.Game.Resources.Tables;
+using Lunaria.Game.Tasks;
 using Lunaria.GameServer.Handlers.Recv;
 using Lunaria.Tests.Support;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -28,6 +29,39 @@ public sealed class CollectionInteractionTests(BundledGameplayFixture fixture)
         player.Map.Load(map ?? placed.BlockId, Assets.Starter.Savepoint, [], [],
             ((int)MathF.Round(placed.PosX), (int)MathF.Round(placed.PosY), (int)MathF.Round(placed.PosZ)));
         return player;
+    }
+
+    [Fact]
+    public void QuestCreature_IsSentAsTaskCollectable_AndAbsorbingItAdvancesTheQuest()
+    {
+        // Silvercrafts (41001) step 4100108 "Capture the creature on the loose": task persistent row 41001004 places
+        // collection 30000, whose drop 410001 grants 29900041, the item the step waits for (OwnItem).
+        const ulong uniq = 41001004;
+        const ulong block = 100001001001;
+        var task = Assets.Collections.TaskCollection(uniq)!;
+        var player = new Player(1, Assets);
+        player.Characters.GrantStarter(player.Guid);
+        player.Teams.GrantStarter(player.Characters);
+        player.Map.Load(block, Assets.Starter.Savepoint, [], [], (task.X, task.Y, task.Z));
+        void AtStep(ulong step) =>
+            player.Tasks.Load([(TaskAssets.QuestMain, 41001u, step, Array.Empty<(ulong, uint, uint)>().AsEnumerable())], []);
+
+        AtStep(4100107);
+        Assert.DoesNotContain(player.GetCollections(block, Now), item => item.UniqId == uniq);
+        Assert.Equal((int)EnmTextCode.EnmTextCollectionCondUnmeet, player.Collect(uniq, EnmCollectionOp.EnCollectionOpCollect, Now).Code);
+
+        AtStep(4100108);
+        var sent = Assert.Single(player.GetCollections(block, Now), item => item.UniqId == uniq);
+        Assert.Equal(EnmCollectionFromType.EcollectFromTask, sent.FromType);
+        Assert.Equal((30000u, EnmCollectionStatus.EcsCanCollect), (sent.CfgId, sent.Status));
+        Assert.Equal((129459, 29502, 32317), (sent.Location.X, sent.Location.Y, sent.Location.Z));
+        Assert.Equal((0, -28, 0), (sent.Rotation.Pitch, sent.Rotation.Yaw, sent.Rotation.Roll));
+        Assert.NotNull(sent.FromLocation);
+        Assert.Single(player.TaskCollectionChanges([(TaskAssets.QuestMain, 41001u)])!.NtfList);
+
+        Assert.Equal(0, player.Collect(uniq, EnmCollectionOp.EnCollectionOpCollect, Now).Code);
+        player.SettleServerTargets();
+        Assert.NotEqual(4100108ul, player.Tasks.Processing[(TaskAssets.QuestMain, 41001u)].CurrentStep.StepId);
     }
 
     [Theory]

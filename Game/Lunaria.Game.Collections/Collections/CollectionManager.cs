@@ -8,8 +8,9 @@ using Msg;
 namespace Lunaria.Game.Collections;
 
 /// <summary>
-/// The client uses row IDs from p_worldcollectobjtable to find objects in the level.
-/// Save only objects the player has touched. Other objects use their default state.
+/// The client uses row IDs from p_worldcollectobjtable to find objects in the level. Quest collectables use their
+/// task persistent row ID and are sent with their position. Save only objects the player has touched. Other objects
+/// use their default state.
 /// </summary>
 public sealed partial class CollectionManager(GameData assets) : TrackedObject
 {
@@ -54,7 +55,7 @@ public sealed partial class CollectionManager(GameData assets) : TrackedObject
                      .OrderBy(r => r.Uniq)
                      .Take(MaxNodes))
         {
-            if (assets.Collections.WorldObject(row.Uniq) is not {} placed || placed.TemplateId != row.Cfg)
+            if (PlacementOf(row.Uniq) is not {} placed || placed.Template != row.Cfg)
                 continue;
 
             if (!Enum.IsDefined(typeof(EnmCollectionStatus), row.Status))
@@ -72,10 +73,12 @@ public sealed partial class CollectionManager(GameData assets) : TrackedObject
         if (_nodes.TryGetValue(uniq, out var node))
             return node;
 
-        return assets.Collections.WorldObject(uniq) is {} placed
+        return PlacementOf(uniq) is {} placed
             ? FromPlacement(placed, EnmCollectionStatus.EcsCanCollect, DateTimeOffset.UnixEpoch)
             : null;
     }
+
+    public bool IsTaskObject(ulong uniq) => assets.Collections.TaskCollection(uniq) is not null;
 
     public IReadOnlyList<CollectionState> ListBlock(ulong blockId, DateTimeOffset now)
     {
@@ -117,14 +120,14 @@ public sealed partial class CollectionManager(GameData assets) : TrackedObject
         if (!period.ResetsEver || !period.HasReset(node.StatusTime, now))
             return false;
 
-        _nodes[uniq] = FromPlacement(assets.Collections.WorldObject(uniq)!, EnmCollectionStatus.EcsCanCollect, now);
+        _nodes[uniq] = FromPlacement(PlacementOf(uniq)!.Value, EnmCollectionStatus.EcsCanCollect, now);
 
         return true;
     }
 
     public OneCollectionData ToOneCollectionData(CollectionState node)
     {
-        var placed = assets.Collections.WorldObject(node.Uniq);
+        var placed = PlacementOf(node.Uniq);
 
         return new OneCollectionData {
             UniqId = node.Uniq,
@@ -133,26 +136,42 @@ public sealed partial class CollectionManager(GameData assets) : TrackedObject
             StatusTime = ToStatusTime(node.StatusTime),
             BlockId = node.Block,
             Location = new Vector3Int { X = node.X, Y = node.Y, Z = node.Z },
-            Rotation = placed is null ? new Rotator() : new Rotator {
-                Yaw = (int)MathF.Round(placed.Direction),
-                Pitch = (int)MathF.Round(placed.Pitch),
-                Roll = (int)MathF.Round(placed.Roll)
-            },
-            FromType = EnmCollectionFromType.EcollectFromTable,
+            Rotation = placed is {} at ? new Rotator { Yaw = at.Yaw, Pitch = at.Pitch, Roll = at.Roll } : new Rotator(),
             // The client files table objects under StaticServerLocateItemMap[from_id] and matches the level placement.
+            // Task objects go to DynamicTaskServerItemMap and are spawned from location and rotation alone.
+            FromType = placed is { Task: true } ? EnmCollectionFromType.EcollectFromTask : EnmCollectionFromType.EcollectFromTable,
             FromId = node.Uniq,
             FromLocation = new Vector3Int { X = node.X, Y = node.Y, Z = node.Z }
         };
     }
 
-    private static CollectionState FromPlacement(PWorldCollectObjTable placed, EnmCollectionStatus status, DateTimeOffset time)
+    /// <summary>Where an object stands: a p_worldcollectobjtable row, or a quest collectable on its task map.</summary>
+    private Placement? PlacementOf(ulong uniq)
+    {
+        if (assets.Collections.WorldObject(uniq) is {} world)
+        {
+            return new Placement(world.Id, world.TemplateId, world.BlockId,
+                (int)MathF.Round(world.PosX), (int)MathF.Round(world.PosY), (int)MathF.Round(world.PosZ),
+                (int)MathF.Round(world.Direction), (int)MathF.Round(world.Pitch), (int)MathF.Round(world.Roll),
+                Locked: world.CollectUnlockType != 0, Task: false);
+        }
+
+        return assets.Collections.TaskCollection(uniq) is {} task
+            ? new Placement(task.Id, task.TemplateId, task.MapId, task.X, task.Y, task.Z, task.Yaw, task.Pitch, task.Roll,
+                Locked: false, Task: true)
+            : null;
+    }
+
+    private static CollectionState FromPlacement(Placement placed, EnmCollectionStatus status, DateTimeOffset time)
     {
         // The table has no unlock parameters, so locked placements must stay locked.
-        if (status == EnmCollectionStatus.EcsCanCollect && placed.CollectUnlockType != 0)
+        if (status == EnmCollectionStatus.EcsCanCollect && placed.Locked)
             status = EnmCollectionStatus.EcsLock;
-        return new(placed.Id, placed.TemplateId, status, time, placed.BlockId,
-            (int)MathF.Round(placed.PosX), (int)MathF.Round(placed.PosY), (int)MathF.Round(placed.PosZ));
+        return new(placed.Id, placed.Template, status, time, placed.Block, placed.X, placed.Y, placed.Z);
     }
+
+    private readonly record struct Placement(
+        ulong Id, uint Template, ulong Block, int X, int Y, int Z, int Yaw, int Pitch, int Roll, bool Locked, bool Task);
 
     private static uint ToStatusTime(DateTimeOffset moment)
     {
