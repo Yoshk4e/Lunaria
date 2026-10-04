@@ -17,7 +17,8 @@ public sealed class SessionStore
         var heiToken = RandomToken(33);
         var channelToken = RandomToken(129);
         var sdkUid = RandomToken(21);
-        var channelUid = Convert.ToHexString(RandomNumberGenerator.GetBytes(16)).ToLowerInvariant();
+        // Stable per account: the game server keys its accounts by channel uid, the client sends no userid.
+        var channelUid = userId.ToString("N");
 
         _sessions[heiToken] = new SessionEntry(
             userId,
