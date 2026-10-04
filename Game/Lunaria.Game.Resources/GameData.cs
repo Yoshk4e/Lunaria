@@ -259,7 +259,7 @@ public sealed class GameData(string assetsDir, ILogger<GameData>? logger = null)
             PSubRegionTable, PRegionTable, PRegionProgressTypeRegistTable, CSubRegionConfigReadTarget,
             PRegionProgressTableMorgue, PRegionProgressTableFour, PRegionProgressTableDayfair,
             PRegionSequenceTableMorgue, PRegionSequenceTableFour, PRegionSequenceTableDayfair,
-            Drops);
+            PCollectionSubRegionMapping, Drops);
         SilverCreatures = new SilverCreatureAssets(PSilverCreatureCombineTable, PSilverCreatureGrowthTable);
         TmpTeams = new TmpTeamAssets(PTmpTeamTable, PTmpCharacterTable, Characters);
         Charge = new ChargeAssets(PChargeAwardTable, PChargeMoneyTable, PMonthCardTable, Items);

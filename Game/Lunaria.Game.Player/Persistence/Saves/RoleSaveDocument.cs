@@ -592,6 +592,10 @@ public sealed record RoleSaveDocument
     {
         [JsonPropertyName("subregions")]
         public IReadOnlyList<SubRegionProgressSave> Subregions { get; init; } = [];
+
+        /// <summary>False in saves whose chest and resource objectives counted distinct templates instead of gathers.</summary>
+        [JsonPropertyName("gather_counts")]
+        public bool GatherCounts { get; init; }
     }
 
     public sealed record SubRegionProgressSave

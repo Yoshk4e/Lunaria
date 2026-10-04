@@ -160,6 +160,50 @@ public sealed partial class RegionProgressManager(GameData assets) : TrackedObje
         return true;
     }
 
+    /// <summary>Adds one gather to the chest and resource objectives listing this template, up to each objective.</summary>
+    public IReadOnlyList<ulong> RecordGather(ulong block, uint cfg)
+    {
+        var changed = new List<ulong>();
+
+        foreach (var subRegionId in assets.RegionProgress.SubRegionsOfBlock(block))
+        {
+            var moved = false;
+
+            foreach (var sequenceId in assets.RegionProgress.Sequences(subRegionId))
+            {
+                if (assets.RegionProgress.SequenceRow(subRegionId, sequenceId) is not {} sequence
+                    || !assets.RegionProgress.CountsGathers(sequence)
+                    || !sequence.ParamId.Contains(cfg))
+                    continue;
+
+                var current = _subregions.GetValueOrDefault(subRegionId)?.Sequences.GetValueOrDefault(sequenceId) ?? 0;
+
+                if (SetSequence(subRegionId, sequenceId, Math.Min(current + 1, sequence.ParamNum)))
+                    moved = true;
+            }
+
+            if (moved)
+                changed.Add(subRegionId);
+        }
+
+        return changed;
+    }
+
+    /// <summary>Drops the chest and resource counts so they can be rebuilt.</summary>
+    public void ClearGatherCounts()
+    {
+        foreach (var (subRegionId, state) in _subregions.ToList())
+        {
+            var kept = new SortedDictionary<uint, uint>(state.Sequences
+                .Where(pair => assets.RegionProgress.SequenceRow(subRegionId, pair.Key) is not {} sequence
+                    || !assets.RegionProgress.CountsGathers(sequence))
+                .ToDictionary(pair => pair.Key, pair => pair.Value));
+
+            if (kept.Count != state.Sequences.Count)
+                _subregions[subRegionId] = state with { Sequences = kept };
+        }
+    }
+
     public uint SubRegionsAtPercent(uint percent) =>
         (uint)_subregions.Keys.Count(id => CompletionPercent(id) >= percent);
 

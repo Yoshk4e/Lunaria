@@ -14,6 +14,7 @@ public sealed class RegionProgressAssets
     private readonly Dictionary<ulong, PRegionRewardTable> _rewards = [];
     private readonly Dictionary<(ulong SubRegion, uint Sequence), RegionSequence> _sequenceRows = [];
     private readonly Dictionary<ulong, List<uint>> _sequences = [];
+    private readonly Dictionary<ulong, List<ulong>> _blockSubRegions = [];
 
     private readonly Dictionary<ulong, uint> _subRegionNames = [];
 
@@ -32,9 +33,15 @@ public sealed class RegionProgressAssets
         IReadOnlyDictionary<string, PRegionSequenceTableMorgue> morgueSequences,
         IReadOnlyDictionary<string, PRegionSequenceTableFour> fourSequences,
         IReadOnlyDictionary<string, PRegionSequenceTableDayfair> dayfairSequences,
+        IReadOnlyDictionary<string, PCollectionSubRegionMapping> collectionBlocks,
         DropAssets drops
     )
     {
+        foreach (var row in collectionBlocks.Values)
+        {
+            _blockSubRegions[row.Id] = row.SubRegionList;
+        }
+
         foreach (var row in rewards.Values)
         {
             _rewards[row.Id] = row;
@@ -163,6 +170,13 @@ public sealed class RegionProgressAssets
         _sequenceRows.GetValueOrDefault((subRegionId, sequenceId));
 
     public PRegionProgressTypeRegistTable? RegistOf(uint type) => _registByType.GetValueOrDefault(type);
+
+    /// <summary>Chest and resource objectives (P_CollectionTable registries) count gathers, not distinct templates.</summary>
+    public bool CountsGathers(RegionSequence sequence) => RegistOf(sequence.Type)?.RegistType is 2 or 7;
+
+    /// <summary>Sub-regions whose objectives a gather on this collection block counts for.</summary>
+    public IReadOnlyList<ulong> SubRegionsOfBlock(ulong block) =>
+        SubRegionExists(block) ? [block] : _blockSubRegions.GetValueOrDefault(block) ?? [];
 
     public IReadOnlyList<PRegionRewardDataTable> Rewards(ulong id) =>
         (_rewards.GetValueOrDefault(id)?.Reward ?? [])

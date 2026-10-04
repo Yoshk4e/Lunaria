@@ -155,7 +155,7 @@ public sealed partial class Player
         if (collectCode != 0 || collected is null)
             return (collectCode, null);
 
-        Gameplay.Publish(new CollectionGathered(assets.Collections.Get(collected.Cfg)?.CollectionType ?? 0));
+        Gameplay.Publish(new CollectionGathered(assets.Collections.Get(collected.Cfg)?.CollectionType ?? 0, collected.Cfg, collected.Block));
 
         return (0, new CollectionOutcome(
             Collections.ToOneCollectionData(collected),

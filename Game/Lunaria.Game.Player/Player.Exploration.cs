@@ -16,7 +16,9 @@ public sealed partial class Player
 
             foreach (var sequenceId in assets.RegionProgress.Sequences(subRegionId))
             {
-                if (assets.RegionProgress.SequenceRow(subRegionId, sequenceId) is not {} sequence)
+                // Gather counts only grow from CollectionGathered and cannot be recounted from the save.
+                if (assets.RegionProgress.SequenceRow(subRegionId, sequenceId) is not {} sequence
+                    || assets.RegionProgress.CountsGathers(sequence))
                     continue;
 
                 // The client shows the raw count over ParamNum. Silvercraft objectives count owned creatures of the
@@ -34,6 +36,25 @@ public sealed partial class Player
         return changed;
     }
 
+    /// <summary>
+    /// Saves from before per-gather counting hold the number of distinct templates gathered anywhere. Rebuild the chest
+    /// and resource objectives from the objects the save records as gathered: collected or destroyed, or collectable
+    /// again after a respawn. Earlier gathers of a respawned object are not recorded, so this is a lower bound.
+    /// </summary>
+    internal void RebuildGatherCounts()
+    {
+        RegionProgress.ClearGatherCounts();
+
+        foreach (var node in Collections.Entries.Values.OrderBy(node => node.Uniq))
+        {
+            var gathered = node.Status is EnmCollectionStatus.EcsCollected or EnmCollectionStatus.EcsDestroyed
+                || (node.Status == EnmCollectionStatus.EcsCanCollect && assets.Collections.Respawn(node.Cfg).ResetsEver);
+
+            if (gathered)
+                RegionProgress.RecordGather(node.Block, node.Cfg);
+        }
+    }
+
     private uint CountSequence(ulong subRegionId, RegionSequence sequence)
     {
         var regist = assets.RegionProgress.RegistOf(sequence.Type);
@@ -44,9 +65,6 @@ public sealed partial class Player
         // The registry lists completed POI quests, not main quests.
         if (regist.IsTask == 1)
             return (uint)sequence.ParamId.Count(taskId => Tasks.IsFinished(TaskAssets.POIQuest, taskId));
-
-        if (regist.RegistType == 2 || regist.RegistType == 7)
-            return (uint)sequence.ParamId.Count(cfg => Collections.Gathered.Contains(cfg));
 
         // ParamId holds the teleport template (P_TeleportPointTemplate). The unlocked points are P_FunctionalNPCTable
         // instances of that template, each placed on one sub-region.
