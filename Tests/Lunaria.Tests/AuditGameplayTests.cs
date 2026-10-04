@@ -111,6 +111,22 @@ public sealed class AuditGameplayTests(BundledGameplayFixture fixture, ITestOutp
         Assert.Equal(4u, player.OwnedItemCount(11406001));
     }
 
+    [Fact]
+    public void DailyLimitedDungeon_SendsTheAttemptsUsedToday()
+    {
+        const uint dungeonId = 202001; // Inside the Incinerator: I, type 2, one reward chance per day
+        var player = Fresh();
+        player.Progress.Load(1, 0, 0, 200, DateTimeOffset.UtcNow);
+        CSDungeonsTypeData TypeData() => player.Dungeons.ToFullData(DateTimeOffset.UtcNow).CommonData.TypeData.Single(t => t.Type == 2);
+
+        Assert.Equal(0u, TypeData().CountDay);
+        Assert.Equal(0, player.EnterDungeon(dungeonId).Code);
+        Assert.Equal(0, player.FinishDungeon(dungeonId, true, false, 0).Code);
+
+        Assert.Equal(1u, TypeData().CountDay);
+        Assert.Equal(1u, player.Dungeons.ToDataNotification(DateTimeOffset.UtcNow).Info.Single(t => t.Type == 2).CountDay);
+    }
+
     private Player Fresh(bool extraMember = false)
     {
         var player = new Player(1, Assets);

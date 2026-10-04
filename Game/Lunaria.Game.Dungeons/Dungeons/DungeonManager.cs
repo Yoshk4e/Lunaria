@@ -95,6 +95,16 @@ public sealed partial class DungeonManager(GameData assets) : TrackedObject
         };
     }
 
+    /// <summary>
+    /// Attempts used in the current day and week. The client shows LimitParam - count_day (and count_week) as the chances
+    /// left, so CSDungeonsTypeData carries these, not the remaining attempts.
+    /// </summary>
+    public (uint UsedDay, uint UsedWeek) UsedAttempts(uint typeId, DateTimeOffset now)
+    {
+        var state = StateOf(typeId, now);
+        return (state.UsedDay, state.UsedWeek);
+    }
+
     public int CheckEnter(ulong dungeonId, DateTimeOffset now)
     {
         if (assets.Dungeons.Dungeon(dungeonId) is not {} dungeon)
@@ -284,7 +294,7 @@ public sealed partial class DungeonManager(GameData assets) : TrackedObject
 
         foreach (var type in assets.Dungeons.Types)
         {
-            var (day, week) = RemainingAttempts(type.Id, now);
+            var (day, week) = UsedAttempts(type.Id, now);
 
             data.CommonData.TypeData.Add(new CSDungeonsTypeData {
                 Type = type.Id,
@@ -319,7 +329,7 @@ public sealed partial class DungeonManager(GameData assets) : TrackedObject
 
         foreach (var type in assets.Dungeons.Types)
         {
-            var (day, week) = RemainingAttempts(type.Id, now);
+            var (day, week) = UsedAttempts(type.Id, now);
 
             ntf.Info.Add(new CSDungeonsTypeData {
                 Type = type.Id,
