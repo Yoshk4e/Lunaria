@@ -63,6 +63,7 @@ public sealed partial class Player
     {
         using var operationTime = BeginOperation();
         var delivery = GrantWithoutOverflowMail(grants, reason);
+        UseAutoBuffItems(delivery.Stored);
         if (delivery.Undelivered.Count == 0) return PresentRewards(delivery);
 
         Log.Flag("grant reason {Reason} left {Count} undelivered items, sending overflow mail", reason, delivery.Undelivered.Count);
@@ -75,6 +76,27 @@ public sealed partial class Player
             return PresentRewards(delivery with { Deferred = delivery.Undelivered, Undelivered = [] });
         }
         return PresentRewards(delivery with { Mailed = delivery.Undelivered, Undelivered = [] });
+    }
+
+    /// <summary>
+    /// Buff items flagged AutoUse, such as the dishes of the buff shops, take effect on the current team when received
+    /// instead of staying in the bag. Their UseLimit is 1, so each item is used on its own.
+    /// </summary>
+    private void UseAutoBuffItems(IEnumerable<ItemGrant> stored)
+    {
+        foreach (var grant in stored.Where(grant => assets.Items.Get(grant.ItemId) is { AutoUse: true, UseType: (int)ItemUseType.AddBuffEffect }).ToList())
+        {
+            for (ulong used = 0; used < grant.Count; used++)
+            {
+                var outcome = UseItem(grant.ItemId, 1, []);
+
+                if (outcome.Code != 0)
+                {
+                    Log.Flag("auto use of buff item {ItemId} failed with code {Code}", grant.ItemId, outcome.Code);
+                    break;
+                }
+            }
+        }
     }
 
     private void RetryPendingRewardMail(DateTimeOffset now)
