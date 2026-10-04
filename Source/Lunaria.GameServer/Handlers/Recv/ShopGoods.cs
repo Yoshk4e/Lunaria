@@ -17,7 +17,7 @@ public sealed class HandleShopGoods(ILogger<HandleShopGoods> logger)
             });
 
         var res = new SCShopGoods { Result = 0, ShopId = req.ShopId };
-        res.Goods.AddRange(ctx.Player.Shop.GoodsInfo((uint)req.ShopId));
+        res.Goods.AddRange(ctx.Player.Shop.GoodsInfo((uint)req.ShopId, ctx.Player.UtcNow));
         logger.LogDebug("shop {ShopId} goods: {Count} listed", req.ShopId, res.Goods.Count);
         return Task.FromResult(res);
     }
