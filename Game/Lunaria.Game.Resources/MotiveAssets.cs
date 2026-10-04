@@ -111,8 +111,7 @@ public sealed class MotiveAssets
         return priced == 0 ? breakCap : Math.Min(breakCap, priced);
     }
 
-    public BreakStep? NextBreak(uint motiveId, uint breakLevel) =>
-        Ladder(motiveId).FirstOrDefault(step => step.BreakLevel == breakLevel + 1);
+    public BreakStep? NextBreak(uint motiveId, uint breakLevel) => BreakStep.Next(Ladder(motiveId), breakLevel);
 
     public bool IsFullyBroken(uint motiveId, uint breakLevel)
     {

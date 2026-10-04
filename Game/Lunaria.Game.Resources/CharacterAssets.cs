@@ -106,8 +106,7 @@ public sealed class CharacterAssets
         return priced == 0 ? breakCap : Math.Min(breakCap, priced);
     }
 
-    public BreakStep? NextBreak(uint characterId, uint breakLevel) =>
-        Ladder(characterId).FirstOrDefault(step => step.BreakLevel == breakLevel + 1);
+    public BreakStep? NextBreak(uint characterId, uint breakLevel) => BreakStep.Next(Ladder(characterId), breakLevel);
 
     public bool IsFullyBroken(uint characterId, uint breakLevel) =>
         breakLevel >= Ladder(characterId)[^1].BreakLevel;

@@ -38,6 +38,20 @@ public sealed class BundledGameplayFixture
 [Collection("bundled-gameplay")]
 public sealed class GameplayRegressionTests(BundledGameplayFixture fixture)
 {
+    [Fact]
+    public void Break_ChargesTheRowOfTheCurrentBreakLevel_AsTheClientShowsIt()
+    {
+        // Munin at break 0 (cap 20): the client asks 5 x 11730001 and 7500 coins, and the next cap is 30.
+        var character = fixture.Data.Characters.NextBreak(1001, breakLevel: 0)!;
+        Assert.Equal((1u, 30u, 2u, 7500u), (character.BreakLevel, character.MaxLevel, character.NeedWorldLevel, character.CostCurrency));
+        Assert.Equal([new ItemGrant(11730001, 5)], character.CostItems);
+        Assert.Null(fixture.Data.Characters.NextBreak(1001, breakLevel: 6));
+
+        var motive = fixture.Data.Motives.NextBreak(12051001, breakLevel: 0)!;
+        Assert.Equal((1u, 30u, 2u, 1500u), (motive.BreakLevel, motive.MaxLevel, motive.NeedWorldLevel, motive.CostCurrency));
+        Assert.Equal([new ItemGrant(12330001, 5)], motive.CostItems);
+    }
+
     private GameData Assets => fixture.Data;
 
     private Player Fresh()
