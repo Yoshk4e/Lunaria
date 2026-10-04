@@ -111,6 +111,25 @@ public sealed class AuditRound2ProgressionTests(BundledGameplayFixture fixture)
     }
 
     [Fact]
+    public void ExtraCreatures_StopAtTheSilvercraftObjective_AndLoadedCountsAreCapped()
+    {
+        var assets = fixture.Data;
+        var player = new Player(1, assets);
+        const ulong subRegionId = 100001004002;
+        const uint sequenceId = 1142079601;
+        var paramNum = assets.RegionProgress.SequenceRow(subRegionId, sequenceId)!.ParamNum;
+
+        player.GrantRewards([new ItemGrant(29900001, 3), new ItemGrant(29900006, 2), new ItemGrant(29900011, 2)],
+            EnmItemReason.EnmItemChangeNormal);
+        player.RecalculateRegionProgress();
+        Assert.Equal(paramNum, player.RegionProgress.Subregions[subRegionId].Sequences[sequenceId]);
+
+        var restored = new Player(2, assets);
+        restored.RegionProgress.Load([(subRegionId, [(sequenceId, 16u)], [])]);
+        Assert.Equal(paramNum, restored.RegionProgress.Subregions[subRegionId].Sequences[sequenceId]);
+    }
+
+    [Fact]
     public void UnrelatedCreature_DoesNotAdvanceDayfairFourCreatureObjective()
     {
         var player = new Player(1, fixture.Data);

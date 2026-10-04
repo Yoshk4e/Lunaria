@@ -19,7 +19,11 @@ public sealed partial class Player
                 if (assets.RegionProgress.SequenceRow(subRegionId, sequenceId) is not {} sequence)
                     continue;
 
-                if (RegionProgress.SetSequence(subRegionId, sequenceId, CountSequence(subRegionId, sequence)))
+                // The client shows the raw count over ParamNum. Silvercraft objectives count owned creatures of the
+                // listed growth IDs, which can exceed ParamNum, so the count stops at the objective.
+                var count = Math.Min(CountSequence(subRegionId, sequence), sequence.ParamNum);
+
+                if (RegionProgress.SetSequence(subRegionId, sequenceId, count))
                     moved = true;
             }
 
