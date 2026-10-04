@@ -110,6 +110,12 @@ internal sealed class SyncHooks :
                 new SCBuffUpdate { Result = 0, Data = data } :
                 new SCBuffAdd { Result = 0, Data = data });
         }
+
+        // Team buffs change every character's attributes, which the client only refreshes from this notification.
+        foreach (var character in p.Characters.All)
+        {
+            changes.Add(new SCOutsideAttribNtf { Data = p.OutsideAttributes(character.InstId) });
+        }
     }
 
     public void Handle(Player p, CharactersChanged e, PlayerChanges changes)
