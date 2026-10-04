@@ -40,7 +40,7 @@
     {
         <div class="success">@Html.Raw(Model.Success)</div>
     }
-    <form method="POST" action="/signup">
+    <form method="POST" action="@Model.Action">
         @Html.AntiForgeryToken()
         <div class="form-group">
             <label for="email">Email</label>
