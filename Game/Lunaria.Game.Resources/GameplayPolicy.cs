@@ -15,6 +15,12 @@ public sealed record GameplayPolicy
     /// ended, so a server can reopen an activity with the same length from a chosen start.
     /// </summary>
     public Dictionary<uint, ActivityWindowPolicy> ActivityWindows { get; init; } = [];
+    /// <summary>
+    /// Root tasks not started at role creation, keyed by task type. Every root of QuestMain and POIQuest is seeded, but
+    /// some are developer test chains, such as QuestMain 31010 (no English name, a placeholder Chinese name from another
+    /// quest, no reward, and Silverfist scenarios replayed out of story order wherever the player walks).
+    /// </summary>
+    public Dictionary<uint, uint[]> UnseededTasks { get; init; } = [];
 
     public static GameplayPolicy Load(string path)
     {
