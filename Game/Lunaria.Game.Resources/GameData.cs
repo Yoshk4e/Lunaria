@@ -95,6 +95,7 @@ public sealed class GameData(string assetsDir, ILogger<GameData>? logger = null)
     internal readonly Dictionary<string, PSkillGrowthTable> PSkillGrowthTable = [];
     internal readonly Dictionary<string, PSubRegionNPCGroup> PSubRegionNPCGroup = [];
     internal readonly Dictionary<string, PSubRegionTable> PSubRegionTable = [];
+    internal readonly Dictionary<string, PTalentContentTable> PTalentContentTable = [];
     internal readonly Dictionary<string, PTalentNodeTable> PTalentNodeTable = [];
     internal readonly Dictionary<string, PTaskActionsDailyTask> PTaskActionsDailyTask = [];
     internal readonly Dictionary<string, PTaskActionsPOIQuest> PTaskActionsPOIQuest = [];
@@ -155,6 +156,7 @@ public sealed class GameData(string assetsDir, ILogger<GameData>? logger = null)
     public MapAssets Maps { get; private set; } = null!;
     public SkillAssets Skills { get; private set; } = null!;
     public TalentAssets Talents { get; private set; } = null!;
+    public CharacterBonusAssets Bonuses { get; private set; } = null!;
     public GuideAssets Guides { get; private set; } = null!;
     public DropAssets Drops { get; private set; } = null!;
     public MailAssets Mail { get; private set; } = null!;
@@ -221,6 +223,7 @@ public sealed class GameData(string assetsDir, ILogger<GameData>? logger = null)
         Motives = new MotiveAssets(
             PMotiveTable, PMotiveLevelCostTable, PMotiveLevelTemplateTable,
             PMotiveBreakTemplateTable, PMotiveAttributeTable);
+        Bonuses = new CharacterBonusAssets(PMotiveAttributeTable, POutsideAttributeTable, PTalentContentTable, Inside, Motives);
 
         Gacha = new GachaAssets(
             PGachaTable, PGachaRebateTable, Characters, Motives, Items,

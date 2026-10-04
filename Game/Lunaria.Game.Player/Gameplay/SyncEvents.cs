@@ -16,4 +16,6 @@ public sealed record VitalsChanged(IReadOnlyList<ulong> InstIds) : IGameplayEven
 
 public sealed record LiquidChanged : IGameplayEvent;
 
+public sealed record SkillGroupsChanged(ulong InstId, IReadOnlyList<uint> Groups) : IGameplayEvent;
+
 public sealed record BuffsChanged(IReadOnlyList<(PBBuffData Data, bool Refreshed)> Updated, IReadOnlyList<uint> Removed) : IGameplayEvent;

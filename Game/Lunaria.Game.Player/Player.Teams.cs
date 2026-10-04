@@ -63,11 +63,4 @@ public sealed partial class Player
             AttribData = { Teams.CurrentMemberInstIds().Select(id => Characters.AttribData(id)) }
         };
     }
-
-    public int UnlockTalent(ulong instanceId, uint node)
-    {
-        var code = Skills.UnlockTalent(instanceId, node, Characters);
-        if (code == 0) Gameplay.Publish(new CharactersChanged([instanceId]));
-        return code;
-    }
 }

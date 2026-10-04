@@ -30,6 +30,8 @@ public sealed class InsideAttributeAssets
 
     public AttributeIds Attr { get; }
 
+    public IEnumerable<(string Name, int Id)> Names => _byEnum.Select(pair => (pair.Key, pair.Value));
+
     public bool IsPermyriad(int id) => _permyriad.GetValueOrDefault(id);
 
     public int Id(string enumName) =>

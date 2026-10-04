@@ -59,7 +59,8 @@ public sealed class AttribAssets
         uint developAttributeId,
         int? currentHp = null,
         int? currentPermanentLiquid = null,
-        uint? fixedAttributeId = null
+        uint? fixedAttributeId = null,
+        int? maxHpCeiling = null
     )
     {
         var output = new List<(int, int)>(10 + _outsideDefaults.Length);
@@ -68,12 +69,13 @@ public sealed class AttribAssets
         if (DevelopRow(characterId, developAttributeId) is {} row)
         {
             // Send current HP explicitly. The default of 0 makes the client spawn the character dead.
-            var maxHp = row.Maxhp;
+            // maxHpCeiling is MAXHP with the Motive and talent bonuses, which current HP may fill.
+            var maxHp = maxHpCeiling ?? row.Maxhp;
             var permanentLiquidMax = PermanentLiquidMax(fixedAttributeId ?? characterId);
             var hp = Math.Clamp(currentHp ?? maxHp, min: 0, maxHp);
             var permanentLiquid = Math.Clamp(currentPermanentLiquid ?? permanentLiquidMax, min: 0, permanentLiquidMax);
 
-            output.Add((attr.Maxhp, Scale(attr.Maxhp, maxHp)));
+            output.Add((attr.Maxhp, Scale(attr.Maxhp, row.Maxhp)));
             output.Add((attr.Hp, Scale(attr.Hp, hp)));
             output.Add((attr.Atk, Scale(attr.Atk, row.Atk)));
             output.Add((attr.Def, Scale(attr.Def, row.Def)));

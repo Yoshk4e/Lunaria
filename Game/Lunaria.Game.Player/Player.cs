@@ -54,6 +54,7 @@ public sealed partial class Player : TrackedObject
         Mails = new(assets);
         Shop = new(assets);
         Motives = new(assets);
+        Characters.Modifiers = BonusModifiers;
         Gacha = new(assets);
         Tasks = new(assets);
         Collections = new(assets);

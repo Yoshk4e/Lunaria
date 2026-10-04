@@ -13,6 +13,7 @@ internal sealed class SyncHooks :
     IGameplayHook<CooldownStarted>,
     IGameplayHook<VitalsChanged>,
     IGameplayHook<LiquidChanged>,
+    IGameplayHook<SkillGroupsChanged>,
     IGameplayHook<BuffsChanged>,
     IGameplayHook<CharactersChanged>,
     IGameplayHook<CharacterLeveled>,
@@ -85,6 +86,15 @@ internal sealed class SyncHooks :
 
     public void Handle(Player p, LiquidChanged e, PlayerChanges changes) =>
         changes.Add(p.CurrentLiquidNotification());
+
+    public void Handle(Player p, SkillGroupsChanged e, PlayerChanges changes)
+    {
+        foreach (var group in e.Groups.Distinct())
+        {
+            if (p.Skills.GroupLevel(group) is {} level)
+                changes.Add(new SCSkillUpdate { Result = 0, InstId = e.InstId, Groupid = group, Level = level });
+        }
+    }
 
     public void Handle(Player p, BuffsChanged e, PlayerChanges changes)
     {

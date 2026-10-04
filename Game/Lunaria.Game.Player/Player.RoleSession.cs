@@ -45,6 +45,7 @@ public sealed partial class Player
             Teams.GrantStarter(Characters);
             Skills.GrantStarter(Characters);
         }
+        ApplyUnlockedTalentSkills();
         Mails.SweepExpired(now.ToUnixTimeSeconds());
         Progress.Regenerate(now);
         RetryStoredCreatures();

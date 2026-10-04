@@ -58,7 +58,7 @@ public sealed partial class Player
         }
 
         Gameplay.Publish(new BagChanged(EnmItemReason.EnmItemChangeNormal));
-        Gameplay.Publish(new CharactersChanged([charInstId]));
+        Gameplay.Publish(new VitalsChanged([charInstId]));
         return 0;
     }
 
@@ -93,7 +93,7 @@ public sealed partial class Player
         }
 
         Gameplay.Publish(new BagChanged(EnmItemReason.EnmItemChangeNormal));
-        Gameplay.Publish(new CharactersChanged([charInstId]));
+        Gameplay.Publish(new VitalsChanged([charInstId]));
         return 0;
     }
 
@@ -204,6 +204,7 @@ public sealed partial class Player
         var recycle = Motives.ExpToMaterials(granted.Dropped);
         RetryStoredMotives(UtcNow);
         Gameplay.Publish(new BagChanged(EnmItemReason.EnmItemChangeMotiveLevelUp));
+        RefreshMotiveHolder(motiveUniq);
         return new MotiveLevelOutcome(Code: 0, oldLevel, granted.NewLevel, recycle) {
             Delivery = recycle.Count > 0 ? GrantRewards(recycle, EnmItemReason.EnmItemChangeMotiveLevelUpRecycle) : RewardDelivery.Empty
         };
@@ -229,6 +230,7 @@ public sealed partial class Player
             return new MotiveBreakOutcome(purchase, oldBreak, oldBreak);
 
         Gameplay.Publish(new BagChanged(EnmItemReason.EnmItemChangeMotiveBreak));
+        RefreshMotiveHolder(motiveUniq);
         var next = Motives.Get(motiveUniq)!.BreakLevel;
         return new MotiveBreakOutcome(Code: 0, oldBreak, next);
     }
