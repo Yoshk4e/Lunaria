@@ -38,6 +38,20 @@ public sealed class CatalogManagerTests(BundledGameplayFixture fixture)
     }
 
     [Fact]
+    public void RewardedCharacterAndMotives_AreShownAsPreciousAwards()
+    {
+        var player = new Player(1, Assets);
+        const uint card = 11041001, motive = 12031001;
+
+        var delivery = player.GrantRewards([new ItemGrant(card, 1), new ItemGrant(motive, 2)], EnmItemReason.EnmItemChangeNormal);
+
+        var shown = Assert.Single(delivery.Presentation.OfType<SCPreciousAwardShowNtf>());
+        Assert.Equal(EnmItemReason.EnmItemChangeNormal, shown.Source);
+        Assert.Equal([card, motive, motive], shown.Items.Select(i => i.ItemId));
+        Assert.All(shown.Items, i => Assert.True(i.IsNew));
+    }
+
+    [Fact]
     public void Gacha_ResultScreenListsEachPullByItem()
     {
         var player = new Player(1, Assets);

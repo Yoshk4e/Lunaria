@@ -25,6 +25,8 @@ public sealed record RewardDelivery
     public ulong TeamExpAwarded => checked(TeamExpFromItems + TeamExpFromReason);
     public IReadOnlyList<CharacterData> Newcomers { get; init; } = [];
     public IReadOnlyList<CSMotiveElem> NewMotives { get; init; } = [];
+    /// <summary>Character card and motive items added to the roster rather than the bag, for the reward screens.</summary>
+    public IReadOnlyList<ItemGrant> Enrolled { get; init; } = [];
     public IReadOnlyList<uint> ChangedBattlePasses { get; init; } = [];
     public int? Stamina { get; init; }
 
@@ -59,6 +61,7 @@ public sealed record RewardDelivery
             UnlockedGuides = parts.SelectMany(p => p.UnlockedGuides).Distinct().ToArray(),
             Newcomers = parts.SelectMany(p => p.Newcomers).ToArray(),
             NewMotives = parts.SelectMany(p => p.NewMotives).ToArray(),
+            Enrolled = parts.SelectMany(p => p.Enrolled).ToArray(),
             ChangedBattlePasses = parts.SelectMany(p => p.ChangedBattlePasses).Distinct().ToArray(),
             TeamExpFromItems = parts.Aggregate(seed: 0UL, (sum, p) => checked(sum + p.TeamExpFromItems)),
             TeamExpFromReason = parts.Aggregate(seed: 0UL, (sum, p) => checked(sum + p.TeamExpFromReason)),

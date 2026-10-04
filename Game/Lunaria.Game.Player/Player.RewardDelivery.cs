@@ -15,6 +15,7 @@ public sealed partial class Player
         var creatureFailures = new List<ItemGrant>();
         var newcomers = new List<CharacterData>();
         var newMotives = new List<CSMotiveElem>();
+        var enrolled = new List<ItemGrant>();
         var acquired = new Dictionary<uint, uint>();
         var motivesAcquired = new Dictionary<uint, uint>();
 
@@ -74,6 +75,7 @@ public sealed partial class Player
                     if (character.Ok)
                     {
                         newcomers.Add(Characters.ToCharacterData(Characters.Get(character.InstId)!));
+                        enrolled.Add(new ItemGrant(grant.ItemId, 1));
                         Acquired(grant.ItemId, count: 1);
 
                         if (grant.Count == 1)
@@ -99,6 +101,7 @@ public sealed partial class Player
 
                     if (added > 0)
                     {
+                        enrolled.Add(new ItemGrant(grant.ItemId, added));
                         Acquired(grant.ItemId, added);
                         motivesAcquired[motiveId] = (uint)Math.Min(uint.MaxValue, (ulong)motivesAcquired.GetValueOrDefault(motiveId) + added);
                     }
@@ -165,7 +168,7 @@ public sealed partial class Player
             Credited = credited.ToArray(), Stored = stored.ToArray(), Undelivered = undelivered.ToArray(),
             DirectFailures = undelivered.ToArray(),
             CollectedCreatures = collectedCreatures, CreatureFailures = creatureFailures,
-            TeamExpFromItems = teamExpFromItems, Newcomers = newcomers, NewMotives = newMotives,
+            TeamExpFromItems = teamExpFromItems, Newcomers = newcomers, NewMotives = newMotives, Enrolled = enrolled,
             TeamExpFromReason = TeamExpFor(reason),
             ChangedBattlePasses = changedPasses, Stamina = stamina
         };
