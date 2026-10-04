@@ -8,7 +8,10 @@ public sealed partial class TaskManager : TrackedObject
 {
     public const int ArriveMapTarget = (int)ServerTarget.ArriveMap;
 
-    /// <summary>Client target 13 (EmptyAction) completes as soon as its step becomes current.</summary>
+    /// <summary>
+    /// Client target 13 (EmptyAction). The client waits client_param1 seconds (at least 1) and reports it; quests use
+    /// it to hold a relocation until a scenario's black screen is up. Only a real map entry completes it server side.
+    /// </summary>
     public const int EmptyActionTarget = 13;
 
     // Do not repeat grant commands when a failed step rolls back.
@@ -170,11 +173,11 @@ public sealed partial class TaskManager : TrackedObject
     /// <summary>
     /// Settle markers and arrivals before FinEnterMap. Later period changes remove the NPC crowd without respawning it.
     /// </summary>
-    public IReadOnlyList<TaskProgressResult> OnMapEntered(ulong mapId)
+    public IReadOnlyList<TaskProgressResult> OnMapEntered(ulong mapId, bool settleMarkers = true)
     {
         var results = new List<TaskProgressResult>();
 
-        if (mapId != 0)
+        if (mapId != 0 && settleMarkers)
         {
             List<TaskProgressResult> batch;
 

@@ -48,7 +48,7 @@ public sealed class HandleTaskActionUpdate(ILogger<HandleTaskActionUpdate> logge
                 outcome.Progress.TaskType, outcome.Progress.TaskId, req.ActionId);
 
         if (ctx.Player.Map.Phase == MapPhase.Loaded)
-            foreach (var arrival in ctx.Player.SettleMapArrival(ctx.Player.Map.MapId))
+            foreach (var arrival in ctx.Player.SettleMapArrival(ctx.Player.Map.MapId, settleMarkers: false))
             {
                 await ctx.NotifyAsync(arrival.AllNotifications).ConfigureAwait(false);
             }
