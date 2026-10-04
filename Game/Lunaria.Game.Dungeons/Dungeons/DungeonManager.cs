@@ -66,9 +66,10 @@ public sealed partial class DungeonManager(GameData assets) : TrackedObject
             RollOver(_types[typeId], now);
         }
 
+        // Saves may hold horde states of non-horde dungeons written before HordeOf existed.
         foreach (var (hordeId, killCount, starAward) in hordes)
         {
-            if (assets.Dungeons.Horde(hordeId) is not null)
+            if (HordeOf(hordeId) is not null)
                 _hordes[hordeId] = new HordeState(hordeId, killCount, starAward);
         }
 
@@ -230,7 +231,7 @@ public sealed partial class DungeonManager(GameData assets) : TrackedObject
 
         HordeState? horde = null;
 
-        if (settled && assets.Dungeons.Horde((uint)dungeonId) is {} hordeRow)
+        if (settled && HordeOf(dungeonId) is {} hordeRow)
         {
             var state = _hordes.GetValueOrDefault((uint)dungeonId) ?? new HordeState((uint)dungeonId, KillCount: 0, StarAward: 0);
             var stars = StarsFor(hordeRow, hordeKills);
@@ -260,6 +261,15 @@ public sealed partial class DungeonManager(GameData assets) : TrackedObject
             dungeonId, victory, leave, hordeKills, rewards.Count);
         return new DungeonSettlement(0, settled, settled && victory, rewards, horde);
     }
+
+    /// <summary>
+    /// Horde row of a ZombieWave dungeon. P_HordeTable also has a row for Abyss stage 203001; the client keys horde data
+    /// by ZombieWave dungeons only and fails to load the world when it receives one for another dungeon.
+    /// </summary>
+    private PHordeTable? HordeOf(ulong dungeonId) =>
+        assets.Dungeons.Dungeon(dungeonId)?.DungeonType == DungeonAssets.ZombieWaveType
+            ? assets.Dungeons.Horde((uint)dungeonId)
+            : null;
 
     public CSDungeonsData ToFullData(DateTimeOffset now)
     {

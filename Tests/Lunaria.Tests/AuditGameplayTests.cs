@@ -1,4 +1,5 @@
 using Lunaria.Game.Player;
+using Lunaria.Game.Player.Persistence.Saves;
 using Lunaria.Game.Resources;
 using Lunaria.Game.Tasks;
 using Lunaria.Game.Wanted;
@@ -71,6 +72,26 @@ public sealed class AuditGameplayTests(BundledGameplayFixture fixture, ITestOutp
         Assert.Equal(0, player.FinishDungeon(dungeonId, victory, leave, 0).Code);
 
         Assert.Equal(victory ? before - 30 : before, player.Progress.Stamina);
+    }
+
+    [Fact]
+    public void AbyssStageWithAHordeRow_NeverSendsHordeData()
+    {
+        const uint dungeonId = 203001; // Deep Cognito T1, an Abyss stage that also has a P_HordeTable row
+        var player = Fresh();
+        player.Progress.Load(1, 0, 0, 200, DateTimeOffset.UtcNow);
+        Assert.Equal(0, player.EnterDungeon(dungeonId).Code);
+        Assert.Equal(0, player.FinishDungeon(dungeonId, true, false, 0).Code);
+        Assert.Empty(player.Dungeons.ToFullData(DateTimeOffset.UtcNow).HordeData.HordeList);
+
+        // Saves written before the fix hold a horde state for it, which made the client hang while loading the world.
+        var saved = RoleSaveMapper.Capture(player);
+        var old = saved with { Dungeons = saved.Dungeons! with {
+            Hordes = [new RoleSaveDocument.HordeSave { HordeId = dungeonId, KillCount = 0, StarAward = 0 }]
+        } };
+        var restored = Fresh();
+        RoleSaveMapper.Apply(restored, old);
+        Assert.Empty(restored.Dungeons.ToFullData(DateTimeOffset.UtcNow).HordeData.HordeList);
     }
 
     private Player Fresh(bool extraMember = false)
