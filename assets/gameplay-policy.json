@@ -1,5 +1,10 @@
 {
-  "provenance": "Lunaria server policy, not recovered original rules. House uses prior 3600s/8-interval timing independently of industry. Pools are inferred from process display types. Award count ranges, filters and both coin behaviors using fixed ThoughtSand are explicit assumptions; raw behavior and independent percentage chance come from S_WantedPosterAwardTable. Skill cost overrides replace absent legacy IDs 3/2 with existing materials 11720001/11730001 as server policy; no original mapping was recovered. Unused sample definitions retain their source IDs; unavailable candidates produce no award.",
+  "provenance": "Lunaria server policy, not recovered original rules. House uses prior 3600s/8-interval timing independently of industry. Pools are inferred from process display types. Award count ranges, filters and both coin behaviors using fixed ThoughtSand are explicit assumptions; raw behavior and independent percentage chance come from S_WantedPosterAwardTable. Skill cost overrides replace absent legacy IDs 3/2 with existing materials 11720001/11730001 as server policy; no original mapping was recovered. QuestMain 31010 is not seeded at role creation: it is inferred to be a developer test chain (no English name, unrelated placeholder name, no reward, out-of-order Silverfist scenarios). Unused sample definitions retain their source IDs; unavailable candidates produce no award.",
+  "unseededTasks": {
+    "1": [
+      31010
+    ]
+  },
   "skillCostItemOverrides": {
     "3": 11720001,
     "2": 11730001

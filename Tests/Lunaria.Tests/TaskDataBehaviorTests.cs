@@ -162,6 +162,15 @@ public sealed class TaskDataBehaviorTests(BundledGameplayFixture fixture)
     }
 
     [Fact]
+    public void PolicyTestTask_IsNotSeededAtRoleCreation()
+    {
+        var player = new Player(1, Assets);
+        player.Tasks.EnsureStarted();
+        Assert.False(player.Tasks.IsProcessing(TaskAssets.QuestMain, 31010));
+        Assert.Contains(player.Tasks.Processing.Keys, t => t.Type == TaskAssets.QuestMain);
+    }
+
+    [Fact]
     public void ScriptStartedTask_WaitsForItsStoryCommandInsteadOfSeedingAtLogin()
     {
         var player = new Player(1, Assets);

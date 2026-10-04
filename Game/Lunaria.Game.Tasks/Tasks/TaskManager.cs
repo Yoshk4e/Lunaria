@@ -128,6 +128,7 @@ public sealed partial class TaskManager(GameData assets) : TrackedObject
         foreach (var task in assets.Tasks.StartingTasksOf(type))
         {
             if (scriptStarted.Contains((type, task))) continue;
+            if (assets.Policy.UnseededTasks.GetValueOrDefault(type)?.Contains(task) == true) continue;
             if (_processing.Count >= MaxProcessing)
                 return started;
 
