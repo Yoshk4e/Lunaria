@@ -22,6 +22,26 @@ public sealed class SignInIsolationTests
     }
 
     [Fact]
+    public void MovedWindow_ReopensAnEndedActivityWithTheSameLength()
+    {
+        var activities = new Dictionary<string, PActivityTable> {
+            ["3"] = new() { Id = 3, TimeOffsetStart = (ulong)Now.AddDays(-100).ToUnixTimeSeconds(),
+                TimeOffsetStop = (ulong)Now.AddDays(-90).ToUnixTimeSeconds() }
+        };
+        var rewards = new Dictionary<string, PSignInActivityRewardTable> {
+            ["31"] = new() { Id = 31, ActivityId = 3, Day = 1, Items = ["1=10"] }
+        };
+        Assert.False(new SignInManager(new SignInAssets(activities, rewards)).Query(3, Now).Data!.SigninDatas[0].IsSignedIn);
+
+        var moved = new SignInAssets(activities, rewards,
+            new Dictionary<uint, ActivityWindowPolicy> { [3] = new() { Start = Now.AddHours(-1) } });
+
+        Assert.Equal((ulong)Now.AddHours(-1).ToUnixTimeSeconds(), moved.Activity(3)!.TimeOffsetStart);
+        Assert.Equal((ulong)Now.AddHours(-1).AddDays(10).ToUnixTimeSeconds(), moved.Activity(3)!.TimeOffsetStop);
+        Assert.True(new SignInManager(moved).Query(3, Now).Data!.SigninDatas[0].IsSignedIn);
+    }
+
+    [Fact]
     public void Activities_DoNotShareAttendanceClaimsOrDailyClock()
     {
         var manager = Create();

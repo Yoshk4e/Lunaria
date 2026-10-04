@@ -9,12 +9,23 @@ public sealed class SignInAssets
 
     public SignInAssets(
         IReadOnlyDictionary<string, PActivityTable> activities,
-        IReadOnlyDictionary<string, PSignInActivityRewardTable> rewards
+        IReadOnlyDictionary<string, PSignInActivityRewardTable> rewards,
+        IReadOnlyDictionary<uint, ActivityWindowPolicy>? windows = null
     )
     {
         foreach (var row in activities.Values)
         {
             _activities[row.Id] = row;
+        }
+
+        // A moved window keeps the length of the table window.
+        foreach (var (id, window) in windows ?? new Dictionary<uint, ActivityWindowPolicy>())
+        {
+            if (!_activities.TryGetValue(id, out var row) || row.TimeOffsetStop <= row.TimeOffsetStart)
+                throw new ResourceException("gameplay-policy.json", $"activity window {id} has no table window to move");
+
+            var start = (ulong)window.Start.ToUnixTimeSeconds();
+            _activities[id] = row with { TimeOffsetStart = start, TimeOffsetStop = start + (row.TimeOffsetStop - row.TimeOffsetStart) };
         }
 
         foreach (var row in rewards.Values)
