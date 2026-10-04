@@ -37,7 +37,7 @@ public sealed class SignupController(UserRepository users, PasswordHasher hasher
             return View(failed);
 
         return View(new SignupViewModel {
-            Success = "Account created successfully! <a href=\"/login\">Sign in</a>"
+            Success = "Account created successfully! You can sign in from the game."
         });
     }
 
