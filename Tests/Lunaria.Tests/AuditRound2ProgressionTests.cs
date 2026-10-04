@@ -130,6 +130,20 @@ public sealed class AuditRound2ProgressionTests(BundledGameplayFixture fixture)
     }
 
     [Fact]
+    public void UnlockedCognitoPin_CountsOnlyInItsOwnSubRegion()
+    {
+        var assets = fixture.Data;
+        var player = new Player(1, assets);
+        Assert.Equal(100001001002ul, assets.Maps.Teleport(11422401)!.MapId);
+
+        Assert.Equal(0, player.UnlockTeleport(11422401));
+
+        Assert.Equal(1u, player.RegionProgress.Subregions[100001001002].Sequences[1112012401]);
+        Assert.False(player.RegionProgress.Subregions.TryGetValue(100001004002, out var southChurch)
+            && southChurch.Sequences.GetValueOrDefault(1142012401u) > 0);
+    }
+
+    [Fact]
     public void UnrelatedCreature_DoesNotAdvanceDayfairFourCreatureObjective()
     {
         var player = new Player(1, fixture.Data);

@@ -48,8 +48,11 @@ public sealed partial class Player
         if (regist.RegistType == 2 || regist.RegistType == 7)
             return (uint)sequence.ParamId.Count(cfg => Collections.Gathered.Contains(cfg));
 
+        // ParamId holds the teleport template (P_TeleportPointTemplate). The unlocked points are P_FunctionalNPCTable
+        // instances of that template, each placed on one sub-region.
         if (regist.RegistType == 3)
-            return (uint)sequence.ParamId.Count(id => Map.UnlockedTeleports.Contains(id));
+            return (uint)Map.UnlockedTeleports.Count(id => assets.Maps.Teleport(id) is {} point
+                && point.MapId == subRegionId && sequence.ParamId.Any(template => template == point.TemplateId));
 
         if (regist.RegistType == 6)
             return (uint)sequence.ParamId.Distinct().Sum(SilverCreatures.CountOfGrowth);
