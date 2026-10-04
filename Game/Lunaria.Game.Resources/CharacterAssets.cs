@@ -5,6 +5,7 @@ namespace Lunaria.Game.Resources;
 public sealed class CharacterAssets
 {
     private readonly Dictionary<uint, BreakStep[]> _breaks = [];
+    private readonly Dictionary<(uint Template, uint BreakLevel), uint> _breakDevelopIds = [];
     private readonly Dictionary<uint, PCharacterTable> _characters = [];
 
     private readonly Dictionary<(uint Character, uint Level), uint> _developIds = [];
@@ -36,6 +37,11 @@ public sealed class CharacterAssets
         foreach (var row in skillGrowth.Values)
         {
             _skillGrowth[row.Id] = row;
+        }
+
+        foreach (var row in breaks.Values.Where(r => r.DevelopAttributeId != 0))
+        {
+            _breakDevelopIds[(row.TemplateId, row.BreakLevel)] = row.DevelopAttributeId;
         }
 
         foreach (var group in breaks.Values.GroupBy(r => r.TemplateId))
@@ -123,8 +129,14 @@ public sealed class CharacterAssets
     private uint LevelTemplate(uint characterId) =>
         _characters.GetValueOrDefault(characterId)?.LevelUpTemplateId is > 0 and var id ? id : characterId;
 
-    private BreakStep[] Ladder(uint characterId) =>
-        _breaks.GetValueOrDefault(_characters.GetValueOrDefault(characterId)?.BreakUpTemplateId is > 0 and var id ? id : characterId) ?? _sharedBreaks;
+    /// <summary>The cumulative P_DevelopAttributeTable row of a break level (1001201 for Munin at break 1), or 0.</summary>
+    public uint BreakDevelopAttributeId(uint characterId, uint breakLevel) =>
+        _breakDevelopIds.GetValueOrDefault((BreakTemplate(characterId), breakLevel));
+
+    private BreakStep[] Ladder(uint characterId) => _breaks.GetValueOrDefault(BreakTemplate(characterId)) ?? _sharedBreaks;
+
+    private uint BreakTemplate(uint characterId) =>
+        _characters.GetValueOrDefault(characterId)?.BreakUpTemplateId is > 0 and var id ? id : characterId;
 
     private static BreakStep ToBreakStep(PBreakTemplateTable row) => new(
         row.BreakLevel,

@@ -233,8 +233,8 @@ public sealed class UtilityManagerTests(TestAssets fixture)
         var motive = player.Motives.Add(player.Guid, 12051001, 1).UniqId;
 
         Assert.Equal(0, player.EquipMotive(motive, owned.InstId));
-        // Level 1 row 2001: MAXHP +100 and ATK +10, sent as the difference between final and base.
-        Assert.Equal(hpBefore.BaseValue, Attr(maxHp).BaseValue);
+        // Level 1 row 2001: MAXHP +100 and ATK +10. Flat Motive bonuses count in the base, as in the client.
+        Assert.Equal(hpBefore.BaseValue + 100 * 10_000, Attr(maxHp).BaseValue);
         Assert.Equal(hpBefore.FinalValue + 100 * 10_000, Attr(maxHp).FinalValue);
         Assert.Equal(atkBefore.FinalValue + 10 * 10_000, Attr(atk).FinalValue);
         Assert.Single(player.DrainGameplayChanges().OfType<SCOutsideAttribNtf>());
