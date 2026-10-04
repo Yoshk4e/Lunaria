@@ -54,6 +54,23 @@ public sealed class UserRepository(IDbContextFactory<SdkDbContext> factory)
         return user;
     }
 
+    /// <summary>Sets a new password and clears the failure lock. Returns false for an unknown email.</summary>
+    public async Task<bool> UpdatePasswordAsync(string email, string passwordHash, CancellationToken ct = default)
+    {
+        await using var db = await factory.CreateDbContextAsync(ct);
+        var user = await db.Users.SingleOrDefaultAsync(u => u.Email == email, ct);
+
+        if (user is null)
+            return false;
+
+        user.PasswordHash = passwordHash;
+        user.FailedLoginAttempts = 0;
+        user.Locked = false;
+        user.UpdatedAt = DateTime.UtcNow;
+        await db.SaveChangesAsync(ct);
+        return true;
+    }
+
     public async Task UpdateLastLoginAsync(Guid userId, CancellationToken ct = default)
     {
         await using var db = await factory.CreateDbContextAsync(ct);

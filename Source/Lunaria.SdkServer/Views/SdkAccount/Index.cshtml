@@ -1,0 +1,71 @@
+@model RetrieveViewModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lunaria SDK - Account</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+        .container { background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 40px; width: 100%; max-width: 400px; }
+        .logo { text-align: center; margin-bottom: 30px; }
+        .logo h1 { color: #2c3e50; font-size: 28px; font-weight: 600; }
+        .logo p { color: #7f8c8d; margin-top: 8px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; color: #2c3e50; font-weight: 500; font-size: 14px; }
+        input[type="email"], input[type="password"] { width: 100%; padding: 12px 16px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; transition: border-color 0.2s, box-shadow 0.2s; }
+        input:focus { outline: none; border-color: #3498db; box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1); }
+        .btn { width: 100%; padding: 14px; background: #3498db; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+        .btn:hover { background: #2980b9; }
+        .error { background: #fdf2f2; border: 1px solid #e74c3c; color: #c0392b; padding: 12px; border-radius: 6px; margin-bottom: 20px; font-size: 14px; }
+        .success { background: #f0fdf4; border: 1px solid #27ae60; color: #1e8a49; padding: 12px; border-radius: 6px; margin-bottom: 20px; font-size: 14px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="logo">
+        <h1>Lunaria SDK</h1>
+        <p id="subtitle">Reset your password</p>
+    </div>
+    <div id="register-result" class="success" hidden>Account created. You can sign in now.</div>
+    <div id="retrieve-result" class="success" hidden>Password changed. You can sign in now.</div>
+    <div id="retrieve-way" hidden>
+        @if (Model.Error is not null)
+        {
+            <div class="error">@Model.Error</div>
+        }
+        <form method="POST" action="/account/retrieve">
+            @Html.AntiForgeryToken()
+            <input type="hidden" id="appId" name="AppId" value="@Model.AppId">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="Email" required autocomplete="email" placeholder="you@example.com" value="@Model.Email">
+            </div>
+            <div class="form-group">
+                <label for="password">New password</label>
+                <input type="password" id="password" name="Password" required autocomplete="new-password" placeholder="Min 8 characters" minlength="8">
+            </div>
+            <div class="form-group">
+                <label for="confirm">Confirm new password</label>
+                <input type="password" id="confirm" name="ConfirmPassword" required autocomplete="new-password" minlength="8">
+            </div>
+            <button type="submit" class="btn">Change password</button>
+        </form>
+    </div>
+</div>
+<script>
+    // The SDK routes this page with the hash, query included: #/retrieve-way?lang=en&appId=silver...
+    const [hashRoute, hashQuery] = location.hash.replace(/^#\//, "").split("?");
+    const appId = new URLSearchParams(hashQuery ?? "").get("appId");
+    const appIdInput = document.getElementById("appId");
+    if (appId && !appIdInput.value) appIdInput.value = appId;
+    const showForm = @(Model.ShowForm ? "true" : "false");
+    const serverRoute = "@(Model.Route ?? "")";
+    const route = showForm ? "retrieve-way" : serverRoute || hashRoute;
+    const section = document.getElementById(route) ?? document.getElementById("retrieve-way");
+    section.hidden = false;
+    if (section.id !== "retrieve-way") document.getElementById("subtitle").textContent = "Lunaria account";
+</script>
+</body>
+</html>

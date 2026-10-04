@@ -40,8 +40,9 @@
     {
         <div class="success">@Html.Raw(Model.Success)</div>
     }
-    <form method="POST" action="/signup">
+    <form method="POST" action="@Model.Action">
         @Html.AntiForgeryToken()
+        <input type="hidden" name="AppId" value="@Model.AppId">
         <div class="form-group">
             <label for="email">Email</label>
             <input type="email" id="email" name="Email" required autocomplete="email" placeholder="you@example.com" value="@Model.Email">
@@ -56,9 +57,7 @@
         </div>
         <button type="submit" class="btn">Create Account</button>
     </form>
-    <div class="link">
-        <a href="/login">Already have an account? Sign in</a>
-    </div>
+    <div class="link">Already have an account? Sign in from the game.</div>
 </div>
 </body>
 </html>
