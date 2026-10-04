@@ -6,6 +6,11 @@ namespace Lunaria.Game.Player;
 
 public sealed partial class Player
 {
+    /// <summary>
+    /// The client reads the combine result's add_list as the single fused creature (anything else is "invalid
+    /// addList") and ignores add_list on release, so creatures collected from the bag afterwards are sent in their own
+    /// SC_SILVER_CREATURE_CHANGE_NTF.
+    /// </summary>
     public (int Result, SilverCreatureChange? Change) CombineSilverCreatures(IReadOnlyList<uint> ids)
     {
         using var operationTime = BeginOperation();
@@ -14,7 +19,7 @@ public sealed partial class Player
         {
             foreach (var added in change.AddList)
                 Gameplay.Publish(new CreatureAcquired(added.ItemId, 1));
-            change.AddList.AddRange(CollectStoredCreatures());
+            RetryStoredCreatures();
         }
         return result;
     }
@@ -23,8 +28,8 @@ public sealed partial class Player
     {
         using var operationTime = BeginOperation();
         var result = SilverCreatures.Release(ids);
-        if (result.Result == 0 && result.Change is {} change)
-            change.AddList.AddRange(CollectStoredCreatures());
+        if (result.Result == 0)
+            RetryStoredCreatures();
         return result;
     }
 

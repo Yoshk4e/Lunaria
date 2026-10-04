@@ -382,7 +382,14 @@ public sealed class AuditGameplayTests(BundledGameplayFixture fixture, ITestOutp
 
         Assert.Equal(capacity, player.SilverCreatures.Creatures.Count);
         Assert.Equal(0u, player.Bag.CountOf(itemId));
-        if (change is not null) Assert.Single(change.AddList, c => c.ItemId == itemId);
+        if (change is not null)
+        {
+            // The reply keeps only its own result: the fused creature on combine, nothing on release.
+            Assert.Equal(trigger == "combine" ? 1 : 0, change.AddList.Count);
+            Assert.DoesNotContain(change.AddList, c => c.ItemId == itemId);
+            var ntf = Assert.Single(player.DrainGameplayChanges().OfType<SCSilverCreatureChangeNtf>());
+            Assert.Single(ntf.Change.AddList, c => c.ItemId == itemId);
+        }
         var roster = player.SilverCreatures.ToList();
         player.AdvanceTime(DateTimeOffset.UtcNow);
         player.AdvanceTime(DateTimeOffset.UtcNow);
