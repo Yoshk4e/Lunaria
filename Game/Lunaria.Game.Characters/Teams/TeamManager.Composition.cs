@@ -14,7 +14,7 @@ public sealed partial class TeamManager : TrackedObject
         IReadOnlyDictionary<uint, IReadOnlyList<uint>>? gems = null
     )
     {
-        if (Get(teamId) is not {} team)
+        if (GetOrOpen(teamId) is not {} team)
             return (int)EnmTextCode.EnmTextCharacterInvalidTeamid;
 
         if (members.Count == 0)
@@ -112,7 +112,7 @@ public sealed partial class TeamManager : TrackedObject
     /// <summary>MAX_TEAM_NAME_LEN limits bytes, not characters.</summary>
     public int Rename(uint teamId, string name)
     {
-        if (Get(teamId) is not {} team)
+        if (GetOrOpen(teamId) is not {} team)
             return (int)EnmTextCode.EnmTextCharacterInvalidTeamid;
 
         if (string.IsNullOrWhiteSpace(name))
@@ -178,14 +178,29 @@ public sealed partial class TeamManager : TrackedObject
         UsingMemberSlot = SlotOrLowestOccupied(UsingMemberSlot);
     }
 
+    /// <summary>
+    /// The client lists all MAX_CHARACTER_TEAMS teams and fills the ones the server did not send with empty
+    /// placeholders (TeamContainer, team_name ''). A team the server has not stored yet is opened the same way on
+    /// its first edit.
+    /// </summary>
+    private TeamState? GetOrOpen(uint teamId) =>
+        Get(teamId) ?? (teamId is >= 1 and <= MaxTeams ?
+            new TeamState {
+                TeamId = teamId,
+                Name = "",
+                Members = [],
+                TemporaryLiquid = TeamLiquid.Empty,
+                TemporaryLiquidLv2 = TeamLiquid.Empty
+            } :
+            null);
+
     private void Replace(TeamState team)
     {
         var index = _teams.FindIndex(t => t.TeamId == team.TeamId);
 
         if (index < 0)
-            return;
-
-        _teams[index] = team;
-
+            _teams.Add(team);
+        else
+            _teams[index] = team;
     }
 }
