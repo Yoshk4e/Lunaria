@@ -52,6 +52,30 @@ public sealed class CatalogManagerTests(BundledGameplayFixture fixture)
     }
 
     [Fact]
+    public void Gacha_ResultScreenListsEachPullByItem()
+    {
+        var player = new Player(1, Assets);
+        var banner = Assets.Gacha.Banners.First(b => b.Kind == "character");
+        player.Wallet.Credit(Assets.Gacha.CostMoneyType(banner.PoolId), 2L * Assets.Gacha.PullCost(banner.PoolId));
+        var card = Assets.Items.CharacterCardFor(banner.FeaturedFiveStar);
+        Assert.NotNull(card);
+
+        var first = Assert.Single(player.DoGacha(banner.BannerId, false, Now, new LowestRoll()).Delivery!.Delivery.Presentation
+            .OfType<SCPreciousAwardShowNtf>());
+        Assert.Equal(EnmItemReason.EnmItemChangeGachaReward, first.Source);
+        var drawn = Assert.Single(first.Items);
+        Assert.Equal(card, drawn.ItemId);
+        Assert.True(drawn.IsNew);
+        Assert.Empty(drawn.RepeatConvert);
+
+        var again = Assert.Single(Assert.Single(player.DoGacha(banner.BannerId, false, Now, new LowestRoll()).Delivery!.Delivery
+            .Presentation.OfType<SCPreciousAwardShowNtf>()).Items);
+        Assert.Equal(card, again.ItemId);
+        Assert.False(again.IsNew);
+        Assert.Single(again.RepeatConvert);
+    }
+
+    [Fact]
     public void Gacha_InsufficientFundsAndDailyLimitDoNotChargeOrRoll()
     {
         var player = new Player(1, Assets);
@@ -74,6 +98,9 @@ public sealed class CatalogManagerTests(BundledGameplayFixture fixture)
         Assert.Equal(balance, player.Wallet.Balance(currency));
         Assert.Equal(0, player.DoGacha(banner.BannerId, false, Now.AddDays(1), new LowestRoll()).Code);
         Assert.Equal(1u, player.Gacha.DailyCountOf(banner.BannerId, Now.AddDays(1)));
+        // The client reads daily_count as the pulls left today.
+        Assert.Equal(cap - 1, player.Gacha.PoolInfo(banner.BannerId, Now.AddDays(1)).DailyCount);
+        Assert.Equal(cap, new Player(2, Assets).Gacha.PoolInfo(banner.BannerId, Now).DailyCount);
     }
 
     [Fact]

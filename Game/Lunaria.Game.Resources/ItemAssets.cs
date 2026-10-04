@@ -15,6 +15,7 @@ public sealed class ItemAssets
     private const uint LastLevelUpItemRow = 4;
     private readonly FrozenDictionary<int, uint> _currencyItemFor;
     private readonly FrozenDictionary<uint, int> _currencyItems;
+    private readonly FrozenDictionary<uint, uint> _characterCards;
     private readonly FrozenDictionary<uint, int> _itemTypes;
 
     private readonly FrozenDictionary<uint, PItemTable> _items;
@@ -94,6 +95,19 @@ public sealed class ItemAssets
 
         _currencyItems = currencies.ToFrozenDictionary();
         _currencyItemFor = currencyFor.ToFrozenDictionary();
+
+        var cards = new Dictionary<uint, uint>();
+
+        foreach (var (itemId, row) in itemMap)
+        {
+            if ((ItemUseType)row.UseType != ItemUseType.AddCharacter || row.Param.Count == 0)
+                continue;
+
+            if (!cards.TryGetValue(row.Param[0], out var first) || itemId < first)
+                cards[row.Param[0]] = itemId;
+        }
+
+        _characterCards = cards.ToFrozenDictionary();
     }
 
     public IReadOnlySet<int> MoneyTypes => _moneyTypes;
@@ -143,4 +157,8 @@ public sealed class ItemAssets
         _currencyItemFor.TryGetValue(moneyType, out var itemId) ? itemId : null;
 
     public bool IsMoneyType(int moneyType) => _moneyTypes.Contains(moneyType);
+
+    /// <summary>The AddCharacter item whose Param[0] is this character, for screens that show cards by item id.</summary>
+    public uint? CharacterCardFor(uint characterId) =>
+        _characterCards.TryGetValue(characterId, out var itemId) ? itemId : null;
 }
