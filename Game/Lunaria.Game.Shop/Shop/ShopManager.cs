@@ -46,15 +46,16 @@ public sealed partial class ShopManager(GameData assets) : TrackedObject
 
     public ShopGood? GoodInShop(uint shopId, uint goodId) => assets.Shops.GoodInShop(shopId, goodId);
 
-    public IReadOnlyList<ShopGoodsInfo> GoodsInfo(uint shopId) =>
-        Goods(shopId).Select(ToGoodsInfo).ToList();
+    public IReadOnlyList<ShopGoodsInfo> GoodsInfo(uint shopId, DateTimeOffset now) =>
+        Goods(shopId).Select(good => ToGoodsInfo(good, good.LimitNum - Math.Min(BoughtOf(good, now), good.LimitNum))).ToList();
 
-    public static ShopGoodsInfo ToGoodsInfo(ShopGood good) => new() {
+    /// <summary>The client shows period_num as the stock left (StoreNum) over the table's LimitNum.</summary>
+    public static ShopGoodsInfo ToGoodsInfo(ShopGood good, uint left) => new() {
         Id = good.Id,
         MoneyId = unchecked((uint)good.MoneyType),
         MoneyNum = good.CostNum,
         PeriodType = ToPeriodType(good.LimitType),
-        PeriodNum = good.LimitNum
+        PeriodNum = left
     };
 
     public uint BoughtOf(ShopGood good, DateTimeOffset now)

@@ -51,6 +51,25 @@ public sealed class AuditEconomyTests(BundledGameplayFixture fixture)
     }
 
     [Fact]
+    public void LimitedGood_ListsTheStockLeftInThePeriod()
+    {
+        var assets = fixture.Data;
+        var player = new Player(1, assets);
+        var (shopId, good) = fixture.Rows("P_ShopTable").Select(r => r.GetProperty("id").GetUInt32())
+            .Where(id => !assets.Shops.NeedsSatiety(id))
+            .SelectMany(id => assets.Shops.Goods(id).Select(good => (id, good)))
+            .First(pair => pair.good.LimitNum > 1);
+        var now = new DateTimeOffset(2026, 10, 12, 12, 0, 0, TimeSpan.Zero);
+        uint Left() => player.Shop.GoodsInfo(shopId, now).Single(info => info.Id == good.Id).PeriodNum;
+
+        Assert.Equal(good.LimitNum, Left());
+        player.Wallet.Credit(good.MoneyType, good.CostNum);
+        Assert.Equal(0, player.BuyFromShop(shopId, [(good.Id, 1)], now).Code);
+
+        Assert.Equal(good.LimitNum - 1, Left());
+    }
+
+    [Fact]
     public void BankedHouseIncome_AfterClockRollback_CanOnlyBeClaimedOnce()
     {
         var assets = fixture.Data;
