@@ -1,9 +1,9 @@
 # Lunaria
 
-<strong>Lun</strong> is a work-in-progress server emulator for a certain anime game.
+<strong>Lunaria</strong> is a work-in-progress server emulator for a certain anime game.
 The `SdkServer`, `GameServer`, and `QueryGateway` run as three .NET 10 processes.
 
-[Discord](<invite link>)
+[Discord](https://discord.gg/BE7CwcesZp)
 
 ## Warning
 
@@ -90,4 +90,4 @@ All options are validated at startup.
 
 ## License
 
-not added yet.
+AGPL3.0
