@@ -1,4 +1,3 @@
-using System.Reflection;
 using Lunaria.Game.Resources.Tables;
 
 namespace Lunaria.Game.Resources;
@@ -30,8 +29,8 @@ public sealed class CharacterBonusAssets
 
     public CharacterBonusAssets(
         IReadOnlyDictionary<string, PMotiveAttributeTable> motiveAttributes,
-        IReadOnlyDictionary<string, POutsideAttributeTable> outside,
         IReadOnlyDictionary<string, PTalentContentTable> talents,
+        AttributeColumns columns,
         InsideAttributeAssets inside,
         MotiveAssets motives
     )
@@ -39,35 +38,10 @@ public sealed class CharacterBonusAssets
         _motives = motives;
         _scaledAttributes = inside.Names.Select(pair => pair.Id).ToHashSet();
 
-        // P_MotiveAttributeTable columns are attribute names: "ATK" adds to ATK, "ATK_Add_Rate" (the attribute's
-        // AttrIncreaseEnum) raises it by a permyriad. This is how the client's own Motive calculation reads them.
-        // Some enum names differ only by an underscore (AggressiveRadius_Player); Motive columns never use them.
-        var flat = inside.Names.GroupBy(pair => Normalize(pair.Name))
-            .ToDictionary(group => group.Key, group => group.First().Id);
-        var increase = outside.Values.Where(row => !string.IsNullOrEmpty(row.AttrIncreaseEnum))
-            .GroupBy(row => Normalize(row.AttrIncreaseEnum))
-            .ToDictionary(group => group.Key, group => group.First().AttrEnum);
-        var columns = typeof(PMotiveAttributeTable).GetProperties(BindingFlags.Public | BindingFlags.Instance)
-            .Where(p => p.PropertyType == typeof(int))
-            .Select(p => (Property: p, Key: Normalize(p.Name)))
-            .ToArray();
-
+        // The client's own Motive calculation reads these columns the same way.
         foreach (var row in motiveAttributes.Values)
         {
-            var modifiers = new List<AttributeModifier>();
-
-            foreach (var (property, key) in columns)
-            {
-                if (property.GetValue(row) is not int value || value == 0)
-                    continue;
-
-                if (flat.TryGetValue(key, out var id))
-                    modifiers.Add(new AttributeModifier(id, value, 0));
-                else if (increase.TryGetValue(key, out var raised))
-                    modifiers.Add(new AttributeModifier(raised, 0, value));
-            }
-
-            _motiveRows[row.Id] = [.. modifiers];
+            _motiveRows[row.Id] = columns.Of(row);
         }
 
         foreach (var row in talents.Values)
@@ -85,7 +59,8 @@ public sealed class CharacterBonusAssets
         _talents.TryGetValue((characterId, nodeId), out var content) ? content : null;
 
     /// <summary>
-    /// Attribute nodes count once each, whatever else is unlocked. Nodes on attributes outside p_insideattributetable (1164, 1165, 1171, 1185) are skipped: their wire scale is unknown.
+    /// Attribute nodes count once each, whatever else is unlocked. Nodes on attributes outside
+    /// p_insideattributetable (1164, 1165, 1171, 1185) are skipped: their wire scale is unknown.
     /// </summary>
     public IEnumerable<AttributeModifier> TalentModifiers(uint characterId, IEnumerable<uint> unlockedNodes) =>
         unlockedNodes
@@ -98,6 +73,4 @@ public sealed class CharacterBonusAssets
         new[] { _motives.AddAttributeId(motiveId, level), _motives.BreakAddAttributeId(motiveId, breakLevel) }
             .Where(id => id != 0)
             .SelectMany(id => _motiveRows.GetValueOrDefault(id) ?? []);
-
-    private static string Normalize(string name) => name.Replace("_", "").ToLowerInvariant();
 }

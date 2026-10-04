@@ -201,7 +201,8 @@ public sealed class GameData(string assetsDir, ILogger<GameData>? logger = null)
 
         Characters = new CharacterAssets(
             PCharacterTable, PCharacterSkillGroupTable, PSkillGrowthTable, PBreakTemplateTable, PLevelUpTemplateTable);
-        Attribs = new AttribAssets(PDevelopAttributeTable, PFixedAttributeTable, POutsideAttributeTable, Inside);
+        var columns = new AttributeColumns(Inside, POutsideAttributeTable);
+        Attribs = new AttribAssets(PDevelopAttributeTable, PFixedAttributeTable, POutsideAttributeTable, Inside, columns);
         GlobalConfig = new GlobalConfigAssets(SServerGlobalConfig);
         Progression = new ProgressionAssets(PLevelUpExpTable, PTeamLevelTable, PWorldLevelTable);
         TeamExpAwards = new TeamExpAssets(PTeamExpAwardTable);
@@ -223,7 +224,7 @@ public sealed class GameData(string assetsDir, ILogger<GameData>? logger = null)
         Motives = new MotiveAssets(
             PMotiveTable, PMotiveLevelCostTable, PMotiveLevelTemplateTable,
             PMotiveBreakTemplateTable, PMotiveAttributeTable);
-        Bonuses = new CharacterBonusAssets(PMotiveAttributeTable, POutsideAttributeTable, PTalentContentTable, Inside, Motives);
+        Bonuses = new CharacterBonusAssets(PMotiveAttributeTable, PTalentContentTable, columns, Inside, Motives);
 
         Gacha = new GachaAssets(
             PGachaTable, PGachaRebateTable, Characters, Motives, Items,
