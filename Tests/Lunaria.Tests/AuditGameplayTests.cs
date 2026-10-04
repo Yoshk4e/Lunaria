@@ -94,6 +94,23 @@ public sealed class AuditGameplayTests(BundledGameplayFixture fixture, ITestOutp
         Assert.Empty(restored.Dungeons.ToFullData(DateTimeOffset.UtcNow).HordeData.HordeList);
     }
 
+    [Fact]
+    public void AbyssStage_GrantsItsFirstClearRewardOnlyOnce()
+    {
+        const uint dungeonId = 203001; // Deep Cognito T1: firstPassRewardDrop 333201, no rewardDrop
+        var player = Fresh();
+        player.Progress.Load(1, 0, 0, 200, DateTimeOffset.UtcNow);
+
+        Assert.Equal(0, player.EnterDungeon(dungeonId).Code);
+        var first = player.FinishDungeon(dungeonId, true, false, 0);
+        Assert.Equal(0, first.Code);
+        Assert.Equal(4u, player.OwnedItemCount(11406001));
+
+        Assert.Equal(0, player.EnterDungeon(dungeonId).Code);
+        Assert.Equal(0, player.FinishDungeon(dungeonId, true, false, 0).Code);
+        Assert.Equal(4u, player.OwnedItemCount(11406001));
+    }
+
     private Player Fresh(bool extraMember = false)
     {
         var player = new Player(1, Assets);

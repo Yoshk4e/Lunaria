@@ -224,7 +224,11 @@ public sealed partial class DungeonManager(GameData assets) : TrackedObject
 
             if (victory)
             {
-                _finishes[dungeonId] = _finishes.GetValueOrDefault(dungeonId) + 1;
+                var finished = _finishes.GetValueOrDefault(dungeonId);
+                _finishes[dungeonId] = finished + 1;
+
+                if (finished == 0)
+                    rewards.AddRange(assets.DropTable.Roll(dungeon.FirstPassRewardDrop, random));
                 rewards.AddRange(assets.DropTable.Roll(dungeon.RewardDrop, random));
             }
         }

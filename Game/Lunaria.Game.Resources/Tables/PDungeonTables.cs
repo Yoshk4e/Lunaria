@@ -12,6 +12,8 @@ public record PRepeatableDungeonsTable : TableRow
     public uint MonsterLevel { get; init; }
     /// <summary>Victory reward group in s_droptable, or 0 for no reward.</summary>
     public uint RewardDrop { get; init; }
+    /// <summary>Reward group in s_droptable for the first victory only (Abyss stages), or 0.</summary>
+    public uint FirstPassRewardDrop { get; init; }
 }
 
 [GameTable("P_DungeonsTypeTable.json", Root = "P_DungeonsTypeTable")]
