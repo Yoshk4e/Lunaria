@@ -42,8 +42,9 @@ public sealed partial class RegionProgressManager(GameData assets) : TrackedObje
 
             foreach (var (sequenceId, count) in row.Sequences)
             {
-                if (assets.RegionProgress.Sequences(row.SubRegionId).Contains(sequenceId))
-                    sequences[sequenceId] = count;
+                // Older saves stored uncapped silvercraft counts.
+                if (assets.RegionProgress.SequenceRow(row.SubRegionId, sequenceId) is {} sequence)
+                    sequences[sequenceId] = Math.Min(count, sequence.ParamNum);
             }
 
             var claimed = new SortedSet<uint>(row.ClaimedValues);
