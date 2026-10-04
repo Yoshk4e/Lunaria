@@ -10,19 +10,12 @@ public sealed class SignupController(UserRepository users, PasswordHasher hasher
     /// <summary>The HappyElements SDK register button opens this page in its WebView.</summary>
     private const string SdkRegisterPath = "/account/register.html";
 
-    /// <summary>The SDK closes its WebView and reports success once the page reaches this path.</summary>
-    private const string SdkRegisterResultPath = "/account/register-result.html";
-
     [HttpGet("/signup")]
     [HttpGet("/signup/{*rest}")]
     public IActionResult Index() => View(new SignupViewModel());
 
     [HttpGet(SdkRegisterPath)]
     public IActionResult SdkRegister() => View(nameof(Index), new SignupViewModel { Action = SdkRegisterPath });
-
-    [HttpGet(SdkRegisterResultPath)]
-    public ContentResult SdkRegisterResult() =>
-        Content("<!doctype html><meta charset=\"utf-8\"><title>Account created</title><p>Account created.</p>", "text/html");
 
     [HttpPost(SdkRegisterPath)]
     [ValidateAntiForgeryToken]
@@ -33,7 +26,7 @@ public sealed class SignupController(UserRepository users, PasswordHasher hasher
         if (await RegisterAsync(model).ConfigureAwait(false) is {} failed)
             return View(nameof(Index), failed);
 
-        return Redirect(SdkRegisterResultPath);
+        return Redirect(SdkAccountController.ResultUrl("register-result", model.Email));
     }
 
     [HttpPost("/signup")]
