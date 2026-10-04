@@ -252,7 +252,7 @@ public sealed class GameData(string assetsDir, ILogger<GameData>? logger = null)
 
         DailyMissions = new DailyMissionAssets(
             PDailyMissionTable, PDailyMissionRewardTable, PGlobalEventFinishTable);
-        SignIn = new SignInAssets(PActivityTable, PSignInActivityRewardTable);
+        SignIn = new SignInAssets(PActivityTable, PSignInActivityRewardTable, Policy.ActivityWindows);
 
         RegionProgress = new RegionProgressAssets(
             PRegionProgressTable, PRegionRewardTable, PRegionRewardDataTable, PRegionSequenceTable,

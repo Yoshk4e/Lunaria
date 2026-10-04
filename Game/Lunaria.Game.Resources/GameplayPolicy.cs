@@ -10,6 +10,11 @@ public sealed record GameplayPolicy
     public HouseRentPolicy HouseRent { get; init; } = new();
     public WantedPolicy Wanted { get; init; } = new();
     public Dictionary<uint, uint> SkillCostItemOverrides { get; init; } = [];
+    /// <summary>
+    /// Moves P_ActivityTable windows, keyed by activity id. The recovered windows match the CBT1 test dates and have
+    /// ended, so a server can reopen an activity with the same length from a chosen start.
+    /// </summary>
+    public Dictionary<uint, ActivityWindowPolicy> ActivityWindows { get; init; } = [];
 
     public static GameplayPolicy Load(string path)
     {
@@ -22,11 +27,19 @@ public sealed record GameplayPolicy
         if (policy.HouseRent.IntervalSeconds == 0 || policy.HouseRent.MaxIntervals == 0
             || policy.Wanted.SelectOptions is < 1 or > 16 || policy.Wanted.CreatureBaseWeight == 0)
             throw new ResourceException(path, "invalid interval, cap or selection size");
+        foreach (var (id, window) in policy.ActivityWindows)
+            if (window.Start.ToUnixTimeSeconds() <= 0)
+                throw new ResourceException(path, $"invalid start for activity window {id}");
         foreach (var (id, rule) in policy.Wanted.Awards)
             if (rule.MinCount < 1 || rule.MaxCount < rule.MinCount || rule.MaxCount > 16)
                 throw new ResourceException(path, $"invalid count range for award {id}");
         return policy;
     }
+}
+
+public sealed record ActivityWindowPolicy
+{
+    public DateTimeOffset Start { get; init; }
 }
 
 public sealed record HouseRentPolicy
