@@ -744,13 +744,30 @@ public sealed class GameplayRegressionTests(BundledGameplayFixture fixture)
         AtAction(player, actionId: 310010117);
         var report = player.ReportTaskAction(taskType: 1, actionId: 310010117, uint.MaxValue);
         Assert.Equal(expected: 0u, report.Outcome!.Progress.Progress);
-        player.RecordTaskEvent(ServerTarget.UseItem, id: 21206002);
+        player.RecordTaskEvent(ServerTarget.BuyItem, id: 21206002);
         Assert.Empty(player.SettleServerTargets());
-        player.RecordTaskEvent(ServerTarget.UseItem, id: 21206013);
+        player.RecordTaskEvent(ServerTarget.BuyItem, id: 21206013);
         Assert.NotEmpty(player.SettleServerTargets());
         AtAction(player, actionId: 310360601);
         player.RecordTaskEvent(ServerTarget.CompleteBattle, id: 123);
         Assert.NotEmpty(player.SettleServerTargets());
+    }
+
+    [Fact]
+    public void PurchaseStep_CountsTheShopPurchase_NotEatingTheItem()
+    {
+        // Step 3100117 "Purchase Joyous Soda Bread": the bread is handed to Alf at the next step.
+        var player = Fresh();
+        AtAction(player, actionId: 310010117);
+        var now = DateTimeOffset.UtcNow;
+        player.Wallet.Credit(1, 10_000);
+        player.Bag.Add(21206013, 1);
+        player.UseItem(21206013, 1, []);
+        Assert.Empty(player.SettleServerTargets());
+
+        Assert.Equal(0, player.BuyFromShop(103, [(10300001, 1)], now).Code);
+        Assert.NotEmpty(player.SettleServerTargets());
+        Assert.True(player.Bag.CountOf(21206013) >= 1);
     }
 
     [Fact]

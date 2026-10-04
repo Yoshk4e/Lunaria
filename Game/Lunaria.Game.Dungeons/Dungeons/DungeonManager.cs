@@ -130,6 +130,27 @@ public sealed partial class DungeonManager(GameData assets) : TrackedObject
 
     }
 
+    /// <summary>
+    /// The CBT1 client exchanges the last finished battle of the run (0 before the first one) and derives its
+    /// progress as that battle's position plus one, so sending the running battle reads as a finished run.
+    /// </summary>
+    public uint CompletedBattle()
+    {
+        if (_current is not {} current || assets.Dungeons.Dungeon(current.DungeonId) is not {} dungeon)
+            return 0;
+
+        var index = dungeon.BattleId.IndexOf(current.BattleId);
+        return index > 0 ? dungeon.BattleId[index - 1] : 0;
+    }
+
+    /// <summary>The battle that follows <paramref name="completed"/> in the run, or the first one.</summary>
+    private uint NextBattle(ulong dungeonId, uint completed)
+    {
+        var battles = assets.Dungeons.Dungeon(dungeonId)?.BattleId ?? [];
+        var index = completed == 0 ? -1 : battles.IndexOf(completed);
+        return index + 1 < battles.Count ? battles[index + 1] : battles.LastOrDefault();
+    }
+
     public bool IsCurrent(ulong dungeonId) => _current is {} current && current.DungeonId == dungeonId;
 
     /// <summary>Resuming is free. A true result means a new run that the caller must charge for.</summary>
@@ -139,14 +160,21 @@ public sealed partial class DungeonManager(GameData assets) : TrackedObject
             return ((int)EnmTextCode.EnmTextDungeonsFail, false);
 
         if (_current is {} current)
-            return current.DungeonId == dungeonId ? (0, false) : ((int)EnmTextCode.EnmTextDungeonsIn, false);
+        {
+            if (current.DungeonId != dungeonId)
+                return ((int)EnmTextCode.EnmTextDungeonsIn, false);
+
+            // The client reports its last finished battle; the run moves on to the next one.
+            _current = (dungeonId, NextBattle(dungeonId, battleId));
+            return (0, false);
+        }
 
         var code = CheckEnter(dungeonId, now);
 
         if (code != 0)
             return (code, false);
 
-        _current = (dungeonId, battleId);
+        _current = (dungeonId, NextBattle(dungeonId, battleId));
 
         Log.Stage("dungeon {DungeonId} adopted as current with battle {BattleId}", dungeonId, battleId);
         return (0, true);

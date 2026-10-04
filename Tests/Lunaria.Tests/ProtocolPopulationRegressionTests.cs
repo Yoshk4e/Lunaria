@@ -15,7 +15,7 @@ namespace Lunaria.Tests;
 public sealed partial class RoleSessionTests
 {
     [Theory]
-    [InlineData(EnmTmpTeamType.Dungeon, 201001u)]
+    [InlineData(EnmTmpTeamType.Dungeon, 1u)] // dungeon type of 201001
     [InlineData(EnmTmpTeamType.Wanted, 10101u)]
     [InlineData(EnmTmpTeamType.Task, 5u)]
     public async Task TemporaryGems_SurviveSelectionActivationAndRoleReload(EnmTmpTeamType type, uint source)
@@ -50,7 +50,7 @@ public sealed partial class RoleSessionTests
                 break;
             case EnmTmpTeamType.Dungeon:
                 player.Progress.Load(1, 0, 0, 240, player.UtcNow);
-                Assert.Equal(0, player.EnterDungeon(source).Code);
+                Assert.Equal(0, player.EnterDungeon(201001).Code); // a stage of dungeon type 1
                 break;
             default:
                 EnterStoryTeam(player, source);
@@ -63,7 +63,7 @@ public sealed partial class RoleSessionTests
     }
 
     [Theory]
-    [InlineData(EnmTmpTeamType.Dungeon, 201001u)]
+    [InlineData(EnmTmpTeamType.Dungeon, 1u)] // dungeon type of 201001
     [InlineData(EnmTmpTeamType.Wanted, 10101u)]
     [InlineData(EnmTmpTeamType.Task, 5u)]
     public async Task TemporaryGems_RejectInvalidSelectionsWithoutMutation(EnmTmpTeamType type, uint source)

@@ -11,9 +11,12 @@ namespace Lunaria.Game.Player;
 // Editing a future lineup must not change the current fight or permanent team.
 public sealed record TemporaryTeamSelection(EnmTmpTeamType Type, uint Source, IReadOnlyList<TeamMemberState> Members);
 public sealed record TrialVitals(ulong InstanceId, uint TemplateId, int Hp, int Liquid);
+/// <summary>HP and permanent liquid an owned character uses during a dungeon run, kept apart from its own.</summary>
+public sealed record RunVitals(ulong InstanceId, int Hp, int Liquid);
+
 public sealed record ActiveTemporaryTeam(
     EnmTmpTeamType Type, uint Source, uint Slot, IReadOnlyList<TeamMemberState> Members,
-    IReadOnlyList<TrialVitals> Trials, TeamLiquid Liquid, TeamLiquid LiquidLv2);
+    IReadOnlyList<TrialVitals> Trials, TeamLiquid Liquid, TeamLiquid LiquidLv2, IReadOnlyList<RunVitals>? Runs = null);
 
 public sealed partial class Player : TrackedObject
 {
@@ -32,15 +35,23 @@ public sealed partial class Player : TrackedObject
 
     private bool ValidTemporarySource(EnmTmpTeamType type, uint source) => type switch {
         EnmTmpTeamType.Task => assets.TmpTeams.GetBySrc(source) is {} row && assets.TmpTeams.MembersOf(row).Count > 0,
-        EnmTmpTeamType.Dungeon => assets.Dungeons.Dungeon(source) is not null,
+        // The CBT1 client keys a dungeon team by its dungeon type (P_DungeonsTypeTable), shared by every stage of that type.
+        EnmTmpTeamType.Dungeon => assets.Dungeons.Type(source) is not null,
         EnmTmpTeamType.Wanted => assets.Wanted.Entry(source) is not null,
         _ => false
     };
 
+    private uint DungeonTeamSource(ulong dungeonId) =>
+        dungeonId <= uint.MaxValue ? assets.Dungeons.Dungeon((uint)dungeonId)?.DungeonType ?? 0 : 0;
+
     public TeamData? QueryTemporaryTeam(int type, uint source)
     {
         var kind = (EnmTmpTeamType)type;
-        if (!ValidTemporarySource(kind, source)) return null;
+        if (!ValidTemporarySource(kind, source))
+        {
+            Log.Flag("temporary team query refused: unknown source {TeamSource} for type {TeamType}", source, kind);
+            return null;
+        }
         if (ActiveTemporaryTeam is {} active && active.Type == kind && active.Source == source)
             return TemporaryTeamData(source, active.Members);
         if (kind == EnmTmpTeamType.Task) return TempTeams.ToTeamData(type, source);
@@ -102,7 +113,7 @@ public sealed partial class Player : TrackedObject
             : story is not null ? EnmTmpTeamType.Task : EnmTmpTeamType.None;
         var source = type switch {
             EnmTmpTeamType.Wanted => Wanted.CurrentEntryId,
-            EnmTmpTeamType.Dungeon => checked((uint)Dungeons.Current!.Value.DungeonId),
+            EnmTmpTeamType.Dungeon => DungeonTeamSource(Dungeons.Current!.Value.DungeonId),
             EnmTmpTeamType.Task => story!.Id,
             _ => 0u
         };
@@ -137,7 +148,8 @@ public sealed partial class Player : TrackedObject
                     Gems = gems.Any(g => g != 0) ? gems : [] };
             }).ToArray();
             ActiveTemporaryTeam = new(type, source, members.Min(m => m.Slot), members, trials,
-                story is not null && type == EnmTmpTeamType.Task ? TempTeamManager.InitialLiquid(story) : TeamLiquid.Empty, TeamLiquid.Empty);
+                story is not null && type == EnmTmpTeamType.Task ? TempTeamManager.InitialLiquid(story) : TeamLiquid.Empty, TeamLiquid.Empty,
+                type == EnmTmpTeamType.Dungeon ? DungeonRunVitals(source, members) : null);
         }
 
         Log.State("active temporary team changed to type {TeamType} source {TeamSource} with {MemberCount} members, suspended story source {SuspendedSource}",
@@ -157,6 +169,20 @@ public sealed partial class Player : TrackedObject
         return maps.Length == 0 || maps.Any(map => TaskManager.MatchesMap(map, Map.MapId));
     }
 
+    /// <summary>
+    /// A dungeon run starts every participant at its dungeon type's HP and liquid ratios (P_DungeonsTypeTable) and
+    /// discards those values when the run ends, so the owned characters keep the vitals they entered with.
+    /// </summary>
+    private IReadOnlyList<RunVitals> DungeonRunVitals(uint dungeonType, IEnumerable<TeamMemberState> members) =>
+        assets.Dungeons.Type(dungeonType) is not {} row ? [] : members
+            .Where(m => Characters.Owns(m.InstId))
+            .Select(m => new RunVitals(m.InstId,
+                TempTeamManager.Ratio(Characters.MaxHp(m.InstId), row.CharacterHpRatio),
+                TempTeamManager.Ratio(Characters.PermanentLiquidMax(m.InstId), row.CharacterPermanentLiquidRatio)))
+            .ToArray();
+
+    private RunVitals? Run(ulong id) => ActiveTemporaryTeam?.Runs?.FirstOrDefault(r => r.InstanceId == id);
+
     public CurTeamData? CurrentTeamData() => ActiveTemporaryTeam is {} active ? new CurTeamData {
         TeamType = (int)active.Type, TeamSrc = active.Source, UsingMemberSlot = active.Slot,
         TeamData = TemporaryTeamData(active.Source, active.Members), TemporaryLiquid = active.Liquid.ToProto(),
@@ -167,9 +193,10 @@ public sealed partial class Player : TrackedObject
     private TrialVitals? Trial(ulong id) => ActiveTemporaryTeam?.Trials.FirstOrDefault(t => t.InstanceId == id);
     private PTmpCharacterTable TrialTemplate(TrialVitals trial) => assets.TmpTeams.Member(trial.TemplateId)!;
     public PBCharacterAttribData OutsideAttributes(ulong id) => Trial(id) is {} trial
-        ? TempTeams.AttribDataOf(TrialTemplate(trial), id, trial.Hp, trial.Liquid) : Characters.AttribData(id);
-    public int TeamCharacterHp(ulong id) => Trial(id)?.Hp ?? Characters.Hp(id);
-    public int TeamCharacterLiquid(ulong id) => Trial(id)?.Liquid ?? Characters.PermanentLiquid(id);
+        ? TempTeams.AttribDataOf(TrialTemplate(trial), id, trial.Hp, trial.Liquid)
+        : Characters.AttribData(id, Run(id)?.Hp, Run(id)?.Liquid);
+    public int TeamCharacterHp(ulong id) => Trial(id)?.Hp ?? Run(id)?.Hp ?? Characters.Hp(id);
+    public int TeamCharacterLiquid(ulong id) => Trial(id)?.Liquid ?? Run(id)?.Liquid ?? Characters.PermanentLiquid(id);
     public int TeamCharacterMaxHp(ulong id) => Trial(id) is {} trial
         ? assets.Attribs.MaxHp(TrialTemplate(trial).CharacterId, assets.Characters.DevelopAttributeId(TrialTemplate(trial).CharacterId, TrialTemplate(trial).Level)) : Characters.MaxHp(id);
     public int TeamCharacterMaxLiquid(ulong id) => Trial(id) is {} trial
@@ -184,6 +211,13 @@ public sealed partial class Player : TrackedObject
             if (next == trial) return;
             ActiveTemporaryTeam = ActiveTemporaryTeam! with { Trials = ActiveTemporaryTeam.Trials.Select(t => t.InstanceId == id ? next : t).ToArray() };
 
+        }
+        else if (Run(id) is {} run)
+        {
+            var next = run with { Hp = hp < 0 ? run.Hp : Math.Clamp(hp, 0, TeamCharacterMaxHp(id)),
+                Liquid = liquid < 0 ? run.Liquid : Math.Clamp(liquid, 0, TeamCharacterMaxLiquid(id)) };
+            if (next != run)
+                ActiveTemporaryTeam = ActiveTemporaryTeam! with { Runs = ActiveTemporaryTeam.Runs!.Select(r => r.InstanceId == id ? next : r).ToArray() };
         }
         else
         {
@@ -247,7 +281,12 @@ public sealed partial class Player : TrackedObject
             {
                 ActiveTemporaryTeam = candidate with { Members = NormalizeMembers(candidate.Members),
                     Slot = candidate.Members.Any(m => m.Slot == candidate.Slot) ? candidate.Slot : candidate.Members.Min(m => m.Slot),
-                    Liquid = candidate.Liquid.Normalized(), LiquidLv2 = candidate.LiquidLv2.Normalized() };
+                    Liquid = candidate.Liquid.Normalized(), LiquidLv2 = candidate.LiquidLv2.Normalized(),
+                    Runs = candidate.Type == EnmTmpTeamType.Dungeon
+                        ? candidate.Runs?.Where(r => candidate.Members.Any(m => m.InstId == r.InstanceId) && Characters.Owns(r.InstanceId))
+                            .Select(r => r with { Hp = Math.Clamp(r.Hp, 0, Characters.MaxHp(r.InstanceId)),
+                                Liquid = Math.Clamp(r.Liquid, 0, Characters.PermanentLiquidMax(r.InstanceId)) }).ToArray()
+                        : null };
                 foreach (var trial in candidate.Trials) SetTeamCharacterVitals(trial.InstanceId, Math.Max(0, trial.Hp), Math.Max(0, trial.Liquid));
                 foreach (var trial in candidate.Trials) Guid.Adopt(trial.InstanceId);
                 if (ReferenceEquals(candidate, suspended) && candidate.Type == EnmTmpTeamType.Task) SuspendedStoryTeam = ActiveTemporaryTeam;

@@ -15,6 +15,64 @@ public sealed class AuditGameplayTests(BundledGameplayFixture fixture, ITestOutp
 {
     private GameData Assets => fixture.Data;
 
+    [Fact]
+    public void DungeonProgress_ExchangesTheLastFinishedBattleAndAcceptsEveryBattleOfTheRun()
+    {
+        const uint dungeonId = 200008; // battles 200008001 and 200008002
+        var player = Fresh();
+        player.Progress.Load(1, 0, 0, 240, DateTimeOffset.UtcNow);
+        var source = Assets.Dungeons.Dungeon(dungeonId)!.DungeonType;
+        Assert.NotNull(player.QueryTemporaryTeam((int)EnmTmpTeamType.Dungeon, source));
+        Assert.Equal(0, player.EnterDungeon(dungeonId).Code);
+
+        // Nothing finished yet: the client starts from the first battle instead of reading the run as over.
+        Assert.Equal(0u, player.Dungeons.CompletedBattle());
+        Assert.Equal(0, player.EnterBattle(EBattleType.EnmBattleTypeRepeatDungeon, 200008001, 0, default));
+        player.Battles.Leave(EBattleType.EnmBattleTypeRepeatDungeon, 200008001, true);
+
+        // The client reports the first battle as finished; the run moves on and the second battle is accepted.
+        Assert.Equal(0, player.AdoptDungeonCurrent(dungeonId, 200008001).Code);
+        Assert.Equal(200008001u, player.Dungeons.CompletedBattle());
+        Assert.Equal(0, player.EnterBattle(EBattleType.EnmBattleTypeRepeatDungeon, 200008002, 0, default));
+    }
+
+    [Fact]
+    public void SaveOnADungeonMapWithoutARun_ReloadsOnTheOpenWorldMapItCameFrom()
+    {
+        var player = Fresh();
+        player.Map.Load(201001001005, Assets.Starter.Savepoint, [], [], (1, 2, 3),
+            returnPoint: new Lunaria.Game.World.MapReturnPoint(100001001001, 141540, 41185, 34003, IsSynced: true));
+        Assert.Null(player.Dungeons.Current);
+
+        var json = System.Text.Json.JsonSerializer.Serialize(
+            Lunaria.Game.Player.Persistence.Saves.RoleSaveMapper.Capture(player), Lunaria.Game.Player.Persistence.Saves.SaveJson.Options);
+        var restored = new Player(2, Assets);
+        Lunaria.Game.Player.Persistence.Saves.RoleSaveMapper.Apply(restored,
+            System.Text.Json.JsonSerializer.Deserialize<Lunaria.Game.Player.Persistence.Saves.RoleSaveDocument>(
+                json, Lunaria.Game.Player.Persistence.Saves.SaveJson.Options)!);
+
+        Assert.Equal(100001001001ul, restored.Map.MapId);
+        Assert.Equal((141540, 41185, 34003), restored.Map.Position);
+    }
+
+    [Theory]
+    [InlineData(false, false)]
+    [InlineData(false, true)]
+    [InlineData(true, false)]
+    public void DungeonStamina_IsKeptOnlyWhenTheRunIsWon(bool victory, bool leave)
+    {
+        const uint dungeonId = 205001; // Superintendence I, 30 stamina
+        var player = Fresh();
+        player.Progress.Load(1, 0, 0, 200, DateTimeOffset.UtcNow);
+        var before = player.Progress.Stamina;
+        Assert.Equal(0, player.EnterDungeon(dungeonId).Code);
+        Assert.Equal(before - 30, player.Progress.Stamina);
+
+        Assert.Equal(0, player.FinishDungeon(dungeonId, victory, leave, 0).Code);
+
+        Assert.Equal(victory ? before - 30 : before, player.Progress.Stamina);
+    }
+
     private Player Fresh(bool extraMember = false)
     {
         var player = new Player(1, Assets);
@@ -195,34 +253,49 @@ public sealed class AuditGameplayTests(BundledGameplayFixture fixture, ITestOutp
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void DungeonEntry_ResetsOnlySelectedMembersOnce_AndPreservesHp(bool adopt)
+    public void DungeonEntry_RunsOnSeparateVitals_AndLeavesTheOwnedCharactersUntouched(bool adopt)
     {
         const uint dungeonId = 201001;
         var player = Fresh(extraMember: true);
         var members = player.CurrentTeamMembers();
         Assert.True(members.Count > 1);
         foreach (var id in members) player.SetTeamCharacterVitals(id, hp: 23, liquid: 77);
-        var selection = player.QueryTemporaryTeam((int)EnmTmpTeamType.Dungeon, dungeonId)!;
+        var teamSource = Assets.Dungeons.Dungeon(dungeonId)!.DungeonType;
+        var type = Assets.Dungeons.Type(teamSource)!;
+        var selection = player.QueryTemporaryTeam((int)EnmTmpTeamType.Dungeon, teamSource)!;
         var selected = selection.MemberData[0].Clone();
         selection.MemberData.Clear();
         selection.MemberData.Add(selected);
-        Assert.Equal(0, player.UpdateTemporaryTeam((int)EnmTmpTeamType.Dungeon, dungeonId, selection).Result);
+        Assert.Equal(0, player.UpdateTemporaryTeam((int)EnmTmpTeamType.Dungeon, teamSource, selection).Result);
         player.Progress.Load(1, 0, 0, 240, DateTimeOffset.UtcNow);
         var battleId = Assets.Dungeons.Dungeon(dungeonId)!.BattleId.First();
 
         var entry = adopt ? player.AdoptDungeonCurrent(dungeonId, battleId) : player.EnterDungeon(dungeonId);
 
+        // The run uses the dungeon type's ratios, the characters keep what they entered with.
         Assert.Equal(0, entry.Code);
-        Assert.Equal(0, player.Characters.PermanentLiquid(selected.InstId));
+        Assert.Equal(Lunaria.Game.Characters.Teams.TempTeamManager.Ratio(player.Characters.MaxHp(selected.InstId), type.CharacterHpRatio),
+            player.TeamCharacterHp(selected.InstId));
+        Assert.Equal(Lunaria.Game.Characters.Teams.TempTeamManager.Ratio(player.Characters.PermanentLiquidMax(selected.InstId), type.CharacterPermanentLiquidRatio),
+            player.TeamCharacterLiquid(selected.InstId));
         Assert.All(members, id => Assert.Equal(23, player.Characters.Hp(id)));
-        Assert.All(members.Skip(1), id => Assert.Equal(77, player.Characters.PermanentLiquid(id)));
-        player.SetTeamCharacterVitals(selected.InstId, liquid: 39);
+        Assert.All(members, id => Assert.Equal(77, player.Characters.PermanentLiquid(id)));
+
+        // Battle damage stays on the run, also across a resume.
+        player.SetTeamCharacterVitals(selected.InstId, hp: 5, liquid: 39);
         var stamina = player.Progress.Stamina;
         Assert.NotEqual(0, player.EnterDungeon(dungeonId).Code);
         Assert.Equal(0, player.AdoptDungeonCurrent(dungeonId, battleId).Code);
         player.ReconcileTemporaryTeam();
+        Assert.Equal(5, player.TeamCharacterHp(selected.InstId));
         Assert.Equal(39, player.TeamCharacterLiquid(selected.InstId));
         Assert.Equal(stamina, player.Progress.Stamina);
+        Assert.Equal(23, player.Characters.Hp(selected.InstId));
+
+        // Leaving the run restores the characters' own vitals.
+        Assert.Equal(0, player.FinishDungeon(dungeonId, false, true, 0).Code);
+        Assert.Equal(23, player.TeamCharacterHp(selected.InstId));
+        Assert.Equal(77, player.TeamCharacterLiquid(selected.InstId));
     }
 
     [Theory]

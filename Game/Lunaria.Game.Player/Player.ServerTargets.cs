@@ -250,7 +250,7 @@ public sealed partial class Player : TrackedObject
                 result = 1;
                 break;
             // Only accepted gameplay events advance counters. Task reports and historical totals do not.
-            case ServerTarget.UseItem:
+            case ServerTarget.BuyItem:
             case ServerTarget.CompleteBattle:
                 break;
         }
