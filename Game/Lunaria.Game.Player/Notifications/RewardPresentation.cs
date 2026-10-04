@@ -17,7 +17,12 @@ internal static class RewardPresentation
             messages.Add(show);
         }
 
+        // New characters and motives skip the bag, so only Enrolled lists them. The client opens its acquisition
+        // screens from this notification (s_CSM_PAS_Dispatcher), one entry per unit.
         var precious = new SCPreciousAwardShowNtf { Source = delivery.Reason };
+        foreach (var grant in delivery.Enrolled)
+            for (var i = 0u; i < grant.Count; i++)
+                precious.Items.Add(new PreciousAward { ItemId = grant.ItemId, IsNew = true });
         foreach (var grant in awarded)
             if (player.Assets.Items.ItemTypeOf(grant.ItemId) is ItemAssets.CharacterCardItemType or ItemAssets.MotiveItemType)
                 precious.Items.Add(new PreciousAward { ItemId = grant.ItemId, IsNew = player.Bag.IsNew(grant.ItemId) });
