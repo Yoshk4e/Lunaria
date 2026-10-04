@@ -23,7 +23,7 @@ Request a refund immediately and report the seller with any relevant proof.
 - `QueryGateway`
   - Instance registry: game servers register, heartbeat, and get allocated round-robin
 - `assets/`
-  - 152 gameplay table dumps plus banner and gameplay-policy configs, included, so the server runs without external data
+  - gameplay table dumps plus banner and gameplay-policy configs, included, so the server runs without external data
 
 ## Requirements
 
