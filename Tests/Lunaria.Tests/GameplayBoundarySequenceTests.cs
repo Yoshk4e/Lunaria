@@ -47,6 +47,29 @@ public sealed partial class RoleSessionTests
     }
 
     [Fact]
+    public async Task WantedBattle_StartsFromTheMisroutedClientStart_AndAcceptsTheVictory()
+    {
+        // The CBT1 Wanted module sends its battle start with the SC_START_BATTLE id (20907).
+        var ctx = Context();
+        Assert.Equal(0, await _sessions.ActivateAsync(ctx, 1));
+        Assert.Equal(0, ctx.Player.EnterWanted(10101));
+        var run = ctx.Player.Wanted.CaptureRun()!;
+        var process = _assets.Wanted.StepsOf(run.RouteId, 1).First();
+        var eventId = _assets.Policy.Wanted.EventPools[process.Pool]
+            .First(id => _assets.Wanted.Npc(id)?.NpcType == (uint)WantedNpcType.NormalBattle);
+        ctx.Player.Wanted.Load([], run with {
+            Current = new WantedStepSnapshot(EnmWantedStepStatus.EnmWssStart, process.Id, eventId, false, [])
+        });
+        var field = _assets.Wanted.Npc(eventId)!.Params;
+        var enter = new CSEnterBattle { BattleType = EBattleType.EnmBattleTypeWanted, BattleFieldId = field, BattleInstId = 0 };
+        Assert.Equal(0, (await new HandleEnterBattle().OnPacket(ctx, enter)).Ret);
+
+        await new HandleStartBattle().OnMisroutedStart(ctx, new SCStartBattle { BattleType = enter.BattleType, BattleFieldId = field });
+
+        Assert.True(ctx.Player.CurrentBattle!.Started);
+    }
+
+    [Fact]
     public async Task BattleHandler_RequiresTheCurrentDungeonField()
     {
         var ctx = Context();
