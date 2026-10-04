@@ -10,20 +10,25 @@ public sealed class ShopAssets
 
     public ShopAssets(
         IReadOnlyDictionary<string, PShopTable> shops,
-        IReadOnlyDictionary<string, PShopGoodsTable> goods
+        IReadOnlyDictionary<string, PShopGoodsTable> goods,
+        IReadOnlyDictionary<string, PShopBuffTable>? buffGoods = null
     )
     {
+        // Type 1 shops (cafes) list P_ShopBuffTable groups, which have no ItemNum: each purchase gives one item.
+        var all = goods.Values.Select(ToGood).Concat((buffGoods ?? new Dictionary<string, PShopBuffTable>()).Values
+            .Select(row => new ShopGood(row.Id, row.Group, row.ItemId, 1, row.MoneyType, row.CostNum, row.Priority,
+                row.LimitNum, row.LimitType)));
+
         foreach (var row in shops.Values)
         {
             _shops[row.Id] = row;
         }
 
-        foreach (var group in goods.Values.GroupBy(r => r.Group))
+        foreach (var group in all.GroupBy(good => good.Group))
         {
             _goodsByGroup[group.Key] = group
-                .OrderBy(r => r.Priority)
-                .ThenBy(r => r.Id)
-                .Select(ToGood)
+                .OrderBy(good => good.Priority)
+                .ThenBy(good => good.Id)
                 .ToArray();
         }
 

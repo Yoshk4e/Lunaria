@@ -34,6 +34,23 @@ public sealed class AuditEconomyTests(BundledGameplayFixture fixture)
     }
 
     [Fact]
+    public void BuffShop_ListsItsBuffGoodsAndSellsThem()
+    {
+        const uint voicepipeCafe = 202; // Type 1 shop, groups 1 and 4 of P_ShopBuffTable
+        var assets = fixture.Data;
+        var goods = assets.Shops.Goods(voicepipeCafe);
+        Assert.Equal(fixture.Rows("P_ShopBuffTable").Count(r => r.GetProperty("group").GetUInt32() is 1 or 4), goods.Count);
+        Assert.Contains(goods, good => good.ItemId == 21207001 && good.ItemNum == 1);
+
+        var player = new Player(1, assets);
+        var good = goods[0];
+        player.Wallet.Credit(good.MoneyType, good.CostNum);
+        var bought = player.BuyFromShop(voicepipeCafe, [(good.Id, 1)], DateTimeOffset.UtcNow);
+        Assert.Equal(0, bought.Code);
+        Assert.Equal(0, player.Wallet.Balance(good.MoneyType));
+    }
+
+    [Fact]
     public void BankedHouseIncome_AfterClockRollback_CanOnlyBeClaimedOnce()
     {
         var assets = fixture.Data;

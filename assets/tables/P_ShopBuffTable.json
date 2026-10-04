@@ -1,0 +1,340 @@
+{
+  "P_ShopBuffTable": {
+    "20100001": {
+      "id": 20100001,
+      "group": 1,
+      "itemId": 21207001,
+      "limitType": 1,
+      "limitNum": 1,
+      "moneyType": 1,
+      "costNum": 130,
+      "priority": 1
+    },
+    "20100002": {
+      "id": 20100002,
+      "group": 1,
+      "itemId": 21207002,
+      "limitType": 1,
+      "limitNum": 1,
+      "moneyType": 1,
+      "costNum": 315,
+      "priority": 2
+    },
+    "20100003": {
+      "id": 20100003,
+      "group": 1,
+      "itemId": 21207003,
+      "limitType": 1,
+      "limitNum": 1,
+      "moneyType": 1,
+      "costNum": 1110,
+      "priority": 3
+    },
+    "20100004": {
+      "id": 20100004,
+      "group": 2,
+      "itemId": 21207004,
+      "limitType": 1,
+      "limitNum": 1,
+      "moneyType": 1,
+      "costNum": 125,
+      "priority": 4
+    },
+    "20100005": {
+      "id": 20100005,
+      "group": 2,
+      "itemId": 21207005,
+      "limitType": 1,
+      "limitNum": 1,
+      "moneyType": 1,
+      "costNum": 315,
+      "priority": 5
+    },
+    "20100006": {
+      "id": 20100006,
+      "group": 2,
+      "itemId": 21207006,
+      "limitType": 1,
+      "limitNum": 1,
+      "moneyType": 1,
+      "costNum": 1110,
+      "priority": 6
+    },
+    "20100007": {
+      "id": 20100007,
+      "group": 3,
+      "itemId": 21207007,
+      "limitType": 1,
+      "limitNum": 1,
+      "moneyType": 1,
+      "costNum": 85,
+      "priority": 7
+    },
+    "20100008": {
+      "id": 20100008,
+      "group": 3,
+      "itemId": 21207008,
+      "limitType": 1,
+      "limitNum": 1,
+      "moneyType": 1,
+      "costNum": 315,
+      "priority": 8
+    },
+    "20100009": {
+      "id": 20100009,
+      "group": 3,
+      "itemId": 21207009,
+      "limitType": 1,
+      "limitNum": 1,
+      "moneyType": 1,
+      "costNum": 1110,
+      "priority": 9
+    },
+    "20200001": {
+      "id": 20200001,
+      "group": 4,
+      "itemId": 21207010,
+      "limitType": 1,
+      "limitNum": 1,
+      "moneyType": 1,
+      "costNum": 125,
+      "priority": 10
+    },
+    "20200002": {
+      "id": 20200002,
+      "group": 4,
+      "itemId": 21207011,
+      "limitType": 1,
+      "limitNum": 1,
+      "moneyType": 1,
+      "costNum": 315,
+      "priority": 11
+    },
+    "20200003": {
+      "id": 20200003,
+      "group": 4,
+      "itemId": 21207012,
+      "limitType": 1,
+      "limitNum": 1,
+      "moneyType": 1,
+      "costNum": 1110,
+      "priority": 12
+    },
+    "20200004": {
+      "id": 20200004,
+      "group": 5,
+      "itemId": 21207013,
+      "limitType": 1,
+      "limitNum": 1,
+      "moneyType": 1,
+      "costNum": 125,
+      "priority": 13
+    },
+    "20200005": {
+      "id": 20200005,
+      "group": 5,
+      "itemId": 21207014,
+      "limitType": 1,
+      "limitNum": 1,
+      "moneyType": 1,
+      "costNum": 315,
+      "priority": 14
+    },
+    "20200006": {
+      "id": 20200006,
+      "group": 5,
+      "itemId": 21207015,
+      "limitType": 1,
+      "limitNum": 1,
+      "moneyType": 1,
+      "costNum": 1110,
+      "priority": 15
+    },
+    "20200007": {
+      "id": 20200007,
+      "group": 6,
+      "itemId": 21207016,
+      "limitType": 1,
+      "limitNum": 1,
+      "moneyType": 1,
+      "costNum": 85,
+      "priority": 16
+    },
+    "20200008": {
+      "id": 20200008,
+      "group": 6,
+      "itemId": 21207017,
+      "limitType": 1,
+      "limitNum": 1,
+      "moneyType": 1,
+      "costNum": 315,
+      "priority": 17
+    },
+    "20200009": {
+      "id": 20200009,
+      "group": 6,
+      "itemId": 21207018,
+      "limitType": 1,
+      "limitNum": 1,
+      "moneyType": 1,
+      "costNum": 1110,
+      "priority": 18
+    },
+    "20300001": {
+      "id": 20300001,
+      "group": 7,
+      "itemId": 21207019,
+      "limitType": 1,
+      "limitNum": 1,
+      "moneyType": 1,
+      "costNum": 85,
+      "priority": 19
+    },
+    "20300002": {
+      "id": 20300002,
+      "group": 7,
+      "itemId": 21207020,
+      "limitType": 1,
+      "limitNum": 1,
+      "moneyType": 1,
+      "costNum": 315,
+      "priority": 20
+    },
+    "20300003": {
+      "id": 20300003,
+      "group": 7,
+      "itemId": 21207021,
+      "limitType": 1,
+      "limitNum": 1,
+      "moneyType": 1,
+      "costNum": 1110,
+      "priority": 21
+    },
+    "20300004": {
+      "id": 20300004,
+      "group": 8,
+      "itemId": 21207022,
+      "limitType": 1,
+      "limitNum": 1,
+      "moneyType": 1,
+      "costNum": 85,
+      "priority": 22
+    },
+    "20300005": {
+      "id": 20300005,
+      "group": 8,
+      "itemId": 21207023,
+      "limitType": 1,
+      "limitNum": 1,
+      "moneyType": 1,
+      "costNum": 315,
+      "priority": 23
+    },
+    "20300006": {
+      "id": 20300006,
+      "group": 8,
+      "itemId": 21207024,
+      "limitType": 1,
+      "limitNum": 1,
+      "moneyType": 1,
+      "costNum": 1110,
+      "priority": 24
+    },
+    "20300007": {
+      "id": 20300007,
+      "group": 9,
+      "itemId": 21207007,
+      "moneyType": 1,
+      "costNum": 500,
+      "priority": 25
+    },
+    "20300008": {
+      "id": 20300008,
+      "group": 9,
+      "itemId": 21207008,
+      "moneyType": 1,
+      "costNum": 1000,
+      "priority": 26
+    },
+    "20300009": {
+      "id": 20300009,
+      "group": 9,
+      "itemId": 21207009,
+      "moneyType": 1,
+      "costNum": 1500,
+      "priority": 27
+    },
+    "20400001": {
+      "id": 20400001,
+      "group": 10,
+      "itemId": 21207010,
+      "moneyType": 1,
+      "costNum": 1000,
+      "priority": 28
+    },
+    "20400002": {
+      "id": 20400002,
+      "group": 10,
+      "itemId": 21207011,
+      "moneyType": 1,
+      "costNum": 1500,
+      "priority": 29
+    },
+    "20400003": {
+      "id": 20400003,
+      "group": 10,
+      "itemId": 21207012,
+      "moneyType": 1,
+      "costNum": 2000,
+      "priority": 30
+    },
+    "20400004": {
+      "id": 20400004,
+      "group": 11,
+      "itemId": 21207013,
+      "moneyType": 1,
+      "costNum": 1000,
+      "priority": 31
+    },
+    "20400005": {
+      "id": 20400005,
+      "group": 11,
+      "itemId": 21207014,
+      "moneyType": 1,
+      "costNum": 1500,
+      "priority": 32
+    },
+    "20400006": {
+      "id": 20400006,
+      "group": 11,
+      "itemId": 21207015,
+      "moneyType": 1,
+      "costNum": 2000,
+      "priority": 33
+    },
+    "20400007": {
+      "id": 20400007,
+      "group": 12,
+      "itemId": 21207016,
+      "moneyType": 1,
+      "costNum": 1000,
+      "priority": 34
+    },
+    "20400008": {
+      "id": 20400008,
+      "group": 12,
+      "itemId": 21207017,
+      "moneyType": 1,
+      "costNum": 1500,
+      "priority": 35
+    },
+    "20400009": {
+      "id": 20400009,
+      "group": 12,
+      "itemId": 21207018,
+      "moneyType": 1,
+      "costNum": 2000,
+      "priority": 36
+    }
+  }
+}

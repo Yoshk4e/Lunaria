@@ -87,6 +87,7 @@ public sealed class GameData(string assetsDir, ILogger<GameData>? logger = null)
     internal readonly Dictionary<string, PRepeatableDungeonsTable> PRepeatableDungeonsTable = [];
     internal readonly Dictionary<string, PSavePointTemplateTable> PSavePointTemplateTable = [];
     internal readonly Dictionary<string, PShopGoodsTable> PShopGoodsTable = [];
+    internal readonly Dictionary<string, PShopBuffTable> PShopBuffTable = [];
     internal readonly Dictionary<string, PShopTable> PShopTable = [];
     internal readonly Dictionary<string, PSignInActivityRewardTable> PSignInActivityRewardTable = [];
     internal readonly Dictionary<string, PSilverCreatureCombineTable> PSilverCreatureCombineTable = [];
@@ -221,7 +222,7 @@ public sealed class GameData(string assetsDir, ILogger<GameData>? logger = null)
         BattleRewards = new BattleRewardAssets(PBattleFieldRewardTable, PBattleFieldRewardGroupTable);
         Limits = new LimitAssets(PLimitGroupTable, PRefreshConfigTable);
         Mail = new MailAssets(PTemplateMailTable);
-        Shops = new ShopAssets(PShopTable, PShopGoodsTable);
+        Shops = new ShopAssets(PShopTable, PShopGoodsTable, PShopBuffTable);
 
         Motives = new MotiveAssets(
             PMotiveTable, PMotiveLevelCostTable, PMotiveLevelTemplateTable,
