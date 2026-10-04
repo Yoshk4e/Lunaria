@@ -164,6 +164,28 @@ public sealed class ServerCorrectnessTests(BundledGameplayFixture fixture)
     }
 
     [Fact]
+    public void EquipMotive_SwitchReplacesTheCurrentMotiveAndTakesItFromItsHolder()
+    {
+        var player = Fresh();
+        var first = player.Motives.Add(player.Guid, 12031001, 1).UniqId;
+        var second = player.Motives.Add(player.Guid, 12032001, 1).UniqId;
+        var a = player.Characters.All.First().InstId;
+        var b = player.Characters.Get(player.Characters.Add(player.Guid, 1003).InstId)?.InstId
+                ?? player.Characters.All.First(c => c.InstId != a).InstId;
+
+        Assert.Equal(0, player.EquipMotive(first, a));
+        Assert.Equal(0, player.EquipMotive(second, a));
+        Assert.Equal(second, player.Characters.Get(a)!.MotiveUniqId);
+        Assert.Equal(0ul, player.Motives.Get(first)!.EquipedTarget);
+        Assert.Equal(a, player.Motives.Get(second)!.EquipedTarget);
+
+        Assert.Equal(0, player.EquipMotive(second, b));
+        Assert.Equal(0ul, player.Characters.Get(a)!.MotiveUniqId);
+        Assert.Equal(second, player.Characters.Get(b)!.MotiveUniqId);
+        Assert.Equal(b, player.Motives.Get(second)!.EquipedTarget);
+    }
+
+    [Fact]
     public void MissingTeamAndInvalidMember_DoNotMutateTeams()
     {
         var player = Fresh();
