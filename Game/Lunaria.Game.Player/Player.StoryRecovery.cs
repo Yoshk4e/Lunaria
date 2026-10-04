@@ -1,3 +1,4 @@
+using Lunaria.Common.Tracking;
 using Lunaria.Game.Logging;
 using Lunaria.Game.Resources;
 using Lunaria.Game.Tasks;
@@ -26,9 +27,19 @@ public sealed partial class Player
     /// </summary>
     internal void LeaveWantedMapOnLogin()
     {
-        if (Assets.Maps.IsWantedPosterMap(Map.MapId))
-            ReturnToOpenWorld("wanted poster");
+        if (!Assets.Maps.IsWantedPosterMap(Map.MapId))
+            return;
+
+        ReturnToOpenWorld("wanted poster");
+
+        // A run kept outside its map has no active team until it is entered again: the client disables team
+        // editing (Partners) while a temporary team is active, and the entry request edits the wanted selection.
+        WantedSuspended = Wanted.IsRunning && !Assets.Maps.IsWantedPosterMap(Map.MapId);
     }
+
+    /// <summary>The wanted run was left in progress and the role is outside its map. Derived at login, not saved.</summary>
+    [Untracked]
+    internal bool WantedSuspended { get; private set; }
 
     private void ReturnToOpenWorld(string left)
     {
