@@ -170,7 +170,10 @@ public sealed class AuditGameplayTests(BundledGameplayFixture fixture, ITestOutp
         Assert.Equal(0, player.Characters.Hp(members[0]));
         foreach (var id in members.Skip(1)) Assert.Equal(Math.Min(201, player.Characters.MaxHp(id)), player.Characters.Hp(id));
         var changes = player.DrainGameplayChanges();
-        Assert.Equal(members.Skip(1), changes.OfType<SCOutsideAttribNtf>().Select(n => n.Data.InstId));
+        // Healed members first, then every character again for the team buff the food adds.
+        var attributes = changes.OfType<SCOutsideAttribNtf>().Select(n => n.Data.InstId).ToList();
+        Assert.Equal(members.Skip(1), attributes.Take(members.Count - 1));
+        Assert.Equal(player.Characters.All.Select(c => c.InstId), attributes.Skip(members.Count - 1));
         Assert.Single(changes.OfType<SCBuffAdd>());
         Assert.Single(changes.OfType<SCItemCDNtf>());
         Assert.Equal(1u, Assert.Single(Assert.Single(changes.OfType<SCItemBagChangeNtf>()).Items).ItemNum);

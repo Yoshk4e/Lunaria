@@ -7,7 +7,7 @@ namespace Lunaria.Game.Player;
 
 public sealed partial class Player
 {
-    /// <summary>Attribute bonuses of the equipped Motive and of the unlocked talent nodes.</summary>
+    /// <summary>Attribute bonuses of the equipped Motive, of the unlocked talent nodes and of the active team buffs.</summary>
     private IEnumerable<AttributeModifier> BonusModifiers(ulong instId)
     {
         if (Characters.Get(instId) is not {} character)
@@ -18,8 +18,21 @@ public sealed partial class Player
         if (character.MotiveUniqId != 0 && Motives.Get(character.MotiveUniqId) is {} motive)
             modifiers = modifiers.Concat(assets.Bonuses.MotiveModifiers(motive.MotiveId, motive.Level, motive.BreakLevel));
 
-        return modifiers;
+        return modifiers.Concat(BuffModifiers());
     }
+
+    /// <summary>
+    /// TempAttribute columns ([attribute, value, ratio]) of the active whole-team buffs. The client only hands the
+    /// battle the buff icon ids (SP_PlayerBuffEffectInitData has BuffEffectIDs only), so the bonus reaches combat
+    /// through the attributes the server sends.
+    /// </summary>
+    private IEnumerable<AttributeModifier> BuffModifiers() =>
+        Buffs.Buffs.Keys
+            .Select(assets.ItemEffects.Buff)
+            .Where(buff => buff is { TargetType: 1 })
+            .SelectMany(buff => new[] { buff!.TempAttribute1, buff.TempAttribute2 })
+            .Where(column => column.Count >= 3)
+            .Select(column => new AttributeModifier(column[0], column[1], column[2]));
 
     private IEnumerable<uint> UnlockedTalents(ulong instId)
     {
