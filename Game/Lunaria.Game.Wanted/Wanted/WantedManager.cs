@@ -376,7 +376,11 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
             AdvanceStep(run);
 
         Log.Stage("wanted award group {StepAwardId} option {AwardId} applied to entry {EntryId}, all choices finished {Finished}", stepAwardId, award, run.EntryId, finished);
-        return (0, finished, ToStepNotification());
+
+        // The client queues a choice screen for every award_list entry of each TASK_FINISHED step it receives
+        // (RequestGetAwardFor3Choose1) and ignores `finish`. While other choices remain, the reply alone updates
+        // it; a step notification would queue the remaining choices again and leave a spent screen open.
+        return (0, finished, finished ? ToStepNotification() : null);
     }
 
     public CmdWantedOneShop? ToShop(uint shopId)
@@ -832,7 +836,8 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
         if (step.EventId != 0)
             data.EventInfo.Add(new CmdWantedEventInfo { ProcessId = step.ProcessId, EventId = step.EventId });
 
-        foreach (var award in step.Awards)
+        // Chosen awards are left out: the client offers every listed award again (see ChooseAward).
+        foreach (var award in step.Awards.Where(a => !a.Chosen))
         {
             var cmd = new CmdWantedStepAward {
                 Id = award.AwardId,
