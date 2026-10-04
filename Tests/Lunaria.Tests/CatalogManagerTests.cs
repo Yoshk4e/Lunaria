@@ -38,6 +38,30 @@ public sealed class CatalogManagerTests(BundledGameplayFixture fixture)
     }
 
     [Fact]
+    public void Gacha_ResultScreenListsEachPullByItem()
+    {
+        var player = new Player(1, Assets);
+        var banner = Assets.Gacha.Banners.First(b => b.Kind == "character");
+        player.Wallet.Credit(Assets.Gacha.CostMoneyType(banner.PoolId), 2L * Assets.Gacha.PullCost(banner.PoolId));
+        var card = Assets.Items.CharacterCardFor(banner.FeaturedFiveStar);
+        Assert.NotNull(card);
+
+        var first = Assert.Single(player.DoGacha(banner.BannerId, false, Now, new LowestRoll()).Delivery!.Delivery.Presentation
+            .OfType<SCPreciousAwardShowNtf>());
+        Assert.Equal(EnmItemReason.EnmItemChangeGachaReward, first.Source);
+        var drawn = Assert.Single(first.Items);
+        Assert.Equal(card, drawn.ItemId);
+        Assert.True(drawn.IsNew);
+        Assert.Empty(drawn.RepeatConvert);
+
+        var again = Assert.Single(Assert.Single(player.DoGacha(banner.BannerId, false, Now, new LowestRoll()).Delivery!.Delivery
+            .Presentation.OfType<SCPreciousAwardShowNtf>()).Items);
+        Assert.Equal(card, again.ItemId);
+        Assert.False(again.IsNew);
+        Assert.Single(again.RepeatConvert);
+    }
+
+    [Fact]
     public void Gacha_InsufficientFundsAndDailyLimitDoNotChargeOrRoll()
     {
         var player = new Player(1, Assets);

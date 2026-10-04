@@ -8,6 +8,7 @@ namespace Lunaria.Game.Player;
 
 /// <summary>
 /// SCDoGachaResult carries cost and pool info. Rewards and new characters or motives use other notifications.
+/// The result screen opens on SCPreciousAwardShowNtf with the gacha reason, one entry per pull in pull order.
 /// </summary>
 public sealed record GachaDelivery(
     GachaCost Cost,
@@ -65,34 +66,54 @@ public sealed partial class Player
         var newcomers = new List<CharacterData>();
         var newMotives = new List<CSMotiveElem>();
         var itemish = new List<ItemGrant>();
+        var results = new SCPreciousAwardShowNtf { Source = EnmItemReason.EnmItemChangeGachaReward };
         var claimTime = unchecked((ulong)now.ToUnixTimeSeconds());
 
         foreach (var outcome in outcomes)
         {
+            bool added;
+
             if (outcome.Kind == PullKind.Character)
             {
                 var grant = Characters.Add(Guid, outcome.Id);
+                added = grant.Ok;
 
-                if (grant.Ok)
+                if (added)
                     newcomers.Add(Characters.ToCharacterData(Characters.Get(grant.InstId)!));
-                else
-                    itemish.Add(banner.DuplicateRefund(outcome.Rarity));
             } else
             {
                 var grant = Motives.Add(Guid, outcome.Id, claimTime);
+                added = grant.Ok;
 
-                if (grant.Ok)
+                if (added)
                 {
                     newMotives.Add(Motives.ToMotiveElem(Motives.Get(grant.UniqId)!));
                     Gameplay.Publish(new MotiveAcquired(outcome.Id, Count: 1));
-                } else
-                    itemish.Add(banner.DuplicateRefund(outcome.Rarity));
+                }
             }
+
+            var refund = added ? (ItemGrant?)null : banner.DuplicateRefund(outcome.Rarity);
+            if (refund is {} converted) itemish.Add(converted);
+
+            // Motive items share the motive id (MotiveState.ItemId).
+            var shownItem = outcome.Kind == PullKind.Character ? assets.Items.CharacterCardFor(outcome.Id) :
+                assets.Items.Exists(outcome.Id) ? outcome.Id : null;
+
+            if (shownItem is not {} itemId)
+            {
+                Log.Flag("gacha pull {Kind} {Id} has no item to show on the result screen", outcome.Kind, outcome.Id);
+                continue;
+            }
+
+            var shown = new PreciousAward { ItemId = itemId, IsNew = added };
+            if (refund is {} repeat) shown.RepeatConvert.Add(new ItemIdCount { ItemId = repeat.ItemId, Count = repeat.Count });
+            results.Items.Add(shown);
         }
 
         itemish.AddRange(Gacha.ClaimRebates(poolId));
 
         var delivery = GrantRewards(itemish, EnmItemReason.EnmItemChangeGachaReward);
+        if (results.Items.Count > 0) delivery = delivery with { Presentation = [..delivery.Presentation, results] };
         Gameplay.Publish(new WalletChanged());
         if (newcomers.Count > 0) Gameplay.Publish(new CharactersAcquired(newcomers));
         var cost = new GachaCost { Type = unchecked((uint)moneyType), Amount = unchecked((ulong)charge) };
