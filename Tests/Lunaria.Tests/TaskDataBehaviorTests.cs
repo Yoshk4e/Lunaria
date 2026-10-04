@@ -162,6 +162,21 @@ public sealed class TaskDataBehaviorTests(BundledGameplayFixture fixture)
     }
 
     [Fact]
+    public void ScenarioReport_LeavesTheNextEmptyActionDelayToTheClient()
+    {
+        // 21005: 2100517 plays scenario 31145, 2100519 waits (EmptyAction), 2100520 moves the player.
+        var player = new Player(1, Assets);
+        AtStep(player, TaskAssets.QuestMain, 2100517);
+
+        Assert.Equal(0, player.ReportTaskAction(TaskAssets.QuestMain, 210051701, 1).Code);
+        player.SettleMapArrival(100001001001, settleMarkers: false);
+        Assert.Equal(2100519ul, player.Tasks.TaskDataOf(TaskAssets.QuestMain, 21005)!.CurrentStep.StepId);
+
+        Assert.Equal(0, player.ReportTaskAction(TaskAssets.QuestMain, 210051901, 1).Code);
+        Assert.Equal(2100520ul, player.Tasks.TaskDataOf(TaskAssets.QuestMain, 21005)!.CurrentStep.StepId);
+    }
+
+    [Fact]
     public void PolicyTestTask_IsNotSeededAtRoleCreation()
     {
         var player = new Player(1, Assets);

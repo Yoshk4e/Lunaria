@@ -46,11 +46,15 @@ public sealed partial class Player
         return (0, WithEffects(Settle(result), effects));
     }
 
-    public IReadOnlyList<TaskActionOutcome> SettleMapArrival(ulong mapId)
+    /// <param name="settleMarkers">
+    /// False after a client action report: the EmptyAction delay of the step that just became current is the client's
+    /// to run, and completing it here moved the player before the scenario covered the screen.
+    /// </param>
+    public IReadOnlyList<TaskActionOutcome> SettleMapArrival(ulong mapId, bool settleMarkers = true)
     {
         using var operationTime = BeginOperation();
         EnsureLevelBaseline();
-        var outcomes = Tasks.OnMapEntered(mapId).Select(Settle).ToList();
+        var outcomes = Tasks.OnMapEntered(mapId, settleMarkers).Select(Settle).ToList();
         // Resolve dependent quests before FinEnterMap. Lua uses its TaskData snapshot to resume the story.
         outcomes.AddRange(SettleServerTargets());
         SynchronizeLevelData();
