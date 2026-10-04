@@ -1,3 +1,4 @@
+using System.Globalization;
 using Lunaria.Game.Resources.Tables;
 
 namespace Lunaria.Game.Resources;
@@ -14,11 +15,16 @@ public sealed class CollectionAssets
     private readonly Dictionary<(uint DropId, uint GroupId), (uint CollectionId, uint Weight)[]> _spawnGroups = [];
     private readonly Dictionary<ulong, PWorldCollectObjTable> _worldObjects = [];
     private readonly Dictionary<ulong, PWorldCollectObjTable[]> _worldObjectsByBlock = [];
+    private readonly Dictionary<ulong, TaskCollection> _taskCollections = [];
+
+    /// <summary>ETaskObjectSystemType.Normal: the task persistent rows the server places as collectables.</summary>
+    public const uint TaskCollectionSystemType = 4;
 
     public CollectionAssets(
         IReadOnlyDictionary<string, PCollectionTable> collections,
         IReadOnlyDictionary<string, PCollectionDropTable> spawns,
         IReadOnlyDictionary<string, PWorldCollectObjTable> worldObjects,
+        IEnumerable<PTaskPersistentTable> taskObjects,
         DropTableAssets drops,
         LimitAssets limits
     )
@@ -40,6 +46,18 @@ public sealed class CollectionAssets
         foreach (var block in _worldObjects.Values.GroupBy(r => r.BlockId))
         {
             _worldObjectsByBlock[block.Key] = block.OrderBy(r => r.Id).ToArray();
+        }
+
+        foreach (var row in taskObjects.Where(r => r.SystemType == TaskCollectionSystemType && r.Id != 0))
+        {
+            if (!_collections.ContainsKey(row.TemplateId) || _worldObjects.ContainsKey(row.Id)
+                || Triple(row.Position) is not {} at)
+                continue;
+
+            var turn = Triple(row.Rotation) ?? (0, 0, 0);
+            _taskCollections[row.Id] = new TaskCollection(row.Id, row.TaskType, row.TaskId, row.StepIdStart,
+                Math.Max(row.StepIdEnd, row.StepIdStart), row.MapId, row.TemplateId, at.A, at.B, at.C,
+                turn.A, turn.B, turn.C);
         }
 
         foreach (var group in spawns.Values.GroupBy(r => (r.CollectionDropId, r.GroupId)))
@@ -119,6 +137,31 @@ public sealed class CollectionAssets
     public IReadOnlyList<PWorldCollectObjTable> WorldObjects(ulong blockId) => blockId == 0
         ? _worldObjects.Values.OrderBy(r => r.Id).ToArray()
         : _worldObjectsByBlock.GetValueOrDefault(blockId) ?? [];
+
+    public TaskCollection? TaskCollection(ulong id) => _taskCollections.GetValueOrDefault(id);
+
+    public IReadOnlyCollection<TaskCollection> TaskCollections => _taskCollections.Values;
+
+    /// <summary>"a,b,c" as rounded integers, or null when the text does not hold three numbers.</summary>
+    private static (int A, int B, int C)? Triple(string text)
+    {
+        var parts = text.Split(',', StringSplitOptions.TrimEntries);
+
+        if (parts.Length != 3)
+            return null;
+
+        var values = new int[3];
+
+        for (var i = 0; i < 3; i++)
+        {
+            if (!float.TryParse(parts[i], NumberStyles.Float, CultureInfo.InvariantCulture, out var value))
+                return null;
+
+            values[i] = (int)MathF.Round(value);
+        }
+
+        return (values[0], values[1], values[2]);
+    }
 
     public uint RewardLimitGroup(uint collectionId) =>
         _collections.GetValueOrDefault(collectionId)?.RewardLimitId ?? 0;

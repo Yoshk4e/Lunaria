@@ -140,6 +140,8 @@ public sealed class GameData(string assetsDir, ILogger<GameData>? logger = null)
     internal readonly Dictionary<string, PWantedPosterStepCountTable> PWantedPosterStepCountTable = [];
     internal readonly Dictionary<string, PWantedPosterTable> PWantedPosterTable = [];
     internal readonly Dictionary<string, PWorldCollectObjTable> PWorldCollectObjTable = [];
+    internal readonly Dictionary<string, PTaskPersistentTableQuestMain> PTaskPersistentTableQuestMain = [];
+    internal readonly Dictionary<string, PTaskPersistentTablePOIQuest> PTaskPersistentTablePOIQuest = [];
     internal readonly Dictionary<string, PWorldLevelTable> PWorldLevelTable = [];
     internal readonly Dictionary<string, SDropTable> SDropTable = [];
     internal readonly Dictionary<string, SPlayerIniTable> SPlayerIniTable = [];
@@ -230,7 +232,8 @@ public sealed class GameData(string assetsDir, ILogger<GameData>? logger = null)
             PGachaTable, PGachaRebateTable, Characters, Motives, Items,
             Path.Combine(assetsDir, "banners.json"));
         Notices = new NoticeAssets(Path.Combine(assetsDir, "notices.json"));
-        Collections = new CollectionAssets(PCollectionTable, PCollectionDropTable, PWorldCollectObjTable, DropTable, Limits);
+        Collections = new CollectionAssets(PCollectionTable, PCollectionDropTable, PWorldCollectObjTable,
+            PTaskPersistentTableQuestMain.Values.Concat<PTaskPersistentTable>(PTaskPersistentTablePOIQuest.Values), DropTable, Limits);
         Gems = new GemAssets(PGemTable, PGemGlobalConfig);
 
         GameTime = new GameTimeAssets(PGameTimeTable);

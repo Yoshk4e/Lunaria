@@ -1,5 +1,7 @@
 using Lunaria.Game.Logging;
 using Lunaria.Game.Player.Gameplay;
+using Lunaria.Game.Resources;
+using Lunaria.Game.Tasks;
 using Msg;
 
 namespace Lunaria.Game.Player;
@@ -8,12 +10,48 @@ public sealed record CollectionOutcome(OneCollectionData Item, RewardDelivery De
 
 public sealed partial class Player
 {
+    /// <summary>
+    /// Objects of a block, plus the quest collectables of the current map. The client spawns task objects from any
+    /// list and keys them by uniq_id, so repeating them in every block reply is harmless.
+    /// </summary>
     public IReadOnlyList<OneCollectionData> GetCollections(ulong blockId, DateTimeOffset now)
     {
         using var operationTime = BeginOperation(now);
         return Collections.ListBlock(blockId, now)
+            .Concat(ActiveTaskCollections().Select(task => Collections.Get(task.Id)!))
             .Select(Collections.ToOneCollectionData)
             .ToList();
+    }
+
+    /// <summary>A quest collectable exists while its task runs one of its steps, on the map it was placed on.</summary>
+    private bool IsTaskCollectionActive(TaskCollection task) =>
+        Tasks.Processing.TryGetValue((task.TaskType, task.TaskId), out var state)
+        && task.CoversStep(state.CurrentStep.StepId)
+        && TaskManager.MatchesMap(task.MapId, Map.MapId);
+
+    private IEnumerable<TaskCollection> ActiveTaskCollections() =>
+        assets.Collections.TaskCollections.Where(IsTaskCollectionActive).OrderBy(task => task.Id);
+
+    /// <summary>
+    /// Shows or removes the quest collectables of tasks whose step changed. Collected objects are left to the client,
+    /// which destroys them itself after the collect animation.
+    /// </summary>
+    public SCCollectionDataNtf? TaskCollectionChanges(IEnumerable<(uint Type, uint Id)> tasks)
+    {
+        var touched = tasks.ToHashSet();
+        var ntf = new SCCollectionDataNtf();
+
+        foreach (var task in assets.Collections.TaskCollections.Where(t => touched.Contains((t.TaskType, t.TaskId))).OrderBy(t => t.Id))
+        {
+            var node = Collections.Get(task.Id)!;
+
+            if (IsTaskCollectionActive(task))
+                ntf.NtfList.Add(Collections.ToOneCollectionData(node));
+            else if (node.Status is not (EnmCollectionStatus.EcsCollected or EnmCollectionStatus.EcsDestroyed))
+                ntf.DeleteUid.Add(task.Id);
+        }
+
+        return ntf.NtfList.Count > 0 || ntf.DeleteUid.Count > 0 ? ntf : null;
     }
 
     /// <summary>The client only re-lists a block when it loads it, so respawned objects are pushed.</summary>
@@ -48,11 +86,23 @@ public sealed partial class Player
         if (Collections.Get(uniq) is not { Status: EnmCollectionStatus.EcsCanCollect } node)
             return ((int)EnmTextCode.EnmTextCollectionAlreadyOp, null);
 
-        var level = assets.Maps.Map(node.Block)?.LevelPath;
-        if (node.Block != Map.MapId && (string.IsNullOrEmpty(level) || level != assets.Maps.Map(Map.MapId)?.LevelPath))
+        if (assets.Collections.TaskCollection(uniq) is {} task)
         {
-            Log.Flag("collection {Uniq} refused: block {Block} is not on map {Map} ({Phase})", uniq, node.Block, Map.MapId, Map.Phase);
-            return ((int)EnmTextCode.EnmTextCollectionCondUnmeet, null);
+            if (!IsTaskCollectionActive(task))
+            {
+                Log.Flag("collection {Uniq} refused: task {TaskType} {TaskId} is not on steps {Start}-{End} of map {TaskMap} (map {Map})",
+                    uniq, task.TaskType, task.TaskId, task.StepStart, task.StepEnd, task.MapId, Map.MapId);
+                return ((int)EnmTextCode.EnmTextCollectionCondUnmeet, null);
+            }
+        }
+        else
+        {
+            var level = assets.Maps.Map(node.Block)?.LevelPath;
+            if (node.Block != Map.MapId && (string.IsNullOrEmpty(level) || level != assets.Maps.Map(Map.MapId)?.LevelPath))
+            {
+                Log.Flag("collection {Uniq} refused: block {Block} is not on map {Map} ({Phase})", uniq, node.Block, Map.MapId, Map.Phase);
+                return ((int)EnmTextCode.EnmTextCollectionCondUnmeet, null);
+            }
         }
 
         // P_CollectionTable.Radius is the client's interaction sphere, but objects are also absorbed from afar (a
