@@ -79,7 +79,10 @@ public sealed partial class GachaManager(GameData assets) : TrackedObject
         var state = _states.GetValueOrDefault(bannerId)
                     ?? new GachaBannerState(Total: 0, SinceFive: 0, SinceFour: 0, FeaturedSince: 0, Guaranteed: false, ClaimedMask: 0,
                         DailyCount: 0, now);
-        var daily = DailyCountOf(bannerId, now);
+        // The client reads daily_count as the pulls left today (DailyDrawRemain in s_CSM_G_GachaData) and refuses a
+        // pull above it, so send the daily limit minus today's pulls rather than the pulls done.
+        var limit = assets.Gacha.DailyLimit(banner.PoolId);
+        var daily = limit == 0 ? 0 : limit - Math.Min(DailyCountOf(bannerId, now), limit);
         var pityFive = assets.Gacha.FiveStarPity(banner.PoolId);
         var pityFour = assets.Gacha.FourStarPity(banner.PoolId);
 

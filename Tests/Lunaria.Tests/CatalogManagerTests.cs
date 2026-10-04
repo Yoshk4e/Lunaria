@@ -60,6 +60,9 @@ public sealed class CatalogManagerTests(BundledGameplayFixture fixture)
         Assert.Equal(balance, player.Wallet.Balance(currency));
         Assert.Equal(0, player.DoGacha(banner.BannerId, false, Now.AddDays(1), new LowestRoll()).Code);
         Assert.Equal(1u, player.Gacha.DailyCountOf(banner.BannerId, Now.AddDays(1)));
+        // The client reads daily_count as the pulls left today.
+        Assert.Equal(cap - 1, player.Gacha.PoolInfo(banner.BannerId, Now.AddDays(1)).DailyCount);
+        Assert.Equal(cap, new Player(2, Assets).Gacha.PoolInfo(banner.BannerId, Now).DailyCount);
     }
 
     [Fact]
