@@ -16,7 +16,10 @@ public sealed partial class Player
             return (int)EnmTextCode.EnmTextWrongParam;
         }
         InstallQuestGates();
-        var code = Wanted.CheckEnter(entryId);
+        // Continue on the Case Simulation screen sends the same request for the run left in progress
+        // (SCWantedOutsideData current_id): resume it instead of starting over.
+        var resume = Wanted.CaptureRun()?.EntryId == entryId;
+        var code = resume ? 0 : Wanted.CheckEnter(entryId);
 
         if (code != 0)
             return code;
@@ -41,9 +44,14 @@ public sealed partial class Player
         }
         if (QueryTemporaryTeam((int)EnmTmpTeamType.Wanted, entryId)?.MemberData.Count is not > 0)
             return (int)EnmTextCode.EnmTextWrongParam;
-        Wanted.Enter(entryId);
-        _wantedTasksStep = 0;
-        Tasks.ResetNamespace(TaskAssets.Wanted);
+        if (resume)
+            Log.Flag("wanted run on entry {EntryId} resumed at step {Step}", entryId, Wanted.CurrentStep);
+        else
+        {
+            Wanted.Enter(entryId);
+            _wantedTasksStep = 0;
+            Tasks.ResetNamespace(TaskAssets.Wanted);
+        }
         WantedSuspended = false;
         ReconcileTemporaryTeam();
         return 0;
