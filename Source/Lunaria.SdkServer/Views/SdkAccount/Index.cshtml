@@ -37,6 +37,7 @@
         }
         <form method="POST" action="/account/retrieve">
             @Html.AntiForgeryToken()
+            <input type="hidden" id="appId" name="AppId" value="@Model.AppId">
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="Email" required autocomplete="email" placeholder="you@example.com" value="@Model.Email">
@@ -54,9 +55,14 @@
     </div>
 </div>
 <script>
-    // The SDK routes this page with the hash: #/retrieve-way, #/register-result, #/retrieve-result.
+    // The SDK routes this page with the hash, query included: #/retrieve-way?lang=en&appId=silver...
+    const [hashRoute, hashQuery] = location.hash.replace(/^#\//, "").split("?");
+    const appId = new URLSearchParams(hashQuery ?? "").get("appId");
+    const appIdInput = document.getElementById("appId");
+    if (appId && !appIdInput.value) appIdInput.value = appId;
     const showForm = @(Model.ShowForm ? "true" : "false");
-    const route = showForm ? "retrieve-way" : location.hash.replace(/^#\//, "").split("?")[0];
+    const serverRoute = "@(Model.Route ?? "")";
+    const route = showForm ? "retrieve-way" : serverRoute || hashRoute;
     const section = document.getElementById(route) ?? document.getElementById("retrieve-way");
     section.hidden = false;
     if (section.id !== "retrieve-way") document.getElementById("subtitle").textContent = "Lunaria account";

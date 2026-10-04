@@ -12,4 +12,7 @@ public sealed class SignupViewModel
 
     /// <summary>Where the form posts: /signup, or the SDK register page.</summary>
     public string Action { get; set; } = "/signup";
+
+    /// <summary>The SDK app id from the register URL, which the result URL must carry back.</summary>
+    public string AppId { get; set; } = "";
 }

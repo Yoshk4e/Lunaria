@@ -5,21 +5,28 @@ using Microsoft.AspNetCore.Mvc;
 namespace Lunaria.SdkServer.Controllers;
 
 /// <summary>
-/// The HappyElements SDK account pages, a hash-routed page in the official build. The SDK opens
-/// sdk-account.html#/retrieve-way for a forgotten password, and closes its WebView once the URL before "?" ends
-/// with register-result or retrieve-result.
+/// The HappyElements SDK account pages. The SDK opens sdk-account.html#/retrieve-way for a forgotten password and
+/// closes its WebView when the URL before "?" ends with register-result.html (register) or retrieve-result
+/// (password reset) and the query carries appId equal to its own app id (UHeSDK WebView URL handler).
 /// </summary>
 public sealed class SdkAccountController(UserRepository users, PasswordHasher hasher, ILogger<SdkAccountController> logger)
     : Controller
 {
     private const string PagePath = "/account/sdk-account.html";
+    private const string RegisterResultPath = "/account/register-result.html";
     private const string RetrievePath = "/account/retrieve";
 
-    public static string ResultUrl(string route, string email) =>
-        $"{PagePath}#/{route}?account={Uri.EscapeDataString(email)}";
+    public static string RegisterResultUrl(string appId, string email) =>
+        $"{RegisterResultPath}?appId={Uri.EscapeDataString(appId)}&account={Uri.EscapeDataString(email)}";
+
+    public static string RetrieveResultUrl(string appId, string email) =>
+        $"{PagePath}#/retrieve-result?appId={Uri.EscapeDataString(appId)}&account={Uri.EscapeDataString(email)}";
 
     [HttpGet(PagePath)]
     public IActionResult Index() => View(new RetrieveViewModel());
+
+    [HttpGet(RegisterResultPath)]
+    public IActionResult RegisterResult() => View(nameof(Index), new RetrieveViewModel { Route = "register-result" });
 
     /// <summary>
     /// Resets a password without an email check. The SDK server only listens on 127.0.0.1, so only the player at
@@ -65,7 +72,7 @@ public sealed class SdkAccountController(UserRepository users, PasswordHasher ha
         }
 
         logger.LogInformation("password reset for {Email}", model.Email);
-        return Redirect(ResultUrl("retrieve-result", model.Email));
+        return Redirect(RetrieveResultUrl(model.AppId, model.Email));
     }
 }
 
@@ -74,6 +81,12 @@ public sealed class RetrieveViewModel
     public string Email { get; set; } = "";
     public string Password { get; set; } = "";
     public string ConfirmPassword { get; set; } = "";
+
+    /// <summary>The SDK app id, read by the page from its #/retrieve-way query.</summary>
+    public string AppId { get; set; } = "";
+
+    /// <summary>The section to show when the server knows it (register-result.html has no hash).</summary>
+    public string? Route { get; set; }
 
     public string? Error { get; set; }
 

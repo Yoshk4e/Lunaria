@@ -15,7 +15,8 @@ public sealed class SignupController(UserRepository users, PasswordHasher hasher
     public IActionResult Index() => View(new SignupViewModel());
 
     [HttpGet(SdkRegisterPath)]
-    public IActionResult SdkRegister() => View(nameof(Index), new SignupViewModel { Action = SdkRegisterPath });
+    public IActionResult SdkRegister([FromQuery] string? appId) =>
+        View(nameof(Index), new SignupViewModel { Action = SdkRegisterPath, AppId = appId ?? "" });
 
     [HttpPost(SdkRegisterPath)]
     [ValidateAntiForgeryToken]
@@ -26,7 +27,7 @@ public sealed class SignupController(UserRepository users, PasswordHasher hasher
         if (await RegisterAsync(model).ConfigureAwait(false) is {} failed)
             return View(nameof(Index), failed);
 
-        return Redirect(SdkAccountController.ResultUrl("register-result", model.Email));
+        return Redirect(SdkAccountController.RegisterResultUrl(model.AppId, model.Email));
     }
 
     [HttpPost("/signup")]
