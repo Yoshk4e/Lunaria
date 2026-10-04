@@ -1,3 +1,4 @@
+using Lunaria.Game.Characters;
 using Lunaria.Game.Mail;
 using Lunaria.Game.Player;
 using Lunaria.Game.Resources;
@@ -141,6 +142,25 @@ public sealed class ServerCorrectnessTests(BundledGameplayFixture fixture)
         mismatched.BattleFieldId = 109101201;
         Assert.NotEqual(0, player.LeaveBattle(mismatched).Result);
         Assert.NotNull(player.Battles.Current);
+    }
+
+    [Fact]
+    public void UpdateTeam_OpensAnotherTeamTheClientLists()
+    {
+        var player = Fresh();
+        var proposed = player.Teams.ToTeamData(player.Teams.Get(player.Teams.Current)!).Clone();
+        proposed.TeamId = 2;
+
+        var result = player.UpdateTeam(proposed);
+
+        Assert.Equal(0, result.Result);
+        Assert.Equal(2u, result.TeamData.TeamId);
+        Assert.Equal(proposed.MemberData.Select(m => m.InstId), result.TeamData.MemberData.Select(m => m.InstId));
+        Assert.Equal(1u, player.Teams.Current);
+
+        proposed.TeamId = (uint)TeamManager.MaxTeams + 1;
+        Assert.Equal((int)EnmTextCode.EnmTextCharacterInvalidTeamid, player.UpdateTeam(proposed).Result);
+        Assert.Null(player.Teams.Get(proposed.TeamId));
     }
 
     [Fact]
