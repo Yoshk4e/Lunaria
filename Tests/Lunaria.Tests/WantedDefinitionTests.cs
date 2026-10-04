@@ -76,7 +76,8 @@ public sealed class WantedDefinitionTests(BundledGameplayFixture fixture)
         player.Characters.GrantStarter(player.Guid);
         player.Teams.GrantStarter(player.Characters);
         Assert.Equal(0, player.EnterWanted(10101));
-        var creature = fixture.Data.Wanted.AllCreatures.First(c => c.Price > 0);
+        // CBT1 prices every creature at 0: selling pays the table price, once.
+        var creature = fixture.Data.Wanted.AllCreatures.MaxBy(c => c.Price)!;
         player.Wanted.Load([], player.Wanted.CaptureRun()! with { Bionics = [new WantedBionics(creature.Id, 7)] });
         var balance = player.Wallet.Balance((int)MoneyType.ThoughtSand);
         Assert.Equal(0, player.GiveUpWantedBionics(7));
