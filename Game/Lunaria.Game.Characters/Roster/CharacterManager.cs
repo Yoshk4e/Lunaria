@@ -104,13 +104,14 @@ public sealed partial class CharacterManager(GameData assets) : TrackedObject
         MotiveUniqId = character.MotiveUniqId
     };
 
-    public IReadOnlyList<(int Id, int Value)> Attribs(ulong instId) =>
+    /// <summary>Attributes of an owned character, optionally with run-scoped vitals instead of its own.</summary>
+    public IReadOnlyList<(int Id, int Value)> Attribs(ulong instId, int? hp = null, int? liquid = null) =>
         Get(instId) is {} character ?
             assets.Attribs.ForCharacter(
                 character.CharacterId,
                 assets.Characters.DevelopAttributeId(character.CharacterId, character.Level),
-                character.Hp,
-                character.PermanentLiquid,
+                hp ?? character.Hp,
+                liquid ?? character.PermanentLiquid,
                 assets.Characters.FixedAttributeId(character.CharacterId),
                 MaxHp(instId)) :
             [];
@@ -123,12 +124,12 @@ public sealed partial class CharacterManager(GameData assets) : TrackedObject
     /// The client displays the extra attribute column as final minus base, and fights with the final value, so
     /// bonuses go into FinalValue: (base + add) raised by the summed permyriad increase.
     /// </summary>
-    public PBCharacterAttribData AttribData(ulong instId)
+    public PBCharacterAttribData AttribData(ulong instId, int? hp = null, int? liquid = null)
     {
         var data = new PBCharacterAttribData { InstId = instId };
         var bonuses = Bonuses(instId);
 
-        foreach (var (id, value) in Attribs(instId))
+        foreach (var (id, value) in Attribs(instId, hp, liquid))
         {
             var bonus = bonuses.GetValueOrDefault(id);
             bonuses.Remove(id);

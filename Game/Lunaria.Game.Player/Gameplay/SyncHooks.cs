@@ -52,10 +52,10 @@ internal sealed class SyncHooks :
     }
 
     public void Handle(Player p, StaminaSpent e, PlayerChanges changes) =>
-        changes.Add(StaminaAttr(p.Progress.Stamina));
+        changes.Add(StaminaAttr(p, p.Progress.Stamina));
 
     public void Handle(Player p, StaminaChanged e, PlayerChanges changes) =>
-        changes.Add(StaminaAttr(e.Stamina));
+        changes.Add(StaminaAttr(p, e.Stamina));
 
     public void Handle(Player p, SatietyChanged e, PlayerChanges changes) =>
         changes.Add(new SCPlayerAttrUpdateNtf {
@@ -192,13 +192,15 @@ internal sealed class SyncHooks :
         return added;
     }
 
-    private static SCPlayerAttrUpdateNtf StaminaAttr(int stamina) =>
+    // The stamina popup counts down to STAMINA_FULLTIME; without it the client formats a negative time.
+    private static SCPlayerAttrUpdateNtf StaminaAttr(Player p, int stamina) =>
         new() {
             UpdateAttrs = {
                 new PlayerAttr {
                     AttrType = (int)PlayerAttrType.EnmPlayerAttrStaminaCur,
                     ValueInt32 = stamina
-                }
+                },
+                p.StaminaFullTimeAttr()
             }
         };
 }

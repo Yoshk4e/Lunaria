@@ -41,7 +41,9 @@ public sealed class HandleFinEnterMap(ILogger<HandleFinEnterMap> logger)
             CurrentSavepoint = ctx.Player.Map.Savepoint,
             BornPosType = ctx.Player.Map.BornPosType,
             TaskData = ctx.Player.Tasks.ToPlayerTaskData(),
-            WorldMapId = mapId,
+            // The client leaves a scripted map (dungeon, story instance) by travelling to world_map_id, so it names
+            // the open-world map the player came from rather than the instance itself.
+            WorldMapId = ctx.Assets.Maps.IsScriptedWorld(mapId) && ctx.Player.Map.ReturnPoint is {} origin ? origin.MapId : mapId,
             UnlockedTeleportIdList = { ctx.Player.Map.UnlockedTeleports }
         };
     }

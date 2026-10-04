@@ -8,7 +8,11 @@ public enum ServerTarget
     None = 0,
     GiveItems = 1,
     TakeItems = 2,
-    UseItem = 3,
+    /// <summary>
+    /// Buy the item in a shop. CBT1 "Purchase …" quest steps use it (Joyous Soda Bread, later handed to Alf), so
+    /// eating the item must not count.
+    /// </summary>
+    BuyItem = 3,
     ArriveMap = 4,
     TeamLevel = 6,
     OpenCase = 7,
