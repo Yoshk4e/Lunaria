@@ -46,7 +46,7 @@ public static class ContentValidator
         var fixedDrops = Ids("P_FixedDropTable", "dropId");
         var rolledDrops = Ids("S_DropTable", "dropId");
         var usedRolledDrops = Rows("P_CollectionTable").SelectMany(r => Numbers(r, "dropId"))
-            .Concat(Rows("P_RepeatableDungeonsTable").SelectMany(r => Numbers(r, "rewardDrop")))
+            .Concat(Rows("P_RepeatableDungeonsTable").SelectMany(r => Numbers(r, "rewardDrop").Concat(Numbers(r, "firstPassRewardDrop"))))
             .Concat(Rows("P_HordeTable").SelectMany(r => Numbers(r, "firstDrop").Concat(Numbers(r, "commonDrop")))).ToHashSet();
         var usedFixedDrops = Rows("P_RegionRewardDataTable").SelectMany(r => Numbers(r, "dropId"))
             .Concat(Rows("P_ItemTable").Where(r => Number(r, "useType") == (uint)ItemUseType.AddDrop)
@@ -55,6 +55,7 @@ public static class ContentValidator
         References("P_FixedDropTable", "itemId", items, "P_ItemTable", "fixed rewards", r => usedFixedDrops.Contains(Number(r, "dropId")));
         References("P_CollectionTable", "dropId", rolledDrops, "S_DropTable.dropId", "collection rewards");
         References("P_RepeatableDungeonsTable", "rewardDrop", rolledDrops, "S_DropTable.dropId", "dungeon rewards");
+        References("P_RepeatableDungeonsTable", "firstPassRewardDrop", rolledDrops, "S_DropTable.dropId", "first clear rewards");
         References("P_HordeTable", "firstDrop", rolledDrops, "S_DropTable.dropId", "horde rewards");
         References("P_HordeTable", "commonDrop", rolledDrops, "S_DropTable.dropId", "horde rewards");
         References("P_RegionRewardDataTable", "dropId", fixedDrops, "P_FixedDropTable.dropId", "exploration rewards");
