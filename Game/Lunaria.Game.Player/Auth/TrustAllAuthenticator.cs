@@ -11,6 +11,11 @@ public sealed class TrustAllAuthenticator(ILogger<TrustAllAuthenticator> logger)
         if (attempt.Userid.Length > 0)
         {
             accountKey = attempt.Userid;
+        } else if (attempt.ChannelName.Length > 0 && attempt.ChannelUid.Length > 0)
+        {
+            // The SDK login sends no userid but a channel uid fixed per SDK account, so several accounts on one
+            // device keep separate saves.
+            accountKey = $"{attempt.ChannelName}:{attempt.ChannelUid}";
         } else if (attempt.Udid.Length > 0)
         {
             accountKey = $"device:{attempt.Udid}";
