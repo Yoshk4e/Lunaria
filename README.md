@@ -82,7 +82,7 @@ All options are validated at startup.
 
 ## Legal Disclaimer
 
-- Lun was developed for educational and research purposes.
+- Lunaria was developed for educational and research purposes.
 - All trademarks, copyrights, and other intellectual property related to the original game
   belong to their respective owners.
 - Use this software at your own risk. The authors assume no responsibility for any damages
