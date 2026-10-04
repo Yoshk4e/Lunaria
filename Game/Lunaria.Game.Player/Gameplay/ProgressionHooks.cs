@@ -41,7 +41,7 @@ internal sealed class ProgressionHooks :
     {
         if (e.CollectionType >= 0)
             Increment(p, changes, p.Assets.Unlocks.ArgEvents(GlobalEventSub.CollectItemType, (ulong)e.CollectionType), count: 1);
-        RefreshExploration(p, changes);
+        RefreshExploration(p, changes, p.RegionProgress.RecordGather(e.Block, e.Cfg));
     }
 
     public void Handle(Player p, CreatureAcquired e, PlayerChanges changes) => RefreshExploration(p, changes);
@@ -185,9 +185,9 @@ internal sealed class ProgressionHooks :
         }
     }
 
-    private static void RefreshExploration(Player p, PlayerChanges changes)
+    private static void RefreshExploration(Player p, PlayerChanges changes, IReadOnlyList<ulong>? gathered = null)
     {
-        var moved = p.RecalculateRegionProgress();
+        var moved = p.RecalculateRegionProgress().Union(gathered ?? []).ToList();
 
         foreach (var id in p.RegionProgress.DrainUnlocked())
         {

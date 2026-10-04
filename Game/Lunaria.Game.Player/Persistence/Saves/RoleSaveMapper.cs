@@ -401,6 +401,7 @@ internal static class RoleSaveMapper
 
     internal static RoleSaveDocument.RegionProgressSave? CaptureRegionProgress(Player player) =>
         new RoleSaveDocument.RegionProgressSave {
+            GatherCounts = true,
             Subregions = player.RegionProgress.Subregions.Values
                 .Select(state => new RoleSaveDocument.SubRegionProgressSave {
                     SubRegionId = state.SubRegionId,
@@ -647,6 +648,9 @@ internal static class RoleSaveMapper
                 (row.SubRegionId,
                     row.Sequences.Select(sequence => (sequence.SequenceId, sequence.Count)),
                     row.ClaimedValues.AsEnumerable())) ?? []);
+
+        if (document.RegionProgress?.GatherCounts != true)
+            player.RebuildGatherCounts();
 
         player.SilverCreatures.Load(
             document.SilverCreatures?.Creatures.Select(row =>

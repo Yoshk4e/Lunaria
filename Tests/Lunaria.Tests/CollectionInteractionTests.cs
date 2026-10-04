@@ -143,6 +143,57 @@ public sealed class CollectionInteractionTests(BundledGameplayFixture fixture)
         Assert.NotNull(result.Outcome);
     }
 
+    /// <summary>A placed object of this template whose sub-region has a gather objective listing it.</summary>
+    private (PWorldCollectObjTable Placed, ulong SubRegion, uint Sequence) GatherObjective(uint template, uint minimum)
+    {
+        foreach (var row in Assets.Collections.WorldObjects(0).Where(row => row.TemplateId == template && row.CollectUnlockType == 0))
+        foreach (var subRegion in Assets.RegionProgress.SubRegionsOfBlock(row.BlockId))
+        foreach (var id in Assets.RegionProgress.Sequences(subRegion))
+        {
+            if (Assets.RegionProgress.SequenceRow(subRegion, id) is {} sequence && Assets.RegionProgress.CountsGathers(sequence)
+                && sequence.ParamId.Contains(template) && sequence.ParamNum >= minimum)
+                return (row, subRegion, id);
+        }
+        throw new InvalidOperationException($"no gather objective lists template {template}");
+    }
+
+    [Fact]
+    public void EveryGatherOfARespawnedResource_CountsInItsSubRegionOnly()
+    {
+        var (placed, subRegion, sequence) = GatherObjective(1010101, minimum: 2);
+        var player = At(placed);
+        Assert.Equal(0, player.Collect(placed.Id, EnmCollectionOp.EnCollectionOpCollect, Now).Code);
+        var later = Now.AddDays(8);
+        Assert.True(player.Collections.TryRefreshOne(placed.Id, later));
+        Assert.Equal(0, player.Collect(placed.Id, EnmCollectionOp.EnCollectionOpCollect, later).Code);
+
+        Assert.Equal(2u, player.RegionProgress.Subregions[subRegion].Sequences[sequence]);
+        Assert.All(player.RegionProgress.Subregions.Where(pair => pair.Key != subRegion), pair =>
+            Assert.DoesNotContain(pair.Value.Sequences, entry => Assets.RegionProgress.SequenceRow(pair.Key, entry.Key) is {} row
+                && Assets.RegionProgress.CountsGathers(row) && entry.Value > 0));
+    }
+
+    [Fact]
+    public void SaveWithTemplateCounts_RebuildsGatherObjectivesFromGatheredObjects()
+    {
+        var (placed, subRegion, sequence) = GatherObjective(200, minimum: 2);
+        var player = At(placed);
+        Assert.Equal(0, player.Collect(placed.Id, EnmCollectionOp.EnCollectionOpCollect, Now).Code);
+        var saved = RoleSaveMapper.Capture(player);
+        // Older saves counted distinct templates gathered anywhere and had no gather_counts flag.
+        var old = saved with { RegionProgress = new RoleSaveDocument.RegionProgressSave {
+            Subregions = [new RoleSaveDocument.SubRegionProgressSave {
+                SubRegionId = subRegion, Sequences = [new RoleSaveDocument.SequenceProgressSave { SequenceId = sequence, Count = 4 }]
+            }]
+        } };
+
+        var restored = At(placed);
+        RoleSaveMapper.Apply(restored, old);
+
+        Assert.Equal(1u, restored.RegionProgress.Subregions[subRegion].Sequences[sequence]);
+        Assert.True(RoleSaveMapper.Capture(restored).RegionProgress!.GatherCounts);
+    }
+
     [Fact]
     public void OpenedChest_CannotGrantAgainAfterSaveReload()
     {
