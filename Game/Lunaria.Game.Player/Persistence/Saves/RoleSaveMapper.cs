@@ -685,6 +685,7 @@ internal static class RoleSaveMapper
         player.Wanted.Load(
             document.Wanted.Select(row => (row.EntryId, row.Count)),
             FromWantedRunSave(document.WantedRun));
+        player.LeaveWantedMapOnLogin();
         player.Battles.LoadPatrolCooldowns(document.PatrolCooldowns
             .Select(row => (row.ClusterId, DateTimeOffset.FromUnixTimeSeconds(row.UntilUnix))));
         player.RestoreWantedTaskStep();

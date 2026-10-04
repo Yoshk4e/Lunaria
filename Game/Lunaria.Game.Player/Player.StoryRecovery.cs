@@ -15,19 +15,36 @@ public sealed partial class Player
         if (Dungeons.Current is not null || !Assets.Maps.IsScriptedWorld(Map.MapId) || !Assets.Dungeons.IsDungeonMap(Map.MapId))
             return;
 
+        ReturnToOpenWorld("dungeon");
+    }
+
+    /// <summary>
+    /// A wanted poster map cannot be loaded at login: the big-world NPC system config it relies on is only loaded by
+    /// the open world, so the NPC monster wait never ends (loading stuck at 96%). The client handles a run left
+    /// from outside (SCWantedOutsideData current_id / current_step, RequestOutsideWPSettlement), so the role goes
+    /// back to the open world and keeps its run.
+    /// </summary>
+    internal void LeaveWantedMapOnLogin()
+    {
+        if (Assets.Maps.IsWantedPosterMap(Map.MapId))
+            ReturnToOpenWorld("wanted poster");
+    }
+
+    private void ReturnToOpenWorld(string left)
+    {
         if (Map.ReturnPoint is {} origin)
         {
             var position = origin.IsSynced ? (origin.X, origin.Y, origin.Z) : Assets.Maps.SpawnPos(origin.MapId);
             if (position is {} resume && Map.RestoreReturnPosition(origin.MapId, resume))
             {
-                Log.Flag("left stranded dungeon map, back to map {MapId}", origin.MapId);
+                Log.Flag("left {Left} map at login, back to map {MapId}", left, origin.MapId);
                 return;
             }
         }
 
         if (Assets.Maps.Savepoint(Map.Savepoint) is {} savepoint && Assets.Maps.SavepointPos(Map.Savepoint) is {} at
             && Map.RestoreReturnPosition(savepoint.MapId, at))
-            Log.Flag("left stranded dungeon map, back to savepoint {Savepoint}", Map.Savepoint);
+            Log.Flag("left {Left} map at login, back to savepoint {Savepoint}", left, Map.Savepoint);
     }
 
     /// <summary>Repair only the Mind Palace continuation stranded by the old return bug.</summary>
