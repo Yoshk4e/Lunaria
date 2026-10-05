@@ -199,6 +199,15 @@ public sealed partial class RoleSessionTests
         Assert.True(player.Wanted.IsRunning);
         Assert.NotEqual(EnmTmpTeamType.Wanted, player.ActiveTemporaryTeam?.Type ?? EnmTmpTeamType.None);
 
+        // Back on the open world, its fights are not held by the run.
+        const uint field = 109100101;
+        Assert.Equal(0, player.EnterBattle(EBattleType.EnmBattleTypePatrol, field, 0, EnmMonsterFromType.EmonsterFromInvalid));
+        Assert.Equal(0, player.StartBattle(EBattleType.EnmBattleTypePatrol, field));
+        Assert.Equal(0, player.LeaveBattle(new CSLeaveBattle {
+            BattleType = EBattleType.EnmBattleTypePatrol, BattleFieldId = field,
+            BattleResult = EBattleResultType.EnmBattleResultTypeSuccess
+        }).Result);
+
         Assert.Equal(0, player.EnterWanted(10101));
         Assert.Equal(step, player.Wanted.CurrentStep);
         Assert.Equal(EnmTmpTeamType.Wanted, player.ActiveTemporaryTeam?.Type);
