@@ -38,6 +38,18 @@ public sealed class AuditGameplayTests(BundledGameplayFixture fixture, ITestOutp
     }
 
     [Fact]
+    public void HordeBattle_IsEnteredOnTheBattlefieldOfItsBattleRow()
+    {
+        const uint dungeonId = 11120201; // battle row 11120201 fights on battlefield 100100705
+        var player = Fresh();
+        player.Progress.Load(1, 0, 0, 240, DateTimeOffset.UtcNow);
+        Assert.Equal(0, player.EnterDungeon(dungeonId).Code);
+
+        Assert.Equal(0, player.EnterBattle(EBattleType.EnmBattleTypeHorde, 100100705, 0, default));
+        Assert.Equal(0, player.StartBattle(EBattleType.EnmBattleTypeHorde, 100100705));
+    }
+
+    [Fact]
     public void SaveOnADungeonMapWithoutARun_ReloadsOnTheOpenWorldMapItCameFrom()
     {
         var player = Fresh();

@@ -49,6 +49,7 @@ public sealed class GameData(string assetsDir, ILogger<GameData>? logger = null)
     internal readonly Dictionary<string, PGlobalEventFinishTable> PGlobalEventFinishTable = [];
     internal readonly Dictionary<string, PGraphicGuideTable> PGraphicGuideTable = [];
     internal readonly Dictionary<string, PHordeTable> PHordeTable = [];
+    internal readonly Dictionary<string, CRepeatableDungeonsBattleTable> CRepeatableDungeonsBattleTable = [];
     internal readonly Dictionary<string, PHouseIndustryTable> PHouseIndustryTable = [];
     internal readonly Dictionary<string, PHouseLevelTable> PHouseLevelTable = [];
     internal readonly Dictionary<string, PHouseV2Table> PHouseV2Table = [];
@@ -264,7 +265,7 @@ public sealed class GameData(string assetsDir, ILogger<GameData>? logger = null)
         SilverCreatures = new SilverCreatureAssets(PSilverCreatureCombineTable, PSilverCreatureGrowthTable);
         TmpTeams = new TmpTeamAssets(PTmpTeamTable, PTmpCharacterTable, Characters);
         Charge = new ChargeAssets(PChargeAwardTable, PChargeMoneyTable, PMonthCardTable, Items);
-        Dungeons = new DungeonAssets(PRepeatableDungeonsTable, PDungeonsTypeTable, PHordeTable, DropTable);
+        Dungeons = new DungeonAssets(PRepeatableDungeonsTable, PDungeonsTypeTable, PHordeTable, CRepeatableDungeonsBattleTable, DropTable);
 
         Wanted = new WantedAssets(
             PWantedPosterTable, PWantedPosterEntryTable, PWantedPosterProcessTable, PWantedPosterEventTable,

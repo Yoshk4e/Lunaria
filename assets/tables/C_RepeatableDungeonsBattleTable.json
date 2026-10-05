@@ -1,0 +1,370 @@
+{
+  "C_RepeatableDungeonsBattleTable": {
+    "10000201": {
+      "id": 10000201,
+      "battleFieldId": 100100702,
+      "battleAreaId": 10000201,
+      "limitTime": 90
+    },
+    "11120201": {
+      "id": 11120201,
+      "battleFieldId": 100100705,
+      "battleAreaId": 11120201,
+      "limitTime": 90
+    },
+    "11420201": {
+      "id": 11420201,
+      "battleFieldId": 100100706,
+      "battleAreaId": 11420201,
+      "limitTime": 90
+    },
+    "50000101": {
+      "id": 50000101,
+      "battleFieldId": 50000101,
+      "battleAreaId": 5000010101,
+      "limitTime": 180
+    },
+    "99999006": {
+      "id": 99999006,
+      "battleFieldId": 99999006,
+      "battleAreaId": 99999006,
+      "limitTime": 180
+    },
+    "99999007": {
+      "id": 99999007,
+      "battleFieldId": 99999007,
+      "battleAreaId": 99999007,
+      "limitTime": 180
+    },
+    "200001001": {
+      "id": 200001001,
+      "battleFieldId": 201021001,
+      "battleAreaId": 201001001001,
+      "limitTime": 180
+    },
+    "200002001": {
+      "id": 200002001,
+      "battleFieldId": 201022001,
+      "battleAreaId": 201001001001,
+      "limitTime": 180
+    },
+    "200003001": {
+      "id": 200003001,
+      "battleFieldId": 201023001,
+      "battleAreaId": 201001001001,
+      "limitTime": 180
+    },
+    "200004001": {
+      "id": 200004001,
+      "battleFieldId": 201024001,
+      "battleAreaId": 201001001001,
+      "limitTime": 180
+    },
+    "200005001": {
+      "id": 200005001,
+      "battleFieldId": 201025001,
+      "battleAreaId": 201001001001,
+      "limitTime": 180
+    },
+    "200006001": {
+      "id": 200006001,
+      "battleFieldId": 201026001,
+      "battleAreaId": 201001001001,
+      "limitTime": 180
+    },
+    "200007001": {
+      "id": 200007001,
+      "battleFieldId": 201027001,
+      "battleAreaId": 201001001001,
+      "limitTime": 300
+    },
+    "200008001": {
+      "id": 200008001,
+      "battleFieldId": 201001001,
+      "battleAreaId": 20111110801,
+      "limitTime": 180
+    },
+    "200008002": {
+      "id": 200008002,
+      "battleFieldId": 201001001,
+      "battleAreaId": 20111110801,
+      "limitTime": 180
+    },
+    "200009001": {
+      "id": 200009001,
+      "battleFieldId": 201001001,
+      "battleAreaId": 20111120701,
+      "limitTime": 180
+    },
+    "201001002": {
+      "id": 201001002,
+      "battleFieldId": 201001001,
+      "battleAreaId": 20111120701,
+      "limitTime": 180
+    },
+    "201111001": {
+      "id": 201111001,
+      "battleFieldId": 201111001,
+      "battleAreaId": 201111001001,
+      "limitTime": 180
+    },
+    "201121002": {
+      "id": 201121002,
+      "battleFieldId": 201121002,
+      "battleAreaId": 201121001002,
+      "limitTime": 180
+    },
+    "201122002": {
+      "id": 201122002,
+      "battleFieldId": 201122002,
+      "battleAreaId": 201122001002,
+      "limitTime": 180
+    },
+    "202001001": {
+      "id": 202001001,
+      "battleFieldId": 202001001,
+      "battleAreaId": 202001001001,
+      "limitTime": 600
+    },
+    "202001002": {
+      "id": 202001002,
+      "battleFieldId": 202001002,
+      "battleAreaId": 202001001001,
+      "limitTime": 600
+    },
+    "202001003": {
+      "id": 202001003,
+      "battleFieldId": 202001003,
+      "battleAreaId": 202001001001,
+      "limitTime": 600
+    },
+    "203001001": {
+      "id": 203001001,
+      "battleFieldId": 203001001,
+      "battleAreaId": 2030010101,
+      "limitTime": 180
+    },
+    "203001002": {
+      "id": 203001002,
+      "battleFieldId": 203001002,
+      "battleAreaId": 2030010101,
+      "limitTime": 180
+    },
+    "203001003": {
+      "id": 203001003,
+      "battleFieldId": 203001003,
+      "battleAreaId": 2030010101,
+      "limitTime": 180
+    },
+    "203001004": {
+      "id": 203001004,
+      "battleFieldId": 203001004,
+      "battleAreaId": 2030010101,
+      "limitTime": 180
+    },
+    "203001005": {
+      "id": 203001005,
+      "battleFieldId": 203001005,
+      "battleAreaId": 2030010101,
+      "limitTime": 180
+    },
+    "203001006": {
+      "id": 203001006,
+      "battleFieldId": 203001006,
+      "battleAreaId": 2030010101,
+      "limitTime": 300
+    },
+    "203001007": {
+      "id": 203001007,
+      "battleFieldId": 203001007,
+      "battleAreaId": 2030010101,
+      "limitTime": 180
+    },
+    "203001008": {
+      "id": 203001008,
+      "battleFieldId": 203001008,
+      "battleAreaId": 2030010101,
+      "limitTime": 180
+    },
+    "203001009": {
+      "id": 203001009,
+      "battleFieldId": 203001009,
+      "battleAreaId": 2030010101,
+      "limitTime": 240
+    },
+    "203001010": {
+      "id": 203001010,
+      "battleFieldId": 203001010,
+      "battleAreaId": 202001001001,
+      "limitTime": 240
+    },
+    "203002001": {
+      "id": 203002001,
+      "battleFieldId": 203002001,
+      "battleAreaId": 2030010102,
+      "limitTime": 180
+    },
+    "203002002": {
+      "id": 203002002,
+      "battleFieldId": 203002002,
+      "battleAreaId": 2030010102,
+      "limitTime": 180
+    },
+    "203002003": {
+      "id": 203002003,
+      "battleFieldId": 203002003,
+      "battleAreaId": 2030010102,
+      "limitTime": 180
+    },
+    "203003001": {
+      "id": 203003001,
+      "battleFieldId": 203003001,
+      "battleAreaId": 2030010103,
+      "limitTime": 180
+    },
+    "203003002": {
+      "id": 203003002,
+      "battleFieldId": 203003002,
+      "battleAreaId": 2030010103,
+      "limitTime": 180
+    },
+    "203003003": {
+      "id": 203003003,
+      "battleFieldId": 203003003,
+      "battleAreaId": 2030010103,
+      "limitTime": 180
+    },
+    "203004001": {
+      "id": 203004001,
+      "battleFieldId": 203004001,
+      "battleAreaId": 2030010104,
+      "limitTime": 180
+    },
+    "203004002": {
+      "id": 203004002,
+      "battleFieldId": 203004002,
+      "battleAreaId": 2030010104,
+      "limitTime": 180
+    },
+    "203004003": {
+      "id": 203004003,
+      "battleFieldId": 203004003,
+      "battleAreaId": 2030010104,
+      "limitTime": 180
+    },
+    "203005001": {
+      "id": 203005001,
+      "battleFieldId": 203005001,
+      "battleAreaId": 2030010105,
+      "limitTime": 180
+    },
+    "203005002": {
+      "id": 203005002,
+      "battleFieldId": 203005002,
+      "battleAreaId": 2030010105,
+      "limitTime": 180
+    },
+    "203005003": {
+      "id": 203005003,
+      "battleFieldId": 203005003,
+      "battleAreaId": 2030010105,
+      "limitTime": 180
+    },
+    "203006001": {
+      "id": 203006001,
+      "battleFieldId": 203006001,
+      "battleAreaId": 2030010106,
+      "limitTime": 180
+    },
+    "203006002": {
+      "id": 203006002,
+      "battleFieldId": 203006002,
+      "battleAreaId": 2030010106,
+      "limitTime": 180
+    },
+    "203006003": {
+      "id": 203006003,
+      "battleFieldId": 203006003,
+      "battleAreaId": 2030010106,
+      "limitTime": 180
+    },
+    "203007001": {
+      "id": 203007001,
+      "battleFieldId": 203007001,
+      "battleAreaId": 2030010107,
+      "limitTime": 180
+    },
+    "203007002": {
+      "id": 203007002,
+      "battleFieldId": 203007002,
+      "battleAreaId": 2030010107,
+      "limitTime": 180
+    },
+    "203007003": {
+      "id": 203007003,
+      "battleFieldId": 203007003,
+      "battleAreaId": 2030010107,
+      "limitTime": 180
+    },
+    "203008001": {
+      "id": 203008001,
+      "battleFieldId": 203008001,
+      "battleAreaId": 2030010108,
+      "limitTime": 180
+    },
+    "203008002": {
+      "id": 203008002,
+      "battleFieldId": 203008002,
+      "battleAreaId": 2030010108,
+      "limitTime": 180
+    },
+    "203008003": {
+      "id": 203008003,
+      "battleFieldId": 203008003,
+      "battleAreaId": 2030010108,
+      "limitTime": 180
+    },
+    "203009001": {
+      "id": 203009001,
+      "battleFieldId": 203009001,
+      "battleAreaId": 2030010109,
+      "limitTime": 300
+    },
+    "203009002": {
+      "id": 203009002,
+      "battleFieldId": 203009002,
+      "battleAreaId": 2030010109,
+      "limitTime": 300
+    },
+    "203009003": {
+      "id": 203009003,
+      "battleFieldId": 203009003,
+      "battleAreaId": 2030010109,
+      "limitTime": 300
+    },
+    "203010001": {
+      "id": 203010001,
+      "battleFieldId": 203010001,
+      "battleAreaId": 2030010110,
+      "limitTime": 300
+    },
+    "203010002": {
+      "id": 203010002,
+      "battleFieldId": 203010002,
+      "battleAreaId": 2030010110,
+      "limitTime": 300
+    },
+    "203010003": {
+      "id": 203010003,
+      "battleFieldId": 203010003,
+      "battleAreaId": 2030010110,
+      "limitTime": 300
+    },
+    "204001001": {
+      "id": 204001001,
+      "battleFieldId": 1000103,
+      "battleAreaId": 11220501,
+      "limitTime": 600
+    }
+  }
+}

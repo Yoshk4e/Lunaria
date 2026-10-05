@@ -34,6 +34,19 @@ public record PDungeonsTypeTable : TableRow
     public uint MinPassTime { get; init; }
 }
 
+/// <summary>
+/// CBT1 client table. A dungeon's BattleID lists these rows; the client fights and reports BattleFieldID, which differs
+/// from the row ID for the hordes and some story dungeons (11120201 fights on 100100705).
+/// </summary>
+[GameTable("C_RepeatableDungeonsBattleTable.json", Root = "C_RepeatableDungeonsBattleTable")]
+public record CRepeatableDungeonsBattleTable : TableRow
+{
+    public uint Id { get; init; }
+    public uint BattleFieldId { get; init; }
+    public ulong BattleAreaId { get; init; }
+    public uint LimitTime { get; init; }
+}
+
 /// <summary>Horde IDs match dungeon IDs. Each star has separate first-clear and repeat rewards.</summary>
 [GameTable("P_HordeTable.json", Root = "P_HordeTable")]
 public record PHordeTable : TableRow
