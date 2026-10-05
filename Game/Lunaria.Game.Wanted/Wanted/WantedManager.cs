@@ -577,14 +577,33 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
     /// <summary>
     /// An empty request means all owned bionics. Send their IDs and let the client fill attributes from its tables.
     /// </summary>
-    public IReadOnlyList<PBCharacterAttribData> BionicsAttribData(IReadOnlyList<ulong> requested)
+    /// <summary>
+    /// The client builds a wanted silver creature from these attributes (s_CSM_OA_WantedSilverCreatureOutsideAttribute)
+    /// instead of reading C_SilverCreatureFightAttribute itself as it does for owned ones; empty data left it with 0
+    /// ATK. Use the row an owned one of the same creature and quality would use at this world level.
+    /// </summary>
+    public IReadOnlyList<PBCharacterAttribData> BionicsAttribData(IReadOnlyList<ulong> requested, uint worldLevel)
     {
         if (_run is not {} run)
             return [];
 
         return run.Bionics
             .Where(bionics => requested.Count == 0 || requested.Contains(bionics.UniqId))
-            .Select(bionics => new PBCharacterAttribData { InstId = bionics.UniqId })
+            .Select(bionics => {
+                var data = new PBCharacterAttribData { InstId = bionics.UniqId };
+                if (assets.Wanted.Creature(bionics.EntryId) is {} creature)
+                {
+                    var level = assets.SilverCreatures.LevelAt(creature.SilverCreatureId, worldLevel);
+                    // The client reads wire values times 0.0001 (OutsideAttributeData attr_common_ratio): flat stats
+                    // are sent times 10000, permyriad rates as they are.
+                    foreach (var attribute in assets.SilverCreatures.FightAttributes(creature.SilverCreatureId, creature.Quality, level))
+                    {
+                        var value = assets.Inside.Scale(attribute.AttrId, attribute.Add);
+                        data.AttribData.Add(new PBAttribDataElem { AttribType = attribute.AttrId, BaseValue = value, FinalValue = value });
+                    }
+                }
+                return data;
+            })
             .ToList();
     }
 

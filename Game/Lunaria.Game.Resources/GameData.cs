@@ -92,6 +92,7 @@ public sealed class GameData(string assetsDir, ILogger<GameData>? logger = null)
     internal readonly Dictionary<string, PSignInActivityRewardTable> PSignInActivityRewardTable = [];
     internal readonly Dictionary<string, PSilverCreatureCombineTable> PSilverCreatureCombineTable = [];
     internal readonly Dictionary<string, PSilverCreatureGrowthTable> PSilverCreatureGrowthTable = [];
+    internal readonly Dictionary<string, CSilverCreatureFightAttribute> CSilverCreatureFightAttribute = [];
     internal readonly Dictionary<string, PSkillGrowthCostTable> PSkillGrowthCostTable = [];
     internal readonly Dictionary<string, PSkillGrowthTable> PSkillGrowthTable = [];
     internal readonly Dictionary<string, PSubRegionNPCGroup> PSubRegionNPCGroup = [];
@@ -261,7 +262,8 @@ public sealed class GameData(string assetsDir, ILogger<GameData>? logger = null)
             PRegionProgressTableMorgue, PRegionProgressTableFour, PRegionProgressTableDayfair,
             PRegionSequenceTableMorgue, PRegionSequenceTableFour, PRegionSequenceTableDayfair,
             PCollectionSubRegionMapping, Drops);
-        SilverCreatures = new SilverCreatureAssets(PSilverCreatureCombineTable, PSilverCreatureGrowthTable);
+        SilverCreatures = new SilverCreatureAssets(PSilverCreatureCombineTable, PSilverCreatureGrowthTable,
+            CSilverCreatureFightAttribute, columns);
         TmpTeams = new TmpTeamAssets(PTmpTeamTable, PTmpCharacterTable, Characters);
         Charge = new ChargeAssets(PChargeAwardTable, PChargeMoneyTable, PMonthCardTable, Items);
         Dungeons = new DungeonAssets(PRepeatableDungeonsTable, PDungeonsTypeTable, PHordeTable, DropTable);
