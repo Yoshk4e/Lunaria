@@ -24,7 +24,11 @@ public sealed partial class Player
         if (code != 0)
             return code;
 
-        if (characterIds is { Count: > 0 })
+        // The entry request carries the main team (s_CSM_WPE_WantedPosterEnter.RequestEnterWP sends
+        // TeamData:GetCurrentTeam().characters), while the lineup picked on the wanted screen arrives earlier through the
+        // temporary team update. Use the request only when no lineup was picked for this entry.
+        var picked = _temporarySelections.ContainsKey((EnmTmpTeamType.Wanted, entryId));
+        if (characterIds is { Count: > 0 } && !picked)
         {
             if (characterIds.Count > Lunaria.Game.Characters.TeamManager.MaxMembers)
                 return (int)EnmTextCode.EnmTextWrongParam;

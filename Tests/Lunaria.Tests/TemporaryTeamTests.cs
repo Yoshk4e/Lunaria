@@ -168,6 +168,24 @@ public sealed partial class RoleSessionTests
     }
 
     [Fact]
+    public async Task WantedEntry_KeepsTheLineupPickedOnTheWantedScreen()
+    {
+        var ctx = Context();
+        Assert.Equal(0, await _sessions.ActivateAsync(ctx, 1));
+        var player = ctx.Player;
+        var main = player.CurrentTeamMembers().Select(id => (uint)id).ToArray();
+        var picked = player.Characters.All.Last(c => !main.Contains((uint)c.InstId));
+        var selection = new TeamData { TeamId = 10101 };
+        selection.MemberData.Add(new TeamMemberData { MemberSlotId = 1, InstId = picked.InstId, CharacterId = picked.CharacterId });
+        Assert.Equal(0, player.UpdateTemporaryTeam((int)EnmTmpTeamType.Wanted, 10101, selection).Result);
+
+        // The entry request still carries the main team.
+        Assert.Equal(0, player.EnterWanted(10101, main));
+
+        Assert.Equal(picked.InstId, Assert.Single(player.CurrentTeamMembers()));
+    }
+
+    [Fact]
     public async Task WantedEntry_UsesRequestedInstances_RejectsForgeries_AndRestoresPermanentTeam()
     {
         var ctx = Context();
