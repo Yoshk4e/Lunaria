@@ -10,7 +10,7 @@ public sealed class HandleWantedBionicsAttribQuery
     public Task<SCWantedBionicsAttribQuery> OnPacket(NetContext ctx, CSWantedBionicsAttribQuery req)
     {
         var reply = new SCWantedBionicsAttribQuery { Result = 0 };
-        reply.Data.AddRange(ctx.Player.Wanted.BionicsAttribData(req.InstId));
+        reply.Data.AddRange(ctx.Player.Wanted.BionicsAttribData(req.InstId, ctx.Player.Progress.WorldLevel));
         return Task.FromResult(reply);
     }
 }

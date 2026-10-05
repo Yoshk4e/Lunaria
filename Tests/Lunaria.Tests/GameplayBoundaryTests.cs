@@ -358,6 +358,28 @@ public sealed class GameplayBoundaryTests(BundledGameplayFixture fixture)
     }
 
     [Fact]
+    public void WantedBionics_CarryTheFightAttributesOfTheirSilverCreature()
+    {
+        var player = Fresh();
+        Assert.Equal(0, player.EnterWanted(10101));
+        var run = player.Wanted.CaptureRun()!;
+        // Wanted creature 8100201: silver creature 81002 (Stinging Buzzer), quality 1.
+        player.Wanted.Load([], run with { Bionics = [new Lunaria.Game.Wanted.WantedBionics(8100201, 7)] });
+        var attr = player.Assets.Inside.Attr;
+
+        // Crisis level 3: level 20 + (3 - 1) * 5 = 30, row 8100200130 (ATK 137, MAXHP 1000, crit 1500).
+        // Flat stats go on the wire times 10000; permyriad rates as they are.
+        var data = Assert.Single(player.Wanted.BionicsAttribData([], 3));
+        Assert.Equal(7ul, data.InstId);
+        Assert.Equal(137 * 10000, Assert.Single(data.AttribData, a => a.AttribType == attr.Atk).FinalValue);
+        Assert.Equal(1000 * 10000, Assert.Single(data.AttribData, a => a.AttribType == attr.Maxhp).FinalValue);
+        Assert.Equal(1500, Assert.Single(data.AttribData, a => a.AttribType == attr.AtkCriticalChance).FinalValue);
+
+        // Crisis level 1: level 20, row 8100200120 (ATK 55).
+        Assert.Equal(55 * 10000, Assert.Single(player.Wanted.BionicsAttribData([], 1)[0].AttribData, a => a.AttribType == attr.Atk).FinalValue);
+    }
+
+    [Fact]
     public void WantedAward_QueuesOnlyAddedResources_AndRejectsReplay()
     {
         var player = Fresh();

@@ -192,7 +192,7 @@ internal sealed class SyncHooks :
                 Type = (uint)(e.AwardType == EWantedAwardType.AddCreatureSelect ? EWantedAwardType.AddCreatureSelect : EWantedAwardType.AddOneCreature),
                 Bionics = { resource.Bionics }
             });
-            foreach (var attrib in p.Wanted.BionicsAttribData([]))
+            foreach (var attrib in p.Wanted.BionicsAttribData([], p.Progress.WorldLevel))
                 changes.Add(new SCWantedBionicsAttribNtf { Data = attrib });
         }
     }
