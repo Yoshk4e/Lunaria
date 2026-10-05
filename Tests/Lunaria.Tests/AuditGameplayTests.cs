@@ -50,6 +50,26 @@ public sealed class AuditGameplayTests(BundledGameplayFixture fixture, ITestOutp
     }
 
     [Fact]
+    public void HordeSavedInProgress_EndsAtLogin_SoTheNextEntryIsAccepted()
+    {
+        const uint dungeonId = 11120201;
+        var player = Fresh();
+        player.Progress.Load(1, 0, 0, 240, DateTimeOffset.UtcNow);
+        Assert.Equal(0, player.EnterDungeon(dungeonId).Code);
+
+        var json = System.Text.Json.JsonSerializer.Serialize(
+            Lunaria.Game.Player.Persistence.Saves.RoleSaveMapper.Capture(player), Lunaria.Game.Player.Persistence.Saves.SaveJson.Options);
+        var restored = new Player(2, Assets);
+        Lunaria.Game.Player.Persistence.Saves.RoleSaveMapper.Apply(restored,
+            System.Text.Json.JsonSerializer.Deserialize<Lunaria.Game.Player.Persistence.Saves.RoleSaveDocument>(
+                json, Lunaria.Game.Player.Persistence.Saves.SaveJson.Options)!);
+
+        Assert.Null(restored.Dungeons.Current);
+        Assert.NotEqual(EnmTmpTeamType.Dungeon, restored.ActiveTemporaryTeam?.Type ?? EnmTmpTeamType.None);
+        Assert.Equal(0, restored.Dungeons.CheckEnter(dungeonId, DateTimeOffset.UtcNow));
+    }
+
+    [Fact]
     public void SaveOnADungeonMapWithoutARun_ReloadsOnTheOpenWorldMapItCameFrom()
     {
         var player = Fresh();

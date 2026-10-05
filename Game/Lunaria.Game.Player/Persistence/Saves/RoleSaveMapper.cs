@@ -680,6 +680,7 @@ internal static class RoleSaveMapper
             document.Dungeons?.Hordes.Select(row => (row.HordeId, row.KillCount, row.StarAward)) ?? [],
             document.Dungeons?.Current is {} current ? (current.DungeonId, current.BattleId) : null,
             player.UtcNow);
+        player.DropHordeRunOnLogin();
         player.LeaveStrandedDungeonMap();
 
         player.Wanted.Load(
