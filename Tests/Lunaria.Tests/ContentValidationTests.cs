@@ -17,6 +17,31 @@ public sealed class ContentValidationTests(BundledGameplayFixture fixture)
         Assert.Contains(warnings, w => w.Table == "gameplay-policy" && w.Message.Contains("11720001"));
         Assert.DoesNotContain(warnings, w => w.Table == "P_RegionSequenceTable_Dayfair" && w.Row == "1142079601");
         Assert.DoesNotContain(warnings, w => w.Feature == "validation coverage");
+        // Every battlefield the content references exists in the CBT1 client battlefield table.
+        Assert.DoesNotContain(warnings, w => w.Message.Contains("C_BattleFieldSystemTable") || w.Usage == "coverage gap");
+    }
+
+    [Fact]
+    public void UnknownBattlefields_AreReported()
+    {
+        var root = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+        Directory.CreateDirectory(Path.Combine(root, "tables"));
+        try
+        {
+            foreach (var file in Directory.EnumerateFiles(Path.Combine(fixture.Root, "tables"), "*.json"))
+                File.Copy(file, Path.Combine(root, "tables", Path.GetFileName(file)));
+            File.Copy(Path.Combine(fixture.Root, "gameplay-policy.json"), Path.Combine(root, "gameplay-policy.json"));
+            var path = Path.Combine(root, "tables", "C_RepeatableDungeonsBattleTable.json");
+            var json = JsonNode.Parse(File.ReadAllText(path))!;
+            json["C_RepeatableDungeonsBattleTable"]!["11120201"]!["battleFieldId"] = 999;
+            File.WriteAllText(path, json.ToJsonString());
+
+            var warnings = ContentValidator.Validate(root);
+
+            Assert.Contains(warnings, w => w.Table == "C_RepeatableDungeonsBattleTable" && w.Row == "11120201"
+                && w.Message == "Missing C_BattleFieldSystemTable reference 999.");
+        }
+        finally { Directory.Delete(root, recursive: true); }
     }
 
     [Fact]
