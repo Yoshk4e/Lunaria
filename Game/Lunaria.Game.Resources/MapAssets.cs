@@ -9,6 +9,7 @@ public sealed class MapAssets
     private const uint TeleportNpcType = 106;
 
     private const int OpenWorldType = 1;
+    private const int WantedPosterModuleType = 31;
     private readonly FrozenDictionary<ulong, PFunctionalNPCTable> _functionalNpcs;
 
     private readonly FrozenDictionary<ulong, PMapDataTable> _maps;
@@ -88,6 +89,9 @@ public sealed class MapAssets
 
     /// <summary>Scripted levels skip the map handshake, so their arrival objectives rely on client reports.</summary>
     public bool IsScriptedWorld(ulong mapId) => Map(mapId) is {} row && row.WorldType != OpenWorldType;
+
+    /// <summary>ModuleType 31 is GameLuaModuleType.WantedPoster in the client's DataEnumTypeConfig.</summary>
+    public bool IsWantedPosterMap(ulong mapId) => Map(mapId)?.ModuleType == WantedPosterModuleType;
 
     public ulong? SoleMapOfWorld(ulong worldId)
     {

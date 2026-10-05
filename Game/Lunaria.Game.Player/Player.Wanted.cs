@@ -44,6 +44,7 @@ public sealed partial class Player
         Wanted.Enter(entryId);
         _wantedTasksStep = 0;
         Tasks.ResetNamespace(TaskAssets.Wanted);
+        WantedSuspended = false;
         ReconcileTemporaryTeam();
         return 0;
     }

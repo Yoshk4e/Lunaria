@@ -56,6 +56,26 @@ public sealed class AuditGameplayTests(BundledGameplayFixture fixture, ITestOutp
         Assert.Equal((141540, 41185, 34003), restored.Map.Position);
     }
 
+    [Fact]
+    public void SaveOnAWantedPosterMap_ReloadsOnTheOpenWorldAndKeepsTheRun()
+    {
+        var player = Fresh();
+        Assert.Equal(0, player.EnterWanted(10101));
+        player.Map.Load(206001001001, Assets.Starter.Savepoint, [], [], (1, 2, 3),
+            returnPoint: new Lunaria.Game.World.MapReturnPoint(100001001001, 124389, 62649, 32272, IsSynced: true));
+
+        var json = System.Text.Json.JsonSerializer.Serialize(
+            Lunaria.Game.Player.Persistence.Saves.RoleSaveMapper.Capture(player), Lunaria.Game.Player.Persistence.Saves.SaveJson.Options);
+        var restored = new Player(2, Assets);
+        Lunaria.Game.Player.Persistence.Saves.RoleSaveMapper.Apply(restored,
+            System.Text.Json.JsonSerializer.Deserialize<Lunaria.Game.Player.Persistence.Saves.RoleSaveDocument>(
+                json, Lunaria.Game.Player.Persistence.Saves.SaveJson.Options)!);
+
+        Assert.Equal(100001001001ul, restored.Map.MapId);
+        Assert.Equal((124389, 62649, 32272), restored.Map.Position);
+        Assert.Equal(10101u, restored.Wanted.CaptureRun()!.EntryId);
+    }
+
     [Theory]
     [InlineData(false, false)]
     [InlineData(false, true)]
