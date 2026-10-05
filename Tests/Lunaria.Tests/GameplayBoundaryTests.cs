@@ -318,6 +318,22 @@ public sealed class GameplayBoundaryTests(BundledGameplayFixture fixture)
     }
 
     [Fact]
+    public void EnterWanted_ResumesTheRunLeftOnTheSameEntry()
+    {
+        var player = Fresh();
+        Assert.Equal(0, player.EnterWanted(10101));
+        var relic = player.Assets.Wanted.AllRelics[0].Id;
+        var run = player.Wanted.CaptureRun()!;
+        player.Wanted.Load([], run with { Relics = [relic] });
+
+        Assert.Equal(0, player.EnterWanted(10101));
+        Assert.Equal([relic], player.Wanted.CaptureRun()!.Relics);
+
+        var other = player.Assets.Wanted.Entry(10102) is null ? 0u : 10102u;
+        if (other != 0) Assert.Equal((int)EnmTextCode.EnmTextWantedIsInWanted, player.EnterWanted(other));
+    }
+
+    [Fact]
     public void WantedAward_QueuesOnlyAddedResources_AndRejectsReplay()
     {
         var player = Fresh();
