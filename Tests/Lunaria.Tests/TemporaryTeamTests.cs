@@ -186,6 +186,25 @@ public sealed partial class RoleSessionTests
     }
 
     [Fact]
+    public async Task WantedLeave_KeepsTheRunForContinue()
+    {
+        var ctx = Context();
+        Assert.Equal(0, await _sessions.ActivateAsync(ctx, 1));
+        var player = ctx.Player;
+        Assert.Equal(0, player.EnterWanted(10101, [(uint)player.Characters.All.Last().InstId]));
+        var step = player.Wanted.CurrentStep;
+
+        // "End for now" sends CS_WANTED_LEAVE; the run waits for Continue or End (CS_WANTED_OVER).
+        Assert.Equal(0, player.LeaveWanted());
+        Assert.True(player.Wanted.IsRunning);
+        Assert.NotEqual(EnmTmpTeamType.Wanted, player.ActiveTemporaryTeam?.Type ?? EnmTmpTeamType.None);
+
+        Assert.Equal(0, player.EnterWanted(10101));
+        Assert.Equal(step, player.Wanted.CurrentStep);
+        Assert.Equal(EnmTmpTeamType.Wanted, player.ActiveTemporaryTeam?.Type);
+    }
+
+    [Fact]
     public async Task WantedEntry_UsesRequestedInstances_RejectsForgeries_AndRestoresPermanentTeam()
     {
         var ctx = Context();

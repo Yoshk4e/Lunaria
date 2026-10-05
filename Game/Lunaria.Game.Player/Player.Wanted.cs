@@ -61,10 +61,21 @@ public sealed partial class Player
         return 0;
     }
 
+    /// <summary>
+    /// CS_WANTED_LEAVE is "End for now": the client goes back to the open world and Case Simulation then offers
+    /// Continue or End (CS_WANTED_OVER) for the run. Keep the run and suspend it; it only closes on settlement.
+    /// </summary>
     public int LeaveWanted()
     {
         using var operationTime = BeginOperation();
         if (Battles.Current is not null) return (int)EnmTextCode.EnmTextWrongParam;
+        if (Wanted.IsRunning)
+        {
+            Log.Event("wanted run on entry {EntryId} left at step {Step}, kept for Continue", Wanted.CurrentEntryId, Wanted.CurrentStep);
+            WantedSuspended = true;
+            ReconcileTemporaryTeam();
+            return 0;
+        }
         var code = Wanted.Leave();
         Log.Event("wanted leave returned {Result}", code);
         if (code == 0) { Tasks.ResetNamespace(TaskAssets.Wanted); ReconcileTemporaryTeam(); }
