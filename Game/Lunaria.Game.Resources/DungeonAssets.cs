@@ -15,11 +15,13 @@ public sealed class DungeonAssets
     private readonly Dictionary<ulong, PRepeatableDungeonsTable> _dungeons = [];
     private readonly Dictionary<uint, PHordeTable> _hordes = [];
     private readonly Dictionary<uint, PDungeonsTypeTable> _types = [];
+    private readonly Dictionary<uint, uint> _battleFields = [];
 
     public DungeonAssets(
         IReadOnlyDictionary<string, PRepeatableDungeonsTable> dungeons,
         IReadOnlyDictionary<string, PDungeonsTypeTable> types,
         IReadOnlyDictionary<string, PHordeTable> hordes,
+        IReadOnlyDictionary<string, CRepeatableDungeonsBattleTable> battles,
         DropTableAssets drops
     )
     {
@@ -36,6 +38,11 @@ public sealed class DungeonAssets
         foreach (var row in hordes.Values)
         {
             _hordes[row.Id] = row;
+        }
+
+        foreach (var row in battles.Values)
+        {
+            _battleFields[row.Id] = row.BattleFieldId;
         }
 
         if (_dungeons.Count == 0)
@@ -66,4 +73,12 @@ public sealed class DungeonAssets
     public bool IsDungeonMap(ulong mapId) => _dungeons.Values.Any(row => row.MapId == mapId);
     public PDungeonsTypeTable? Type(uint id) => _types.GetValueOrDefault(id);
     public PHordeTable? Horde(uint id) => _hordes.GetValueOrDefault(id);
+
+    /// <summary>
+    /// Whether <paramref name="battleFieldId"/> is one of the dungeon's battles, by battle row or by the
+    /// BattleFieldID the client fights on (s_CSM_D_DungeonProcessState_Fighting.DungeonStartBattleReq).
+    /// </summary>
+    public bool FightsOn(ulong dungeonId, uint battleFieldId) =>
+        Dungeon(dungeonId)?.BattleId.Any(battle =>
+            battle == battleFieldId || _battleFields.TryGetValue(battle, out var field) && field == battleFieldId) == true;
 }

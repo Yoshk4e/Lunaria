@@ -40,8 +40,7 @@ public sealed partial class Player
         if (type == EBattleType.EnmBattleTypeWanted) return Wanted.MatchesBattle(fieldId);
         if (InWantedRun) return false;
         if (type is EBattleType.EnmBattleTypeRepeatDungeon or EBattleType.EnmBattleTypeWeekDungeon or EBattleType.EnmBattleTypeHorde)
-            return Dungeons.Current is {} dungeon
-                && assets.Dungeons.Dungeon(dungeon.DungeonId)?.BattleId.Contains(fieldId) == true;
+            return Dungeons.Current is {} dungeon && assets.Dungeons.FightsOn(dungeon.DungeonId, fieldId);
         return Dungeons.Current is null;
     }
 
