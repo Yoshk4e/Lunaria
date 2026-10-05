@@ -34,12 +34,12 @@ public sealed partial class Player
 
         // A run kept outside its map has no active team until it is entered again: the client disables team
         // editing (Partners) while a temporary team is active, and the entry request edits the wanted selection.
-        WantedSuspended = Wanted.IsRunning && !Assets.Maps.IsWantedPosterMap(Map.MapId);
+        if (!Assets.Maps.IsWantedPosterMap(Map.MapId))
+            Wanted.Suspend(true);
     }
 
-    /// <summary>The wanted run was left in progress and the role is outside its map. Derived at login, not saved.</summary>
-    [Untracked]
-    internal bool WantedSuspended { get; private set; }
+    /// <summary>The wanted run was left in progress and the role is outside its map.</summary>
+    internal bool WantedSuspended => Wanted.Suspended;
 
     /// <summary>A wanted run is in progress on its map. A suspended run does not hold the open world.</summary>
     internal bool InWantedRun => Wanted.IsRunning && !WantedSuspended;

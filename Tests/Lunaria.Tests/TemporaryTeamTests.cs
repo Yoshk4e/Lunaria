@@ -186,6 +186,62 @@ public sealed partial class RoleSessionTests
     }
 
     [Fact]
+    public async Task WantedLeave_KeepsTheRunForContinue()
+    {
+        var ctx = Context();
+        Assert.Equal(0, await _sessions.ActivateAsync(ctx, 1));
+        var player = ctx.Player;
+        Assert.Equal(0, player.EnterWanted(10101, [(uint)player.Characters.All.Last().InstId]));
+        var step = player.Wanted.CurrentStep;
+
+        // "End for now" sends CS_WANTED_LEAVE; the run waits for Continue or End (CS_WANTED_OVER).
+        Assert.Equal(0, player.LeaveWanted());
+        Assert.True(player.Wanted.IsRunning);
+        Assert.NotEqual(EnmTmpTeamType.Wanted, player.ActiveTemporaryTeam?.Type ?? EnmTmpTeamType.None);
+
+        // Back on the open world, its fights are not held by the run.
+        const uint field = 109100101;
+        Assert.Equal(0, player.EnterBattle(EBattleType.EnmBattleTypePatrol, field, 0, EnmMonsterFromType.EmonsterFromInvalid));
+        Assert.Equal(0, player.StartBattle(EBattleType.EnmBattleTypePatrol, field));
+        Assert.Equal(0, player.LeaveBattle(new CSLeaveBattle {
+            BattleType = EBattleType.EnmBattleTypePatrol, BattleFieldId = field,
+            BattleResult = EBattleResultType.EnmBattleResultTypeSuccess
+        }).Result);
+
+        Assert.Equal(0, player.EnterWanted(10101));
+        Assert.Equal(step, player.Wanted.CurrentStep);
+        Assert.Equal(EnmTmpTeamType.Wanted, player.ActiveTemporaryTeam?.Type);
+    }
+
+    [Fact]
+    public async Task WantedLeave_StaysSuspendedAfterLogin()
+    {
+        var ctx = Context();
+        Assert.Equal(0, await _sessions.ActivateAsync(ctx, 1));
+        var player = ctx.Player;
+        Assert.Equal(0, player.EnterWanted(10101, [(uint)player.Characters.All.Last().InstId]));
+        var step = player.Wanted.CurrentStep;
+        Assert.Equal(0, player.LeaveWanted());
+
+        Assert.Equal(0, await _sessions.ActivateAsync(ctx, 2));
+        Assert.Equal(0, await _sessions.ActivateAsync(ctx, 1));
+
+        const uint field = 109100101;
+        Assert.True(ctx.Player.Wanted.Suspended);
+        Assert.NotEqual(EnmTmpTeamType.Wanted, ctx.Player.ActiveTemporaryTeam?.Type ?? EnmTmpTeamType.None);
+        Assert.Equal(0, ctx.Player.EnterBattle(EBattleType.EnmBattleTypePatrol, field, 0, EnmMonsterFromType.EmonsterFromInvalid));
+        Assert.Equal(0, ctx.Player.LeaveBattle(new CSLeaveBattle {
+            BattleType = EBattleType.EnmBattleTypePatrol, BattleFieldId = field,
+            BattleResult = EBattleResultType.EnmBattleResultTypeSuccess
+        }).Result);
+
+        Assert.Equal(0, ctx.Player.EnterWanted(10101));
+        Assert.False(ctx.Player.Wanted.Suspended);
+        Assert.Equal(step, ctx.Player.Wanted.CurrentStep);
+        Assert.Equal(EnmTmpTeamType.Wanted, ctx.Player.ActiveTemporaryTeam?.Type);
+    }
+
+    [Fact]
     public async Task WantedEntry_UsesRequestedInstances_RejectsForgeries_AndRestoresPermanentTeam()
     {
         var ctx = Context();

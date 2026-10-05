@@ -696,6 +696,7 @@ internal static class RoleSaveMapper
         run is null ?
             null :
             new RoleSaveDocument.WantedRunSave {
+                Suspended = run.Suspended,
                 EntryId = run.EntryId,
                 RouteId = run.RouteId,
                 MaxStep = run.MaxStep,
@@ -786,7 +787,7 @@ internal static class RoleSaveMapper
                         adventure.AdventureId, adventure.ContentId, adventure.DialogId, adventure.OptionResult))
                     .ToList(),
                 new SortedDictionary<uint, uint>(
-                    run.ShopBuys.ToDictionary(pair => pair.GoodsId, pair => pair.Count)), run.LastBionicsId, run.RedeemedSteps);
+                    run.ShopBuys.ToDictionary(pair => pair.GoodsId, pair => pair.Count)), run.LastBionicsId, run.RedeemedSteps, run.Suspended);
 
     private static TeamState ToTeamState(RoleSaveDocument.TeamSave team) => new() {
         TeamId = team.TeamId,

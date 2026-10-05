@@ -772,6 +772,9 @@ public sealed record RoleSaveDocument
 
     public sealed record WantedRunSave
     {
+        [JsonPropertyName("suspended")]
+        public bool Suspended { get; init; }
+
         [JsonPropertyName("last_bionics_id")]
         public uint LastBionicsId { get; init; }
 

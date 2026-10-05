@@ -46,7 +46,8 @@ public sealed record WantedRunSnapshot(
     IReadOnlyList<WantedAdventure> Adventures,
     IReadOnlyDictionary<uint, uint> ShopBuys,
     uint LastBionicsId = 0,
-    IReadOnlyList<uint>? RedeemedSteps = null
+    IReadOnlyList<uint>? RedeemedSteps = null,
+    bool Suspended = false
 );
 
 public sealed partial class WantedManager(GameData assets, Random? random = null) : TrackedObject
@@ -69,9 +70,18 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
     [Tracked]
     private partial RunState? _run { get; set; }
 
+    private bool __tracked_suspended;
+    [Tracked]
+    private partial bool _suspended { get; set; }
+
     public IReadOnlyDictionary<uint, uint> Finishes => _finishes;
 
     public bool IsRunning => _run is not null;
+
+    /// <summary>The run was left with "End for now" and waits outside its map for Continue or the settlement.</summary>
+    public bool Suspended => _run is not null && _suspended;
+
+    public void Suspend(bool suspended) => _suspended = suspended && _run is not null;
 
     public uint CurrentEntryId => _run?.EntryId ?? 0;
 
@@ -93,10 +103,12 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
                 _finishes[entryId] = count;
         }
         _run = null;
+        _suspended = false;
         _settledRun = false;
 
         if (run is not null)
             AdoptRun(run);
+        _suspended = run?.Suspended == true && _run is not null;
         AcceptLoadedState();
     }
 
@@ -119,7 +131,7 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
                 run.ReviveCount,
                 run.ResetPoint,
                 run.Adventures.ToList(),
-                new SortedDictionary<uint, uint>(run.ShopBuys), run.LastBionicsId, run.RedeemedSteps.Order().ToArray());
+                new SortedDictionary<uint, uint>(run.ShopBuys), run.LastBionicsId, run.RedeemedSteps.Order().ToArray(), _suspended);
 
     private void AdoptRun(WantedRunSnapshot snapshot)
     {
@@ -228,6 +240,7 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
         var maxStep = assets.Wanted.MaxStep(route);
 
         _settledRun = false;
+        _suspended = false;
         _run = new RunState(
             entryId, route, maxStep, step: 1, BuildStep(entry, route, step: 1), [],
             [], [], [], coinsTotal: 0, reviveCount: 0, resetPoint: null, [], []);
@@ -654,6 +667,7 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
         settlement.AwardFirst.AddRange(first ? GrantsToCmdItems(grants) : []);
 
         _run = null;
+        _suspended = false;
         _settledRun = true;
         Log.State("wanted run on entry {EntryId} settled at step {Step} of {MaxStep}, victory {Victory}, finish count {FinishCount}",
             run.EntryId, run.Step, run.MaxStep, victory, _finishes.GetValueOrDefault(run.EntryId));
@@ -672,6 +686,7 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
 
         Log.State("wanted run on entry {EntryId} abandoned at step {Step} of {MaxStep}", _run.EntryId, _run.Step, _run.MaxStep);
         _run = null;
+        _suspended = false;
         _settledRun = false;
 
         return 0;
