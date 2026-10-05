@@ -15,9 +15,10 @@ public sealed class HandleDungeonsFinish
         if (code != 0)
             return new SCDungeonsFinish { Result = code };
 
+        // The settlement screen shows this run's kills (s_CSM_WDG_ZombieWaveGameplaySystem); the best one stays saved.
         var reply = new SCDungeonsFinish {
             Result = 0,
-            HordeData = new HordeFinishDataRes { KillCount = horde?.KillCount ?? req.HordeData?.KillCount ?? 0 }
+            HordeData = new HordeFinishDataRes { KillCount = req.HordeData?.KillCount ?? 0 }
         };
 
         if (delivery is not null)
