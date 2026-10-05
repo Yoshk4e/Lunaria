@@ -1,0 +1,1009 @@
+{
+  "C_BattleFieldSystemTable": {
+    "106": {
+      "id": 106,
+      "battleType": 5,
+      "battleSubType": 2
+    },
+    "107": {
+      "id": 107,
+      "battleType": 5,
+      "battleSubType": 3
+    },
+    "108": {
+      "id": 108,
+      "battleType": 5,
+      "battleSubType": 2
+    },
+    "109": {
+      "id": 109,
+      "battleType": 5,
+      "battleSubType": 3
+    },
+    "110": {
+      "id": 110,
+      "battleType": 5,
+      "battleSubType": 2
+    },
+    "1001": {
+      "id": 1001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "1002": {
+      "id": 1002,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2001": {
+      "id": 2001,
+      "battleType": 2,
+      "battleSubType": 1
+    },
+    "8888": {
+      "id": 8888,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "8889": {
+      "id": 8889,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "8890": {
+      "id": 8890,
+      "battleType": 2,
+      "battleSubType": 1
+    },
+    "22222": {
+      "id": 22222,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "103001": {
+      "id": 103001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "990101": {
+      "id": 990101,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "1000000": {
+      "id": 1000000,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "1000001": {
+      "id": 1000001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "1000101": {
+      "id": 1000101,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "1000103": {
+      "id": 1000103,
+      "battleType": 5,
+      "battleSubType": 1
+    },
+    "1000104": {
+      "id": 1000104,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "1000105": {
+      "id": 1000105,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "1000106": {
+      "id": 1000106,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "1030100": {
+      "id": 1030100,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "1030101": {
+      "id": 1030101,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "1030102": {
+      "id": 1030102,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "1030103": {
+      "id": 1030103,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "1030104": {
+      "id": 1030104,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "1030105": {
+      "id": 1030105,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "1030151": {
+      "id": 1030151,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "1030152": {
+      "id": 1030152,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "1030153": {
+      "id": 1030153,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "1030154": {
+      "id": 1030154,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "1030155": {
+      "id": 1030155,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "1030156": {
+      "id": 1030156,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "1030199": {
+      "id": 1030199,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "1040101": {
+      "id": 1040101,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "1040102": {
+      "id": 1040102,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "1100101": {
+      "id": 1100101,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "1100201": {
+      "id": 1100201,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "1100301": {
+      "id": 1100301,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "1100401": {
+      "id": 1100401,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "1100701": {
+      "id": 1100701,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2100101": {
+      "id": 2100101,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2100102": {
+      "id": 2100102,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2100103": {
+      "id": 2100103,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2100201": {
+      "id": 2100201,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2100301": {
+      "id": 2100301,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2100401": {
+      "id": 2100401,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2100402": {
+      "id": 2100402,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2100501": {
+      "id": 2100501,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2100502": {
+      "id": 2100502,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "3100101": {
+      "id": 3100101,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "3100201": {
+      "id": 3100201,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "3100401": {
+      "id": 3100401,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "3100402": {
+      "id": 3100402,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "3200101": {
+      "id": 3200101,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "3600102": {
+      "id": 3600102,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "3600103": {
+      "id": 3600103,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "3700101": {
+      "id": 3700101,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "7001001": {
+      "id": 7001001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "31001001": {
+      "id": 31001001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "31001002": {
+      "id": 31001002,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "31001003": {
+      "id": 31001003,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "31002001": {
+      "id": 31002001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "31002002": {
+      "id": 31002002,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "31002003": {
+      "id": 31002003,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "32003002": {
+      "id": 32003002,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "32003003": {
+      "id": 32003003,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "33001001": {
+      "id": 33001001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "33001002": {
+      "id": 33001002,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "36001001": {
+      "id": 36001001,
+      "battleType": 2,
+      "battleSubType": 1
+    },
+    "36001002": {
+      "id": 36001002,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "36001003": {
+      "id": 36001003,
+      "battleType": 2,
+      "battleSubType": 1
+    },
+    "36002001": {
+      "id": 36002001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "42001001": {
+      "id": 42001001,
+      "battleType": 2,
+      "battleSubType": 1
+    },
+    "42001002": {
+      "id": 42001002,
+      "battleType": 2,
+      "battleSubType": 1
+    },
+    "42001003": {
+      "id": 42001003,
+      "battleType": 2,
+      "battleSubType": 1
+    },
+    "50000101": {
+      "id": 50000101,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "99999000": {
+      "id": 99999000,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "99999001": {
+      "id": 99999001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "99999002": {
+      "id": 99999002,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "99999003": {
+      "id": 99999003,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "99999004": {
+      "id": 99999004,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "99999005": {
+      "id": 99999005,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "99999006": {
+      "id": 99999006,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "99999007": {
+      "id": 99999007,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "99999012": {
+      "id": 99999012,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "99999013": {
+      "id": 99999013,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "99999014": {
+      "id": 99999014,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "99999015": {
+      "id": 99999015,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "99999016": {
+      "id": 99999016,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "99999017": {
+      "id": 99999017,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "99999018": {
+      "id": 99999018,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "99999101": {
+      "id": 99999101,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "99999102": {
+      "id": 99999102,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "99999103": {
+      "id": 99999103,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "99999104": {
+      "id": 99999104,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "99999105": {
+      "id": 99999105,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "99999106": {
+      "id": 99999106,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "100100701": {
+      "id": 100100701,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "100100702": {
+      "id": 100100702,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "100100703": {
+      "id": 100100703,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "100100704": {
+      "id": 100100704,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "100100705": {
+      "id": 100100705,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "100100706": {
+      "id": 100100706,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "101100401": {
+      "id": 101100401,
+      "battleType": 2,
+      "battleSubType": 1
+    },
+    "101100402": {
+      "id": 101100402,
+      "battleType": 2,
+      "battleSubType": 1
+    },
+    "101100403": {
+      "id": 101100403,
+      "battleType": 2,
+      "battleSubType": 1
+    },
+    "101100701": {
+      "id": 101100701,
+      "battleType": 2,
+      "battleSubType": 1
+    },
+    "101101201": {
+      "id": 101101201,
+      "battleType": 2,
+      "battleSubType": 1
+    },
+    "109100101": {
+      "id": 109100101,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "109100102": {
+      "id": 109100102,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "109100201": {
+      "id": 109100201,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "109100202": {
+      "id": 109100202,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "109100301": {
+      "id": 109100301,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "109100302": {
+      "id": 109100302,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "109100401": {
+      "id": 109100401,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "109100402": {
+      "id": 109100402,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "109100403": {
+      "id": 109100403,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "109100501": {
+      "id": 109100501,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "109101201": {
+      "id": 109101201,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "201001001": {
+      "id": 201001001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "201021001": {
+      "id": 201021001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "201022001": {
+      "id": 201022001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "201023001": {
+      "id": 201023001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "201024001": {
+      "id": 201024001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "201025001": {
+      "id": 201025001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "201026001": {
+      "id": 201026001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "201027001": {
+      "id": 201027001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "201111001": {
+      "id": 201111001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "201121002": {
+      "id": 201121002,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "201122002": {
+      "id": 201122002,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "202001001": {
+      "id": 202001001,
+      "battleType": 5,
+      "battleSubType": 2
+    },
+    "202001002": {
+      "id": 202001002,
+      "battleType": 5,
+      "battleSubType": 2
+    },
+    "202001003": {
+      "id": 202001003,
+      "battleType": 5,
+      "battleSubType": 2
+    },
+    "203001001": {
+      "id": 203001001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203001002": {
+      "id": 203001002,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203001003": {
+      "id": 203001003,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203001004": {
+      "id": 203001004,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203001005": {
+      "id": 203001005,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203001006": {
+      "id": 203001006,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203001007": {
+      "id": 203001007,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203001008": {
+      "id": 203001008,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203001009": {
+      "id": 203001009,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203001010": {
+      "id": 203001010,
+      "battleType": 5,
+      "battleSubType": 2
+    },
+    "203002001": {
+      "id": 203002001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203002002": {
+      "id": 203002002,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203002003": {
+      "id": 203002003,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203003001": {
+      "id": 203003001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203003002": {
+      "id": 203003002,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203003003": {
+      "id": 203003003,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203004001": {
+      "id": 203004001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203004002": {
+      "id": 203004002,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203004003": {
+      "id": 203004003,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203005001": {
+      "id": 203005001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203005002": {
+      "id": 203005002,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203005003": {
+      "id": 203005003,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203006001": {
+      "id": 203006001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203006002": {
+      "id": 203006002,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203006003": {
+      "id": 203006003,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203007001": {
+      "id": 203007001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203007002": {
+      "id": 203007002,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203007003": {
+      "id": 203007003,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203008001": {
+      "id": 203008001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203008002": {
+      "id": 203008002,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203008003": {
+      "id": 203008003,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203009001": {
+      "id": 203009001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203009002": {
+      "id": 203009002,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203009003": {
+      "id": 203009003,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203010001": {
+      "id": 203010001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203010002": {
+      "id": 203010002,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "203010003": {
+      "id": 203010003,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "991129901": {
+      "id": 991129901,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "991129902": {
+      "id": 991129902,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "991129903": {
+      "id": 991129903,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "991129904": {
+      "id": 991129904,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "991129905": {
+      "id": 991129905,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "991129906": {
+      "id": 991129906,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2060000001": {
+      "id": 2060000001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2060000002": {
+      "id": 2060000002,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2060000003": {
+      "id": 2060000003,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2060000004": {
+      "id": 2060000004,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2060000005": {
+      "id": 2060000005,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2060000006": {
+      "id": 2060000006,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2060000007": {
+      "id": 2060000007,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2060101001": {
+      "id": 2060101001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2060101002": {
+      "id": 2060101002,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2060101003": {
+      "id": 2060101003,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2060101004": {
+      "id": 2060101004,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2060102001": {
+      "id": 2060102001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2060102002": {
+      "id": 2060102002,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2060102003": {
+      "id": 2060102003,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2060102004": {
+      "id": 2060102004,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2060103001": {
+      "id": 2060103001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2060103002": {
+      "id": 2060103002,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2060201001": {
+      "id": 2060201001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2060301001": {
+      "id": 2060301001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2060401001": {
+      "id": 2060401001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2060401002": {
+      "id": 2060401002,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2060401003": {
+      "id": 2060401003,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2060501001": {
+      "id": 2060501001,
+      "battleType": 1,
+      "battleSubType": 1
+    },
+    "2060501002": {
+      "id": 2060501002,
+      "battleType": 1,
+      "battleSubType": 1
+    }
+  }
+}
