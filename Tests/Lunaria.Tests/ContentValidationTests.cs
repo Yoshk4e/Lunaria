@@ -17,6 +17,9 @@ public sealed class ContentValidationTests(BundledGameplayFixture fixture)
         Assert.Contains(warnings, w => w.Table == "gameplay-policy" && w.Message.Contains("11720001"));
         Assert.DoesNotContain(warnings, w => w.Table == "P_RegionSequenceTable_Dayfair" && w.Row == "1142079601");
         Assert.DoesNotContain(warnings, w => w.Feature == "validation coverage");
+        // Chest and resource objectives count placed objects, so only those with no placement in their subregion remain.
+        Assert.Equal(["1", "1112089704", "1112089705", "1121089704", "1142089704", "1142089705"],
+            warnings.Where(w => w.Feature == "exploration" && w.Field == "paramNum").Select(w => w.Row).Order());
     }
 
     [Fact]
