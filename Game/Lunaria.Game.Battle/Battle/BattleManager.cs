@@ -87,7 +87,7 @@ public sealed partial class BattleManager : TrackedObject
 
         if (!Enum.IsDefined(monsterFrom))
         {
-            Log.Stage("battle entry refused for type {BattleType} field {BattleFieldId}, unknown monster source {MonsterFrom}", type, battleFieldId, monsterFrom);
+            Log.Flag("battle entry refused for type {BattleType} field {BattleFieldId}, unknown monster source {MonsterFrom}", type, battleFieldId, monsterFrom);
             return (int)EnmTextCode.EnmTextBattleStateNotMatch;
         }
 
@@ -96,7 +96,7 @@ public sealed partial class BattleManager : TrackedObject
             var same = running.Type == type && running.BattleFieldId == battleFieldId
                 && running.BattleInstId == battleInstId && running.MonsterFrom == monsterFrom;
             if (!same)
-                Log.Stage("battle entry refused for type {BattleType} field {BattleFieldId} instance {BattleInstId} source {MonsterFrom}, active type {ActiveType} field {ActiveFieldId} instance {ActiveInstId} source {ActiveMonsterFrom}",
+                Log.Flag("battle entry refused for type {BattleType} field {BattleFieldId} instance {BattleInstId} source {MonsterFrom}, active type {ActiveType} field {ActiveFieldId} instance {ActiveInstId} source {ActiveMonsterFrom}",
                     type, battleFieldId, battleInstId, monsterFrom, running.Type, running.BattleFieldId, running.BattleInstId, running.MonsterFrom);
             return same ? 0 : (int)EnmTextCode.EnmTextBattleAleardyExist;
         }
@@ -118,7 +118,7 @@ public sealed partial class BattleManager : TrackedObject
             || running.Type != type
             || running.BattleFieldId != battleFieldId)
         {
-            Log.Stage("battle start refused for type {BattleType} field {BattleFieldId}, active type {ActiveType} field {ActiveFieldId}",
+            Log.Flag("battle start refused for type {BattleType} field {BattleFieldId}, active type {ActiveType} field {ActiveFieldId}",
                 type, battleFieldId, Current?.Type, Current?.BattleFieldId);
             return (int)EnmTextCode.EnmTextBattleStateNotMatch;
         }
@@ -142,7 +142,7 @@ public sealed partial class BattleManager : TrackedObject
             || running.Type != type
             || running.BattleFieldId != battleFieldId)
         {
-            Log.Stage("battle pause refused for type {BattleType} field {BattleFieldId}, active type {ActiveType} field {ActiveFieldId}",
+            Log.Flag("battle pause refused for type {BattleType} field {BattleFieldId}, active type {ActiveType} field {ActiveFieldId}",
                 type, battleFieldId, Current?.Type, Current?.BattleFieldId);
             return (int)EnmTextCode.EnmTextBattleStateNotMatch;
         }
@@ -162,7 +162,7 @@ public sealed partial class BattleManager : TrackedObject
 
         if (running.Type != type || running.BattleFieldId != battleFieldId)
         {
-            Log.Stage("battle settlement refused for type {BattleType} field {BattleFieldId}, active type {ActiveType} field {ActiveFieldId}",
+            Log.Flag("battle settlement refused for type {BattleType} field {BattleFieldId}, active type {ActiveType} field {ActiveFieldId}",
                 type, battleFieldId, running.Type, running.BattleFieldId);
             return new BattleSettlement((int)EnmTextCode.EnmTextBattleStateNotMatch, false, false, false);
         }
@@ -178,7 +178,7 @@ public sealed partial class BattleManager : TrackedObject
     {
         var value = (int)type;
         if (value is < MinType or > MaxType)
-            Log.Stage("battle request refused for unsupported type {BattleType}", value);
+            Log.Flag("battle request refused for unsupported type {BattleType}", value);
         return value is < MinType or > MaxType ? (int)EnmTextCode.EnmTextBattleTypeInvalid : 0;
     }
 }

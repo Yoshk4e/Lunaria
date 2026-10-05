@@ -138,18 +138,36 @@ public static class ContentValidator
             }
         }
 
-        // The dump has consumers of battle IDs but no authoritative battlefield definitions.
-        // Do not misreport every referenced battle as missing based on an unrelated table.
-        var battleRefs = Rows("P_RepeatableDungeonsTable").SelectMany(r => Numbers(r, "battleId"))
-            .Concat(Rows("P_WantedPosterNPC").Where(r => Number(r, "npcType") is (uint)WantedNpcType.NormalBattle or (uint)WantedNpcType.EndlessBattle).SelectMany(r => Numbers(r, "params")))
-            .Where(id => id != 0).Distinct().Count();
-        if (battleRefs > 0)
-            warnings.Add(new("P_RepeatableDungeonsTable/P_WantedPosterNPC", "*", "battleId/params", "battlefield validation", "coverage gap",
-                $"{battleRefs} referenced battlefield IDs cannot be checked: authoritative battlefield definitions are not bundled."));
+        // Battlefields the CBT1 client defines (c_battlefieldsystemtable). A dungeon's battleId names a
+        // C_RepeatableDungeonsBattleTable row, which names the battlefield the client fights on.
+        var battleFields = Ids("C_BattleFieldSystemTable");
+        var dungeonBattles = Ids("C_RepeatableDungeonsBattleTable");
+        References("P_RepeatableDungeonsTable", "battleId", dungeonBattles, "C_RepeatableDungeonsBattleTable", "dungeon battles",
+            _ => true);
+        References("C_RepeatableDungeonsBattleTable", "battleFieldId", battleFields, "C_BattleFieldSystemTable", "dungeon battles",
+            _ => true);
+        foreach (var row in Rows("P_WantedPosterNPC")
+                     .Where(r => Number(r, "npcType") is (uint)WantedNpcType.NormalBattle or (uint)WantedNpcType.EndlessBattle))
+            foreach (var id in Numbers(row, "params").Where(id => id != 0 && !battleFields.Contains(id)))
+                Warn("P_WantedPosterNPC", row, "params", "wanted battles", true, $"Missing C_BattleFieldSystemTable reference {id}.");
+        foreach (var row in Rows("P_NPCGroupEnterBattle"))
+            foreach (var entry in Strings(row, "enterBattleList"))
+                if (!ulong.TryParse(entry.Split(',')[0], out var id) || !battleFields.Contains(id))
+                    Warn("P_NPCGroupEnterBattle", row, "enterBattleList", "exposed encounters", true,
+                        $"Missing C_BattleFieldSystemTable reference {entry}.");
+        References("P_BattleFieldRewardTable", "id", battleFields, "C_BattleFieldSystemTable", "battle loot", _ => true);
         return warnings;
     }
 
     private static ulong Number(JsonElement row, string field) => Numbers(row, field).FirstOrDefault();
+    private static IEnumerable<string> Strings(JsonElement row, string field)
+    {
+        if (row.ValueKind != JsonValueKind.Object || !row.TryGetProperty(field, out var value)
+            || value.ValueKind != JsonValueKind.Array) yield break;
+        foreach (var element in value.EnumerateArray())
+            if (element.ValueKind == JsonValueKind.String) yield return element.GetString()!;
+    }
+
     private static IEnumerable<ulong> Numbers(JsonElement row, string field)
     {
         if (row.ValueKind != JsonValueKind.Object) yield break;

@@ -1,5 +1,6 @@
 using Google.Protobuf;
 using Lunaria.Game.Battle;
+using Lunaria.Game.Logging;
 using Lunaria.Game.Player.Gameplay;
 using Msg;
 
@@ -15,7 +16,7 @@ public sealed partial class Player
     public int EnterBattle(EBattleType type, uint fieldId, uint instanceId, EnmMonsterFromType monsterFrom)
     {
         using var operationTime = BeginOperation();
-        if (!BattleContextMatches(type, fieldId)) return (int)EnmTextCode.EnmTextBattleStateNotMatch;
+        if (!BattleContextMatches(type, fieldId, "entry")) return (int)EnmTextCode.EnmTextBattleStateNotMatch;
         // Select the correct story/dungeon/Wanted team before the battle freezes it.
         if (Battles.Current is null) ReconcileTemporaryTeam();
         return Battles.Enter(type, fieldId, instanceId, monsterFrom);
@@ -24,24 +25,37 @@ public sealed partial class Player
     public int StartBattle(EBattleType type, uint fieldId)
     {
         using var operationTime = BeginOperation();
-        return BattleContextMatches(type, fieldId) ? Battles.Start(type, fieldId)
+        return BattleContextMatches(type, fieldId, "start") ? Battles.Start(type, fieldId)
             : (int)EnmTextCode.EnmTextBattleStateNotMatch;
     }
 
     public int PauseBattle(EBattleType type, uint fieldId, bool paused)
     {
         using var operationTime = BeginOperation();
-        return BattleContextMatches(type, fieldId) ? Battles.Pause(type, fieldId, paused)
+        return BattleContextMatches(type, fieldId, "pause") ? Battles.Pause(type, fieldId, paused)
             : (int)EnmTextCode.EnmTextBattleStateNotMatch;
     }
 
-    private bool BattleContextMatches(EBattleType type, uint fieldId)
+    /// <summary>Whether the battle fits the wanted run or dungeon in progress. A refusal is logged: the client
+    /// does not report it and can stay stuck in the fight.</summary>
+    private bool BattleContextMatches(EBattleType type, uint fieldId, string request)
     {
-        if (type == EBattleType.EnmBattleTypeWanted) return Wanted.MatchesBattle(fieldId);
-        if (InWantedRun) return false;
+        var refusal = BattleContextRefusal(type, fieldId);
+        if (refusal is not null)
+            Log.Flag("battle {Request} refused for type {BattleType} field {BattleFieldId}: {Reason}", request, type, fieldId, refusal);
+        return refusal is null;
+    }
+
+    private string? BattleContextRefusal(EBattleType type, uint fieldId)
+    {
+        if (type == EBattleType.EnmBattleTypeWanted)
+            return Wanted.MatchesBattle(fieldId) ? null : $"not a battle of wanted entry {Wanted.CurrentEntryId} step {Wanted.CurrentStep}";
+        if (InWantedRun) return $"wanted entry {Wanted.CurrentEntryId} in progress";
         if (type is EBattleType.EnmBattleTypeRepeatDungeon or EBattleType.EnmBattleTypeWeekDungeon or EBattleType.EnmBattleTypeHorde)
-            return Dungeons.Current is {} dungeon && assets.Dungeons.FightsOn(dungeon.DungeonId, fieldId);
-        return Dungeons.Current is null;
+            return Dungeons.Current is not {} dungeon ? "no dungeon in progress"
+                : assets.Dungeons.FightsOn(dungeon.DungeonId, fieldId) ? null
+                : $"not a battle of dungeon {dungeon.DungeonId}";
+        return Dungeons.Current is {} current ? $"dungeon {current.DungeonId} in progress" : null;
     }
 
     public BattleLeaveOutcome LeaveBattle(CSLeaveBattle report)
@@ -54,8 +68,12 @@ public sealed partial class Player
             || Battles.Current is {} running
             && (running.BattleInstId != 0 && running.BattleInstId != report.BattleInstId
                 || running.MonsterFrom != default && running.MonsterFrom != report.MonsterFromType))
+        {
+            Log.Flag("battle leave refused for type {BattleType} field {BattleFieldId} instance {BattleInstId} source {MonsterFrom} result {Result}",
+                report.BattleType, report.BattleFieldId, report.BattleInstId, report.MonsterFromType, report.BattleResult);
             return new BattleLeaveOutcome((int)EnmTextCode.EnmTextBattleStateNotMatch, RewardDelivery.Empty, false,
                 RewardDelivery.Empty, []);
+        }
         var settlement = Battles.Leave(report.BattleType, report.BattleFieldId,
             report.BattleResult == EBattleResultType.EnmBattleResultTypeSuccess);
 
