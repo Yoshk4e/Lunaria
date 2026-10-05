@@ -22,6 +22,14 @@ public sealed class WantedDefinitionTests(BundledGameplayFixture fixture)
     }
 
     [Fact]
+    public void Blesses_AreOnlyThoseTheClientCanShow()
+    {
+        // CBT1 server data also lists blesses 1000001-1000003, but the CBT1 client P_WantedPosterBlessTable does not:
+        // its settlement screen (SortBless) fails on them and the player is left frozen after the run.
+        Assert.DoesNotContain(fixture.Data.Wanted.AllBlesses, b => b.Id is >= 1000001 and <= 1000003);
+    }
+
+    [Fact]
     public void IndependentPercentageRolls_CanProduceSeveralAwardsOrNone()
     {
         var hit = At(1011, 1, new ControlledRandom(0));
