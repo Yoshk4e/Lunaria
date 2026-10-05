@@ -182,6 +182,23 @@ public sealed partial class RoleSessionTests
     }
 
     [Fact]
+    public async Task HordeSettlement_ShowsTheKillsOfThisRun()
+    {
+        var ctx = Context();
+        Assert.Equal(0, await _sessions.ActivateAsync(ctx, 1));
+        ctx.Player.Progress.Load(1, 0, 0, 240, ctx.Player.UtcNow);
+        foreach (var (kills, shown) in new[] { (40u, 40u), (12u, 12u) })
+        {
+            Assert.Equal(0, ctx.Player.EnterDungeon(11120201).Code);
+            var reply = await new HandleDungeonsFinish().OnPacket(ctx,
+                new() { DungeonsId = 11120201, Victory = true, HordeData = new HordeFinishDataReq { KillCount = kills } });
+            Assert.Equal(0, reply.Result);
+            Assert.Equal(shown, reply.HordeData.KillCount);
+        }
+        Assert.Equal(40u, ctx.Player.Dungeons.Hordes[11120201].KillCount);
+    }
+
+    [Fact]
     public async Task MailText_AndTemplateParametersSurviveDatabaseReloadAndWireEncoding()
     {
         var ctx = Context();
