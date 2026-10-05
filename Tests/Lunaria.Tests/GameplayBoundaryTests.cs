@@ -351,6 +351,36 @@ public sealed class GameplayBoundaryTests(BundledGameplayFixture fixture)
     }
 
     [Fact]
+    public void WantedAward_PartialChoiceSendsNoStepAndListsOnlyOpenAwards()
+    {
+        var player = Fresh();
+        Assert.Equal(0, player.EnterWanted(10101));
+        var bless = player.Assets.Wanted.AllBlesses[0].Id;
+        var relic = player.Assets.Wanted.AllRelics[0].Id;
+        var run = player.Wanted.CaptureRun()!;
+        player.Wanted.Load([], run with {
+            Current = run.Current with {
+                EventDone = true, Status = EnmWantedStepStatus.EnmWssTaskFinished,
+                Awards = [
+                    new Lunaria.Game.Wanted.WantedStepAward(1, (uint)EWantedAwardType.AddBlessSelect, [bless], false),
+                    new Lunaria.Game.Wanted.WantedStepAward(2, (uint)EWantedAwardType.AddRelicSelect, [relic], false)
+                ]
+            }
+        });
+
+        var first = player.ChooseWantedAward(1, bless, 0);
+        Assert.Equal(0, first.Result);
+        Assert.False(first.Finished);
+        Assert.Null(first.Notification);
+        Assert.Equal([2u], player.Wanted.ToStepNotification()!.StepData.AwardList.Select(a => a.Id));
+
+        var last = player.ChooseWantedAward(2, relic, 0);
+        Assert.Equal(0, last.Result);
+        Assert.True(last.Finished);
+        Assert.NotNull(last.Notification);
+    }
+
+    [Fact]
     public void RewardPresentation_RemainsStableAcrossLaterGrants()
     {
         var player = Fresh();
