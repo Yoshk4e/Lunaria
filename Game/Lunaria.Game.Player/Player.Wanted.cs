@@ -56,7 +56,7 @@ public sealed partial class Player
             _wantedTasksStep = 0;
             Tasks.ResetNamespace(TaskAssets.Wanted);
         }
-        WantedSuspended = false;
+        Wanted.Suspend(false);
         ReconcileTemporaryTeam();
         return 0;
     }
@@ -72,7 +72,7 @@ public sealed partial class Player
         if (Wanted.IsRunning)
         {
             Log.Event("wanted run on entry {EntryId} left at step {Step}, kept for Continue", Wanted.CurrentEntryId, Wanted.CurrentStep);
-            WantedSuspended = true;
+            Wanted.Suspend(true);
             ReconcileTemporaryTeam();
             return 0;
         }
