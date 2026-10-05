@@ -11,6 +11,21 @@ public sealed partial class Player
     /// A dungeon map without a running dungeon cannot be loaded (the client's dungeon process has no data), so a
     /// role saved there after its run ended goes back to the open-world map it came from.
     /// </summary>
+    /// <summary>
+    /// A horde is fought on the open world and the client cannot resume one: it only sends CS_DUNGEONS_ENTER and
+    /// CS_DUNGEONS_FINISH (s_CSM_WDG_ZombieWaveGameplaySystem). A horde run saved in progress would refuse every
+    /// later dungeon entry, so it ends at login.
+    /// </summary>
+    internal void DropHordeRunOnLogin()
+    {
+        if (Dungeons.Current is not {} current
+            || Assets.Dungeons.Dungeon(current.DungeonId)?.DungeonType != DungeonAssets.ZombieWaveType)
+            return;
+
+        Log.Flag("horde {DungeonId} left in progress, dropped at login", current.DungeonId);
+        Dungeons.AbandonCurrent();
+    }
+
     internal void LeaveStrandedDungeonMap()
     {
         if (Dungeons.Current is not null || !Assets.Maps.IsScriptedWorld(Map.MapId) || !Assets.Dungeons.IsDungeonMap(Map.MapId))
