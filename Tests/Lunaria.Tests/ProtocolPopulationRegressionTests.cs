@@ -1,8 +1,10 @@
+using System.Threading.Channels;
 using Lunaria.Game.Mail;
 using Lunaria.Game.Player.Persistence;
 using Lunaria.Game.Player.Persistence.Entities;
 using Lunaria.Game.Resources;
 using Lunaria.GameServer.Handlers.Recv;
+using Lunaria.Proto;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
@@ -156,6 +158,27 @@ public sealed partial class RoleSessionTests
             Assert.False(item.IsNew);
             Assert.Equal(1u, item.ItemNum);
         });
+    }
+
+    [Fact]
+    public async Task HordeFinish_SendsTheBestScoreAndClaimedStars()
+    {
+        var outbound = Channel.CreateUnbounded<byte[]>();
+        var ctx = Context(outbound);
+        Assert.Equal(0, await _sessions.ActivateAsync(ctx, 1));
+        ctx.Player.Progress.Load(1, 0, 0, 240, ctx.Player.UtcNow);
+        Assert.Equal(0, ctx.Player.EnterDungeon(11120201).Code);
+        ReadReplyPackets(outbound);
+
+        var reply = await new HandleDungeonsFinish().OnPacket(ctx,
+            new() { DungeonsId = 11120201, Victory = true, HordeData = new HordeFinishDataReq { KillCount = 40 } });
+
+        Assert.Equal(0, reply.Result);
+        var command = MessageCmdRegistry.CmdIdOf(new SCHordeDataNtf());
+        var ntf = SCHordeDataNtf.Parser.ParseFrom(Assert.Single(ReadReplyPackets(outbound), p => p.Head.Cmd == command).Body);
+        Assert.Equal(11120201u, ntf.Id);
+        Assert.Equal(40u, ntf.KillCount);
+        Assert.Equal(2u, ntf.StarAward);
     }
 
     [Fact]

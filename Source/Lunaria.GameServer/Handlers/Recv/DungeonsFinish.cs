@@ -33,6 +33,14 @@ public sealed class HandleDungeonsFinish
         await ctx.NotifyAsync(ctx.Player.Dungeons.ToDataNotification(ctx.Player.UtcNow))
             .ConfigureAwait(false);
 
+        // The horde panel keeps its best score and claimed stars from SC_HORDE_DATA_NTF
+        // (s_CSM_RDS_ZombieWave.OnZombieWaveDataNtf); the full data only arrives at login.
+        if (horde is not null)
+            await ctx.NotifyAsync(new SCHordeDataNtf {
+                    Id = horde.HordeId, KillCount = horde.KillCount, StarAward = horde.StarAward
+                })
+                .ConfigureAwait(false);
+
         return reply;
     }
 }
