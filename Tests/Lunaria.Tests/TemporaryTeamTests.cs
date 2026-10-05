@@ -148,6 +148,26 @@ public sealed partial class RoleSessionTests
     }
 
     [Fact]
+    public async Task WantedRunLeftOnItsMap_DoesNotBlockOpenWorldBattles()
+    {
+        var ctx = Context();
+        Assert.Equal(0, await _sessions.ActivateAsync(ctx, 1));
+        var player = ctx.Player;
+        Assert.Equal(0, player.EnterWanted(10101, [(uint)player.Characters.All.Last().InstId]));
+        player.Map.Load(206001001001, player.Map.Savepoint, [], [], (1, 2, 3),
+            returnPoint: new Lunaria.Game.World.MapReturnPoint(100001001001, 124389, 62649, 32272, IsSynced: true));
+
+        Assert.Equal(0, await _sessions.ActivateAsync(ctx, 2));
+        Assert.Equal(0, await _sessions.ActivateAsync(ctx, 1));
+
+        const uint field = 109100101;
+        Assert.True(ctx.Player.Wanted.IsRunning);
+        Assert.Equal(0, ctx.Player.EnterBattle(EBattleType.EnmBattleTypePatrol, field, 0, EnmMonsterFromType.EmonsterFromInvalid));
+        Assert.Equal(0, ctx.Player.StartBattle(EBattleType.EnmBattleTypePatrol, field));
+        Assert.Null(ctx.Player.ActiveTemporaryTeam);
+    }
+
+    [Fact]
     public async Task WantedEntry_UsesRequestedInstances_RejectsForgeries_AndRestoresPermanentTeam()
     {
         var ctx = Context();

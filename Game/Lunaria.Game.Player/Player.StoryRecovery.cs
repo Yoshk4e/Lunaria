@@ -41,6 +41,9 @@ public sealed partial class Player
     [Untracked]
     internal bool WantedSuspended { get; private set; }
 
+    /// <summary>A wanted run is in progress on its map. A suspended run does not hold the open world.</summary>
+    internal bool InWantedRun => Wanted.IsRunning && !WantedSuspended;
+
     private void ReturnToOpenWorld(string left)
     {
         if (Map.ReturnPoint is {} origin)

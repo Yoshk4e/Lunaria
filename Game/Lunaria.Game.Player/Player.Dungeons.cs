@@ -10,7 +10,7 @@ public sealed partial class Player
     public DungeonEntryOutcome EnterDungeon(ulong dungeonId)
     {
         using var operationTime = BeginOperation();
-        if (dungeonId > uint.MaxValue || Wanted.IsRunning || Battles.Current is not null
+        if (dungeonId > uint.MaxValue || InWantedRun || Battles.Current is not null
             || QueryTemporaryTeam((int)EnmTmpTeamType.Dungeon, DungeonTeamSource(dungeonId))?.MemberData.Count is not > 0)
         {
             Log.Flag("dungeon {DungeonId} entry refused, wanted or battle active or no dungeon team", dungeonId);
@@ -40,7 +40,7 @@ public sealed partial class Player
     public DungeonEntryOutcome AdoptDungeonCurrent(ulong dungeonId, uint battleId)
     {
         using var operationTime = BeginOperation();
-        if (dungeonId > uint.MaxValue || Wanted.IsRunning
+        if (dungeonId > uint.MaxValue || InWantedRun
             || Dungeons.Current is null && Battles.Current is not null
             || QueryTemporaryTeam((int)EnmTmpTeamType.Dungeon, DungeonTeamSource(dungeonId))?.MemberData.Count is not > 0)
             return new DungeonEntryOutcome((int)EnmTextCode.EnmTextWrongParam, dungeonId, 0);

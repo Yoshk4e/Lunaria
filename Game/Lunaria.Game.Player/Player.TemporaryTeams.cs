@@ -109,7 +109,7 @@ public sealed partial class Player : TrackedObject
             .Where(t => assets.TmpTeams.MembersOf(t).Count > 0).DistinctBy(t => t.Id).OrderBy(t => t.Id).ToArray();
         var story = storyTeams.FirstOrDefault(t => ActiveTemporaryTeam is { Type: EnmTmpTeamType.Task } active && active.Source == t.Id)
             ?? storyTeams.FirstOrDefault();
-        var type = Wanted.IsRunning && !WantedSuspended ? EnmTmpTeamType.Wanted : Dungeons.Current is not null ? EnmTmpTeamType.Dungeon
+        var type = InWantedRun ? EnmTmpTeamType.Wanted : Dungeons.Current is not null ? EnmTmpTeamType.Dungeon
             : story is not null ? EnmTmpTeamType.Task : EnmTmpTeamType.None;
         var source = type switch {
             EnmTmpTeamType.Wanted => Wanted.CurrentEntryId,
