@@ -91,10 +91,27 @@ public static class ContentValidator
         var taskIds = Ids("P_TasksList_POIQuest");
         var teleportIds = Ids("P_TeleportPointTemplateTable");
         var creatureIds = Ids("P_SilverCreatureGrowthTable");
+        // Chest and resource objectives count gathers of objects placed from the listed templates, in a block the
+        // subregion owns (P_CollectionSubRegionMapping). Refresh type 1 never respawns, so such objects count once.
+        var placements = Rows("P_WorldCollectObjTable")
+            .Select(r => (Block: Number(r, "blockId"), Template: Number(r, "templateId"))).ToArray();
+        var blockSubRegions = Rows("P_CollectionSubRegionMapping")
+            .ToDictionary(r => Number(r, "id"), r => Numbers(r, "subRegionList").ToHashSet());
+        var refreshTypes = Rows("P_RefreshConfigTable").ToDictionary(r => Number(r, "id"), r => Number(r, "refreshType"));
+        var respawns = Rows("P_CollectionTable").Where(r => refreshTypes.GetValueOrDefault(Number(r, "refreshConfigId")) is not 1)
+            .Select(r => Number(r, "id")).ToHashSet();
+        ulong GatherCapacity(IEnumerable<ulong> subRegions, ulong[] templates)
+        {
+            var owned = subRegions.ToHashSet();
+            var placed = placements.Where(p => templates.Contains(p.Template)
+                && (owned.Contains(p.Block) || blockSubRegions.GetValueOrDefault(p.Block)?.Overlaps(owned) == true)).ToArray();
+            return placed.Any(p => respawns.Contains(p.Template)) ? ulong.MaxValue : (ulong)placed.Length;
+        }
         foreach (var suffix in new[] { "", "_Morgue", "_Four", "_Dayfair" })
         {
             var table = "P_RegionSequenceTable" + suffix;
-            var usedSequences = Rows("P_RegionProgressTable" + suffix).SelectMany(r => Numbers(r, "sequenceId")).ToHashSet();
+            var progressRows = Rows("P_RegionProgressTable" + suffix);
+            var usedSequences = progressRows.SelectMany(r => Numbers(r, "sequenceId")).ToHashSet();
             foreach (var row in Rows(table))
             {
                 var referenced = usedSequences.Contains(Number(row, "id"));
@@ -110,7 +127,11 @@ public static class ContentValidator
                 foreach (var missing in ids.Distinct().Where(id => !targets.Contains(id)))
                     Warn(table, row, "paramId", "exploration", referenced, $"Missing objective target {missing} for type {type}.");
                 // Creature objectives count instances, so several creatures of one type are valid.
-                var capacity = type == 6 && !task ? (ids.Any(targets.Contains) ? ulong.MaxValue : 0UL)
+                var sequenceId = Number(row, "id");
+                var capacity = task ? (ulong)ids.Count(targets.Contains)
+                    : type == 6 ? (ids.Any(targets.Contains) ? ulong.MaxValue : 0UL)
+                    : type is 2 or 7 ? GatherCapacity(progressRows.Where(r => Numbers(r, "sequenceId").Contains(sequenceId))
+                        .Select(r => Number(r, "id")), ids)
                     : (ulong)ids.Count(targets.Contains);
                 if (required > capacity)
                     Warn(table, row, "paramNum", "exploration", referenced, $"Requires {required}, but supported targets can supply at most {capacity}.");
