@@ -506,10 +506,19 @@ public sealed partial class WantedManager(GameData assets, Random? random = null
         // The rest encounter enables recovery via its auxiliary NPC task (event 8, task/NPC 11).
         && row.EventStartAddTask.Any(id => assets.Wanted.Npc(id)?.NpcType == (uint)WantedNpcType.RecoverHp);
 
+    /// <summary>
+    /// The client starts a wanted battle from the wanted NPC id its level object carries
+    /// (s_WP_WantedPosterInteractiveProcessor.StartInteractive), not from the event id. Most battle events share their
+    /// id with that NPC; elite and boss events have no NPC row of their own (CBT1 event 24 fights NPC 5, battlefield
+    /// 2060000004), so for them any wanted battle NPC battlefield is accepted.
+    /// </summary>
     public bool MatchesBattle(uint battlefieldId) => _run is {} run && !run.Current.EventDone
         && assets.Wanted.Event(run.Current.EventId) is {} row && IsBattleType(row.WantedEventType)
-        && assets.Wanted.Npc(run.Current.EventId) is { NpcType: (uint)WantedNpcType.NormalBattle
-            or (uint)WantedNpcType.EndlessBattle, Params: > 0 } npc && npc.Params == battlefieldId;
+        && battlefieldId != 0
+        && (assets.Wanted.Npc(run.Current.EventId) is { NpcType: (uint)WantedNpcType.NormalBattle
+                or (uint)WantedNpcType.EndlessBattle } npc
+            ? npc.Params == battlefieldId
+            : assets.Wanted.IsNpcBattlefield(battlefieldId));
 
     public void SetResetPoint(uint id, (int X, int Y, int Z) position)
     {

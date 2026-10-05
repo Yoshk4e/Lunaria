@@ -334,6 +334,30 @@ public sealed class GameplayBoundaryTests(BundledGameplayFixture fixture)
     }
 
     [Fact]
+    public void WantedEliteEvent_AcceptsTheBattleOfItsWantedNpc()
+    {
+        var player = Fresh();
+        Assert.Equal(0, player.EnterWanted(10101));
+        var run = player.Wanted.CaptureRun()!;
+
+        // Entry 10102, route 1013: step 5 (process 105) draws CBT1 event 24 (Elite), which has no NPC row; its level
+        // object starts wanted NPC 5, battlefield 2060000004.
+        var route = run with { EntryId = 10102, RouteId = 1013, MaxStep = 13 };
+        player.Wanted.Load([], route with { Step = 5, Current = run.Current with {
+            Status = EnmWantedStepStatus.EnmWssStart, ProcessId = 105, EventId = 24, EventDone = false, Awards = [] } });
+        Assert.Equal(24u, player.Wanted.CaptureRun()!.Current.EventId);
+        Assert.True(player.Wanted.MatchesBattle(2060000004));
+        Assert.False(player.Wanted.MatchesBattle(123));
+
+        // An event with its own battle NPC still requires that battlefield (step 2, process 102, event 51).
+        player.Wanted.Load([], route with { Step = 2, Current = run.Current with {
+            Status = EnmWantedStepStatus.EnmWssStart, ProcessId = 102, EventId = 51, EventDone = false, Awards = [] } });
+        Assert.Equal(51u, player.Wanted.CaptureRun()!.Current.EventId);
+        Assert.True(player.Wanted.MatchesBattle(2060103001));
+        Assert.False(player.Wanted.MatchesBattle(2060000004));
+    }
+
+    [Fact]
     public void WantedAward_QueuesOnlyAddedResources_AndRejectsReplay()
     {
         var player = Fresh();

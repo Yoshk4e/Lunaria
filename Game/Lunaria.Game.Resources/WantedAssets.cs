@@ -270,6 +270,10 @@ public sealed class WantedAssets
     public PWantedPosterEntryTable? Entry(uint id) => _entries.GetValueOrDefault(id);
     public PWantedPosterEventTable? Event(uint id) => _events.GetValueOrDefault(id);
     public PWantedPosterNPC? Npc(uint id) => _npcs.GetValueOrDefault(id);
+
+    /// <summary>Whether a NormalBattle or EndlessBattle wanted NPC starts this battlefield (P_WantedPosterNPC.Params).</summary>
+    public bool IsNpcBattlefield(uint battlefieldId) => _npcs.Values.Any(npc =>
+        npc.NpcType is (uint)WantedNpcType.NormalBattle or (uint)WantedNpcType.EndlessBattle && npc.Params == battlefieldId);
     public PWantedPosterBlessTable? Bless(uint id) => _blesses.GetValueOrDefault(id);
     public PWantedPosterRelicTable? Relic(uint id) => _relics.GetValueOrDefault(id);
     public PWantedPosterCreatureTable? Creature(uint id) => _creatures.GetValueOrDefault(id);
