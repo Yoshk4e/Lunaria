@@ -49,6 +49,9 @@ public sealed class CatalogManagerTests(BundledGameplayFixture fixture)
         Assert.Equal(EnmItemReason.EnmItemChangeNormal, shown.Source);
         Assert.Equal([card, motive, motive], shown.Items.Select(i => i.ItemId));
         Assert.All(shown.Items, i => Assert.True(i.IsNew));
+
+        var popup = Assert.Single(delivery.Presentation.OfType<SCAwardShowNtf>());
+        Assert.Equal([(card, 1u), (motive, 2u)], popup.Items.Select(i => (i.ItemId, i.ItemCount)));
     }
 
     [Fact]

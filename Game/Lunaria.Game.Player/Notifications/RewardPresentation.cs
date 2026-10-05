@@ -10,10 +10,13 @@ internal static class RewardPresentation
     {
         var messages = new List<IMessage>();
         var awarded = delivery.Credited.Concat(delivery.Stored).ToArray();
-        if (awarded.Length > 0)
+        // Enrolled items belong here too: the client filters by C_ItemAwardShow, which shows the obtain popup for
+        // motives (ShowType 7) and leaves character cards (ShowType 6) to the acquisition screen.
+        var shown = awarded.Concat(delivery.Enrolled).ToArray();
+        if (shown.Length > 0)
         {
             var show = new SCAwardShowNtf { Type = EnmAwardShowType.EnmAstLeftDown, Source = delivery.Reason };
-            show.Items.AddRange(awarded.Select(g => new ShowAwardInfo { ItemId = g.ItemId, ItemCount = g.Count, IsNew = true }));
+            show.Items.AddRange(shown.Select(g => new ShowAwardInfo { ItemId = g.ItemId, ItemCount = g.Count, IsNew = true }));
             messages.Add(show);
         }
 
