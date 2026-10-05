@@ -38,11 +38,28 @@ public sealed partial class Player
         if (Characters.Get(charInstId) is null)
             return (int)EnmTextCode.EnmTextCharacterNotExist;
 
-        if (Motives.Get(motiveUniq)!.EquipedTarget != 0)
-            return (int)EnmTextCode.EnmTextMotiveAlearyEquiped;
+        var holder = Motives.Get(motiveUniq)!.EquipedTarget;
+        var previous = Characters.Get(charInstId)!.MotiveUniqId;
 
-        if (Characters.Get(charInstId)!.MotiveUniqId != 0)
-            return (int)EnmTextCode.EnmTextMotiveAlearyEquiped;
+        if (holder == charInstId && previous == motiveUniq)
+            return 0;
+
+        // The client's Switch (c_UMG_Character_Weapon_Content) sends only this equip: it neither unequips the
+        // character's current motive nor, after its "equipped by" confirmation, the other holder's. Replace both.
+        var touched = new List<ulong> { charInstId };
+
+        if (previous != 0)
+        {
+            Characters.ForceClearMotiveSlot(charInstId);
+            Motives.ForceClearEquip(previous);
+        }
+
+        if (holder != 0)
+        {
+            if (Characters.Get(holder)?.MotiveUniqId == motiveUniq) Characters.ForceClearMotiveSlot(holder);
+            Motives.ForceClearEquip(motiveUniq);
+            if (holder != charInstId) touched.Add(holder);
+        }
 
         var code = Characters.EquipMotive(charInstId, motiveUniq);
 
@@ -58,7 +75,7 @@ public sealed partial class Player
         }
 
         Gameplay.Publish(new BagChanged(EnmItemReason.EnmItemChangeNormal));
-        Gameplay.Publish(new VitalsChanged([charInstId]));
+        Gameplay.Publish(new VitalsChanged(touched));
         return 0;
     }
 
